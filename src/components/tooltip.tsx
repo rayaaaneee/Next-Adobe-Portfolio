@@ -1,10 +1,13 @@
-import cn from "@/lib/utils/cn";
-import type ChildrenType from "@/types/children-type";
 import { JSX } from "react";
+
 import { FaCircleCheck } from "react-icons/fa6";
 import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
+
+import cn from "@/utils/function/cn";
+
+import type ChildrenType from "@/utils/types/children-type";
 
 
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';

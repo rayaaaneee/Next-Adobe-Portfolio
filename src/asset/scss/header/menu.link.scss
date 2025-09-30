@@ -1,0 +1,154 @@
+@import '../vars.scss';
+
+body {
+    
+    $light-color: #de8ea7;
+    $dark-color: #ead3d3;
+
+    .menu-link {
+
+        color: #fff !important;
+        font-size: 1.35em;
+        font-weight: 600;
+        text-shadow: $global-text-shadow;
+        transition: all 0.3s ease;
+
+
+        & > a {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+
+            &:not(.colored) {
+
+                &::after {
+                    opacity: 0;
+                    border-radius: 5px;
+                    margin-top: 5px;
+                    content: "";
+                    display: block;
+                    width: 20%;
+                    height: 5px;
+                    background-color: $light-color;
+                    transition: width 0.3s ease, opacity 0.3s ease;
+                }
+
+                @mixin links-hover-active-styles {
+                    color: $light-color;
+                    text-shadow: none;
+
+                    &::after {
+                      opacity: 1;
+                      width: 120%;
+                      transition: width 0.3s, opacity 0.3s ease;
+                    }
+                }
+
+                @include hover-safe {
+                    &:hover {
+                        @include links-hover-active-styles;
+                    }
+                }
+
+                &.active {
+                    @include links-hover-active-styles;
+                }
+            }
+
+            &.colored {
+
+                &::after {
+                    content: "";
+                    display: block;
+                    margin-top: 3px;
+                    width: 95%;
+                    height: 6px;
+                    background-color: $light-color;
+                    transition: width 0.1s ease-in, background-color 0.1s ease-in, height 0.1s ease-in, margin-bottom 0.1s ease-in;
+                    border-radius: 50px;
+                }
+                @include hover-safe {
+                    &:hover {
+                        &::after {
+                            width: 70%;
+                            height: 5px;
+                            margin-bottom: 1px;
+                            background-color: #e5779a;
+                            transition: width 0.1s ease-in, background-color 0.1s ease-in, height 0.1s ease-in, margin-bottom 0.1s ease-in;
+                        }
+                    }
+                }
+
+                &.active {
+                    color: $light-color;
+                    text-shadow: none;
+                }
+            }
+        }
+    }
+
+    &#dark {
+
+        .menu-link {
+            color: $dark-color !important;
+
+            & > a {
+
+                &:not(.colored) {
+    
+                    &::after {
+                        background-color: $dark-color;
+                    }
+
+                    @mixin dark-links-hover-active-styles {
+                        color: $dark-color;
+                    }
+
+                    @include hover-safe {
+                        &:hover {
+                            @include dark-links-hover-active-styles;
+                        }
+                    }
+
+                    &.active {
+                        @include dark-links-hover-active-styles;
+                    }
+                    
+                }
+
+                &.colored {
+
+                    &::after {
+                        background-color: $dark-color;
+                    }
+
+                    @mixin dark-links-colored-hover-active-styles {
+                        &::after {
+                            background-color: #e9bcbc;
+                        }
+                    }
+
+                    @include hover-safe {
+                        &:hover {
+                            @include dark-links-colored-hover-active-styles;
+                        }
+                    }
+
+                    &.active {
+                        @include dark-links-colored-hover-active-styles;
+                    }
+                    
+                    &.active {
+                        color: $dark-color;
+                        text-shadow: none;
+                    }
+                }
+            }
+
+        }
+    }
+} 

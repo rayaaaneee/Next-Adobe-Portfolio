@@ -1,0 +1,121 @@
+/* # Global vars pages */
+
+/* Hover mixin */
+@mixin hover-safe {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+/* Menu */
+
+// Header colors
+
+$menu-background-color: rgba(255, 235, 205, 0.6);
+$menu-background-color-dark-one: rgba(255, 255, 255, 0.6);
+$menu-background-color-dark-two: rgba(71, 71, 71, 0.6);
+
+$hamburger-bar-color: rgb(59, 59, 59);
+$hamburger-bar-color-hover: rgb(119 119 119);
+$hamburger-bar-color-dark: white;
+$hamburger-bar-color-dark-hover: rgb(255 221 221);
+
+// Hamburger colors
+
+$hamburger-bar-color: rgb(59, 59, 59);
+$hamburger-bar-color-hover: rgb(119 119 119);
+$hamburger-bar-color-dark: white;
+$hamburger-bar-color-dark-hover: rgb(255 221 221);
+
+/* Body */
+$body-background-color: linear-gradient(to left, blanchedalmond, #f0f0f0);
+$body-background-color-dark: linear-gradient(to left, rgb(73, 71, 78), rgb(105, 101, 117));
+
+$global-text-shadow: 0 0 2.15rem #000; // Used for text with light color on light background
+
+// Transition
+$general-transition-switch-mode: 0.2s;
+
+/* Couleurs / Box Shadow */
+$components-background-color: rgba(255, 255, 255, 0.9);
+$components-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+$containers-background-color: rgba(255, 255, 255, 0.8) /*!important*/;
+$containers-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+$bar-background-color: rgb(255 250 238) /*!important*/;
+$bar-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+$components-background-color-dark: rgb(33, 31, 38, 0.9);
+$components-box-shadow-dark: 0 0 60px rgba(255, 255, 255, 0.1);
+$containers-background-color-dark: rgb(33, 31, 38, 0.75) /*!important*/;
+$containers-box-shadow-dark: 0 0 23px rgba(255, 255, 255, 0.2) /*!important*/;
+$bar-background-color-dark: rgb(181, 178, 188) /*!important*/;
+$bar-box-shadow-dark: 0 0 15px rgba(255, 255, 255, 0.2);
+
+$colored-container-background-color: rgba(210, 168, 135, 0.8);
+$colored-containers-background-color-hover: rgba(206, 147, 126, 0.7);
+$colored-container-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+$colored-container-background-color-dark: rgba(98, 95, 105, 0.8);
+$colored-containers-background-color-hover-dark: rgba(88, 83, 101, 0.8);
+$colored-container-box-shadow-dark: $containers-box-shadow-dark;
+
+$selection-color: white;
+$selection-background-color: #e5c1a4;
+$selection-color-dark: rgb(141, 152, 251);
+$selection-background-color-dark: #ffffff;
+
+// Couleurs au chargement
+$colorLoading: rgb(229, 193, 164);
+$alternateColorLoading: rgba(229, 193, 164, 0.4);
+
+$darkColorLoading: rgb(255, 255, 255);
+$alternateDarkColorLoading: rgba(255, 255, 255, 0.4);
+
+// Titres
+$title-color: rgba(86, 86, 86, 0.88) !important;
+$title-font-weight: 600;
+$title-color-dark: rgb(238, 238, 240) !important;
+
+/* # Index page */
+
+$main-title-color: #fbf6e9;
+$main-title-color-dark: #fbe6e9;
+
+$index-background-color: rgb(255, 255, 255);
+$index-background-color-dark: rgb(244, 238, 238);
+
+$index-triangle-header-background-color: #dca0b153;
+$index-triangle-header-background-color-dark: #ecdfe853;
+$index-triangle-footer-background-color: #e6bdb198;
+$index-triangle-footer-background-color-dark: #dfcbe953;
+
+$index-circle-one-background-color: #e0ded4d0;
+$index-circle-one-background-color-dark: #9b8282d0;
+$index-circle-two-background-color: #decdbde5;
+$index-circle-two-background-color-dark: #534d5cd0;
+
+$index-triangle-yellow-background-color: #f7daa79b;
+$index-triangle-yellow-background-color-dark: #d4bbd0d0;
+$index-triangle-orange-background-color: #f7b07ad1;
+$index-triangle-orange-background-color-dark: #ffffffd0;
+$index-triangle-red-background-color: #df9191a9;
+$index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);
+
+
+/* Loader */
+$loader-background-color: rgb(255, 255, 255);
+$start-background-color: rgb(249, 238, 212);
+$loader-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+
+$loader-background-color-dark: rgb(35, 34, 37) !important;
+$start-background-color-dark: $index-background-color-dark !important;
+$loader-box-shadow-dark: 0 0 30px 0 rgba(255, 255, 255, 0.3);
+
+/* Home */
+
+$cv-download-button-background-color: rgba(255, 255, 255, 0.8);
+$cv-download-button-background-color-hover: rgb(239, 195, 153);
+$cv-download-button-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+
+$cv-download-button-background-color-dark: rgba(40, 40, 40, 0.8);
+$cv-download-button-background-color-hover-dark: rgba(233, 210, 210, 0.8);

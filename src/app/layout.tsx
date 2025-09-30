@@ -1,23 +1,33 @@
 import type { Metadata } from "next";
 
-import "@/asset/scss/styles.scss";
+import App from "./_app";
 
+import "@/asset/scss/styles.scss";
+import HeaderComponent from "@/components/header/header-component";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
   description: "By Rayane Merlin",
 };
 
-export default function RootLayout({
+const RootLayout = ({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) {
+}>) => {
+
     return (
-        <html lang="en">
-            <body className={`antialiased`}>
-                {children}
-            </body>
-        </html>
+        <App>
+            <html lang="en">
+                <header>
+                    <HeaderComponent hasFooter={true} />
+                </header>
+                <body className={`antialiased`}>
+                    {children}
+                </body>
+            </html>
+        </App>
     );
 }
+
+export default RootLayout;
