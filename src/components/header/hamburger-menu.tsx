@@ -39,7 +39,7 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
             <input className="hidden peer" type="checkbox" id="hamburger-checkbox" checked={checked} readOnly/>
             { ["top-bar", "middle-bar", "bottom-bar"].map((barClass, index) => (
                 <div key={index} className={cn(
-                    "hamburger-bar shadow-hamburger",
+                    "hamburger-bar",
                     "rounded-[10px] w-[83%] h-[9%] bg-white",
                     "transition-all duration-300 ease-in-out",
                     barClass,

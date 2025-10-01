@@ -18,17 +18,20 @@ const MenuLink = ({ className, to, children = <></>, isColored }: MenuLinkProps)
     const location = usePathname();
 
     return (
-        <li className={cn("menu-link", "w-fit text-white text-xl font-apple font-semibold", className)}>
+        <li className={cn("menu-link", "w-fit text-white text-xl font-apple font-medium", className)}>
             <Link href={ to } className={ cn(
                 className, 
                 { active: location === to },
-                "after:bg-menu-link",
+                "after:bg-menu-link text-2xl",
                 "[text-shadow:0_0_2.15rem_#000]",
                 isColored ? 
                     cn(
-                        "block mt-[3px] w-[95%] after:h-[6px] after:rounded-[50px] transition-all duration-100 ease-in",
-                        "hover:after:w-[70%] hover:after:h-[6px] mt-[1px]",
-                        "[&.active]:after:w-[70%] [&.active]:after:h-[6px] [&.active]:text-menu-link mt-[1px]"
+                        "relative mt-[3px] w-[95%] after:rounded-[50px] transition-all duration-100 ease-in",
+                        "after:w-[95%] after:mt-10 after:h-[6px] after:transition-all after:duration-100 after:ease-in",
+                        "after:absolute after:content-['']",
+                        "hover:after:w-[70%] hover:after:h-[5px] mt-[1px] hover:after:bg-[rgb(229,119,154)]",
+                        "[&.active]:text-menu-link mt-[1px]",
+                        "[&.active]:hover:after:w-[70%] [&.active]:hover:after:h-[5px] [&.active]:hover:after:bg-[rgb(229,119,154)]"
                     )
                         : 
                     cn(

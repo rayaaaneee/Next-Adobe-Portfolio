@@ -69,7 +69,7 @@ const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
     return (
         <div className={cn(
             'select-language',
-            'relative w-fit h-fit z-[1] font-poppins',
+            'relative w-fit h-fit z-[1] font-poppins text-lg',
             className
         )}>
             <div className={cn(

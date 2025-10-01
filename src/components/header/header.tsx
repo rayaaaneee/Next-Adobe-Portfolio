@@ -69,7 +69,6 @@ const Header = ({ hasFooter = true }) => {
         }
         
         const clickOutsideMenu = (e: MouseEvent) => {
-            console.log(mediaMenu.current, mediaMenu.current?.classList.contains("active"), !!(e.target as HTMLElement).closest('#menu-container'));
             if (mediaMenu.current?.classList.contains("active") && !(e.target as HTMLElement).closest('#menu-container')) {
                 if ((checkbox as HTMLInputElement).checked) {
                     (checkbox as HTMLInputElement).click();
@@ -89,9 +88,11 @@ const Header = ({ hasFooter = true }) => {
 
         window.addEventListener('click', clickOutsideMenu);
 
+        const mediaMenuTmp = mediaMenu.current;
+
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-            if (mediaMenu.current) mediaMenu.current.removeEventListener('click', onClickMenu);
+            if (mediaMenuTmp) mediaMenuTmp.removeEventListener('click', onClickMenu);
         };
 
     }, [isMenuReady]);
@@ -100,7 +101,7 @@ const Header = ({ hasFooter = true }) => {
     return (
         <>
             <Logo color={LogoColors.white} className={cn(
-                "w-[60px] h-[60px] absolute top-2 left-2",
+                "w-[70px] h-[70px] absolute top-4 left-4",
             )}/>
             <nav id="menu-container">
                 <ul className={cn(

@@ -1,13 +1,12 @@
 "use client"; // Temporary
 
-import Link from 'next/link';
-
 import useTryingContext from '@/utils/hook/use-try-context';
+import { useTypewriter } from 'react-simple-typewriter';
 
 import languageContext from '@/utils/context/language-context';
 
-import { useTypewriter } from 'react-simple-typewriter';
-import Logo, { LogoColors } from '@/components/logo';
+import GetStarted from '@/components/home/get-started';
+
 import { cn } from '@/lib/utils';
 
 
@@ -45,21 +44,28 @@ const Home = () => {
     return (
         <>
             <main className={cn(
-                '[&_*]:font-poppins flex items-center justify-center w-screen h-screen',
+                'flex items-center justify-center w-screen h-screen',
             )}>
-                <a href={'#null'} className={cn(
-                    "get-start one hover:bg-[rgba(237,186,147,0.35)]",
-                    "p-4 rounded-full flex items-center justify-center text-2xl font-medium text-white no-underline",
-                    "absolute top-[10px] right-[110px] transition-all duration-300 border-white border-2 text-nowrap tracking-wide z-1",
-                )}>{ language.home.discover }</a>
-                <div className={cn("container")}>
+                <GetStarted className='absolute top-[10px] right-[110px]' />
+                <div className={cn("container flex items-center justify-center")}>
                     <div className={cn("title")}>
-                        <h1>{ language.title }</h1>
-                        <div className={cn("main-bar")}></div>
-                        <div className={cn("subtitle")}>
-                            <h2 className={cn('one')}>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
+                        <h1 className={cn(
+                            "font-adobebold text-[12vw] text-nowrap font-medium text-[rgb(251,246,233)] [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)]",
+                        )}>{ language.title }</h1>
+                        <div id='main-bar' className={cn(
+                            "w-[70%] h-3 rounded-[10px] bg-blanchedalmond animate-bar",
+                        )}></div>
+                        <div id='subtitle' className={cn(
+                            "flex flex-row items-center justify-start gap-[1vw]"
+                        )}>
+                            <h2 className={cn(
+                                'text-white [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)] font-adobe font-semibold text-[6vw]',
+                            )}>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
                             {/* <h2 className={cn('two')}>{ shortedTextTypeWriter }</h2> */}{/*  Texte dynamique  */}
-                            <div className={cn("vertical-bar")}></div>
+                            <div id='vertical-bar' className={cn(
+                                "animate-vertical-bar transition-opacity duration-300",
+                                "w-2 h-[6vw] bg-black rounded-full animate-pulse duration-100 ease-in-out",
+                            )}></div>
                         </div>
                     </div>
                     {/* <Link href={'/null'} className={cn("get-start two")}>{ language.home.discover }</Link> */}

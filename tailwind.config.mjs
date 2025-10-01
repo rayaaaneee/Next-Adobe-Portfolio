@@ -30,10 +30,20 @@ const config = {
                     "70%": { transform: "rotate(-160deg) translateX(15vw) translateY(12.5vw)" },
                     "100%": { transform: "rotate(0deg)" },
                 },
+                "bar-move": {
+                    "0%": { width: "73%" },
+                    "50%": { width: "70%" },
+                    "100%": { width: "73%" },
+                },
+                "blink": {
+                    "0%, 100%": { opacity: 1 },
+                    "50%": { opacity: 0 }
+                }
             },
             fontFamily: {
                 apple: ['var(--apple)'],
                 adobe: ['var(--adobe)'],
+                adobebold: ['var(--adobe-bold)'],
                 poppins: ['var(--poppins)'],
             },
             colors: {
@@ -52,6 +62,7 @@ const config = {
                 "triangle-yellow": "var(--triangle-yellow-color)",
                 "triangle-orange": "var(--triangle-orange-color)",
                 "triangle-red": "var(--triangle-red-color)",
+                "blanchedalmond": "var(--blanchedalmond)",
             },
             transitionDuration: {
                 menu: "var(--menu-transition-duration)",
@@ -62,13 +73,12 @@ const config = {
             gridTemplateColumns: {
                 'select-language': "var(--select-language-columns)",
             },
-            boxShadow: {
-                "hamburger": "var(--hamburger-box-shadow)",
-            },
             animation: {
                 'triangle-red': 'triangle-red-move 40s linear infinite',
                 'triangle-yellow': 'triangle-yellow-move 50s linear infinite',
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
+                'bar': 'bar-move 6s linear infinite',
+                'vertical-bar': 'blink 1.5s ease-in-out infinite',
             }
         },
     },
