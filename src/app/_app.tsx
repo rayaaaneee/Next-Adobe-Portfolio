@@ -8,7 +8,7 @@ import languageContext from "@/utils/context/language-context";
 import themeContext from "@/utils/context/theme-context";
 
 import ChildrenInterface from "@/utils/interface/children-interface";
-import ManageLanguages from "@/utils/manager/manage-language";
+import ManageLanguages, { Sentences } from "@/utils/manager/manage-language";
 import ManageThemes from "@/utils/manager/manage-theme";
 
 const App = ({ children }: ChildrenInterface) => {
@@ -32,7 +32,7 @@ const App = ({ children }: ChildrenInterface) => {
 	}, [isDarkTheme]);
 
 	// Gérer le langage
-	const [language, setLanguage] = useState<object>(ManageLanguages.getSentences());
+	const [language, setLanguage] = useState<Sentences>(ManageLanguages.getSentences());
 	const languageValue = useMemo(
 		() => ({ language, setLanguage }), 
 		[language]

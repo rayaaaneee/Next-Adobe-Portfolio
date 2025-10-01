@@ -1,0 +1,32 @@
+.modeButton{
+
+    background-image: url(../../img/header/dark-mode.png);
+
+    &.white {
+        background-image: url(../../img/header/dark-mode-white.png);
+    }
+
+    &.pinkMoon {
+        &:hover {
+            background-image: url(../../img/header/dark-mode-pink.png);
+        }
+    }
+
+    &:hover {
+        background-image: url(../../img/header/dark-mode-hover.png);
+    }
+
+}
+
+:global(body.dark) {
+
+    .modeButton {
+
+        background-image: url(../../img/header/light-mode.png);
+
+        &:hover {
+            background-image: url(../../img/header/light-mode-hover.png);
+        }
+        
+    }
+}

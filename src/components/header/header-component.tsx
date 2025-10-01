@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 
@@ -14,6 +14,8 @@ import HamburgerMenu from './hamburger-menu';
 import MenuLink from './menu-link';
 import SelectLanguageButton from './select-language-button';
 import SwitchThemeButton from './switch-theme-button';
+
+import { cn } from '@/lib/utils';
 
 const HeaderComponent = ({ hasFooter = true }) => {
 
@@ -81,22 +83,44 @@ const HeaderComponent = ({ hasFooter = true }) => {
 
     }, []);
 
+    const [isMenuReady, setIsMenuReady] = useState(false);
+
+    useLayoutEffect(() => {
+        if (mediaMenu.current) {
+            setIsMenuReady(true);
+        }
+    }, []);
+
+
     return (
         <nav id="menu-container">
-            <ul className={"header-media-menu"} ref={ mediaMenu }>
-                <SelectLanguageButton className={"onmenu"} />
+            <ul className={cn(
+                "header-media-menu box-content bg-menu transition-all transition-menu duration-menu",
+                "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
+                "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
+                "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
+                "[&.active>*]:opacity-100 [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
+            )} ref={ mediaMenu }>
+                <SelectLanguageButton className={"absolute top-[25px] left-[25px]"} />
                 { hasFooter && ( 
                     <Link href={'/'}>
-                        <Logo color={LogoColors.black} className="menu-logo" />
+                        <Logo
+                            color={LogoColors.black}
+                            className="absolute max-w-[60px] left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
+                        />
                     </Link>
                 ) }
-                { links.map((link) => (
-                    <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
-                )) }
+                <div className={cn(
+                    "flex flex-col items-center justify-center gap-[3vh] w-full",
+                )}>
+                    { links.map((link) => (
+                        <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
+                    )) }
+                </div>
                 <SwitchThemeButton pinkMoon whiteIcons/>
                 <div className='menu-footer'></div>
             </ul>
-            { mediaMenu.current && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current}/> }
+            { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}
         </nav>
     );
 }

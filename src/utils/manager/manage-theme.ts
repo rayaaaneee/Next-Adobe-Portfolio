@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils';
+
 import ManageCookies from './manage-cookies';
 
 // import faviconDarkTheme from '../asset/img/favicon/favicon-dark-theme.png';
@@ -51,7 +53,8 @@ export default class ManageThemes {
     }
 
     static setBodyTheme = () => {
-        document.body.id = ManageThemes.isDarkTheme ? Theme.DARK : '';
+        const className: string = cn(ManageThemes.isDarkTheme && Theme.DARK);
+        if (className) document.body.classList.add(className);
     }
 
     static getThemeName = () => {

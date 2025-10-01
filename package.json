@@ -4,6 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "clear": "rm -rf .next",
+        "restart": "npm run clear && npm run dev",
         "build": "next build",
         "start": "next start",
         "lint": "eslint"

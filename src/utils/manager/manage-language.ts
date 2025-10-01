@@ -65,7 +65,7 @@ export default class ManageLanguages {
         return ManageLanguages.language;
     }
 
-    static getSentences = (): object => {
+    static getSentences = (): Sentences => {
         let json = ManageLanguages.supportedLanguages.find(([name, _]) => name === ManageLanguages.language)![1] || null;
         if (json === null) {
             json = ManageLanguages.supportedLanguages.find(([name, _]) => name === ManageLanguages.defaultLanguage)![1];

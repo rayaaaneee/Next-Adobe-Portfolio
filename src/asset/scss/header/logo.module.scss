@@ -1,0 +1,27 @@
+.logo {
+
+    &.light {
+        background-image: url(../../img/favicon/favicon-light-theme.png);
+    }
+
+    &.black {
+        background-image: url(../../img/favicon/favicon-black.png);
+    }
+
+    &.white {
+        background-image: url(../../img/favicon/favicon-dark-theme.png);
+    }
+
+    &.theme {
+        background-image: url(../../img/favicon/favicon-light-theme.png);
+    }
+
+}
+
+:global(body.dark) {
+    .logo {
+        &.theme {
+            background-image: url(../../img/favicon/favicon-dark-theme.png);
+        }
+    }
+}
