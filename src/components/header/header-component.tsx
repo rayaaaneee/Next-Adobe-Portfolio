@@ -12,8 +12,8 @@ import useTryingContext from '@/utils/hook/use-try-context';
 import Logo, { LogoColors } from '../logo';
 import HamburgerMenu from './hamburger-menu';
 import MenuLink from './menu-link';
-import SelectLanguageButton from './select-language-button';
-import SwitchThemeButton from './switch-theme-button';
+import SelectLanguage from './select-language';
+import SwitchTheme from './switch-theme-button';
 
 import { cn } from '@/lib/utils';
 
@@ -26,6 +26,8 @@ const HeaderComponent = ({ hasFooter = true }) => {
     const hamburgerMenu = useRef<HTMLDivElement>(null);
     const mediaMenu = useRef<HTMLUListElement>(null);
 
+    const [isMenuReady, setIsMenuReady] = useState(false);
+
     const links = [
         {to: '/', text: language.menu.index, isColored: false },
         {to: '/blog', text: language.menu.blog, isColored: false },
@@ -36,31 +38,42 @@ const HeaderComponent = ({ hasFooter = true }) => {
     useConditionalEffect(() => {
         if (hamburgerMenu.current) {
             hamburgerMenu.current.querySelector<HTMLInputElement>("input[type='checkbox']")?.click();
+        } else {
+            throw new Error("Hamburger menu ref is not assigned");
         }
     }, [location]);
 
     // Handle menu logic
-    useEffect(() => {
+    useLayoutEffect(() => {
+
+        if (mediaMenu.current) setIsMenuReady(true);
+
+        if (!isMenuReady || !hamburgerMenu.current) return;
 
         const checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
 
         const onClosing = () => {
-            document.body.classList.remove("full-menu-active");
+            document.body.classList.remove("menu-active");
         }
 
         const onOpening = () => {
-            document.body.classList.add("full-menu-active");
+            document.body.classList.add("menu-active");
         }
 
         const onClickMenu = (e: MouseEvent) => {
-            if (e.currentTarget && !(e.currentTarget as HTMLElement).classList.contains("active")) {
-                (checkbox as HTMLInputElement)?.click();
+            if (e.target && !(e.target as HTMLAnchorElement).classList.contains("active")) {
+                if (!(checkbox as HTMLInputElement).checked) {
+                    (checkbox as HTMLInputElement).click();
+                }
             }
         }
         
         const clickOutsideMenu = (e: MouseEvent) => {
+            console.log(mediaMenu.current, mediaMenu.current?.classList.contains("active"), !!(e.target as HTMLElement).closest('#menu-container'));
             if (mediaMenu.current?.classList.contains("active") && !(e.target as HTMLElement).closest('#menu-container')) {
-                (checkbox as HTMLInputElement)?.click();
+                if ((checkbox as HTMLInputElement).checked) {
+                    (checkbox as HTMLInputElement).click();
+                }
             }
         }
 
@@ -72,24 +85,16 @@ const HeaderComponent = ({ hasFooter = true }) => {
 
         observer.observe(mediaMenu.current as Node, { attributes: true, attributeFilter: ['class'] });
 
-        mediaMenu.current && mediaMenu.current.addEventListener('click', onClickMenu);
+        if (mediaMenu.current) mediaMenu.current.addEventListener('click', onClickMenu);
 
         window.addEventListener('click', clickOutsideMenu);
 
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-            mediaMenu.current && mediaMenu.current.removeEventListener('click', onClickMenu);
+            if (mediaMenu.current) mediaMenu.current.removeEventListener('click', onClickMenu);
         };
 
-    }, []);
-
-    const [isMenuReady, setIsMenuReady] = useState(false);
-
-    useLayoutEffect(() => {
-        if (mediaMenu.current) {
-            setIsMenuReady(true);
-        }
-    }, []);
+    }, [isMenuReady]);
 
 
     return (
@@ -99,9 +104,10 @@ const HeaderComponent = ({ hasFooter = true }) => {
                 "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
                 "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                 "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
-                "[&.active>*]:opacity-100 [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
+                "[&_*]:pointer-events-none",
+                "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
             )} ref={ mediaMenu }>
-                <SelectLanguageButton className={"absolute top-[25px] left-[25px]"} />
+                <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
                 { hasFooter && ( 
                     <Link href={'/'}>
                         <Logo
@@ -111,13 +117,13 @@ const HeaderComponent = ({ hasFooter = true }) => {
                     </Link>
                 ) }
                 <div className={cn(
-                    "flex flex-col items-center justify-center gap-[3vh] w-full",
+                    "flex flex-col items-center justify-center gap-[3vh] w-fit",
                 )}>
                     { links.map((link) => (
                         <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
                     )) }
                 </div>
-                <SwitchThemeButton pinkMoon whiteIcons/>
+                <SwitchTheme pinkMoon whiteIcons/>
                 <div className='menu-footer'></div>
             </ul>
             { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}

@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import Image, { StaticImageData } from 'next/image';
 
+import { cn } from "@/lib/utils";
+
 import languageContext from "@/utils/context/language-context";
 
 import useTryingContext from "@/utils/hook/use-try-context";
@@ -10,13 +12,12 @@ import ManageLanguages, { Language } from "@/utils/manager/manage-language";
 import englishFlag from '@/asset/img/index/flags/english.png';
 import frenchFlag from '@/asset/img/index/flags/french.png';
 import spanishFlag from '@/asset/img/index/flags/spanish.png';
-import { cn } from "@/lib/utils";
 
 export interface SelectLanguageButtonProps {
     className?: string | null
 }
 
-const SelectLanguageButton = ({ className = null }: SelectLanguageButtonProps) => {
+const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
 
     const selectLanguageOptions = useRef<HTMLDivElement | null>(null);
 
@@ -63,19 +64,17 @@ const SelectLanguageButton = ({ className = null }: SelectLanguageButtonProps) =
         return () => {
             window.removeEventListener('click', handleClick);
         };
-    }, []); 
-
-    console.log(`@/asset/img/index/flags/${language.flag_img}`);
+    }, []);
 
     return (
         <div className={cn(
             'select-language',
-            'relative w-fit h-fit z-[1] cursor-pointer font-poppins',
+            'relative w-fit h-fit z-[1] font-poppins',
             className
         )}>
             <div className={cn(
                     'choice',
-                    'grid grid-cols-select-language items-center justify-center gap-[10px] text-black no-underline',
+                    'grid cursor-pointer grid-cols-select-language items-center justify-center gap-[10px] text-black no-underline',
                     'backdrop-blur-md rounded-[10px] h-[40px] w-[180px] px-[15px] py-[5px]'
                 )} onClick={ (_) => { selectLanguageOptions.current!.classList.toggle("active")} }>
                 <Image
@@ -96,14 +95,14 @@ const SelectLanguageButton = ({ className = null }: SelectLanguageButtonProps) =
                 </svg>
                 <div className={cn(
                     "options-wrapper", 
-                    "absolute left-0 top-full h-fit pointer-events-none w-full overflow-hidden"
+                    "absolute left-0 top-full h-fit cursor-auto !pointer-events-none w-full overflow-hidden"
                     )}>
                     <div className={cn(
                         'options',
                         "w-full h-fit flex flex-col items-center justify-center backdrop-blur-lg overflow-hidden rounded-[10px]",
-                        "text-black z-[-1] pointer-events-none opacity-0 -translate-y-full transition-all duration-150",
+                        "text-black z-[-1] cursor-auto !pointer-events-none opacity-0 -translate-y-full transition-all duration-150",
                         "ease-in bg-select-language-options",
-                        "[&.active]:opacity-100 pointer-events-auto [&.active]:translate-y-0"
+                        "[&.active]:opacity-100 [&.active]:cursor-pointer ![&.active]:pointer-events-auto [&.active]:translate-y-0"
                     )} ref={ selectLanguageOptions }>
                     { ManageLanguages.supportedLanguages
                         .filter(([name]) => name !== language.current)
@@ -137,4 +136,4 @@ const SelectLanguageButton = ({ className = null }: SelectLanguageButtonProps) =
     )
 }
 
-export default SelectLanguageButton;
+export default SelectLanguage;

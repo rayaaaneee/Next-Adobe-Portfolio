@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import styles from "@/asset/scss/header/switch-theme-button.module.scss";
+import styles from "@/asset/scss/header/switch-theme.module.scss";
 
 import themeContext from "@/utils/context/theme-context";
 import useTryingContext from "@/utils/hook/use-try-context";
@@ -12,7 +12,7 @@ export interface SwitchThemeButtonProps {
     pinkMoon?: boolean
 }
 
-const SwitchThemeButton = ({ className, s_size = false, whiteIcons = false, pinkMoon = false }: SwitchThemeButtonProps) => {
+const SwitchTheme = ({ className, s_size = false, whiteIcons = false, pinkMoon = false }: SwitchThemeButtonProps) => {
 
 	const { isDarkTheme, setIsDarkTheme } = useTryingContext(themeContext);
 
@@ -35,4 +35,4 @@ const SwitchThemeButton = ({ className, s_size = false, whiteIcons = false, pink
 	)}>{button}</div>;
 }
 
-export default SwitchThemeButton;
+export default SwitchTheme;

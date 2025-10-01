@@ -5,12 +5,12 @@ import { forwardRef, useState } from "react";
 export interface HamburgerMenuProps {
     menuElement: HTMLElement | null;
     className?: string | null;
-    onCheck?: (checked: boolean) => void;
+    onClick?: (checked: boolean) => void;
     style?: React.CSSProperties;
 }
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
-const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className = null, menuElement, onCheck = () => {}, style = {}}, ref) => {
+const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className = null, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
 
     if (!menuElement) throw new Error("You must provide a valid menu element to the HamburgerMenu component.");
 
@@ -41,7 +41,7 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
                 <div key={index} className={cn(
                     "hamburger-bar shadow-hamburger",
                     "rounded-[10px] w-[83%] h-[9%] bg-white",
-                    " transition-all duration-300 ease-in-out",
+                    "transition-all duration-300 ease-in-out",
                     barClass,
                     (barClass === "top-bar") && 'peer-checked:relative peer-checked:bottom-auto peer-checked:-rotate-45 top-[15px]',
                     (barClass === "middle-bar") && 'peer-checked:w-full peer-checked:opacity-0',
