@@ -98,36 +98,41 @@ const Header = ({ hasFooter = true }) => {
 
 
     return (
-        <nav id="menu-container">
-            <ul className={cn(
-                "header-media-menu box-content bg-menu transition-all transition-menu duration-menu",
-                "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
-                "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
-                "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
-                "[&_*]:pointer-events-none",
-                "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
-            )} ref={ mediaMenu }>
-                <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
-                { hasFooter && ( 
-                    <Link href={'/'}>
-                        <Logo
-                            color={LogoColors.black}
-                            className="absolute max-w-[60px] left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
-                        />
-                    </Link>
-                ) }
-                <div className={cn(
-                    "flex flex-col items-center justify-center gap-[3vh] w-fit",
-                )}>
-                    { links.map((link) => (
-                        <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
-                    )) }
-                </div>
-                <SwitchTheme pinkMoon whiteIcons/>
-                <div className='menu-footer'></div>
-            </ul>
-            { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}
-        </nav>
+        <>
+            <Logo color={LogoColors.white} className={cn(
+                "w-[60px] h-[60px] absolute top-2 left-2",
+            )}/>
+            <nav id="menu-container">
+                <ul className={cn(
+                    "header-media-menu box-content bg-menu transition-all transition-menu duration-menu",
+                    "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
+                    "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
+                    "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
+                    "[&_*]:pointer-events-none",
+                    "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
+                )} ref={ mediaMenu }>
+                    <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
+                    { hasFooter && ( 
+                        <Link href={'/'}>
+                            <Logo
+                                color={LogoColors.black}
+                                className="absolute max-w-[60px] left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
+                            />
+                        </Link>
+                    ) }
+                    <div className={cn(
+                        "flex flex-col items-center justify-center gap-[3vh] w-fit",
+                    )}>
+                        { links.map((link) => (
+                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
+                        )) }
+                    </div>
+                    <SwitchTheme pinkMoon whiteIcons/>
+                    <div className='menu-footer'></div>
+                </ul>
+                { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}
+            </nav>
+        </>
     );
 }
 
