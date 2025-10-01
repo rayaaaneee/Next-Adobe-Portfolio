@@ -18,98 +18,25 @@ const frenchSentences = {
         illustration_inspiration: "Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. \"Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.\""
     },
     menu: {
-        index: "Portfolio",
+        home: "Portfolio",
         blog: "Blog",
         about: "À propos"
     },
-    index: {
+    home: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Découvrir",
         description: [
             "Rayane Merlin", 
             "Développeur Full-Stack", 
-            "Designer", 
+            "Cybersécurité",
             "Etudiant en IT (BAC +3)"
         ],
         shorted_description: [
             "Rayane Merlin",
-            "Dev Full-Stack",
-            "Designer",
+            "Dev FullStack",
+            "Cyber",
             "Étudiant IT"
         ]
-    },
-    home: {
-        title: "Accueil",
-        projects: "Mes projets",
-        projects_desc: "Vous trouverez ici mes projets importants, qu'ils soient scolaires ou personnels.<br/>Il vous suffit de cliquer pour les télécharger.",
-        projects_frame: {
-            languages: "Langage",
-            skills: "Compétence",
-            description: "Description",
-            for_using: "Utilisation",
-            consult: "Consulter",
-            download: "Télécharger",
-            file_size: "Taille du fichier",
-            quit: "Quitter",
-            quit_preview: "Quitter l'aperçu",
-            repository: "Dépôt Github"
-        },
-        cv: "Mon CV",
-        cv_subtext_1: "N'hésitez pas à cliquer sur l'image du C.V pour zoomer, cela vous permettra de le visionner dans sa qualité optimale sans avoir besoin de le télécharger.",
-        cv_subtext_2: "Vous pouvez télécharger mon CV actuel au format pdf en cliquant sur le bouton ci-dessous.",
-        cv_frame: {
-            text: "À savoir :<br/><br/>Voici mon CV, celui-ci est amené à être modifié avec le temps, dans quelques mois il sera différent. <br/>N'hésitez pas à passer sur ce site, celui-ci est mis à jour très régulièrement et contiendra donc forcément la dernière version en date.",
-            quit: "Quitter",
-            size: "Taille",
-            modification: "Modification",
-            type: "Type"
-        },
-        download: "Télécharger",
-        skills: "Mes compétences",
-        is: "c'est"
-    },
-    background: {
-        title: "Mon parcours",
-        main_text: "Qu'est-ce que cette page ?",
-        main_subtext_1: "Voici mon parcours scolaire allant de l'obtention du bac jusqu'à aujourd'hui.",
-        main_subtext_2: "Cliquez sur chacune des cases pour en savoir plus sur chaque semestre, leur contenu et les projets réalisés.",
-        consult: "Consulter",
-        semester_frame: {
-            dates: "Dates",
-            school: "École",
-            specialties: "Spécialités",
-            subjects: "Matières",
-            subjects_text: "Ici sont les matières étudiées et les coefficients de ces mêmes matières .",
-            see_subjects: "Voir les matières"
-        }
-    },
-    myself: {
-        title: "Perso",
-        description_title: "Qui suis-je ?",
-        description: "Je suis un étudiant de {{age}} ans, passionné par l'informatique et les nouvelles technologies. Actuellement en deuxième année de BUT informatique, je souhaite poursuivre mes études dans le domaine du développement et du design.",
-        musics: "Mes musiques",
-        musics_description: "Voici quelques musiques qui m'ont marquées. Je me permets d'en parler dans ce PortFolio car la musique possède une place importante dans ma vie et dans la société en général. Ce que nous écoutons représente en quelque sorte qui nous sommes, est une source de créativité influant sur nous : les auditeurs.",
-        references: "Les réferences",
-        networks: "Mes réseaux"
-    },
-    contact: {
-        title: "Contact",
-        description: "Pour tout contact, vous pouvez aussi passer par cette page.<br/>Pour cela, c'est très simple : <br/>• Rentrez le nom / pseudonyme sous lequel vous enverrez le message<br/>• Rentrez votre adresse mail<br/>• Rentrez simplement votre message !",
-        name: "Votre nom",
-        name_placeholder: "Nom Prénom",
-        email: "Votre adresse e-mail",
-        email_placeholder: "exemple@exemple.com",
-        message: "Message",
-        message_placeholder: "Voici mon message..",
-        send: "Envoyer",
-        reset: "Réinitialiser",
-        no_chars_left: "Aucun charactère restant",
-        one_char_left: "charactère restant",
-        chars_left: "charactères restants",
-        error: "Une erreur est survenue lors de l'envoi du message.",
-        error_name: "Veuillez entrez un nom valide",
-        error_mail: "Veuillez entrez une adresse mail valide",
-        error_message: "Veuillez entrez un message"
     },
     about: {
         title: "À propos",

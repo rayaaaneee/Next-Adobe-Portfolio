@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 
 import App from "./_app";
 
-import HeaderComponent from "@/components/header/header-component";
+import Header from "@/components/header/header";
 
 import "@/asset/scss/styles.scss";
+import Background from "@/components/background";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
@@ -22,8 +23,9 @@ const RootLayout = ({
             <html lang="en">
                 <body className={`antialiased`}>
                     <header>
-                        <HeaderComponent hasFooter={true} />
+                        <Header hasFooter={true} />
                     </header>
+                    <Background />
                     {children}
                 </body>
             </html>

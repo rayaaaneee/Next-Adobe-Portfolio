@@ -18,98 +18,25 @@ const spanishSentences = {
         illustration_inspiration: "Ilustración inspirada en El Señor de los Anillos: Los Anillos del Poder. Para más detalles e información legal, visite la pantalla."
     },
     menu: {
-        index: "Portfolio",
+        home: "Portfolio",
         blog: "Blog",
         about: "Acerca de"
     },
-    index: {
+    home: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Empezar",
         description: [
             "Rayane Merlin",
-            "Desarrollador Full Stack",
-            "Diseñador",
+            "Desarrollador Full-Stack",
+            "Ciberseguridad",
             "Estudiante de IT (BAC +3)"
         ],
         shorted_description: [
             "Rayane Merlin",
-            "Dev Full-Stack",
-            "Diseñador",
+            "Dev FullStack",
+            "Ciber",
             "Estudiante IT"
         ]
-    },
-    home: {
-        title: "Inicio",
-        projects: "Mis Proyectos",
-        projects_desc: "Aquí encontrarás mis proyectos importantes, ya sean académicos o personales.<br/>Simplemente haz clic para descargarlos.",
-        projects_frame: {
-            languages: "Idioma",
-            skills: "Habilidad",
-            description: "Descripción",
-            for_using: "Para usar",
-            consult: "Consultar",
-            download: "Descargar",
-            file_size: "Tamaño del archivo",
-            quit: "Salir",
-            quit_preview: "Salir de la vista previa",
-            repository: "Github repositorio"
-        },
-        cv: "Mi CV",
-        cv_subtext_1: "Siéntete libre de hacer clic en la imagen del CV para hacer zoom; esto te permitirá verlo en su calidad óptima sin necesidad de descargarlo.",
-        cv_frame: {
-            text: "Importante saber:<br/><br/>Aquí está mi CV, está sujeto a cambios con el tiempo, en unos meses será diferente. <br/>Siéntete libre de visitar este sitio, se actualiza muy regularmente y, por lo tanto, inevitablemente contendrá la última versión.",
-            quit: "Salir",
-            size: "Tamaño",
-            modification: "Modificación",
-            type: "Tipo"
-        },
-        cv_subtext_2: "Puedes descargar mi CV actual en formato PDF haciendo clic en el botón de abajo.",
-        download: "Descargar",
-        skills: "Mis Habilidades",
-        is: "es"
-    },
-    background: {
-        title: "Mi Antecedentes",
-        main_text: "¿Qué es esta página?",
-        main_subtext_1: "Aquí tienes mi trayectoria académica desde que obtuve mi diploma de secundaria hasta el día de hoy.",
-        main_subtext_2: "Haz clic en cada cuadro para obtener más información sobre cada semestre, su contenido y los proyectos completados.",
-        consult: "Consultar",
-        semester_frame: {
-            dates: "Fechas",
-            school: "Escuela",
-            specialties: "Especialidades",
-            subjects: "Asignaturas",
-            subjects_text: "Aquí se muestran las asignaturas estudiadas y sus coeficientes correspondientes.",
-            see_subjects: "Ver asignaturas"
-        }
-    },
-    myself: {
-        title: "Sobre mí",
-        description_title: "¿Quién soy?",
-        description: "Soy un estudiante de {{age}} años, apasionado por la informática y las nuevas tecnologías. Actualmente en mi segundo año de Licenciatura en Ciencias de la Computación, mi objetivo es continuar mis estudios en el campo del desarrollo y diseño.",
-        musics: "Mi Música",
-        musics_description: "Aquí tienes algunas canciones que me han marcado. Me permito hablar de ellas en este portfolio porque la música ocupa un lugar importante en mi vida y en la sociedad en general. Lo que escuchamos de alguna manera representa quiénes somos y es una fuente de creatividad que nos influye como oyentes.",
-        references: "Referencias",
-        networks: "Mis Redes"
-    },
-    contact: {
-        title: "Contacto",
-        description: "Para cualquier contacto, también puedes usar esta página.<br/>Es muy simple:<br/>• Ingresa el nombre/pseudónimo con el que enviarás el mensaje<br/>• Ingresa tu dirección de correo electrónico<br/>• ¡Simplemente ingresa tu mensaje!",
-        name: "Tu nombre",
-        name_placeholder: "Nombre Apellido",
-        email: "Tu dirección de correo electrónico",
-        email_placeholder: "ejemplo@ejemplo.com",
-        message: "Mensaje",
-        message_placeholder: "Aquí está mi mensaje..",
-        send: "Enviar",
-        reset: "Reiniciar",
-        no_chars_left: "Sin caracteres restantes",
-        one_char_left: "carácter restante",
-        chars_left: "caracteres restantes",
-        error: "Se produjo un error al enviar el mensaje.",
-        error_name: "Por favor, ingresa un nombre válido",
-        error_mail: "Por favor, ingresa una dirección de correo electrónico válida",
-        error_message: "Por favor, ingresa un mensaje"
     },
     about: {
         title: "Acerca de",

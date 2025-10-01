@@ -36,6 +36,28 @@
     --hamburger-box-shadow: 0 0 2.15rem #000000e9;
 
     --menu-link-color: #de8ea7;
+
+    // Home
+    --title-color: #fbf6e9;
+    --color: rgb(255, 255, 255);
+    --triangle-header-color: rgba(190, 139, 154, 0.55);
+    --triangle-footer-color: rgba(230, 190, 178, .8);
+    --circle-one-color: #e0ded4d0;
+    --circle-two-color: #decdbde5;
+    --triangle-yellow-color: #f7daa79b;
+    --triangle-orange-color: #f7b07ad1;
+    --triangle-red-color: #df9191a9;
+
+    // Dark mode
+    //$main-title-color-dark: #fbe6e9;
+    //$index-background-color-dark: rgb(244, 238, 238);
+    //$index-triangle-header-background-color-dark: #ecdfe853;
+    //$index-triangle-footer-background-color-dark: #dfcbe953;
+    //$index-circle-one-background-color-dark: #9b8282d0;
+    //$index-circle-two-background-color-dark: #534d5cd0;
+    //$index-triangle-yellow-background-color-dark: #d4bbd0d0;
+    //$index-triangle-orange-background-color-dark: #ffffffd0;
+    //$index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);
 }
 
 // /* Hover mixin */
@@ -115,29 +137,6 @@
 // $title-color-dark: rgb(238, 238, 240) !important;
 
 // /* # Index page */
-
-// $main-title-color: #fbf6e9;
-// $main-title-color-dark: #fbe6e9;
-
-// $index-background-color: rgb(255, 255, 255);
-// $index-background-color-dark: rgb(244, 238, 238);
-
-// $index-triangle-header-background-color: #dca0b153;
-// $index-triangle-header-background-color-dark: #ecdfe853;
-// $index-triangle-footer-background-color: #e6bdb198;
-// $index-triangle-footer-background-color-dark: #dfcbe953;
-
-// $index-circle-one-background-color: #e0ded4d0;
-// $index-circle-one-background-color-dark: #9b8282d0;
-// $index-circle-two-background-color: #decdbde5;
-// $index-circle-two-background-color-dark: #534d5cd0;
-
-// $index-triangle-yellow-background-color: #f7daa79b;
-// $index-triangle-yellow-background-color-dark: #d4bbd0d0;
-// $index-triangle-orange-background-color: #f7b07ad1;
-// $index-triangle-orange-background-color-dark: #ffffffd0;
-// $index-triangle-red-background-color: #df9191a9;
-// $index-triangle-red-background-color-dark: rgba(221, 181, 181, 0.816);
 
 
 // /* Loader */

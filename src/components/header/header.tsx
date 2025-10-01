@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 
@@ -17,7 +17,7 @@ import SwitchTheme from './switch-theme-button';
 
 import { cn } from '@/lib/utils';
 
-const HeaderComponent = ({ hasFooter = true }) => {
+const Header = ({ hasFooter = true }) => {
 
     const { language } = useTryingContext<LanguageContextType>(languageContext);
 
@@ -29,7 +29,7 @@ const HeaderComponent = ({ hasFooter = true }) => {
     const [isMenuReady, setIsMenuReady] = useState(false);
 
     const links = [
-        {to: '/', text: language.menu.index, isColored: false },
+        {to: '/', text: language.menu.home, isColored: false },
         {to: '/blog', text: language.menu.blog, isColored: false },
         {to: '/about', text: language.menu.about, isColored: true }
     ]
@@ -131,4 +131,4 @@ const HeaderComponent = ({ hasFooter = true }) => {
     );
 }
 
-export default HeaderComponent;
+export default Header;

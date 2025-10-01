@@ -18,98 +18,25 @@ const englishSentences = {
         illustration_inspiration: "Illustration inspired by The Lord of the Rings: The Rings of Power. \"For more details and legal information, please visit the screen.\""
     },
     menu: {
-        index: "Portfolio",
+        home: "Portfolio",
         blog: "Blog",
         about: "About"
     },
-    index: {
+    home: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Get started",
         description: [
             "Rayane Merlin", 
-            "Full Stack Developper", 
-            "Designer", 
+            "Full-Stack Developper", 
+            "Cybersecurity",
             "IT Student (BAC +3)"
         ],
         shorted_description: [
             "Rayane Merlin",
-            "Full-Stack Dev",
-            "Designer",
+            "FullStack Dev",
+            "Cyber",
             "IT Student"
         ]
-    },
-    home: {
-        title: "Home",
-        projects: "My Projects",
-        projects_desc: "Here you'll find my important projects, whether they are academic or personal.<br/>Just click to download them.",
-        projects_frame: {
-            languages: "Language",
-            skills: "Skill",
-            description: "Description",
-            for_using: "For using",
-            consult: "Consult",
-            download: "Download",
-            file_size: "Filesize",
-            quit: "Quit",
-            quit_preview: "Quit preview",
-            repository: "Github repository"
-        },
-        cv: "My CV",
-        cv_subtext_1: "Feel free to click on the CV image to zoom in; this will allow you to view it in its optimal quality without needing to download it.",
-        cv_frame: {
-            text: "Important to know:<br/><br/>Here is my CV, it's subject to change over time, in a few months it will be different. <br/>Feel free to visit this site, it's updated very regularly and will therefore inevitably contain the latest version.",
-            quit: "Quit",
-            size: "Size",
-            modification: "Modification",
-            type: "Type"
-        },
-        cv_subtext_2: "You can download my current CV in pdf format by clicking the button below.",
-        download: "Download",
-        skills: "My Skills",
-        is: "is"
-    },    
-    background: {
-        title: "My background",
-        main_text: "What's this page?",
-        main_subtext_1: "Here's my academic background from obtaining my high school diploma to the present day.",
-        main_subtext_2: "Click on each box to learn more about each semester, their content, and the projects completed.",
-        consult: "Consult",
-        semester_frame: {
-            dates: "Dates",
-            school: "School",
-            specialties: "Specialties",
-            subjects: "Subjects",
-            subjects_text: "Here are the subjects studied and their corresponding coefficients.",
-            see_subjects: "See subjects"
-        }
-    },
-    myself: {
-        title: "Myself",
-        description_title: "Who am I ?",
-        description: "I am a {{age}}-year-old student, passionate about computer science and new technologies. Currently in my second year of a Bachelor's degree in Computer Science, I aim to further my studies in the field of development and design.",
-        musics: "My musics",
-        musics_description: "Here are some songs that have marked me. I allow myself to talk about them in this portfolio because music holds an important place in my life and in general society. What we listen to somehow represents who we are and is a source of creativity that influences us as listeners.",
-        references: "References",
-        networks: "My networks"
-    },
-    contact: {
-        title: "Contact",
-        description: "For any contact, you can also use this page.<br/>It's very simple:<br/>• Enter the name/pseudonym under which you will send the message<br/>• Enter your email address<br/>• Simply enter your message!",
-        name: "Your name",
-        name_placeholder: "Firstname Lastname",
-        email: "Your email address",
-        email_placeholder: "example@example.com",
-        message: "Message",
-        message_placeholder: "Here's my message..",
-        send: "Send",
-        reset: "Reset",
-        no_chars_left: "No char left",
-        one_char_left: "char left",
-        chars_left: "chars left",
-        error: "An error occurred while sending the message.",
-        error_name: "Please enter a valid name",
-        error_mail: "Please enter a valid email address",
-        error_message: "Please enter a message"
     },
     about: {
         title: "About",
