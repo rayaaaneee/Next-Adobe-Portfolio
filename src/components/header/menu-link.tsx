@@ -18,7 +18,7 @@ const MenuLink = ({ className, to, children = <></>, isColored }: MenuLinkProps)
     const location = usePathname();
 
     return (
-        <li className={cn("menu-link", "w-fit text-white text-xl font-apple font-medium", className)}>
+        <li className={cn("menu-link", "w-fit text-white text-2xl font-apple font-medium", className)}>
             <Link href={ to } className={ cn(
                 className, 
                 { active: location === to },
@@ -31,14 +31,16 @@ const MenuLink = ({ className, to, children = <></>, isColored }: MenuLinkProps)
                         "after:absolute after:content-['']",
                         "hover:after:w-[70%] hover:after:h-[5px] mt-[1px] hover:after:bg-[rgb(229,119,154)]",
                         "[&.active]:text-menu-link mt-[1px]",
-                        "[&.active]:hover:after:w-[70%] [&.active]:hover:after:h-[5px] [&.active]:hover:after:bg-[rgb(229,119,154)]"
+                        "[&.active]:hover:after:w-[70%] [&.active]:hover:after:h-[5px] [&.active]:hover:after:bg-[rgb(229,119,154)]",
+                        "dark:after:bg-[#ead3d3] dark:[&.active]:after:bg-[#ead3d3] dark:hover:after:bg-[#ead8d8]"
                     )
                         : 
                     cn(
                         "after:opacity-0 after:h-[5px] after:w-0 after:rounded-[5px] mt-[5px] transition-all duration-300 ease-in",
                         "after:transition-all after:duration-300 after:ease-in",
                         "hover:after:opacity-100 hover:text-menu-link hover:after:w-[120%]",
-                        "[&.active]:after:opacity-100 [&.active]:text-menu-link [&.active]:after:w-[120%]"
+                        "[&.active]:after:opacity-100 [&.active]:text-menu-link [&.active]:after:w-[120%]",
+                        "dark:hover:text-[#ead3d3] dark:[&.active]:text-[#ead3d3] dark:[&.active]:after:bg-[#ead3d3] dark:hover:after:bg-[#ead3d3]",
                     ),
                 "flex flex-col items-center justify-center no-underline text-nowrap"
             ) }>{ children }</Link>

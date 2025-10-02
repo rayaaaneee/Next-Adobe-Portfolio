@@ -13,11 +13,8 @@ import ManageThemes from "@/utils/manager/manage-theme";
 
 const App = ({ children }: ChildrenInterface) => {
 
-	useEffect(() => {
-		document.body.scrollTop = 0;
-		ManageThemes.manageThemes();
-		ManageLanguages.manageLanguages();
-	}, []);
+	ManageLanguages.manageLanguages();
+	useEffect(() => ManageThemes.manageThemes(), []);
 
 	// Gérer l'accessibilité du thème (hors index)
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(ManageThemes.isDarkTheme);
@@ -28,7 +25,7 @@ const App = ({ children }: ChildrenInterface) => {
 
 	// Si le State accessible de partout (hors index) est modifié, on met à jour le thème
 	useConditionalEffect(() => {
-		  ManageThemes.toggleThemes();
+		ManageThemes.toggleThemes();
 	}, [isDarkTheme]);
 
 	// Gérer le langage

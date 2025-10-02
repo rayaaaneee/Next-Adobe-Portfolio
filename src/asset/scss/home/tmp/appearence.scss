@@ -10,21 +10,6 @@ body.index {
     }
     //*****
 
-    @keyframes appearence {
-        100% {
-            pointer-events: all;
-            opacity: 1;
-            transform: none;
-        }
-    }
-
-    @keyframes fadeIn {
-        100% {
-            pointer-events: all;
-            opacity: 1;
-        }
-    }
-
     :not(.loaded) {
 
         .main-bar {

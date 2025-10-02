@@ -31,7 +31,7 @@ const SwitchTheme = ({ className, s_size = false, whiteIcons = false, pinkMoon =
 		</button>);
 
 	return s_size ? button : <div className={cn(
-		"w-[5%] h-[70px] flex flex-col items-center justify-center"
+		"w-[70px] h-[70px] flex flex-col items-center justify-center"
 	)}>{button}</div>;
 }
 

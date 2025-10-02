@@ -10,13 +10,25 @@ import cn from "@/utils/function/cn";
 import type ChildrenType from "@/utils/types/children-type";
 
 
-export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
+export enum TooltipPosition {
+    TOP = 'top',
+    BOTTOM = 'bottom',
+    LEFT = 'left',
+    RIGHT = 'right',
+}
+
+export enum TooltipSize {
+    sm = 'small',
+    md = 'medium',
+    lg = 'large',
+}
 
 export type TooltipType = 'default' | "default-2" | 'success' | 'warning' | 'error';
 
 export interface TooltipInterface {
     children: ChildrenType;
     text: ChildrenType;
+    size?: TooltipSize;
     position?: TooltipPosition;
     forceShow?: boolean;
     disabled?: boolean;
@@ -29,51 +41,65 @@ export interface TooltipInterface {
 const Tooltip = ({ 
     children, 
     text, 
-    position = "top", 
+    size = TooltipSize.sm,
+    position = TooltipPosition.TOP, 
     forceShow = false, 
     disabled = false, 
-    className = undefined, 
-    tooltipClassName = undefined, 
+    className, 
+    tooltipClassName, 
     type = "default", 
     hasIcon = false 
 }: TooltipInterface) => {
 
-    const getPositionClasses = (): string => {
-        let classes = '';
-        switch (position) {
-            case 'top':
-                classes = 'top-[-4px] left-1/2 transform -translate-x-1/2 -translate-y-full';
+    const getSizeClassName = (): string => {
+        let className = '';
+        switch (size) {
+            case TooltipSize.sm:
+                className = 'text-xs px-2 py-1';
                 break;
-            case 'bottom':
-                classes = 'bottom-[-4px] left-1/2 transform -translate-x-1/2 translate-y-full';
+            case TooltipSize.md:
+                className = 'text-sm px-3 py-2';
                 break;
-            case 'left':
-                classes = 'left-[-4px] top-1/2 transform -translate-x-full -translate-y-1/2';
-                break;
-            case 'right':
-                classes = 'right-[-4px] top-1/2 transform translate-x-full -translate-y-1/2';
+            case TooltipSize.lg:
+                className = 'text-xl px-4 py-3';
                 break;
         }
-        return classes;
+        return className;
     }
 
-    const getTooltipTypeClasses = (): string => {
-        let classes = 'bg-main';
-        switch (type) {
-            case 'success':
-                classes = 'bg-green-500';
+    const getPositionClassName = (): string => {
+        let className = '';
+        switch (position) {
+            case 'top':
+                className = 'top-[-4px] left-1/2 transform -translate-x-1/2 -translate-y-full';
                 break;
-            case 'warning':
-                classes = 'bg-yellow-500';
+            case 'bottom':
+                className = 'bottom-[-4px] left-1/2 transform -translate-x-1/2 translate-y-full';
                 break;
-            case 'error':
-                classes = 'bg-red-500';
+            case 'left':
+                className = 'left-[-4px] top-1/2 transform -translate-x-full -translate-y-1/2';
                 break;
-            case 'default-2':
-                classes = 'bg-scnd';
+            case 'right':
+                className = 'right-[-4px] top-1/2 transform translate-x-full -translate-y-1/2';
                 break;
         }
-        return classes;
+        return className;
+    }
+
+    const getTooltipTypeClassName = (): string => {
+        let className = 'bg-[#3a3b3d]';
+        switch (type) {
+            case 'success':
+                className = 'bg-green-500';
+                break;
+            case 'warning':
+                className = 'bg-yellow-500';
+                break;
+            case 'error':
+                className = 'bg-red-500';
+                break;
+        }
+        return className;
     }
 
     const getTooltipIcon = (): JSX.Element => {
@@ -96,14 +122,16 @@ const Tooltip = ({
         <div className={cn('relative group w-fit', className)}>
             {children}
             <div role="tooltip" className={cn(
-                "absolute z-10 px-3 py-2 flex-row items-center justify-center gap-2 whitespace-nowrap text-sm font-medium text-white rounded-lg shadow-sm tooltip pointer-events-none",
-                getPositionClasses(), 
-                getTooltipTypeClasses(), 
+                "absolute z-10 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium text-white rounded-lg shadow-sm tooltip pointer-events-none",
+                getPositionClassName(), 
+                getTooltipTypeClassName(), 
+                getSizeClassName(),
                 (forceShow && !disabled) ? "flex" : "hidden", 
                 { "group-hover:flex": !disabled && text },
-                tooltipClassName)}>
-                    {hasIcon && getTooltipIcon()}
-                    {text}
+                tooltipClassName
+            )}>
+                {hasIcon && getTooltipIcon()}
+                {text}
             </div>
         </div>
     )

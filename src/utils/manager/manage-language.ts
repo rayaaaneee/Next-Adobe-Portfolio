@@ -15,19 +15,19 @@ export const enum Language {
 
 export default class ManageLanguages {
 
-    static cookieName: string = 'language';
-    static defaultLanguage = Language.EN;
+    static readonly cookieName: string = 'language';
+    static readonly defaultLanguage = Language.EN;
 
     static language: Language = ManageLanguages.defaultLanguage;
 
-    static supportedLanguages:  Array<[Language, Sentences]> = [
+    static readonly supportedLanguages:  Array<[Language, Sentences]> = [
         [Language.EN, englishSentences],
         [Language.FR, frenchSentences],
         [Language.ES, spanishSentences]
     ];
 
     static isSupported(language: string): boolean {
-        return this.supportedLanguages.some(([name, _]) => name === language);
+        return this.supportedLanguages.some(([name]) => name === language);
     }
 
     static getSystemLanguage = (): string => {
@@ -46,7 +46,6 @@ export default class ManageLanguages {
                 ManageLanguages.language = ManageLanguages.defaultLanguage;
             }
         }
-
         ManageLanguages.setLanguage(ManageLanguages.language);
     }
 
@@ -66,9 +65,9 @@ export default class ManageLanguages {
     }
 
     static getSentences = (): Sentences => {
-        let json = ManageLanguages.supportedLanguages.find(([name, _]) => name === ManageLanguages.language)![1] || null;
+        let json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.language)![1] || null;
         if (json === null) {
-            json = ManageLanguages.supportedLanguages.find(([name, _]) => name === ManageLanguages.defaultLanguage)![1];
+            json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.defaultLanguage)![1];
         }
         return json;
     }

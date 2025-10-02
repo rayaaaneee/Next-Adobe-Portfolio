@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
 import App from "./_app";
-
 import Header from "@/components/header/header";
+import Background from "@/components/background";
 
 import "@/asset/scss/styles.scss";
-import Background from "@/components/background";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
@@ -16,21 +15,17 @@ const RootLayout = ({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) => {
-
-    return (
+}>) => (<html lang="en">
         <App>
-            <html lang="en">
-                <body className={`antialiased`}>
-                    <header>
-                        <Header hasFooter={true} />
-                    </header>
-                    <Background />
-                    {children}
-                </body>
-            </html>
+            <body className={`antialiased`}>
+                <header>
+                    <Header hasFooter={true} />
+                </header>
+                <Background />
+                {children}
+            </body>
         </App>
-    );
-}
+    </html>
+);
 
 export default RootLayout;

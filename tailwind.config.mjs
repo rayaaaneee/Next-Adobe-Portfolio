@@ -50,9 +50,12 @@ const config = {
                 // Menu
                 menu: "var(--menu-color)",
                 "menu-link": "var(--menu-link-color)",
+                // Menu dark
+                "menu-dark": "var(--menu-color-dark)",
                 // Select Language
                 "select-language-options": "var(--select-language-options-background-color)",
                 "select-language-options-hover": "var(--select-language-options-background-color-hover)",
+                "select-language-options-hover-dark": "var(--select-language-options-background-color-hover-dark)",
                 // Global
                 "title": "var(--title-color)",
                 "triangle-header": "var(--triangle-header-color)",
@@ -63,12 +66,22 @@ const config = {
                 "triangle-orange": "var(--triangle-orange-color)",
                 "triangle-red": "var(--triangle-red-color)",
                 "blanchedalmond": "var(--blanchedalmond)",
+                // Global dark
+                "title-dark": "var(--title-color-dark)",
+                "background-dark": "var(--background-color-dark)",
+                "triangle-header-dark": "var(--triangle-header-color-dark)",
+                "triangle-footer-dark": "var(--triangle-footer-color-dark)",
+                "circle-one-dark": "var(--circle-one-color-dark)",
+                "circle-two-dark": "var(--circle-two-color-dark)",
+                "triangle-yellow-dark": "var(--triangle-yellow-color-dark)",
+                "triangle-orange-dark": "var(--triangle-orange-color-dark)",
+                "triangle-red-dark": "var(--triangle-red-color-dark)",
             },
             transitionDuration: {
-                menu: "var(--menu-transition-duration)",
+                theme: "var(--theme-transition-duration)",
             },
             transitionTimingFunction: {
-                menu: "var(--menu-transition-timing-function)",
+                theme: "var(--theme-transition-timing-function)",
             },
             gridTemplateColumns: {
                 'select-language': "var(--select-language-columns)",
@@ -79,8 +92,27 @@ const config = {
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
                 'bar': 'bar-move 6s linear infinite',
                 'vertical-bar': 'blink 1.5s ease-in-out infinite',
+            },
+            width: {
+                '22': '5.5rem',
+            },
+            height: {
+                '22': '5.5rem',
+            },
+            spacing: {
+                '22': '5.5rem',
             }
+            
         },
+        screens: {
+            '2xs': '360px',
+            'xs': '480px',
+            'sm': '600px',
+            'md': '900px',
+            'lg': '1200px',
+            'xl': '1600px',
+            '2xl': '1920px',
+        }
     },
     plugins: [],
 }

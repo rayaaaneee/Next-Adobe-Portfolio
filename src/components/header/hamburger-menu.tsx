@@ -32,7 +32,7 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
                 'hamburger-container',
                 'fixed flex flex-col justify-center items-center cursor-pointer h-[60px] w-[60px] gap-[calc(2*9%)]',
                 'top-[10px] right-[10px] z-[2]',
-                className
+                className,
             )}
             style={{ ...style }}
             onClick={toggleMenuClass}>
@@ -42,10 +42,11 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
                     "hamburger-bar",
                     "rounded-[10px] w-[83%] h-[9%] bg-white",
                     "transition-all duration-300 ease-in-out",
+                    "peer-checked:bg-[#3b3b3b] dark:peer-checked:bg-white",
                     barClass,
-                    (barClass === "top-bar") && 'peer-checked:relative peer-checked:bottom-auto peer-checked:-rotate-45 top-[15px]',
+                    (barClass === "top-bar") && 'peer-checked:relative peer-checked:bottom-auto peer-checked:-rotate-45 top-[16px]',
                     (barClass === "middle-bar") && 'peer-checked:w-full peer-checked:opacity-0',
-                    (barClass === "bottom-bar") && 'peer-checked:relative peer-checked:top-auto peer-checked:rotate-45 bottom-[15px]',
+                    (barClass === "bottom-bar") && 'peer-checked:relative peer-checked:top-auto peer-checked:rotate-45 bottom-[16px]',
                 )}></div>
             )) }
         </div>

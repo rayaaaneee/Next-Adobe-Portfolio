@@ -12,8 +12,9 @@ export const enum Theme {
 
 export default class ManageThemes {
 
+    static readonly cookieName = 'theme';
+
     static isDarkTheme: boolean;
-    static cookieName = 'theme';
 
     static getSystemTheme = () => {
 
@@ -21,8 +22,6 @@ export default class ManageThemes {
 
         if (window) {
             isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        } else {
-            isDarkTheme = false;
         }
 
         ManageThemes.isDarkTheme = isDarkTheme;
@@ -53,6 +52,7 @@ export default class ManageThemes {
     }
 
     static setBodyTheme = () => {
+        document.body.classList.remove(Theme.DARK);
         const className: string = cn(ManageThemes.isDarkTheme && Theme.DARK);
         if (className) document.body.classList.add(className);
     }
@@ -75,7 +75,7 @@ export default class ManageThemes {
         } else {
             ManageThemes.getSystemTheme();
         }
-        ManageThemes.updateTheme();
+        ManageThemes.updateTheme(true);
     }
 
     static toggleThemes = () => {
@@ -83,7 +83,7 @@ export default class ManageThemes {
         ManageThemes.updateTheme();
     }
 
-    static set(theme: string) {
+    static set(theme: Theme) {
         switch(theme) {
             case Theme.LIGHT:
                 ManageThemes.isDarkTheme = false;
@@ -91,16 +91,13 @@ export default class ManageThemes {
             case Theme.DARK:
                 ManageThemes.isDarkTheme = true;
                 break;
-            default :
-                ManageThemes.isDarkTheme = false;
-                break;
         }
         ManageThemes.updateTheme();
     }
 
-    static updateTheme() {
+    static updateTheme(initialize: boolean = false) {
         ManageThemes.setTheme();
-        ManageThemes.setBodyTheme();
+        if (!initialize) ManageThemes.setBodyTheme();
         ManageCookies.removeCookie(ManageThemes.cookieName);
         ManageCookies.setCookie(ManageThemes.cookieName, ManageThemes.getThemeName());
     }

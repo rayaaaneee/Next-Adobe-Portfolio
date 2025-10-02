@@ -69,12 +69,12 @@ const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
     return (
         <div className={cn(
             'select-language',
-            'relative w-fit h-fit z-[1] font-poppins text-lg',
+            'relative w-fit h-fit z-[1] font-poppins text-xl',
             className
         )}>
             <div className={cn(
                     'choice',
-                    'grid cursor-pointer grid-cols-select-language items-center justify-center gap-[10px] text-black no-underline',
+                    'grid cursor-pointer grid-cols-select-language items-center font-semibold justify-center gap-[10px] text-black no-underline',
                     'backdrop-blur-md rounded-[10px] h-[40px] w-[180px] px-[15px] py-[5px]'
                 )} onClick={ (_) => { selectLanguageOptions.current!.classList.toggle("active")} }>
                 <Image
@@ -114,6 +114,7 @@ const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
                                     "hover:bg-select-language-options-hover",
                                     "w-full h-[50px] grid grid-cols-[1fr_2fr] pl-[30px] items-center content-center",
                                     "transition-all duration-300 cursor-pointer gap-[10px]",
+                                    "dark:hover:bg-select-language-options-hover-dark",
                                 )} onClick={ (_) => {
                                     ManageLanguages.setLanguage(name);
                                     setLanguage(json);
