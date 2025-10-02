@@ -38,8 +38,6 @@ const Header = ({ hasFooter = true }) => {
     useConditionalEffect(() => {
         if (hamburgerMenu.current) {
             hamburgerMenu.current.querySelector<HTMLInputElement>("input[type='checkbox']")?.click();
-        } else {
-            throw new Error("Hamburger menu ref is not assigned");
         }
     }, [location]);
 
@@ -102,16 +100,18 @@ const Header = ({ hasFooter = true }) => {
         <>
             <Logo color={LogoColors.white} className={cn(
                 "w-[70px] h-[70px] absolute top-4 left-4",
+                { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
             )}/>
             <nav id="menu-container">
                 <ul className={cn(
                     "header-media-menu box-content bg-menu transition-all duration-theme",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
-                    "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
+                    "backdrop-blur-md p-[25px] rounded-[50%] !translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
                     "[&_*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
                     "dark:bg-menu-dark dark:[&_*]:text-white",
+                    //{ 'to-animate appear -translate-y-3 anim-delay-600': location === '/'}
                 )} ref={ mediaMenu }>
                     <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
                     { hasFooter && ( 

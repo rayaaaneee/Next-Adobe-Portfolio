@@ -5,7 +5,7 @@ import Header from "@/components/header/header";
 import Background from "@/components/background";
 
 import "@/asset/scss/styles.scss";
-import { ThemeProvider } from "next-themes";
+import ThemeProvider from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
@@ -16,10 +16,10 @@ const RootLayout = ({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) => (<html lang="en">
+}>) => (<html lang="en" suppressHydrationWarning>
         <App>
             <body className={`antialiased`}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                <ThemeProvider>
                     <>
                         <header>
                             <Header hasFooter={true} />

@@ -13,6 +13,7 @@ import GetStarted from '@/components/home/get-started';
 
 import styles from "@/asset/scss/home/footer-links.module.scss";
 import Tooltip, { TooltipPosition, TooltipSize } from '@/components/tooltip';
+import ChildrenType from '@/utils/types/children-type';
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
 
     const [textTypeWriter] = useTypewriter({
         words: textTab,
+        
         ...template
     });
 
@@ -37,10 +39,10 @@ const Home = () => {
         ...template
     });
 
-    interface FooterLink { title: string, className: string, link: string, username?: string, target?: string, rel?: string, download?: boolean }
+    interface FooterLink { title: string, className: string, link: string, username?: ChildrenType, target?: string, rel?: string, download?: boolean }
     const footerLinks: FooterLink[] = [
-        { title: "Linked In", username: "@rayanemerlin", className: styles.linkedin, link: "https://www.linkedin.com/in/rayanemerlin/", target: "_blank", rel: "noreferrer" },
-        { title: "Github", username: "@rayaaaneee", className: styles.github, link: "https://github.com/rayaaaneee", target: "_blank", rel: "noreferrer" },
+        { title: "Linked In", username: <> <b>@</b><i>rayanemerlin</i> </>, className: styles.linkedin, link: "https://www.linkedin.com/in/rayanemerlin/", target: "_blank", rel: "noreferrer" },
+        { title: "Github", username: <> <b>@</b><i>rayaaaneee</i> </>, className: styles.github, link: "https://github.com/rayaaaneee", target: "_blank", rel: "noreferrer" },
         { title: "Mail", className: styles.mail, link: "mailto:rayane.merlin8@gmail.com" },
         { title: "Phone", className: styles.phone, link: "tel:+33768283277" },
         { title: "Resume", className: styles.resume, link: "/Resume_Rayane_Merlin.pdf", target: "_blank", rel: "noreferrer", download: true },
@@ -51,17 +53,17 @@ const Home = () => {
             <main className={cn(
                 'flex flex-col items-center justify-center w-screen h-screen',
             )}>
-                <GetStarted className='absolute top-[10px] right-[110px]' />
+                <GetStarted className='to-animate appear -translate-y-3 anim-delay-600 absolute top-[10px] right-[110px]' />
                 <div className={cn("container w-full h-full flex items-center justify-center")}>
                     <div id='presentationContainer' className={cn("flex flex-col gap-10")}>
                         <h1 className={cn(
-                            "font-adobebold [line-height:0.8] text-[12vw] text-nowrap font-medium text-[rgb(251,246,233)] dark:text-[#fbe6e9] [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)]",
+                            "font-adobebold to-animate appear translate-y-10 anim-delay-400 [line-height:0.8] text-[12vw] text-nowrap font-medium text-[rgb(251,246,233)] dark:text-[#fbe6e9] [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)]",
                         )}>{ language.title }</h1>
                         <div id='main-bar' className={cn(
-                            "w-[70%] h-3 rounded-[10px] bg-blanchedalmond dark:bg-[#f1e8ef] animate-bar",
+                            "w-[70%] opacity-0 h-3 rounded-[10px] transition-opacity duration-600 bg-blanchedalmond dark:bg-[#f1e8ef] animate-bar",
                         )}></div>
                         <div id='subtitle' className={cn(
-                            "flex flex-row items-center justify-start gap-[1vw]"
+                            "flex flex-row items-center to-animate appear -translate-y-10 anim-delay-2100 justify-start gap-[1vw]"
                         )}>
                             <h2 className={cn(
                                 'text-white [line-height:1] [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)] font-adobe font-semibold text-[6vw]',
@@ -87,7 +89,8 @@ const Home = () => {
                                     <Link 
                                         className={cn(
                                             link.className,
-                                            "w-22 h-22 rounded-full block bg-cover bg-center transition-all duration-200",
+                                            'w-22 h-22 to-animate appear translate-y-3 rounded-full block bg-cover bg-center transition-all duration-200',
+                                            `anim-delay-${1200 + (index * 200)}`
                                         )} 
                                         href={link.link} 
                                         target={link.target} 

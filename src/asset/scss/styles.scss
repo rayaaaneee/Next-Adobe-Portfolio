@@ -11,6 +11,39 @@
 	box-sizing: content-box;
 }
 
+@layer utilities {
+
+	.forwards { animation-fill-mode: forwards; }
+	.ease-in-out { animation-timing-function: ease-in-out; }
+
+	$durations: 100, 200, 300, 400, 450, 500, 600;
+	@each $duration in $durations {
+	  	.anim-duration-#{$duration} {
+	  	  	animation-duration: #{$duration}ms !important;
+	  	}
+	}
+
+	$delays: 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100;
+	@each $delay in $delays {
+	  	.anim-delay-#{$delay} {
+	  	  	animation-delay: #{$delay}ms !important;
+	  	}
+	}
+
+	.to-animate {
+
+		@apply opacity-0 !forwards !ease-in-out;
+
+		&.fade {
+			@apply animate-fadeIn anim-duration-600;
+		}
+
+		&.appear {
+			@apply animate-appearance anim-duration-450;
+		}
+	}
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;

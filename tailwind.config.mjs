@@ -5,7 +5,16 @@ const config = {
     mode: 'jit',
     content: [
         "./src/components/**/*.{ts,tsx,mdx}",
-        "./src/app/**/*.{ts,tsx,mdx}"
+        "./src/app/**/*.{ts,tsx,mdx}",
+        "./src/asset/scss/**/*.scss"
+    ],
+    safelist: [
+        {
+            pattern: /anim-delay-(400|500|600|700|800|900|1000|1100|1200|1300|1400|1500|1600|1700|1800|1900|2000|2100)/,
+        },
+        {
+            pattern: /anim-duration-(100|200|300|400|450|500|600)/,
+        },
     ],
     darkMode: "class", // or "media"
     theme: {
@@ -38,6 +47,19 @@ const config = {
                 "blink": {
                     "0%, 100%": { opacity: 1 },
                     "50%": { opacity: 0 }
+                },
+                "appearance": {
+                    "100%": {
+                        "pointer-events": "all",
+                        "opacity": 1,
+                        "transform": "none"
+                    }
+                },
+                "fadeIn": {
+                    "100%": {
+                        "pointer-events": "all",
+                        "opacity": 1
+                    }
                 }
             },
             fontFamily: {
@@ -90,8 +112,10 @@ const config = {
                 'triangle-red': 'triangle-red-move 40s linear infinite',
                 'triangle-yellow': 'triangle-yellow-move 50s linear infinite',
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
-                'bar': 'bar-move 6s linear infinite',
                 'vertical-bar': 'blink 1.5s ease-in-out infinite',
+                'appearance': 'appearance',
+                'fadeIn': 'fadeIn',
+                'bar': 'bar-move 6s linear infinite, fadeIn 0.6s 0.2s ease forwards',
             },
             width: {
                 '22': '5.5rem',
@@ -101,8 +125,11 @@ const config = {
             },
             spacing: {
                 '22': '5.5rem',
+            },
+            transitionDuration: {
+                450: '450ms',
+                600: '600ms',
             }
-            
         },
         screens: {
             '2xs': '360px',
