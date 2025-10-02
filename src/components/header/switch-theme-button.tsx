@@ -1,9 +1,10 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 
-import styles from "@/asset/scss/header/switch-theme.module.scss";
+import { useTheme } from "next-themes";
 
-import themeContext from "@/utils/context/theme-context";
-import useTryingContext from "@/utils/hook/use-try-context";
+import styles from "@/asset/scss/header/switch-theme.module.scss";
 
 export interface SwitchThemeButtonProps {
     className?: string | null,
@@ -14,9 +15,14 @@ export interface SwitchThemeButtonProps {
 
 const SwitchTheme = ({ className, s_size = false, whiteIcons = false, pinkMoon = false }: SwitchThemeButtonProps) => {
 
-	const { isDarkTheme, setIsDarkTheme } = useTryingContext(themeContext);
 
-	const changeTheme = () => (setIsDarkTheme(!isDarkTheme));
+	const { theme, setTheme, systemTheme, } = useTheme();
+
+  	const currentTheme = theme === "system" ? systemTheme : theme;
+
+	const changeTheme = () => {
+		setTheme(currentTheme === "dark" ? "light" : "dark");
+	};
 
 	const button = 
 		(<button

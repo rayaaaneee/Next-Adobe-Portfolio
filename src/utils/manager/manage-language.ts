@@ -4,7 +4,7 @@ import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
 import frenchSentences from '@/asset/data/language/fr';
 
-// Considering the structure of frenchSentences is the same for all languages
+// Considering structure of frenchSentences is the same for all languages
 export type Sentences = typeof frenchSentences;
 
 export const enum Language {
@@ -65,7 +65,7 @@ export default class ManageLanguages {
     }
 
     static getSentences = (): Sentences => {
-        let json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.language)![1] || null;
+        let json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.language)?.[1] || null;
         if (json === null) {
             json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.defaultLanguage)![1];
         }
