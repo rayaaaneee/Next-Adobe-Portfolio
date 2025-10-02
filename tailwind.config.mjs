@@ -101,9 +101,11 @@ const config = {
             },
             transitionDuration: {
                 theme: "var(--theme-transition-duration)",
+                menu: "var(--menu-transition-duration)",
             },
             transitionTimingFunction: {
                 theme: "var(--theme-transition-timing-function)",
+                menu: "var(--menu-transition-timing-function)",
             },
             gridTemplateColumns: {
                 'select-language': "var(--select-language-columns)",

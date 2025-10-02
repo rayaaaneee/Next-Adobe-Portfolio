@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useRef, useState } from 'react';
-
-import languageContext, { LanguageContextType } from '@/utils/context/language-context';
-
 import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
 import useTryingContext from '@/utils/hook/use-try-context';
+
+import { cn } from '@/lib/utils';
+
+import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 
 import Logo, { LogoColors } from '../logo';
 import HamburgerMenu from './hamburger-menu';
@@ -15,7 +16,6 @@ import MenuLink from './menu-link';
 import SelectLanguage from './select-language';
 import SwitchTheme from './switch-theme-button';
 
-import { cn } from '@/lib/utils';
 
 const Header = ({ hasFooter = true }) => {
 
@@ -67,6 +67,7 @@ const Header = ({ hasFooter = true }) => {
         }
         
         const clickOutsideMenu = (e: MouseEvent) => {
+            console.log(mediaMenu.current, mediaMenu.current?.classList.contains("active"), !!(e.target as HTMLElement).closest('#menu-container'));
             if (mediaMenu.current?.classList.contains("active") && !(e.target as HTMLElement).closest('#menu-container')) {
                 if ((checkbox as HTMLInputElement).checked) {
                     (checkbox as HTMLInputElement).click();
@@ -86,11 +87,9 @@ const Header = ({ hasFooter = true }) => {
 
         window.addEventListener('click', clickOutsideMenu);
 
-        const mediaMenuTmp = mediaMenu.current;
-
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-            if (mediaMenuTmp) mediaMenuTmp.removeEventListener('click', onClickMenu);
+            if (mediaMenu.current) mediaMenu.current.removeEventListener('click', onClickMenu);
         };
 
     }, [isMenuReady]);
@@ -104,14 +103,13 @@ const Header = ({ hasFooter = true }) => {
             )}/>
             <nav id="menu-container">
                 <ul className={cn(
-                    "header-media-menu box-content bg-menu transition-all duration-theme",
+                    "header-media-menu box-content bg-menu transition-all ease-menu duration-menu",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
-                    "backdrop-blur-md p-[25px] rounded-[50%] !translate-x-[17%] translate-y-[-20%] z-[2]",
+                    "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
                     "[&_*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
                     "dark:bg-menu-dark dark:[&_*]:text-white",
-                    //{ 'to-animate appear -translate-y-3 anim-delay-600': location === '/'}
                 )} ref={ mediaMenu }>
                     <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
                     { hasFooter && ( 

@@ -11,10 +11,10 @@ import type ChildrenType from "@/utils/types/children-type";
 
 
 export enum TooltipPosition {
-    TOP = 'top',
-    BOTTOM = 'bottom',
-    LEFT = 'left',
-    RIGHT = 'right',
+    top = 'top',
+    bottom = 'bottom',
+    left = 'left',
+    right = 'right',
 }
 
 export enum TooltipSize {
@@ -42,7 +42,7 @@ const Tooltip = ({
     children, 
     text, 
     size = TooltipSize.sm,
-    position = TooltipPosition.TOP, 
+    position = TooltipPosition.top, 
     forceShow = false, 
     disabled = false, 
     className, 

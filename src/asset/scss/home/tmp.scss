@@ -1,0 +1,365 @@
+@import '../../general/hamburger-menu.scss';
+
+$index-media-menu-margins: 2.5vh;
+
+body.index#dark {
+    .get-start {
+        background-color: rgb(75 62 77 / 68%);
+    }
+}
+
+body.index {
+    
+    @media screen and (max-width : 1440px) {
+    
+        .media-menu {
+            display: block;
+        }
+    
+        .footer-links a  {
+            width: 10vw;
+            height: 10vw;
+        }
+    
+        .get-start {
+            top: 7vh;
+            right: 5vw;
+            width: 150px;
+            height: 60px;
+            border-radius: 60px;
+            font-size: 1.3em;
+        }
+    
+        .container {
+            & > .title  {
+                row-gap: 2vw;
+                & > h1 {
+                    font-size: 13.5vw;
+                    line-height: 11vw;
+                }
+
+            }
+        }
+
+        .subtitle {
+            margin-top: 0;
+            column-gap: 2vw;
+        }
+    
+    
+        .title > .main-bar {
+            height: 15px;
+        }
+    
+        .container > .title > .subtitle > h2 {
+            font-size: 8vw;
+        }
+    
+        .logo.index-logo {
+            left: 3vw;
+            top: 3vw;
+        }
+    
+        .vertical-bar {
+            width: 12px;
+            height: 9vw;
+        }
+
+        .download-img {
+            width: 3.5vw;
+            height: 3.5vw;
+        }
+    
+        .circle-two {
+            top: -30%;
+            left: -30%;
+        }
+    
+        .about-page {
+            font-size: 1.7em;
+            bottom: 10vh;
+            right: 6vw;
+
+            & > p::after {
+                height: 12px;
+            }
+        }
+    
+        @media screen and (max-width : 1024px) {
+            .get-start {
+                top: 2vw;
+                right: 2vw;
+            }
+            .footer-links a {
+                width: 10vw;
+                height: 10vw;
+            }
+            .about-page {
+                font-size: 2em;
+                bottom: 17vh;
+                right: 2vw;
+            }
+
+            .triangle {
+                &.triangle-red {
+                    border-left-width: 18vw;
+                    border-right-width: 22vw;
+                    border-bottom-width: 35vw;
+                }
+        
+                &.triangle-orange {
+                    border-left-width: 40vw;
+                    border-right-width: 40vw;
+                    border-bottom-width: 70vw;
+                }
+            }
+
+            .circle {
+
+                &.circle-one {
+                    right: -40%;
+                }
+
+            }
+        
+            @media screen and (max-width : 768px) {
+
+                .triangle {
+
+                    &.triangle-red {
+                        border-left-width: 290px;
+                        border-right-width: 220px;
+                        border-bottom-width: 415px;
+                    }
+
+                    &.triangle-yellow {
+                        border-left-width: 250px;
+                        border-right-width: 250px;
+                        border-bottom-width: 370px;
+                    }
+                }
+
+                .circle {
+
+                    &.circle-two {
+                        top: -20%;
+                        left: -20%;
+                    }
+
+                }
+
+                .get-start {
+
+                    width: 25vw;
+                    height: 10vw;
+                    border-radius: 60px;
+                    font-size: 1.5em;
+                    top: 12vh;
+                    margin-top: 20px;
+                    background-color: #c3703482;
+
+                    &.one {
+                        display: none !important;
+                    }
+
+                    &.two {
+                        display: flex !important;
+                    }
+                }
+            
+                .hide-links {
+                    width: 74%;
+                    height: 140%;
+                }
+            
+                .footer-links a {
+                    width: 15vw;
+                    height: 15vw;
+                }
+            
+                .vertical-bar {
+                    width: 6px;
+                }
+            
+                @media screen and (max-width : 600px) {
+
+                    .get-start {
+                        &.two {
+                            width: 175px;
+                            height: 70px;
+                            font-size: 1.4em;
+                        }
+                    }
+
+                    .triangle {
+                        &.triangle-red {
+                            // border-left-width: 30vw;
+                            // border-right-width: 34vw;
+                            // border-bottom-width: 55vw;
+                        }
+
+                        &.triangle-orange {
+                            // border-left-width: 40vw;
+                            // border-right-width: 40vw;
+                            // border-bottom-width: 70vw;
+                        }
+
+                        &.triangle-yellow {
+                            // border-left-width: 35vw;
+                            // border-right-width: 30vw;
+                            // border-bottom-width: 47vw;
+                        }
+                    }
+
+                    .circle {
+
+                        &.circle-one {
+                            width: 400px;
+                            height: 400px;
+                            right: -15%;
+                            top: 50%;
+                        }
+                                        
+                        &.circle-two {
+                            width: 450px;
+                            height: 450px;
+                            top: -12%;
+                            left: -25%;
+                        }
+                    
+                    }
+
+                    @media screen and (max-width: 520px){
+
+                        .subtitle > h2 {
+
+                            &.one {
+                                display: none;
+                            }
+
+                            &.two {
+                                display: block !important;
+                            }
+                        }
+                    
+                        @media screen and (max-width : 425px) {
+
+                            .footer-links a {
+                                width: 15vw;
+                                height: 15vw;
+                            }
+                            .logo.index-logo {
+                                width: 115px;
+                                top: 1vh;
+                            }
+
+                            .get-start {
+                                top: 1vh;
+                                right: 1vh;
+                                width: 120px;
+                                height: 45px;
+                                font-size: 1em;
+
+                                &.one {
+                                    display: none !important;
+                                }
+
+                                &.two {
+                                    display: flex !important;
+                                }
+                            }
+
+                            .container {
+
+                                justify-content: center;
+
+                                .title {
+                                    align-items: center;
+                                    justify-content: center;
+                                    * {
+                                        text-align: center;
+                                    }
+
+                                    & > h1 {
+                                        font-size: 23vw;
+                                        line-height: 15vw;
+                                        height: fit-content;
+                                    }
+
+                                    & > .subtitle {
+                                        justify-content: center;
+                                        column-gap: 2.5vw;
+
+                                        $media-sutitle-bar-height: 14vw;
+
+                                        h2 {
+                                            font-size: $media-sutitle-bar-height;
+                                        }
+
+                                        .vertical-bar {
+                                            width: 1vw;
+                                            height: $media-sutitle-bar-height;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .triangle-red {
+                                border-left-width: 200px;
+                                border-right-width: 200px;
+                                border-bottom-width: 300px;
+                            }
+
+                            .triangle-orange {
+                                border-left-width: 150px;
+                                border-right-width: 150px;
+                                border-bottom-width: 235px;
+                            }
+
+                            .triangle-yellow {
+                                border-left-width: 90px;
+                                border-right-width: 90px;
+                                border-bottom-width: 135px;
+                            }
+
+                            .circle-one {
+                                right: -50%;
+                            }
+
+                            .circle-two {
+                                width: 90vw;
+                                height: 90vw;
+                                top: -25%;
+                                left: -40%;
+                            }
+
+                            .header-triangle {
+                                border-top-width: 30vw;
+                            }
+
+                            .footer-triangle {
+                                border-bottom-width: 30vw;
+                            }
+
+                            @media screen and (max-width: 320px) {
+                                
+                                .circle {
+                                    
+                                    &.circle-one {
+                                        right: -32%;
+                                        top: 58%;
+                                    }
+
+                                    &.circle-two {
+                                        top: -10%;
+                                        left: -55%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

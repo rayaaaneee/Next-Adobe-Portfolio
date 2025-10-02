@@ -26,14 +26,12 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(({
 }, ref) => {
 
     return (
-        <>
-            <div className={cn(
-                styles.logo,
-                color,
-                "bg-center bg-no-repeat bg-contain",
-                className
-            )} ref={ref}></div>
-        </>
+        <div className={cn(
+            styles.logo,
+            color,
+            "bg-center bg-no-repeat bg-contain",
+            className
+        )} ref={ref}></div>
     );
 });
 

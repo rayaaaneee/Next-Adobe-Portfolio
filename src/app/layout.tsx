@@ -5,7 +5,6 @@ import Header from "@/components/header/header";
 import Background from "@/components/background";
 
 import "@/asset/scss/styles.scss";
-import ThemeProvider from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
@@ -17,19 +16,17 @@ const RootLayout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => (<html lang="en" suppressHydrationWarning>
-        <App>
-            <body className={`antialiased`}>
-                <ThemeProvider>
-                    <>
-                        <header>
-                            <Header hasFooter={true} />
-                        </header>
-                        <Background />
-                        {children}
-                    </>
-                </ThemeProvider>
-            </body>
-        </App>
+        <body className={`antialiased`}>
+            <App>
+                <>
+                    <header>
+                        <Header hasFooter={true} />
+                    </header>
+                    <Background />
+                    {children}
+                </>
+            </App>
+        </body>
     </html>
 );
 

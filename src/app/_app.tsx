@@ -6,7 +6,7 @@ import languageContext from "@/utils/context/language-context";
 
 import ChildrenInterface from "@/utils/interface/children-interface";
 import ManageLanguages, { Sentences } from "@/utils/manager/manage-language";
-import { ThemeProvider } from "next-themes";
+import ThemeProvider from "@/components/theme-provider";
 
 const App = ({ children }: ChildrenInterface) => {
 
@@ -20,11 +20,11 @@ const App = ({ children }: ChildrenInterface) => {
 	);
 	
 	return (
-		<>
+		<ThemeProvider>
 			<languageContext.Provider value={languageValue}>
 				{ children }
 			</languageContext.Provider>
-		</>
+		</ThemeProvider>
 	);
 }
 

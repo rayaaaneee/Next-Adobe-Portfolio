@@ -18,7 +18,7 @@
 
 }
 
-:global(body.dark) {
+:global(.dark) {
     .logo {
         &.theme {
             background-image: url(../../img/favicon/favicon-dark-theme.png);

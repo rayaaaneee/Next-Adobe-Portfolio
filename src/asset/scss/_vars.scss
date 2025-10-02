@@ -31,6 +31,9 @@
     --menu-color: rgba(255, 235, 205, 0.6);
     --menu-color-dark: rgba(71, 71, 71, 0.6);
 
+    --menu-transition-duration: 600ms;
+    --menu-transition-timing-function: cubic-bezier(0.77, 0, 0.18, 1);
+
     --select-language-columns: 60px 1fr 15px;
     --select-language-background-color: rgba(255, 255, 255, 0.8);
     --select-language-options-background-color: #ffffff33;
