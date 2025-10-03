@@ -23,10 +23,11 @@ const FooterIcon = ({ className, link }: FooterIconProps) => {
   
   return (
     <Tooltip 
+        className='rounded-full'
         size={TooltipSize.lg} 
         position={TooltipPosition.top} 
         text={link.username || link.title}>
-        <li>
+        <li className='rounded-full'>
             <Link 
                 className={cn(
                     link.className,

@@ -29,7 +29,7 @@ const Header = ({ hasFooter = true }) => {
     const [isMenuReady, setIsMenuReady] = useState(false);
 
     const links = [
-        {to: '/', text: language.menu.home, isColored: false },
+        {to: '/home', text: language.menu.home, isColored: false },
         {to: '/blog', text: language.menu.blog, isColored: false },
         {to: '/about', text: language.menu.about, isColored: true }
     ]
@@ -37,7 +37,10 @@ const Header = ({ hasFooter = true }) => {
     // Close menu when changing page
     useConditionalEffect(() => {
         if (hamburgerMenu.current) {
-            hamburgerMenu.current.querySelector<HTMLInputElement>("input[type='checkbox']")?.click();
+            const checkbox: HTMLInputElement | null = hamburgerMenu.current.querySelector<HTMLInputElement>("input[type='checkbox']");
+            if (checkbox && checkbox.checked) {
+                checkbox.click();
+            }
         }
     }, [location]);
 
@@ -103,10 +106,10 @@ const Header = ({ hasFooter = true }) => {
             )}/>
             <nav id="menu-container">
                 <ul className={cn(
-                    "header-media-menu box-content bg-menu transition-all ease-menu duration-menu",
+                    "header-media-menu box-content bg-menu transition-all ease-menu duration-600",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
                     "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
-                    "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:transition-menu [&>*]:duration-[300ms]",
+                    "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu ![&>*]:duration-[300ms]",
                     "[&_*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active_*]:pointer-events-auto [&.active]:box-border [&.active]:cursor-auto [&.active]:w-[500px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
                     "dark:bg-menu-dark dark:[&_*]:text-white",

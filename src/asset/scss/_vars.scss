@@ -24,14 +24,12 @@
     --poppins: 'Poppins', sans-serif;
 
     /* Transition while changing theme */
-    --theme-transition-duration: 600ms;
     --theme-transition-timing-function: cubic-bezier(0.77, 0, 0.18, 1);
     
     /* Header */
     --menu-color: rgba(255, 235, 205, 0.6);
     --menu-color-dark: rgba(71, 71, 71, 0.6);
 
-    --menu-transition-duration: 600ms;
     --menu-transition-timing-function: cubic-bezier(0.77, 0, 0.18, 1);
 
     --select-language-columns: 60px 1fr 15px;

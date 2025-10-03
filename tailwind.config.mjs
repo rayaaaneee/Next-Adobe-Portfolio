@@ -99,10 +99,6 @@ const config = {
                 "triangle-orange-dark": "var(--triangle-orange-color-dark)",
                 "triangle-red-dark": "var(--triangle-red-color-dark)",
             },
-            transitionDuration: {
-                theme: "var(--theme-transition-duration)",
-                menu: "var(--menu-transition-duration)",
-            },
             transitionTimingFunction: {
                 theme: "var(--theme-transition-timing-function)",
                 menu: "var(--menu-transition-timing-function)",
