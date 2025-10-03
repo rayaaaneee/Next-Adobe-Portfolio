@@ -1,7 +1,7 @@
 import { HeadingOne } from '@/components/page-flow'
 import React from 'react'
 
-const Page = () => {
+const Blog = () => {
     return (
         <main>
             <HeadingOne>Blog</HeadingOne>
@@ -10,4 +10,4 @@ const Page = () => {
     )
 }
 
-export default Page
+export default Blog;

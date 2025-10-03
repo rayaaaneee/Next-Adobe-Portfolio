@@ -1,16 +1,17 @@
-import { cn } from "@/lib/utils";
-
 import { forwardRef, useState } from "react";
 
-export interface HamburgerMenuProps {
+import { cn } from "@/lib/utils";
+
+import ClassNameInterface from "@/utils/interface/classname";
+
+export interface HamburgerMenuProps extends ClassNameInterface {
     menuElement: HTMLElement | null;
-    className?: string | null;
     onClick?: (checked: boolean) => void;
     style?: React.CSSProperties;
 }
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
-const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className = null, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
+const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
 
     if (!menuElement) throw new Error("You must provide a valid menu element to the HamburgerMenu component.");
 

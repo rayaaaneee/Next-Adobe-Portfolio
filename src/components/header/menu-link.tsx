@@ -1,15 +1,14 @@
 "use client";
 
 import { cn } from '@/lib/utils';
-import ChildrenType from '@/utils/types/children-type';
+import { ChildrenInterface } from '@/utils/interface/children';
+import ClassNameInterface from '@/utils/interface/classname';
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 
-export interface MenuLinkProps {
-    className?: string | null,
+export interface MenuLinkProps extends ChildrenInterface, ClassNameInterface {
     to: string,
-    children?: ChildrenType,
     isColored: boolean
 }
 

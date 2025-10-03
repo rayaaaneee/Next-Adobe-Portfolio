@@ -7,7 +7,8 @@ import { TiWarning } from "react-icons/ti";
 
 import cn from "@/utils/function/cn";
 
-import type ChildrenType from "@/utils/types/children-type";
+import { ChildrenInterface, type ChildrenType } from "@/utils/interface/children";
+import ClassNameInterface from "@/utils/interface/classname";
 
 
 export enum TooltipPosition {
@@ -25,14 +26,12 @@ export enum TooltipSize {
 
 export type TooltipType = 'default' | "default-2" | 'success' | 'warning' | 'error';
 
-export interface TooltipInterface {
-    children: ChildrenType;
+export interface TooltipInterface extends ChildrenInterface, ClassNameInterface {
     text: ChildrenType;
     size?: TooltipSize;
     position?: TooltipPosition;
     forceShow?: boolean;
     disabled?: boolean;
-    className?: string;
     tooltipClassName?: string;
     type?: TooltipType;
     hasIcon?: boolean;

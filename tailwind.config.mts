@@ -1,7 +1,6 @@
-// tailwind.config.js
-/** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-const config = {
+const config: import('tailwindcss').Config = {
     mode: 'jit',
     content: [
         "./src/components/**/*.{ts,tsx,mdx}",
@@ -45,20 +44,20 @@ const config = {
                     "100%": { width: "73%" },
                 },
                 "blink": {
-                    "0%, 100%": { opacity: 1 },
-                    "50%": { opacity: 0 }
+                    "0%, 100%": { opacity: "1" },
+                    "50%": { opacity: "0" }
                 },
                 "appearance": {
                     "100%": {
-                        "pointer-events": "all",
-                        "opacity": 1,
+                        "pointer-events": "auto",
+                        "opacity": "1",
                         "transform": "none"
                     }
                 },
                 "fadeIn": {
                     "100%": {
-                        "pointer-events": "all",
-                        "opacity": 1
+                        "pointer-events": "auto",
+                        "opacity": "1"
                     }
                 }
             },
@@ -130,13 +129,15 @@ const config = {
             }
         },
         screens: {
-            '2xs': '360px',
+            /* '2xs': '360px' { base } */
             'xs': '480px',
-            'sm': '600px',
-            'md': '900px',
-            'lg': '1200px',
-            'xl': '1600px',
-            '2xl': '1920px',
+            ...defaultTheme.screens,
+            /* Default :
+            'm': 640px
+            'md': 768px
+            'lg': 1024px
+            'xl': 1280px
+            '2xl': 1536px */
         }
     },
     plugins: [],

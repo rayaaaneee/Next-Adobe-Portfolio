@@ -16,8 +16,12 @@ import MenuLink from './menu-link';
 import SelectLanguage from './select-language';
 import SwitchTheme from './switch-theme-button';
 
+export interface HeaderProps {
+    hasFooter?: boolean,
+}
 
-const Header = ({ hasFooter = true }) => {
+
+const Header = ({ hasFooter = true }: HeaderProps) => {
 
     const { language } = useTryingContext<LanguageContextType>(languageContext);
 

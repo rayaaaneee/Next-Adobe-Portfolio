@@ -4,10 +4,11 @@ import { cn } from "@/lib/utils";
 
 import { useTheme } from "next-themes";
 
+import ClassNameInterface from "@/utils/interface/classname";
+
 import styles from "@/asset/scss/header/switch-theme.module.scss";
 
-export interface SwitchThemeButtonProps {
-    className?: string | null,
+export interface SwitchThemeButtonProps extends ClassNameInterface {
     s_size?: boolean,
     whiteIcons?: boolean,
     pinkMoon?: boolean

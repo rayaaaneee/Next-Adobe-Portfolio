@@ -1,17 +1,17 @@
 "use client";
 
-import { cn } from '@/lib/utils';
-import languageContext from '@/utils/context/language-context';
-import useTryingContext from '@/utils/hook/use-try-context';
 import Link from 'next/link';
 
-interface GetStartedProps {
-    className?: string
-}
+import { cn } from '@/lib/utils';
+
+import languageContext from '@/utils/context/language-context';
+import useTryingContext from '@/utils/hook/use-try-context';
+
+import ClassNameInterface from '@/utils/interface/classname';
 
 const GetStarted = ({
     className
-}: GetStartedProps) => {
+}: ClassNameInterface) => {
 
     const text = useTryingContext(languageContext).language.home.discover;
 

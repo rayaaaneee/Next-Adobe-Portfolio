@@ -12,12 +12,9 @@ import ManageLanguages, { Language } from "@/utils/manager/manage-language";
 import englishFlag from '@/asset/img/index/flags/english.png';
 import frenchFlag from '@/asset/img/index/flags/french.png';
 import spanishFlag from '@/asset/img/index/flags/spanish.png';
+import ClassNameInterface from "@/utils/interface/classname";
 
-export interface SelectLanguageButtonProps {
-    className?: string | null
-}
-
-const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
+const SelectLanguage = ({ className }: ClassNameInterface) => {
 
     const selectLanguageOptions = useRef<HTMLDivElement | null>(null);
 

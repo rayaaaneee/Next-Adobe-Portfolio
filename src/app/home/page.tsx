@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils";
 
 import { HeadingOne } from "@/components/page-flow";
-import ContactLinks, { IconSize } from "@/components/contact-links";
 
-const Page = () => {
+import ContactLinks from "@/components/contact-links";
+import { IconSize } from "@/components/contact-icon";
+
+const Home = () => {
     return (
         <main className={cn(
             "justify-self-center to-animate fade anim-delay-200 anim-duration-300 my-10 rounded-xl h-fit w-[70vw]",
@@ -40,4 +42,4 @@ const Page = () => {
     )
 }
 
-export default Page
+export default Home

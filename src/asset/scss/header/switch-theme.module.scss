@@ -1,3 +1,5 @@
+@use '../defs.scss' as *;
+
 .modeButton{
 
     background-image: url(../../img/header/dark-mode.png);
@@ -7,13 +9,17 @@
     }
 
     &.pinkMoon {
-        &:hover {
-            background-image: url(../../img/header/dark-mode-pink.png);
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/header/dark-mode-pink.png);
+            }
         }
     }
 
-    &:hover {
-        background-image: url(../../img/header/dark-mode-hover.png);
+    @include hover-safe {
+        &:hover {
+            background-image: url(../../img/header/dark-mode-hover.png);
+        }
     }
 
 }
@@ -24,8 +30,10 @@
 
         background-image: url(../../img/header/light-mode.png);
 
-        &:hover {
-            background-image: url(../../img/header/light-mode-hover.png);
+        @include hover-safe {
+            &:hover {
+                background-image: url(../../img/header/light-mode-hover.png);
+            }
         }
         
     }

@@ -1,13 +1,9 @@
-// export interface AboutPageProps {
-//     // empty
-// }
-
-const AboutPage = ({}/* : AboutPageProps */) => {
+const About = ({}) => {
     return (
         <div>
-            AboutPage
+            About
         </div>
     );
 }
 
-export default AboutPage;
+export default About;

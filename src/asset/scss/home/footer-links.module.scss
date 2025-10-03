@@ -1,9 +1,9 @@
-@use "../defs.scss" as def;
+@use "../defs.scss" as *;
 
 .linkedin {
     background-image: url(../../img/index/icon-linkedin.png);
 
-    @include def.hover-safe {
+    @include hover-safe {
         &:hover {
             background-image: url(../../img/index/icon-linkedin-hover.png);
         }
@@ -13,7 +13,7 @@
 .github {
     background-image: url(../../img/index/icon-github.png);
 
-    @include def.hover-safe {
+    @include hover-safe {
         &:hover {
             background-image: url(../../img/index/icon-github-hover.png);
         }
@@ -24,7 +24,7 @@
 .mail {
     background-image: url(../../img/index/icon-mail.png);
 
-    @include def.hover-safe {
+    @include hover-safe {
         &:hover {
             background-image: url(../../img/index/icon-mail-hover.png);
         }
@@ -34,7 +34,7 @@
 .phone {
     background-image: url(../../img/index/icon-tel.png);
 
-    @include def.hover-safe {
+    @include hover-safe {
         &:hover {
             background-image: url(../../img/index/icon-tel-hover.png);
         }
@@ -44,7 +44,7 @@
 .resume {
     background-image: url(../../img/index/icon-resume.png);
 
-    @include def.hover-safe {
+    @include hover-safe {
         &:hover {
             background-image: url(../../img/index/icon-resume-hover.png);
         }

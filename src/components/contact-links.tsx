@@ -1,21 +1,16 @@
 import { cn } from "@/lib/utils";
 
-import ContactIcon, { type ContactIconType } from "./contact-icon";
+import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 
 import styles from "@/asset/scss/home/footer-links.module.scss";
-import ChildrenInterface from "@/utils/interface/children-interface";
+import { ChildrenInterface } from "@/utils/interface/children";
+import ClassNameInterface from "@/utils/interface/classname";
 
-export interface ContactLinksProps {
-    className?: string;
+export interface ContactLinksProps extends ClassNameInterface {
     id?: string;
     animate?: boolean;
     tooltip?: boolean;
     size?: IconSize;
-}
-
-export enum IconSize {
-    sm = 'w-16 h-16',
-    md = 'w-20 h-20',
 }
 
 const ContactLinks = ({className, id, animate = false, tooltip = true, size = IconSize.md}: ContactLinksProps) => {
@@ -39,11 +34,12 @@ const ContactLinks = ({className, id, animate = false, tooltip = true, size = Ic
             <ul className={cn("w-full flex flex-row items-center justify-center gap-[8vw] list-none mb-4")}>
                 { footerLinks.map((link: ContactIconType, index: number) => (
                     <ContactIcon
+                        size={size}
                         tooltip={tooltip}
-                        className={cn(
+                        tooltipClassName={tooltip ? cn(
                             {'to-animate appear translate-y-3': animate},
                             {[`anim-delay-${1200 + (index * 200)}`]: animate},
-                        )}
+                        ) : undefined}
                         key={index}
                         link={link}
                     />

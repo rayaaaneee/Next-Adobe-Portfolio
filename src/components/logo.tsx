@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import styles from "@/asset/scss/header/logo.module.scss";
 
 import { cn } from "@/lib/utils";
+import ClassNameInterface from "@/utils/interface/classname";
 
 export const LogoColors = {
     light: styles.light,
@@ -13,9 +14,8 @@ export const LogoColors = {
 
 type LogoColors = typeof LogoColors[keyof typeof LogoColors];
 
-interface LogoProps {
+interface LogoProps extends ClassNameInterface {
     color?: LogoColors,
-    className?: string | null,
 }
 
 const Logo = forwardRef<HTMLDivElement, LogoProps>(({

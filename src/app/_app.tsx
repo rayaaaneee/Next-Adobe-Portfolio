@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 import languageContext from "@/utils/context/language-context";
 
-import ChildrenInterface from "@/utils/interface/children-interface";
+import ChildrenInterface from "@/utils/interface/children";
 import ManageLanguages, { Sentences } from "@/utils/manager/manage-language";
 import ThemeProvider from "@/components/theme-provider";
 

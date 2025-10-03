@@ -36,7 +36,7 @@
 
 	.to-animate {
 
-		@apply opacity-0 !forwards !ease-in-out;
+		@apply opacity-0 !forwards !ease-in-out pointer-events-none;
 
 		&.fade {
 			@apply animate-fadeIn anim-duration-600;
