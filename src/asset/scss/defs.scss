@@ -1,7 +1,7 @@
 // Define here layers, mixins, variables, etc. that you want to use in all your .scss files
 
 @mixin hover-safe {
-  @media (hover: hover) {
-    @content;
-  }
+  	@media (hover: hover) {
+  	  	@content;
+  	}
 }

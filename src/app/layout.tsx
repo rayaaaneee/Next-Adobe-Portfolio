@@ -19,9 +19,7 @@ const RootLayout = ({
         <body className={`antialiased`}>
             <App>
                 <>
-                    <header>
-                        <Header hasFooter={true} />
-                    </header>
+                    <Header hasFooter={true} />
                     <Background />
                     {children}
                 </>

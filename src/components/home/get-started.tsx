@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from '@/lib/utils';
 import languageContext from '@/utils/context/language-context';
 import useTryingContext from '@/utils/hook/use-try-context';

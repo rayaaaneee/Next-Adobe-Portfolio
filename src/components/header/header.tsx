@@ -90,18 +90,20 @@ const Header = ({ hasFooter = true }) => {
 
         window.addEventListener('click', clickOutsideMenu);
 
+        const mediaMenuTmp = mediaMenu.current;
+
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
-            if (mediaMenu.current) mediaMenu.current.removeEventListener('click', onClickMenu);
+            if (mediaMenuTmp) mediaMenuTmp.removeEventListener('click', onClickMenu);
         };
 
     }, [isMenuReady]);
 
 
     return (
-        <>
+        <header>
             <Logo color={LogoColors.white} className={cn(
-                "w-[70px] h-[70px] absolute top-4 left-4",
+                "w-[70px] h-[70px] fixed top-4 left-4",
                 { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
             )}/>
             <nav id="menu-container">
@@ -135,7 +137,7 @@ const Header = ({ hasFooter = true }) => {
                 </ul>
                 { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}
             </nav>
-        </>
+        </header>
     );
 }
 
