@@ -102,10 +102,12 @@ const Header = ({ hasFooter = true }) => {
 
     return (
         <header>
-            <Logo color={LogoColors.white} className={cn(
-                "w-[70px] h-[70px] fixed top-4 left-4",
-                { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
-            )}/>
+            <Link href="/">
+                <Logo color={location === '/' ? LogoColors.white : LogoColors.theme} className={cn(
+                    "w-[70px] h-[70px] fixed top-4 left-4 z-[1]",
+                    { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
+                )}/>
+            </Link>
             <nav id="menu-container">
                 <ul className={cn(
                     "header-media-menu box-content bg-menu transition-all ease-menu duration-600",

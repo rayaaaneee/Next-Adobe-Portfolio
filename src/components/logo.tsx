@@ -29,7 +29,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(({
         <div className={cn(
             styles.logo,
             color,
-            "bg-center bg-no-repeat bg-contain",
+            "bg-center bg-no-repeat bg-contain transition-all duration-500",
             className
         )} ref={ref}></div>
     );

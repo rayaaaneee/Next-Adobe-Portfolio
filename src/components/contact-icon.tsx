@@ -1,15 +1,11 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils'
 
-import Tooltip, { TooltipPosition, TooltipSize } from '../tooltip'
 import ChildrenType from '@/utils/types/children-type';
 
-export interface FooterIconProps {
-    className?: string | null,
-    link: FooterIconType
-}
+import Tooltip, { TooltipPosition, TooltipSize } from './tooltip'
 
-export interface FooterIconType { 
+export interface ContactIconType { 
     title: string, 
     className: string, 
     link: string, 
@@ -19,10 +15,17 @@ export interface FooterIconType {
     download?: boolean 
 }
 
-const FooterIcon = ({ className, link }: FooterIconProps) => {
-  
+export interface ContactIconProps {
+    className?: string | null,
+    link: ContactIconType,
+    tooltip?: boolean,
+}
+
+const ContactIcon = ({ className, link, tooltip = true }: ContactIconProps) => {
+
   return (
     <Tooltip 
+        disabled={!tooltip}
         className='rounded-full'
         size={TooltipSize.lg} 
         position={TooltipPosition.top} 
@@ -36,12 +39,11 @@ const FooterIcon = ({ className, link }: FooterIconProps) => {
                 )} 
                 href={link.link} 
                 target={link.target} 
-                rel={link.rel}
-                download={link.download}>    
+                rel={link.rel}>    
             </Link>
         </li>
     </Tooltip>
   )
 }
 
-export default FooterIcon;
+export default ContactIcon;

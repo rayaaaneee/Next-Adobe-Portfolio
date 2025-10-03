@@ -100,9 +100,9 @@ const SelectLanguage = ({ className = null }: SelectLanguageButtonProps) => {
                     <div className={cn(
                         'options',
                         "w-full h-fit flex flex-col items-center justify-center backdrop-blur-lg overflow-hidden rounded-[10px]",
-                        "text-black z-[-1] cursor-auto !pointer-events-none opacity-0 -translate-y-full transition-all duration-150",
+                        "text-black -z-[1] cursor-auto !pointer-events-none opacity-0 -translate-y-full transition-all duration-150",
                         "ease-in bg-select-language-options",
-                        "[&.active]:opacity-100 [&.active]:cursor-pointer ![&.active]:pointer-events-auto [&.active]:translate-y-0"
+                        "[&.active]:opacity-100 [&.active]:cursor-pointer [&.active]:!pointer-events-auto [&.active]:translate-y-0"
                     )} ref={ selectLanguageOptions }>
                     { ManageLanguages.supportedLanguages
                         .filter(([name]) => name !== language.current)

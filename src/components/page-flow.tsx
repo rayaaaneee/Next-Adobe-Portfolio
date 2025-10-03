@@ -6,7 +6,7 @@ interface h1Props extends ChildrenInterface {
 }
 
 export const HeadingOne = ({ className, children }: h1Props) => (
-    <h1 className={cn("text-4xl f font-light", className)}>
+    <h1 className={cn("text-4xl font-poppins font-light", className)}>
         {children}
     </h1>
 );
