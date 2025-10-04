@@ -7,13 +7,12 @@ import { ChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 
 export interface ContactLinksProps extends ClassNameInterface {
-    id?: string;
     animate?: boolean;
-    tooltip?: boolean;
+    tooltips?: boolean;
     size?: IconSize;
 }
 
-const ContactLinks = ({className, id, animate = false, tooltip = true, size = IconSize.md}: ContactLinksProps) => {
+const ContactLinks = ({className, id, animate = false, tooltips = true, size = IconSize.md}: ContactLinksProps) => {
 
     const usernameDivClassname = 'flex flex-row items-center gap-0';
 	const UsernameDivBase = ({ children }: ChildrenInterface) => (<div className={usernameDivClassname}><b>@</b><i>{children}</i></div>);
@@ -30,22 +29,23 @@ const ContactLinks = ({className, id, animate = false, tooltip = true, size = Ic
     ]
 	
   	return (
-  	  	<article id={id} className={className}>
-            <ul className={cn("w-full flex flex-row items-center justify-center gap-[8vw] list-none mb-4")}>
-                { footerLinks.map((link: ContactIconType, index: number) => (
-                    <ContactIcon
-                        size={size}
-                        tooltip={tooltip}
-                        tooltipClassName={tooltip ? cn(
-                            {'to-animate appear translate-y-3': animate},
-                            {[`anim-delay-${1200 + (index * 200)}`]: animate},
-                        ) : undefined}
-                        key={index}
-                        link={link}
-                    />
-                ))}
-            </ul>
-        </article>
+        <ul id={id} className={cn(
+            "w-full flex flex-row items-center list-none mb-4", 
+            className
+        )}>
+            { footerLinks.map((link: ContactIconType, index: number) => (
+                <ContactIcon
+                    size={size}
+                    tooltip={tooltips}
+                    tooltipClassName={tooltips ? cn(
+                        {'to-animate appear translate-y-3': animate},
+                        {[`anim-delay-${1200 + (index * 200)}`]: animate},
+                    ) : undefined}
+                    key={index}
+                    link={link}
+                />
+            ))}
+        </ul>
   	)
 }
 

@@ -12,12 +12,12 @@ export interface MenuLinkProps extends ChildrenInterface, ClassNameInterface {
     isColored: boolean
 }
 
-const MenuLink = ({ className, to, children = <></>, isColored }: MenuLinkProps) => {
+const MenuLink = ({ className, id, to, children = <></>, isColored }: MenuLinkProps) => {
 
     const location = usePathname();
 
     return (
-        <li className={cn("menu-link", "w-fit text-white text-2xl font-apple font-medium", className)}>
+        <li id={id} className={cn("menu-link", "w-fit text-white text-2xl font-apple font-medium", className)}>
             <Link href={ to } className={ cn(
                 className, 
                 { active: location === to },

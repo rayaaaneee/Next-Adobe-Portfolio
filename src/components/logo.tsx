@@ -15,18 +15,19 @@ export const LogoColors = {
 type LogoColors = typeof LogoColors[keyof typeof LogoColors];
 
 interface LogoProps extends ClassNameInterface {
-    color?: LogoColors,
+    color?: LogoColors
 }
 
 const Logo = forwardRef<HTMLDivElement, LogoProps>(({
 
     color = LogoColors.theme,
-    className = null,
+    className,
+    id
 
 }, ref) => {
 
     return (
-        <div className={cn(
+        <div id={id} className={cn(
             styles.logo,
             color,
             "bg-center bg-no-repeat bg-contain transition-all duration-500",

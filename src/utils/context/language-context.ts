@@ -1,5 +1,5 @@
 import { Context, createContext } from "react";
-import { Sentences } from "../manager/manage-language";
+import Sentences from "../types/language";
 
 export interface LanguageContextType {
     language: Sentences;

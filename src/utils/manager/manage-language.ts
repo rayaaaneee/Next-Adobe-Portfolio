@@ -1,6 +1,7 @@
 import ManageCookies from './manage-cookies';
 
 import Sentences from '@/utils/types/language';
+
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
 import frenchSentences from '@/asset/data/language/fr';
@@ -13,14 +14,18 @@ export const enum Language {
     ES = 'es'
 }
 
+const English: Sentences = englishSentences;
+const French: Sentences = frenchSentences;
+const Spanish: Sentences = spanishSentences;
+
 export default class ManageLanguages {
 
     static readonly cookieName: string = 'language';
     static readonly defaultLanguage = Language.EN;
     static readonly supportedLanguages:  Array<[Language, Sentences]> = [
-        [Language.EN, englishSentences],
-        [Language.FR, frenchSentences],
-        [Language.ES, spanishSentences]
+        [Language.EN, English],
+        [Language.FR, French],
+        [Language.ES, Spanish]
     ];
 
     static language: Language = ManageLanguages.defaultLanguage;
@@ -34,7 +39,7 @@ export default class ManageLanguages {
         return navigator.language;
     }
 
-    private static _setLanguage = (language: Language) => {
+    static setLanguage = (language: Language) => {
         if (ManageLanguages._isSupported(language)) {
             ManageLanguages.language = language;
             ManageCookies.setCookie(ManageLanguages.cookieName, language);
@@ -53,14 +58,18 @@ export default class ManageLanguages {
                 ManageLanguages.language = ManageLanguages.defaultLanguage;
             }
         }
-        ManageLanguages._setLanguage(ManageLanguages.language);
+        ManageLanguages.setLanguage(ManageLanguages.language);
     }
 
-    static getSentences = (): Sentences => {
+    static getSentences = (language?: Language): Sentences => {
+        // If a language is provided (necessary supported), return its sentences
+        if (language) return ManageLanguages.supportedLanguages.find(([name]) => name === language)![1]!;
+
         let json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.language)?.[1] || null;
         if (json === null) {
             json = ManageLanguages.supportedLanguages.find(([name]) => name === ManageLanguages.defaultLanguage)![1];
         }
+        
         return json;
     }
 }

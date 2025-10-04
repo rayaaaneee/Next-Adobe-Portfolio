@@ -1,8 +1,10 @@
-const englishSentences = {
+import Sentences from "@/utils/types/language";
+
+const englishSentences: Sentences = {
     current: "en",
     denomination: "English",
     title: "Adobe Portfolio",
-    flag_img: "british.png",
+    flag_img: "english.png",
     loader: {
         texts: [
             "Reading preferences...",
@@ -31,7 +33,7 @@ const englishSentences = {
             "Cybersecurity",
             "IT Student (BAC +3)"
         ],
-        shorted_description: [
+        reduced_description: [
             "Rayane Merlin",
             "FullStack Dev",
             "Cyber",
@@ -60,4 +62,4 @@ const englishSentences = {
     }
 }
 
-export default englishSentences;
+export default englishSentences as Sentences;

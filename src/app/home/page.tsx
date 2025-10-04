@@ -8,13 +8,18 @@ import { IconSize } from "@/components/contact-icon";
 const Home = () => {
     return (
         <main className={cn(
-            "justify-self-center to-animate fade anim-delay-200 anim-duration-300 my-10 rounded-xl h-fit w-[70vw]",
+            "justify-self-center to-animate fade anim-delay-200 anim-duration-300 rounded-xl h-fit",
             "bg-[rgb(255,255,255,0.2)] dark:bg-[rgb(0,0,0,0.2)] backdrop-blur-md",
-            "box-border p-20"
+            "box-border ",
+            "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
+            "my-[3.5vw] md:my-[5vw] lg:my-10",
+            "p-5 sm:p-7 md:p-10 xl:p-20"
         )}>
             <article>
                 <HeadingOne>Rayane Merlin</HeadingOne>
-                <ContactLinks size={IconSize.sm} tooltip={false}  className="mt-4" />
+                <ContactLinks size={IconSize.sm} tooltips={false}  className={cn(
+                    "w-1/2 mt-4 gap-[unset] justify-between",
+                )} />
             </article>
             <article>
                 <HeadingOne>About me</HeadingOne>

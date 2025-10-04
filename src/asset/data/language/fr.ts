@@ -1,3 +1,4 @@
+// Reference object for type inference, can't be typed directly
 const frenchSentences = {
     current: "fr",
     denomination: "Français",
@@ -31,7 +32,7 @@ const frenchSentences = {
             "Cybersécurité",
             "Etudiant en IT (BAC +3)"
         ],
-        shorted_description: [
+        reduced_description: [
             "Rayane Merlin",
             "Dev FullStack",
             "Cyber",

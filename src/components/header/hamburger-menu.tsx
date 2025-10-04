@@ -11,7 +11,7 @@ export interface HamburgerMenuProps extends ClassNameInterface {
 }
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
-const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
+const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className, id, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
 
     if (!menuElement) throw new Error("You must provide a valid menu element to the HamburgerMenu component.");
 
@@ -28,7 +28,7 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
     };
     
     return (
-        <div ref={ref}
+        <div id={id} ref={ref}
             className={cn(
                 'hamburger-container',
                 'fixed flex flex-col justify-center items-center cursor-pointer h-[60px] w-[60px] gap-[calc(2*9%)]',

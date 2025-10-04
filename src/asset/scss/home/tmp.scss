@@ -230,107 +230,21 @@ body.index {
                     }
 
                     @media screen and (max-width: 520px){
-
-                        .subtitle > h2 {
-
-                            &.one {
-                                display: none;
-                            }
-
-                            &.two {
-                                display: block !important;
-                            }
-                        }
                     
                         @media screen and (max-width : 425px) {
 
-                            .footer-links a {
-                                width: 15vw;
-                                height: 15vw;
-                            }
-                            .logo.index-logo {
-                                width: 115px;
-                                top: 1vh;
-                            }
-
-                            .get-start {
-                                top: 1vh;
-                                right: 1vh;
-                                width: 120px;
-                                height: 45px;
-                                font-size: 1em;
-
-                                &.one {
-                                    display: none !important;
-                                }
-
-                                &.two {
-                                    display: flex !important;
-                                }
-                            }
-
-                            .container {
-
-                                justify-content: center;
-
-                                .title {
-                                    align-items: center;
-                                    justify-content: center;
-                                    * {
-                                        text-align: center;
-                                    }
-
-                                    & > h1 {
-                                        font-size: 23vw;
-                                        line-height: 15vw;
-                                        height: fit-content;
-                                    }
-
-                                    & > .subtitle {
-                                        justify-content: center;
-                                        column-gap: 2.5vw;
-
-                                        $media-sutitle-bar-height: 14vw;
-
-                                        h2 {
-                                            font-size: $media-sutitle-bar-height;
-                                        }
-
-                                        .vertical-bar {
-                                            width: 1vw;
-                                            height: $media-sutitle-bar-height;
-                                        }
-                                    }
-                                }
-                            }
-
                             .triangle-red {
-                                border-left-width: 200px;
-                                border-right-width: 200px;
-                                border-bottom-width: 300px;
                             }
 
                             .triangle-orange {
-                                border-left-width: 150px;
-                                border-right-width: 150px;
-                                border-bottom-width: 235px;
                             }
 
                             .triangle-yellow {
-                                border-left-width: 90px;
-                                border-right-width: 90px;
-                                border-bottom-width: 135px;
-                            }
 
-                            .circle-one {
-                                right: -50%;
                             }
 
                             .circle-two {
-                                width: 90vw;
-                                height: 90vw;
-                                top: -25%;
-                                left: -40%;
+                                width: 90vw; height: 90vw; top: -25%; left: -40%;
                             }
 
                             .header-triangle {

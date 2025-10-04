@@ -14,7 +14,7 @@ export interface SwitchThemeButtonProps extends ClassNameInterface {
     pinkMoon?: boolean
 }
 
-const SwitchTheme = ({ className, s_size = false, whiteIcons = false, pinkMoon = false }: SwitchThemeButtonProps) => {
+const SwitchTheme = ({ className, id, s_size = false, whiteIcons = false, pinkMoon = false }: SwitchThemeButtonProps) => {
 
 
 	const { theme, setTheme, systemTheme, } = useTheme();
@@ -26,7 +26,7 @@ const SwitchTheme = ({ className, s_size = false, whiteIcons = false, pinkMoon =
 	};
 
 	const button = 
-		(<button
+		(<button id={id}
 			className={cn(
 				styles.modeButton,
 				{ [styles.white]: whiteIcons, [styles.pinkMoon]: pinkMoon },

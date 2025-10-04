@@ -8,7 +8,7 @@ import ClassNameInterface from '@/utils/interface/classname';
 
 export enum IconSize {
     sm = 'w-16 h-16',
-    md = 'w-20 h-20',
+    md = 'md:w-20 md:h-20 sm:w-16 sm:h-16 w-12 h-12',
 }
 
 export interface ContactIconType extends ClassNameInterface { 
@@ -27,7 +27,7 @@ export interface ContactIconProps extends ClassNameInterface {
     size?: IconSize,
 }
 
-const ContactIcon = ({ className, size = IconSize.md, link, tooltip = true, tooltipClassName }: ContactIconProps) => {
+const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, tooltipClassName }: ContactIconProps) => {
 
 
     if (!tooltip && tooltipClassName) {
@@ -40,7 +40,8 @@ const ContactIcon = ({ className, size = IconSize.md, link, tooltip = true, tool
             className={cn('rounded-full', tooltipClassName)}
             size={TooltipSize.lg} 
             position={TooltipPosition.top} 
-            text={link.username || link.title}>
+            text={link.username || link.title}
+            id={id}>
             <li className='rounded-full'>
                 <Link 
                     className={cn(

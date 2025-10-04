@@ -9,13 +9,16 @@ const config: import('tailwindcss').Config = {
     ],
     safelist: [
         {
-            pattern: /anim-delay-(0|400|500|600|700|800|900|1000|1100|1200|1300|1400|1500|1600|1700|1800|1900|2000|2100)/,
+            pattern: /anim-delay-(0|400|500|600|700|800|900|1000|1100|1200|1300|1400|1500|1600|1700|1800|1900|2000|2100|2300)/,
         },
         {
             pattern: /anim-duration-(100|200|300|400|450|500|600)/,
         },
     ],
-    darkMode: "class", // or "media"
+    darkMode: "class", // or "media",
+    future: {
+        hoverOnlyWhenSupported: true,
+    },
     theme: {
         extend: {
             keyframes: {
@@ -133,11 +136,11 @@ const config: import('tailwindcss').Config = {
             'xs': '480px',
             ...defaultTheme.screens,
             /* Default :
-            'm': 640px
+            'sm': 640px
             'md': 768px
             'lg': 1024px
             'xl': 1280px
-            '2xl': 1536px */
+            */
         }
     },
     plugins: [],

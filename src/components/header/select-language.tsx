@@ -1,44 +1,21 @@
 import { useEffect, useRef } from "react";
-import Image, { StaticImageData } from 'next/image';
+
+import Image from 'next/image';
 
 import { cn } from "@/lib/utils";
 
 import languageContext from "@/utils/context/language-context";
-
 import useTryingContext from "@/utils/hook/use-try-context";
 
 import ManageLanguages, { Language } from "@/utils/manager/manage-language";
 
-import englishFlag from '@/asset/img/index/flags/english.png';
-import frenchFlag from '@/asset/img/index/flags/french.png';
-import spanishFlag from '@/asset/img/index/flags/spanish.png';
 import ClassNameInterface from "@/utils/interface/classname";
 
-const SelectLanguage = ({ className }: ClassNameInterface) => {
+const SelectLanguage = ({ className, id }: ClassNameInterface) => {
 
     const selectLanguageOptions = useRef<HTMLDivElement | null>(null);
 
     const { language, setLanguage } = useTryingContext(languageContext);
-
-    type LanguageFlag = {
-        flag: StaticImageData,
-        denomination: string
-    }
-
-    const languageFlags: Record<Language, LanguageFlag> = {
-        fr: {
-            flag: frenchFlag,
-            denomination: 'Français',
-        },
-        en: {
-            flag: englishFlag,
-            denomination: 'English',
-        },
-        es: {
-            flag: spanishFlag,
-            denomination: 'Español',
-        }
-    }
 
     useEffect(() => {
 
@@ -64,7 +41,7 @@ const SelectLanguage = ({ className }: ClassNameInterface) => {
     }, []);
 
     return (
-        <div className={cn(
+        <div id={id} className={cn(
             'select-language',
             'relative w-fit h-fit z-[1] font-poppins text-xl',
             className
@@ -77,11 +54,11 @@ const SelectLanguage = ({ className }: ClassNameInterface) => {
                 <Image
                     className={cn('h-auto w-[90%] rounded-[5px]')}
                     alt='current-flag'
-                    src={ languageFlags[language.current as Language].flag }
+                    src={ `/flags/${language.flag_img as Language}` }
                     width={24}
                     height={24}
                 />
-                <p>{ languageFlags[language.current as Language].denomination }</p>
+                <p>{ language.denomination }</p>
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -119,11 +96,11 @@ const SelectLanguage = ({ className }: ClassNameInterface) => {
                                     <Image
                                         className="h-[35px] w-[85%] rounded-[5px] self-center justify-self-center"
                                         alt={`${name}-flag`}
-                                        src={ languageFlags[name as Language].flag }
+                                        src={ `/flags/${ManageLanguages.getSentences(name).flag_img}` }
                                         width={200}
                                         height={500}
                                     />
-                                    <p>{ languageFlags[name as Language].denomination }</p>
+                                    <p>{ ManageLanguages.getSentences(name).denomination }</p>
                                 </div>)
                             }) 
                     }

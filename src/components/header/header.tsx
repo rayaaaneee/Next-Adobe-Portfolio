@@ -74,7 +74,6 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
         }
         
         const clickOutsideMenu = (e: MouseEvent) => {
-            console.log(mediaMenu.current, mediaMenu.current?.classList.contains("active"), !!(e.target as HTMLElement).closest('#menu-container'));
             if (mediaMenu.current?.classList.contains("active") && !(e.target as HTMLElement).closest('#menu-container')) {
                 if ((checkbox as HTMLInputElement).checked) {
                     (checkbox as HTMLInputElement).click();
@@ -106,9 +105,9 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
 
     return (
         <header>
-            <Link href="/">
+            <Link href="/" className='w-[70px] h-[70px] fixed top-4 left-4 z-[1]'>
                 <Logo color={location === '/' ? LogoColors.white : LogoColors.theme} className={cn(
-                    "w-[70px] h-[70px] fixed top-4 left-4 z-[1]",
+                    "w-full h-full",
                     { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
                 )}/>
             </Link>
@@ -119,15 +118,16 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                     "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu [&>*]:duration-450 [&>*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active>*]:pointer-events-auto",
-                    "[&.active]:p-0 [&.active]:cursor-auto [&.active]:w-[450px] [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
+                    "[&.active]:p-0 [&.active]:cursor-auto [&.active]:w-screen [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
+                    "md:[&.active]:w-[450px]",
                     "dark:bg-menu-dark dark:[&_*]:text-white",
                 )} ref={ mediaMenu }>
                     <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
                     { hasFooter && ( 
-                        <Link href={'/'}>
+                        <Link href={'/'} className='w-fit h-fit'>
                             <Logo
                                 color={LogoColors.theme}
-                                className="absolute max-w-[60px] left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
+                                className="absolute left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
                             />
                         </Link>
                     ) }

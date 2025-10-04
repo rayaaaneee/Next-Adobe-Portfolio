@@ -1,4 +1,6 @@
-const spanishSentences = {
+import Sentences from "@/utils/types/language";
+
+const spanishSentences: Sentences = {
     current: "es",
     denomination: "Español",
     title: "Adobe Portfolio",
@@ -31,7 +33,7 @@ const spanishSentences = {
             "Ciberseguridad",
             "Estudiante de IT (BAC +3)"
         ],
-        shorted_description: [
+        reduced_description: [
             "Rayane Merlin",
             "Dev FullStack",
             "Ciber",
@@ -60,4 +62,4 @@ const spanishSentences = {
     }
 }
 
-export default spanishSentences;
+export default spanishSentences as Sentences;

@@ -7,13 +7,16 @@ import { TypewriterProps, useTypewriter } from 'react-simple-typewriter';
 import useTryingContext from '@/utils/hook/use-try-context';
 
 import languageContext from '@/utils/context/language-context';
+import GetStarted from './get-started';
+import TextTypeWriter from './text-type-writer';
+import BlinkingVerticalBar from './blinking-vertical-bar';
 
 const MainContainer = () => {
 
     const { language } = useTryingContext(languageContext);
 
-    const textTab: string[] = language.home.description;
-    const shortedTextTab: string[] = language.home.shorted_description;
+    const textTab: readonly string[] = language.home.description;
+    const reducedTextTab: readonly string[] = language.home.reduced_description;
 
         // Intitially longer delay for the first word
     const [delaySpeed, setDelaySpeed] = useState(3000);
@@ -27,13 +30,18 @@ const MainContainer = () => {
     }
 
     const [textTypeWriter] = useTypewriter({
-        words: textTab,
+        words: textTab as string[],
+        ...typeWriterTemplate
+    });
+
+    const [reducedTextTypeWriter] = useTypewriter({
+        words: reducedTextTab as string[],
         ...typeWriterTemplate
     });
 
     return (
         <div className={cn("container w-full h-full flex items-center justify-center")}>
-            <div id='presentationContainer' className={cn("flex flex-col gap-10")}>
+            <div id='presentationContainer' className={cn("flex flex-col gap-10 items-center md:items-start")}>
                 <h3 className={cn(
                     "font-apple to-animate appear -translate-x-10 anim-delay-0 text-blanchedalmond dark:text-[rgb(255,230,249)] global-text-shadow text-7xl ml-4",
                 )}>Welcome to</h3>
@@ -46,17 +54,12 @@ const MainContainer = () => {
                 <div id='subtitle' className={cn(
                     "flex flex-row items-center to-animate appear -translate-y-10 anim-delay-2100 justify-start gap-[1vw]"
                 )}>
-                    <h2 className={cn(
-                        'text-white [line-height:1] [text-shadow:0_0_2.15rem_rgba(0,0,0,.5)] font-adobe font-semibold text-[6vw]',
-                    )}>{ textTypeWriter }</h2>{/*  Texte dynamique  */}
-                    {/* <h2 className={cn('two')}>{ shortedTextTypeWriter }</h2> */}{/*  Texte dynamique  */}
-                    <div id='vertical-bar' className={cn(
-                        "animate-vertical-bar transition-opacity duration-300",
-                        "w-2 h-[6vw] bg-black rounded-full animate-pulse duration-100 ease-in-out",
-                    )}></div>
+                    <TextTypeWriter id='normal' className='hidden sm:block'>{ textTypeWriter }</TextTypeWriter>{/*  Texte dynamique  */}
+                    <TextTypeWriter id='reduced' className='block sm:hidden'>{ reducedTextTypeWriter }</TextTypeWriter>{/*  Texte dynamique  */}
+                    <BlinkingVerticalBar />
                 </div>
+                <GetStarted id={"two"} className='two block md:hidden to-animate appear -translate-y-3 anim-delay-2300' />
             </div>
-            {/* <Link href={'/null'} className={cn("get-start two")}>{ language.home.discover }</Link> */}
         </div>
     )
 }
