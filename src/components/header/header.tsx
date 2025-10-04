@@ -105,10 +105,12 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
 
     return (
         <header>
-            <Link href="/" className='w-[70px] h-[70px] fixed top-4 left-4 z-[1]'>
+            <Link href="/" className={cn(
+                'w-[70px] h-[70px] fixed top-4 left-4 z-[1]',
+                { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
+            )}>
                 <Logo color={location === '/' ? LogoColors.white : LogoColors.theme} className={cn(
-                    "w-full h-full",
-                    { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
+                    "w-full h-full"
                 )}/>
             </Link>
             <nav id="menu-container">
