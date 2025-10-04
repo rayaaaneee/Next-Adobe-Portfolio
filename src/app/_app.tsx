@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from "react";
 
+import ThemeProvider from "@/components/theme-provider";
+
 import languageContext from "@/utils/context/language-context";
 
-import ChildrenInterface from "@/utils/interface/children";
-import ManageLanguages, { Sentences } from "@/utils/manager/manage-language";
-import ThemeProvider from "@/components/theme-provider";
+import ManageLanguages from "@/utils/manager/manage-language";
+
+import { ChildrenInterface } from "@/utils/interface/children";
+import Sentences from "@/utils/types/language";
 
 const App = ({ children }: ChildrenInterface) => {
 
