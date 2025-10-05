@@ -55,7 +55,7 @@ const spanishSentences: Sentences = {
         personal_data: "Datos Personales",
         personal_data_text: "Es posible que se te solicite información personal que puede incluir uno o más de los siguientes elementos: <br/>• Nombre <br/>• Correo Electrónico",
         cookies: "Uso de Cookies",
-        cookies_text: "El uso de 'cookies' para recopilar información sobre ti y tu actividad en nuestro sitio. Una cookie es un pequeño elemento de datos que nuestro sitio web almacena en tu computadora y al que accede cada vez que nos visitas, para que pueda entender cómo usas nuestro sitio."
+        cookies_text: "El uso de &apos;cookies&apos; para recopilar información sobre ti y tu actividad en nuestro sitio. Una cookie es un pequeño elemento de datos que nuestro sitio web almacena en tu computadora y al que accede cada vez que nos visitas, para que pueda entender cómo usas nuestro sitio."
     },
     not_found: {
         title: "Página no encontrada"

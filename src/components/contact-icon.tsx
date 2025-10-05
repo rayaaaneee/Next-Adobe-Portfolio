@@ -7,7 +7,7 @@ import Tooltip, { TooltipPosition, TooltipSize } from './tooltip'
 import ClassNameInterface from '@/utils/interface/classname';
 
 export enum IconSize {
-    sm = 'w-16 h-16',
+    sm = 'md:w-16 md:h-16 xs:w-12 xs:h-12 w-10 h-10',
     md = 'md:w-20 md:h-20 sm:w-16 sm:h-16 w-12 h-12',
 }
 

@@ -2,6 +2,7 @@
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [ ] Medias
+  * [ ] Tooltip media queries
   * [ ] Menu medias
   * [ ] Index page medias
   * [X] Made Medias for background (to start)

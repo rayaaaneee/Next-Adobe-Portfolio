@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 
-import { HeadingOne } from "@/components/page-flow";
+import { FaLocationDot } from "react-icons/fa6";
+
+import { HeadingOne, HeadingTwo, Paragraph } from "@/components/page-flow";
 
 import ContactLinks from "@/components/contact-links";
 import { IconSize } from "@/components/contact-icon";
@@ -17,12 +19,16 @@ const Home = () => {
         )}>
             <article>
                 <HeadingOne>Rayane Merlin</HeadingOne>
-                <ContactLinks size={IconSize.sm} tooltips={false}  className={cn(
-                    "w-1/2 mt-4 gap-[unset] justify-between",
+                <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
+                <FaLocationDot/>
+                <HeadingTwo>Links</HeadingTwo>
+                <ContactLinks size={IconSize.sm} tooltips className={cn(
+                    "w-fit mt-4 gap-7 justify-between",
                 )} />
             </article>
             <article>
                 <HeadingOne>About me</HeadingOne>
+                <Paragraph>Hello ! I&apos;m Rayane ...</Paragraph>
             </article>
             <article>
                 <HeadingOne>Experience</HeadingOne>

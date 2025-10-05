@@ -6,6 +6,8 @@ import Background from "@/components/background";
 
 import "@/asset/scss/styles.scss";
 import { cn } from "@/lib/utils";
+import { ChildrenInterface } from "@/utils/interface/children";
+import ManageLanguages from "@/utils/manager/manage-language";
 
 export const metadata: Metadata = {
   title: "Adobe Portfolio",
@@ -14,19 +16,16 @@ export const metadata: Metadata = {
 
 const RootLayout = ({
     children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) => (<html lang="en" suppressHydrationWarning>
+}: Readonly<ChildrenInterface>) => (
+    <html lang={ManageLanguages.defaultLanguage} suppressHydrationWarning>
         <body className={cn(
             "antialiased", 
             "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto"
         )}>
             <App>
-                <>
-                    <Header hasFooter={true} />
-                    <Background />
-                    {children}
-                </>
+                <Header hasFooter={true} />
+                <Background />
+                { children }
             </App>
         </body>
     </html>
