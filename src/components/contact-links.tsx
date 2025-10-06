@@ -5,10 +5,12 @@ import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 import styles from "@/asset/scss/home/footer-links.module.scss";
 import { ChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
+import { TooltipSize } from "./tooltip";
 
 export interface ContactLinksProps extends ClassNameInterface {
     animate?: boolean;
     tooltips?: boolean;
+    tooltipsSize?: TooltipSize;
     size?: IconSize;
 }
 
