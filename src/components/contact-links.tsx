@@ -14,7 +14,12 @@ export interface ContactLinksProps extends ClassNameInterface {
     size?: IconSize;
 }
 
-const ContactLinks = ({className, id, animate = false, tooltips = true, size = IconSize.md}: ContactLinksProps) => {
+const ContactLinks = ({className, id, animate = false, tooltips = true, tooltipsSize = TooltipSize.lg, size = IconSize.md}: ContactLinksProps) => {
+
+    if (!tooltips && (tooltipsSize)) {
+        throw new Error("tooltipSize cannot be used if tooltip is deactivated");
+    }
+    
 
     const usernameDivClassname = 'flex flex-row items-center gap-0';
 	const UsernameDivBase = ({ children }: ChildrenInterface) => (<div className={usernameDivClassname}><b>@</b><i>{children}</i></div>);
@@ -39,6 +44,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, size = I
                 <ContactIcon
                     size={size}
                     tooltip={tooltips}
+                    tooltipSize={tooltipsSize}
                     tooltipClassName={tooltips ? cn(
                         {'to-animate appear translate-y-3': animate},
                         {[`anim-delay-${1200 + (index * 200)}`]: animate},

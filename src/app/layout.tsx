@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { cn } from "@/lib/utils";
 
@@ -15,18 +15,56 @@ import darkFavicon from '@/asset/img/favicon/favicon-dark-theme.png';
 
 import "@/asset/scss/styles.scss";
 
+const APP_DEFAULT_TITLE = "Adobe Portfolio";
+const APP_TITLE_TEMPLATE = `%s - ${APP_DEFAULT_TITLE}`;
+const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
+
 export const metadata: Metadata = {
-    title: "Adobe Portfolio",
-    description: "By Rayane Merlin",
+    title: { 
+        default: APP_DEFAULT_TITLE, 
+        template: APP_TITLE_TEMPLATE
+    },
+    manifest: "/manifest.json",
+    description: APP_DESCRIPTION,
     icons: {
         icon: [
             { rel: 'icon', url: lightFavicon.src, media: '(prefers-color-scheme: light)' },
             { rel: 'icon', url: darkFavicon.src, media: '(prefers-color-scheme: dark)' },
-        ]
-        // shortcut: "/favicon-16x16.png",
-       // apple: "/apple-touch-icon.png",
-    }
+        ],
+        shortcut: lightFavicon.src,
+        apple: [
+            { url: lightFavicon.src, media: '(prefers-color-scheme: light)' },
+            { url: darkFavicon.src, media: '(prefers-color-scheme: dark)' }
+        ],
+    },
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "default",
+        title: APP_DEFAULT_TITLE,
+        // startUpImage: [],
+    },
+    openGraph: {
+        // Todo
+    },
+    twitter: {
+        // Todo
+    },
+    formatDetection: {
+      telephone: false,
+    },
 };
+
+export const viewport: Viewport = {
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+        { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    ],
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: true,
+    viewportFit: 'cover',
+}
 
 const RootLayout = ({
     children,

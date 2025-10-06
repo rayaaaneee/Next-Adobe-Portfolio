@@ -5,7 +5,9 @@ import { FaLocationDot } from "react-icons/fa6";
 import { HeadingOne, HeadingTwo, Paragraph } from "@/components/page-flow";
 
 import ContactLinks from "@/components/contact-links";
+
 import { IconSize } from "@/components/contact-icon";
+import { TooltipSize } from "@/components/tooltip";
 
 const Home = () => {
     return (
@@ -22,7 +24,7 @@ const Home = () => {
                 <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
                 <FaLocationDot/>
                 <HeadingTwo>Links</HeadingTwo>
-                <ContactLinks size={IconSize.sm} tooltips className={cn(
+                <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
                     "w-fit mt-4 gap-7 justify-between",
                 )} />
             </article>

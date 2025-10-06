@@ -1,4 +1,6 @@
 * [X] Fix Menu Animation (broken)
+* [ ] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
+* [ ] Make metadatas
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [ ] Medias

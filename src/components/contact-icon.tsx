@@ -23,11 +23,12 @@ export interface ContactIconType extends ClassNameInterface {
 export interface ContactIconProps extends ClassNameInterface {
     link: ContactIconType,
     tooltip?: boolean,
+    tooltipSize?: TooltipSize,
     tooltipClassName?: string,
     size?: IconSize,
 }
 
-const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, tooltipClassName }: ContactIconProps) => {
+const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, tooltipClassName, tooltipSize = TooltipSize.lg }: ContactIconProps) => {
 
 
     if (!tooltip && tooltipClassName) {
@@ -38,7 +39,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
         <Tooltip 
             disabled={!tooltip}
             className={cn('rounded-full', tooltipClassName)}
-            size={TooltipSize.lg} 
+            size={tooltipSize} 
             position={TooltipPosition.top} 
             text={link.username || link.title}
             id={id}>
