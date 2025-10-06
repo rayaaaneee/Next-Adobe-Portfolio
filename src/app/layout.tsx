@@ -10,10 +10,10 @@ import Background from "@/components/background";
 import { ChildrenInterface } from "@/utils/interface/children";
 import ManageLanguages from "@/utils/manager/manage-language";
 
-import lightFavicon from '@/asset/img/favicon/favicon-light-theme.png';
-import darkFavicon from '@/asset/img/favicon/favicon-dark-theme.png';
+import lightFavicon from '~/img/favicon/favicon-light-theme.png';
+import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-import "@/asset/scss/styles.scss";
+import "~/scss/styles.scss";
 
 const APP_DEFAULT_TITLE = "Adobe Portfolio";
 const APP_TITLE_TEMPLATE = `%s - ${APP_DEFAULT_TITLE}`;

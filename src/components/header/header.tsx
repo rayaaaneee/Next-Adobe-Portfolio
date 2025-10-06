@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useRef, useState } from 'react';
-import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
-import useTryingContext from '@/utils/hook/use-try-context';
 
 import { cn } from '@/lib/utils';
+
+import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
+import useTryingContext from '@/utils/hook/use-try-context';
 
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 

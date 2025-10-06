@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import styles from "@/asset/scss/header/logo.module.scss";
+import styles from "~/scss/header/logo.module.scss";
 
 import { cn } from "@/lib/utils";
 import ClassNameInterface from "@/utils/interface/classname";

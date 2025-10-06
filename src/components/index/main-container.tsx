@@ -58,7 +58,7 @@ const MainContainer = () => {
                     <TextTypeWriter id='reduced' className='block sm:hidden'>{ reducedTextTypeWriter }</TextTypeWriter>{/*  Texte dynamique  */}
                     <BlinkingVerticalBar />
                 </div>
-                <GetStarted id={"two"} className='two block md:hidden to-animate appear -translate-y-3 anim-delay-2300' />
+                <GetStarted id={"two"} colored className='two block md:hidden to-animate appear -translate-y-3 anim-delay-2300' />
             </div>
         </div>
     )

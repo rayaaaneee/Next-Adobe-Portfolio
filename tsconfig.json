@@ -19,7 +19,9 @@
             }
         ],
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "~/*": ["./src/asset/*"],
+            "/*": ["./public/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "colors.mjs", "next.config.mts"],

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { ChildrenInterface } from '@/utils/interface/children';
 
+import { ChildrenInterface } from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
 
 export interface TextTypeWriterProps extends ClassNameInterface, ChildrenInterface {}

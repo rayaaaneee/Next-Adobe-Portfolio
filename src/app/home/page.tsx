@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { cn } from "@/lib/utils";
 
 import { FaLocationDot } from "react-icons/fa6";
@@ -8,6 +9,10 @@ import ContactLinks from "@/components/contact-links";
 
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
+
+export const metadata: Metadata = {
+    title: "Portfolio",
+};
 
 const Home = () => {
     return (

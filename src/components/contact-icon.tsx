@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils'
 
+import Tooltip, { TooltipPosition, TooltipSize } from './tooltip'
 import { ChildrenType } from '@/utils/interface/children';
 
-import Tooltip, { TooltipPosition, TooltipSize } from './tooltip'
 import ClassNameInterface from '@/utils/interface/classname';
 
 export enum IconSize {
@@ -31,8 +31,8 @@ export interface ContactIconProps extends ClassNameInterface {
 const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, tooltipClassName, tooltipSize = TooltipSize.lg }: ContactIconProps) => {
 
 
-    if (!tooltip && tooltipClassName) {
-        throw new Error("tooltipClassName cannot be used if tooltip is deactivated");
+    if (!tooltip && (tooltipClassName || tooltipSize)) {
+        throw new Error("tooltipClassName and tooltipSize cannot be used if tooltip is deactivated");
     }
     
     return (

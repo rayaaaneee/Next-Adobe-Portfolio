@@ -1,12 +1,13 @@
-import { HeadingOne } from '@/components/page-flow'
-import React from 'react'
+import { Metadata } from 'next';
+import ComingSoon from '@/components/coming-soon';
+
+export const metadata: Metadata = {
+    title: "Blog",
+}
 
 const Blog = () => {
     return (
-        <main>
-            <HeadingOne>Blog</HeadingOne>
-            <div>Coming soon...</div>
-        </main>
+        <ComingSoon title="Blog" />
     )
 }
 
