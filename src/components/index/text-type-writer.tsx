@@ -33,7 +33,7 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
         ...typeWriterTemplate
     });
 
-    const emptyChar: string = '\u200B';
+    const emptyChar: string = '\u200B'; // Invisible character to prevent layout shift
 
     return (
         <h2 id={`typerWriter-${id}`} className={cn(
