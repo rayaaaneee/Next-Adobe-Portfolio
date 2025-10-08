@@ -3,6 +3,7 @@
 * [ ] Make metadatas
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
+* [ ] Fix .env access to store Resume filename
 * [ ] Medias
   * [ ] Tooltip media queries
   * [ ] Menu medias
