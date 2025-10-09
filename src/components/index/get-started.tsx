@@ -20,7 +20,7 @@ const GetStarted = ({
     colored = false
 }: GetStartedProps) => {
 
-    const text = useTryingContext(languageContext).language.home.discover;
+    const text: string = useTryingContext(languageContext).language.index.discover;
 
     return (
         <Link id={`getStarted-${id}`} href={'/home'} className={cn(

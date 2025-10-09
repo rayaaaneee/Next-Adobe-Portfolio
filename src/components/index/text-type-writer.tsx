@@ -14,8 +14,8 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
 
     const { language } = useTryingContext(languageContext);
 
-    const textTab: readonly string[] = language.home.description;
-    const reducedTextTab: readonly string[] = language.home.reduced_description;
+    const textTab: readonly string[] = language.index.description;
+    const reducedTextTab: readonly string[] = language.index.reduced_description;
 
         // Intitially longer delay for the first word
     const [delaySpeed, setDelaySpeed] = useState(3000);

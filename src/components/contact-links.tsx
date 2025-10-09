@@ -28,12 +28,16 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
 	const linkedinUsername =  <UsernameDivBase>rayanemerlin</UsernameDivBase>;
     const githubUsername = <UsernameDivBase>rayaaaneee</UsernameDivBase>;
 
+    if (!process.env.RESUME_FILENAME) {
+        throw new Error("RESUME_FILENAME environment variable is not set or Component is not under SSR");
+    }
+
     const footerLinks: ContactIconType[] = [
         { title: "Linked In", username: linkedinUsername, className: styles.linkedin, link: "https://www.linkedin.com/in/rayanemerlin/", target: "_blank", rel: "noreferrer" },
         { title: "Github", username: githubUsername, className: styles.github, link: "https://github.com/rayaaaneee", target: "_blank", rel: "noreferrer" },
         { title: "Mail", className: styles.mail, link: "mailto:rayane.merlin8@gmail.com" },
         { title: "Phone", className: styles.phone, link: "tel:+33768283277" },
-        { title: "Resume", className: styles.resume, link: process.env.RESUME_FILENAME as string, target: "_blank", rel: "noreferrer" },
+        { title: "Resume", className: styles.resume, link: process.env.RESUME_FILENAME, target: "_blank", rel: "noreferrer" },
     ]
 	
   	return (

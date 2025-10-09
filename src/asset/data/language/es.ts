@@ -20,12 +20,14 @@ const spanishSentences: Sentences = {
         illustration_inspiration: "Ilustración inspirada en El Señor de los Anillos: Los Anillos del Poder. Para más detalles e información legal, visite la pantalla."
     },
     menu: {
+        index: "Inicio",
         home: "Portfolio",
         blog: "Blog",
         about: "Acerca de"
     },
-    home: {
+    index: {
         title: "Adobe Portfolio - Rayane Merlin",
+        welcome_to: "Bienvenido a",
         discover: "Empezar",
         description: [
             "Rayane Merlin",
@@ -39,6 +41,8 @@ const spanishSentences: Sentences = {
             "Ciber",
             "Estudiante IT"
         ]
+    },
+    home: {
     },
     about: {
         title: "Acerca de",

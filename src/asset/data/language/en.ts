@@ -20,12 +20,14 @@ const englishSentences: Sentences = {
         illustration_inspiration: "Illustration inspired by The Lord of the Rings: The Rings of Power. \"For more details and legal information, please visit the screen.\""
     },
     menu: {
+        index: "Lobby",
         home: "Portfolio",
         blog: "Blog",
         about: "About"
     },
-    home: {
+    index: {
         title: "Adobe Portfolio - Rayane Merlin",
+        welcome_to: "Welcome to",
         discover: "Get started",
         description: [
             "Rayane Merlin", 
@@ -39,6 +41,8 @@ const englishSentences: Sentences = {
             "Cyber",
             "IT Student"
         ]
+    },
+    home: {
     },
     about: {
         title: "About",

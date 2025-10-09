@@ -19,12 +19,14 @@ const frenchSentences = {
         illustration_inspiration: "Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. \"Pour obtenir plus de détails et des informations juridiques, rendez vous sur l&apos;écran.\""
     },
     menu: {
+        index: "Accueil",
         home: "Portfolio",
         blog: "Blog",
         about: "À propos"
     },
-    home: {
+    index: {
         title: "Adobe Portfolio - Rayane Merlin",
+        welcome_to: "Bienvenue sur",
         discover: "Découvrir",
         description: [
             "Rayane Merlin", 
@@ -38,6 +40,8 @@ const frenchSentences = {
             "Cyber",
             "Étudiant IT"
         ]
+    },
+    home: {
     },
     about: {
         title: "À propos",

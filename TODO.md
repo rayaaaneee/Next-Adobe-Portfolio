@@ -1,15 +1,15 @@
 * [X] Fix Menu Animation (broken)
-* [ ] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
+* [X] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
 * [ ] Make metadatas
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
-* [ ] Fix .env access to store Resume filename
+* [X] Fix .env access to store Resume filename
 * [ ] Medias
   * [ ] Tooltip media queries
-  * [ ] Menu medias
-  * [ ] Index page medias
+  * [X] Menu medias
+  * [X] Index page medias
   * [X] Made Medias for background (to start)
-    * [ ] Change header / footer triangle size on lg-
+    * [X] Change header / footer triangle size on lg-
     * [ ] Change triangle animations using medias (ok for lg+, change for other)
 * [X] FadeIn on portfolio page
 * [X] Home : Fix pointer-events before appearance
