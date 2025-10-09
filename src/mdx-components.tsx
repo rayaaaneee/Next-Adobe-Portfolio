@@ -1,9 +1,12 @@
-import type { MDXComponents } from 'mdx/types'
+import type { MDXComponents } from 'mdx/types';
+
+import { HeadingOne, HeadingThree, HeadingTwo, Paragraph } from '@/components/page-flow';
  
 const components: MDXComponents = {
-    // Add custom components here
-    // Example:
-    // h1: (props) => <h1 style={{ color: 'tomato' }} {...props} />,
+    h1: HeadingOne,
+    h2: HeadingTwo,
+    h3: HeadingThree,
+    p: Paragraph
 }
 
 export const useMDXComponents = (): MDXComponents => (components)

@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@plugin 'tailwind-scrollbar';
+
 
 * {
 	margin: 0;
@@ -11,7 +13,31 @@
 	box-sizing: content-box;
 }
 
+:root {
+	@apply scroll-smooth;
+}
+
+:target {
+	@apply outline-none;
+}
+
 @layer utilities {
+
+	.adaptable-grid {
+		
+		@apply flex flex-col flex-wrap gap-0;
+
+		.wrapper {
+			@apply grid;
+
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / 5)), 1fr));
+
+			// & > * {
+			// 	@apply w-full m-0 p-0;
+			// }
+		}
+
+	}
 
 	.forwards { animation-fill-mode: forwards; }
 	.ease-in-out { animation-timing-function: ease-in-out; }

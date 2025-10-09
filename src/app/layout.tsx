@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
+import "~/scss/styles.scss";
+
 import { cn } from "@/lib/utils";
 
 import App from "./_app";
@@ -9,11 +11,11 @@ import Background from "@/components/background";
 
 import { ChildrenInterface } from "@/utils/interface/children";
 import ManageLanguages from "@/utils/manager/manage-language";
+import RemoveHashOnReload from "@/utils/function/remove-hash-onreload";
 
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-import "~/scss/styles.scss";
 
 const APP_DEFAULT_TITLE = "Adobe Portfolio";
 const APP_TITLE_TEMPLATE = `%s - ${APP_DEFAULT_TITLE}`;
@@ -78,6 +80,7 @@ const RootLayout = ({
                 <Header hasFooter={true} />
                 <Background />
                 { children }
+                {/* <RemoveHashOnReload /> */}
             </App>
         </body>
     </html>

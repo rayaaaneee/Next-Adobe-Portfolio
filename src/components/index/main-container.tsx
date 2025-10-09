@@ -18,7 +18,7 @@ const MainContainer = () => {
             <div id='presentationContainer' className={cn("flex flex-col gap-4 md:gap-10 items-center sm:items-start")}>
                 <h3 className={cn(
                     "font-apple to-animate appear -translate-y-10 anim-delay-0 text-blanchedalmond text-center self-center sm:self-start",
-                    "dark:text-[rgb(255,230,249)] sm:-translate-x-10 global-text-shadow text-[10vw] sm:text-[5.5vw] md:text-[4vw] ml-[1.5vw]"
+                    "dark:text-[rgb(255,230,249)] sm:-translate-x-10 sm:translate-y-0 global-text-shadow text-[10vw] sm:text-[5.5vw] md:text-[4vw] ml-[1.5vw]"
                 )}>{language.index.welcome_to}</h3>
                 <h1 className={cn(
                     "font-adobebold to-animate appear translate-y-10 anim-delay-400 self-center sm:self-start text-center sm:text-start text-[23vw] sm:text-[12vw] leading-[13.5vw] sm:leading-[0.8] text-wrap sm:text-nowrap font-medium text-[rgb(251,246,233)] dark:text-title-dark global-text-shadow",

@@ -33,6 +33,7 @@ export interface TooltipInterface extends ChildrenInterface, ClassNameInterface 
     forceShow?: boolean;
     disabled?: boolean;
     tooltipClassName?: string;
+    tooltipBackgroundColor?: string;
     type?: TooltipType;
     hasIcon?: boolean;
 }
@@ -47,6 +48,7 @@ const Tooltip = ({
     disabled = false, 
     className, 
     tooltipClassName, 
+    tooltipBackgroundColor,
     type = "default", 
     hasIcon = false 
 }: TooltipInterface) => {
@@ -68,7 +70,7 @@ const Tooltip = ({
     }
 
     const getPositionClassName = (): string => {
-        let className = '';
+        let className = 'bg-[#3a3b3d]';
         switch (position) {
             case 'top':
                 className = 'top-[-4px] left-1/2 transform -translate-x-1/2 -translate-y-full';
@@ -87,7 +89,7 @@ const Tooltip = ({
     }
 
     const getTooltipTypeClassName = (): string => {
-        let className = 'bg-[#3a3b3d]';
+        let className = `bg-[${tooltipBackgroundColor}]`;
         switch (type) {
             case 'success':
                 className = 'bg-green-500';
@@ -121,14 +123,17 @@ const Tooltip = ({
     return (
         <div id={id} className={cn('relative group w-fit', className)}>
             {children}
-            <div role="tooltip" className={cn(
-                "absolute z-10 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium text-white rounded-lg shadow-sm tooltip pointer-events-none",
-                getPositionClassName(), 
-                getTooltipTypeClassName(), 
-                getSizeClassName(),
-                (forceShow && !disabled) ? "flex" : "hidden", 
-                { "group-hover:flex": !disabled && text },
-                tooltipClassName
+            <div 
+                role="tooltip"
+                style={{ backgroundColor: tooltipBackgroundColor }}
+                className={cn(
+                    getPositionClassName(), 
+                    "absolute z-10 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium text-white rounded-lg shadow-sm tooltip pointer-events-none",
+                    { [getTooltipTypeClassName()]: !tooltipBackgroundColor },
+                    getSizeClassName(),
+                    (forceShow && !disabled) ? "flex" : "hidden", 
+                    { "group-hover:flex": !disabled && text },
+                    tooltipClassName
             )}>
                 {hasIcon && getTooltipIcon()}
                 {text}

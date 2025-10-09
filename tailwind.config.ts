@@ -13,7 +13,7 @@ const config: import('tailwindcss').Config = {
         },
         {
             pattern: /anim-duration-(100|200|300|400|450|500|600)/,
-        },
+        }
     ],
     darkMode: "class", // or "media",
     future: {
