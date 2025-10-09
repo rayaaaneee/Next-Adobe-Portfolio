@@ -6,9 +6,11 @@ import { IoLogoJavascript } from "react-icons/io";
 import { FaPython } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
 import sassImg from "~/img/home/programmation-languages/sass.png";
+import cImg from "~/img/home/programmation-languages/c.png";
+import cppImg from "~/img/home/programmation-languages/cpp.png";
+import csharpImg from "~/img/home/programmation-languages/csharp.png";
 import { FaJava } from "react-icons/fa";
-import bashImg from "~/img/home/programmation-languages/bash.png";
-
+import { VscMarkdown } from "react-icons/vsc";
 import { TbSql } from "react-icons/tb";
 import { RiPhpFill } from "react-icons/ri";
 import { TbBrandKotlin } from "react-icons/tb";
@@ -47,19 +49,19 @@ const programmingLanguages = [
     {
         name: "C",
         color: "#A8B9CC",
-        //icon: "c",
+        icon: cImg,
         link: "https://en.wikipedia.org/wiki/C_(programming_language)"
     },
     {
         name: "C++",
         color: "#00599C",
-        //icon: "cpp",
+        icon: cppImg,
         link: "https://isocpp.org/"
     },
     {
         name: "C#",
-        color: "#239120",
-        //icon: "csharp",
+        color: "#9b4f97",
+        icon: csharpImg,
         link: "https://learn.microsoft.com/en-us/dotnet/csharp/"
     },
     {
@@ -69,13 +71,13 @@ const programmingLanguages = [
         link: "https://www.java.com/"
     },
     {
-        name: "Bash",
-        color: "#283037",
-        icon: bashImg,
-        link: "https://www.gnu.org/software/bash/"
+        name: "Markdown",
+        color: "#000000",
+        icon: VscMarkdown,
+        link: "https://www.markdownguide.org/"
     },
     {
-        name: "SQL",
+        name: "Structured Query Language (SQL)",
         color: "#4479A1",
         icon: TbSql,
         link: "https://en.wikipedia.org/wiki/SQL"
@@ -94,8 +96,6 @@ const programmingLanguages = [
     }
 ] as AdaptableGridElementData[];
 
-export type Languages = DeepReadonly<typeof programmingLanguages>;
+export type ProgrammingLanguage = DeepReadonly<typeof programmingLanguages>;
 
-// export type LanguageName = Languages[number]['name'];
-
-export default programmingLanguages;
+export default programmingLanguages as ProgrammingLanguage;

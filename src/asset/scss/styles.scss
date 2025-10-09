@@ -30,11 +30,12 @@
 		.wrapper {
 			@apply grid;
 
-			grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / 5)), 1fr));
-
-			// & > * {
-			// 	@apply w-full m-0 p-0;
-			// }
+			@for $i from 1 through 10 {
+			  &.cols-#{$i} {
+			    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / #{$i})), 1fr));
+			  }
+			}
+			
 		}
 
 	}

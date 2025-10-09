@@ -21,12 +21,12 @@ import {
 import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
-import AdaptableGrid from "@/components/home/adaptable-grid";
+import AdaptableGrid, { AdaptableGridElementData } from "@/components/home/adaptable-grid";
 
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
 
-import programmingLanguages from "@/asset/data/home/programming-language";
+import programmingLanguages, { ProgrammingLanguage } from "@/asset/data/home/programming-language";
 
 export const metadata: Metadata = {
     title: "Portfolio",

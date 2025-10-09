@@ -54,7 +54,7 @@ const Tooltip = ({
 }: TooltipInterface) => {
 
     const getSizeClassName = (): string => {
-        let className = '';
+        let className: string = '';
         switch (size) {
             case TooltipSize.sm:
                 className = 'text-xs px-2 py-1';
@@ -70,7 +70,7 @@ const Tooltip = ({
     }
 
     const getPositionClassName = (): string => {
-        let className = 'bg-[#3a3b3d]';
+        let className: string = '';
         switch (position) {
             case 'top':
                 className = 'top-[-4px] left-1/2 transform -translate-x-1/2 -translate-y-full';
@@ -89,7 +89,7 @@ const Tooltip = ({
     }
 
     const getTooltipTypeClassName = (): string => {
-        let className = `bg-[${tooltipBackgroundColor}]`;
+        let className: string = `bg-[#3a3b3d]`;
         switch (type) {
             case 'success':
                 className = 'bg-green-500';
