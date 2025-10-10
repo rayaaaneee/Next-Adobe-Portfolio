@@ -19,7 +19,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const seeMoreButtonRef = useRef<HTMLAnchorElement | null>(null);
+    const seeMoreButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const isInteractive: boolean = nbWrappers > 1;
 
@@ -32,7 +32,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
     const toggleLastWrappers = () => {
 
-        verifyReference<HTMLAnchorElement>(seeMoreButtonRef, "seeMoreButtonRef");
+        verifyReference<HTMLButtonElement>(seeMoreButtonRef, "seeMoreButtonRef");
 
         const anchorElement = seeMoreButtonRef.current!.closest(".adaptable-grid");
 
@@ -48,7 +48,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
                 // on open
                 setTimeout(() => {
                     wrapper.classList.remove(heightClassToggled);
-                }, transitionDuration + 200);
+                }, transitionDuration);
             } else {
                 // on close
                 wrapper.classList.add(heightClassToggled);
@@ -66,20 +66,22 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
         setTimeout(() => {
 
-            seeMoreButtonRef.current!.textContent = text;
-            seeMoreButtonRef.current?.classList.remove(heightClassToggled);
-            setTimeout(() => toggleLastWrappers(), transitionDuration);
+            seeMoreButtonRef.current!.querySelector("h3")!.textContent = text;
+
+            setTimeout(() => {
+                toggleLastWrappers();
+                seeMoreButtonRef.current?.classList.remove(heightClassToggled);
+            }, transitionDuration);
             
         }, transitionDuration);
 
     }, [isExpanded]);
 
     return (
-        <Button hover={isInteractive} className={cn(
+        <Button hover={isInteractive} ref={seeMoreButtonRef} className={cn(
             "w-full h-16 rounded-t-none"
         )}>
-            <HeadingThree
-                ref={seeMoreButtonRef} 
+            <HeadingThree 
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
                 id={`see-more-${id}`} 
                 className='m-0'

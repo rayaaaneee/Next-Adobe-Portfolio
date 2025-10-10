@@ -87,7 +87,7 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
                 containerClassName
             )}>
             {icon}
-            <h3 id={id} className={cn(headingBaseClassName, className)}>
+            <h3 id={`text-${id}`} className={cn(headingBaseClassName, className)}>
                 {children}
             </h3>
         </a>
@@ -147,23 +147,27 @@ export interface ButtonPropsInterface extends PageFlowBaseInterface {
     hover?: boolean;
 }
 
-export const Button = ({ className, children, id, onClick, hover = true }: ButtonPropsInterface) => (
-    <button
-        id={id} 
-        onClick={onClick}
-        className={cn(
-            "flex items-center justify-center",
-            `transition-[height,background-color]`,
-            `duration-400 ease-in-out rounded-lg`,
-            "w-fit h-fit overflow-hidden",
-            "bg-[rgba(255,255,255,0.75)] [&.active]:bg-[rgba(245,233,225,0.75)] [&.active]:hover:bg-[rgba(219,219,219,0.75)]",
-            {"cursor-pointer hover:bg-[rgba(239,239,239,0.75)]": hover},
-            {"cursor-default": !hover},
-            "outline-none",
-            "[&.active]:scale-95",
-            className,
-        )}
-    >
-        {children}
-    </button>
+export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
+    ({ className, children, id, onClick, hover = true }, ref) => (
+        <button
+            ref={ref}
+            id={id}
+            onClick={onClick}
+            className={cn(
+                "flex items-center justify-center",
+                `transition-[height,background-color]`,
+                `duration-400 ease-in-out rounded-lg`,
+                "w-fit h-fit overflow-hidden",
+                "bg-[rgba(255,255,255,0.75)] [&.active]:bg-[rgba(245,233,225,0.75)] [&.active]:hover:bg-[rgba(219,219,219,0.75)]",
+                { "cursor-pointer hover:bg-[rgba(239,239,239,0.75)]": hover },
+                { "cursor-default": !hover },
+                "outline-none",
+                "[&.active]:scale-95",
+                className,
+            )}
+        >
+            {children}
+        </button>
+    )
 );
+Button.displayName = "Button";
