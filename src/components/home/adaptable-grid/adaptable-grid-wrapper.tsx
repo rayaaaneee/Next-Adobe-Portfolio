@@ -1,9 +1,10 @@
 import cn from '@/utils/function/cn';
 
-import React from 'react'
-import Tooltip, { TooltipSize } from '../tooltip';
+import Tooltip, { TooltipSize } from '@/components/tooltip';
+
 import { AdaptableGridElementData } from './adaptable-grid';
 import AdaptableGridElement from './adaptable-grid-element';
+
 import { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 export type IndexesType = { i: number; j: number };
@@ -24,19 +25,7 @@ const AdaptableGridWrapper = ({ elements, nbElements, className, index }: Adapta
         className
     )}>
         { elements.slice(index, index + nbElements).map((element, j) => (
-            <Tooltip 
-                disabled
-                tooltipBackgroundColor={element.color} 
-                key={`${index}-${j}`} 
-                className={cn(
-                    `w-full size-element`,
-                    className,
-                )} 
-                tooltipClassName="shadow-none" 
-                text={element.name} 
-                size={TooltipSize.lg}>
-                <AdaptableGridElement element={element} index={j} />
-            </Tooltip>
+            <AdaptableGridElement key={`${index}-${j}`} element={element} index={j} />
         ))}
     </div>
   )

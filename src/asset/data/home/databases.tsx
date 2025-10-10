@@ -2,13 +2,12 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/home/adaptable-grid';
+import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import { baseImageProps, baseIconProps } from './base';
 
 import sqliteImg from "~/img/home/databases/sqlite.png";
 import { GrMysql } from "react-icons/gr";
-
 import { TbBrandMongodb } from "react-icons/tb";
 import firebaseImg from "~/img/home/databases/firebase.png";
 

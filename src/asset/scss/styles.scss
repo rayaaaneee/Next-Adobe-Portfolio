@@ -26,7 +26,7 @@
 
 	.adaptable-grid {
 		
-		@apply flex flex-col flex-wrap gap-0;
+		@apply flex-col flex-wrap gap-0 my-8;
 
 		/* Wrapper for grid, supporting from 1 to 10 columns and hover effect 
 		(1.5fr on hover, 1fr otherwise) */

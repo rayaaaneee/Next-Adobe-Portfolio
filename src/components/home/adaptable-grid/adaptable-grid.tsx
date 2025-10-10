@@ -9,9 +9,9 @@ import AdaptableGridSeeMoreButton from "./adaptable-grid-see-more-button";
 
 export interface AdaptableGridElementData {
     name: string;
-    icon?: ChildrenType;
     color: string;
     link: string;
+    icon?: ChildrenType;
     description?: string;
     imageAlt?: string;
 }
@@ -23,16 +23,16 @@ export const isOneToTen = (n: number): n is oneToTen => {
 } 
 
 export interface AdaptableGridProps extends ClassNameInterface {
-    elementsPerRow?: oneToTen;
     elements: DeepReadonliable<AdaptableGridElementData[]>;
+    elementsPerRow: oneToTen;
+    hidden?: boolean;
 }
 
 // Complete grid
-const AdaptableGrid = ({ className, id, elementsPerRow = 5, elements }: AdaptableGridProps) => {
+const AdaptableGrid = ({ className, id, elementsPerRow, elements, hidden = false }: AdaptableGridProps) => {
 
     if (!id) throw new Error("An id must be provided to AdaptableGrid");
     if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
-
     if (elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
     if (elementsPerRow && elementsPerRow <= 0) throw new Error("elementsPerRow must be greater than 0");
 
@@ -42,7 +42,11 @@ const AdaptableGrid = ({ className, id, elementsPerRow = 5, elements }: Adaptabl
     if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 
     return (
-        <div className={cn('adaptable-grid', className)} id={id}>
+        <div className={cn(
+            'adaptable-grid',
+            [hidden ? "hidden" : "flex"], 
+            className
+        )} id={id}>
             {elements.map((_, i) => (
                 ((() => {
                     const elementsInWrapper: number = Math.min(elementsPerRow, elementCount - i);
@@ -60,9 +64,7 @@ const AdaptableGrid = ({ className, id, elementsPerRow = 5, elements }: Adaptabl
                     )
                 })())
             ))}
-            { nbWrappers > 1 && (
-                <AdaptableGridSeeMoreButton id={id} nbWrappers={nbWrappers} />
-            ) }
+            <AdaptableGridSeeMoreButton id={id} nbWrappers={nbWrappers} />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementData } from '@/components/home/adaptable-grid';
+import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import { baseImageProps, baseIconProps } from './base';
 

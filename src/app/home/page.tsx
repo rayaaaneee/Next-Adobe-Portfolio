@@ -4,11 +4,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import { FaLocationDot } from "react-icons/fa6";
-import { LuCodeXml } from "react-icons/lu";
-import { FaCloud } from "react-icons/fa";
-import { AiFillTool } from "react-icons/ai";
-import { VscLibrary } from "react-icons/vsc";
-import { BsStack } from "react-icons/bs";
 
 import { 
     HeadingOne, 
@@ -21,16 +16,11 @@ import {
 import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
-import AdaptableGrid from "@/components/home/adaptable-grid";
 
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
-
-import programmingLanguages from "@/asset/data/home/programming-language";
-import frameworks from "@/asset/data/home/frameworks";
-import libraries from "@/asset/data/home/libraries";
-import devTools from "@/asset/data/home/dev-tools";
-import databases from "@/asset/data/home/databases";
+import SkillsContainer from "@/components/home/skills-container";
+import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -39,7 +29,7 @@ export const metadata: Metadata = {
 const Home = () => {
     return (
         <main className={cn(
-            "justify-self-center to-animate fade anim-delay-200 anim-duration-300 rounded-xl h-fit",
+            "relative justify-self-center to-animate fade anim-delay-200 anim-duration-300 rounded-xl h-fit",
             "bg-[rgb(255,255,255,0.2)] dark:bg-[rgb(0,0,0,0.2)] backdrop-blur-md",
             "box-border ",
             "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
@@ -47,8 +37,8 @@ const Home = () => {
             "py-5 sm:py-7 md:py-10 xl:py-20",
             "[&>article]:px-5 sm:[&>article]:px-7 md:[&>article]:px-10 xl:[&>article]:px-20"
         )}>
-            <article className="relative">
-                <Image className={cn("absolute w-48 h-48 top-4 right-4 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
+            <Image className={cn("absolute w-48 h-48 top-24 right-24 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
+            <article>
                 <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
                 <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
                 <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
@@ -72,9 +62,8 @@ const Home = () => {
                     I&apos;ve been improving through both personal projects and professional experience.
                     <br/> I hold a BUT in Computer Science from the University of Lyon 1 (Development & 
                     Implementation Program) and am currently pursuing a three-year engineering degree at CPE Lyon, 
-                    specializing in Cybersecurity Computer Engineering.<br/> I completed an apprenticeship at 
-                    Sanofi as a DevOps Developer during my final year of the BUT. Energy Pool has continued to support 
-                    me by hiring me as a Blue Team member (vulnerabilities protection) throughout my engineering studies. This role is 
+                    specializing in Cybersecurity Computer Engineering.<br/> I&apos;m currently working at Energy Pool 
+                    as a Blue Team member (vulnerabilities protection) throughout my engineering studies. This role is 
                     enhancing my skills in ... 
                     <br/>... certs
                 </Paragraph>
@@ -87,64 +76,16 @@ const Home = () => {
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>Some projects links...</Paragraph>
             </article>
+            {/* <AdaptableGrid id="main-projects" elements={[]} elementsPerRow={5} /> */}
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
             </article>
             <article>
-                <section>
-                    <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
-                    <Paragraph>Here&apos;s my skills ...</Paragraph>
-                </section>
+                <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
+                <Paragraph>Here&apos;s my skills ...</Paragraph>
             </article>
-            <article>
-                <HeadingTwo icon={<LuCodeXml />} id="languages" isAnchorLink>Programming Languages</HeadingTwo>
-            </article>
-            <AdaptableGrid 
-                id="grid-programming-languages" 
-                className="my-8" 
-                elementsPerRow={5} 
-                elements={programmingLanguages} 
-            />
-            <article>
-                <HeadingTwo icon={<BsStack />} id="frameworks" isAnchorLink>Frameworks</HeadingTwo>
-            </article>
-            <AdaptableGrid 
-                id="grid-frameworks" 
-                className="my-8" 
-                elementsPerRow={5} 
-                elements={frameworks} 
-            />
-            <article>
-                <HeadingTwo icon={<VscLibrary />} id="techs" isAnchorLink>Libraries</HeadingTwo>
-            </article>
-            <AdaptableGrid
-                id="grid-libraries"
-                className="my-8"
-                elementsPerRow={4}
-                elements={libraries}
-            />
-            <article>
-                <HeadingTwo icon={<AiFillTool />} id="tools" isAnchorLink>Dev Tools</HeadingTwo>
-            </article>
-            <AdaptableGrid
-                id="grid-dev-tools"
-                className="my-8"
-                elementsPerRow={5}
-                elements={devTools}
-            />
-            <article>
-                <HeadingTwo icon={<FaCloud />} id="databases" isAnchorLink>Databases</HeadingTwo>
-            </article>
-            <AdaptableGrid
-                id="grid-databases"
-                className="my-8"
-                elementsPerRow={5}
-                elements={databases}
-            />
-            <article>
-                <HeadingOne id="education" isAnchorLink>Education</HeadingOne>
-            </article>
+            <SkillsContainer />
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>

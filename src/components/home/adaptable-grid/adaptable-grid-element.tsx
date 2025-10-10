@@ -17,8 +17,6 @@ const AdaptableGridElement = ({ element, className, index }: AdaptableGridElemen
 
     const supportHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
-    console.log(supportHover);
-
     const handlingClassName: string = `hover-${index + 1}`;
 
     const onMouseEnter = (e: MouseEvent<HTMLAnchorElement>) => {

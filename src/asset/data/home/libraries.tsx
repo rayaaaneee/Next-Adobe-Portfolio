@@ -2,14 +2,17 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/home/adaptable-grid';
+import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import { baseIconProps, baseImageProps } from './base';
 
 import { FaReact } from 'react-icons/fa6';
 import { RiVuejsLine } from 'react-icons/ri';
-import { SiThreedotjs } from "react-icons/si";
 import sassImg from "~/img/home/libraries/sass.png";
+import { SiThreedotjs } from "react-icons/si";
+import { DiJqueryLogo } from "react-icons/di";
+import { SiPrisma } from "react-icons/si";
+import { SiNumpy } from "react-icons/si";
 
 const libraries = [
     {
@@ -37,28 +40,22 @@ const libraries = [
         link: "https://threejs.org/"
     },
     {
-        name: "Entity Framework Core",
-        color: "#512BD4",
-        icon: null,
-        link: "https://learn.microsoft.com/en-us/ef/core/"
-    },
-    {
         name: "JQuery",
         color: "#0769AD",
-        icon: null,
+        icon: <DiJqueryLogo {...baseIconProps} />,
         link: "https://jquery.com/"
+    },
+    {
+        name: "Prisma",
+        color: "#0C344B",
+        icon: <SiPrisma {...baseIconProps} />,
+        link: "https://www.prisma.io/"
     },
     {
         name: "NumPy",
         color: "#013243",
-        icon: null,
+        icon: <SiNumpy {...baseIconProps} />,
         link: "https://numpy.org/"
-    },
-    {
-        name: "Matplotlib",
-        color: "#11557C",
-        icon: null,
-        link: "https://matplotlib.org/"
     }
 ] as AdaptableGridElementData[];
 

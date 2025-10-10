@@ -5,7 +5,7 @@ import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
 
 import { cn } from '@/lib/utils';
 
-import { HeadingThree } from '../page-flow';
+import { Button, HeadingThree } from '@/components/page-flow';
 
 import ClassNameInterface from '@/utils/interface/classname';
 import verifyReference from '@/utils/function/verify-reference';
@@ -21,7 +21,12 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
     const seeMoreButtonRef = useRef<HTMLAnchorElement | null>(null);
 
-    const initialText = `See ${nbWrappers - 1} more ${nbWrappers - 1 > 1 ? "rows" : "row"}`;
+    const isInteractive: boolean = nbWrappers > 1;
+
+    const initialText = (isInteractive) ? 
+        (`See ${nbWrappers - 1} more ${nbWrappers - 1 > 1 ? "rows" : "row"}`) 
+            : 
+        "";
     const transitionDuration = 75;
     const heightClassToggled = "!h-0";
 
@@ -70,21 +75,21 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
     }, [isExpanded]);
 
     return (
-        <HeadingThree
-            ref={seeMoreButtonRef} 
-            onClick={() => setIsExpanded(!isExpanded)}
-            id={`see-more-${id}`} 
-            className='m-0'
-            containerClassName={cn(
-                "m-0 flex items-center justify-center",
-                `transition-[height,background-color]`,
-                `duration-${1000} ease-in-out`,
-                "w-full h-16 cursor-pointer overflow-hidden",
-                "bg-[rgba(255,255,255,0.75)] hover:bg-[rgba(239,239,239,0.75)]",
-                className
-            )}>
-            {initialText}
-        </HeadingThree>
+        <Button hover={isInteractive} className={cn(
+            "w-full h-16 rounded-t-none"
+        )}>
+            <HeadingThree
+                ref={seeMoreButtonRef} 
+                onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
+                id={`see-more-${id}`} 
+                className='m-0'
+                containerClassName={cn(
+                    "m-0 w-full h-full flex items-center justify-center",
+                    className
+                )}>
+                {initialText}
+            </HeadingThree>
+        </Button>
     )
 }
 

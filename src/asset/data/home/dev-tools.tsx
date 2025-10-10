@@ -2,11 +2,13 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/home/adaptable-grid';
+import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import { baseIconProps, baseImageProps } from './base';
 
 import { FaGitAlt } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
+import { TbBrandGithubCopilot } from "react-icons/tb";
 import { VscVscode } from "react-icons/vsc";
 import { DiVisualstudio } from "react-icons/di";
 import { DiIntellij } from "react-icons/di";
@@ -16,6 +18,7 @@ import postmanImg from "~/img/home/dev-tools/postman.png";
 import { FaFigma } from "react-icons/fa";
 import { PiLinuxLogo } from "react-icons/pi";
 import bashImg from "~/img/home/dev-tools/bash.png";
+import windows from "~/img/home/dev-tools/windows.png";
 
 const devTools = [
     {
@@ -23,6 +26,18 @@ const devTools = [
         color: "#F05032",
         icon: <FaGitAlt {...baseIconProps} />,
         link: "https://git-scm.com/"
+    },
+    {
+        name: "GitHub",
+        color: "#181717",
+        icon: <FiGithub {...baseIconProps} />,
+        link: "https://github.com/"
+    },
+    {
+        name: "Github Copilot",
+        color: "#6CC644",
+        icon: <TbBrandGithubCopilot {...baseIconProps} />,
+        link: "https://github.com/features/copilot"
     },
     {
         name: "VS Code",
@@ -77,6 +92,12 @@ const devTools = [
         color: "#283037",
         icon: <Image {...baseImageProps} src={bashImg.src} alt={`Bash`} />,
         link: "https://www.gnu.org/software/bash/"
+    },
+    {
+        name: "Windows",
+        color: "#0078D6",
+        icon: <Image {...baseImageProps} src={windows.src} alt={`Windows`} />,
+        link: "https://www.microsoft.com/windows"
     }
 ] as AdaptableGridElementData[];
 
