@@ -1,8 +1,12 @@
+import { MouseEventHandler } from "react";
+
 import { cn } from "@/lib/utils";
 
 import { ChildrenInterface, ChildrenType } from "@/utils/interface/children";
-import { Undefined } from "@/utils/types/nullable";
 import ClassNameInterface from "@/utils/interface/classname";
+
+import { Undefined } from "@/utils/types/nullable";
+import { forwardRef } from "react";
 
 export interface PageFlowBaseInterface extends ChildrenInterface, ClassNameInterface {}
 
@@ -26,55 +30,70 @@ const anchorLink = (isAnchorLink: Undefined<boolean>, id: Undefined<string>): Un
 export interface HeadingPropsInterface extends PageFlowBaseInterface {
     icon?: ChildrenType,
     isAnchorLink?: boolean,
+    containerClassName?: string,
+    onClick?: MouseEventHandler<HTMLAnchorElement>,
 }
 
-export const HeadingOne = ({ className, children, id, icon, isAnchorLink = false }: HeadingPropsInterface) => (
-    <a
-        href={anchorLink(isAnchorLink, id)}
-        id={id} 
-        className={cn(
-            "text-4xl",
-            headingContainerBaseClassName(isAnchorLink), 
-            className
-        )}>
-        {icon}
-        <h1 id={id} className={cn(headingBaseClassName, className)}>
-            {children}
-        </h1>
-    </a>
+export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+        <a
+            ref={ref}
+            href={anchorLink(isAnchorLink, id)}
+            onClick={onClick}
+            className={cn(
+                "text-4xl",
+                headingContainerBaseClassName(isAnchorLink),
+                containerClassName
+            )}>
+            {icon}
+            <h1 id={id} className={cn(headingBaseClassName, className)}>
+                {children}
+            </h1>
+        </a>
+    )
 );
+HeadingOne.displayName = "HeadingOne";
 
-export const HeadingTwo = ({ className, children, id, icon, isAnchorLink = false }: HeadingPropsInterface) => (
-    <a 
-        href={anchorLink(isAnchorLink, id)} 
-        id={id} 
-        className={cn(
-            "text-gray-600 text-3xl ml-4", 
-            headingContainerBaseClassName(isAnchorLink), 
-            className
-        )}>
-        {icon}
-        <h2 id={id} className={cn(headingBaseClassName, className)}>
-            {children}
-        </h2>
-    </a>
+export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+        <a
+            ref={ref}
+            href={anchorLink(isAnchorLink, id)}
+            onClick={onClick}
+            className={cn(
+                "text-gray-600 text-3xl ml-4", 
+                headingContainerBaseClassName(isAnchorLink),
+                containerClassName
+            )}>
+            {icon}
+            <h2 id={id} className={cn(headingBaseClassName, className)}>
+                {children}
+            </h2>
+        </a>
+    )
 );
+HeadingTwo.displayName = "HeadingTwo";
 
-export const HeadingThree = ({ className, children, id, icon, isAnchorLink = false }: HeadingPropsInterface) => (
-    <a
-        href={anchorLink(isAnchorLink, id)}
-        id={id} 
-        className={cn(
-            "text-gray-500 text-2xl ml-7", 
-            headingContainerBaseClassName(isAnchorLink), 
-            className
-        )}>
-        { icon }
-        <h3 id={id} className={cn(headingBaseClassName, className)}>
-            {children}
-        </h3>
-    </a>
+export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+        <a
+            ref={ref}
+            id={id}
+            href={anchorLink(isAnchorLink, id)}
+            onClick={onClick}
+            className={cn(
+                "text-gray-500 text-2xl ml-7", 
+                headingContainerBaseClassName(isAnchorLink),
+                containerClassName
+            )}>
+            {icon}
+            <h3 id={id} className={cn(headingBaseClassName, className)}>
+                {children}
+            </h3>
+        </a>
+    )
 );
+HeadingThree.displayName = "HeadingThree";
 
 export enum ParagraphAlignment {
     left = "text-left",
@@ -85,7 +104,7 @@ export enum ParagraphAlignment {
 
 export interface ParagraphPropsInterface extends PageFlowBaseInterface {
     alignment?: ParagraphAlignment,
-    indent?: boolean,
+    indent?: boolean
 }
 
 export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false }: ParagraphPropsInterface) => (

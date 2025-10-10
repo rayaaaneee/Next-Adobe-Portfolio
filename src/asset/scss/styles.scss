@@ -1,4 +1,5 @@
 @use "./_vars.scss" as *;
+@use "./defs.scss" as *;
 
 @tailwind base;
 @tailwind components;
@@ -27,15 +28,40 @@
 		
 		@apply flex flex-col flex-wrap gap-0;
 
+		/* Wrapper for grid, supporting from 1 to 10 columns and hover effect 
+		(1.5fr on hover, 1fr otherwise) */
+		// 55 classes generated for hover + 10 for no hover = 65 classes
+		// Usage: .adaptable-grid .wrapper.cols-{1-10}[.hover-{1-n}]
 		.wrapper {
-			@apply grid;
 
-			@for $i from 1 through 10 {
-			  &.cols-#{$i} {
-			    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(100% / #{$i})), 1fr));
-			  }
-			}
+			@apply grid transition-all duration-300 ease-in-out;
 			
+		  	@for $cols from 1 through 10 { // for each number of columns (1 to 10)
+
+				&.cols-#{$cols} { // for each class
+
+					// base class
+					@include grid-cols($cols); // put values
+
+				  	@for $hover from 1 through $cols { // index element hovered
+
+				    	&.hover-#{$hover} {
+
+				      		@include grid-cols-hover($cols, $hover); // put values
+
+				  		}
+
+			  		}
+
+				}
+
+			}
+
+			
+		}
+		
+		.size-element {
+			@apply h-52;
 		}
 
 	}

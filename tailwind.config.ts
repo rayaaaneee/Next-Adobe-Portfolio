@@ -5,7 +5,8 @@ const config: import('tailwindcss').Config = {
     content: [
         "./src/components/**/*.{ts,tsx,mdx}",
         "./src/app/**/*.{ts,tsx,mdx}",
-        "./src/asset/scss/**/*.scss"
+        "./src/asset/scss/**/*.scss",
+        "./src/asset/data/**/*.{ts,tsx}"
     ],
     safelist: [
         {
@@ -13,6 +14,12 @@ const config: import('tailwindcss').Config = {
         },
         {
             pattern: /anim-duration-(100|200|300|400|450|500|600)/,
+        },
+        {
+            pattern: /duration-(75|150|225|300|1000)/,
+        },
+        {
+            pattern: /transition-\[height,background-color\]/,
         }
     ],
     darkMode: "class", // or "media",
@@ -62,7 +69,7 @@ const config: import('tailwindcss').Config = {
                         "pointer-events": "auto",
                         "opacity": "1"
                     }
-                }
+                },
             },
             fontFamily: {
                 apple: ['var(--apple)'],

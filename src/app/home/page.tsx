@@ -7,7 +7,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { LuCodeXml } from "react-icons/lu";
 import { FaCloud } from "react-icons/fa";
 import { AiFillTool } from "react-icons/ai";
-import { GrTechnology } from "react-icons/gr";
+import { VscLibrary } from "react-icons/vsc";
 import { BsStack } from "react-icons/bs";
 
 import { 
@@ -21,12 +21,16 @@ import {
 import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
-import AdaptableGrid, { AdaptableGridElementData } from "@/components/home/adaptable-grid";
+import AdaptableGrid from "@/components/home/adaptable-grid";
 
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
 
-import programmingLanguages, { ProgrammingLanguage } from "@/asset/data/home/programming-language";
+import programmingLanguages from "@/asset/data/home/programming-language";
+import frameworks from "@/asset/data/home/frameworks";
+import libraries from "@/asset/data/home/libraries";
+import devTools from "@/asset/data/home/dev-tools";
+import databases from "@/asset/data/home/databases";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -47,10 +51,10 @@ const Home = () => {
                 <Image className={cn("absolute w-48 h-48 top-4 right-4 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
                 <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
                 <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
-                <HeadingThree className="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
+                <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
             </article>
             <article>
-                <HeadingTwo className="ml-0" id="links" isAnchorLink>Links</HeadingTwo>
+                <HeadingTwo containerClassName="ml-0" id="links" isAnchorLink>Links</HeadingTwo>
                 <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
                     "w-fit mt-4 gap-7 justify-between",
                 )} />
@@ -89,20 +93,55 @@ const Home = () => {
             </article>
             <article>
                 <section>
-                    <HeadingOne id="skills" isAnchorLink>Skills</HeadingOne>
+                    <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
                     <Paragraph>Here&apos;s my skills ...</Paragraph>
-                    <HeadingTwo icon={<LuCodeXml />} id="languages" isAnchorLink>Programming Languages</HeadingTwo>
                 </section>
             </article>
-            <section>
-                <AdaptableGrid className="my-8" elementsPerRow={5} elements={programmingLanguages} />
-            </section>
             <article>
-                <HeadingTwo icon={<GrTechnology />} id="techs" isAnchorLink>Technologies</HeadingTwo>
-                <HeadingTwo icon={<BsStack />} id="frameworks" isAnchorLink>Frameworks</HeadingTwo>
-                <HeadingTwo icon={<FaCloud />} id="cloud" isAnchorLink>Cloud Tools</HeadingTwo>
-                <HeadingTwo icon={<AiFillTool/>} id="tools" isAnchorLink>Tools & Platforms</HeadingTwo>
+                <HeadingTwo icon={<LuCodeXml />} id="languages" isAnchorLink>Programming Languages</HeadingTwo>
             </article>
+            <AdaptableGrid 
+                id="grid-programming-languages" 
+                className="my-8" 
+                elementsPerRow={5} 
+                elements={programmingLanguages} 
+            />
+            <article>
+                <HeadingTwo icon={<BsStack />} id="frameworks" isAnchorLink>Frameworks</HeadingTwo>
+            </article>
+            <AdaptableGrid 
+                id="grid-frameworks" 
+                className="my-8" 
+                elementsPerRow={5} 
+                elements={frameworks} 
+            />
+            <article>
+                <HeadingTwo icon={<VscLibrary />} id="techs" isAnchorLink>Libraries</HeadingTwo>
+            </article>
+            <AdaptableGrid
+                id="grid-libraries"
+                className="my-8"
+                elementsPerRow={4}
+                elements={libraries}
+            />
+            <article>
+                <HeadingTwo icon={<AiFillTool />} id="tools" isAnchorLink>Dev Tools</HeadingTwo>
+            </article>
+            <AdaptableGrid
+                id="grid-dev-tools"
+                className="my-8"
+                elementsPerRow={5}
+                elements={devTools}
+            />
+            <article>
+                <HeadingTwo icon={<FaCloud />} id="databases" isAnchorLink>Databases</HeadingTwo>
+            </article>
+            <AdaptableGrid
+                id="grid-databases"
+                className="my-8"
+                elementsPerRow={5}
+                elements={databases}
+            />
             <article>
                 <HeadingOne id="education" isAnchorLink>Education</HeadingOne>
             </article>

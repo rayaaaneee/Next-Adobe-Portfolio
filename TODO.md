@@ -4,6 +4,8 @@
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [X] Fix .env access to store Resume filename
+* [ ] Clean CSS architecture (split files)
+* [ ] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [ ] Custom scrollbar (tailwind-scrollbar)
 * [ ] Medias
   * [ ] Tooltip media queries
