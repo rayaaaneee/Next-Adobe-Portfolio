@@ -19,17 +19,17 @@ export interface AdaptableGridWrapperProps {
 
 // Grid line
 const AdaptableGridWrapper = ({ elements, nbElements, className, index, clickable }: AdaptableGridWrapperProps) => {
-  return (
-    <div className={cn(
-        "wrapper", 
-        `cols-${nbElements} overflow-hidden size-element`,
-        className
-    )}>
-        { elements.slice(index, index + nbElements).map((element, j) => (
-            <AdaptableGridElement clickable={clickable} key={`${index}-${j}`}  element={element} index={j} />
-        ))}
-    </div>
-  )
+    return (
+        <div className={cn(
+            "wrapper", 
+            `cols-${nbElements} overflow-hidden size-element`,
+            className
+        )}>
+            { elements.slice(index, index + nbElements).map((element, j) => (
+                <AdaptableGridElement clickable={clickable} key={`${index}-${j}`}  element={element} index={j} />
+            ))}
+        </div>
+    )
 }
 
 export default AdaptableGridWrapper;

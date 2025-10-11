@@ -16,13 +16,15 @@ const projects = [
         name: 'Bundlr',
         color: "rgb(144 221 239)",
         link: "https://bundlr.fr",
-        icon: null,
+        icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
+        description: "New project coming soon!"
     },
     {
         name: 'Adobe Portfolio v3',
         color: "#efde90",
         link: "https://rayanemerlin.com",
         icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
+        description: "The very website you are on right now! My personal portfolio built with Next.js and Tailwind CSS, showcasing my projects and skills.<br/>Remade with a focus on navigation compared to the V2 (React CRA)."
     },
     {
         name: "WorldMaster",

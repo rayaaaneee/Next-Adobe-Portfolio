@@ -62,5 +62,4 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
   	)
 }
 
-export default ContactLinks
-
+export default ContactLinks;

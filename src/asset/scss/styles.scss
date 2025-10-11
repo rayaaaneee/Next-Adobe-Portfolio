@@ -34,39 +34,29 @@
 		// Usage: .adaptable-grid .wrapper.cols-{1-10}[.hover-{1-n}][.click-{1-n}]
 		.wrapper {
 
-			@apply grid transition-all duration-300 ease-in-out;
+			@apply grid transition-[grid-template-columns,height] duration-300 ease-in-out;
 			
 		  	@for $cols from 1 through 10 { // for each number of columns (1 to 10)
-
 				&.cols-#{$cols} { // for each class
 
 					// base class
 					@include grid-cols($cols); // put values
 
 				  	@for $hover from 1 through $cols { // index element hovered
-
 				    	&.hover-#{$hover} {
-
 				      		@include grid-cols-hover($cols, $hover); // put values
-
 				  		}
-
 			  		}
 
 					@for $click from 1 through $cols { // index element clicked
-
 				    	&.click-#{$click} {
-
 				      		@include grid-cols-click($cols, $click); // put values
-
 				  		}
 					}
 
 				}
-
 			}
 
-			
 		}
 		
 		.size-element {

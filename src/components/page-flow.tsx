@@ -32,16 +32,19 @@ export interface HeadingPropsInterface extends PageFlowBaseInterface {
     isAnchorLink?: boolean,
     containerClassName?: string,
     onClick?: MouseEventHandler<HTMLAnchorElement>,
+    href?: string
 }
 
 export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
         <a
             ref={ref}
-            href={anchorLink(isAnchorLink, id)}
+            href={href || anchorLink(isAnchorLink, id)}
+            target={href ? "_blank" : undefined}
+            rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-4xl",
+                "text-4xl w-fit",
                 headingContainerBaseClassName(isAnchorLink),
                 containerClassName
             )}>
@@ -55,10 +58,12 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
 HeadingOne.displayName = "HeadingOne";
 
 export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
         <a
             ref={ref}
-            href={anchorLink(isAnchorLink, id)}
+            href={href || anchorLink(isAnchorLink, id)}
+            target={href ? "_blank" : undefined}
+            rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
                 "text-gray-600 text-3xl ml-4", 
@@ -75,11 +80,13 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
 HeadingTwo.displayName = "HeadingTwo";
 
 export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
         <a
             ref={ref}
             id={id}
-            href={anchorLink(isAnchorLink, id)}
+            href={href || anchorLink(isAnchorLink, id)}
+            target={href ? "_blank" : undefined}
+            rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
                 "text-gray-500 text-2xl ml-7", 
@@ -105,15 +112,16 @@ export enum ParagraphAlignment {
 export interface ParagraphPropsInterface extends PageFlowBaseInterface {
     alignment?: ParagraphAlignment,
     indent?: boolean
+    innerHtml?: string
 }
 
-export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false }: ParagraphPropsInterface) => (
+export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false, innerHtml }: ParagraphPropsInterface) => (
     <p id={id} className={cn(
         "text-xl text-gray-800 dark:text-gray-300 font-normal mt-2",
         { "first-letter:ml-10": indent },
         alignment,
         className
-    )}>
+    )} dangerouslySetInnerHTML={innerHtml ? { __html: innerHtml } : undefined}>
         {children}
     </p>
 );

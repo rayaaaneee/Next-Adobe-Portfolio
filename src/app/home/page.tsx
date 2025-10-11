@@ -77,7 +77,7 @@ const Home = () => {
             </article>
             <article>
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
-                <Paragraph>Some projects links...</Paragraph>
+                <Paragraph>These are my 5 last main projects. Click on a project to learn more about it. You can find descriptions, links, and more.</Paragraph>
             </article>
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
             <article>

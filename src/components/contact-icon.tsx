@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
-import Tooltip, { TooltipPosition, TooltipSize } from './tooltip'
 import { ChildrenType } from '@/utils/interface/children';
-
 import ClassNameInterface from '@/utils/interface/classname';
+
+import Tooltip, { TooltipPosition, TooltipSize } from './tooltip';
 
 export enum IconSize {
     sm = 'md:w-16 md:h-16 xs:w-12 xs:h-12 w-10 h-10',
