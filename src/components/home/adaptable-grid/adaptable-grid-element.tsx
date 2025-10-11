@@ -48,7 +48,7 @@ const AdaptableGridElement = ({ element, className, index }: AdaptableGridElemen
             rel="noreferrer" 
             className={cn(
                 className,
-                "size-element flex flex-col items-center justify-center opacity-50 hover:opacity-90 transition-opacity duration-200", 
+                "size-element flex flex-col items-center justify-center opacity-50 hover:opacity-90 transition-[opacity,background-color] duration-300", 
             )} 
             key={index} 
             style={{ backgroundColor: element.color }}>

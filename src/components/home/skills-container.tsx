@@ -1,4 +1,10 @@
-import AdaptableGrid, { AdaptableGridProps } from './adaptable-grid/adaptable-grid';
+"use client";
+
+import { useRef, useState } from 'react';
+
+import AdaptableGrid, { AdaptableGridElementData, AdaptableGridProps } from './adaptable-grid/adaptable-grid';
+
+import { cn } from '@/lib/utils';
 
 import { Button, HeadingTwo } from '../page-flow';
 import { LuCodeXml } from 'react-icons/lu';
@@ -12,12 +18,17 @@ import frameworks from '@/asset/data/home/frameworks';
 import libraries from '@/asset/data/home/libraries';
 import devTools from '@/asset/data/home/dev-tools';
 import databases from '@/asset/data/home/databases';
+
 import { ChildrenType } from '@/utils/interface/children';
-import { cn } from '@/lib/utils';
+import DeepReadonly, { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 const SkillsContainer = () => {
 
-    const gridData: (AdaptableGridProps & { title: string, icon: ChildrenType })[] = [
+    type GridData = AdaptableGridProps & { title: string, icon: ChildrenType };
+
+    const buttonsRef = useRef<HTMLButtonElement[]>([]);
+
+    const gridData: DeepReadonly<GridData[]> = [
         { 
             id: "programming-languages", 
             elementsPerRow: 5, 
@@ -55,11 +66,18 @@ const SkillsContainer = () => {
         },
     ];
 
+    const [currentGridData, setCurrentGridData] = useState<DeepReadonliable<GridData>>(gridData[0]);
+
     return (
         <section className='mt-5'>
             <article className='flex flex-row flex-wrap justify-around items-center row-gap-4'>
                 {gridData.map((grid, i) => (
-                    <Button key={grid.id} className={cn(
+                    <Button ref={el => { buttonsRef.current[i] = el!; }} key={grid.id} onClick={(e) => {
+                        setCurrentGridData(grid);
+                        buttonsRef.current.forEach(btn => btn.classList.remove('active'));
+                        e.currentTarget.classList.add('active');
+                    }} 
+                    className={cn(
                         { active: i === 0 },
                     )}>
                         <HeadingTwo className='text-xl' containerClassName='m-0 p-4' icon={grid.icon}>
@@ -68,9 +86,11 @@ const SkillsContainer = () => {
                     </Button>
                 ))}
             </article>
-            {gridData.map((grid, i) => (
-                <AdaptableGrid key={grid.id} className={cn({ "hidden": i > 0 })} {...grid} />
-            ))}
+            <AdaptableGrid 
+                id={"grid-techs"} 
+                elements={currentGridData.elements} 
+                elementsPerRow={currentGridData.elementsPerRow} 
+            />
         </section>
     )
 }

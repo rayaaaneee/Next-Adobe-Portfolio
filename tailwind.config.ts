@@ -19,7 +19,7 @@ const config: import('tailwindcss').Config = {
             pattern: /duration-(75|150|225|300|1000)/,
         },
         {
-            pattern: /transition-\[height,background-color\]/,
+            pattern: /transition-(\[height,background-color\])/,
         }
     ],
     darkMode: "class", // or "media",

@@ -17,10 +17,13 @@ import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
 
+import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
+
+import projects from "@/asset/data/home/project";
+
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
 import SkillsContainer from "@/components/home/skills-container";
-import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -76,7 +79,7 @@ const Home = () => {
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>Some projects links...</Paragraph>
             </article>
-            {/* <AdaptableGrid id="main-projects" elements={[]} elementsPerRow={5} /> */}
+            <AdaptableGrid id="main-projects" elements={projects} elementsPerRow={5} />
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
