@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
+import type { AdaptableGridElementData, AdaptableGridElementProjectData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import Logo, { LogoColors } from '@/components/logo';
 
@@ -15,7 +15,7 @@ const projects = [
     {
         name: 'Bundlr',
         color: "rgb(144 221 239)",
-        link: "https://bundlr.fr",
+        link: undefined,
         icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
         description: "New project coming soon!"
     },
@@ -24,27 +24,33 @@ const projects = [
         color: "#efde90",
         link: "https://rayanemerlin.com",
         icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
-        description: "The very website you are on right now! My personal portfolio built with Next.js and Tailwind CSS, showcasing my projects and skills.<br/>Remade with a focus on navigation compared to the V2 (React CRA)."
+        description: `The very website you are on right now!<br/>
+            My personal portfolio built with Next.js and Tailwind CSS, showcasing my projects and skills.<br/>
+            Remade with a stronger focus on seamless navigation compared to the V2 (built with React CRA) —<br/>
+            \twith fewer pages, better information grouping, and a unified theme.`
     },
     {
         name: "WorldMaster",
         color: "#ffae9e",
+        description: `A web application that allows users to create, share, and explore custom maps for tabletop RPGs.<br/>`,
         link: "https://worldmaster.vercel.app",
         icon: <Image src={worldMasterImg} {...baseImageProps} alt='WorldMaster' />
     },
     {
         name: "SunSys",
         color: "#ebac00",
+        description: `A website for a solar panel installation company, showcasing their services and projects.<br/>`,
         link: "https://sunsys.vercel.app",
         icon: <Image src={sunsysImg} {...baseImageProps} alt='SunSys' />
     },
     {
         name: "Snake AI",
         color: "#00cc99",
-        link: null,
+        description: `An AI that learns to play the classic Snake game using reinforcement learning techniques.<br/>`,
+        link: undefined,
         icon: <Image src={snakeAiImg} {...baseImageProps} alt='Snake AI' />
     }
-] as AdaptableGridElementData[];
+] as AdaptableGridElementProjectData[];
 
 export type Project = DeepReadonly<typeof projects>;
 

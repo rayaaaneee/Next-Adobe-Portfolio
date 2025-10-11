@@ -12,7 +12,8 @@ export interface PageFlowBaseInterface extends ChildrenInterface, ClassNameInter
 
 
 const headingContainerBaseClassName = (active: boolean) => [
-    "flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline",
+    "group flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline group",
+    "[&>*:not(h1)]:transition-transform [&>*:not(h1)]:duration-100 [&>*:not(h1)]:ease-in-out",
     { [
         `after:content-['#'] after:text-[1em] hover:after:underline after:no-underline after:opacity-0 after:transition-opacity after:duration-200
         hover:cursor-pointer hover:after:opacity-100`
@@ -27,16 +28,22 @@ const anchorLink = (isAnchorLink: Undefined<boolean>, id: Undefined<string>): Un
     return isAnchorLink ? `#${id}` : undefined;
 }
 
+export enum IconPosition {
+    left = "left",
+    right = "right"
+}
+
 export interface HeadingPropsInterface extends PageFlowBaseInterface {
-    icon?: ChildrenType,
     isAnchorLink?: boolean,
     containerClassName?: string,
+    icon?: ChildrenType, // Expected to be an SVG icon
+    iconPosition?: "left" | "right",
     onClick?: MouseEventHandler<HTMLAnchorElement>,
     href?: string
 }
 
 export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => (
         <a
             ref={ref}
             href={href || anchorLink(isAnchorLink, id)}
@@ -48,17 +55,18 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
                 headingContainerBaseClassName(isAnchorLink),
                 containerClassName
             )}>
-            {icon}
+            {iconPosition === IconPosition.left && icon}
             <h1 id={id} className={cn(headingBaseClassName, className)}>
                 {children}
             </h1>
+            {iconPosition === IconPosition.right && icon}
         </a>
     )
 );
 HeadingOne.displayName = "HeadingOne";
 
 export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => (
         <a
             ref={ref}
             href={href || anchorLink(isAnchorLink, id)}
@@ -70,17 +78,18 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
                 headingContainerBaseClassName(isAnchorLink),
                 containerClassName
             )}>
-            {icon}
+            {iconPosition === IconPosition.left && icon}
             <h2 id={id} className={cn(headingBaseClassName, className)}>
                 {children}
             </h2>
+            {iconPosition === IconPosition.right && icon}
         </a>
     )
 );
 HeadingTwo.displayName = "HeadingTwo";
 
 export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href }, ref) => (
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => (
         <a
             ref={ref}
             id={id}
@@ -93,10 +102,11 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
                 headingContainerBaseClassName(isAnchorLink),
                 containerClassName
             )}>
-            {icon}
+            {iconPosition === IconPosition.left && icon}
             <h3 id={`text-${id}`} className={cn(headingBaseClassName, className)}>
                 {children}
             </h3>
+            {iconPosition === IconPosition.right && icon}
         </a>
     )
 );
@@ -163,12 +173,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
             onClick={onClick}
             className={cn(
                 "flex items-center justify-center",
-                `transition-[height,background-color]`,
+                `transition-[height,background-color,transform]`,
                 `duration-400 ease-in-out rounded-lg`,
                 "w-fit h-fit overflow-hidden",
                 "bg-[rgba(255,255,255,0.75)] [&.active]:bg-[rgba(245,233,225,0.75)] [&.active]:hover:bg-[rgba(219,219,219,0.75)]",
-                { "cursor-pointer hover:bg-[rgba(239,239,239,0.75)]": hover },
-                { "cursor-default": !hover },
+                [hover ? "cursor-pointer hover:bg-[rgba(239,239,239,0.75)]" : "cursor-default"],
                 "outline-none",
                 "[&.active]:scale-95",
                 className,
@@ -178,4 +187,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
         </button>
     )
 );
+
 Button.displayName = "Button";

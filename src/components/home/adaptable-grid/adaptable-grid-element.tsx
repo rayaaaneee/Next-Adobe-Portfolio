@@ -91,9 +91,11 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             target={clickable ? undefined : "_blank"}
             rel={clickable ? undefined : "noreferrer"}
             className={cn(
+                "size-element flex relative flex-row items-center gap-0 cursor-pointer justify-center [&.active]:justify-start",
+                "transition-[opacity,background-color,align-items] duration-300",
+                "[&.active>img]:ml-10 [&.active]:gap-10 [&.active>*:not(img)]:mr-10",
+                "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 className,
-                "size-element flex relative flex-row items-center [&.active]:items-center [&.active>*]:ml-10 cursor-pointer justify-center [&.active]:justify-start transition-[opacity,background-color,align-items] duration-300",
-                "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-default",
             )}
             key={index}
             style={{ backgroundColor: element.color }}>

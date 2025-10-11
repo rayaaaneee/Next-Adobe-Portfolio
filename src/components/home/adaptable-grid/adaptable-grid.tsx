@@ -11,10 +11,15 @@ import AdaptableGridSeeMoreButton from "./adaptable-grid-see-more-button";
 export interface AdaptableGridElementData {
     name: string;
     color: string;
-    link: string;
+    link?: string;
     icon?: ChildrenType;
-    description?: string;
     imageAlt?: string;
+}
+
+export interface AdaptableGridElementProjectData extends AdaptableGridElementData {
+    description: string;
+    githubLink?: string;
+    technologies?: string[];
 }
 
 export type oneToTen = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
