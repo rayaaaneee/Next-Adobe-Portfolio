@@ -1,5 +1,5 @@
 
-const imageBaseClassName = `h-24 w-24`;
+const imageBaseClassName = `h-24 w-24 pointer-events-none`;
 
 const baseProps = {
     width: 96,

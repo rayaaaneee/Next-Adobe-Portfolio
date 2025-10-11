@@ -25,11 +25,12 @@ export const isOneToTen = (n: number): n is oneToTen => {
 export interface AdaptableGridProps extends ClassNameInterface {
     elements: DeepReadonliable<AdaptableGridElementData[]>;
     elementsPerRow: oneToTen;
+    clickable?: boolean;
     hidden?: boolean;
 }
 
 // Complete grid
-const AdaptableGrid = ({ className, id, elementsPerRow, elements, hidden = false }: AdaptableGridProps) => {
+const AdaptableGrid = ({ className, id, elementsPerRow, elements, clickable = false, hidden = false }: AdaptableGridProps) => {
 
     if (!id) throw new Error("An id must be provided to AdaptableGrid");
     if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
@@ -53,6 +54,7 @@ const AdaptableGrid = ({ className, id, elementsPerRow, elements, hidden = false
                     return (
                         (i % elementsPerRow === 0) && 
                         (<AdaptableGridWrapper 
+                            clickable={clickable}
                             key={`wrapper-${i}`}
                             className={cn(
                                 { ["!h-0"]: (i > 1) }

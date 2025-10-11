@@ -79,7 +79,7 @@ const Home = () => {
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>Some projects links...</Paragraph>
             </article>
-            <AdaptableGrid id="main-projects" elements={projects} elementsPerRow={5} />
+            <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>

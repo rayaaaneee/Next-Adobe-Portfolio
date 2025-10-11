@@ -13,11 +13,12 @@ export interface AdaptableGridWrapperProps {
     elements: DeepReadonliable<AdaptableGridElementData[]>;
     nbElements: number;
     index: number;
+    clickable: boolean;
     className?: string;
 }
 
 // Grid line
-const AdaptableGridWrapper = ({ elements, nbElements, className, index }: AdaptableGridWrapperProps) => {
+const AdaptableGridWrapper = ({ elements, nbElements, className, index, clickable }: AdaptableGridWrapperProps) => {
   return (
     <div className={cn(
         "wrapper", 
@@ -25,7 +26,7 @@ const AdaptableGridWrapper = ({ elements, nbElements, className, index }: Adapta
         className
     )}>
         { elements.slice(index, index + nbElements).map((element, j) => (
-            <AdaptableGridElement key={`${index}-${j}`} element={element} index={j} />
+            <AdaptableGridElement clickable={clickable} key={`${index}-${j}`}  element={element} index={j} />
         ))}
     </div>
   )

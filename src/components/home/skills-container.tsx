@@ -70,7 +70,7 @@ const SkillsContainer = () => {
 
     return (
         <section className='mt-5'>
-            <article className='flex flex-row flex-wrap justify-around items-center row-gap-4'>
+            <article className='flex flex-row flex-wrap justify-around items-center [row-gap:10px]'>
                 {gridData.map((grid, i) => (
                     <Button ref={el => { buttonsRef.current[i] = el!; }} key={grid.id} onClick={(e) => {
                         setCurrentGridData(grid);
@@ -86,7 +86,7 @@ const SkillsContainer = () => {
                     </Button>
                 ))}
             </article>
-            <AdaptableGrid 
+            <AdaptableGrid
                 id={"grid-techs"} 
                 elements={currentGridData.elements} 
                 elementsPerRow={currentGridData.elementsPerRow} 

@@ -4,6 +4,7 @@ import type DeepReadonly from '@/utils/types/deep-readonly';
 import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import Logo, { LogoColors } from '@/components/logo';
+
 import worldMasterImg from '~/img/home/projects/worldmaster.png';
 import snakeAiImg from '~/img/home/projects/snake-ai.png';
 import sunsysImg from '~/img/home/projects/sunsys.png';
@@ -21,7 +22,7 @@ const projects = [
         name: 'Adobe Portfolio v3',
         color: "#efde90",
         link: "https://rayanemerlin.com",
-        icon: <Logo color={LogoColors.white} {...baseImageProps} />,
+        icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
     },
     {
         name: "WorldMaster",

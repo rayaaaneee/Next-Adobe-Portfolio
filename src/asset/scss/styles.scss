@@ -30,8 +30,8 @@
 
 		/* Wrapper for grid, supporting from 1 to 10 columns and hover effect 
 		(1.5fr on hover, 1fr otherwise) */
-		// 55 classes generated for hover + 10 for no hover = 65 classes
-		// Usage: .adaptable-grid .wrapper.cols-{1-10}[.hover-{1-n}]
+		// 55 classes generated for hover + 55 for click + 10 for base = 120 classes generated
+		// Usage: .adaptable-grid .wrapper.cols-{1-10}[.hover-{1-n}][.click-{1-n}]
 		.wrapper {
 
 			@apply grid transition-all duration-300 ease-in-out;
@@ -52,6 +52,15 @@
 				  		}
 
 			  		}
+
+					@for $click from 1 through $cols { // index element clicked
+
+				    	&.click-#{$click} {
+
+				      		@include grid-cols-click($cols, $click); // put values
+
+				  		}
+					}
 
 				}
 

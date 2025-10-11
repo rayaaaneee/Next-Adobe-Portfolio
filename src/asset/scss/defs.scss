@@ -29,3 +29,13 @@ $grid-cols-hover-ratio: 1.5; // fr
 
   	grid-template-columns: $values;
 }
+
+@mixin grid-cols-click($cols, $click) {
+  	$values: ();
+
+  	@for $i from 1 through $cols {
+  	  	$values: list.append($values, if($i == $click, 1fr, 0fr), space);
+  	}
+
+  	grid-template-columns: $values;
+}
