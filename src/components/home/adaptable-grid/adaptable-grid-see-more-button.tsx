@@ -79,13 +79,15 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
     return (
         <Button hover={isInteractive} ref={seeMoreButtonRef} className={cn(
-            "w-full h-16 rounded-t-none"
+            "w-full h-16 rounded-t-none",
         )}>
             <HeadingThree 
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
                 id={`see-more-${id}`} 
                 className='m-0'
                 containerClassName={cn(
+                    "see-more-button",
+                    { ["expanded"]: isExpanded },
                     "m-0 w-full h-full flex items-center justify-center",
                     className
                 )}>

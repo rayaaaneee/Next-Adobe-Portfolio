@@ -1,10 +1,12 @@
 "use client";
 
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 import { AdaptableGridElementData } from "./adaptable-grid";
+import useConditionalEffect from "@/utils/hook/use-conditionnal-effect";
+import verifyReference from "@/utils/function/verify-reference";
 
 interface AdaptableGridElementProps {
     element: AdaptableGridElementData;
@@ -17,6 +19,8 @@ interface AdaptableGridElementProps {
 const AdaptableGridElement = ({ element, className, index, clickable }: AdaptableGridElementProps) => {
 
     const [isClicked, setIsClicked] = useState(false);
+
+    const gridElementRef = useRef<HTMLAnchorElement | null>(null);
     
     const supportHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
@@ -42,21 +46,32 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         } else throw new Error("No wrapper found for AdaptableGridElement");
     }
 
-    const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
-        e.stopPropagation();
-        e.preventDefault();
+    useConditionalEffect(() => {
 
-        setIsClicked(true);
+        verifyReference(gridElementRef, "gridElementRef");
 
-        e.currentTarget.classList.add("active");
+        if (isClicked) {
+            // Do something when clicked
+            gridElementRef.current!.classList.add("active");
+        } else {
+            // Do something when not clicked
+            gridElementRef.current!.classList.remove("active");
+        }
 
         const clickClassName: string = `click-${index + 1}`;
 
-        const wrapper: Element | null = e.currentTarget.closest('.wrapper');
+        const wrapper: Element | null = gridElementRef.current!.closest('.wrapper');
 
         if (wrapper) {
-            wrapper.classList.add(clickClassName);
+            if (isClicked) wrapper.classList.add(clickClassName);
+            else wrapper.classList.remove(handlingClassName);
         } else throw new Error("No wrapper found for AdaptableGridElement");
+    }, [isClicked]);
+
+    const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setIsClicked(true);
     }
 
     const onClose = (e: MouseEvent<HTMLSpanElement>) => {
@@ -75,7 +90,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
     }
 
     return (
-        <a 
+        <a  
+            ref={gridElementRef}
             onClick={clickable ? onClick : undefined}
             onMouseEnter={supportHover ? onMouseEnter : undefined} 
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
@@ -84,10 +100,11 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             rel="noreferrer" 
             className={cn(
                 className,
+                { ["expanded"]: isClicked },
                 "size-element flex relative flex-row items-center [&.active]:items-center [&.active>*]:ml-10 cursor-pointer justify-center [&.active]:justify-start transition-[opacity,background-color,align-items] duration-300",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-default",
-            )} 
-            key={index} 
+            )}
+            key={index}
             style={{ backgroundColor: element.color }}>
             { clickable && (
                 <span 

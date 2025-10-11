@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import AdaptableGrid, { AdaptableGridElementData, AdaptableGridProps } from './adaptable-grid/adaptable-grid';
+import AdaptableGrid, { AdaptableGridProps } from './adaptable-grid/adaptable-grid';
 
 import { cn } from '@/lib/utils';
 
@@ -27,7 +27,9 @@ const SkillsContainer = () => {
     type GridData = AdaptableGridProps & { title: string, icon: ChildrenType };
 
     const buttonsRef = useRef<HTMLButtonElement[]>([]);
+    const adaptableGridRef = useRef<HTMLDivElement | null>(null);
 
+    // Data for each grid
     const gridData: DeepReadonly<GridData[]> = [
         { 
             id: "programming-languages", 
@@ -73,9 +75,13 @@ const SkillsContainer = () => {
             <article className='flex flex-row flex-wrap justify-around items-center [row-gap:10px]'>
                 {gridData.map((grid, i) => (
                     <Button ref={el => { buttonsRef.current[i] = el!; }} key={grid.id} onClick={(e) => {
-                        setCurrentGridData(grid);
                         buttonsRef.current.forEach(btn => btn.classList.remove('active'));
                         e.currentTarget.classList.add('active');
+                        const seeMoreButton = adaptableGridRef.current?.querySelector(`.see-more-button`);
+                        if (seeMoreButton) {
+                            if (seeMoreButton.classList.contains("expanded")) (seeMoreButton as HTMLButtonElement).click();
+                        } else throw new Error("No see more button found for the grid button.");
+                        setCurrentGridData(grid);
                     }} 
                     className={cn(
                         { active: i === 0 },
@@ -87,7 +93,8 @@ const SkillsContainer = () => {
                 ))}
             </article>
             <AdaptableGrid
-                id={"grid-techs"} 
+                id={currentGridData.id} 
+                ref={adaptableGridRef}
                 elements={currentGridData.elements} 
                 elementsPerRow={currentGridData.elementsPerRow} 
             />
