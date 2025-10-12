@@ -5,3 +5,7 @@ export type ChildrenType =  ReactNode | ReactElement | JSX.Element | ChildrenTyp
 export interface ChildrenInterface {
     children: ChildrenType;
 }
+
+export interface OptionalChildrenInterface {
+    children?: ChildrenType;
+}

@@ -79,9 +79,9 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
 
                 <AdaptableGridTopBottomPart
                     hover={false}
-                    className='rounded-b-none'
-                    id={`adaptable-grid-top-bottom-part-${id}`}
-                ><></></AdaptableGridTopBottomPart>
+                    className='adaptable-grid-top-part rounded-b-none'
+                    id={`adaptable-grid-top-part-${id}`}
+                />
 
                 {elements.map((_, i) => (
                     (() => {
@@ -104,7 +104,14 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                     })()
                 ))}
 
-                <AdaptableGridSeeMoreButton id={id} nbWrappers={nbWrappers} />
+                <AdaptableGridSeeMoreButton
+                    className={cn(
+                        "adaptable-grid-bottom-part",
+                        [!clickable && "overflow-hidden"]
+                    )}
+                    id={id}
+                    nbWrappers={nbWrappers}
+                />
 
             </div>
         );

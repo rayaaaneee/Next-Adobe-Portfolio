@@ -1,12 +1,11 @@
 @use "./_vars.scss" as *;
-@use "./defs.scss" as *;
+@use "./home/styles.scss" as *;
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @plugin 'tailwind-scrollbar';
-
 
 * {
 	margin: 0;
@@ -20,85 +19,6 @@
 
 :target {
 	@apply outline-none;
-}
-
-@layer utilities {
-
-	.adaptable-grid {
-		
-		@apply flex-col flex-wrap gap-0 my-8;
-
-		/* Wrapper for grid, supporting from 1 to 10 columns and hover effect 
-		(1.5fr on hover, 1fr otherwise) */
-		// 55 classes generated for hover + 55 for click + 10 for base = 120 classes generated
-		// Usage: .adaptable-grid .wrapper.cols-{1-10}[.hover-{1-n}][.click-{1-n}]
-		.wrapper {
-
-			@apply grid transition-[grid-template-columns,height] duration-300 ease-in-out;
-			
-		  	@for $cols from 1 through 10 { // for each number of columns (1 to 10)
-				&.cols-#{$cols} { // for each class
-
-					// base class
-					@include grid-cols($cols); // put values
-
-				  	@for $hover from 1 through $cols { // index element hovered
-				    	&.hover-#{$hover} {
-				      		@include grid-cols-hover($cols, $hover); // put values
-				  		}
-			  		}
-
-					@for $click from 1 through $cols { // index element clicked
-				    	&.click-#{$click} {
-				      		@include grid-cols-click($cols, $click); // put values
-				  		}
-					}
-
-				}
-			}
-
-		}
-		
-		.size-element {
-			@apply h-52;
-		}
-
-	}
-
-	.forwards { animation-fill-mode: forwards; }
-	.ease-in-out { animation-timing-function: ease-in-out; }
-
-	$durations: 100, 200, 300, 400, 450, 500, 600;
-	@each $duration in $durations {
-	  	.anim-duration-#{$duration} {
-	  	  	animation-duration: #{$duration}ms !important;
-	  	}
-	}
-
-	$delays: 0, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2300;
-	@each $delay in $delays {
-	  	.anim-delay-#{$delay} {
-	  	  	animation-delay: #{$delay}ms !important;
-	  	}
-	}
-
-	.global-text-shadow {
-		text-shadow: 0 0 2.15rem rgba(0, 0, 0, .5);
-	}
-
-	.to-animate {
-
-		@apply opacity-0 !forwards !ease-in-out pointer-events-none;
-
-		&.fade {
-			@apply animate-fadeIn anim-duration-600;
-		}
-
-		&.appear {
-			@apply animate-appearance anim-duration-450;
-		}
-	}
-	
 }
 
 @layer base {

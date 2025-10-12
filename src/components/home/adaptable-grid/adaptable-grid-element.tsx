@@ -1,13 +1,39 @@
 "use client";
 
-import { MouseEvent, Ref, useRef, useState } from "react";
+import { MouseEvent, MouseEventHandler, Ref, useEffect, useRef, useState } from "react";
+import useConditionalEffect from "@/utils/hook/use-conditional-effect";
+import { createRoot, Root } from "react-dom/client";
 
 import { cn } from "@/lib/utils";
 
+import { TbExternalLink } from "react-icons/tb";
+
 import { AdaptableGridElementData, AdaptableGridElementProjectData } from "./adaptable-grid";
-import useConditionalEffect from "@/utils/hook/use-conditional-effect";
-import verifyReference from "@/utils/function/verify-reference";
 import AdaptableGridElementExpansion from "./adaptable-grid-element-expansion";
+
+import Tooltip, { TooltipSize } from "@/components/tooltip";
+
+import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
+
+import verifyReference from "@/utils/function/verify-reference";
+
+import { projectTechnologiesList } from "@/asset/data/home/project";
+
+const TopPartText = ({
+    className, children, icon, containerClassName, onClick, 
+    href, iconPosition = IconPosition.left, iconScale = false 
+}: HeadingPropsInterface) =>  (
+    <HeadingTwo
+        icon={icon}
+        onClick={onClick}
+        iconPosition={iconPosition}
+        href={href}
+        iconScale={iconScale}
+        containerClassName={cn("m-0 text-slate-500", containerClassName)}
+        className={cn(`text-nowrap`, className)}>
+            { children }
+    </HeadingTwo>
+);
 
 interface AdaptableGridElementProps {
     element: AdaptableGridElementData;
@@ -19,7 +45,7 @@ interface AdaptableGridElementProps {
 // Single grid element
 const AdaptableGridElement = ({ element, className, index, clickable }: AdaptableGridElementProps) => {
 
-    const [isClicked, setIsClicked] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const gridElementRef = useRef<HTMLElement | null>(null);
     
@@ -27,54 +53,179 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
 
     const handlingClassName: string = `hover-${index + 1}`;
 
-    const onMouseEnter = (e: MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
-        e.stopPropagation();
-        
-        const wrapper: Element | null = e.currentTarget.closest('.wrapper');
+    const wrapper = useRef<HTMLDivElement | null>(null);
 
-        if (wrapper) {
-            wrapper.classList.add(handlingClassName);
-        } else throw new Error("No wrapper found for AdaptableGridElement");
+    const topPartRoot = useRef<Root | null>(null);
+
+    const bottomPartRoot = useRef<Root | null>(null);
+
+    useEffect(() => {
+
+        verifyReference<HTMLElement>(gridElementRef, "gridElementRef");
+
+        if (!wrapper.current) {
+
+            wrapper.current = gridElementRef.current!.closest('.wrapper') as HTMLDivElement;
+            if (!wrapper.current) throw new Error("No wrapper found for AdaptableGridElement");
+
+        }
+
+        const parentGrid = wrapper.current.closest(".adaptable-grid");
+        
+        if (!parentGrid) throw new Error("No adaptable-grid ancestor found for AdaptableGridElement");
+
+        if (!topPartRoot.current) {
+    
+            const topPartElement = parentGrid.querySelector('.adaptable-grid-top-part') as HTMLButtonElement;
+    
+            if (!topPartElement) throw new Error("No top part found for AdaptableGridElement");
+    
+            topPartRoot.current = createRoot(topPartElement);
+
+        }
+
+        if (!bottomPartRoot.current && clickable) {
+
+            const bottomPartElement = parentGrid.querySelector('.adaptable-grid-bottom-part') as HTMLButtonElement;
+
+            if (!bottomPartElement) throw new Error("No bottom part found for AdaptableGridElement");
+
+            bottomPartRoot.current = createRoot(bottomPartElement);
+
+        }
+
+        return () => {
+
+            if (topPartRoot.current) {
+                topPartRoot.current.unmount();
+                topPartRoot.current = null;
+            }
+
+            if (bottomPartRoot.current) {
+                bottomPartRoot.current.unmount();
+                bottomPartRoot.current = null;
+            }
+
+        }
+
+    }, [clickable]);
+
+    const onMouseEnter = (e: MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+
+        e.stopPropagation();
+
+        if (!wrapper.current || !topPartRoot.current) return;
+        
+        wrapper.current.classList.add(handlingClassName);
+
+        if (!clickable) {
+
+            topPartRoot.current.render(
+                <TopPartText>{element.name}</TopPartText>
+            );
+        }
+
     }
 
     const onMouseLeave = (e: MouseEvent<HTMLAnchorElement & HTMLDivElement>) => {
+
         e.stopPropagation();
 
-        const wrapper: Element | null = e.currentTarget.closest('.wrapper');
+        if (!wrapper.current || !topPartRoot.current) return;
 
-        if (wrapper) {
-            wrapper.classList.remove(handlingClassName);
-        } else throw new Error("No wrapper found for AdaptableGridElement");
+        wrapper.current.classList.remove(handlingClassName);
+
+        if (!clickable) {
+            topPartRoot.current.render(null);
+        }
+
     }
 
     useConditionalEffect(() => {
 
-        verifyReference(gridElementRef, "gridElementRef");
+        if (!gridElementRef.current || !wrapper.current || !topPartRoot.current) return;
+        if (clickable && !bottomPartRoot.current) return;
 
-        if (isClicked) {
+        if (isExpanded) {
             // Do something when clicked
-            gridElementRef.current!.classList.add("active");
+            gridElementRef.current.classList.add("active");
         } else {
             // Do something when not clicked
-            gridElementRef.current!.classList.remove("active");
+            gridElementRef.current.classList.remove("active");
         }
 
         const clickClassName: string = `click-${index + 1}`;
 
-        const wrapper: Element | null = gridElementRef.current!.closest('.wrapper');
 
-        if (wrapper) {
-            if (isClicked) wrapper.classList.add(clickClassName);
-            else wrapper.classList.remove(clickClassName);
-        } else throw new Error("No wrapper found for AdaptableGridElement");
-    }, [isClicked]);
+        if (isExpanded) {
+            wrapper.current.classList.add(clickClassName);
+        } else {
+            wrapper.current.classList.remove(clickClassName);
+        }
+
+    }, [isExpanded]);
+
+    const onExpand: MouseEventHandler<HTMLAnchorElement | HTMLDivElement> = () => {
+
+        setIsExpanded(true);
+
+        if (!topPartRoot.current || !bottomPartRoot.current) return;
+
+        const elementProjectData = element as AdaptableGridElementProjectData;
+
+        topPartRoot.current.render(
+            <TopPartText 
+                icon={elementProjectData.link && <TbExternalLink />} 
+                iconPosition={IconPosition.right} 
+                href={elementProjectData.link} 
+                iconScale
+                containerClassName="mt-3"
+                className="text-nowrap">
+                    {elementProjectData.link && "Consult "}
+                    <u>{elementProjectData.name}</u> 
+                    <i>({elementProjectData.year})</i>
+            </TopPartText>
+        );
+
+        bottomPartRoot.current.render(
+            <section className={cn(
+                "content-expansion",
+                "bottom-2 w-fit h-fit",
+                "flex flex-row flex-nowrap gap-4",
+                "transition-opacity duration-400 ease-out",
+                "opacity-80",
+            )}>
+                {elementProjectData.technologies.map((name, i) => {
+                    if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
+                    const icon = projectTechnologiesList[name];
+                    return (
+                        <Tooltip key={i} text={name} size={TooltipSize.md} tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
+                            <Button className="rounded-full">
+                                {icon}
+                            </Button>
+                        </Tooltip>
+                    );
+                })}
+            </section>
+        );
+    }
+
+    const onDismiss: MouseEventHandler<HTMLSpanElement> = (e) => {
+        e.stopPropagation();
+        setIsExpanded(false);
+
+        if (!topPartRoot.current || !bottomPartRoot.current) return;
+
+        topPartRoot.current.render(null);
+        bottomPartRoot.current.render(null);
+    }
 
     const ParentElement = clickable ? "div" : "a";
 
     return (
         <ParentElement
-            ref={clickable ? (gridElementRef as Ref<HTMLAnchorElement & HTMLDivElement>) : undefined}
-            onClick={clickable ? () => setIsClicked(true) : undefined}
+            ref={gridElementRef as Ref<HTMLAnchorElement & HTMLDivElement>}
+            onClick={clickable ? onExpand : undefined}
             onMouseEnter={supportHover ? onMouseEnter : undefined} 
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
             href={clickable ? undefined : element.link}
@@ -95,8 +246,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             { clickable && 
                 (<AdaptableGridElementExpansion 
                     element={element as AdaptableGridElementProjectData} 
-                    onClose={(e) => (e.stopPropagation(), setIsClicked(false))}
-                    isClicked={isClicked} 
+                    onClose={onDismiss}
+                    isClicked={isExpanded} 
                 />) 
             }
         </ParentElement>

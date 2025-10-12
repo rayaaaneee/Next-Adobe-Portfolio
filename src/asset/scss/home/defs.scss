@@ -1,0 +1,34 @@
+@use 'sass:list';
+
+$grid-cols-hover-ratio: 1.5; // fr
+
+@mixin grid-cols($cols) {
+  	$values: ();
+
+  	@for $i from 1 through $cols {
+  	  	$values: list.append($values, 1fr, space);
+  	}
+
+  	grid-template-columns: $values;
+}
+
+@mixin grid-cols-hover($cols, $hover) {
+  	$values: ();
+
+  	@for $i from 1 through $cols {
+  	  	// si c’est l’index survolé => 1.5fr sinon 1fr
+  	  	$values: list.append($values, if($i == $hover, $grid-cols-hover-ratio * 1fr, 1fr), space);
+  	}
+
+  	grid-template-columns: $values;
+}
+
+@mixin grid-cols-click($cols, $click) {
+  	$values: ();
+
+  	@for $i from 1 through $cols {
+  	  	$values: list.append($values, if($i == $click, 1fr, 0fr), space);
+  	}
+
+  	grid-template-columns: $values;
+}

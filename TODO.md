@@ -4,9 +4,9 @@
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [X] Fix .env access to store Resume filename
-* [ ] Clean CSS architecture (split files)
+* [X] Clean CSS architecture (split files)
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
-* [ ] Print element name on grid bottom part only if one row (for skills & hobbies)
+* [X] Print element name on grid top (adaptable grid)
 * [X] Fix Animation for grid wrappers appeareance on showing more rows
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] tailwind-scrollbar installation

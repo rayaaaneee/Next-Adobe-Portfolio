@@ -2,17 +2,20 @@ import { MouseEventHandler } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { ChildrenInterface, ChildrenType } from "@/utils/interface/children";
+import { ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 
 import { Undefined } from "@/utils/types/nullable";
 import { forwardRef } from "react";
 
-export interface PageFlowBaseInterface extends ChildrenInterface, ClassNameInterface {};
+export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface {};
 
-const headingContainerBaseClassName = (active: boolean) => [
-    "group flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline group",
+const headingContainerBaseClassName = (active: boolean, hasIcon: boolean) => [
+    "flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline",
     "[&>*:not(h1)]:transition-transform [&>*:not(h1,h2,h3)]:duration-100 [&>*:not(h1,h2,h3)]:ease-in-out",
+    {
+        ["group"]: (active || hasIcon)
+    },
     { [
         `after:content-['#'] after:text-[1em] hover:after:underline after:no-underline after:opacity-0 after:transition-opacity after:duration-200
         hover:cursor-pointer hover:after:opacity-100`
@@ -57,7 +60,7 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             onClick={onClick}
             className={cn(
                 "text-4xl w-fit",
-                headingContainerBaseClassName(isAnchorLink),
+                headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
@@ -83,7 +86,7 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             onClick={onClick}
             className={cn(
                 "text-gray-600 text-3xl ml-4", 
-                headingContainerBaseClassName(isAnchorLink),
+                headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
@@ -111,7 +114,7 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
             onClick={onClick}
             className={cn(
                 "text-gray-500 text-2xl ml-7", 
-                headingContainerBaseClassName(isAnchorLink),
+                headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
@@ -187,7 +190,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
                 "flex items-center justify-center",
                 `transition-[height,background-color,transform]`,
                 `duration-400 ease-in-out rounded-lg`,
-                "w-fit h-fit overflow-hidden",
+                "w-fit h-fit",
                 "bg-[rgba(255,255,255,0.75)] [&.active]:bg-[rgba(245,233,225,0.75)] [&.active]:hover:bg-[rgba(219,219,219,0.75)]",
                 [hover ? "cursor-pointer hover:bg-[rgba(239,239,239,0.75)]" : "cursor-default"],
                 "outline-none",
