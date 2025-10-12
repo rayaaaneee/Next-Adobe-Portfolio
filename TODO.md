@@ -6,8 +6,8 @@
 * [X] Fix .env access to store Resume filename
 * [ ] Clean CSS architecture (split files)
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
+* [ ] Print element name on grid bottom part only if one row (for skills & hobbies)
 * [X] Fix Animation for grid wrappers appeareance on showing more rows
-* [ ] Display tech names on grids (for skills only)
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors

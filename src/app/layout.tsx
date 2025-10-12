@@ -1,13 +1,7 @@
-import type { Metadata, Viewport } from "next";
-
-import "~/scss/styles.scss";
-
+import { Metadata, Viewport } from "next";
 import { cn } from "@/lib/utils";
 
-import App from "./_app";
-
-import Header from "@/components/header/header";
-import Background from "@/components/background";
+import "~/scss/styles.scss";
 
 import { ChildrenInterface } from "@/utils/interface/children";
 import ManageLanguages from "@/utils/manager/manage-language";
@@ -15,16 +9,10 @@ import ManageLanguages from "@/utils/manager/manage-language";
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-
-const APP_DEFAULT_TITLE = "Adobe Portfolio";
-const APP_TITLE_TEMPLATE = `%s - ${APP_DEFAULT_TITLE}`;
+export const APP_DEFAULT_TITLE = "Adobe Portfolio";
 const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
 
 export const metadata: Metadata = {
-    title: { 
-        default: APP_DEFAULT_TITLE, 
-        template: APP_TITLE_TEMPLATE
-    },
     manifest: "/manifest.json",
     description: APP_DESCRIPTION,
     icons: {
@@ -67,24 +55,17 @@ export const viewport: Viewport = {
     viewportFit: 'cover',
 }
 
-const RootLayout = ({
-    children,
-}: Readonly<ChildrenInterface>) => (
-    <html lang={ManageLanguages.defaultLanguage} suppressHydrationWarning>
+const Layout = ({ 
+    children 
+} : Readonly<ChildrenInterface>) => (
+    <html lang={ManageLanguages.defaultLanguage} className="scrollbar-thin" suppressHydrationWarning>
         <body className={cn(
             "antialiased", 
             "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",
-            "scrollbar-thumb-rose-200 scrollbar-thin",
-            "dark:scrollbar-thumb-rose-700 dark:scrollbar-track-slate-700",
         )}>
-            <App>
-                <Header hasFooter={true} />
-                <Background />
-                { children }
-                {/* <RemoveHashOnReload /> */}
-            </App>
+            {children}
         </body>
     </html>
 );
 
-export default RootLayout;
+export default Layout;

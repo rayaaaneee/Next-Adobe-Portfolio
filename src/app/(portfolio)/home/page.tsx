@@ -16,14 +16,14 @@ import {
 import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
-
+import SkillsContainer from "@/components/home/skills-container";
 import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
 
 import projects from "@/asset/data/home/project";
+import hobbies from "@/asset/data/home/hobbies";
 
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
-import SkillsContainer from "@/components/home/skills-container";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -55,19 +55,16 @@ const Home = () => {
             <article>
                 <HeadingOne id="about" isAnchorLink>About me</HeadingOne>
                 <Paragraph indent alignment={ParagraphAlignment.justify}>
-                    Hello ! I&apos;m Rayane, a passionate developer with a deep interest in 
-                    technology and all things related to computing. Over the years, I&apos;ve 
-                    dedicated myself creating a variety of personal projects, driven by my passion 
-                    for learning and exploring new technologies.<br/> I&apos;m proficient in 
-                    full-stack development and Cybersecurity, with a particular focus on React and 
-                    Next.js for web development. On the DevOps side, I have experience with tools 
-                    like GitHub Actions, Python, Automation, Linux, Terraform, and AWS—skills 
-                    I&apos;ve been improving through both personal projects and professional experience.
-                    <br/> I hold a BUT in Computer Science from the University of Lyon 1 (Development & 
-                    Implementation Program) and am currently pursuing a three-year engineering degree at CPE Lyon, 
-                    specializing in Cybersecurity Computer Engineering.<br/> I&apos;m currently working at Energy Pool 
-                    as a Blue Team member (vulnerabilities protection) throughout my engineering studies. This role is 
-                    enhancing my skills in ... 
+
+                    Hello! I&apos;m <b>Rayane</b>, a passionate <b>developer</b> with a deep interest in <b>technology</b> and all things related to computing. Over the years, I&apos;ve dedicated myself to creating a variety of <b>personal projects</b>, driven by my passion for <b>learning</b> and <b>exploring new technologies</b>.<br/>
+
+                    Although my <b>portfolio places a strong emphasis on design</b>, it mainly reflects my appreciation for <b>visual aesthetics</b> and <b>user experience</b>, aspects I value as a <i>hobby</i> and <i>creative outlet</i>. While I truly enjoy crafting <b>clean and visually engaging interfaces</b>, my <b>professional focus</b> is oriented toward <b>Cybersecurity</b> and <b>software development</b>, where I aim to deepen my expertise and build a <b>solid technical career</b>.<br/>
+
+                    I&apos;m proficient in <b>full-stack development</b> and <b>cybersecurity</b>, with a particular focus on <b>React</b> and <b>Next.js</b> for web development. In cybersecurity, I&apos;ve trained through Capture The Flag <b>(CTF)</b> challenges and applied those skills in <b>real-world contexts</b>, strengthening my understanding of <b>vulnerabilities</b>, <b>system hardening</b>, and <b>secure development practices</b>.<br/>
+
+                    I hold a <b>BUT in Computer Science</b> from the <b>University of Lyon 1</b> (<i>Development &amp; Implementation Program</i>) and am currently pursuing a <b>three-year engineering degree at CPE Lyon</b>, specializing in <b>Cybersecurity Computer Engineering</b>.<br/>
+
+                    I&apos;m currently working at <b>Energy Pool</b> as a <b>Blue Team member</b> (<i>vulnerability protection</i>) throughout my engineering studies. This role is enhancing my skills in <b>threat detection</b>, <b>incident analysis</b>, <b>vulnerability management</b>, and <b>continuous improvement of defensive measures</b> within a <b>production environment</b>.
                     <br/>... certs
                 </Paragraph>
             </article>
@@ -96,7 +93,7 @@ const Home = () => {
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
-            {/* <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={[]} /> */}
+            <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
             {/* Made by Rayane Merlin with Next.js */}
         </main>
     )

@@ -9,6 +9,7 @@ import { Button, HeadingThree } from '@/components/page-flow';
 
 import ClassNameInterface from '@/utils/interface/classname';
 import verifyReference from '@/utils/function/verify-reference';
+import AdaptableGridTopBottomPart from './adaptable-grid-top-bottom-part';
 
 interface AdaptableGridSeeMoreButtonProps extends ClassNameInterface {
     id: string;
@@ -78,9 +79,11 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
     }, [isExpanded]);
 
     return (
-        <Button hover={isInteractive} ref={seeMoreButtonRef} className={cn(
-            "w-full h-16 rounded-t-none",
-        )}>
+        <AdaptableGridTopBottomPart 
+            className='rounded-t-none' 
+            id={`see-more-button-${id}`} 
+            ref={seeMoreButtonRef} 
+            hover={isInteractive}>
             <HeadingThree 
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
                 id={`see-more-${id}`} 
@@ -93,7 +96,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
                 )}>
                 {initialText}
             </HeadingThree>
-        </Button>
+        </AdaptableGridTopBottomPart>
     )
 }
 

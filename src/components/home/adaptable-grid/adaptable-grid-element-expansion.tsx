@@ -72,7 +72,7 @@ const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: Adaptabl
                         if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
                         const icon = projectTechnologiesList[name];
                         return (
-                            <Tooltip key={i} text={name} size={TooltipSize.md} tooltipClassName="bg-[rgba(255,255,255,0.75)] !text-slate-600 font-semibold" className="inline-block">
+                            <Tooltip key={i} text={name} size={TooltipSize.md} tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold" className="inline-block">
                                 <Button className="rounded-full">
                                     {icon}
                                 </Button>

@@ -69,22 +69,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         } else throw new Error("No wrapper found for AdaptableGridElement");
     }, [isClicked]);
 
-    const onClick = (e: MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
-        e.stopPropagation();
-        setIsClicked(true);
-    }
-
-    const onClose = (e: MouseEvent<HTMLSpanElement>) => {
-        e.stopPropagation();
-        setIsClicked(false);
-    }
-
     const ParentElement = clickable ? "div" : "a";
 
     return (
         <ParentElement
             ref={clickable ? (gridElementRef as Ref<HTMLAnchorElement & HTMLDivElement>) : undefined}
-            onClick={clickable ? onClick : undefined}
+            onClick={clickable ? () => setIsClicked(true) : undefined}
             onMouseEnter={supportHover ? onMouseEnter : undefined} 
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
             href={clickable ? undefined : element.link}
@@ -92,8 +82,9 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             rel={clickable ? undefined : "noreferrer"}
             className={cn(
                 "adaptable-grid-element",
-                "size-element flex relative flex-row items-center gap-0 cursor-pointer justify-center [&.active]:justify-start",
-                "transition-[opacity,background-color,align-items] duration-300",
+                [(element.link || clickable) ? "cursor-pointer" : "cursor-default"],
+                "size-element flex relative flex-row items-center gap-0 justify-center",
+                "transition-[opacity,background-color] duration-300 ease-in-out",
                 "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 className,
@@ -101,7 +92,13 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             key={index}
             style={{ backgroundColor: element.color }}>
             { element.icon }
-            { clickable && (<AdaptableGridElementExpansion element={element as AdaptableGridElementProjectData} onClose={onClose} isClicked={isClicked} />) }
+            { clickable && 
+                (<AdaptableGridElementExpansion 
+                    element={element as AdaptableGridElementProjectData} 
+                    onClose={(e) => (e.stopPropagation(), setIsClicked(false))}
+                    isClicked={isClicked} 
+                />) 
+            }
         </ParentElement>
     );
 }

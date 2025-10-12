@@ -7,6 +7,7 @@ import { DeepReadonliable } from "@/utils/types/deep-readonly";
 import { ChildrenType } from "@/utils/interface/children";
 import AdaptableGridWrapper from "./adaptable-grid-wrapper";
 import AdaptableGridSeeMoreButton from "./adaptable-grid-see-more-button";
+import AdaptableGridTopBottomPart from "./adaptable-grid-top-bottom-part";
 
 export interface AdaptableGridElementData {
     name: string;
@@ -53,6 +54,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
         { className, id, elementsPerRow, elements, clickable = false, hidden = false },
         ref
     ) => {
+
         if (!id) throw new Error("An id must be provided to AdaptableGrid");
         if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
         if (elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
@@ -72,6 +74,12 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                     className
                 )}
                 id={id}>
+
+                <AdaptableGridTopBottomPart
+                    hover={false}
+                    className='rounded-b-none'
+                    id={`adaptable-grid-top-bottom-part-${id}`}
+                ><></></AdaptableGridTopBottomPart>
 
                 {elements.map((_, i) => (
                     (() => {

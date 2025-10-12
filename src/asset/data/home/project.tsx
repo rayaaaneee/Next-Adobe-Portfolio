@@ -99,7 +99,9 @@ const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
         githubLink: "https://github.com/rayaaaneee/WorldMaster",
         technologies: ["Next.js", "Tailwind CSS", "TypeScript", "SQLite", "SVGR", "OAuth"],
         year: 2024,
-        description: `A web application that allows users to create, share, and explore custom maps for tabletop RPGs.<br/>`,
+        description: `A web application to learn <b>world flags</b>, <b>capitals</b>, <b>maps</b> and get your <b>stats</b> and <b>scores</b>!<br/>
+            Built with <b>Next.js</b> and <b>Tailwind CSS</b>, featuring user authentication with <b>OAuth</b>.<br/>
+            Data is stored in a <b>SQLite</b> database using <b>Prisma ORM</b>.`,
     },
     {
         name: "SunSys",
@@ -109,7 +111,9 @@ const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
         technologies: ["Vite", "CSS", "JavaScript", "Three.js"],
         githubLink: "https://github.com/rayaaaneee/SunSys",
         year: 2023, 
-        description: `A website for a solar panel installation company, showcasing their services and projects.<br/>`,
+        description: `A <b>3D solar system</b> proportional <b>simulation model</b> with real-time planetary orbits and rotations.<br/>
+            Built with <b>Vite</b> and <b>Three.js</b> for smooth 3D rendering and animations.<br/>
+            Explore the solar system and learn about each planet's characteristics.`,
     },
     {
         name: "Snake AI",
@@ -119,7 +123,9 @@ const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
         githubLink: "https://github.com/rayaaaneee/Snake-AI",
         technologies: ["Python", "PyGame", "PyTorch"],
         year: 2023,
-        description: `An AI that learns to play the classic Snake game using reinforcement learning techniques.<br/>`,
+        description: `An <b>AI</b> that learns to play the classic <b>Snake game</b> using <b>deep learning</b> techniques.<br/>
+            Built with <b>Python</b> and <b>PyGame</b> for the game environment, and <b>PyTorch</b> for the AI model.<br/>
+            Three different modes available: <b>human</b>, <b>AI-train</b> and <b>AI-controlled</b>.`,
     }
 ] as const;
 

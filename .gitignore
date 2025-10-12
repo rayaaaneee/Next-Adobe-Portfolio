@@ -33,7 +33,12 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env.*
 
-
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # vercel
 .vercel
