@@ -4,7 +4,7 @@ import { MouseEvent, Ref, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { AdaptableGridElementData } from "./adaptable-grid";
+import { AdaptableGridElementData, AdaptableGridElementProjectData } from "./adaptable-grid";
 import useConditionalEffect from "@/utils/hook/use-conditionnal-effect";
 import verifyReference from "@/utils/function/verify-reference";
 import AdaptableGridElementExpansion from "./adaptable-grid-element-expansion";
@@ -100,7 +100,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             key={index}
             style={{ backgroundColor: element.color }}>
             { element.icon }
-            { clickable && (<AdaptableGridElementExpansion element={element} onClose={onClose} isClicked={isClicked} />) }
+            { clickable && (<AdaptableGridElementExpansion element={element as AdaptableGridElementProjectData} onClose={onClose} isClicked={isClicked} />) }
         </ParentElement>
     );
 }

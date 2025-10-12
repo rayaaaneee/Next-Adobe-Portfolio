@@ -26,14 +26,25 @@ export type oneToTen = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export const isOneToTen = (n: number): n is oneToTen => {
   return n >= 1 && n <= 10;
-} 
+}
 
-export interface AdaptableGridProps extends ClassNameInterface {
-    elements: DeepReadonliable<AdaptableGridElementData[]>;
+interface AdaptableGridBaseProps extends ClassNameInterface {
     elementsPerRow: oneToTen;
-    clickable?: boolean;
     hidden?: boolean;
 }
+
+interface NonclickableAdaptableGridProps extends AdaptableGridBaseProps {
+    elements: DeepReadonliable<AdaptableGridElementData[]>;
+    clickable?: false;
+}
+
+interface ClickableAdaptableGridProps extends AdaptableGridBaseProps {
+    elements: DeepReadonliable<AdaptableGridElementProjectData[]>;
+    clickable: true;
+}
+
+
+export type AdaptableGridProps = (NonclickableAdaptableGridProps | ClickableAdaptableGridProps);
 
 // Complete grid
 const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
@@ -59,29 +70,31 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                     [hidden ? "hidden" : "flex"],
                     className
                 )}
-                id={id}
-            >
+                id={id}>
+
                 {elements.map((_, i) => (
                     (() => {
                         const elementsInWrapper: number = Math.min(elementsPerRow, elementCount - i);
                         return (
                             (i % elementsPerRow === 0) &&
-                            (
-                                <AdaptableGridWrapper
-                                    clickable={clickable}
-                                    key={`wrapper-${i}`}
-                                    className={cn(
-                                        { ["!h-0"]: (i > 1) }
-                                    )}
-                                    elements={elements}
-                                    nbElements={elementsInWrapper}
-                                    index={i}
-                                />
-                            )
+                                (
+                                    <AdaptableGridWrapper
+                                        clickable={clickable}
+                                        key={`wrapper-${i}`}
+                                        className={cn(
+                                            { ["!h-0"]: (i > 1) }
+                                        )}
+                                        elements={elements}
+                                        nbElements={elementsInWrapper}
+                                        index={i}
+                                    />
+                                )
                         );
                     })()
                 ))}
+
                 <AdaptableGridSeeMoreButton id={id} nbWrappers={nbWrappers} />
+
             </div>
         );
     }

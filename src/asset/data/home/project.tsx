@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementData, AdaptableGridElementProjectData } from '@/components/home/adaptable-grid/adaptable-grid';
+import type { AdaptableGridElementProjectData } from '@/components/home/adaptable-grid/adaptable-grid';
 
 import Logo, { LogoColors } from '@/components/logo';
 
@@ -17,6 +17,8 @@ const projects = [
         color: "rgb(144 221 239)",
         link: undefined,
         icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
+        githubLink: undefined,
+        technologies: ["Electron", "Nuxt.js", "Vue.js", "Tailwind CSS", "TypeScript", "Zod"],
         description: "New project coming soon!"
     },
     {
@@ -24,31 +26,38 @@ const projects = [
         color: "#efde90",
         link: "https://rayanemerlin.com",
         icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
-        description: `The very website you are on right now!<br/>
-            My personal portfolio built with Next.js and Tailwind CSS, showcasing my projects and skills.<br/>
-            Remade with a stronger focus on seamless navigation compared to the V2 (built with React CRA) —<br/>
-            \twith fewer pages, better information grouping, and a unified theme.`
+        githubLink: "https://github.com/rayaaaneee/Next-Adobe-Portfolio",
+        technologies: ["Next.js", "React","Tailwind CSS", "TypeScript", "SCSS"],
+        description: `My personal portfolio built with <b>Next.js</b>, <b>Tailwind CSS</b> and <b>TypeScript</b>, showcasing my projects and skills.<br/>
+            Remade with a stronger focus on <b>seamless navigation</b> compared to the V2 (built with React CRA).<br/>
+            \tFewer pages, better information grouping, and a unified theme.`
     },
     {
         name: "WorldMaster",
         color: "#ffae9e",
-        description: `A web application that allows users to create, share, and explore custom maps for tabletop RPGs.<br/>`,
         link: "https://worldmaster.vercel.app",
-        icon: <Image src={worldMasterImg} {...baseImageProps} alt='WorldMaster' />
+        icon: <Image src={worldMasterImg} {...baseImageProps} alt='WorldMaster' />,
+        githubLink: "https://github.com/rayaaaneee/WorldMaster",
+        technologies: ["Next.js", "Tailwind CSS", "TypeScript", "MongoDB"],
+        description: `A web application that allows users to create, share, and explore custom maps for tabletop RPGs.<br/>`,
     },
     {
         name: "SunSys",
         color: "#ebac00",
-        description: `A website for a solar panel installation company, showcasing their services and projects.<br/>`,
         link: "https://sunsys.vercel.app",
-        icon: <Image src={sunsysImg} {...baseImageProps} alt='SunSys' />
+        icon: <Image src={sunsysImg} {...baseImageProps} alt='SunSys' />,
+        technologies: ["Vite", "CSS", "JavaScript", "Three.js"],
+        githubLink: "https://github.com/rayaaaneee/SunSys",
+        description: `A website for a solar panel installation company, showcasing their services and projects.<br/>`,
     },
     {
         name: "Snake AI",
         color: "#00cc99",
-        description: `An AI that learns to play the classic Snake game using reinforcement learning techniques.<br/>`,
         link: undefined,
-        icon: <Image src={snakeAiImg} {...baseImageProps} alt='Snake AI' />
+        icon: <Image src={snakeAiImg} {...baseImageProps} alt='Snake AI' />,
+        githubLink: "https://github.com/rayaaaneee/Snake-AI",
+        technologies: ["Python", "Pygame", "PyTorch"],
+        description: `An AI that learns to play the classic Snake game using reinforcement learning techniques.<br/>`,
     }
 ] as AdaptableGridElementProjectData[];
 

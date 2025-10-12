@@ -9,6 +9,7 @@ import cn from "@/utils/function/cn";
 
 import { ChildrenInterface, type ChildrenType } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
+import { Nullish } from "@/utils/types/nullable";
 
 
 export enum TooltipPosition {
@@ -26,17 +27,29 @@ export enum TooltipSize {
 
 export type TooltipType = 'default' | "default-2" | 'success' | 'warning' | 'error';
 
-export interface TooltipInterface extends ChildrenInterface, ClassNameInterface {
-    text: ChildrenType;
+interface BaseTooltipPropsInterface extends ChildrenInterface, ClassNameInterface {
+    id?: string;
     size?: TooltipSize;
     position?: TooltipPosition;
     forceShow?: boolean;
-    disabled?: boolean;
     tooltipClassName?: string;
     tooltipBackgroundColor?: string;
     type?: TooltipType;
     hasIcon?: boolean;
 }
+
+interface DisabledTooltipProps {
+    disabled: true;
+    text?: Nullish<ChildrenType>;
+}
+
+interface EnabledTooltipProps {
+    disabled?: false;
+    text: ChildrenType;
+}
+
+type TooltipProps = (DisabledTooltipProps | EnabledTooltipProps) & BaseTooltipPropsInterface;
+
 
 const Tooltip = ({ 
     children, 
@@ -51,7 +64,7 @@ const Tooltip = ({
     tooltipBackgroundColor,
     type = "default", 
     hasIcon = false 
-}: TooltipInterface) => {
+}: TooltipProps) => {
 
     const getSizeClassName = (): string => {
         let className: string = '';

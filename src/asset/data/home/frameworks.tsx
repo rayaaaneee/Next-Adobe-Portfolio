@@ -12,6 +12,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { SiAngular, SiElectron } from "react-icons/si";
 import { SiExpress } from "react-icons/si";
 import springBootImg from "~/img/home/frameworks/spring-boot.png";
+import symfonyImg from "~/img/home/frameworks/symfony.png";
 import { SiDotnet } from "react-icons/si";
 
 const frameworks = [
@@ -56,6 +57,12 @@ const frameworks = [
         color: "#6DB33F",
         icon: <Image {...baseImageProps} src={springBootImg} alt="Spring Boot" />,
         link: "https://spring.io/projects/spring-boot",
+    },
+    {
+        name: "PHP Symfony",
+        color: "#1a171b",
+        icon: <Image {...baseImageProps} src={symfonyImg} alt="Symfony" />,
+        link: "https://symfony.com/",
     },
     {
         name: "ASP.NET Core",

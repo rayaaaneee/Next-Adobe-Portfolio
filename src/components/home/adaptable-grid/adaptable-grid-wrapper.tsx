@@ -1,7 +1,5 @@
 import cn from '@/utils/function/cn';
 
-import Tooltip, { TooltipSize } from '@/components/tooltip';
-
 import { AdaptableGridElementData } from './adaptable-grid';
 import AdaptableGridElement from './adaptable-grid-element';
 

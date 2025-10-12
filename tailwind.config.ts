@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import tailwindScrollbar from 'tailwind-scrollbar';
 
 const config: import('tailwindcss').Config = {
     mode: 'jit',
@@ -150,7 +151,9 @@ const config: import('tailwindcss').Config = {
             */
         }
     },
-    plugins: [],
+    plugins: [
+        tailwindScrollbar({ nocompatible: true }),
+    ],
 }
 
 export default config
