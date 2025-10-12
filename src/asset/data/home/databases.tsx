@@ -11,7 +11,7 @@ import { GrMysql } from "react-icons/gr";
 import { TbBrandMongodb } from "react-icons/tb";
 import firebaseImg from "~/img/home/databases/firebase.png";
 
-const databases = [
+const databases: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "SQLite",
         color: "#003B57",
@@ -36,7 +36,7 @@ const databases = [
         icon: <Image {...baseImageProps} src={firebaseImg.src} alt={`Firebase`} />,
         link: "https://firebase.google.com/"
     }
-] as AdaptableGridElementData[];
+] as const;
 
 export type Databases = DeepReadonly<typeof databases>;
 

@@ -6,7 +6,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
+import useConditionalEffect from '@/utils/hook/use-conditional-effect';
 import useTryingContext from '@/utils/hook/use-try-context';
 
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';

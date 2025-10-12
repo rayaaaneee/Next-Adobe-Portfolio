@@ -5,7 +5,7 @@ import { MouseEvent, Ref, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 import { AdaptableGridElementData, AdaptableGridElementProjectData } from "./adaptable-grid";
-import useConditionalEffect from "@/utils/hook/use-conditionnal-effect";
+import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import verifyReference from "@/utils/function/verify-reference";
 import AdaptableGridElementExpansion from "./adaptable-grid-element-expansion";
 
@@ -91,9 +91,10 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             target={clickable ? undefined : "_blank"}
             rel={clickable ? undefined : "noreferrer"}
             className={cn(
+                "adaptable-grid-element",
                 "size-element flex relative flex-row items-center gap-0 cursor-pointer justify-center [&.active]:justify-start",
                 "transition-[opacity,background-color,align-items] duration-300",
-                "[&.active>img]:ml-10 [&.active]:gap-10 [&.active>*:not(img)]:mr-10",
+                "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 className,
             )}

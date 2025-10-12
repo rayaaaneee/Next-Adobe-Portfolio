@@ -72,14 +72,18 @@ const Home = () => {
                 </Paragraph>
             </article>
             <article>
-                <HeadingOne id="xp" isAnchorLink>Experience</HeadingOne>
-                <Paragraph>Describe here...</Paragraph>
-            </article>
-            <article>
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>These are my last main projects. Click on a project to learn more about it. You can find descriptions, links and more..</Paragraph>
             </article>
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
+            <article>
+                <HeadingOne id="xp" isAnchorLink>Experience</HeadingOne>
+                <Paragraph>Describe here...</Paragraph>
+            </article>
+            <article>
+                <HeadingOne id="education" isAnchorLink>Education</HeadingOne>
+                <Paragraph>Describe here...</Paragraph>
+            </article>
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
@@ -92,6 +96,7 @@ const Home = () => {
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
+            {/* <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={[]} /> */}
             {/* Made by Rayane Merlin with Next.js */}
         </main>
     )

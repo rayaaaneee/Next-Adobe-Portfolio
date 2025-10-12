@@ -19,7 +19,7 @@ import { TbSql } from "react-icons/tb";
 import { RiPhpFill } from "react-icons/ri";
 import { VscMarkdown } from "react-icons/vsc";
 
-const programmingLanguages = [
+const programmingLanguages: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "TypeScript",
         color: "#3178C6",
@@ -99,7 +99,7 @@ const programmingLanguages = [
         link: "https://www.markdownguide.org/"
     },
 
-] as AdaptableGridElementData[];
+] as const;
 
 export type ProgrammingLanguage = DeepReadonly<typeof programmingLanguages>;
 

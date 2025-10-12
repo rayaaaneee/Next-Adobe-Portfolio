@@ -20,7 +20,7 @@ import { PiLinuxLogo } from "react-icons/pi";
 import bashImg from "~/img/home/dev-tools/bash.png";
 import windows from "~/img/home/dev-tools/windows.png";
 
-const devTools = [
+const devTools: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "Git",
         color: "#F05032",
@@ -99,7 +99,7 @@ const devTools = [
         icon: <Image {...baseImageProps} src={windows.src} alt={`Windows`} />,
         link: "https://www.microsoft.com/windows"
     }
-] as AdaptableGridElementData[];
+] as const;
 
 export type DevTools = DeepReadonly<typeof devTools>;
 

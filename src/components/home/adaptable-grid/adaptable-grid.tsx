@@ -18,8 +18,9 @@ export interface AdaptableGridElementData {
 
 export interface AdaptableGridElementProjectData extends AdaptableGridElementData {
     description: string;
+    year: number;
+    technologies: string[];
     githubLink?: string;
-    technologies?: string[];
 }
 
 export type oneToTen = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;

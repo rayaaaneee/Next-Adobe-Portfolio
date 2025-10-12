@@ -15,7 +15,7 @@ import springBootImg from "~/img/home/frameworks/spring-boot.png";
 import symfonyImg from "~/img/home/frameworks/symfony.png";
 import { SiDotnet } from "react-icons/si";
 
-const frameworks = [
+const frameworks: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "Next.js",
         color: "#000000",
@@ -70,7 +70,7 @@ const frameworks = [
         icon: <SiDotnet {...baseIconProps} />,
         link: "https://dotnet.microsoft.com/en-us/apps/aspnet",
     }
-] as AdaptableGridElementData[];
+] as const;
 
 export type Frameworks = DeepReadonly<typeof frameworks>;
 

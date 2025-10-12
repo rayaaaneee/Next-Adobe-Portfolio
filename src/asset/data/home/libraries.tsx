@@ -14,7 +14,7 @@ import { DiJqueryLogo } from "react-icons/di";
 import { SiPrisma } from "react-icons/si";
 import { SiNumpy } from "react-icons/si";
 
-const libraries = [
+const libraries: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "React",
         color: "#61DAFB",
@@ -57,7 +57,7 @@ const libraries = [
         icon: <SiNumpy {...baseIconProps} />,
         link: "https://numpy.org/"
     }
-] as AdaptableGridElementData[];
+] as const;
 
 export type Libraries = DeepReadonly<typeof libraries>;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from 'react';
-import useConditionalEffect from '@/utils/hook/use-conditionnal-effect';
+import useConditionalEffect from '@/utils/hook/use-conditional-effect';
 
 import { cn } from '@/lib/utils';
 

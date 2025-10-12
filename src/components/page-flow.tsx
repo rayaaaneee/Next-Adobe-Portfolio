@@ -8,19 +8,18 @@ import ClassNameInterface from "@/utils/interface/classname";
 import { Undefined } from "@/utils/types/nullable";
 import { forwardRef } from "react";
 
-export interface PageFlowBaseInterface extends ChildrenInterface, ClassNameInterface {}
-
+export interface PageFlowBaseInterface extends ChildrenInterface, ClassNameInterface {};
 
 const headingContainerBaseClassName = (active: boolean) => [
     "group flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline group",
-    "[&>*:not(h1)]:transition-transform [&>*:not(h1)]:duration-100 [&>*:not(h1)]:ease-in-out",
+    "[&>*:not(h1)]:transition-transform [&>*:not(h1,h2,h3)]:duration-100 [&>*:not(h1,h2,h3)]:ease-in-out",
     { [
         `after:content-['#'] after:text-[1em] hover:after:underline after:no-underline after:opacity-0 after:transition-opacity after:duration-200
         hover:cursor-pointer hover:after:opacity-100`
     ]: active }
 ];
 const headingBaseClassName = "font-poppins font-light hover:no-underline";
-const iconContainerBaseClassName = "group-hover:scale-";
+const iconContainerBaseClassName = "group-hover:scale-90";
 
 const anchorLink = (isAnchorLink: Undefined<boolean>, id: Undefined<string>): Undefined<string> => {
     if (isAnchorLink && !id) {
@@ -39,14 +38,15 @@ export interface HeadingPropsInterface extends PageFlowBaseInterface {
     containerClassName?: string,
     icon?: ChildrenType, // Expected to be an SVG icon
     iconPosition?: IconPosition,
+    iconScale?: boolean,
     onClick?: MouseEventHandler<HTMLAnchorElement>,
     href?: string
 }
 
 export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => {
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
 
-        const iconElement = <div className={iconContainerBaseClassName}>{icon}</div>;
+        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
 
         return (
         <a
@@ -71,9 +71,9 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
 HeadingOne.displayName = "HeadingOne";
 
 export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => {
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
 
-        const iconElement = <div className={iconContainerBaseClassName}>{icon}</div>;
+        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
 
         return (<a
             ref={ref}
@@ -97,9 +97,9 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
 HeadingTwo.displayName = "HeadingTwo";
 
 export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left }, ref) => {
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
 
-        const iconElement = <div className={iconContainerBaseClassName}>{icon}</div>;
+        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
 
         return (
             <a

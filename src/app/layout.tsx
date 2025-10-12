@@ -70,10 +70,12 @@ export const viewport: Viewport = {
 const RootLayout = ({
     children,
 }: Readonly<ChildrenInterface>) => (
-    <html lang={ManageLanguages.defaultLanguage} className="scrollbar scrollbar-thumb-rose-200 scrollbar-track-slate-200" suppressHydrationWarning>
+    <html lang={ManageLanguages.defaultLanguage} suppressHydrationWarning>
         <body className={cn(
             "antialiased", 
-            "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto"
+            "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",
+            "scrollbar-thumb-rose-200 scrollbar-thin",
+            "dark:scrollbar-thumb-rose-700 dark:scrollbar-track-slate-700",
         )}>
             <App>
                 <Header hasFooter={true} />
