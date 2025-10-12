@@ -11,6 +11,7 @@
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors
+* [ ] Display CV on menu
 * [ ] Medias
   * [ ] Tooltip media queries
   * [X] Menu medias

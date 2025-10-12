@@ -5,9 +5,13 @@ import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 import { ChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 
-import styles from "~/scss/home/footer-links.module.scss";
-
 import { TooltipSize } from "./tooltip";
+
+import linkedInImg from "~/img/components/contact-links/icon-linkedin.png";
+import githubImg from "~/img/components/contact-links/icon-github.png";
+import mailImg from "~/img/components/contact-links/icon-mail.png";
+import phoneImg from "~/img/components/contact-links/icon-phone.png";
+import resumeImg from "~/img/components/contact-links/icon-resume.png";
 
 export interface ContactLinksProps extends ClassNameInterface {
     animate?: boolean;
@@ -29,11 +33,11 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
     const githubUsername: string = "rayaaaneee";
 
     const footerLinks: ContactIconType[] = [
-        { title: "Linked In", username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, className: styles.linkedin, link: `https://www.linkedin.com/in/${linkedinUsername}/`, target: "_blank", rel: "noreferrer" },
-        { title: "Github", username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, className: styles.github, link: `https://github.com/${githubUsername}`, target: "_blank", rel: "noreferrer" },
-        { title: "Mail", className: styles.mail, link: `mailto:${process.env.EMAIL}`, target: "_blank", rel: "noreferrer" },
-        { title: "Phone", className: styles.phone, link: `tel:${process.env.TEL}` },
-        { title: "Resume", className: styles.resume, link: "/resume", target: "_blank", rel: "noreferrer" },
+        { title: "Linked In", image: linkedInImg, username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, link: `https://www.linkedin.com/in/${linkedinUsername}/`, target: "_blank", rel: "noreferrer" },
+        { title: "Github", image: githubImg, username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, link: `https://github.com/${githubUsername}`, target: "_blank", rel: "noreferrer" },
+        { title: "Mail", image: mailImg, link: `mailto:${process.env.EMAIL}`, target: "_blank", rel: "noreferrer" },
+        { title: "Phone", image: phoneImg, link: `tel:${process.env.TEL}` },
+        { title: "Resume", image: resumeImg, link: "/resume", target: "_blank", rel: "noreferrer" },
     ]
 	
   	return (

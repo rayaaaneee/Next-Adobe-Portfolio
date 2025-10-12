@@ -63,6 +63,8 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
         const elementCount: number = elements.length;
         const nbWrappers: number = Math.ceil(elementCount / elementsPerRow);
 
+        if (clickable && nbWrappers > 1) throw new Error("Clickable AdaptableGrid can only have one row (elementsPerRow must be greater than or equal to the number of elements)");
+
         if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 
         return (
