@@ -1,6 +1,7 @@
 * [X] Fix Menu Animation (broken)
 * [X] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
 * [ ] Make metadatas
+* [ ] Fill manifest.json
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [X] Fix .env access to store Resume filename
@@ -8,6 +9,7 @@
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
 * [X] Fix Animation for grid wrappers appeareance on showing more rows
+* [ ] JS Confetti for grid
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors

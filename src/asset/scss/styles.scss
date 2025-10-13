@@ -21,6 +21,47 @@
 	@apply outline-none;
 }
 
+@layer utilities {
+
+	.forwards { animation-fill-mode: forwards; }
+	.ease-in-out { animation-timing-function: ease-in-out; }
+
+	$durations: 100, 200, 300, 400, 450, 500, 600;
+	@each $duration in $durations {
+	  	.anim-duration-#{$duration} {
+	  	  	animation-duration: #{$duration}ms !important;
+	  	}
+	}
+
+	$delays: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2300;
+	@each $delay in $delays {
+	  	.anim-delay-#{$delay} {
+	  	  	animation-delay: #{$delay}ms !important;
+	  	}
+	}
+
+	.global-text-shadow {
+		text-shadow: 0 0 2.15rem rgba(0, 0, 0, .5);
+	}
+
+	.to-animate {
+
+		@apply opacity-0 !forwards !ease-in-out pointer-events-none;
+
+		&.fade {
+			@apply animate-fadeIn anim-duration-600;
+
+			&.short {
+				@apply anim-duration-200;
+			}
+		}
+
+		&.appear {
+			@apply animate-appearance anim-duration-450;
+		}
+	}
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;
@@ -75,9 +116,4 @@
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%
 	}
-}
-
-@layer base {
-
-	
 }

@@ -16,7 +16,7 @@ import { FaCloud } from 'react-icons/fa6';
 import programmingLanguages from '@/asset/data/home/programming-language';
 import frameworks from '@/asset/data/home/frameworks';
 import libraries from '@/asset/data/home/libraries';
-import devTools from '@/asset/data/home/dev-tools';
+import tools from '@/asset/data/home/tools';
 import databases from '@/asset/data/home/databases';
 
 import { ChildrenType } from '@/utils/interface/children';
@@ -53,10 +53,10 @@ const SkillsContainer = () => {
             icon: <VscLibrary /> 
         },
         { 
-            id: "dev-tools", 
+            id: "tools", 
             elementsPerRow: 5, 
-            elements: devTools, 
-            title: "Dev Tools", 
+            elements: tools, 
+            title: "Tools", 
             icon: <AiFillTool /> 
         },
         { 

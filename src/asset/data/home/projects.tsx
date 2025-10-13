@@ -97,7 +97,7 @@ const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
         link: "https://worldmaster.vercel.app",
         icon: <Image src={worldMasterImg} {...baseImageProps} alt='WorldMaster' />,
         githubLink: "https://github.com/rayaaaneee/WorldMaster",
-        technologies: ["Next.js", "Tailwind CSS", "TypeScript", "SQLite", "SVGR", "OAuth"],
+        technologies: ["Next.js", "Tailwind CSS", "SCSS", "TypeScript", "SQLite", "SVGR", "OAuth"],
         year: 2024,
         description: `A web application to learn <b>world flags</b>, <b>capitals</b>, <b>maps</b> and get your <b>stats</b> and <b>scores</b>!<br/>
             Built with <b>Next.js</b> and <b>Tailwind CSS</b>, featuring user authentication with <b>OAuth</b>.<br/>

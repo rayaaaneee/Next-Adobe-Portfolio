@@ -19,7 +19,7 @@ import ContactLinks from "@/components/contact-links";
 import SkillsContainer from "@/components/home/skills-container";
 import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
 
-import projects from "@/asset/data/home/project";
+import projects from "@/asset/data/home/projects";
 import hobbies from "@/asset/data/home/hobbies";
 
 import { IconSize } from "@/components/contact-icon";
@@ -34,7 +34,7 @@ const Home = () => {
         <main className={cn(
             "relative justify-self-center to-animate fade anim-delay-200 anim-duration-300 rounded-xl h-fit",
             "bg-[rgb(255,255,255,0.2)] dark:bg-[rgb(0,0,0,0.2)] backdrop-blur-md",
-            "box-border ",
+            "box-border",
             "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
             "my-[3.5vw] md:my-[5vw] lg:my-10",
             "py-5 sm:py-7 md:py-10 xl:py-20",

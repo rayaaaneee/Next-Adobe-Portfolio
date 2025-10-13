@@ -5,14 +5,14 @@ import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/
 
 import { baseImageProps, baseIconProps } from './base';
 
-import typescriptImg from "~/img/home/programmation-languages/typescript.png";
+import typescriptImg from "~/img/home/programming-languages/typescript.png";
 import { IoLogoJavascript } from "react-icons/io";
 import { FaPython } from "react-icons/fa";
-import htmlImg from "~/img/home/programmation-languages/html.png";
+import htmlImg from "~/img/home/programming-languages/html.png";
 import { FaCss3 } from "react-icons/fa";
-import cImg from "~/img/home/programmation-languages/c.png";
-import cppImg from "~/img/home/programmation-languages/cpp.png";
-import csharpImg from "~/img/home/programmation-languages/csharp.png";
+import cImg from "~/img/home/programming-languages/c.png";
+import cppImg from "~/img/home/programming-languages/cpp.png";
+import csharpImg from "~/img/home/programming-languages/csharp.png";
 import { FaJava } from "react-icons/fa";
 import { TbBrandKotlin } from "react-icons/tb";
 import { TbSql } from "react-icons/tb";

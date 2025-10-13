@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, MouseEventHandler, Ref, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, MouseEvent, MouseEventHandler, Ref} from "react";
 import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
 
@@ -17,7 +17,7 @@ import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/compo
 
 import verifyReference from "@/utils/function/verify-reference";
 
-import { projectTechnologiesList } from "@/asset/data/home/project";
+import { projectTechnologiesList } from "@/asset/data/home/projects";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -121,7 +121,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (!clickable) {
 
             topPartRoot.current.render(
-                <TopPartText>{element.name}</TopPartText>
+                <TopPartText className="to-animate fade short">{element.name}</TopPartText>
             );
         }
 
@@ -147,11 +147,17 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (clickable && !bottomPartRoot.current) return;
 
         if (isExpanded) {
-            // Do something when clicked
+            // When expanded
+
             gridElementRef.current.classList.add("active");
+
+
         } else {
-            // Do something when not clicked
+            // When dismissed
+
             gridElementRef.current.classList.remove("active");
+
+
         }
 
         const clickClassName: string = `click-${index + 1}`;
@@ -179,7 +185,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                 iconPosition={IconPosition.right} 
                 href={elementProjectData.link} 
                 iconScale
-                containerClassName="mt-3"
+                containerClassName="mt-3 opacity-0 to-animate fade"
                 className="text-nowrap">
                     {elementProjectData.link && "Consult "}
                     <u>{elementProjectData.name}</u> 
@@ -199,7 +205,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                     if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
                     const icon = projectTechnologiesList[name];
                     return (
-                        <Tooltip key={i} text={name} size={TooltipSize.md} tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
+                        <Tooltip 
+                            key={i} 
+                            text={name} 
+                            size={TooltipSize.md} 
+                            className={`to-animate appear translate-y-3 anim-delay-${i * 100}`}
+                            tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
                             <Button className="rounded-full">
                                 {icon}
                             </Button>

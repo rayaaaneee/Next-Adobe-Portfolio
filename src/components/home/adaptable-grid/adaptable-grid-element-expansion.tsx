@@ -43,7 +43,7 @@ const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: Adaptabl
                 )}>
 
                     <Paragraph className={cn(
-                        "text-nowrap",
+                        "text-nowrap m-0",
                     )} alignment={ParagraphAlignment.justify} innerHtml={element.description}>{undefined}</Paragraph>   
 
                 </section>

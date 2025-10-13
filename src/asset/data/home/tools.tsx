@@ -14,13 +14,13 @@ import { DiVisualstudio } from "react-icons/di";
 import { DiIntellij } from "react-icons/di";
 import { IoLogoDocker } from "react-icons/io5";
 import { FaAws } from "react-icons/fa";
-import postmanImg from "~/img/home/dev-tools/postman.png";
+import postmanImg from "~/img/home/tools/postman.png";
 import { FaFigma } from "react-icons/fa";
 import { PiLinuxLogo } from "react-icons/pi";
-import bashImg from "~/img/home/dev-tools/bash.png";
-import windows from "~/img/home/dev-tools/windows.png";
+import bashImg from "~/img/home/tools/bash.png";
+import windows from "~/img/home/tools/windows.png";
 
-const devTools: DeepReadonly<AdaptableGridElementData[]> = [
+const tools: DeepReadonly<AdaptableGridElementData[]> = [
     {
         name: "Git",
         color: "#F05032",
@@ -101,6 +101,6 @@ const devTools: DeepReadonly<AdaptableGridElementData[]> = [
     }
 ] as const;
 
-export type DevTools = DeepReadonly<typeof devTools>;
+export type Tools = DeepReadonly<typeof tools>;
 
-export default devTools as DevTools;
+export default tools as Tools;
