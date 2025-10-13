@@ -3,10 +3,7 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: { 
-        default: "Rayane Merlin - Resume", 
-        template: "Rayane Merlin - Resume"
-    },
+    title: "Rayane Merlin - Resume",
 };
 
 const Layout = ({ 

@@ -16,6 +16,8 @@ import {
 import photo from "~/img/home/photo.jpg";
 
 import ContactLinks from "@/components/contact-links";
+import EducationContainer from "@/components/home/education-container";
+import WorkContainer from "@/components/home/work-container";
 import SkillsContainer from "@/components/home/skills-container";
 import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
 
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
 };
 
 const Home = () => {
+
     return (
         <main className={cn(
             "relative justify-self-center to-animate fade anim-delay-200 anim-duration-300 rounded-xl h-fit",
@@ -64,8 +67,10 @@ const Home = () => {
 
                     I hold a <b>BUT in Computer Science</b> from the <b>University of Lyon 1</b> (<i>Development &amp; Implementation Program</i>) and am currently pursuing a <b>three-year engineering degree at CPE Lyon</b>, specializing in <b>Cybersecurity Computer Engineering</b>.<br/>
 
-                    I&apos;m currently working at <b>Energy Pool</b> as a <b>Blue Team member</b> (<i>vulnerability protection</i>) throughout my engineering studies. This role is enhancing my skills in <b>threat detection</b>, <b>incident analysis</b>, <b>vulnerability management</b>, and <b>continuous improvement of defensive measures</b> within a <b>production environment</b>.
-                    <br/>... certs
+                    I&apos;m currently working at <b>Energy Pool</b> as a <b>Blue Team member</b> (<i>vulnerability protection</i>) throughout my engineering studies. This role is enhancing my skills in <b>threat detection</b>, <b>incident analysis</b>, <b>vulnerability management</b>, and <b>continuous improvement of defensive measures</b> within a <b>production environment</b>.<br/>
+
+                    ... certs
+                    
                 </Paragraph>
             </article>
             <article>
@@ -73,14 +78,8 @@ const Home = () => {
                 <Paragraph>These are my last main projects. Click on a project to learn more about it. You can find descriptions, links and more..</Paragraph>
             </article>
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
-            <article>
-                <HeadingOne id="xp" isAnchorLink>Experience</HeadingOne>
-                <Paragraph>Describe here...</Paragraph>
-            </article>
-            <article>
-                <HeadingOne id="education" isAnchorLink>Education</HeadingOne>
-                <Paragraph>Describe here...</Paragraph>
-            </article>
+            <WorkContainer />
+            <EducationContainer />
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
