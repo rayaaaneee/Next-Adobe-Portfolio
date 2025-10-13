@@ -1,3 +1,4 @@
+import { ChildrenType } from "@/utils/interface/children";
 
 const imageBaseClassName = `h-24 w-24 pointer-events-none`;
 
@@ -18,3 +19,12 @@ export const baseIconProps = {
     ...baseProps,
     className: iconBaseClassName,
 } as const;
+
+type GridContent = {
+    name: string;
+    icon: ChildrenType;
+    color: string; 
+    link?: string;
+};
+
+export default GridContent;

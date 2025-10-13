@@ -4,37 +4,38 @@ import type DeepReadonly from '@/utils/types/deep-readonly';
 
 import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
-import { baseImageProps, baseIconProps } from './base';
+import { baseImageProps } from './adaptable-grid-base';
 
+import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 import sqliteImg from "~/img/home/databases/sqlite.png";
-import { GrMysql } from "react-icons/gr";
-import { TbBrandMongodb } from "react-icons/tb";
 import firebaseImg from "~/img/home/databases/firebase.png";
 
 const databases: DeepReadonly<AdaptableGridElementData[]> = [
     {
-        name: "SQLite",
-        color: "#003B57",
-        icon: <Image {...baseImageProps} src={sqliteImg.src} alt={`SQLite`} />,
-        link: "https://www.sqlite.org/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.SQLITE,
+            "database"
+        ),
+        customIcon: <Image {...baseImageProps} src={sqliteImg.src} alt={GeneralTechnologiesName.SQLITE} />,
     },
     {
-        name: "MySQL",
-        color: "#4479A1",
-        icon: <GrMysql {...baseIconProps} />,
-        link: "https://www.mysql.com/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.MYSQL,
+            "database"
+        ),
     },
     {
-        name: "MongoDB",
-        color: "#47A248",
-        icon: <TbBrandMongodb {...baseIconProps} />,
-        link: "https://www.mongodb.com/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.MONGODB,
+            "database"
+        ),
     },
     {
-        name: "Firebase",
-        color: "#ff9100",
-        icon: <Image {...baseImageProps} src={firebaseImg.src} alt={`Firebase`} />,
-        link: "https://firebase.google.com/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.FIREBASE,
+            "database"
+        ),
+        customIcon: <Image {...baseImageProps} src={firebaseImg.src} alt={GeneralTechnologiesName.FIREBASE} />,
     }
 ] as const;
 

@@ -4,71 +4,71 @@ import type DeepReadonly from '@/utils/types/deep-readonly';
 
 import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
-import { baseIconProps, baseImageProps } from './base';
+import { baseImageProps } from './adaptable-grid-base';
+
+import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 
 import nextJsImg from '~/img/home/frameworks/nextjs.png';
-import { TbBrandNuxt } from "react-icons/tb";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { SiAngular, SiElectron } from "react-icons/si";
-import { SiExpress } from "react-icons/si";
 import springBootImg from "~/img/home/frameworks/spring-boot.png";
 import symfonyImg from "~/img/home/frameworks/symfony.png";
-import { SiDotnet } from "react-icons/si";
 
 const frameworks: DeepReadonly<AdaptableGridElementData[]> = [
     {
-        name: "Next.js",
-        color: "#000000",
-        icon: <Image {...baseImageProps} src={nextJsImg} alt="Next.js" />,
-        link: "https://nextjs.org/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.NEXTJS,
+            "framework"
+        ),
+        customIcon: <Image {...baseImageProps} src={nextJsImg.src} alt={GeneralTechnologiesName.NEXTJS} />,
     },
     {
-        name: "Nuxt.js",
-        color: "#00C58E",
-        icon: <TbBrandNuxt {...baseIconProps} />,
-        link: "https://nuxt.com/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.NUXTJS,
+            "framework"
+        ),
     },
     {
-        name: "Tailwind CSS",
-        color: "#06B6D4",
-        icon:  <RiTailwindCssFill {...baseIconProps} />,
-        link: "https://tailwindcss.com/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.TAILWINDCSS,
+            "framework"
+        ),
     },
     {
-        name: "Electron",
-        color: "#47848F",
-        icon: <SiElectron {...baseIconProps} />,
-        link: "https://www.electronjs.org/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.TAILWINDCSS,
+            "framework"
+        ),
     },
     {
-        name: "Angular",
-        color: "#DD0031",
-        icon: <SiAngular {...baseIconProps} />,
-        link: "https://angular.io/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.ELECTRON,
+            "framework"
+        ),
     },
     {
-        name: "Express.js",
-        color: "#000000",
-        icon: <SiExpress {...baseIconProps} />,
-        link: "https://expressjs.com/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.ANGULAR,
+            "framework"
+        ),
     },
     {
-        name: "Spring Boot",
-        color: "#6DB33F",
-        icon: <Image {...baseImageProps} src={springBootImg} alt="Spring Boot" />,
-        link: "https://spring.io/projects/spring-boot",
+        content: assertFoundTech(
+            GeneralTechnologiesName.SPRINGBOOT,
+            "framework"
+        ),
+        customIcon: <Image {...baseImageProps} src={springBootImg} alt={GeneralTechnologiesName.SPRINGBOOT} />,
     },
     {
-        name: "PHP Symfony",
-        color: "#1a171b",
-        icon: <Image {...baseImageProps} src={symfonyImg} alt="Symfony" />,
-        link: "https://symfony.com/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.SYMFONY,
+            "framework"
+        ),
+        customIcon: <Image {...baseImageProps} src={symfonyImg} alt={GeneralTechnologiesName.SYMFONY} />,
     },
     {
-        name: "ASP.NET Core",
-        color: "#512BD4",
-        icon: <SiDotnet {...baseIconProps} />,
-        link: "https://dotnet.microsoft.com/en-us/apps/aspnet",
+        content: assertFoundTech(
+            GeneralTechnologiesName.DOTNET,
+            "framework"
+        ),
     }
 ] as const;
 

@@ -1,61 +1,58 @@
 import Image from 'next/image';
 
+import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
+
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
 import type { AdaptableGridElementData } from '@/components/home/adaptable-grid/adaptable-grid';
 
-import { baseIconProps, baseImageProps } from './base';
+import { baseImageProps } from './adaptable-grid-base';
 
-import { FaReact } from 'react-icons/fa6';
-import { RiVuejsLine } from 'react-icons/ri';
 import sassImg from "~/img/home/libraries/sass.png";
-import { SiThreedotjs } from "react-icons/si";
-import { DiJqueryLogo } from "react-icons/di";
-import { SiPrisma } from "react-icons/si";
-import { SiNumpy } from "react-icons/si";
 
 const libraries: DeepReadonly<AdaptableGridElementData[]> = [
     {
-        name: "React",
-        color: "#61DAFB",
-        icon: <FaReact {...baseIconProps } />,
-        link: "https://reactjs.org/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.REACT,
+            "library"
+        ),
     },
     {
-        name: "Vue.js",
-        color: "#4FC08D",
-        icon: <RiVuejsLine {...baseIconProps} />,
-        link: "https://vuejs.org/",
+        content: assertFoundTech(
+            GeneralTechnologiesName.VUEJS,
+            "library"
+        ),
     },
     {
-        name: "SCSS (Sass)",
-        color: "rgb(191.25, 63.75, 127.5)",
-        icon: <Image {...baseImageProps} src={sassImg.src} alt={`SCSS (Sass)`} />,
-        link: "https://sass-lang.com/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.SCSS,
+            "library"
+        ),
+        customIcon: <Image {...baseImageProps} src={sassImg.src} alt={GeneralTechnologiesName.SCSS} />,
     },
     {
-        name: "Three.js",
-        color: "#283037",
-        icon: <SiThreedotjs {...baseIconProps} />,
-        link: "https://threejs.org/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.THREEJS,
+            "library"
+        ),
     },
     {
-        name: "JQuery",
-        color: "#0769AD",
-        icon: <DiJqueryLogo {...baseIconProps} />,
-        link: "https://jquery.com/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.JQUERY,
+            "library"
+        ),
     },
     {
-        name: "Prisma",
-        color: "#0C344B",
-        icon: <SiPrisma {...baseIconProps} />,
-        link: "https://www.prisma.io/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.PRISMA,
+            "library"
+        ),
     },
     {
-        name: "NumPy",
-        color: "#013243",
-        icon: <SiNumpy {...baseIconProps} />,
-        link: "https://numpy.org/"
+        content: assertFoundTech(
+            GeneralTechnologiesName.NUMPY,
+            "library"
+        ),
     }
 ] as const;
 

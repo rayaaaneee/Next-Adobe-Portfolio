@@ -23,9 +23,12 @@ const AdaptableGridWrapper = ({ elements, nbElements, className, index, clickabl
             `cols-${nbElements} overflow-hidden size-element`,
             className
         )}>
-            { elements.slice(index, index + nbElements).map((element, j) => (
-                <AdaptableGridElement clickable={clickable} key={`${index}-${j}`}  element={element} index={j} />
-            ))}
+            { elements.slice(index, index + nbElements).map((element, j) => {
+                if (!element.content) throw new Error(`No content provided for AdaptableGridElement at index ${j}`);
+                return (
+                    <AdaptableGridElement clickable={clickable} key={`${index}-${j}`}  element={element} index={j} />
+                )
+            })}
         </div>
     )
 }

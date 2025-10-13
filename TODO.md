@@ -8,19 +8,18 @@
 * [X] Clean CSS architecture (split files)
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
-* [X] Fix Animation for grid wrappers appeareance on showing more rows
-* [ ] JS Confetti for grid
+* [X] Fix Animation for grid wrappers appeareance on showing more row
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors
 * [ ] Display CV on menu
 * [ ] Medias
+
   * [ ] Tooltip media queries
   * [X] Menu medias
   * [X] Index page medias
   * [X] Made Medias for background (to start)
     * [X] Change header / footer triangle size on lg-
-    * [ ] Change triangle animations using medias (ok for lg+, change for other)
 * [X] FadeIn on portfolio page
 * [X] Home : Fix pointer-events before appearance
 

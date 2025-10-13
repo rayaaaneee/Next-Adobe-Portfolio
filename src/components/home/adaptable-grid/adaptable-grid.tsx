@@ -4,23 +4,23 @@ import { cn } from "@/lib/utils";
 import type ClassNameInterface from "@/utils/interface/classname";
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
 
-import { ChildrenType } from "@/utils/interface/children";
 import AdaptableGridWrapper from "./adaptable-grid-wrapper";
 import AdaptableGridSeeMoreButton from "./adaptable-grid-see-more-button";
 import AdaptableGridTopBottomPart from "./adaptable-grid-top-bottom-part";
 
+import type GridContent from "@/asset/data/home/adaptable-grid-base";
+import { ChildrenType } from "@/utils/interface/children";
+import { TechCategory } from "@/asset/data/home/general-technologies-list";
+
 export interface AdaptableGridElementData {
-    name: string;
-    color: string;
-    link?: string;
-    icon?: ChildrenType;
-    imageAlt?: string;
+    content: GridContent
+    customIcon?: ChildrenType;
 }
 
 export interface AdaptableGridElementProjectData extends AdaptableGridElementData {
     description: string;
     year: number;
-    technologies: string[];
+    technologies: {name: string, type: TechCategory}[];
     githubLink?: string;
 }
 
@@ -63,7 +63,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
         const elementCount: number = elements.length;
         const nbWrappers: number = Math.ceil(elementCount / elementsPerRow);
 
-        if (clickable && nbWrappers > 1) throw new Error("Clickable AdaptableGrid can only have one row (elementsPerRow must be greater than or equal to the number of elements)");
+        if (clickable && nbWrappers > 1) throw new Error(`Clickable AdaptableGrid can only have one row (elementsPerRow (${elementsPerRow}) must be greater than or equal to the number of elements (${elementCount}, ${elements.map(e => e.content.name).join(", ")})`);
 
         if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 

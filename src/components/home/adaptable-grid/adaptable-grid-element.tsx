@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, MouseEvent, MouseEventHandler, Ref} from "react";
+import { useEffect, useRef, useState, MouseEvent, Ref} from "react";
 import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
 
@@ -16,8 +16,8 @@ import Tooltip, { TooltipSize } from "@/components/tooltip";
 import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
 
 import verifyReference from "@/utils/function/verify-reference";
-
-import { projectTechnologiesList } from "@/asset/data/home/projects";
+import generalTechnologies, { assertFoundTech } from "@/asset/data/home/general-technologies-list";
+import { assertFound } from "@/utils/function/assert-found";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -121,7 +121,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (!clickable) {
 
             topPartRoot.current.render(
-                <TopPartText icon={element.link && <TbExternalLink />} containerClassName="to-animate fade short">{element.name}</TopPartText>
+                <TopPartText icon={element.content.link && <TbExternalLink />} containerClassName="to-animate fade short">{element.content.name}</TopPartText>
             );
         }
 
@@ -159,13 +159,13 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
 
             topPartRoot.current.render(
                 <TopPartText 
-                    icon={elementProjectData.link && <TbExternalLink />}
-                    href={elementProjectData.link} 
+                    icon={elementProjectData.content.link && <TbExternalLink />}
+                    href={elementProjectData.content.link} 
                     iconScale
                     containerClassName="mt-3 opacity-0 to-animate fade"
                     className="text-nowrap">
-                        {elementProjectData.link && "Consult "}
-                        <u>{elementProjectData.name}</u> 
+                        {elementProjectData.content.link && "Consult "}
+                        <u>{elementProjectData.content.name}</u> 
                         <i>({elementProjectData.year})</i>
                 </TopPartText>
             );
@@ -178,13 +178,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                     "transition-opacity duration-400 ease-out",
                     "opacity-80",
                 )}>
-                    {elementProjectData.technologies.map((name, i) => {
-                        if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
-                        const icon = projectTechnologiesList[name];
+                    {elementProjectData.technologies.map((tech, i) => {
+                        const icon = assertFoundTech(tech.name, tech.type).icon;
                         return (
                             <Tooltip 
                                 key={i} 
-                                text={name} 
+                                text={tech.name} 
                                 size={TooltipSize.md} 
                                 className={`to-animate appear translate-y-3 anim-delay-${i * 100}`}
                                 tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
@@ -229,12 +228,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             onClick={clickable ? () => (setIsExpanded(true)) : undefined}
             onMouseEnter={supportHover ? onMouseEnter : undefined} 
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
-            href={clickable ? undefined : element.link}
+            href={clickable ? undefined : element.content.link}
             target={clickable ? undefined : "_blank"}
             rel={clickable ? undefined : "noreferrer"}
             className={cn(
                 "adaptable-grid-element",
-                [(element.link || clickable) ? "cursor-pointer" : "cursor-default"],
+                [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
                 "size-element flex relative flex-row items-center gap-0 justify-center",
                 "transition-[opacity,background-color] duration-300 ease-in-out",
                 "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
@@ -242,8 +241,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                 className,
             )}
             key={index}
-            style={{ backgroundColor: element.color }}>
-            { element.icon }
+            style={{ backgroundColor: element.content.color }}>
+            { element.customIcon || element.content.icon }
             { clickable && 
                 (<AdaptableGridElementExpansion 
                     element={element as AdaptableGridElementProjectData} 
