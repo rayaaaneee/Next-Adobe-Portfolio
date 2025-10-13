@@ -21,7 +21,7 @@ import { projectTechnologiesList } from "@/asset/data/home/projects";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
-    href, iconPosition = IconPosition.left, iconScale = false 
+    href, iconPosition = IconPosition.right, iconScale = false 
 }: HeadingPropsInterface) =>  (
     <HeadingTwo
         icon={icon}
@@ -121,7 +121,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (!clickable) {
 
             topPartRoot.current.render(
-                <TopPartText className="to-animate fade short">{element.name}</TopPartText>
+                <TopPartText icon={element.link && <TbExternalLink />} containerClassName="to-animate fade short">{element.name}</TopPartText>
             );
         }
 
@@ -147,16 +147,66 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (clickable && !bottomPartRoot.current) return;
 
         if (isExpanded) {
+            
             // When expanded
 
             gridElementRef.current.classList.add("active");
 
 
+            if (!bottomPartRoot.current) return;
+
+            const elementProjectData = element as AdaptableGridElementProjectData;
+
+            topPartRoot.current.render(
+                <TopPartText 
+                    icon={elementProjectData.link && <TbExternalLink />}
+                    href={elementProjectData.link} 
+                    iconScale
+                    containerClassName="mt-3 opacity-0 to-animate fade"
+                    className="text-nowrap">
+                        {elementProjectData.link && "Consult "}
+                        <u>{elementProjectData.name}</u> 
+                        <i>({elementProjectData.year})</i>
+                </TopPartText>
+            );
+
+            bottomPartRoot.current.render(
+                <section className={cn(
+                    "content-expansion",
+                    "bottom-2 w-fit h-fit",
+                    "flex flex-row flex-nowrap gap-4",
+                    "transition-opacity duration-400 ease-out",
+                    "opacity-80",
+                )}>
+                    {elementProjectData.technologies.map((name, i) => {
+                        if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
+                        const icon = projectTechnologiesList[name];
+                        return (
+                            <Tooltip 
+                                key={i} 
+                                text={name} 
+                                size={TooltipSize.md} 
+                                className={`to-animate appear translate-y-3 anim-delay-${i * 100}`}
+                                tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
+                                <Button className="rounded-full">
+                                    {icon}
+                                </Button>
+                            </Tooltip>
+                        );
+                    })}
+                </section>
+            );
+
         } else {
+
             // When dismissed
 
             gridElementRef.current.classList.remove("active");
 
+            if (!bottomPartRoot.current) return;
+
+            topPartRoot.current.render(null);
+            bottomPartRoot.current.render(null);
 
         }
 
@@ -171,72 +221,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
 
     }, [isExpanded]);
 
-    const onExpand: MouseEventHandler<HTMLAnchorElement | HTMLDivElement> = () => {
-
-        setIsExpanded(true);
-
-        if (!topPartRoot.current || !bottomPartRoot.current) return;
-
-        const elementProjectData = element as AdaptableGridElementProjectData;
-
-        topPartRoot.current.render(
-            <TopPartText 
-                icon={elementProjectData.link && <TbExternalLink />} 
-                iconPosition={IconPosition.right} 
-                href={elementProjectData.link} 
-                iconScale
-                containerClassName="mt-3 opacity-0 to-animate fade"
-                className="text-nowrap">
-                    {elementProjectData.link && "Consult "}
-                    <u>{elementProjectData.name}</u> 
-                    <i>({elementProjectData.year})</i>
-            </TopPartText>
-        );
-
-        bottomPartRoot.current.render(
-            <section className={cn(
-                "content-expansion",
-                "bottom-2 w-fit h-fit",
-                "flex flex-row flex-nowrap gap-4",
-                "transition-opacity duration-400 ease-out",
-                "opacity-80",
-            )}>
-                {elementProjectData.technologies.map((name, i) => {
-                    if (!(name in projectTechnologiesList)) throw new Error(`Project technology "${name}" not found in projectTechnologies data.`);
-                    const icon = projectTechnologiesList[name];
-                    return (
-                        <Tooltip 
-                            key={i} 
-                            text={name} 
-                            size={TooltipSize.md} 
-                            className={`to-animate appear translate-y-3 anim-delay-${i * 100}`}
-                            tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
-                            <Button className="rounded-full">
-                                {icon}
-                            </Button>
-                        </Tooltip>
-                    );
-                })}
-            </section>
-        );
-    }
-
-    const onDismiss: MouseEventHandler<HTMLSpanElement> = (e) => {
-        e.stopPropagation();
-        setIsExpanded(false);
-
-        if (!topPartRoot.current || !bottomPartRoot.current) return;
-
-        topPartRoot.current.render(null);
-        bottomPartRoot.current.render(null);
-    }
-
     const ParentElement = clickable ? "div" : "a";
 
     return (
         <ParentElement
             ref={gridElementRef as Ref<HTMLAnchorElement & HTMLDivElement>}
-            onClick={clickable ? onExpand : undefined}
+            onClick={clickable ? () => (setIsExpanded(true)) : undefined}
             onMouseEnter={supportHover ? onMouseEnter : undefined} 
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
             href={clickable ? undefined : element.link}
@@ -257,7 +247,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             { clickable && 
                 (<AdaptableGridElementExpansion 
                     element={element as AdaptableGridElementProjectData} 
-                    onClose={onDismiss}
+                    onClose={(e) => (e.stopPropagation(), setIsExpanded(false))}
                     isClicked={isExpanded} 
                 />) 
             }
