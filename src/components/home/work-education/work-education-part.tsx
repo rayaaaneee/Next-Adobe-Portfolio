@@ -1,11 +1,13 @@
 import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
 
+import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaLayerGroup } from "react-icons/fa";
 
 import { ChildrenInterface } from "@/utils/interface/children";
 import { type Work, type Education } from "@/utils/types/home/experience";
+
 import Separator from "./separator";
 
 export interface WorkEducationPartProps {
@@ -28,7 +30,17 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
         <>
             <section className="my-8">
                 <SubSection>
-                    <HeadingTwo isAnchorLink id={`${isWork ? "work" : "education"}-${index}`} containerClassName="m-0" icon={<MdSchool className="w-8 h-8"/>}>{item.name}</HeadingTwo>
+                    <HeadingTwo 
+                        isAnchorLink id={`${isWork ? "work" : "education"}-${index}`} 
+                        containerClassName="m-0" 
+                        icon={isWork ? 
+                                (<IoMdBusiness className="w-8 h-8"/>)
+                                    :
+                                (<MdSchool className="w-8 h-8"/>)
+                            }
+                        >
+                            {item.name}
+                    </HeadingTwo>
                     <Paragraph className="m-0 italic">{item.date.toString()}</Paragraph>
                 </SubSection>
                 <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location}</HeadingThree>

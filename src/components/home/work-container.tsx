@@ -29,7 +29,7 @@ const WorkContainer = () => {
             title: "Backend Developer Intern",
             description: "During my apprenticeship at ICP Conseil, I contributed to the development of backend systems using Node.js and Express. I was involved in designing and implementing RESTful APIs, optimizing database queries, and ensuring the scalability and security of the applications. This experience allowed me to enhance my skills in server-side development and gain practical knowledge of industry best practices.",
             type: "Apprenticeship",
-            technologies: ["ASP.NET Core", "C#", "JQuery", "SQL Server"],
+            technologies: ["ASP.NET Core", "C#", "JQuery", "SQL Server", "Microsoft Access"],
             date: new ExperienceDateClass({
                 start: new DateClass({
                     month: Month.September,

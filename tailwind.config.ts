@@ -50,9 +50,9 @@ const config: import('tailwindcss').Config = {
                     "100%": { transform: "rotate(0deg)" },
                 },
                 "bar-move": {
-                    "0%": { width: "73%" },
-                    "50%": { width: "70%" },
-                    "100%": { width: "73%" },
+                    '0%': { transform: 'scaleX(1)' },
+                    '50%': { transform: 'scaleX(1.2)' },
+                    '100%': { transform: 'scaleX(1)' },
                 },
                 "blink": {
                     "0%, 100%": { opacity: "1" },

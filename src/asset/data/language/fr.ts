@@ -3,7 +3,7 @@ const frenchSentences = {
     current: "fr",
     denomination: "Français",
     flag_img: "french.png",
-    title: "Adobe Portfolio",
+    title: "Portfolio",
     loader: {
         texts: [
             "Lecture des préférences...",
@@ -26,13 +26,11 @@ const frenchSentences = {
     },
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
-        welcome_to: "Bienvenue sur",
         discover: "Découvrir",
         description: [
             "Rayane Merlin", 
             "Développeur Full-Stack", 
             "Cybersécurité",
-            "Etudiant en IT (BAC +3)"
         ],
         reduced_description: [
             "Rayane Merlin",

@@ -17,12 +17,11 @@ const MenuLink = ({ className, id, to, children = <></>, isColored }: MenuLinkPr
     const location = usePathname();
 
     return (
-        <li id={id} className={cn("menu-link", "w-fit text-white text-2xl font-apple font-medium", className)}>
+        <li id={id} className={cn("menu-link", "w-fit text-black text-2xl font-apple font-medium", className)}>
             <Link href={ to } className={ cn(
                 className, 
                 { active: location === to },
                 "after:bg-menu-link text-2xl",
-                "[text-shadow:0_0_2.15rem_#000]",
                 isColored ? 
                     cn(
                         "relative mt-[3px] w-[95%] after:rounded-[50px] transition-all duration-100 ease-in",

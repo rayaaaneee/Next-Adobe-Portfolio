@@ -3,7 +3,7 @@ import Sentences from "@/utils/types/language";
 const englishSentences: Sentences = {
     current: "en",
     denomination: "English",
-    title: "Adobe Portfolio",
+    title: "Portfolio",
     flag_img: "english.png",
     loader: {
         texts: [
@@ -27,13 +27,11 @@ const englishSentences: Sentences = {
     },
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
-        welcome_to: "Welcome to",
         discover: "Get started",
         description: [
             "Rayane Merlin", 
             "Full-Stack Developper", 
             "Cybersecurity",
-            "IT Student (BAC +3)"
         ],
         reduced_description: [
             "Rayane Merlin",

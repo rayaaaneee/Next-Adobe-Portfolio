@@ -9,11 +9,15 @@ import ManageLanguages from "@/utils/manager/manage-language";
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-export const APP_DEFAULT_TITLE = "Adobe Portfolio";
+export const APP_DEFAULT_TITLE = "Rayane Merlin";
 const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
 
 export const metadata: Metadata = {
     manifest: "/manifest.json",
+    title: {
+        default: APP_DEFAULT_TITLE,
+        template: `%s - ${APP_DEFAULT_TITLE}`,
+    },
     description: APP_DESCRIPTION,
     icons: {
         icon: [

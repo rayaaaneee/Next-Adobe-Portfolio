@@ -40,10 +40,6 @@
 	  	}
 	}
 
-	.global-text-shadow {
-		text-shadow: 0 0 2.15rem rgba(0, 0, 0, .5);
-	}
-
 	.to-animate {
 
 		@apply opacity-0 !forwards !ease-in-out pointer-events-none;

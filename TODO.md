@@ -13,6 +13,9 @@
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors
 * [ ] Display CV on menu
+* [ ] Remove box shadows on index title
+* [ ] set background elements behind texts (index)
+* [ ] Reduce icon sizes
 * [ ] Medias
 
   * [ ] Tooltip media queries
