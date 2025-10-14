@@ -1,4 +1,4 @@
-import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
+import { AnchorLinkButton, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
 
 import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
@@ -10,6 +10,7 @@ import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "./separator";
 import Tooltip from "@/components/tooltip";
+import { cn } from "@/lib/utils";
 
 export interface WorkEducationPartProps {
     item: Work | Education;
@@ -42,23 +43,44 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                         >
                             {item.name}
                     </HeadingTwo>
-                    <Paragraph className="m-0 italic">{item.date.toString()}</Paragraph>
+                    <div className="flex flex-col items-end justify-center gap-1">
+                        <HeadingThree containerClassName="m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location}</HeadingThree>
+                        <Paragraph className="m-0 italic">{item.date.toString()}</Paragraph>
+                    </div>
                 </SubSection>
-                <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location}</HeadingThree>
                 {isWork && (item as Work).technologies.length > 0 && (
-                    <div className="mt-4 flex flex-col gap-2">
-                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="ml-0">Technologies:</HeadingThree>
-                        {(item as Work).technologies.map((tech, idx) => (
-                            <div className="flex items-center gap-4 [&>svg]:w-7 [&>svg]:h-7" key={idx}>
-                                <Paragraph indent className="m-0 italic">- {tech.name}</Paragraph>
-                                {tech.icon}
-                            </div>
-                        ))}
+                    <div className="tech-list-container">
+                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="m-0">Technologies:</HeadingThree>
+                        <ul className="list-none my-5 ml-10 flex flex-col gap-2">
+                            {(item as Work).technologies.map((tech, idx) => (
+                                <AnchorLinkButton 
+                                    key={idx}
+                                    href={tech.link}
+                                    className="w-fit"
+                                    buttonClassName={cn(
+                                        "bg-transparent hover:bg-transparent",
+                                        "flex gap-3 justify-start",
+                                        "[&:hover>p]:underline",
+                                        "[&:hover>.tech-icon]:opacity-100",
+                                    )}>
+                                        <div className={cn(
+                                            "tech-icon",
+                                            "[&>*]:w-5 [&>*]:h-5 w-5 h-5 opacity-70 transition-opacity",
+                                            "rounded-full w-fit text-white p-2",
+                                        )} style={{ backgroundColor: tech.color }}>
+                                            {tech.icon}
+                                        </div>
+                                        <Paragraph className="m-0 italic">
+                                            {tech.name}
+                                        </Paragraph>
+                                </AnchorLinkButton>
+                            ))}
+                        </ul>
                     </div>
                 )}
                 {isWork && (
                     <SubSection>
-                        <HeadingThree containerClassName="ml-0">• {(item as Work).title}</HeadingThree>
+                        <HeadingThree containerClassName="m-0">• {(item as Work).title}</HeadingThree>
                         <Paragraph className="m-0 italic">{(item as Work).type}</Paragraph>
                     </SubSection>
                 )}

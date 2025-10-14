@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 
 import { ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
+import StylesInterface from "@/utils/interface/style";
 
 import { Undefined } from "@/utils/types/nullable";
 import { forwardRef } from "react";
 
-export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface {};
+export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface, StylesInterface {};
 
 const headingContainerBaseClassName = (active: boolean, hasIcon: boolean) => [
     "flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline",
@@ -212,12 +213,13 @@ export interface AnchorLinkButtonPropsInterface extends Omit<ButtonPropsInterfac
 }
 
 export const AnchorLinkButton = forwardRef<HTMLAnchorElement, AnchorLinkButtonPropsInterface>(
-    ({ className, children, id, onClick, href, buttonClassName }, ref) => (
+    ({ className, children, id, onClick, href, buttonClassName, style }, ref) => (
         <a
             ref={ref}
             id={id}
             href={href}
             className={cn(className)}
+            style={style}
             target="_blank"
             rel="noreferrer"
             onClick={onClick}>

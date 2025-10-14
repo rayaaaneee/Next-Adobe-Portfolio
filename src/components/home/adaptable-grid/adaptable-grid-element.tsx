@@ -187,7 +187,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                                 size={TooltipSize.md} 
                                 className={`to-animate appear translate-y-3 anim-delay-${i * 100}`}
                                 tooltipClassName="bg-[rgba(255,255,255,0.9)] !text-slate-600 font-semibold">
-                                <Button className="rounded-full">
+                                <Button className="rounded-full [&>svg]:w-7 [&>svg]:h-7 ">
                                     {icon}
                                 </Button>
                             </Tooltip>
@@ -234,7 +234,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             className={cn(
                 "adaptable-grid-element",
                 [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
-                "size-element flex relative flex-row items-center gap-0 justify-center",
+                "text-white size-element flex relative flex-row items-center gap-0 justify-center",
+                "[&>*:not(.content-expansion)]:w-24 [&>*:not(.content-expansion)]:h-24 [&>*:not(.content-expansion)]:pointer-events-none",
                 "transition-[opacity,background-color] duration-300 ease-in-out",
                 "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",

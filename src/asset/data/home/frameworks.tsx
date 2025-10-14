@@ -34,12 +34,6 @@ const frameworks: DeepReadonly<AdaptableGridElementData[]> = [
     },
     {
         content: assertFoundTech(
-            GeneralTechnologiesName.TAILWINDCSS,
-            "framework"
-        ),
-    },
-    {
-        content: assertFoundTech(
             GeneralTechnologiesName.ELECTRON,
             "framework"
         ),
