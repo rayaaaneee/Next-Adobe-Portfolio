@@ -4,7 +4,7 @@ const Background = () => {
 
     const triangleClassName: string = "absolute h-0 w-0 -z-[1]";
     const circleClassName: string = "absolute rounded-full -z-[2]";
-    const borderTriangleClassName: string = `${triangleClassName} blur-[10px] z-0`;
+    const borderTriangleClassName: string = `${triangleClassName} z-0`;
 
     return (
         <div className={cn(
