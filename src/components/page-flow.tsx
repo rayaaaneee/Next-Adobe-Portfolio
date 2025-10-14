@@ -60,7 +60,7 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-4xl w-fit",
+                "text-4xl text-black dark:text-white w-fit",
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
@@ -86,7 +86,7 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-gray-600 text-3xl ml-4", 
+                "text-gray-600 dark:text-gray-300 text-3xl ml-4", 
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
@@ -114,7 +114,7 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-gray-500 text-2xl ml-7", 
+                "text-gray-500 dark:text-gray-400 text-2xl ml-7", 
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>

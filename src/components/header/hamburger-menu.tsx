@@ -43,9 +43,9 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
             { ["top-bar", "middle-bar", "bottom-bar"].map((barClass, index) => (
                 <div key={index} className={cn(
                     "hamburger-bar",
-                    "rounded-[10px] w-[83%] h-[9%] bg-black",
+                    "rounded-[10px] w-[83%] h-[9%] bg-gray-700 dark:bg-white",
                     "transition-all duration-300 ease-in-out",
-                    "peer-checked:bg-[#3b3b3b] dark:peer-checked:bg-white",
+                    "peer-checked:bg-slate-800 dark:peer-checked:bg-slate-100",
                     barClass,
                     (barClass === "top-bar") && 'peer-checked:relative peer-checked:bottom-auto peer-checked:-rotate-45 top-[16px]',
                     (barClass === "middle-bar") && 'peer-checked:w-full peer-checked:opacity-0',

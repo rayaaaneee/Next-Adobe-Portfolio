@@ -30,8 +30,7 @@ const SwitchTheme = ({ className, id, s_size = false, whiteIcons = false, pinkMo
 			className={cn(
 				styles.modeButton,
 				{ [styles.white]: whiteIcons, [styles.pinkMoon]: pinkMoon },
-				"h-[40px] w-[40px] bg-transparent rounded-none cursor-pointer bg-cover bg-no-repeat bg-center transition-all duration-300",
-				"",
+				"h-[40px] w-[40px] bg-transparent rounded-none cursor-pointer bg-cover bg-no-repeat bg-center !transition-all duration-300",
 				className
 			)}
 			onClick={changeTheme}>	

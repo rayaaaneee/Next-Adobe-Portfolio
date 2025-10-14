@@ -10,7 +10,7 @@ const Background = () => {
         <div className={cn(
             "background-container -z-[1]",
             "fixed top-0 left-0 w-full h-full bg-white dark:bg-background-dark",
-            "[&>*]:transition-colors [&>*]:pointer-events-none [&>*]:duration-theme [&>*]:ease-theme",
+            "[&>*]:pointer-events-none",
         )}>
             <div id="headerTriangle" className={cn(
                 borderTriangleClassName,

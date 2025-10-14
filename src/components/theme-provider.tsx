@@ -3,7 +3,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 const ThemeProvider = ({ children }: ChildrenInterface) => {
     return (
-        <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+        <NextThemesProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
         </NextThemesProvider>
     )

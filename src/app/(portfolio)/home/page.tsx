@@ -3,12 +3,14 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import { FaLocationDot } from "react-icons/fa6";
+import { FaHeart, FaLocationDot } from "react-icons/fa6";
+import { FaLink } from "react-icons/fa";
 
 import { 
     HeadingOne, 
     HeadingThree, 
     HeadingTwo, 
+    IconPosition, 
     Paragraph, 
     ParagraphAlignment 
 } from "@/components/page-flow";
@@ -20,6 +22,7 @@ import EducationContainer from "@/components/home/education-container";
 import WorkContainer from "@/components/home/work-container";
 import SkillsContainer from "@/components/home/skills-container";
 import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
+import Separator from "@/components/home/separator";
 
 import projects from "@/asset/data/home/projects";
 import hobbies from "@/asset/data/home/hobbies";
@@ -35,26 +38,30 @@ const Home = () => {
 
     return (
         <main className={cn(
-            "relative justify-self-center to-animate fade anim-delay-200 anim-duration-300 h-fit",
+            "justify-self-center to-animate rounded-md fade anim-delay-200 anim-duration-300 h-fit",
             "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.5)] backdrop-blur-md",
             "box-border",
             "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
             "my-[3.5vw] md:my-[5vw] lg:my-10",
-            "py-5 sm:py-7 md:py-10 xl:py-20",
-            "[&>article]:px-5 sm:[&>article]:px-7 md:[&>article]:px-10 xl:[&>article]:px-20"
+            "py-5 sm:py-7 md:py-10 xl:pt-20 xl:pb-8",
+            "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
         )}>
-            <Image className={cn("absolute w-48 h-48 top-24 right-24 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
-            <article>
-                <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
-                <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
-                <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
+            <Separator className="mt-0 mb-8" />
+            <article className="relative flex flex-col justify-center">
+                <Image className={cn("absolute w-48 h-48 right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
+                <section>
+                    <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
+                    <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
+                    <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
+                </section>
+                <section>
+                    <HeadingThree icon={<FaLink className="w-6 h-6"/>} containerClassName="ml-0">Links</HeadingThree>
+                    <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
+                        "w-fit mt-4 gap-7 justify-between",
+                    )} />
+                </section>
             </article>
-            <article>
-                <HeadingTwo containerClassName="ml-0" id="links" isAnchorLink>Links</HeadingTwo>
-                <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
-                    "w-fit mt-4 gap-7 justify-between",
-                )} />
-            </article>
+            <Separator className="my-8" />
             <article>
                 <HeadingOne id="about" isAnchorLink>About me</HeadingOne>
                 <Paragraph indent alignment={ParagraphAlignment.justify}>
@@ -73,27 +80,39 @@ const Home = () => {
                     
                 </Paragraph>
             </article>
+            <Separator className="my-8" />
             <article>
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>These are my last main projects. Click on a project to learn more about it. You can find descriptions, links and more..</Paragraph>
             </article>
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
+            <Separator className="my-10" />
             <WorkContainer />
             <EducationContainer />
+            <Separator className="my-8" />
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
             </article>
+            <Separator className="my-8" />
             <article>
                 <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
                 <Paragraph>Here&apos;s my skills ...</Paragraph>
             </article>
             <SkillsContainer />
+            <Separator className="my-10" />
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
             <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
-            {/* Made by Rayane Merlin with Next.js */}
+            <Separator />
+            <HeadingThree 
+                icon={<FaHeart className="w-8 h-8 text-red-400" />} 
+                iconPosition={IconPosition.right}
+                className="text-center dark:text-white" 
+                containerClassName="mx-auto mt-8 mb-0">
+                    Thank you for visiting my portfolio !
+            </HeadingThree>
         </main>
     )
 }

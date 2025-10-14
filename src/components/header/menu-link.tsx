@@ -34,8 +34,8 @@ const MenuLink = ({ className, id, to, children = <></>, isColored }: MenuLinkPr
                     )
                         : 
                     cn(
-                        "after:opacity-0 after:h-[5px] after:w-0 after:rounded-[5px] mt-[5px] transition-all duration-300 ease-in",
-                        "after:transition-all after:duration-300 after:ease-in",
+                        "after:opacity-0 after:h-[5px] after:w-0 after:rounded-[5px] mt-[5px] transition-all duration-200 ease-in",
+                        "after:transition-all after:duration-200 after:ease-in",
                         "hover:after:opacity-100 hover:text-menu-link hover:after:w-[120%]",
                         "[&.active]:after:opacity-100 [&.active]:text-menu-link [&.active]:after:w-[120%]",
                         "dark:hover:text-[#ead3d3] dark:[&.active]:text-[#ead3d3] dark:[&.active]:after:bg-[#ead3d3] dark:hover:after:bg-[#ead3d3]",

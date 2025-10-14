@@ -116,14 +116,14 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
             </Link>
             <nav id="menu-container">
                 <ul className={cn(
-                    "header-media-menu box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/40%)] transition-all ease-menu duration-600",
+                    "header-media-menu box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/30%)] transition-all ease-menu duration-600",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
                     "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu [&>*]:duration-450 [&>*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active>*]:pointer-events-auto",
                     "[&.active]:p-0 [&.active]:cursor-auto [&.active]:w-screen [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
                     "md:[&.active]:w-[450px]",
-                    "dark:bg-menu-dark dark:[&_*]:text-white",
+                    "dark:bg-menu-dark dark:[&.active]:bg-menu-dark dark:[&_*]:text-white",
                 )} ref={ mediaMenu }>
                     <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
                     { hasFooter && ( 
@@ -141,7 +141,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                             <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
                         )) }
                     </div>
-                    <SwitchTheme pinkMoon whiteIcons/>
+                    <SwitchTheme pinkMoon />
                     <div className='menu-footer'></div>
                 </ul>
                 { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}

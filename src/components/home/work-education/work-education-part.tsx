@@ -3,12 +3,13 @@ import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../p
 import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { FaUserTie } from "react-icons/fa6";
 import { FaLayerGroup } from "react-icons/fa";
 
 import { ChildrenInterface } from "@/utils/interface/children";
 import { type Work, type Education } from "@/utils/types/home/experience";
 
-import Separator from "./separator";
+import Separator from "../separator";
 import TechItem from "./tech-item";
 
 export interface WorkEducationPartProps {
@@ -29,7 +30,7 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
 
     return (
         <>
-            <section className="my-8">
+            <section className="my-8 flex flex-col gap-4">
                 <SubSection>
                     <HeadingTwo 
                         isAnchorLink id={`${isWork ? "work" : "education"}-${index}`} 
@@ -47,25 +48,25 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                         <Paragraph className="m-0 italic">{item.date.toString()}</Paragraph>
                     </div>
                 </SubSection>
+                {isWork && (
+                    <SubSection>
+                        <HeadingThree icon={<FaUserTie className="w-5 h-5"/>} containerClassName="mt-0">{(item as Work).title}</HeadingThree>
+                        <Paragraph className="m-0 italic">{(item as Work).type}</Paragraph>
+                    </SubSection>
+                )}
                 {isWork && (item as Work).technologies.length > 0 && (
-                    <div className="tech-list-container">
-                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="m-0">Technologies:</HeadingThree>
-                        <ul className="list-none my-5 ml-10 flex flex-col gap-2">
+                    <>
+                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="mt-0">Technologies:</HeadingThree>
+                        <ul className="list-none ml-16 flex flex-col gap-2">
                             {(item as Work).technologies.map((tech, idx) => (
                                 <TechItem key={idx} tech={tech} />
                             ))}
                         </ul>
-                    </div>
+                    </>
                 )}
-                {isWork && (
-                    <SubSection>
-                        <HeadingThree containerClassName="m-0">• {(item as Work).title}</HeadingThree>
-                        <Paragraph className="m-0 italic">{(item as Work).type}</Paragraph>
-                    </SubSection>
-                )}
-                <Paragraph indent alignment={ParagraphAlignment.justify}>{item.description}</Paragraph>
+                <Paragraph indent className="m-0" alignment={ParagraphAlignment.justify}>{item.description}</Paragraph>
             </section>
-            {separator && <Separator />}
+            {separator && <Separator lite />}
         </>
     )
 }

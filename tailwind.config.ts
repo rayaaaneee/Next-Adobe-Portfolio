@@ -110,7 +110,6 @@ const config: import('tailwindcss').Config = {
                 "triangle-red-dark": "var(--triangle-red-color-dark)",
             },
             transitionTimingFunction: {
-                theme: "var(--theme-transition-timing-function)",
                 menu: "var(--menu-transition-timing-function)",
             },
             gridTemplateColumns: {
