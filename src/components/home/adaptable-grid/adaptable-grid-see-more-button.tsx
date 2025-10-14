@@ -80,7 +80,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
     return (
         <AdaptableGridTopBottomPart 
-            className='rounded-t-none' 
+            className='adaptable-grid-bottom-part' 
             id={`see-more-button-${id}`} 
             ref={seeMoreButtonRef} 
             hover={isInteractive}>

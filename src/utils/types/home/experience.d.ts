@@ -1,3 +1,5 @@
+import GridContent from "@/asset/data/home/adaptable-grid-base"
+
 export interface DateInterface {
     month: Month,
     year: number,
@@ -20,5 +22,5 @@ export type Education = {
 
 export type Work = Education & {
     type: string,
-    technologies: string[],
+    technologies: GridContent[],
 }

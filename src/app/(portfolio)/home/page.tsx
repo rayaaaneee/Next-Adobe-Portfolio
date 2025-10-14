@@ -36,7 +36,7 @@ const Home = () => {
     return (
         <main className={cn(
             "relative justify-self-center to-animate fade anim-delay-200 anim-duration-300 h-fit",
-            "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.4)] backdrop-blur-md",
+            "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.5)] backdrop-blur-md",
             "box-border",
             "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
             "my-[3.5vw] md:my-[5vw] lg:my-10",

@@ -9,6 +9,7 @@ import { ChildrenInterface } from "@/utils/interface/children";
 import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "./separator";
+import Tooltip from "@/components/tooltip";
 
 export interface WorkEducationPartProps {
     item: Work | Education;
@@ -45,12 +46,15 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                 </SubSection>
                 <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location}</HeadingThree>
                 {isWork && (item as Work).technologies.length > 0 && (
-                    <>
+                    <div className="mt-4 flex flex-col gap-2">
                         <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="ml-0">Technologies:</HeadingThree>
                         {(item as Work).technologies.map((tech, idx) => (
-                            <Paragraph indent key={idx} className="m-0 italic">- {tech}</Paragraph>
+                            <div className="flex items-center gap-4 [&>svg]:w-7 [&>svg]:h-7" key={idx}>
+                                <Paragraph indent className="m-0 italic">- {tech.name}</Paragraph>
+                                {tech.icon}
+                            </div>
                         ))}
-                    </>
+                    </div>
                 )}
                 {isWork && (
                     <SubSection>

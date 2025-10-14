@@ -10,7 +10,6 @@ const baseProps = {
 export const baseImageProps = {
     ...baseProps,
     className: imageBaseClassName,
-    alt: 'Image',
 } as const;
 
 const iconBaseClassName = `text-white ${imageBaseClassName}`;

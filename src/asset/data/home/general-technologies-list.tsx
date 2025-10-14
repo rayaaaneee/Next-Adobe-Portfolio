@@ -25,7 +25,7 @@ import { TbSql } from "react-icons/tb";
 import { RiPhpFill } from "react-icons/ri";
 import { VscMarkdown, VscVscode } from "react-icons/vsc";
 import { DiIntellij, DiMsqlServer, DiVisualstudio } from "react-icons/di";
-import { FaGamepad, FaGitAlt } from "react-icons/fa6";
+import { FaDatabase, FaGamepad, FaGitAlt } from "react-icons/fa6";
 import { SiPytorch } from "react-icons/si";
 import { PiLinuxLogo, PiWindowsLogoFill } from "react-icons/pi";
 import { SiZod } from "react-icons/si";
@@ -105,6 +105,7 @@ export enum GeneralTechnologiesName {
     BASH = "Bash",
     WINDOWS = "Windows",
     OAUTH = "OAuth",
+    MICROSOFT_ACCESS = "Microsoft Access",
 
     // Databases
     SQLITE = "SQLite",
@@ -449,6 +450,12 @@ const generalTechnologies: GeneralTechnologiesType = {
             color: "#FF9100",
             link: 'https://firebase.google.com/',
         },
+        {
+            name: GeneralTechnologiesName.MICROSOFT_ACCESS,
+            icon: <FaDatabase />,
+            color: "#A4373A",
+            link: 'https://www.microsoft.com/en-us/microsoft-365/access',
+        }
     ],
 };
 

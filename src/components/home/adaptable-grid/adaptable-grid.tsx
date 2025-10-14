@@ -79,7 +79,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
 
                 <AdaptableGridTopBottomPart
                     hover={false}
-                    className='adaptable-grid-top-part rounded-b-none'
+                    className='adaptable-grid-top-part'
                     id={`adaptable-grid-top-part-${id}`}
                 />
 
