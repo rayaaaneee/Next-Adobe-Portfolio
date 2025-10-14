@@ -1,4 +1,4 @@
-import { AnchorLinkButton, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
+import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
 
 import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
@@ -9,8 +9,7 @@ import { ChildrenInterface } from "@/utils/interface/children";
 import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "./separator";
-import Tooltip from "@/components/tooltip";
-import { cn } from "@/lib/utils";
+import TechItem from "./tech-item";
 
 export interface WorkEducationPartProps {
     item: Work | Education;
@@ -23,7 +22,7 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
     const isWork = item.hasOwnProperty("technologies");
 
     const SubSection = ({ children }: ChildrenInterface) => (
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-start justify-between gap-3">
             {children}
         </div>
     );
@@ -53,27 +52,7 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                         <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="m-0">Technologies:</HeadingThree>
                         <ul className="list-none my-5 ml-10 flex flex-col gap-2">
                             {(item as Work).technologies.map((tech, idx) => (
-                                <AnchorLinkButton 
-                                    key={idx}
-                                    href={tech.link}
-                                    className="w-fit"
-                                    buttonClassName={cn(
-                                        "bg-transparent hover:bg-transparent",
-                                        "flex gap-3 justify-start",
-                                        "[&:hover>p]:underline",
-                                        "[&:hover>.tech-icon]:opacity-100",
-                                    )}>
-                                        <div className={cn(
-                                            "tech-icon",
-                                            "[&>*]:w-5 [&>*]:h-5 w-5 h-5 opacity-70 transition-opacity",
-                                            "rounded-full w-fit text-white p-2",
-                                        )} style={{ backgroundColor: tech.color }}>
-                                            {tech.icon}
-                                        </div>
-                                        <Paragraph className="m-0 italic">
-                                            {tech.name}
-                                        </Paragraph>
-                                </AnchorLinkButton>
+                                <TechItem key={idx} tech={tech} />
                             ))}
                         </ul>
                     </div>

@@ -134,14 +134,14 @@ const Tooltip = ({
     }
 
     return (
-        <div id={id} className={cn('relative group w-fit', className)}>
+        <div id={id} className={cn('relative group w-fit text-white', className)}>
             {children}
             <div 
                 role="tooltip"
                 style={{ backgroundColor: tooltipBackgroundColor }}
                 className={cn(
                     getPositionClassName(), 
-                    "absolute z-10 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium text-white rounded-lg shadow-sm tooltip pointer-events-none",
+                    "absolute z-10 flex-row items-center justify-center gap-2 whitespace-nowrap font-medium rounded-lg shadow-sm tooltip pointer-events-none",
                     { [getTooltipTypeClassName()]: !tooltipBackgroundColor },
                     getSizeClassName(),
                     (forceShow && !disabled) ? "flex" : "hidden", 

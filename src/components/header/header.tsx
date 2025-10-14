@@ -116,7 +116,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
             </Link>
             <nav id="menu-container">
                 <ul className={cn(
-                    "header-media-menu box-content bg-menu transition-all ease-menu duration-600",
+                    "header-media-menu box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/40%)] transition-all ease-menu duration-600",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
                     "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu [&>*]:duration-450 [&>*]:pointer-events-none",

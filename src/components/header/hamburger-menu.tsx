@@ -37,11 +37,13 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
             )}
             style={{ ...style }}
             onClick={toggleMenuClass}>
+
             <input className="hidden peer" type="checkbox" id="hamburger-checkbox" checked={checked} readOnly/>
+            
             { ["top-bar", "middle-bar", "bottom-bar"].map((barClass, index) => (
                 <div key={index} className={cn(
                     "hamburger-bar",
-                    "rounded-[10px] w-[83%] h-[9%] bg-white",
+                    "rounded-[10px] w-[83%] h-[9%] bg-black",
                     "transition-all duration-300 ease-in-out",
                     "peer-checked:bg-[#3b3b3b] dark:peer-checked:bg-white",
                     barClass,
@@ -50,6 +52,7 @@ const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className
                     (barClass === "bottom-bar") && 'peer-checked:relative peer-checked:top-auto peer-checked:rotate-45 bottom-[16px]',
                 )}></div>
             )) }
+
         </div>
     );
 });

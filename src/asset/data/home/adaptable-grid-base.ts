@@ -9,7 +9,7 @@ type GridContent = {
     name: string;
     icon: ChildrenType;
     color: string; 
-    link: string;
+    link?: string;
 };
 
 export default GridContent;

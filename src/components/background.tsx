@@ -4,7 +4,7 @@ const Background = () => {
 
     const triangleClassName: string = "absolute h-0 w-0 -z-[1]";
     const circleClassName: string = "absolute rounded-full -z-[2]";
-    const borderTriangleClassName: string = `${triangleClassName} z-0`;
+    const borderTriangleClassName: string = `${triangleClassName} left-0 z-0`;
 
     return (
         <div className={cn(
@@ -15,7 +15,7 @@ const Background = () => {
             <div id="headerTriangle" className={cn(
                 borderTriangleClassName,
                 "border-l-[100vw] border-t-[25vh]",
-                "top-[-1vw] left-[1vw] border-l-transparent border-r-transparent border-t-triangle-header border-r-0",
+                "top-0 border-l-transparent border-r-transparent border-t-triangle-header border-r-0",
                 "xs:border-t-[30vw]",
                 "sm:border-t-[17vw]",
                 "lg:border-t-[12vw]",
@@ -72,7 +72,7 @@ const Background = () => {
                 "border-l-[100vw] border-b-[25vh]",
                 "xs:border-b-[30vw]",
                 "sm:border-b-[21vw]",
-                "left-[1vw] -bottom-[1vw] border-l-transparent border-r-transparent border-r-0 border-b-triangle-footer",
+                "bottom-0 border-l-transparent border-r-transparent border-r-0 border-b-triangle-footer",
                 "dark:border-b-triangle-footer-dark"
             )}></div>
         </div>
