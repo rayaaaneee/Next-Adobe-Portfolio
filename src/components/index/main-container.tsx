@@ -23,7 +23,7 @@ const MainContainer = () => {
                     "w-[40%] opacity-0 h-3 rounded-[10px] transition-opacity duration-600 bg-black dark:bg-white animate-bar",
                 )}></div>
                 <div id='subtitle' className={cn(
-                    "flex flex-row items-center justify-center to-animate appear -translate-y-10 anim-delay-2100 gap-[1vw] my-[1vw] sm:my-0"
+                    "flex flex-row items-center justify-center to-animate appear -translate-y-10 anim-delay-2100 gap-[1vw]",
                 )}>
                     <TextTypeWriter id='normal' className='hidden md:block' />{/*  Texte dynamique  */}
                     <TextTypeWriter id='reduced' reduced className='block md:hidden' />{/*  Texte dynamique  */}

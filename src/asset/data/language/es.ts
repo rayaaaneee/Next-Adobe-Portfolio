@@ -28,17 +28,18 @@ const spanishSentences: Sentences = {
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Empezar",
-        description: [
-            "Rayane Merlin",
-            "Desarrollador Full-Stack",
-            "Ciberseguridad",
-        ],
-        reduced_description: [
-            "Rayane Merlin",
-            "Dev FullStack",
-            "Ciber",
-            "Estudiante IT"
-        ]
+        description: {
+            long: [
+                "Rayane Merlin",
+                "Desarrollador Full-Stack",
+                "Ciberseguridad"
+            ],
+            short: [
+                "Rayane Merlin",
+                "Dev FullStack",
+                "Ciber"
+            ]
+        },
     },
     home: {
     },

@@ -25,10 +25,7 @@ const config: import('tailwindcss').Config = {
             pattern: /transition-(\[height,background-color\])/,
         }
     ],
-    darkMode: "class", // or "media",
-    future: {
-        hoverOnlyWhenSupported: true,
-    },
+    darkMode: "class",
     theme: {
         extend: {
             keyframes: {

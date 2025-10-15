@@ -14,11 +14,11 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
 
     const { language } = useTryingContext(languageContext);
 
-    const textTab: readonly string[] = language.index.description;
-    const reducedTextTab: readonly string[] = language.index.reduced_description;
+    const textTab: readonly string[] = language.index.description.long;
+    const reducedTextTab: readonly string[] = language.index.description.short;
 
         // Intitially longer delay for the first word
-    const [delaySpeed, setDelaySpeed] = useState(5000);
+    const [delaySpeed, setDelaySpeed] = useState(3000);
 
     const typeWriterTemplate: Omit<TypewriterProps, "words"> = {
         loop: true,
@@ -37,9 +37,9 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
 
     return (
         <h2 id={`typerWriter-${id}`} className={cn(
-            'text-nowrap leading-[1] font-adobe font-semibold text-[14vw]',
+            '!leading-[1em] text-nowrap font-adobe font-semibold',
             'text-black dark:text-white',
-            'sm:text-[8vw] md:text-[6vw]', 
+            'text-[14vw] sm:text-[8vw] md:text-[6vw]',
             className
         )}>
             { emptyChar }

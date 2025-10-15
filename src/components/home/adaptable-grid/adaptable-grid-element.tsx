@@ -225,8 +225,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         <ParentElement
             ref={gridElementRef as Ref<HTMLAnchorElement & HTMLDivElement>}
             onClick={clickable ? () => (setIsExpanded(true)) : undefined}
-            onMouseEnter={supportHover ? onMouseEnter : undefined} 
-            onMouseLeave={supportHover ? onMouseLeave : undefined} 
+            onMouseEnter={onMouseEnter} 
+            onMouseLeave={onMouseLeave} 
             href={clickable ? undefined : element.content.link}
             target={clickable ? undefined : "_blank"}
             key={index}
@@ -236,11 +236,16 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                 "adaptable-grid-element",
                 [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
                 "bg-[var(--bg-color)] dark:[background-color:color-mix(in_oklab,var(--bg-color)_80%,black)]",
+                "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 "text-white size-element flex relative flex-row items-center gap-0 justify-center",
-                "[&>:is(img,svg)]:w-24 [&>:is(img,svg)]:h-24 [&>:is(img,svg)]:pointer-events-none",
+                [
+                    "[&>:is(img,svg)]:w-12 [&>:is(img,svg)]:h-12 [&>:is(img,svg)]:pointer-events-none",
+                    "xs:[&>:is(img,svg)]:w-16 xs:[&>:is(img,svg)]:h-16",
+                    "sm:[&>:is(img,svg)]:w-20 sm:[&>:is(img,svg)]:h-20",
+                    "lg:[&>:is(img,svg)]:w-24 lg:[&>:is(img,svg)]:h-24"
+                ],
                 "transition-[opacity,background-color] duration-300 ease-in-out",
                 "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
-                "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 className,
             )}>
             { element.customIcon || element.content.icon }

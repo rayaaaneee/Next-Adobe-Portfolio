@@ -28,17 +28,18 @@ const englishSentences: Sentences = {
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Get started",
-        description: [
-            "Rayane Merlin", 
-            "Full-Stack Developper", 
-            "Cybersecurity",
-        ],
-        reduced_description: [
-            "Rayane Merlin",
-            "FullStack Dev",
-            "Cyber",
-            "IT Student"
-        ]
+        description: {
+            long: [
+                "Rayane Merlin", 
+                "Full-Stack Developper", 
+                "Cybersecurity"
+            ],
+            short: [
+                "Rayane Merlin",
+                "FullStack Dev",
+                "Cyber"
+            ]
+        },
     },
     home: {
     },

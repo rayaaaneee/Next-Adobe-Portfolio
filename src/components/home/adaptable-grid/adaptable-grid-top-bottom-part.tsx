@@ -11,7 +11,17 @@ const AdaptableGridTopBottomPart = forwardRef<HTMLButtonElement, ComponentProps<
             ref={ref}
             hover={hover}
             onClick={onClick}
-            className={cn("w-full h-16 rounded-none", className)}
+            className={cn(
+                "w-full rounded-none", 
+                [
+                    "h-8",
+                    "xs:h-10",
+                    "sm:h-12",
+                    "lg:h-14",
+                    "xl:h-16",
+                ],
+                className
+            )}
         >
             {children}
         </Button>

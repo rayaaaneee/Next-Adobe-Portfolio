@@ -9,7 +9,11 @@ export interface SeparatorProps extends ClassNameInterface {
 const Separator = ({ className, lite = false }: SeparatorProps) => {
     return (
         <div className={cn(
-            `opacity-35 mx-auto rounded-full h-1 bg-gray-500 dark:bg-gray-200 my-4`,
+            `opacity-35 mx-auto rounded-full h-1 bg-gray-500 dark:bg-gray-200`,
+            [
+                "my-2",
+                "xl:my-4"
+            ],
             [lite ? "w-3/5" : "w-4/5"],
             className
         )}></div>

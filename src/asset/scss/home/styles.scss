@@ -1,4 +1,5 @@
 @use "./defs.scss" as *;
+@use "../defs.scss" as *;
 
 @layer utilities {
 
@@ -23,13 +24,16 @@
 
 				  	@for $index from 1 through $cols { // index element hovered
 
-				    	&.hover-#{$index} {
-				      		@include grid-cols-hover($cols, $index); // put values
-				  		}
 
-				    	&.click-#{$index} {
-				      		@include grid-cols-click($cols, $index); // put values
-				  		}
+						&.click-#{$index} {			
+							@include grid-cols-click($cols, $index); // put values
+						}
+
+						@include hover-safe {
+							&.hover-#{$index}:not(.click-#{$index}) { // if hover-{index} and not click-{index} on hover
+								@include grid-cols-hover($cols, $index); // put values
+							}
+						}
 
 					}
 
@@ -38,9 +42,46 @@
 			}
 
 		}
-		
+
+		// Default
 		.size-element {
-			@apply h-52;
+			@apply h-20;
+		}
+
+		// XS
+		@media screen and (min-width: 480px) {			
+			.size-element {
+				@apply h-24;
+			}
+		}
+
+		// SM
+		@media screen and (min-width: 640px) {			
+			.size-element {
+				@apply h-28;
+			}
+		}
+
+		// MD
+		@media screen and (min-width: 768px) {			
+			.size-element {
+				@apply h-36;
+			}
+		}
+
+		// LG
+		@media screen and (min-width: 1024px) {			
+			.size-element {
+				@apply h-44;
+			}
+			
+		}
+		
+		// XL
+		@media screen and (min-width: 1280px) {			
+			.size-element {
+				@apply h-52;
+			}
 		}
 
 	}

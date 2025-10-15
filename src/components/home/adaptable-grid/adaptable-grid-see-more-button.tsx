@@ -5,7 +5,9 @@ import useConditionalEffect from '@/utils/hook/use-conditional-effect';
 
 import { cn } from '@/lib/utils';
 
-import { HeadingThree } from '@/components/page-flow';
+import { HeadingThree, IconPosition } from '@/components/page-flow';
+
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 import ClassNameInterface from '@/utils/interface/classname';
 import verifyReference from '@/utils/function/verify-reference';
@@ -25,7 +27,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
     const isInteractive: boolean = nbWrappers > 1;
 
     const initialText = (isInteractive) ? 
-        (`See ${nbWrappers - 1} more ${nbWrappers - 1 > 1 ? "rows" : "row"}`) 
+        "Expand"
             : 
         "";
     const transitionDuration = 75;
@@ -61,7 +63,7 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
 
         verifyReference(seeMoreButtonRef, "seeMoreButtonRef");
 
-        const text: string = isExpanded ? "See less" : initialText;
+        const text: string = isExpanded ? "Dismiss" : initialText;
 
         seeMoreButtonRef.current!.classList.add(heightClassToggled);
 
@@ -88,8 +90,11 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
                 id={`see-more-${id}`} 
                 className='m-0'
+                icon={isInteractive && (isExpanded ? <FaMinus /> : <FaPlus />)}
+                iconPosition={IconPosition.right}
                 containerClassName={cn(
                     "see-more-button",
+                    "text-gray-200",
                     { ["expanded"]: isExpanded },
                     "m-0 w-full h-full flex items-center justify-center",
                     className

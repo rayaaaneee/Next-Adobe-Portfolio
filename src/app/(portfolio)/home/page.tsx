@@ -8,8 +8,7 @@ import { FaLink } from "react-icons/fa";
 
 import { 
     HeadingOne, 
-    HeadingThree, 
-    HeadingTwo, 
+    HeadingThree,
     IconPosition, 
     Paragraph, 
     ParagraphAlignment 
@@ -49,20 +48,36 @@ const Home = () => {
         )}>
             <Separator className="mt-0 mb-8" />
             <article className="relative flex flex-col justify-center">
-                <Image className={cn("absolute w-48 h-48 right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none")} src={photo} alt="photo" width={150} height={150} />
+                <Image className={cn(
+                    "absolute right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none",
+                    [
+                        "w-24 h-24",
+                        "xs:w-32 xs:h-32",
+                        "sm:w-40 sm:h-40",
+                        "lg:w-44 lg:h-44",
+                        "xl:w-48 xl:h-48",
+                    ]
+                )} src={photo} alt="photo" width={150} height={150} />
                 <section>
                     <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
                     <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
-                    <HeadingThree containerClassName="ml-0" icon={<FaLocationDot className="w-6 h-6"/>}>Lyon, France</HeadingThree>
+                    <HeadingThree containerClassName="ml-0" icon={<FaLocationDot/>}>Lyon, France</HeadingThree>
                 </section>
                 <section>
-                    <HeadingThree icon={<FaLink className="w-6 h-6"/>} containerClassName="ml-0">Links</HeadingThree>
+                    <HeadingThree icon={<FaLink/>} containerClassName="ml-0">Links</HeadingThree>
                     <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
-                        "w-fit mt-4 gap-7 justify-between",
+                        "w-fit mt-4 justify-between",
+                        [
+                            "gap-4 mx-auto",
+                            "sm:gap-4",
+                            "md:gap-5",
+                            "lg:gap-6",
+                            "xl:gap-7"
+                        ]
                     )} />
                 </section>
             </article>
-            <Separator className="my-8" />
+            <Separator className="my-8"/>
             <article>
                 <HeadingOne id="about" isAnchorLink>About me</HeadingOne>
                 <Paragraph indent alignment={ParagraphAlignment.justify}>

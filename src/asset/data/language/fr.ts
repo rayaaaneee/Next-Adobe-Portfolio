@@ -27,17 +27,18 @@ const frenchSentences = {
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Découvrir",
-        description: [
-            "Rayane Merlin", 
-            "Développeur Full-Stack", 
-            "Cybersécurité",
-        ],
-        reduced_description: [
-            "Rayane Merlin",
-            "Dev FullStack",
-            "Cyber",
-            "Étudiant IT"
-        ]
+        description: {
+            long: [
+                "Rayane Merlin", 
+                "Développeur Full-Stack", 
+                "Cybersécurité",
+            ],
+            short: [
+                "Rayane Merlin",
+                "Dev FullStack",
+                "Cyber"
+            ]
+        },
     },
     home: {
     },
