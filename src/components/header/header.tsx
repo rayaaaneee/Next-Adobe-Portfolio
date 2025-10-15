@@ -59,11 +59,11 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
         const checkbox = hamburgerMenu.current && hamburgerMenu.current.querySelector("input[type='checkbox']");
 
         const onClosing = () => {
-            document.body.classList.remove("menu-active");
+            document.documentElement.classList.remove("menu-active");
         }
 
         const onOpening = () => {
-            document.body.classList.add("menu-active");
+            document.documentElement.classList.add("menu-active");
         }
 
         const onClickMenu = (e: MouseEvent) => {

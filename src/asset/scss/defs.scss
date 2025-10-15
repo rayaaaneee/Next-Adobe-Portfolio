@@ -1,6 +1,6 @@
 @mixin hover-safe {
     @media (hover: hover) and (pointer: fine) {
-        &:hover, &:focus-visible {
+        &:hover {
             @content;
         }
     }

@@ -62,11 +62,18 @@ export const viewport: Viewport = {
 const Layout = ({ 
     children 
 } : Readonly<ChildrenInterface>) => (
-    <html lang={ManageLanguages.defaultLanguage} className="scrollbar-thin" suppressHydrationWarning>
-        <body className={cn(
-            "antialiased", 
-            "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",
-        )}>
+    <html 
+        lang={ManageLanguages.defaultLanguage} 
+        className={cn(
+            "scrollbar-thin",
+            [
+                "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",
+                "[&.menu-active>body]:overflow-hidden md:[&.menu-active]>body:overflow-auto",
+            ]
+        )} 
+        suppressHydrationWarning
+    >
+        <body className={"antialiased"}>
             {children}
         </body>
     </html>
