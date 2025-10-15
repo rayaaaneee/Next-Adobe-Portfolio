@@ -1,5 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import tailwindScrollbar from 'tailwind-scrollbar';
+import plugin from 'tailwindcss/plugin';
+import { PluginAPI } from 'tailwindcss/types/config';
 
 const config: import('tailwindcss').Config = {
     mode: 'jit',
@@ -152,6 +154,10 @@ const config: import('tailwindcss').Config = {
     },
     plugins: [
         tailwindScrollbar({ nocompatible: true }),
+        plugin(({ addVariant }: PluginAPI) => {
+            addVariant('hover-safe', "@media (hover: hover) and (pointer: fine)");
+            addVariant('children', '& > *');
+        }),
     ],
 }
 

@@ -17,16 +17,16 @@ const MainContainer = () => {
         <div className={cn("container w-full h-full flex items-center justify-center")}>
             <div id='presentationContainer' className={cn("flex flex-col gap-4 md:gap-10 items-center justify-center w-full")}>
                 <h1 className={cn(
-                    "font-adobebold to-animate appear translate-y-10 anim-delay-400 text-black text-center text-[23vw] sm:text-[12vw] leading-[13.5vw] sm:leading-[0.8] text-wrap sm:text-nowrap font-medium dark:text-title-dark",
+                    "font-adobebold to-animate appear translate-y-10 anim-delay-400 text-black dark:text-white text-center text-[23vw] sm:text-[12vw] leading-[13.5vw] sm:leading-[0.8] text-wrap sm:text-nowrap font-medium",
                 )}>{ language.title }</h1>
                 <div id='main-bar' className={cn(
-                    "w-[40%] opacity-0 h-3 rounded-[10px] transition-opacity duration-600 bg-black dark:bg-[#f1e8ef] animate-bar",
+                    "w-[40%] opacity-0 h-3 rounded-[10px] transition-opacity duration-600 bg-black dark:bg-white animate-bar",
                 )}></div>
                 <div id='subtitle' className={cn(
                     "flex flex-row items-center justify-center to-animate appear -translate-y-10 anim-delay-2100 gap-[1vw] my-[1vw] sm:my-0"
                 )}>
-                    <TextTypeWriter id='normal' className='hidden md:block text-black' />{/*  Texte dynamique  */}
-                    <TextTypeWriter id='reduced' reduced className='block md:hidden text-black' />{/*  Texte dynamique  */}
+                    <TextTypeWriter id='normal' className='hidden md:block' />{/*  Texte dynamique  */}
+                    <TextTypeWriter id='reduced' reduced className='block md:hidden' />{/*  Texte dynamique  */}
                     <BlinkingVerticalBar />
                 </div>
                 <GetStarted id={"two"} colored className='two block self-center md:hidden to-animate appear -translate-y-3 anim-delay-2300' />

@@ -60,12 +60,13 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-4xl text-black dark:text-white w-fit",
+                "text-xl sm:text-2xl lg:text-3xl xl:text-4xl",
+                "text-black dark:text-white font-normal w-fit",
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h1 id={id} className={cn(headingBaseClassName, className)}>
+            <h1 id={id ? id : undefined} className={cn(headingBaseClassName, className)}>
                 {children}
             </h1>
             {(icon && iconPosition === IconPosition.right) && iconElement}
@@ -86,12 +87,13 @@ export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-gray-600 dark:text-gray-300 text-3xl ml-4", 
+                "text-lg sm:text-xl lg:text-2xl xl:text-3xl",
+                "text-gray-600 dark:text-gray-300 ml-4", 
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h2 id={id} className={cn(headingBaseClassName, className)}>
+            <h2 id={id ? id : undefined} className={cn(headingBaseClassName, className)}>
                 {children}
             </h2>
             {(icon && iconPosition === IconPosition.right) && iconElement}
@@ -108,18 +110,19 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
         return (
             <a
             ref={ref}
-            id={id}
+            id={id ? id : undefined}
             href={href || anchorLink(isAnchorLink, id)}
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-gray-500 dark:text-gray-400 text-2xl ml-7", 
+                "xs:text-base sm:text-lg lg:text-xl xl:text-2xl ",
+                "text-gray-500 dark:text-gray-400 ml-7", 
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h3 id={`text-${id}`} className={cn(headingBaseClassName, className)}>
+            <h3 id={id && `text-${id}`} className={cn(headingBaseClassName, className)}>
                 {children}
             </h3>
             {(icon && iconPosition === IconPosition.right) && iconElement}
@@ -143,7 +146,8 @@ export interface ParagraphPropsInterface extends PageFlowBaseInterface {
 
 export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false, innerHtml }: ParagraphPropsInterface) => (
     <p id={id} className={cn(
-        "text-xl text-gray-800 dark:text-gray-300 font-normal mt-2",
+        "text-sm sm:text-base lg:text-lg xl:text-xl",
+        "text-gray-800 dark:text-gray-300 font-normal mt-2",
         { "first-letter:ml-10": indent },
         alignment,
         className
@@ -186,7 +190,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
     ({ className, children, id, onClick, hover = true, background = true }, ref) => (
         <button
             ref={ref}
-            id={id}
+            id={id ? id : undefined}
             onClick={onClick}
             className={cn(
                 "flex items-center justify-center",
@@ -222,7 +226,7 @@ export const AnchorLinkButton = forwardRef<HTMLAnchorElement, AnchorLinkButtonPr
     ({ className, children, id, onClick, href, buttonClassName, style, background = true }, ref) => (
         <a
             ref={ref}
-            id={id}
+            id={id ? id : undefined}
             href={href}
             className={cn(className)}
             style={style}

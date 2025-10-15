@@ -47,12 +47,12 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
             position={TooltipPosition.top} 
             text={link.username || link.title}
             id={id}>
-            <li className='rounded-full'>
+            <li className='rounded-full overflow-hidden group'>
                 <Link 
                     className={cn(
                         link.className,
                         size,
-                        'rounded-full block bg-cover bg-center transition-all duration-200',
+                        'rounded-full block bg-cover bg-center transition-all duration-200 overflow-hidden',
                         className
                     )} 
                     href={link.href} 
@@ -61,6 +61,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                     <Image    
                        className={cn(
                            'rounded-full w-full h-full block bg-cover bg-center transition-all duration-200',
+                           "dark:brightness-[0.3] dark:saturate-[1.8]",
                            className
                        )}
                        src={link.image}
@@ -69,7 +70,10 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                        height={70}
                    />
                    <div id='white-background' className={cn(
-                        'absolute -z-10 top-0 left-0 w-full h-full rounded-full bg-white dark:bg-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-200',
+                        "absolute -z-10",
+                        "top-0 left-0 right-0 bottom-0 m-auto",
+                        "w-[95%] h-[95%] rounded-full",
+                        "bg-white dark:bg-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200",
                    )}></div>
                 </Link>
             </li>
