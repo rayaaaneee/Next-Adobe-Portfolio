@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, MouseEvent, Ref} from "react";
+import { useEffect, useRef, useState, MouseEvent, Ref, CSSProperties} from "react";
 import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
 
@@ -16,8 +16,7 @@ import Tooltip, { TooltipSize } from "@/components/tooltip";
 import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
 
 import verifyReference from "@/utils/function/verify-reference";
-import generalTechnologies, { assertFoundTech } from "@/asset/data/home/general-technologies-list";
-import { assertFound } from "@/utils/function/assert-found";
+import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -29,7 +28,7 @@ const TopPartText = ({
         iconPosition={iconPosition}
         href={href}
         iconScale={iconScale}
-        containerClassName={cn("m-0 text-slate-500", containerClassName)}
+        containerClassName={cn("m-0 text-slate-500 dark:text-gray-200", containerClassName)}
         className={cn(`text-nowrap`, className)}>
             { children }
     </HeadingTwo>
@@ -185,7 +184,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                                 key={i} 
                                 text={tech.name} 
                                 size={TooltipSize.md} 
-                                className={`to-animate appear translate-y-3 !text-slate-600 anim-delay-${i * 100}`}
+                                className={`to-animate appear translate-y-3 !text-slate-600 dark:!text-gray-200 anim-delay-${i * 100}`}
                                 tooltipClassName="bg-[rgba(255,255,255,0.9)] font-semibold">
                                 <Button className="rounded-full p-2 [&>svg]:w-7 [&>svg]:h-7 ">
                                     {icon}
@@ -230,19 +229,20 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             onMouseLeave={supportHover ? onMouseLeave : undefined} 
             href={clickable ? undefined : element.content.link}
             target={clickable ? undefined : "_blank"}
+            key={index}
             rel={clickable ? undefined : "noreferrer"}
+            style={{ "--bg-color" : element.content.color } as CSSProperties}
             className={cn(
                 "adaptable-grid-element",
                 [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
+                "bg-[var(--bg-color)] dark:[background-color:color-mix(in_oklab,var(--bg-color)_70%,black)]",
                 "text-white size-element flex relative flex-row items-center gap-0 justify-center",
                 "[&>:is(img,svg)]:w-24 [&>:is(img,svg)]:h-24 [&>:is(img,svg)]:pointer-events-none",
                 "transition-[opacity,background-color] duration-300 ease-in-out",
                 "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 className,
-            )}
-            key={index}
-            style={{ backgroundColor: element.content.color }}>
+            )}>
             { element.customIcon || element.content.icon }
             { clickable && 
                 (<AdaptableGridElementExpansion 

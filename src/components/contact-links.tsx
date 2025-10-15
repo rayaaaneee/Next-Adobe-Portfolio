@@ -9,6 +9,7 @@ import { TooltipSize } from "./tooltip";
 
 import linkedInImg from "~/img/components/contact-links/icon-linkedin.png";
 import githubImg from "~/img/components/contact-links/icon-github.png";
+import whiteGithubImg from "~/img/components/contact-links/icon-github-white.png";
 import mailImg from "~/img/components/contact-links/icon-mail.png";
 import phoneImg from "~/img/components/contact-links/icon-phone.png";
 import resumeImg from "~/img/components/contact-links/icon-resume.png";
@@ -33,11 +34,11 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
     const githubUsername: string = "rayaaaneee";
 
     const footerLinks: ContactIconType[] = [
-        { title: "Linked In", image: linkedInImg, username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, link: `https://www.linkedin.com/in/${linkedinUsername}/`, target: "_blank", rel: "noreferrer" },
-        { title: "Github", image: githubImg, username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, link: `https://github.com/${githubUsername}`, target: "_blank", rel: "noreferrer" },
-        { title: "Mail", image: mailImg, link: `mailto:${process.env.EMAIL}`, target: "_blank", rel: "noreferrer" },
-        { title: "Phone", image: phoneImg, link: `tel:${process.env.TEL}` },
-        { title: "Resume", image: resumeImg, link: "/resume", target: "_blank", rel: "noreferrer" },
+        { title: "Linked In", image: linkedInImg, username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, href: `https://www.linkedin.com/in/${linkedinUsername}/`, target: "_blank", rel: "noreferrer" },
+        { title: "Github", image: githubImg, darkImage: whiteGithubImg, username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, href: `https://github.com/${githubUsername}`, target: "_blank", rel: "noreferrer" },
+        { title: "Mail", image: mailImg, href: `mailto:${process.env.EMAIL}`, target: "_blank", rel: "noreferrer" },
+        { title: "Phone", image: phoneImg, href: `tel:${process.env.TEL}` },
+        { title: "Resume", image: resumeImg, href: "/resume", target: "_blank", rel: "noreferrer" },
     ]
 	
   	return (

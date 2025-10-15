@@ -15,8 +15,9 @@ export enum IconSize {
 
 export interface ContactIconType extends ClassNameInterface { 
     title: string,
-    link: string, 
+    href: string, 
     image: StaticImageData,
+    darkImage?: StaticImageData,
     username?: ChildrenType, 
     target?: string, 
     rel?: string, 
@@ -54,7 +55,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                         'rounded-full block bg-cover bg-center transition-all duration-200',
                         className
                     )} 
-                    href={link.link} 
+                    href={link.href} 
                     target={link.target} 
                     rel={link.rel}>
                     <Image    
@@ -68,7 +69,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                        height={70}
                    />
                    <div id='white-background' className={cn(
-                        'absolute -z-10 top-0 left-0 w-full h-full rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200',
+                        'absolute -z-10 top-0 left-0 w-full h-full rounded-full bg-white dark:bg-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-200',
                    )}></div>
                 </Link>
             </li>

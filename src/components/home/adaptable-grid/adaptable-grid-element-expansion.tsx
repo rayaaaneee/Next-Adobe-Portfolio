@@ -53,12 +53,12 @@ const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: Adaptabl
             { element.githubLink && (
                 <AnchorLinkButton
                     href={element.githubLink}
+                    background={false}
                     className={cn(
                         "absolute text-white bottom-4 right-4 w-14 h-14",
                         "transition-opacity duration-400 ease-out",
                         [isClicked ? "opacity-80" : "opacity-0 pointer-events-none"]
-                    )} 
-                    buttonClassName="bg-transparent hover:bg-transparent">
+                    )}>
                         <FiGithub className="w-full h-full" />
                 </AnchorLinkButton>
             )}

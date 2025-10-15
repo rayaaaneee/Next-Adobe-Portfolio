@@ -38,12 +38,13 @@ const Home = () => {
 
     return (
         <main className={cn(
-            "justify-self-center to-animate rounded-md fade anim-delay-200 anim-duration-300 h-fit",
+            "justify-self-center rounded-none md:rounded-md h-fit",
+            "to-animate fade anim-delay-200 anim-duration-300",
             "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.5)] backdrop-blur-md",
-            "box-border",
-            "w-[93vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
-            "my-[3.5vw] md:my-[5vw] lg:my-10",
-            "py-5 sm:py-7 md:py-10 xl:pt-20 xl:pb-8",
+            "box-border overflow-hidden",
+            "w-[100vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
+            "my-0 md:my-[5vw] lg:my-10",
+            "pt-5 sm:pt-7 md:pt-10 xl:pt-20",
             "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
         )}>
             <Separator className="mt-0 mb-8" />
@@ -105,12 +106,17 @@ const Home = () => {
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
             <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
-            <Separator />
+            <Separator className="mb-0" />
             <HeadingThree 
                 icon={<FaHeart className="w-8 h-8 text-red-400" />} 
                 iconPosition={IconPosition.right}
-                className="text-center dark:text-white" 
-                containerClassName="mx-auto mt-8 mb-0">
+                className={cn(
+                    "text-center dark:text-white",
+                )} 
+                containerClassName={cn(
+                    "flex justify-center items-center w-full m-0",
+                    "h-5 sm:h-7 md:h-10 xl:h-20" // Same height as <main> margin-top
+                )}>
                     Thank you for visiting my portfolio !
             </HeadingThree>
         </main>

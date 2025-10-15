@@ -84,7 +84,7 @@ const WorkContainer = () => {
     
     return (
         <article>
-            <HeadingOne id="xp" isAnchorLink>Work Experience</HeadingOne>
+            <HeadingOne id="work" isAnchorLink>Work Experience</HeadingOne>
             <Paragraph>Describe here...</Paragraph>
             {workExperience.map((work, index) => (
                 <WorkEducationPart separator={index < workExperience.length - 1} key={index} item={work} index={index} />

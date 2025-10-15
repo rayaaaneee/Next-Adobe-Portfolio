@@ -121,7 +121,7 @@ const config: import('tailwindcss').Config = {
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
                 'vertical-bar': 'blink 1.5s ease-in-out infinite',
                 'appearance': 'appearance',
-                'fadeIn': 'fadeIn',
+                'fade': 'fadeIn',
                 'bar': 'bar-move 6s linear infinite, fadeIn 0.6s 0.2s ease forwards',
             },
             width: {

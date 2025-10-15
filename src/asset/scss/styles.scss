@@ -45,7 +45,7 @@
 		@apply opacity-0 !forwards !ease-in-out pointer-events-none;
 
 		&.fade {
-			@apply animate-fadeIn anim-duration-600;
+			@apply animate-fade anim-duration-600;
 
 			&.short {
 				@apply anim-duration-200;
@@ -56,6 +56,7 @@
 			@apply animate-appearance anim-duration-450;
 		}
 	}
+
 }
 
 @layer base {

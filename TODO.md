@@ -16,6 +16,7 @@
 * [ ] Remove box shadows on index title
 * [ ] set background elements behind texts (index)
 * [ ] Reduce icon sizes
+* [ ] Fix appearance animations
 * [ ] Medias
 
   * [ ] Tooltip media queries
