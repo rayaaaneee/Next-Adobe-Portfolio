@@ -34,11 +34,47 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
     const githubUsername: string = "rayaaaneee";
 
     const footerLinks: ContactIconType[] = [
-        { title: "Linked In", image: linkedInImg, username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, href: `https://www.linkedin.com/in/${linkedinUsername}/`, target: "_blank", rel: "noreferrer" },
-        { title: "Github", image: githubImg, darkImage: whiteGithubImg, username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, href: `https://github.com/${githubUsername}`, target: "_blank", rel: "noreferrer" },
-        { title: "Mail", image: mailImg, href: `mailto:${process.env.EMAIL}`, target: "_blank", rel: "noreferrer" },
-        { title: "Phone", image: phoneImg, href: `tel:${process.env.TEL}` },
-        { title: "Resume", image: resumeImg, href: "/resume", target: "_blank", rel: "noreferrer" },
+        { 
+            title: "Linked In", 
+            image: linkedInImg,
+            username: <UsernameDivBase>{linkedinUsername}</UsernameDivBase>, 
+            href: `https://www.linkedin.com/in/${linkedinUsername}/`, 
+            target: "_blank", 
+            rel: "noreferrer",
+            id: "contact-link-linkedin"
+        },
+        { 
+            title: "Github", 
+            image: githubImg, 
+            darkImage: whiteGithubImg, 
+            username: <UsernameDivBase>{githubUsername}</UsernameDivBase>, 
+            href: `https://github.com/${githubUsername}`, 
+            target: "_blank", 
+            rel: "noreferrer",
+            id: "contact-link-github"
+        },
+        { 
+            title: "Mail", 
+            image: mailImg,
+            href: `mailto:${process.env.EMAIL}`, 
+            target: "_blank", 
+            rel: "noreferrer",
+            id: "contact-link-mail"
+        },
+        { 
+            title: "Phone", 
+            image: phoneImg,
+            href: `tel:${process.env.TEL}`,
+            id: "contact-link-phone"
+        },
+        { 
+            title: "Resume", 
+            image: resumeImg,
+            href: "/resume", 
+            target: "_blank", 
+            rel: "noreferrer",
+            id: "contact-link-resume"
+        },
     ]
 	
   	return (

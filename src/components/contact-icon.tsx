@@ -31,6 +31,20 @@ export interface ContactIconProps extends ClassNameInterface {
     tooltipClassName?: string,
     size?: IconSize,
 }
+const ImageElement = ({ link, className, filter = true }: { link: ContactIconType, filter?: boolean } & ClassNameInterface) => (
+    <Image    
+        className={cn(
+            'rounded-full w-full h-full block bg-cover bg-center transition-all duration-200',
+            [filter && "dark:saturate-[2] dark:brightness-[0.4]"],
+            link.className,
+            className
+        )}
+        src={link.image}
+        alt={link.title}
+        width={70}
+        height={70}
+    />
+);
 
 const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, tooltipClassName, tooltipSize = TooltipSize.lg }: ContactIconProps) => {
 
@@ -38,6 +52,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
     if (!tooltip && (tooltipClassName || tooltipSize)) {
         throw new Error("tooltipClassName and tooltipSize cannot be used if tooltip is deactivated");
     }
+
     
     return (
         <Tooltip 
@@ -58,23 +73,20 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                     href={link.href} 
                     target={link.target} 
                     rel={link.rel}>
-                    <Image    
-                       className={cn(
-                           'rounded-full w-full h-full block bg-cover bg-center transition-all duration-200',
-                           "dark:brightness-[0.3] dark:saturate-[1.8]",
-                           className
-                       )}
-                       src={link.image}
-                       alt={link.title}
-                       width={70}
-                       height={70}
-                   />
-                   <div id='white-background' className={cn(
+                    <ImageElement 
+                        link={link} 
+                        className={cn(className, [link.darkImage && 'dark:hidden'])} />
+                    {link.darkImage && 
+                        <ImageElement 
+                        filter={false}
+                        link={{...link, image: link.darkImage}} 
+                        className={cn("hidden dark:block")} />}
+                    <div id='white-background' className={cn(
                         "absolute -z-10",
                         "top-0 left-0 right-0 bottom-0 m-auto",
                         "w-[95%] h-[95%] rounded-full",
                         "bg-white dark:bg-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200",
-                   )}></div>
+                    )}></div>
                 </Link>
             </li>
         </Tooltip>
