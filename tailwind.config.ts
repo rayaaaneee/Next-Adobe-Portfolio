@@ -138,7 +138,7 @@ const config: import('tailwindcss').Config = {
             }
         },
         screens: {
-            /* '2xs': '360px' { base } */
+            /* '2xs': '320px' { base } */
             'xs': '480px',
             ...defaultTheme.screens,
             /* Default :

@@ -46,22 +46,30 @@ const Home = () => {
             "pt-5 sm:pt-7 md:pt-10 xl:pt-20",
             "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
         )}>
-            <Separator className="mt-0 mb-8" />
+            <Separator className="mt-0 mb-4 xl:mb-8" />
             <article className="relative flex flex-col justify-center">
                 <Image className={cn(
-                    "absolute right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none",
+                    "hidden absolute right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none",
                     [
-                        "w-24 h-24",
-                        "xs:w-32 xs:h-32",
-                        "sm:w-40 sm:h-40",
+                        "sm:block sm:w-40 sm:h-40",
                         "lg:w-44 lg:h-44",
                         "xl:w-48 xl:h-48",
                     ]
                 )} src={photo} alt="photo" width={150} height={150} />
-                <section>
-                    <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
-                    <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
-                    <HeadingThree containerClassName="ml-0" icon={<FaLocationDot/>}>Lyon, France</HeadingThree>
+                <section className="grid grid-cols-[1fr_auto]">
+                    <div>
+                        <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
+                        <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
+                        <HeadingThree containerClassName="ml-0" icon={<FaLocationDot/>}>Lyon, France</HeadingThree>
+                    </div>
+                    <Image className={cn(
+                        "block m-auto opacity-90 backdrop-blur-md rounded-full pointer-events-none",
+                        [
+                            "w-24 h-24",
+                            "xs:w-32 xs:h-32",
+                            "sm:hidden",
+                        ]
+                    )} src={photo} alt="photo" width={150} height={150} />
                 </section>
                 <section>
                     <HeadingThree icon={<FaLink/>} containerClassName="ml-0">Links</HeadingThree>
@@ -69,6 +77,7 @@ const Home = () => {
                         "w-fit mt-4 justify-between",
                         [
                             "gap-4 mx-auto",
+                            "xs:mx-0",
                             "sm:gap-4",
                             "md:gap-5",
                             "lg:gap-6",
@@ -77,7 +86,7 @@ const Home = () => {
                     )} />
                 </section>
             </article>
-            <Separator className="my-8"/>
+            <Separator className="my-4 xl:my-8"/>
             <article>
                 <HeadingOne id="about" isAnchorLink>About me</HeadingOne>
                 <Paragraph indent alignment={ParagraphAlignment.justify}>

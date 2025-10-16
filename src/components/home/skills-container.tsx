@@ -86,7 +86,7 @@ const SkillsContainer = () => {
                     className={cn(
                         { active: i === 0 },
                     )}>
-                        <HeadingTwo className='text-xl' containerClassName='m-0 p-4' icon={grid.icon}>
+                        <HeadingTwo className='text-xl' containerClassName='!m-0 p-4' icon={grid.icon}>
                             {grid.title}
                         </HeadingTwo>
                     </Button>

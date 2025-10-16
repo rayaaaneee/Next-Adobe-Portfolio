@@ -12,8 +12,9 @@ import { forwardRef } from "react";
 export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface, StylesInterface {};
 
 const headingContainerBaseClassName = (active: boolean, hasIcon: boolean) => [
-    "flex flex-row gap-3 items-center justify-center mt-4 w-fit h-fit no-underline",
+    "flex flex-row gap-3 items-center justify-center w-fit h-fit no-underline",
     "[&>*:not(h1)]:transition-transform [&>*:not(h1,h2,h3)]:duration-100 [&>*:not(h1,h2,h3)]:ease-in-out",
+    ["mt-2 xl:mt-4"],
     {
         ["group"]: (active || hasIcon)
     },
@@ -60,7 +61,7 @@ export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                "text-xl sm:text-2xl lg:text-3xl xl:text-4xl",
+                ["text-xl sm:text-2xl lg:text-3xl xl:text-4xl"],
                 "text-black dark:text-white font-normal w-fit",
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName

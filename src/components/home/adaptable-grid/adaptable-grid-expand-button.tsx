@@ -18,7 +18,7 @@ interface AdaptableGridSeeMoreButtonProps extends ClassNameInterface {
     nbWrappers: number;
 }
 
-const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGridSeeMoreButtonProps) => {
+const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridSeeMoreButtonProps) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -94,9 +94,9 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
                 iconPosition={IconPosition.right}
                 containerClassName={cn(
                     "see-more-button",
-                    "text-gray-200",
+                    "dark:text-gray-200",
                     { ["expanded"]: isExpanded },
-                    "m-0 w-full h-full flex items-center justify-center",
+                    "!m-0 w-full h-full flex items-center justify-center",
                     className
                 )}>
                 {initialText}
@@ -105,4 +105,4 @@ const AdaptableGridSeeMoreButton = ({ className, id, nbWrappers }: AdaptableGrid
     )
 }
 
-export default AdaptableGridSeeMoreButton;
+export default AdaptableGridExpandButton;

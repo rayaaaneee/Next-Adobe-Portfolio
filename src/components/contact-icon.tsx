@@ -9,8 +9,8 @@ import ClassNameInterface from '@/utils/interface/classname';
 import Tooltip, { TooltipPosition, TooltipSize } from './tooltip';
 
 export enum IconSize {
-    sm = 'md:w-16 md:h-16 xs:w-12 xs:h-12 w-10 h-10',
-    md = 'md:w-20 md:h-20 sm:w-16 sm:h-16 w-12 h-12',
+    sm = 'w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16',
+    md = 'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20',
 }
 
 export interface ContactIconType extends ClassNameInterface { 
@@ -81,7 +81,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                         filter={false}
                         link={{...link, image: link.darkImage}} 
                         className={cn("hidden dark:block")} />}
-                    <div id='white-background' className={cn(
+                    <div id={id ? `contact-links-white-background-${id}` : undefined} className={cn(
                         "absolute -z-10",
                         "top-0 left-0 right-0 bottom-0 m-auto",
                         "w-[95%] h-[95%] rounded-full",

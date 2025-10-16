@@ -5,7 +5,7 @@ import type ClassNameInterface from "@/utils/interface/classname";
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
 
 import AdaptableGridWrapper from "./adaptable-grid-wrapper";
-import AdaptableGridSeeMoreButton from "./adaptable-grid-see-more-button";
+import AdaptableGridExpandButton from "./adaptable-grid-expand-button";
 import AdaptableGridTopBottomPart from "./adaptable-grid-top-bottom-part";
 
 import type GridContent from "@/asset/data/home/adaptable-grid-base";
@@ -104,7 +104,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                     })()
                 ))}
 
-                <AdaptableGridSeeMoreButton
+                <AdaptableGridExpandButton
                     className={cn(
                         "adaptable-grid-bottom-part",
                         [!clickable && "overflow-hidden"]
