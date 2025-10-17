@@ -1,4 +1,29 @@
-import { DateInterface, ExperienceDateInterface } from "./experience";
+export enum Month {
+    January = "Jan",
+    February = "Feb",
+    March = "Mar",
+    April = "Apr",
+    May = "May",
+    June = "Jun",
+    July = "Jul",
+    August = "Aug",
+    September = "Sep",
+    October = "Oct",
+    November = "Nov",
+    December = "Dec"
+}
+
+export interface DateInterface {
+    month: Month,
+    year: number,
+    toString(): string,
+}
+
+export interface IntervalDateInterface {
+    start: DateInterface,
+    end?: DateInterface,
+    toString(): string,
+}
 
 export class DateClass implements DateInterface {
 
@@ -16,7 +41,7 @@ export class DateClass implements DateInterface {
     
 }
 
-export class ExperienceDateClass implements ExperienceDateInterface {
+export class IntervalDateClass implements IntervalDateInterface {
 
     start;
     end?;

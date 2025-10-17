@@ -11,7 +11,7 @@ const Blog = ({ id }: { id: string }) => {
 
     return (
         <BlogTemplate
-            quitButtonClassName="top-14 right-14"
+            quitButtonClassName="top-5 right-5"
             onClose={closePage}
             onBackgroundClick={closePage}
             id={id}

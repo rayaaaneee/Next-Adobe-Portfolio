@@ -57,7 +57,7 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                 {isWork && (item as Work).technologies.length > 0 && (
                     <>
                         <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="mt-0">Technologies:</HeadingThree>
-                        <ul className="list-none ml-16 flex flex-col gap-2">
+                        <ul className="list-none ml-16 w-fit grid grid-cols-4 grid-flow-col grid-rows-[repeat(4,auto)] gap-y-4 gap-x-6">
                             {(item as Work).technologies.map((tech, idx) => (
                                 <TechItem key={idx} tech={tech} />
                             ))}

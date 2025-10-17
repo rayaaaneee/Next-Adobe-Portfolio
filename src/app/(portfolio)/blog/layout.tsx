@@ -1,13 +1,14 @@
-import { ChildrenInterface } from "@/utils/interface/children";
+import { ChildrenType } from "@/utils/interface/children";
 
 const RootLayout = ({
+    overlay,
     children,
-    blog
-} : {
-    blog: React.ReactNode
-} & Readonly<ChildrenInterface>) => (
+} : Readonly<{
+    overlay: ChildrenType,
+    children: ChildrenType,
+}>) => (
     <>
-        { blog }
+        { overlay }
         { children }
     </>
 );

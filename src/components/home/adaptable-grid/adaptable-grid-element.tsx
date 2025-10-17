@@ -47,8 +47,6 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
     const [isExpanded, setIsExpanded] = useState(false);
 
     const gridElementRef = useRef<HTMLElement | null>(null);
-    
-    const supportHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
     const handlingClassName: string = `hover-${index + 1}`;
 
@@ -120,7 +118,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (!clickable) {
 
             topPartRoot.current.render(
-                <TopPartText icon={element.content.link && <TbExternalLink />} containerClassName="to-animate fade short">{element.content.name}</TopPartText>
+                <TopPartText icon={element.content.link && <TbExternalLink />} containerClassName="!m-0 to-animate fade short">{element.content.name}</TopPartText>
             );
         }
 
@@ -161,7 +159,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                     icon={elementProjectData.content.link && <TbExternalLink />}
                     href={elementProjectData.content.link} 
                     iconScale
-                    containerClassName="mt-3 opacity-0 to-animate fade"
+                    containerClassName="!m-0 opacity-0 to-animate fade"
                     className="text-nowrap">
                         {elementProjectData.content.link && "Consult "}
                         <u>{elementProjectData.content.name}</u> 

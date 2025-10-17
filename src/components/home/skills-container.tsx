@@ -74,7 +74,10 @@ const SkillsContainer = () => {
         <section className='mt-5'>
             <article className='flex flex-row flex-wrap justify-around items-center [row-gap:10px]'>
                 {gridData.map((grid, i) => (
-                    <Button ref={el => { buttonsRef.current[i] = el!; }} key={grid.id} onClick={(e) => {
+                    <Button 
+                    ref={el => { buttonsRef.current[i] = el!; }} 
+                    key={grid.id} 
+                    onClick={(e) => {
                         buttonsRef.current.forEach(btn => btn.classList.remove('active'));
                         e.currentTarget.classList.add('active');
                         const seeMoreButton = adaptableGridRef.current?.querySelector(`.see-more-button`);
@@ -86,7 +89,10 @@ const SkillsContainer = () => {
                     className={cn(
                         { active: i === 0 },
                     )}>
-                        <HeadingTwo className='text-xl' containerClassName='!m-0 p-4' icon={grid.icon}>
+                        <HeadingTwo containerClassName={cn(
+                            'sm:text-sm md:text-md lg:text-lg xl:text-xl',
+                            '!m-0 p-2 md:p-3 xl:p-4'
+                        )} icon={grid.icon}>
                             {grid.title}
                         </HeadingTwo>
                     </Button>

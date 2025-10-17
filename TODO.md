@@ -10,6 +10,7 @@
 * [X] Print element name on grid top (adaptable grid)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
+* [ ] Bug on hobbiEs adaptable grid (on click on xs-)
 * [X] tailwind-scrollbar installation
 * [ ] custom scrollbar colors
 * [ ] Display CV on menu

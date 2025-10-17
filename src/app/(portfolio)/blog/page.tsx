@@ -1,3 +1,4 @@
+import Separator from '@/components/home/separator';
 import { HeadingOne } from '@/components/page-flow';
 import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
@@ -39,7 +40,8 @@ const Blog = () => {
         <main className={cn("w-full h-full p-28 box-border")}>
             <HeadingOne icon={<FaPenNib className='text-[0.8em]' />}>Blogs ({blogCount}) :</HeadingOne>
             {/* Order by date button */}
-            <div className='w-full h-fit my-8 flex flex-row items-center justify-start flex-wrap'>
+            <Separator lite className='my-10 mx-0'/>
+            <div className='w-full h-fit flex flex-row items-center justify-start flex-wrap'>
                 {/* <p className='mt-10 text-lg text-gray-600 dark:text-gray-300'>No blog post has been published yet. Please check back later.</p> */}
                 {blogs.map((blog) => (
                     <div 
