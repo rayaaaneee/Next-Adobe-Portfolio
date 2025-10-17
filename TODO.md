@@ -18,6 +18,7 @@
 * [ ] Reduce icon sizes
 * [ ] Fix appearance animations
 * [ ] Fix backdrop filter on blog page
+* [ ] Default theme to light
 * [ ] Medias
 
   * [ ] Tooltip media queries

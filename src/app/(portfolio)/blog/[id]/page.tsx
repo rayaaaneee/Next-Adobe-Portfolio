@@ -7,7 +7,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     return (
         <BlogTemplate 
             id={id} 
-            quitButtonClassName={"top-5 right-32"}
+            quitButtonClassName={"z-[1] top-5 right-32"}
             quitButtonHref={"/blog"}
         />
     )

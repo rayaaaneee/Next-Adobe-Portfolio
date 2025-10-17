@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+
 import Blog from "./blog";
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
