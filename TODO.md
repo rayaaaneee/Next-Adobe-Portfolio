@@ -9,6 +9,7 @@
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
+* [ ] Use adaptable grid as blog pager
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [ ] Bug on hobbiEs adaptable grid (on click on xs-)
 * [X] tailwind-scrollbar installation

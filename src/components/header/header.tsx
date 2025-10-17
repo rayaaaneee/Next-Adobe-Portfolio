@@ -116,8 +116,8 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                 )}/>
             </Link>
             <nav id="menu-container">
-                <ul className={cn(
-                    "header-media-menu box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/30%)] transition-all ease-menu duration-600",
+                <ul id='header-media-menu' className={cn(
+                    "box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/30%)] transition-all ease-menu duration-600",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
                     "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu [&>*]:duration-450 [&>*]:pointer-events-none",
@@ -145,7 +145,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                     <SwitchTheme pinkMoon />
                     <div className='menu-footer'></div>
                 </ul>
-                { isMenuReady && <HamburgerMenu ref={hamburgerMenu} menuElement={mediaMenu.current as HTMLUListElement}/>}
+                <HamburgerMenu ref={hamburgerMenu} />
             </nav>
         </header>
     );

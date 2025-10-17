@@ -1,22 +1,37 @@
-import { forwardRef, useState } from "react";
+import { CSSProperties, forwardRef, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 import ClassNameInterface from "@/utils/interface/classname";
 
 export interface HamburgerMenuProps extends ClassNameInterface {
-    menuElement: HTMLElement | null;
     onClick?: (checked: boolean) => void;
-    style?: React.CSSProperties;
+    style?: CSSProperties;
 }
 
 // menuElement : tableau des éléments du menu à faire apparaître/disparaître (pas un seul élément)
-const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({className, id, menuElement, onClick: onCheck = () => {}, style = {}}, ref) => {
+const HamburgerMenu = forwardRef<HTMLDivElement, HamburgerMenuProps>(({
+    className, 
+    id, 
+    onClick: onCheck = () => {}, 
+    style = {}}, 
+    ref) => 
+{
 
-    if (!menuElement) throw new Error("You must provide a valid menu element to the HamburgerMenu component.");
+    const mediaMenuRef = useRef<HTMLUListElement>(null);
 
+    useEffect(() => {
+
+        if (mediaMenuRef.current) return;
+        const mediaMenuTmp = document.querySelector<HTMLUListElement>('#header-media-menu');
+
+        if (mediaMenuTmp) mediaMenuRef.current = mediaMenuTmp;
+        else throw new Error("HamburgerMenu: media menu element not found");
+
+    });
+    
     const toggleMenuClass = () => {
-        menuElement.classList.toggle("active");
+        mediaMenuRef.current!.classList.toggle("active");
         toggleChecked();
     };
 

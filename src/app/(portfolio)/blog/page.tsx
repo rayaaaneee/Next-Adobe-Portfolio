@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
@@ -26,7 +25,7 @@ const Blog = () => {
                 {/* Order by date button */}
                 <Separator lite highMargin />
             </div>
-            <div className='w-full h-fit flex flex-row items-center justify-start flex-wrap'>
+            <div className='w-full h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {/* <p className='mt-10 text-lg text-gray-600 dark:text-gray-300'>No blog post has been published yet. Please check back later.</p> */}
                 {blogs.map((blog, i) => (
                     <BlogCard blog={blog} i={i} key={i} />

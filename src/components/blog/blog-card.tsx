@@ -24,16 +24,16 @@ const BlogCard = ({ blog, i }: BlogCardProps) => {
                 "bg-white/80 hover:bg-white/100 dark:bg-black/80 hover:dark:bg-black/100",
                 "transition-colors duration-200 ease-in-out",
                 "flex flex-col items-center gap-3",
-                "w-full md:w-1/2 lg:w-1/3 h-fit p-4 m-2 ",
+                "md:w-1/2 lg:w-1/3 h-fit p-4 m-2 ",
                 "rounded-lg cursor-pointer no-underline",
-                "to-animate appear opacity-0 -translate-y-3",
-                `anim-delay-${i*200}`
+                //"to-animate appear opacity-0 -translate-y-3",
+                //`anim-delay-${i*200}`
             )}>
                 <HeadingTwo className='text-xl font-semibold text-gray-800 dark:text-gray-200'>{blog.title}</HeadingTwo>
                 <Paragraph className='text-gray-500 dark:text-gray-400'>{new Date(blog.date).toLocaleDateString()}</Paragraph>
                 <Paragraph>{blog.summary}</Paragraph>
-                <Icon src={blog.icon} alt={blog.title} className='block dark:hidden' />
-                <Icon src={blog.darkIcon} alt={blog.title} className="hidden dark:block" />
+                {/* <Icon src={blog.icon} alt={blog.title} className='block dark:hidden' />
+                <Icon src={blog.darkIcon} alt={blog.title} className="hidden dark:block" /> */}
         </Link>
     )
 }
