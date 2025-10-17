@@ -58,12 +58,12 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
         if (!id) throw new Error("An id must be provided to AdaptableGrid");
         if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
         if (elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
-        if (elementsPerRow && elementsPerRow <= 0) throw new Error("elementsPerRow must be greater than 0");
+        if (elementsPerRow && !isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be greater than 0 and less than or equal to 10");
 
         const elementCount: number = elements.length;
         const nbWrappers: number = Math.ceil(elementCount / elementsPerRow);
 
-        if (clickable && nbWrappers > 1) throw new Error(`Clickable AdaptableGrid can only have one row (elementsPerRow (${elementsPerRow}) must be greater than or equal to the number of elements (${elementCount}, ${elements.map(e => e.content.name).join(", ")})`);
+        if (clickable && nbWrappers > 1 ) throw new Error(`Clickable AdaptableGrid can only have one row (elementsPerRow (${elementsPerRow}) must be greater than or equal to the number of elements (${elementCount}, ${elements.map(e => e.content.name).join(", ")})`);
 
         if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 

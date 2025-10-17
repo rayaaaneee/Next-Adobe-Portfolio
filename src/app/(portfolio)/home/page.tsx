@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import { FaHeart, FaLocationDot } from "react-icons/fa6";
+import { FaHeart, FaLocationDot, FaBriefcase } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 
 import { 
@@ -39,14 +39,25 @@ const Home = () => {
         <main className={cn(
             "justify-self-center rounded-none md:rounded-md h-fit",
             "to-animate fade anim-delay-200 anim-duration-300",
-            "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.5)] backdrop-blur-md",
+            "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.8)] backdrop-blur-md",
             "box-border overflow-hidden",
             "w-[100vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
             "my-0 md:my-[5vw] lg:my-10",
-            "pt-5 sm:pt-7 md:pt-10 xl:pt-20",
             "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
         )}>
-            <Separator className="mt-0 mb-4 xl:mb-8" />
+            <HeadingThree 
+                icon={<FaBriefcase className="w-8 h-8 text-amber-500" />} 
+                iconPosition={IconPosition.right}
+                className={cn(
+                    "text-center dark:text-white",
+                )} 
+                containerClassName={cn(
+                    "flex justify-center items-center w-full !m-0",
+                    "h-5 sm:h-7 md:h-10 xl:h-20"
+                )}>
+                    Portfolio
+            </HeadingThree>
+            <Separator className="!mt-0" />
             <article className="relative flex flex-col justify-center">
                 <Image className={cn(
                     "hidden absolute right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none",
@@ -86,7 +97,7 @@ const Home = () => {
                     )} />
                 </section>
             </article>
-            <Separator className="my-4 xl:my-8"/>
+            <Separator className="!mt-4" highMargin/>
             <article>
                 <HeadingOne id="about" isAnchorLink>About me</HeadingOne>
                 <Paragraph indent alignment={ParagraphAlignment.justify}>
@@ -105,32 +116,32 @@ const Home = () => {
                     
                 </Paragraph>
             </article>
-            <Separator className="my-8" />
+            <Separator highMargin />
             <article>
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>These are my last main projects. Click on a project to learn more about it. You can find descriptions, links and more..</Paragraph>
             </article>
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
-            <Separator className="my-10" />
+            <Separator highMargin />
             <WorkContainer />
             <EducationContainer />
-            <Separator className="my-8" />
+            <Separator highMargin />
             <article>
                 <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
                 <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
             </article>
-            <Separator className="my-8" />
+            <Separator highMargin />
             <article>
                 <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
                 <Paragraph>Here&apos;s my skills ...</Paragraph>
             </article>
             <SkillsContainer />
-            <Separator className="my-10" />
+            <Separator highMargin />
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
             <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
-            <Separator className="mb-0" />
+            <Separator className="!mb-0" />
             <HeadingThree 
                 icon={<FaHeart className="w-8 h-8 text-red-400" />} 
                 iconPosition={IconPosition.right}
@@ -138,10 +149,10 @@ const Home = () => {
                     "text-center dark:text-white",
                 )} 
                 containerClassName={cn(
-                    "flex justify-center items-center w-full m-0",
-                    "h-5 sm:h-7 md:h-10 xl:h-20" // Same height as <main> margin-top
+                    "flex justify-center items-center w-full !m-0",
+                    "h-5 sm:h-7 md:h-10 xl:h-20"
                 )}>
-                    Thank you for visiting my portfolio !
+                    Thank you for visiting !
             </HeadingThree>
         </main>
     )

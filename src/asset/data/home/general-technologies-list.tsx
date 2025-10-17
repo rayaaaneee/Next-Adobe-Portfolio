@@ -42,10 +42,6 @@ export const assertFoundTech = (name: string, category: TechCategory) => {
     return assertFound(generalTechnologies[category], (tech) => (tech.name === name), name);
 }
 
-const projectTechnologiesBaseProps = {
-    className: '[&_*]:!text-slate-600 w-8 h-8 p-2',
-} as const;
-
 export enum GeneralTechnologiesName {
 
     // Languages

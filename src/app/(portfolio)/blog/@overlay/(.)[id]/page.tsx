@@ -1,22 +1,16 @@
-import { cn } from "@/lib/utils";
+import Blog from "./_blog";
 
-import Blog from "./blog";
+export interface PageProps {
+    params: Promise<{
+        id: string;
+    }>;
+}
 
-const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+const Page = async ({ params }: PageProps) => {
 
     const { id } = await params;
 
-    return (
-        <div 
-        id="blog-modal"
-        className={cn(
-            "absolute inset-0 w-full h-full overflow-hidden z-20",
-            "flex justify-center items-start", 
-            "to-animate fade anim-duration-300",
-        )}>
-            <Blog id={id} />
-        </div>
-    );
+    return (<Blog id={id} />)
 }
 
 export default Page;

@@ -48,7 +48,7 @@ const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: Adaptabl
                 )}>
 
                     <Paragraph className={cn(
-                        "text-nowrap m-0",
+                        "text-nowrap m-0 dark:text-white",
                     )} alignment={ParagraphAlignment.justify} innerHtml={element.description}>{undefined}</Paragraph>   
 
                 </section>

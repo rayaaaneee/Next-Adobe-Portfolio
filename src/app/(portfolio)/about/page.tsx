@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const About = ({}) => {
     return (
-        <ComingSoon title="About" />
+        <ComingSoon title="About" className="w-screen h-screen" />
     );
 }
 

@@ -24,13 +24,13 @@ const TechItem = ({ tech }: TechItemPropsInterface) => {
                 style={{ "--bg-color": tech.color } as CSSProperties}
                 className={cn(
                     "tech-icon",
-                    "bg-[var(--bg-color)] dark:[background-color:color-mix(in_oklab,var(--bg-color)_70%,black)]",
+                    "bg-[var(--bg-color)]",
                     "[&>*]:w-5 [&>*]:h-5 w-5 h-5 opacity-70 transition-opacity",
                     "rounded-full w-fit text-white p-2",
                 )}>
                     {tech.icon}
                 </div>
-                <Paragraph className="m-0 italic">
+                <Paragraph className="m-0 italic text-nowrap">
                     {tech.name}
                 </Paragraph>
         </AnchorLinkButton>

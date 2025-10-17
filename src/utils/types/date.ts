@@ -14,15 +14,15 @@ export enum Month {
 }
 
 export interface DateInterface {
-    month: Month,
-    year: number,
-    toString(): string,
+    month: Month;
+    year: number;
+    toString(): string;
 }
 
 export interface IntervalDateInterface {
-    start: DateInterface,
-    end?: DateInterface,
-    toString(): string,
+    start: DateInterface;
+    end?: DateInterface;
+    toString(): string;
 }
 
 export class DateClass implements DateInterface {

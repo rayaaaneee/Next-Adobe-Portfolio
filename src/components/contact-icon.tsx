@@ -31,11 +31,10 @@ export interface ContactIconProps extends ClassNameInterface {
     tooltipClassName?: string,
     size?: IconSize,
 }
-const ImageElement = ({ link, className, filter = true }: { link: ContactIconType, filter?: boolean } & ClassNameInterface) => (
+const ImageElement = ({ link, className }: { link: ContactIconType } & ClassNameInterface) => (
     <Image    
         className={cn(
             'rounded-full w-full h-full block bg-cover bg-center transition-all duration-200',
-            [filter && "dark:saturate-[2] dark:brightness-[0.4]"],
             link.className,
             className
         )}
@@ -77,8 +76,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
                         link={link} 
                         className={cn(className, [link.darkImage && 'dark:hidden'])} />
                     {link.darkImage && 
-                        <ImageElement 
-                        filter={false}
+                        <ImageElement
                         link={{...link, image: link.darkImage}} 
                         className={cn("hidden dark:block")} />}
                     <div id={id ? `contact-links-white-background-${id}` : undefined} className={cn(

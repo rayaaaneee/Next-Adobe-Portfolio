@@ -182,7 +182,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                                 key={i} 
                                 text={tech.name} 
                                 size={TooltipSize.md} 
-                                className={`to-animate appear translate-y-3 !text-slate-600 dark:!text-gray-200 anim-delay-${i * 100}`}
+                                className={`to-animate appear translate-y-3 rounded-full !text-slate-600 dark:!text-gray-200 anim-delay-${i * 100}`}
                                 tooltipClassName="bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(70,70,70,0.9)] font-semibold">
                                 <Button className="rounded-full p-2 [&>svg]:w-7 [&>svg]:h-7 ">
                                     {icon}
@@ -208,7 +208,6 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
 
         const clickClassName: string = `click-${index + 1}`;
 
-
         if (isExpanded) {
             wrapper.current.classList.add(clickClassName);
         } else {
@@ -233,7 +232,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             className={cn(
                 "adaptable-grid-element",
                 [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
-                "bg-[var(--bg-color)] dark:[background-color:color-mix(in_oklab,var(--bg-color)_80%,black)]",
+                "bg-[var(--bg-color)]",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
                 "text-white size-element flex relative flex-row items-center gap-0 justify-center",
                 [
