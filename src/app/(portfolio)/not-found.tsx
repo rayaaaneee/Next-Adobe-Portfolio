@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorPage from 'next/error';
+import ComingSoon from '@/components/coming-soon';
 
 interface NotFoundInterface {
     statusCode?: number;
@@ -8,9 +8,7 @@ interface NotFoundInterface {
 
 const NotFound = ({ statusCode = 404 }: NotFoundInterface) => {
     return (
-        <div className='![&_*]:text-black relative w-screen h-screen bg-yellow-100 bg-opacity-75'>
-            <ErrorPage statusCode={statusCode} />
-        </div>
+        <ComingSoon title="Page Not Found"/>
     );
 }
 

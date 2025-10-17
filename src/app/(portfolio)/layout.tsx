@@ -7,10 +7,14 @@ import { ChildrenInterface } from "@/utils/interface/children";
 
 const RootLayout = ({
     children,
-}: Readonly<ChildrenInterface>) => (
+    modal
+} : {
+    modal: React.ReactNode
+} & Readonly<ChildrenInterface>) => (
     <App>
         <Header hasFooter={true} />
         <Background />
+        { modal }
         { children }
     </App>
 );

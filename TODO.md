@@ -17,6 +17,7 @@
 * [ ] set background elements behind texts (index)
 * [ ] Reduce icon sizes
 * [ ] Fix appearance animations
+* [ ] Fix backdrop filter on blog page
 * [ ] Medias
 
   * [ ] Tooltip media queries

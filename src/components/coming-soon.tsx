@@ -7,8 +7,8 @@ interface ComingSoonProps {
 
 const ComingSoon = ({ title }: ComingSoonProps) => {
     return (
-        <main className="w-screen h-screen flex flex-col justify-center items-center gap-3">
-            <HeadingOne>{title}</HeadingOne>
+        <main className="w-full h-full flex flex-col justify-center items-center gap-3">
+            <HeadingOne containerClassName="!m-0">{title}</HeadingOne>
             <Paragraph className="dark:text-white">Coming soon...</Paragraph>
             <GetStarted className="mt-4" colored />
         </main>
