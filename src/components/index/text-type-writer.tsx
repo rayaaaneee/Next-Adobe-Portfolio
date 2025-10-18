@@ -39,7 +39,7 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
         <h2 id={`typerWriter-${id}`} className={cn(
             '!leading-[1em] text-nowrap font-adobe font-semibold',
             'text-black dark:text-white',
-            'text-[14vw] sm:text-[8vw] md:text-[6vw]',
+            ['text-[14vw] sm:text-[8vw] lg:text-[7vw] xl:text-[6vw]'],
             className
         )}>
             { emptyChar }

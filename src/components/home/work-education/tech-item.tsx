@@ -30,7 +30,7 @@ const TechItem = ({ tech }: TechItemPropsInterface) => {
                 )}>
                     {tech.icon}
                 </div>
-                <Paragraph className="m-0 italic text-nowrap">
+                <Paragraph className="m-0 italic">
                     {tech.name}
                 </Paragraph>
         </AnchorLinkButton>

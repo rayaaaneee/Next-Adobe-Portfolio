@@ -14,8 +14,10 @@ const MainContainer = () => {
     const { language } = useTryingContext(languageContext);
 
     return (
-        <div className={cn("container w-full h-full flex items-center justify-center")}>
-            <div id='presentationContainer' className={cn("flex flex-col gap-4 md:gap-10 items-center justify-center w-full")}>
+        <div className={cn("container w-full h-full flex flex-col items-center justify-center")}>
+            <div id='presentationContainer' className={cn(
+                "flex flex-col gap-6 md:gap-10 items-center justify-center w-full"
+                )}>
                 <h1 className={cn(
                     "font-adobebold to-animate appear translate-y-10 anim-delay-400 text-black dark:text-white text-center text-[23vw] sm:text-[12vw] leading-[13.5vw] sm:leading-[0.8] text-wrap sm:text-nowrap font-medium",
                 )}>{ language.title }</h1>
@@ -29,8 +31,11 @@ const MainContainer = () => {
                     <TextTypeWriter id='reduced' reduced className='block md:hidden' />{/*  Texte dynamique  */}
                     <BlinkingVerticalBar />
                 </div>
-                <GetStarted id={"two"} colored className='two block self-center md:hidden to-animate appear -translate-y-3 anim-delay-2300' />
             </div>
+            <GetStarted id={"two"} colored className={cn(
+                'mt-4',
+                'two block self-center md:hidden to-animate appear -translate-y-3 anim-delay-2300',
+            )} />
         </div>
     )
 }

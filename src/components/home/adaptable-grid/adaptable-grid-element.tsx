@@ -171,7 +171,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                 <section className={cn(
                     "content-expansion",
                     "bottom-2 w-fit h-fit",
-                    "flex flex-row flex-nowrap gap-4",
+                    "flex flex-row flex-nowrap",
+                    [ "gap-2", "sm:gap-4" ],
                     "transition-opacity duration-400 ease-out",
                     "opacity-80",
                 )}>
@@ -184,7 +185,13 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                                 size={TooltipSize.md} 
                                 className={`to-animate appear translate-y-3 rounded-full !text-slate-600 dark:!text-gray-200 anim-delay-${i * 100}`}
                                 tooltipClassName="bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(70,70,70,0.9)] font-semibold">
-                                <Button className="rounded-full p-2 [&>svg]:w-7 [&>svg]:h-7 ">
+                                <Button className={cn(
+                                    "rounded-full p-2 ",
+                                    [
+                                        "[&>svg]:w-4 [&>svg]:h-4",
+                                        "sm:[&>svg]:w-7 sm:[&>svg]:h-7",
+                                    ]
+                                )}>
                                     {icon}
                                 </Button>
                             </Tooltip>
@@ -242,7 +249,12 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
                     "lg:[&>:is(img,svg)]:w-24 lg:[&>:is(img,svg)]:h-24"
                 ],
                 "transition-[opacity,background-color] duration-300 ease-in-out",
-                "[&.active>img]:ml-10 [&.active>.content-expansion]:pl-10 [&.active>.content-expansion]:mr-10",
+                [
+                    "[&.active>img]:ml-2 [&.active>.content-expansion]:pl-2 [&.active>.content-expansion]:mr-2",
+                    "sm:[&.active>img]:ml-4 sm:[&.active>.content-expansion]:pl-4 sm:[&.active>.content-expansion]:mr-4",
+                    "md:[&.active>img]:ml-6 md:[&.active>.content-expansion]:pl-6 md:[&.active>.content-expansion]:mr-6",
+                    "lg:[&.active>img]:ml-10 lg:[&.active>.content-expansion]:pl-10 lg:[&.active>.content-expansion]:mr-10",
+                ],
                 className,
             )}>
             { element.customIcon || element.content.icon }
