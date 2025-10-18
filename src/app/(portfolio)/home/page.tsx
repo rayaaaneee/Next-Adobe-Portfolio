@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { FaHeart, FaLocationDot, FaBriefcase } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 
+import photo from "~/img/home/photo.jpg";
+
 import { 
     HeadingOne, 
     HeadingThree,
@@ -13,9 +15,6 @@ import {
     Paragraph, 
     ParagraphAlignment 
 } from "@/components/page-flow";
-
-import photo from "~/img/home/photo.jpg";
-
 import ContactLinks from "@/components/contact-links";
 import EducationContainer from "@/components/home/education-container";
 import WorkContainer from "@/components/home/work-container";
@@ -29,9 +28,31 @@ import hobbies from "@/asset/data/home/hobbies";
 import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
 
+import { ChildrenType } from "@/utils/interface/children";
+
 export const metadata: Metadata = {
     title: "Portfolio",
 };
+
+interface VerticalBorderSectionProps {
+    text: string;
+    icon: ChildrenType;
+}
+
+const VerticalBorderSection = ({ text, icon }: VerticalBorderSectionProps) => (
+    <HeadingThree 
+        icon={icon} 
+        iconPosition={IconPosition.right}
+        className={cn(
+            "text-center h- dark:text-white",
+        )} 
+        containerClassName={cn(
+            "flex justify-center items-center w-full !m-0",
+            "h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20"
+        )}>
+            {text}
+    </HeadingThree>
+);
 
 const Home = () => {
 
@@ -45,18 +66,10 @@ const Home = () => {
             "my-0 md:my-[5vw] lg:my-10",
             "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
         )}>
-            <HeadingThree 
-                icon={<FaBriefcase className="w-8 h-8 text-amber-500" />} 
-                iconPosition={IconPosition.right}
-                className={cn(
-                    "text-center dark:text-white",
-                )} 
-                containerClassName={cn(
-                    "flex justify-center items-center w-full !m-0",
-                    "h-5 sm:h-7 md:h-10 xl:h-20"
-                )}>
-                    Portfolio
-            </HeadingThree>
+            <VerticalBorderSection 
+                text="Portfolio" 
+                icon={<FaBriefcase className="text-amber-400"/>} 
+            />
             <Separator className="!mt-0" />
             <article className="relative flex flex-col justify-center">
                 <Image className={cn(
@@ -142,18 +155,10 @@ const Home = () => {
             </article>
             <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
             <Separator className="!mb-0" />
-            <HeadingThree 
-                icon={<FaHeart className="w-8 h-8 text-red-400" />} 
-                iconPosition={IconPosition.right}
-                className={cn(
-                    "text-center dark:text-white",
-                )} 
-                containerClassName={cn(
-                    "flex justify-center items-center w-full !m-0",
-                    "h-5 sm:h-7 md:h-10 xl:h-20"
-                )}>
-                    Thank you for visiting !
-            </HeadingThree>
+            <VerticalBorderSection 
+                text="Thank you for visiting !" 
+                icon={<FaHeart className="text-red-400" />} 
+            />
         </main>
     )
 }

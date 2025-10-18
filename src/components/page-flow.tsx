@@ -118,7 +118,8 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
             onClick={onClick}
             className={cn(
                 "xs:text-base sm:text-lg lg:text-xl xl:text-2xl ",
-                "text-gray-500 dark:text-gray-400 ml-7", 
+                "xs:ml-4 sm:ml-5 md:ml-6 xl:ml-7",
+                "text-gray-500 dark:text-gray-400", 
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
@@ -149,7 +150,7 @@ export const Paragraph = ({ className, children, id, alignment = ParagraphAlignm
     <p id={id} className={cn(
         "text-sm sm:text-base lg:text-lg xl:text-xl",
         "text-gray-800 dark:text-gray-300 font-normal mt-2",
-        { "first-letter:ml-10": indent },
+        { "first-letter:ml-7 lg:first-letter:ml-10": indent },
         alignment,
         className
     )} dangerouslySetInnerHTML={innerHtml ? { __html: innerHtml } : undefined}>

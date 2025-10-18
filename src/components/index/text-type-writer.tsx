@@ -17,8 +17,8 @@ const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps)
     const textTab: readonly string[] = language.index.description.long;
     const reducedTextTab: readonly string[] = language.index.description.short;
 
-        // Intitially longer delay for the first word
-    const [delaySpeed, setDelaySpeed] = useState(3000);
+    // Intitially longer delay for the first word (Rayane Merlin)
+    const [delaySpeed, setDelaySpeed] = useState(4000);
 
     const typeWriterTemplate: Omit<TypewriterProps, "words"> = {
         loop: true,
