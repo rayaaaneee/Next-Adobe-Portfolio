@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { cn } from '@/lib/utils';
+import cn from '@/utils/function/cn';
 
 import QuitButton from '@/components/quit-button'
 

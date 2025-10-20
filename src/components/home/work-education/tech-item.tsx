@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import { AnchorLinkButton, Paragraph } from '@/components/page-flow';
 import GridContent from '@/asset/data/home/adaptable-grid-base';

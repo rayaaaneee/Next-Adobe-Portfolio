@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import { Paragraph, ParagraphAlignment, AnchorLinkButton } from "@/components/page-flow";
 

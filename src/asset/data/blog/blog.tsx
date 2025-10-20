@@ -1,30 +1,31 @@
+import Image from "next/image";
+
+import DeepReadonly from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
 
-import networkIcon from "@/asset/img/blog/blog-1/icon-light.png";
-import networkIconDark from "@/asset/img/blog/blog-1/icon-dark.png";
+import networkIcon from "@/asset/img/blog/blog-1/icon.png";
 
-import svgIcon from "@/asset/img/blog/blog-2/icon-light.png";
-import svgIconDark from "@/asset/img/blog/blog-2/icon-dark.png";
+import svgIcon from "@/asset/img/blog/blog-2/icon.png";
 
-const blogs: BlogPost[] = [
-    {
-        index: 2,
-        id: "svg-customization",
-        title: "SVG customization using SVGR",
-        date: "2024-01-01",
-        summary: "This is a summary of my first blog post.",
-        icon: svgIcon,
-        darkIcon: svgIconDark,
-    },
+const blogs: DeepReadonly<BlogPost[]> = [
     {
         index: 1,
         id: "deep-learning-snake-ai",
         title: "Deep Learning : Snake AI Overview",
         date: "2024-02-01",
         summary: "This is a summary of my second blog post.",
-        icon: networkIcon,
-        darkIcon: networkIconDark,
-    }
+        color: "#33A1FF",
+        icon: <Image src={networkIcon} alt="Network Icon" />,
+    },
+    {
+        index: 2,
+        id: "svg-customization",
+        title: "SVG customization using SVGR",
+        date: "2024-01-01",
+        color: "#FF5733",
+        summary: "This is a summary of my first blog post.",
+        icon: <Image src={svgIcon} alt="SVG Icon" />
+    },
 ]
 
 export default blogs;

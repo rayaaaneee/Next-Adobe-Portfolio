@@ -2,9 +2,9 @@
 
 import { useRef, useState } from 'react';
 
-import AdaptableGrid, { AdaptableGridProps } from './adaptable-grid/adaptable-grid';
+import AdaptableGrid, { AdaptableGridProps } from '../others/adaptable-grid/adaptable-grid';
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import { Button, HeadingTwo } from '../page-flow';
 import { LuCodeXml } from 'react-icons/lu';

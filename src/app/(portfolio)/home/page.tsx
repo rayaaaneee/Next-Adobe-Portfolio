@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import { FaHeart, FaLocationDot, FaBriefcase } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
@@ -19,7 +19,7 @@ import ContactLinks from "@/components/contact-links";
 import EducationContainer from "@/components/home/education-container";
 import WorkContainer from "@/components/home/work-container";
 import SkillsContainer from "@/components/home/skills-container";
-import AdaptableGrid from "@/components/home/adaptable-grid/adaptable-grid";
+import AdaptableGrid from "@/components/others/adaptable-grid/adaptable-grid";
 import Separator from "@/components/home/separator";
 
 import projects from "@/asset/data/home/projects";
@@ -84,7 +84,7 @@ const Home = () => {
                     <div>
                         <HeadingOne id="name" className="mt-0" isAnchorLink>Rayane Merlin</HeadingOne>
                         <Paragraph>Full-Stack Developer & Cybersecurity Enthusiast</Paragraph>
-                        <HeadingThree containerClassName="ml-0" icon={<FaLocationDot/>}>Lyon, France</HeadingThree>
+                        <HeadingThree containerClassName="!ml-0" icon={<FaLocationDot/>}>Lyon, France</HeadingThree>
                     </div>
                     <Image className={cn(
                         "block m-auto opacity-90 backdrop-blur-md rounded-full pointer-events-none",
@@ -96,7 +96,7 @@ const Home = () => {
                     )} src={photo} alt="photo" width={150} height={150} />
                 </section>
                 <section>
-                    <HeadingThree icon={<FaLink/>} containerClassName="ml-0">Links</HeadingThree>
+                    <HeadingThree icon={<FaLink/>} containerClassName="!ml-0">Links</HeadingThree>
                     <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
                         "w-fit mt-4 justify-between",
                         [

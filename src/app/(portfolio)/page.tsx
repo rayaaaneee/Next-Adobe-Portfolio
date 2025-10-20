@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import GetStarted from '@/components/index/get-started';
 import ContactLinks from '@/components/contact-links';

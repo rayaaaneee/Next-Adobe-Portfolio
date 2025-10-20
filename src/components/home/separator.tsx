@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import ClassNameInterface from '@/utils/interface/classname';
 

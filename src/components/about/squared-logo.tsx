@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 import ClassNameInterface from '@/utils/interface/classname';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 
 export interface SquaredLogoProps extends ClassNameInterface {
     backgrounds?: boolean,

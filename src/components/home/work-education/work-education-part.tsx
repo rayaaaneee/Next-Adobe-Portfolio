@@ -1,5 +1,7 @@
 import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
 
+import cn from "@/utils/function/cn";
+
 import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
@@ -11,7 +13,6 @@ import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "../separator";
 import TechItem from "./tech-item";
-import cn from "@/utils/function/cn";
 
 export interface WorkEducationPartProps {
     item: Work | Education;

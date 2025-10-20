@@ -13,18 +13,21 @@
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [ ] Bug on hobbiEs adaptable grid (on click on xs-)
 * [X] tailwind-scrollbar installation
-* [ ] custom scrollbar colors
+* [X] custom scrollbar colors
 * [ ] Display CV on menu
-* [ ] Remove box shadows on index title
+* [X] Remove box shadows on index title
 * [ ] set background elements behind texts (index)
 * [ ] Reduce icon sizes
-* [ ] Fix appearance animations
-* [ ] Fix backdrop filter on blog page
+* [X] Fix appearance animations
+* [X] Fix backdrop filter on blog page
 * [ ] Default theme to light
 * [ ] Medias
 
-  * [ ] Tooltip media queries
+  * [X] Tooltip media queries
   * [X] Menu medias
+  * [ ] Home media queries
+    * [ ] Element Expansion
+    * [X] All other
   * [X] Index page medias
   * [X] Made Medias for background (to start)
     * [X] Change header / footer triangle size on lg-

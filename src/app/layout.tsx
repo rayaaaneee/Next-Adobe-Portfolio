@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next";
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import "~/scss/styles.scss";
 

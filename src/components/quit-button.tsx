@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { MouseEventHandler } from "react";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import ClassNameInterface from "@/utils/interface/classname";
 

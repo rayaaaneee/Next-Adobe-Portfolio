@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, MouseEvent, Ref, CSSProperties} from "reac
 import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import { TbExternalLink } from "react-icons/tb";
 

@@ -1,14 +1,17 @@
 import { Metadata } from 'next';
 
-import { cn } from '@/lib/utils';
+import cn from '@/utils/function/cn';
 
-import Separator from '@/components/home/separator';
+import { FaPenNib } from "react-icons/fa";
+
 import { HeadingOne } from '@/components/page-flow';
+import Separator from '@/components/home/separator';
+
+import AdaptableGrid, { AdaptableGridElementData } from '@/components/others/adaptable-grid/adaptable-grid';
 
 import blogs from '@/asset/data/blog/blog';
 
-import { FaPenNib } from "react-icons/fa";
-import BlogCard from '@/components/blog/blog-card';
+import { BlogPost } from '@/utils/types/blog';
 
 export const metadata: Metadata = {
     title: "Blog",
@@ -25,12 +28,23 @@ const Blog = () => {
                 {/* Order by date button */}
                 <Separator lite highMargin />
             </div>
-            <div className='w-full h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {/* <p className='mt-10 text-lg text-gray-600 dark:text-gray-300'>No blog post has been published yet. Please check back later.</p> */}
-                {blogs.map((blog, i) => (
-                    <BlogCard blog={blog} i={i} key={i} />
-                ))}
-            </div>
+            <AdaptableGrid
+            className='w-full' 
+                id={"blog"}
+                elementsPerRow={4} 
+                asInternalLink
+                elements={
+                    blogs.map((blog: BlogPost) => (
+                        { 
+                            content: {
+                                name: blog.title,
+                                color: blog.color,
+                                icon: blog.icon
+                            }
+                        } satisfies AdaptableGridElementData
+                    ))} 
+                //hidden 
+            />
         </main>
     )
 }

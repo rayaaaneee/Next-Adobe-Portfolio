@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+
+import cn from "@/utils/function/cn";
 
 import type ClassNameInterface from "@/utils/interface/classname";
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
@@ -57,7 +58,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
 
         if (!id) throw new Error("An id must be provided to AdaptableGrid");
         if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
-        if (elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
+        if (!hidden && elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
         if (elementsPerRow && !isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be greater than 0 and less than or equal to 10");
 
         const elementCount: number = elements.length;

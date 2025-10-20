@@ -1,11 +1,11 @@
 import { JSX } from "react";
 
+import cn from "@/utils/function/cn";
+
 import { FaCircleCheck } from "react-icons/fa6";
 import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
-
-import cn from "@/utils/function/cn";
 
 import { ChildrenInterface, type ChildrenType } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";

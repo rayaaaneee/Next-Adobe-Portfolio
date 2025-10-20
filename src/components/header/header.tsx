@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useRef, useState } from 'react';
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import useConditionalEffect from '@/utils/hook/use-conditional-effect';
-import useTryingContext from '@/utils/hook/use-try-context';
+import useTryingContext from '@/utils/hook/use-trying-context';
 
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 

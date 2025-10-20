@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import cn from "@/utils/function/cn";
 
 import { useTheme } from "next-themes";
 

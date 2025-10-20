@@ -1,6 +1,7 @@
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
+
 import languageContext from '@/utils/context/language-context';
-import useTryingContext from '@/utils/hook/use-try-context';
+import useTryingContext from '@/utils/hook/use-trying-context';
 
 import ClassNameInterface from '@/utils/interface/classname';
 import { useState } from 'react';

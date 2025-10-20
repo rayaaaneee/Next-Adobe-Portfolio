@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import { ChildrenType } from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';

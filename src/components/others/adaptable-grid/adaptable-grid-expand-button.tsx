@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import useConditionalEffect from '@/utils/hook/use-conditional-effect';
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
 import { HeadingThree, IconPosition } from '@/components/page-flow';
 

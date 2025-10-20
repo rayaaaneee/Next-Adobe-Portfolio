@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from '@/lib/utils';
+import cn from "@/utils/function/cn";
 
-import useTryingContext from '@/utils/hook/use-try-context';
+import useTryingContext from '@/utils/hook/use-trying-context';
 
 import languageContext from '@/utils/context/language-context';
 import GetStarted from './get-started';
