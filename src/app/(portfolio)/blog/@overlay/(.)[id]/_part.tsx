@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import cn from '@/utils/function/cn';
 
@@ -11,6 +12,22 @@ const Part = () => {
     const router = useRouter();
 
     const closePage = () => (router.back());
+
+    useEffect(() => {
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                closePage();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+
+    }, []);
 
     return (
         <>

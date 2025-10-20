@@ -14,7 +14,10 @@ import blogs from '@/asset/data/blog/blog';
 import { BlogPost } from '@/utils/types/blog';
 
 export const metadata: Metadata = {
-    title: "Blog",
+    title: {
+        default: "Blog",
+        template: "%s",
+    }
 }
 
 const Blog = () => {
@@ -29,9 +32,8 @@ const Blog = () => {
                 <Separator lite highMargin />
             </div>
             <AdaptableGrid
-            className='w-full' 
                 id={"blog"}
-                elementsPerRow={4} 
+                elementsPerRow={4}
                 asInternalLink
                 elements={
                     blogs.map((blog: BlogPost) => (
@@ -39,7 +41,8 @@ const Blog = () => {
                             content: {
                                 name: blog.title,
                                 color: blog.color,
-                                icon: blog.icon
+                                icon: blog.icon,
+                                link: `/blog/${blog.id}`,
                             }
                         } satisfies AdaptableGridElementData
                     ))} 

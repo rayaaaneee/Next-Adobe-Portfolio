@@ -6,6 +6,7 @@ import { createRoot, Root } from "react-dom/client";
 
 import cn from "@/utils/function/cn";
 
+import { FaLink } from "react-icons/fa6";
 import { TbExternalLink } from "react-icons/tb";
 
 import { AdaptableGridElementData, AdaptableGridElementProjectData } from "./adaptable-grid";
@@ -17,6 +18,7 @@ import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/compo
 
 import verifyReference from "@/utils/function/verify-reference";
 import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
+import Link from "next/link";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -38,11 +40,12 @@ interface AdaptableGridElementProps {
     element: AdaptableGridElementData;
     index: number;
     clickable: boolean;
+    asInternalLink: boolean;
     className?: string;
 }
 
 // Single grid element
-const AdaptableGridElement = ({ element, className, index, clickable }: AdaptableGridElementProps) => {
+const AdaptableGridElement = ({ element, className, index, clickable, asInternalLink }: AdaptableGridElementProps) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -118,7 +121,18 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
         if (!clickable) {
 
             topPartRoot.current.render(
-                <TopPartText icon={element.content.link && <TbExternalLink />} containerClassName="!m-0 to-animate fade short">{element.content.name}</TopPartText>
+                <TopPartText 
+                    icon={
+                        element.content.link && (asInternalLink ?
+                            (<FaLink />)
+                            :
+                            (<TbExternalLink />)
+                        )
+                    }
+                    containerClassName="!m-0 to-animate fade short"
+                    >
+                        {element.content.name}
+                </TopPartText>
             );
         }
 
@@ -223,7 +237,7 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
 
     }, [isExpanded]);
 
-    const ParentElement = clickable ? "div" : "a";
+    const ParentElement = (clickable || !element.content.link) ? "div" : (asInternalLink ? Link : "a");
 
     return (
         <ParentElement
@@ -231,8 +245,8 @@ const AdaptableGridElement = ({ element, className, index, clickable }: Adaptabl
             onClick={clickable ? () => (setIsExpanded(true)) : undefined}
             onMouseEnter={onMouseEnter} 
             onMouseLeave={onMouseLeave} 
-            href={clickable ? undefined : element.content.link}
-            target={clickable ? undefined : "_blank"}
+            href={element.content.link || "#"}
+            target={(clickable || asInternalLink) ? undefined : "_blank"}
             key={index}
             rel={clickable ? undefined : "noreferrer"}
             style={{ "--bg-color" : element.content.color } as CSSProperties}

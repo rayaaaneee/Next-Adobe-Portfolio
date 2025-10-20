@@ -1,4 +1,4 @@
-import { cn } from "@/lib/cn";
+import cn from "@/utils/function/cn";
 
 import Part from "./_part";
 import BlogTemplate from "@/components/blog/blog-template";

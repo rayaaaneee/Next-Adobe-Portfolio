@@ -28,11 +28,12 @@ export interface AdaptableGridElementProjectData extends AdaptableGridElementDat
 export type oneToTen = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export const isOneToTen = (n: number): n is oneToTen => {
-  return n >= 1 && n <= 10;
+    return n >= 1 && n <= 10;
 }
 
 interface AdaptableGridBaseProps extends ClassNameInterface {
     elementsPerRow: oneToTen;
+    asInternalLink?: boolean;
     hidden?: boolean;
 }
 
@@ -52,7 +53,7 @@ export type AdaptableGridProps = (NonclickableAdaptableGridProps | ClickableAdap
 // Complete grid
 const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
     (
-        { className, id, elementsPerRow, elements, clickable = false, hidden = false },
+        { className, id, elementsPerRow, elements, clickable = false, asInternalLink = false, hidden = false },
         ref
     ) => {
 
@@ -91,6 +92,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                             (i % elementsPerRow === 0) &&
                                 (
                                     <AdaptableGridWrapper
+                                        asInternalLink={asInternalLink}
                                         clickable={clickable}
                                         key={`wrapper-${i}`}
                                         className={cn(
