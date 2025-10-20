@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
 
-import cn from '@/utils/function/cn';
-
 import { FaPenNib } from "react-icons/fa";
 
 import { HeadingOne } from '@/components/page-flow';
@@ -9,7 +7,7 @@ import Separator from '@/components/others/separator';
 
 import AdaptableGrid, { AdaptableGridElementData } from '@/components/others/adaptable-grid';
 
-import blogs from '@/asset/data/blog/blog';
+import blogs from '@/asset/data/blog/blogs';
 
 import { BlogPost } from '@/utils/types/blog';
 import MainPart from '@/components/others/main-part';

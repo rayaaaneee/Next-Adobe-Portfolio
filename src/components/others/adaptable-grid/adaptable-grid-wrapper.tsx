@@ -1,6 +1,6 @@
 import cn from '@/utils/function/cn';
 
-import { AdaptableGridElementData } from './adaptable-grid';
+import { AdaptableGridElementData } from '../adaptable-grid';
 import AdaptableGridElement from './adaptable-grid-element';
 
 import { DeepReadonliable } from '@/utils/types/deep-readonly';

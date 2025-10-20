@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementProjectData } from '@/components/others/adaptable-grid/adaptable-grid';
+import type { AdaptableGridElementProjectData } from '@/components/others/adaptable-grid';
 
 import { baseImageProps } from './adaptable-grid-base';
 
@@ -18,7 +18,7 @@ const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
         content: {
             name: 'Bundlr',
             color: "rgb(144 221 239)",
-            icon: <Logo color={LogoColors.white} asImage {...baseImageProps} />,
+            icon: <Logo color={LogoColors.black} asImage {...baseImageProps} />,
             link: undefined,
         },
         githubLink: undefined,

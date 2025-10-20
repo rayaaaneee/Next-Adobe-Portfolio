@@ -1,6 +1,6 @@
 import App from "./_app";
 
-import Header from "@/components/header/header";
+import Header from "@/components/others/header";
 import Background from "@/components/background";
 
 import { ChildrenInterface } from "@/utils/interface/children";

@@ -12,10 +12,10 @@ import useTryingContext from '@/utils/hook/use-trying-context';
 import languageContext, { LanguageContextType } from '@/utils/context/language-context';
 
 import Logo, { LogoColors } from '../logo';
-import HamburgerMenu from './hamburger-menu';
-import MenuLink from './menu-link';
-import SelectLanguage from './select-language';
-import SwitchTheme from './switch-theme-button';
+import HamburgerMenu from './header/hamburger-menu';
+import MenuLink from './header/menu-link';
+import SelectLanguage from './header/select-language';
+import SwitchTheme from './header/switch-theme-button';
 
 export interface HeaderProps {
     hasFooter?: boolean,
@@ -109,7 +109,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
             <Link href="/" className={cn(
                 'w-[70px] h-[70px] fixed top-4 left-4 z-[1]',
                 { "hidden md:block": location !== '/' },
-                { "to-animate appear -translate-t-3 anim-delay-1000" : location === '/' }
+                { "to-animate appear -translate-t-3 anim-delay-900" : location === '/' }
             )}>
                 <Logo color={LogoColors.theme} className={cn(
                     "w-full h-full"

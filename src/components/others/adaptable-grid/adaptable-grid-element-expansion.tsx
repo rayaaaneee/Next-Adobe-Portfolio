@@ -6,7 +6,7 @@ import { Paragraph, ParagraphAlignment, AnchorLinkButton } from "@/components/pa
 
 import { FiGithub } from "react-icons/fi";
 
-import { AdaptableGridElementProjectData } from "./adaptable-grid";
+import { AdaptableGridElementProjectData } from "../adaptable-grid";
 import QuitButton from "@/components/quit-button";
 
 export interface AdaptableGridElementExpansionProps {

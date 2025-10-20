@@ -1,4 +1,4 @@
-import blogs from "@/asset/data/blog/blog";
+import blogs from "@/asset/data/blog/blogs";
 
 import { assertFound } from "@/utils/function/assert-found";
 

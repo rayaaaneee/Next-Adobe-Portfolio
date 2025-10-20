@@ -89,7 +89,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
                     tooltipSize={tooltipsSize}
                     tooltipClassName={tooltips ? cn(
                         {'to-animate appear translate-y-3': animate},
-                        {[`anim-delay-${1200 + (index * 200)}`]: animate},
+                        {[`anim-delay-${1000 + (index * 100)}`]: animate},
                     ) : undefined}
                     key={index}
                     link={link}

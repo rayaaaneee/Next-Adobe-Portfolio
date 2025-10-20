@@ -1,6 +1,6 @@
 import Blog from "./_blog";
 import { assertFound } from "@/utils/function/assert-found";
-import blogs from "@/asset/data/blog/blog";
+import blogs from "@/asset/data/blog/blogs";
 import { Metadata } from "next";
 
 export interface PageProps {
