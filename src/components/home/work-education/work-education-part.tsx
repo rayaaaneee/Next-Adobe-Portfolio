@@ -11,7 +11,7 @@ import { FaLayerGroup } from "react-icons/fa";
 import { ChildrenInterface } from "@/utils/interface/children";
 import { type Work, type Education } from "@/utils/types/home/experience";
 
-import Separator from "../separator";
+import Separator from "../../others/separator";
 import TechItem from "./tech-item";
 
 export interface WorkEducationPartProps {

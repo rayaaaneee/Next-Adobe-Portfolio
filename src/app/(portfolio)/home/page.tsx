@@ -19,8 +19,8 @@ import ContactLinks from "@/components/contact-links";
 import EducationContainer from "@/components/home/education-container";
 import WorkContainer from "@/components/home/work-container";
 import SkillsContainer from "@/components/home/skills-container";
-import AdaptableGrid from "@/components/others/adaptable-grid/adaptable-grid";
-import Separator from "@/components/home/separator";
+import AdaptableGrid from "@/components/others/adaptable-grid";
+import Separator from "@/components/others/separator";
 
 import projects from "@/asset/data/home/projects";
 import hobbies from "@/asset/data/home/hobbies";
@@ -29,6 +29,7 @@ import { IconSize } from "@/components/contact-icon";
 import { TooltipSize } from "@/components/tooltip";
 
 import { ChildrenType } from "@/utils/interface/children";
+import MainPart from "@/components/others/main-part";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -57,15 +58,7 @@ const VerticalBorderSection = ({ text, icon }: VerticalBorderSectionProps) => (
 const Home = () => {
 
     return (
-        <main className={cn(
-            "justify-self-center rounded-none md:rounded-md h-fit",
-            "to-animate fade anim-delay-200 anim-duration-300",
-            "bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(0,0,0,0.8)] backdrop-blur-md",
-            "box-border overflow-hidden",
-            "w-[100vw] md:w-[90vw] lg:w-[80vw] xl:w-[70vw]",
-            "my-0 md:my-[5vw] lg:my-10",
-            "[&>article]:mx-5 sm:[&>article]:mx-7 md:[&>article]:mx-10 xl:[&>article]:mx-20"
-        )}>
+        <MainPart>
             <VerticalBorderSection 
                 text="Portfolio" 
                 icon={<FaBriefcase className="text-amber-400"/>} 
@@ -158,8 +151,8 @@ const Home = () => {
             <VerticalBorderSection 
                 text="Thank you for visiting !" 
                 icon={<FaHeart className="text-red-400" />} 
-            />
-        </main>
+            />      
+        </MainPart>
     )
 }
 

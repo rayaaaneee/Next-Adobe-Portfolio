@@ -9,7 +9,7 @@ import cn from "@/utils/function/cn";
 import { FaLink } from "react-icons/fa6";
 import { TbExternalLink } from "react-icons/tb";
 
-import { AdaptableGridElementData, AdaptableGridElementProjectData } from "./adaptable-grid";
+import { AdaptableGridElementData, AdaptableGridElementProjectData } from "../adaptable-grid";
 import AdaptableGridElementExpansion from "./adaptable-grid-element-expansion";
 
 import Tooltip, { TooltipSize } from "@/components/tooltip";

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import AdaptableGrid, { AdaptableGridProps } from '../others/adaptable-grid/adaptable-grid';
+import AdaptableGrid, { AdaptableGridProps } from '../others/adaptable-grid';
 
 import cn from "@/utils/function/cn";
 

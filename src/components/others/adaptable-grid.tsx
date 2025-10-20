@@ -5,9 +5,9 @@ import cn from "@/utils/function/cn";
 import type ClassNameInterface from "@/utils/interface/classname";
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
 
-import AdaptableGridWrapper from "./adaptable-grid-wrapper";
-import AdaptableGridExpandButton from "./adaptable-grid-expand-button";
-import AdaptableGridTopBottomPart from "./adaptable-grid-top-bottom-part";
+import AdaptableGridWrapper from "./adaptable-grid/adaptable-grid-wrapper";
+import AdaptableGridExpandButton from "./adaptable-grid/adaptable-grid-expand-button";
+import AdaptableGridTopBottomPart from "./adaptable-grid/adaptable-grid-top-bottom-part";
 
 import type GridContent from "@/asset/data/home/adaptable-grid-base";
 import { ChildrenType } from "@/utils/interface/children";
