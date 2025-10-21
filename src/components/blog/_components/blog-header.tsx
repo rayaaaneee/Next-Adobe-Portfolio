@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
@@ -17,9 +17,16 @@ const BlogHeader = ({ blog }: BlogTemplateProps) => {
 
     const pageTitle = APP_DEFAULT_TEMPLATE_TITLE.replace("%s", blog.title);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
+
+        const originalTitle = document.title;
         document.title = pageTitle;
-    });
+
+        return () => {
+            document.title = originalTitle;
+        };
+        
+    }, [pageTitle]);
 
 
     const nbLanguages = blog.languages.length;

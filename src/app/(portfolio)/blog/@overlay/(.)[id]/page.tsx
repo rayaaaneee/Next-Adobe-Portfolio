@@ -8,19 +8,6 @@ export interface PageProps {
     }>;
 }
 
-export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-
-    const { id } = await params;
-
-    const blog = assertFoundBlog(id);
-
-    console.log(blog.title);
-
-    return {
-        title: blog.title,
-    };
-}
-
 const Page = async ({ params }: PageProps) => {
 
     const { id } = await params;

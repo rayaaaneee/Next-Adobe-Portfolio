@@ -1,5 +1,4 @@
 import cn from "@/utils/function/cn";
-import SvgCustomization from "./md/svg-customization.mdx";
 
 import MainPart from "../others/main-part";
 
