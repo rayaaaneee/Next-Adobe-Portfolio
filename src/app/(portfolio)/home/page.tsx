@@ -130,6 +130,7 @@ const Home = () => {
             <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
             <Separator highMargin />
             <WorkContainer />
+            <Separator highMargin />
             <EducationContainer />
             <Separator highMargin />
             <article>

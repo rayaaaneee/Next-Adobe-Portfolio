@@ -1,4 +1,5 @@
 import { ChildrenType } from "../interface/children";
+import { Language } from "../manager/manage-language";
 
 export interface BlogPost {
     index: number;
@@ -8,4 +9,5 @@ export interface BlogPost {
     date: string;
     summary: string;
     icon: ChildrenType;
+    languages: Language[];
 }

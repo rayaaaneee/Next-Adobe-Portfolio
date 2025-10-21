@@ -14,8 +14,7 @@ const About = ({}) => {
         <MainPart 
         style={{ 
             "--base-color": "rgba(220,160,177,.325)",
-            "--fade-color": "rgba(255,255,255,0.5)",
-            "background": "linear-gradient(90deg, var(--base-color) 40%, var(--fade-color) 60%, var(--fade-color) 100%)", 
+            "background": "linear-gradient(90deg, var(--base-color) 40%, var(--color) 60%, var(--color) 100%)", 
         } as CSSProperties} 
         className="grid grid-cols-2 !w-5/6 !h-[90vh]">
             <section

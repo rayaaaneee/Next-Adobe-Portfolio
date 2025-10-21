@@ -2,10 +2,11 @@ import cn from "@/utils/function/cn";
 
 import ClassNameInterface from '@/utils/interface/classname';
 
-import { HeadingOne } from '../page-flow';
+import { HeadingOne, HeadingTwo } from '../page-flow';
 import Separator from '../others/separator';
 import ComingSoon from '../coming-soon';
 import MainPart from "../others/main-part";
+import { assertFindBlog } from "@/asset/data/blog/blogs";
 
 export interface BlogTemplateProps extends ClassNameInterface {
     id: string;
@@ -18,6 +19,9 @@ export interface BlogTemplateProps extends ClassNameInterface {
 // )}>>
 
 const BlogTemplate = ({ id, className }: BlogTemplateProps) => {
+
+    const blog = assertFindBlog(id);
+
     return (
         <MainPart className={cn(
             "absolute inset-0 w-2/3 !mx-auto",
@@ -26,7 +30,9 @@ const BlogTemplate = ({ id, className }: BlogTemplateProps) => {
             className,
         )}>       
             <HeadingOne containerClassName="w-full mx-auto !m-0">Blog</HeadingOne>
-            <Separator className="!my-0" />
+            <Separator lite className="!my-0" />
+            <HeadingTwo containerClassName="!my-0 mx-auto">Available languages : {blog.languages.join(", ")}</HeadingTwo>
+            <Separator lite className="!my-0" />
             <ComingSoon title={id} />
         </MainPart>
     )

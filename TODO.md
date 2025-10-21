@@ -9,15 +9,17 @@
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
-* [ ] Use adaptable grid as blog pager
+* [ ] Blog :
+
+  * [ ] Use adaptable grid as blog pager
+  * [ ] Precize disponible languages on each page
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [ ] Bug on hobbiEs adaptable grid (on click on xs-)
 * [X] tailwind-scrollbar installation
 * [X] custom scrollbar colors
-* [ ] Display CV on menu
 * [X] Remove box shadows on index title
-* [ ] set background elements behind texts (index)
-* [ ] Reduce icon sizes
+* [X] set background elements behind texts (index)
+* [X] Reduce icon sizes
 * [X] Fix appearance animations
 * [X] Fix backdrop filter on blog page
 * [ ] Default theme to light
