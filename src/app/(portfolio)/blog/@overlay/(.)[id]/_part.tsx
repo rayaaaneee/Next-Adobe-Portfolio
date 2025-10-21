@@ -27,7 +27,7 @@ const Part = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
 
-    }, []);
+    });
 
     return (
         <>

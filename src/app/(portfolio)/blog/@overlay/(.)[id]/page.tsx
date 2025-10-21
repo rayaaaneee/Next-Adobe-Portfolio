@@ -1,6 +1,5 @@
 import Blog from "./_blog";
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
-import { Metadata } from "next";
 
 export interface PageProps {
     params: Promise<{
