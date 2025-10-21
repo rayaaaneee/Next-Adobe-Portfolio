@@ -1,4 +1,6 @@
 import Image from "next/image";
+import path from "path";
+import { readFileSync } from "fs";
 
 import DeepReadonly, { DeepReadonliable } from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
@@ -31,16 +33,22 @@ const blogs: DeepReadonly<BlogPost[]> = [
     },
 ]
 
-export const findBlog = (id: string): DeepReadonliable<BlogPost> | undefined => {
+const findBlog = (id: string): DeepReadonliable<BlogPost> | undefined => {
     return blogs.find((blog) => blog.id === id);
 }
 
-export const assertFindBlog = (id: string): DeepReadonliable<BlogPost> => {
+export const assertFoundBlog = (id: string): DeepReadonliable<BlogPost> => {
     const blog = findBlog(id);
     if (!blog) {
         throw new Error(`Blog with id "${id}" not found.`);
     }
     return blog;
+}
+
+export const getBlogMDX = (blog: DeepReadonliable<BlogPost>): string => {
+  const filePath = path.join(process.cwd(), 'src', 'components', 'blog', 'md', `${blog.id}.mdx`);
+  const source = readFileSync(filePath, 'utf8');
+  return source;
 }
 
 export default blogs;

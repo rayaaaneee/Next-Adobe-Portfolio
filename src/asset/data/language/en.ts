@@ -3,6 +3,11 @@ import Sentences from "@/utils/types/language";
 const englishSentences: Sentences = {
     current: "en",
     denomination: "English",
+    languages: {
+        en: "English",
+        fr: "French",
+        es: "Spanish"
+    },
     title: "Portfolio",
     flag_img: "english.png",
     loader: {

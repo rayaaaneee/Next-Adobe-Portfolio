@@ -12,9 +12,9 @@
 * [ ] Blog :
 
   * [ ] Use adaptable grid as blog pager
-  * [ ] Precize disponible languages on each page
+  * [X] Precize disponible languages on each page
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
-* [ ] Bug on hobbiEs adaptable grid (on click on xs-)
+* [X] Bug on hobbiEs adaptable grid (on click on xs-)
 * [X] tailwind-scrollbar installation
 * [X] custom scrollbar colors
 * [X] Remove box shadows on index title

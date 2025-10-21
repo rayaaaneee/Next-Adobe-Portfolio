@@ -1,12 +1,15 @@
 import type { MDXComponents } from 'mdx/types';
 
 import { HeadingOne, HeadingThree, HeadingTwo, Paragraph } from '@/components/page-flow';
- 
-const components: MDXComponents = {
+
+export const mdxComponents: MDXComponents = {
     h1: HeadingOne,
     h2: HeadingTwo,
     h3: HeadingThree,
-    p: Paragraph
-}
+    p: Paragraph,
+};
 
-export const useMDXComponents = (): MDXComponents => (components)
+export const useMDXComponents = (components: MDXComponents): MDXComponents => ({
+    ...mdxComponents,
+    ...components,
+});

@@ -11,6 +11,7 @@ import blogs from '@/asset/data/blog/blogs';
 
 import { BlogPost } from '@/utils/types/blog';
 import MainPart from '@/components/others/main-part';
+import { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 export const metadata: Metadata = {
     title: {
@@ -24,7 +25,7 @@ const Blog = () => {
     const blogCount = blogs.length;
 
     return (
-        <MainPart className='w-full h-full py-14'>
+        <MainPart className='py-14'>
             <div className='w-full flex flex-col items-center'>
                 <HeadingOne icon={<FaPenNib className='text-[0.8em]' />}>Blogs ({blogCount}) :</HeadingOne>
                 {/* Order by date button */}
@@ -36,7 +37,7 @@ const Blog = () => {
                     elementsPerRow={4}
                     asInternalLink
                     elements={
-                        blogs.map((blog: BlogPost) => (
+                        blogs.map((blog: DeepReadonliable<BlogPost>) => (
                             { 
                                 content: {
                                     name: blog.title,

@@ -1,6 +1,4 @@
-import blogs from "@/asset/data/blog/blogs";
-
-import { assertFound } from "@/utils/function/assert-found";
+import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import BlogTemplate from "@/components/blog/blog-template";
 import { Metadata } from "next";
@@ -15,23 +13,23 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
     const { id } = await params;
 
-    const blog = assertFound(blogs, (blog) => blog.id === id, `Blog with id : ${id}`);
-
-    console.log(blog.title);
+    const blog = assertFoundBlog(id);
 
     return {
         title: blog.title,
-    };
+    }
 }
 
 const Page = async ({ params }: PageProps) => {
     
     const { id } = await params;
 
+    const blog = assertFoundBlog(id);
+
     return (
         <BlogTemplate 
             className="backdrop-blur-md"
-            id={id}
+            blog={blog}
         />
     )
 }

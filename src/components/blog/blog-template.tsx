@@ -1,26 +1,22 @@
 import cn from "@/utils/function/cn";
+import SvgCustomization from "./md/svg-customization.mdx";
+
+import MainPart from "../others/main-part";
 
 import ClassNameInterface from '@/utils/interface/classname';
-
-import { HeadingOne, HeadingTwo } from '../page-flow';
-import Separator from '../others/separator';
-import ComingSoon from '../coming-soon';
-import MainPart from "../others/main-part";
-import { assertFindBlog } from "@/asset/data/blog/blogs";
+import { DeepReadonliable } from "@/utils/types/deep-readonly";
+import { BlogPost } from "@/utils/types/blog";
+import BlogHeader from "./_components/blog-header";
+import { getBlogMDX } from "@/asset/data/blog/blogs";
+import BlogContent from "./_components/blog-content";
 
 export interface BlogTemplateProps extends ClassNameInterface {
-    id: string;
+    blog: DeepReadonliable<BlogPost>;
 }
-// <<div className={cn(
-//     "absolute inset-0 w-2/3 min-h-full h-fit box-border mx-auto",
-//     "bg-white/80 dark:bg-black/80 rounded-lg",
-//     
-//     className,
-// )}>>
 
-const BlogTemplate = ({ id, className }: BlogTemplateProps) => {
+const BlogTemplate = ({ blog, className }: BlogTemplateProps) => {
 
-    const blog = assertFindBlog(id);
+    const contentSource = getBlogMDX(blog);
 
     return (
         <MainPart className={cn(
@@ -28,12 +24,9 @@ const BlogTemplate = ({ id, className }: BlogTemplateProps) => {
             "flex flex-col gap-5",
             "py-5 my-14",
             className,
-        )}>       
-            <HeadingOne containerClassName="w-full mx-auto !m-0">Blog</HeadingOne>
-            <Separator lite className="!my-0" />
-            <HeadingTwo containerClassName="!my-0 mx-auto">Available languages : {blog.languages.join(", ")}</HeadingTwo>
-            <Separator lite className="!my-0" />
-            <ComingSoon title={id} />
+        )}>
+            <BlogHeader blog={blog} />
+            <BlogContent source={contentSource} />
         </MainPart>
     )
 }

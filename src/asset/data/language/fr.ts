@@ -2,6 +2,11 @@
 const frenchSentences = {
     current: "fr",
     denomination: "Français",
+    languages: {
+        en: "Anglais",
+        fr: "Français",
+        es: "Espagnol"
+    },
     flag_img: "french.png",
     title: "Portfolio",
     loader: {

@@ -23,6 +23,7 @@ const allowedOrigins: originType[] = [
 ]
 
 const nextConfig: NextConfig = withPWA({
+    transpilePackages: ["next-mdx-remote"],
     sassOptions: {
         includePaths: [path.join(__dirname, "src", "asset", "scss")],
     },

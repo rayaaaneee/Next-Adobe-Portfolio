@@ -2,8 +2,10 @@ import cn from "@/utils/function/cn";
 
 import Part from "./_part";
 import BlogTemplate from "@/components/blog/blog-template";
+import { DeepReadonliable } from "@/utils/types/deep-readonly";
+import { BlogPost } from "@/utils/types/blog";
 
-const Blog = ({ id }: { id: string }) => {
+const Blog = ({ blog }: { blog: DeepReadonliable<BlogPost> }) => {
     return (
         <div
         id="blog-modal"
@@ -14,7 +16,7 @@ const Blog = ({ id }: { id: string }) => {
             "bg-white/70 dark:bg-black/70 backdrop-blur-md"
         )}>
             <Part />
-            <BlogTemplate id={id} />
+            <BlogTemplate blog={blog} />
         </div>
     )
 }

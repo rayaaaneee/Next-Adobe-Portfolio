@@ -5,6 +5,7 @@ import Sentences from '@/utils/types/language';
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
 import frenchSentences from '@/asset/data/language/fr';
+import { DeepReadonliable } from '../types/deep-readonly';
 
 // Considering structure of frenchSentences is the same for all languages
 
@@ -61,7 +62,7 @@ export default class ManageLanguages {
         ManageLanguages.setLanguage(ManageLanguages.language);
     }
 
-    static getSentences = (language?: Language): Sentences => {
+    static getSentences = (language?: DeepReadonliable<Language>): Sentences => {
         // If a language is provided (necessary supported), return its sentences
         if (language) return ManageLanguages.supportedLanguages.find(([name]) => name === language)![1]!;
 

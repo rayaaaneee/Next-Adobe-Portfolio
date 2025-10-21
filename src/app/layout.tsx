@@ -1,4 +1,6 @@
 import { Metadata, Viewport } from "next";
+import { APP_DEFAULT_TEMPLATE_TITLE, APP_DEFAULT_TITLE } from "@/asset/data/title";
+
 import cn from "@/utils/function/cn";
 
 import "~/scss/styles.scss";
@@ -9,14 +11,14 @@ import ManageLanguages from "@/utils/manager/manage-language";
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-export const APP_DEFAULT_TITLE = "Rayane Merlin";
+
 const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
 
 export const metadata: Metadata = {
     manifest: "/manifest.json",
     title: {
         default: APP_DEFAULT_TITLE,
-        template: `%s - ${APP_DEFAULT_TITLE}`,
+        template: APP_DEFAULT_TEMPLATE_TITLE,
     },
     description: APP_DESCRIPTION,
     icons: {
