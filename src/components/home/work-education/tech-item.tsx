@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import cn from "@/utils/function/cn";
 
 import { AnchorLinkButton, Paragraph } from '@/components/page-flow';
-import GridContent from '@/asset/data/home/adaptable-grid-base';
+import GridContent from '@/asset/data/home/adaptive-grid-base';
 
 export interface TechItemPropsInterface {
     tech: GridContent;

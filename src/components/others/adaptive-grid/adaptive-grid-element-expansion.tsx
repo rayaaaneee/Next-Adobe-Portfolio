@@ -6,17 +6,17 @@ import { Paragraph, ParagraphAlignment, AnchorLinkButton } from "@/components/pa
 
 import { FiGithub } from "react-icons/fi";
 
-import { AdaptableGridElementProjectData } from "../adaptable-grid";
+import { AdaptiveGridElementProjectData } from "../adaptive-grid";
 import QuitButton from "@/components/quit-button";
 
-export interface AdaptableGridElementExpansionProps {
-    element: AdaptableGridElementProjectData;
+export interface AdaptiveGridElementExpansionProps {
+    element: AdaptiveGridElementProjectData;
     isClicked: boolean;
     onClose?: MouseEventHandler<HTMLSpanElement>;
 }
 
 // Expansion shown when clicking on a project grid element (only for clickable grids)
-const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: AdaptableGridElementExpansionProps) => {
+const AdaptiveGridElementExpansion = ({ element, isClicked, onClose }: AdaptiveGridElementExpansionProps) => {
     return (
         <>
             <QuitButton 
@@ -72,4 +72,4 @@ const AdaptableGridElementExpansion = ({ element, isClicked, onClose }: Adaptabl
     )
 }
 
-export default AdaptableGridElementExpansion;
+export default AdaptiveGridElementExpansion;

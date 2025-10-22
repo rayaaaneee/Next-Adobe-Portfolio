@@ -39,9 +39,14 @@ Here is an example of a clickable SVG flag. On the right, the original SVG witho
 - All SVGs used in this project are imported as React Components, which allows us to manipulate them easily.
 - To make an SVG clickable, we can simply add an `onClick` event handler to the part we want to be interactive. For this, a simple querySelector from the parent component is enough to get all the desired parts.
 
-```javascript
+```jsx
 useEffect(() => {
-    
+    const svg = document.querySelector('.tooltip-container');
+    if (svg) {
+        svg.addEventListener('click', () => {
+            console.log('SVG clicked');
+        });
+    }
 }, []);
 ```
 

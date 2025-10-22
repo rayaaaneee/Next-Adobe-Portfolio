@@ -5,20 +5,20 @@ import cn from "@/utils/function/cn";
 import type ClassNameInterface from "@/utils/interface/classname";
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
 
-import AdaptableGridWrapper from "./adaptable-grid/adaptable-grid-wrapper";
-import AdaptableGridExpandButton from "./adaptable-grid/adaptable-grid-expand-button";
-import AdaptableGridTopBottomPart from "./adaptable-grid/adaptable-grid-top-bottom-part";
+import AdaptiveGridWrapper from "./adaptive-grid/adaptive-grid-wrapper";
+import AdaptiveGridExpandButton from "./adaptive-grid/adaptive-grid-expand-button";
+import AdaptiveGridTopBottomPart from "./adaptive-grid/adaptive-grid-top-bottom-part";
 
-import type GridContent from "@/asset/data/home/adaptable-grid-base";
+import type GridContent from "@/asset/data/home/adaptive-grid-base";
 import { ChildrenType } from "@/utils/interface/children";
 import { TechCategory } from "@/asset/data/home/general-technologies-list";
 
-export interface AdaptableGridElementData {
+export interface AdaptiveGridElementData {
     content: GridContent
     customIcon?: ChildrenType;
 }
 
-export interface AdaptableGridElementProjectData extends AdaptableGridElementData {
+export interface AdaptiveGridElementProjectData extends AdaptiveGridElementData {
     description: string;
     year: number;
     technologies: {name: string, type: TechCategory}[];
@@ -31,41 +31,41 @@ export const isOneToTen = (n: number): n is oneToTen => {
     return n >= 1 && n <= 10;
 }
 
-interface AdaptableGridBaseProps extends ClassNameInterface {
+interface AdaptiveGridBaseProps extends ClassNameInterface {
     elementsPerRow: oneToTen;
     asInternalLink?: boolean;
     hidden?: boolean;
 }
 
-interface NonclickableAdaptableGridProps extends AdaptableGridBaseProps {
-    elements: DeepReadonliable<AdaptableGridElementData[]>;
+interface NonclickableAdaptiveGridProps extends AdaptiveGridBaseProps {
+    elements: DeepReadonliable<AdaptiveGridElementData[]>;
     clickable?: false;
 }
 
-interface ClickableAdaptableGridProps extends AdaptableGridBaseProps {
-    elements: DeepReadonliable<AdaptableGridElementProjectData[]>;
+interface ClickableAdaptiveGridProps extends AdaptiveGridBaseProps {
+    elements: DeepReadonliable<AdaptiveGridElementProjectData[]>;
     clickable: true;
 }
 
 
-export type AdaptableGridProps = (NonclickableAdaptableGridProps | ClickableAdaptableGridProps);
+export type AdaptiveGridProps = (NonclickableAdaptiveGridProps | ClickableAdaptiveGridProps);
 
 // Complete grid
-const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
+const AdaptiveGrid = forwardRef<HTMLDivElement, AdaptiveGridProps>(
     (
         { className, id, elementsPerRow, elements, clickable = false, asInternalLink = false, hidden = false },
         ref
     ) => {
 
-        if (!id) throw new Error("An id must be provided to AdaptableGrid");
+        if (!id) throw new Error("An id must be provided to AdaptiveGrid");
         if (!isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be between 1 and 10");
-        if (!hidden && elements.length === 0) throw new Error("No elements provided to AdaptableGrid");
+        if (!hidden && elements.length === 0) throw new Error("No elements provided to AdaptiveGrid");
         if (elementsPerRow && !isOneToTen(elementsPerRow)) throw new Error("elementsPerRow must be greater than 0 and less than or equal to 10");
 
         const elementCount: number = elements.length;
         const nbWrappers: number = Math.ceil(elementCount / elementsPerRow);
 
-        if (clickable && nbWrappers > 1 ) throw new Error(`Clickable AdaptableGrid can only have one row (elementsPerRow (${elementsPerRow}) must be greater than or equal to the number of elements (${elementCount}, ${elements.map(e => e.content.name).join(", ")})`);
+        if (clickable && nbWrappers > 1 ) throw new Error(`Clickable AdaptiveGrid can only have one row (elementsPerRow (${elementsPerRow}) must be greater than or equal to the number of elements (${elementCount}, ${elements.map(e => e.content.name).join(", ")})`);
 
         if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 
@@ -73,16 +73,16 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
             <div
                 ref={ref}
                 className={cn(
-                    "adaptable-grid",
+                    "adaptive-grid",
                     [hidden ? "hidden" : "flex"],
                     className
                 )}
                 id={id}>
 
-                <AdaptableGridTopBottomPart
+                <AdaptiveGridTopBottomPart
                     hover={false}
-                    className='adaptable-grid-top-part'
-                    id={`adaptable-grid-top-part-${id}`}
+                    className='adaptive-grid-top-part'
+                    id={`adaptive-grid-top-part-${id}`}
                 />
 
                 {elements.map((_, i) => (
@@ -91,7 +91,7 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                         return (
                             (i % elementsPerRow === 0) &&
                                 (
-                                    <AdaptableGridWrapper
+                                    <AdaptiveGridWrapper
                                         asInternalLink={asInternalLink}
                                         clickable={clickable}
                                         key={`wrapper-${i}`}
@@ -107,9 +107,9 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
                     })()
                 ))}
 
-                <AdaptableGridExpandButton
+                <AdaptiveGridExpandButton
                     className={cn(
-                        "adaptable-grid-bottom-part",
+                        "adaptive-grid-bottom-part",
                         [!clickable && "overflow-hidden"]
                     )}
                     id={id}
@@ -121,6 +121,6 @@ const AdaptableGrid = forwardRef<HTMLDivElement, AdaptableGridProps>(
     }
 );
 
-AdaptableGrid.displayName = "AdaptableGrid";
+AdaptiveGrid.displayName = "AdaptiveGrid";
 
-export default AdaptableGrid
+export default AdaptiveGrid;

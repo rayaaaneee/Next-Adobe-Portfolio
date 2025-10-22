@@ -1,4 +1,4 @@
-import GridContent from "@/asset/data/home/adaptable-grid-base";
+import GridContent from "@/asset/data/home/adaptive-grid-base";
 
 export type Education = {
     name: string,

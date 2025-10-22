@@ -4,7 +4,7 @@ import { Button } from "@/components/page-flow";
 
 import cn from "@/utils/function/cn";
 
-const AdaptableGridTopBottomPart = forwardRef<HTMLButtonElement, ComponentProps<typeof Button>>(
+const AdaptiveGridTopBottomPart = forwardRef<HTMLButtonElement, ComponentProps<typeof Button>>(
     ({ className, hover = false, id, onClick, children }, ref) => (
         <Button
             id={id}
@@ -27,6 +27,6 @@ const AdaptableGridTopBottomPart = forwardRef<HTMLButtonElement, ComponentProps<
         </Button>
     )
 )
-AdaptableGridTopBottomPart.displayName = "AdaptableGridTopBottomPart"
+AdaptiveGridTopBottomPart.displayName = "AdaptiveGridTopBottomPart"
 
-export default AdaptableGridTopBottomPart
+export default AdaptiveGridTopBottomPart;

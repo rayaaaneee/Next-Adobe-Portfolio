@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 
@@ -12,7 +12,7 @@ import postmanImg from "~/img/home/tools/postman.png";
 import bashImg from "~/img/home/tools/bash.png";
 import windows from "~/img/home/tools/windows.png";
 
-const tools: DeepReadonly<AdaptableGridElementData[]> = [
+const tools: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: assertFoundTech(
             GeneralTechnologiesName.GIT,

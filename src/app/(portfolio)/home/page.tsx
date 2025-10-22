@@ -19,7 +19,7 @@ import ContactLinks from "@/components/contact-links";
 import EducationContainer from "@/components/home/education-container";
 import WorkContainer from "@/components/home/work-container";
 import SkillsContainer from "@/components/home/skills-container";
-import AdaptableGrid from "@/components/others/adaptable-grid";
+import AdaptiveGrid from "@/components/others/adaptive-grid";
 import Separator from "@/components/others/separator";
 
 import projects from "@/asset/data/home/projects";
@@ -127,7 +127,7 @@ const Home = () => {
                 <HeadingOne id="projects" isAnchorLink>Projects</HeadingOne>
                 <Paragraph>These are my last main projects. Click on a project to learn more about it. You can find descriptions, links and more..</Paragraph>
             </article>
-            <AdaptableGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
+            <AdaptiveGrid id="main-projects" clickable elements={projects} elementsPerRow={5} />
             <Separator highMargin />
             <WorkContainer />
             <Separator highMargin />
@@ -147,7 +147,7 @@ const Home = () => {
             <article>
                 <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
             </article>
-            <AdaptableGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
+            <AdaptiveGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
             <Separator className="!mb-0" />
             <VerticalBorderSection 
                 text="Thank you for visiting !" 

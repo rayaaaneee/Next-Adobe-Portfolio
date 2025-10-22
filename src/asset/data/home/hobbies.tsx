@@ -1,13 +1,13 @@
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
 import { BsMusicNote } from "react-icons/bs";
 import { IoIosFitness } from "react-icons/io";
 import { MdOutlineSecurity } from "react-icons/md";
 import { MdDesignServices } from "react-icons/md";
 
-const hobbies: DeepReadonly<AdaptableGridElementData[]> = [
+const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
             name: "Music",

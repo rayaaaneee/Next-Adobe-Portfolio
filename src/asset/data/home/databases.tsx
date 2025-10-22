@@ -2,15 +2,15 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 import sqliteImg from "~/img/home/databases/sqlite.png";
 import firebaseImg from "~/img/home/databases/firebase.png";
 
-const databases: DeepReadonly<AdaptableGridElementData[]> = [
+const databases: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: assertFoundTech(
             GeneralTechnologiesName.SQLITE,

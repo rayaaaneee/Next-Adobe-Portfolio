@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementProjectData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementProjectData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 /* Project logos */
 // import bundlrImg from '~/img/home/projects/bundlr.png';
@@ -13,7 +13,7 @@ import snakeAiImg from '~/img/home/projects/snake-ai.png';
 import sunsysImg from '~/img/home/projects/sunsys.png';
 import { GeneralTechnologiesName } from './general-technologies-list';
 
-const projects: DeepReadonly<AdaptableGridElementProjectData[]> = [
+const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
     {
         content: {
             name: 'Bundlr',

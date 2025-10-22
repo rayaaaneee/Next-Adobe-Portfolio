@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 
@@ -12,7 +12,7 @@ import nextJsImg from '~/img/home/frameworks/nextjs.png';
 import springBootImg from "~/img/home/frameworks/spring-boot.png";
 import symfonyImg from "~/img/home/frameworks/symfony.png";
 
-const frameworks: DeepReadonly<AdaptableGridElementData[]> = [
+const frameworks: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: assertFoundTech(
             GeneralTechnologiesName.NEXTJS,

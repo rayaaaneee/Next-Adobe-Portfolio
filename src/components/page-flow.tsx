@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { forwardRef, JSX, MouseEventHandler } from "react";
 
 import hash from "hash-sum";
 
@@ -9,7 +9,6 @@ import ClassNameInterface from "@/utils/interface/classname";
 import StylesInterface from "@/utils/interface/style";
 
 import { Undefined } from "@/utils/types/nullable";
-import { forwardRef } from "react";
 
 export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface, StylesInterface {};
 
@@ -88,10 +87,12 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
         }
     }
 
+    const ParentType = type as keyof JSX.IntrinsicElements;
+
     return (
         <a
             ref={ref}
-            href={href || (textId && `#${textId}`)}
+            href={href || (isAnchorLink ? ((textId) && `#${textId}`) : undefined)}
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
@@ -101,9 +102,9 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h1 id={id ? id : textId} className={cn(headingBaseClassName, className)}>
+            <ParentType id={id ? id : textId} className={cn(headingBaseClassName, className)}>
                 {children}
-            </h1>
+            </ParentType>
             {(icon && iconPosition === IconPosition.right) && iconElement}
         </a>
     );

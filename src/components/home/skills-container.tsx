@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import AdaptableGrid, { AdaptableGridProps } from '../others/adaptable-grid';
+import AdaptiveGrid, { AdaptiveGridProps } from '../others/adaptive-grid';
 
 import cn from "@/utils/function/cn";
 
@@ -24,10 +24,10 @@ import DeepReadonly, { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 const SkillsContainer = () => {
 
-    type GridData = AdaptableGridProps & { title: string, icon: ChildrenType };
+    type GridData = AdaptiveGridProps & { title: string, icon: ChildrenType };
 
     const buttonsRef = useRef<HTMLButtonElement[]>([]);
-    const adaptableGridRef = useRef<HTMLDivElement | null>(null);
+    const adaptiveGridRef = useRef<HTMLDivElement | null>(null);
 
     // Data for each grid
     const gridData: DeepReadonly<GridData[]> = [
@@ -80,7 +80,7 @@ const SkillsContainer = () => {
                     onClick={(e) => {
                         buttonsRef.current.forEach(btn => btn.classList.remove('active'));
                         e.currentTarget.classList.add('active');
-                        const seeMoreButton = adaptableGridRef.current?.querySelector(`.see-more-button`);
+                        const seeMoreButton = adaptiveGridRef.current?.querySelector(`.see-more-button`);
                         if (seeMoreButton) {
                             if (seeMoreButton.classList.contains("expanded")) (seeMoreButton as HTMLButtonElement).click();
                         } else throw new Error("No see more button found for the grid button.");
@@ -98,9 +98,9 @@ const SkillsContainer = () => {
                     </Button>
                 ))}
             </article>
-            <AdaptableGrid
+            <AdaptiveGrid
                 id={currentGridData.id} 
-                ref={adaptableGridRef}
+                ref={adaptiveGridRef}
                 elements={currentGridData.elements} 
                 elementsPerRow={currentGridData.elementsPerRow} 
             />

@@ -5,7 +5,7 @@ import { LuPencilLine } from "react-icons/lu";
 import { HeadingOne } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
 
-import AdaptableGrid, { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import AdaptiveGrid, { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
 import blogs from '@/asset/data/blog/blogs';
 
@@ -32,7 +32,7 @@ const Blog = () => {
                 <Separator lite highMargin />
             </div>
             <section>
-                <AdaptableGrid
+                <AdaptiveGrid
                     id={"blog"}
                     elementsPerRow={4}
                     asInternalLink
@@ -45,7 +45,7 @@ const Blog = () => {
                                     icon: blog.icon,
                                     link: `/blog/${blog.id}`,
                                 }
-                            } satisfies AdaptableGridElementData
+                            } satisfies AdaptiveGridElementData
                         ))} 
                     //hidden 
                 />

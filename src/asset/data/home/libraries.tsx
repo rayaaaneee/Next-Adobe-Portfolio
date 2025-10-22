@@ -4,13 +4,13 @@ import { assertFoundTech, GeneralTechnologiesName } from './general-technologies
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 import sassImg from "~/img/home/libraries/sass.png";
 
-const libraries: DeepReadonly<AdaptableGridElementData[]> = [
+const libraries: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: assertFoundTech(
             GeneralTechnologiesName.REACT,

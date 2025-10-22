@@ -9,8 +9,8 @@ import cn from "@/utils/function/cn";
 import { FaLink } from "react-icons/fa6";
 import { TbExternalLink } from "react-icons/tb";
 
-import { AdaptableGridElementData, AdaptableGridElementProjectData } from "../adaptable-grid";
-import AdaptableGridElementExpansion from "./adaptable-grid-element-expansion";
+import { AdaptiveGridElementData, AdaptiveGridElementProjectData } from "../adaptive-grid";
+import AdaptiveGridElementExpansion from "./adaptive-grid-element-expansion";
 
 import Tooltip, { TooltipSize } from "@/components/tooltip";
 
@@ -36,8 +36,8 @@ const TopPartText = ({
     </HeadingTwo>
 );
 
-interface AdaptableGridElementProps {
-    element: AdaptableGridElementData;
+interface AdaptiveGridElementProps {
+    element: AdaptiveGridElementData;
     index: number;
     clickable: boolean;
     asInternalLink: boolean;
@@ -45,7 +45,7 @@ interface AdaptableGridElementProps {
 }
 
 // Single grid element
-const AdaptableGridElement = ({ element, className, index, clickable, asInternalLink }: AdaptableGridElementProps) => {
+const AdaptiveGridElement = ({ element, className, index, clickable, asInternalLink }: AdaptiveGridElementProps) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -66,29 +66,29 @@ const AdaptableGridElement = ({ element, className, index, clickable, asInternal
         if (!wrapper.current) {
 
             wrapper.current = gridElementRef.current!.closest('.wrapper') as HTMLDivElement;
-            if (!wrapper.current) throw new Error("No wrapper found for AdaptableGridElement");
+            if (!wrapper.current) throw new Error("No wrapper found for AdaptiveGridElement");
 
         }
 
-        const parentGrid = wrapper.current.closest(".adaptable-grid");
-        
-        if (!parentGrid) throw new Error("No adaptable-grid ancestor found for AdaptableGridElement");
+        const parentGrid = wrapper.current.closest(".adaptive-grid");
+
+        if (!parentGrid) throw new Error("No adaptive-grid ancestor found for AdaptiveGridElement");
 
         if (!topPartRoot.current) {
-    
-            const topPartElement = parentGrid.querySelector('.adaptable-grid-top-part') as HTMLButtonElement;
-    
-            if (!topPartElement) throw new Error("No top part found for AdaptableGridElement");
-    
+
+            const topPartElement = parentGrid.querySelector('.adaptive-grid-top-part') as HTMLButtonElement;
+
+            if (!topPartElement) throw new Error("No top part found for AdaptiveGridElement");
+
             topPartRoot.current = createRoot(topPartElement);
 
         }
 
         if (!bottomPartRoot.current && clickable) {
 
-            const bottomPartElement = parentGrid.querySelector('.adaptable-grid-bottom-part') as HTMLButtonElement;
+            const bottomPartElement = parentGrid.querySelector('.adaptive-grid-bottom-part') as HTMLButtonElement;
 
-            if (!bottomPartElement) throw new Error("No bottom part found for AdaptableGridElement");
+            if (!bottomPartElement) throw new Error("No bottom part found for AdaptiveGridElement");
 
             bottomPartRoot.current = createRoot(bottomPartElement);
 
@@ -166,7 +166,7 @@ const AdaptableGridElement = ({ element, className, index, clickable, asInternal
 
             if (!bottomPartRoot.current) return;
 
-            const elementProjectData = element as AdaptableGridElementProjectData;
+            const elementProjectData = element as AdaptiveGridElementProjectData;
 
             topPartRoot.current.render(
                 <TopPartText 
@@ -251,7 +251,7 @@ const AdaptableGridElement = ({ element, className, index, clickable, asInternal
             rel={clickable ? undefined : "noreferrer"}
             style={{ "--bg-color" : element.content.color } as CSSProperties}
             className={cn(
-                "adaptable-grid-element",
+                "adaptive-grid-element",
                 [(element.content.link || clickable) ? "cursor-pointer" : "cursor-default"],
                 "bg-[var(--bg-color)]",
                 "opacity-50 hover:opacity-90 [&.active]:opacity-90 [&.active]:cursor-auto [&.active]:items-center ",
@@ -273,8 +273,8 @@ const AdaptableGridElement = ({ element, className, index, clickable, asInternal
             )}>
             { element.customIcon || element.content.icon }
             { clickable && 
-                (<AdaptableGridElementExpansion 
-                    element={element as AdaptableGridElementProjectData} 
+                (<AdaptiveGridElementExpansion 
+                    element={element as AdaptiveGridElementProjectData} 
                     onClose={(e) => (e.stopPropagation(), setIsExpanded(false))}
                     isClicked={isExpanded} 
                 />) 
@@ -283,4 +283,4 @@ const AdaptableGridElement = ({ element, className, index, clickable, asInternal
     );
 }
 
-export default AdaptableGridElement;
+export default AdaptiveGridElement;

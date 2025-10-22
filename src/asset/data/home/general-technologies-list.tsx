@@ -1,5 +1,5 @@
 import DeepReadonly from '@/utils/types/deep-readonly';
-import GridContent from './adaptable-grid-base';
+import GridContent from './adaptive-grid-base';
 
 /* Project techs icons */
 import { SiAngular, SiDotnet, SiElectron, SiExpress, SiGnubash, SiJquery, SiNextdotjs, SiNumpy, SiPostman, SiSpring, SiSymfony } from "react-icons/si";

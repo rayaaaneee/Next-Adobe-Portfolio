@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 import type DeepReadonly from '@/utils/types/deep-readonly';
-import type { AdaptableGridElementData } from '@/components/others/adaptable-grid';
+import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
-import { baseImageProps } from './adaptable-grid-base';
+import { baseImageProps } from './adaptive-grid-base';
 
 import typescriptImg from "~/img/home/programming-languages/typescript.png";
 import cImg from "~/img/home/programming-languages/c.png";
@@ -13,7 +13,7 @@ import htmlImg from "~/img/home/programming-languages/html.png";
 
 import { assertFoundTech, GeneralTechnologiesName } from "./general-technologies-list";
 
-const programmingLanguages: DeepReadonly<AdaptableGridElementData[]> = [
+const programmingLanguages: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: assertFoundTech(
             GeneralTechnologiesName.TYPESCRIPT,

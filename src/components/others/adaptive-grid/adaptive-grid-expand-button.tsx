@@ -11,18 +11,18 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 
 import ClassNameInterface from '@/utils/interface/classname';
 import verifyReference from '@/utils/function/verify-reference';
-import AdaptableGridTopBottomPart from './adaptable-grid-top-bottom-part';
+import AdaptiveGridTopBottomPart from './adaptive-grid-top-bottom-part';
 
-interface AdaptableGridSeeMoreButtonProps extends ClassNameInterface {
+interface AdaptiveGridExpandButtonProps extends ClassNameInterface {
     id: string;
     nbWrappers: number;
 }
 
-const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridSeeMoreButtonProps) => {
+const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExpandButtonProps) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const seeMoreButtonRef = useRef<HTMLButtonElement | null>(null);
+    const expandButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const isInteractive: boolean = nbWrappers > 1;
 
@@ -35,15 +35,15 @@ const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridS
 
     const toggleLastWrappers = () => {
 
-        verifyReference<HTMLButtonElement>(seeMoreButtonRef, "seeMoreButtonRef");
+        verifyReference<HTMLButtonElement>(expandButtonRef, "expandButtonRef");
 
-        const anchorElement = seeMoreButtonRef.current!.closest(".adaptable-grid");
+        const anchorElement = expandButtonRef.current!.closest(".adaptive-grid");
 
-        if (!anchorElement) throw new Error("No adaptable-grid ancestor found for the see more button.");
+        if (!anchorElement) throw new Error("No adaptive-grid ancestor found for the see more button.");
 
         const wrappers = anchorElement.querySelectorAll(".wrapper");
 
-        if (wrappers.length === 0) throw new Error("No wrapper found in the adaptable-grid.");
+        if (wrappers.length === 0) throw new Error("No wrapper found in the adaptive-grid.");
 
         for (let i = 1; i < wrappers.length; i++) {
             const wrapper = wrappers[i] as HTMLElement;
@@ -61,19 +61,19 @@ const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridS
 
     useConditionalEffect(() => {
 
-        verifyReference(seeMoreButtonRef, "seeMoreButtonRef");
+        verifyReference(expandButtonRef, "expandButtonRef");
 
         const text: string = isExpanded ? "Dismiss" : initialText;
 
-        seeMoreButtonRef.current!.classList.add(heightClassToggled);
+        expandButtonRef.current!.classList.add(heightClassToggled);
 
         setTimeout(() => {
 
-            seeMoreButtonRef.current!.querySelector("h3")!.textContent = text;
+            expandButtonRef.current!.querySelector("h3")!.textContent = text;
 
             setTimeout(() => {
                 toggleLastWrappers();
-                seeMoreButtonRef.current?.classList.remove(heightClassToggled);
+                expandButtonRef.current?.classList.remove(heightClassToggled);
             }, transitionDuration);
             
         }, transitionDuration);
@@ -81,10 +81,10 @@ const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridS
     }, [isExpanded]);
 
     return (
-        <AdaptableGridTopBottomPart 
-            className='adaptable-grid-bottom-part' 
+        <AdaptiveGridTopBottomPart 
+            className='adaptive-grid-bottom-part' 
             id={`see-more-button-${id}`} 
-            ref={seeMoreButtonRef} 
+            ref={expandButtonRef} 
             hover={isInteractive}>
             <HeadingThree 
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
@@ -101,8 +101,8 @@ const AdaptableGridExpandButton = ({ className, id, nbWrappers }: AdaptableGridS
                 )}>
                 {initialText}
             </HeadingThree>
-        </AdaptableGridTopBottomPart>
+        </AdaptiveGridTopBottomPart>
     )
 }
 
-export default AdaptableGridExpandButton;
+export default AdaptiveGridExpandButton;
