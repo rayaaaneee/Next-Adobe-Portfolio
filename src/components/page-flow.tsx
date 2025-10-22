@@ -1,5 +1,7 @@
 import { MouseEventHandler } from "react";
 
+import hash from "hash-sum";
+
 import cn from "@/utils/function/cn";
 
 import { ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
@@ -26,110 +28,103 @@ const headingContainerBaseClassName = (active: boolean, hasIcon: boolean) => [
 const headingBaseClassName = "font-poppins font-light hover:no-underline";
 const iconContainerBaseClassName = "group-hover:scale-90";
 
-const anchorLink = (isAnchorLink: Undefined<boolean>, id: Undefined<string>): Undefined<string> => {
-    if (isAnchorLink && !id) {
-        throw new Error("'isAnchorLink' is set to true but 'id' is undefined. Anchor link cannot be created without an 'id'.");
-    }
-    return isAnchorLink ? `#${id}` : undefined;
-}
-
 export enum IconPosition {
     left = "left",
     right = "right"
 }
 
-export interface HeadingPropsInterface extends PageFlowBaseInterface {
-    isAnchorLink?: boolean,
+interface HeadingWithHref {
+    href: string;
+    isAnchorLink?: false;
+}
+
+interface HeadingWithoutHref {
+    href?: undefined;
+    isAnchorLink?: boolean;
+}
+
+export type HeadingPropsInterface = PageFlowBaseInterface & (HeadingWithHref | HeadingWithoutHref) & {
     containerClassName?: string,
     icon?: ChildrenType, // Expected to be an SVG icon
     iconPosition?: IconPosition,
     iconScale?: boolean,
     onClick?: MouseEventHandler<HTMLAnchorElement>,
-    href?: string
 }
 
-export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
+enum HeadingType {
+    h1 = "h1",
+    h2 = "h2",
+    h3 = "h3"
+};
 
-        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
+const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: HeadingType }>(
+    ({ className, children, id, icon, isAnchorLink = false, containerClassName,
+            onClick, href, iconPosition = IconPosition.left, iconScale = false, type }, ref) => {
 
-        return (
+    const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
+
+    const textId: Undefined<string> = id ? id : (isAnchorLink ? hash({ children, type }) : undefined);
+
+    const getClassName = (): string[] => {
+        switch (type) {
+            case HeadingType.h1:
+                return [
+                    "text-xl sm:text-2xl lg:text-3xl xl:text-4xl",
+                    "text-black dark:text-white font-normal w-fit"
+                ];
+            case HeadingType.h2:
+                return [
+                    "text-lg sm:text-xl lg:text-2xl xl:text-3xl",
+                    "text-gray-600 dark:text-gray-300 ml-4", 
+                ];
+            case HeadingType.h3:
+                return [
+                    "xs:text-base sm:text-lg lg:text-xl xl:text-2xl ",
+                    "xs:ml-4 sm:ml-5 md:ml-6 xl:ml-7",
+                    "text-gray-500 dark:text-gray-400", 
+                ];
+            default:
+                throw new Error(`Unknown heading type: ${type}`);
+        }
+    }
+
+    return (
         <a
             ref={ref}
-            href={href || anchorLink(isAnchorLink, id)}
+            href={href || (textId && `#${textId}`)}
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer" : undefined}
             onClick={onClick}
             className={cn(
-                ["text-xl sm:text-2xl lg:text-3xl xl:text-4xl"],
-                "text-black dark:text-white font-normal w-fit",
+                [getClassName() as string[]],
                 headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
                 containerClassName
             )}>
             {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h1 id={id ? id : undefined} className={cn(headingBaseClassName, className)}>
+            <h1 id={id ? id : textId} className={cn(headingBaseClassName, className)}>
                 {children}
             </h1>
             {(icon && iconPosition === IconPosition.right) && iconElement}
         </a>
-    )
+    );
+});
+Heading.displayName = "Heading";
+
+export const HeadingOne = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
+    (props, ref) => {
+        return <Heading ref={ref} type={HeadingType.h1} {...props} />;
 });
 HeadingOne.displayName = "HeadingOne";
 
 export const HeadingTwo = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
-
-        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
-
-        return (<a
-            ref={ref}
-            href={href || anchorLink(isAnchorLink, id)}
-            target={href ? "_blank" : undefined}
-            rel={href ? "noreferrer" : undefined}
-            onClick={onClick}
-            className={cn(
-                "text-lg sm:text-xl lg:text-2xl xl:text-3xl",
-                "text-gray-600 dark:text-gray-300 ml-4", 
-                headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
-                containerClassName
-            )}>
-            {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h2 id={id ? id : undefined} className={cn(headingBaseClassName, className)}>
-                {children}
-            </h2>
-            {(icon && iconPosition === IconPosition.right) && iconElement}
-        </a>
-    )
+    (props, ref) => {
+        return <Heading ref={ref} type={HeadingType.h2} {...props} />;
 });
 HeadingTwo.displayName = "HeadingTwo";
 
 export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
-    ({ className, children, id, icon, isAnchorLink = false, containerClassName, onClick, href, iconPosition = IconPosition.left, iconScale = false }, ref) => {
-
-        const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
-
-        return (
-            <a
-            ref={ref}
-            id={id ? id : undefined}
-            href={href || anchorLink(isAnchorLink, id)}
-            target={href ? "_blank" : undefined}
-            rel={href ? "noreferrer" : undefined}
-            onClick={onClick}
-            className={cn(
-                "xs:text-base sm:text-lg lg:text-xl xl:text-2xl ",
-                "xs:ml-4 sm:ml-5 md:ml-6 xl:ml-7",
-                "text-gray-500 dark:text-gray-400", 
-                headingContainerBaseClassName(isAnchorLink, (icon !== undefined)),
-                containerClassName
-            )}>
-            {(icon && iconPosition === IconPosition.left) && iconElement}
-            <h3 id={id && `text-${id}`} className={cn(headingBaseClassName, className)}>
-                {children}
-            </h3>
-            {(icon && iconPosition === IconPosition.right) && iconElement}
-        </a>
-    )
+    (props, ref) => {
+        return <Heading ref={ref} type={HeadingType.h3} {...props} />;
 });
 HeadingThree.displayName = "HeadingThree";
 

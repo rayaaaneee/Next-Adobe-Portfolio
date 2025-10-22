@@ -1,31 +1,37 @@
 import cn from "@/utils/function/cn";
 
 import MainPart from "../others/main-part";
+import Separator from "../others/separator";
+import BlogHeader from "./_components/blog-header";
 
 import ClassNameInterface from '@/utils/interface/classname';
+
 import { DeepReadonliable } from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
-import BlogHeader from "./_components/blog-header";
-import { getBlogMDX } from "@/asset/data/blog/blogs";
-import BlogContent from "./_components/blog-content";
 
 export interface BlogTemplateProps extends ClassNameInterface {
     blog: DeepReadonliable<BlogPost>;
 }
 
 const BlogTemplate = ({ blog, className }: BlogTemplateProps) => {
-
-    const contentSource = getBlogMDX(blog);
-
     return (
         <MainPart className={cn(
-            "absolute inset-0 w-2/3 !mx-auto",
+            "!mx-auto",
             "flex flex-col gap-5",
-            "py-5 my-14",
+            "py-10",
             className,
         )}>
             <BlogHeader blog={blog} />
-            <BlogContent source={contentSource} />
+            <article className={cn(
+                "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
+                "[&>.tooltip-container>img]:my-6 [&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
+                "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
+                "[&>.tooltip-container>img:hover]:scale-[1.01] [&>.tooltip-container>img]:transition-transform",
+                "[&>ul]:list-disc [&_li]:ml-6 [&_li]:my-2",
+            )}>
+                <Separator highMargin className="mt-2 xl:mt-4" />
+                { blog.content }
+            </article>
         </MainPart>
     )
 }

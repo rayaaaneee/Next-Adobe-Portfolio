@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 
 import cn from '@/utils/function/cn';
 
@@ -11,7 +11,30 @@ const Part = () => {
 
     const router = useRouter();
 
-    const closePage = () => (router.back());
+    const hashChanges = useRef<number>(0);
+
+    useEffect(() => {
+
+        if (typeof window === "undefined") throw new Error("Window is undefined");
+        if (typeof document === "undefined") throw new Error("Document is undefined");
+
+        document.body.classList.add("no-overflow");
+
+        const hashChangeHandler = () => (hashChanges.current += 1);
+
+        window.addEventListener("hashchange", hashChangeHandler);
+
+        return () => {
+            window.removeEventListener("hashchange", hashChangeHandler);
+        };
+    }, []);
+
+    const closePage = useCallback(() => {
+        for (let i = 0; i < hashChanges.current + 1; i++) {
+            router.back();
+        }
+        hashChanges.current = 0;
+    }, [hashChanges, router]);
 
     useEffect(() => {
 
@@ -27,11 +50,14 @@ const Part = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
 
-    });
+    }, [closePage]);
 
     return (
         <>
-            <div className="fixed inset-0 w-full h-full" onClick={closePage} />
+            <div className={cn(
+                "fixed left-0 top-0 w-full h-full backdrop-blur-md",
+                "bg-white/70 dark:bg-black/70",
+            )} onClick={closePage} />
             <QuitButton
                 title="blog"
                 id="blog-modal-close"

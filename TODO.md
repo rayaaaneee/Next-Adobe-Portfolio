@@ -8,10 +8,19 @@
 * [X] Clean CSS architecture (split files)
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
+* [X] Page Flow : Factorize headings
+* [ ] CC 4.0 (copyrights)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
 * [ ] Blog :
 
   * [ ] Use adaptable grid as blog pager
+  * [ ] For each blog :
+    * [ ] Further readings (linked blogs)
+    * [ ] Nb minutes reads
+    * [ ] Links to previous and next blog
+    * [ ] Tags
+    * [ ] Add Priority on languages
+    * [ ] share button
   * [X] Precize disponible languages on each page
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] Bug on hobbiEs adaptable grid (on click on xs-)

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { FaPenNib } from "react-icons/fa";
+import { LuPencilLine } from "react-icons/lu";
 
 import { HeadingOne } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
@@ -27,7 +27,7 @@ const Blog = () => {
     return (
         <MainPart className='py-14'>
             <div className='w-full flex flex-col items-center'>
-                <HeadingOne icon={<FaPenNib className='text-[0.8em]' />}>Blogs ({blogCount}) :</HeadingOne>
+                <HeadingOne icon={<LuPencilLine/>}>Blogs <b className='font-extrabold'>( {blogCount} )</b> :</HeadingOne>
                 {/* Order by date button */}
                 <Separator lite highMargin />
             </div>

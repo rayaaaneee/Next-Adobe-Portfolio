@@ -1,35 +1,43 @@
 import Image from "next/image";
-import path from "path";
-import { readFileSync } from "fs";
 
 import DeepReadonly, { DeepReadonliable } from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
 
-import networkIcon from "@/asset/img/blog/blog-1/icon.png";
-
-import svgIcon from "@/asset/img/blog/blog-2/icon.png";
 import { Language } from "@/utils/manager/manage-language";
 
+import networkIcon from "@/asset/img/blog/blog-1/icon.png";
+import NetworkPageContent from "@/components/blog/md/deep-learning-snake-ai/blog.mdx";
+
+import svgIcon from "@/asset/img/blog/blog-2/icon.png";
+import SvgPageContent from "@/components/blog/md/svg-customization/blog.mdx";
+
 const blogs: DeepReadonly<BlogPost[]> = [
+    // {
+    //     index: 3,
+    //     id: "zip-like-format"
+    //     title: "Creating a ZIP-like format from scratch in JavaScript : MDK",
+    // },
+    // {
+    //     index: 2,
+    //     id: "deep-learning-snake-ai",
+    //     title: "Deep Learning : Snake AI Overview",
+    //     date: "2024-02-01",
+    //     summary: "This is a summary of my second blog post.",
+    //     color: "#33A1FF",
+    //     icon: <Image src={networkIcon} alt="Network Icon" />,
+    //     languages: [Language.EN],
+    //     content: <NetworkPageContent />,
+    // },
     {
         index: 1,
-        id: "deep-learning-snake-ai",
-        title: "Deep Learning : Snake AI Overview",
-        date: "2024-02-01",
-        summary: "This is a summary of my second blog post.",
-        color: "#33A1FF",
-        icon: <Image src={networkIcon} alt="Network Icon" />,
-        languages: [Language.EN]
-    },
-    {
-        index: 2,
         id: "svg-customization",
         title: "SVG customization using SVGR",
         date: "2024-01-01",
-        color: "#FF5733",
+        color: "#ff9100",
         summary: "This is a summary of my first blog post.",
         icon: <Image src={svgIcon} alt="SVG Icon" />,
-        languages: [Language.EN]
+        languages: [Language.EN],
+        content: <SvgPageContent />,
     },
 ]
 
@@ -43,12 +51,6 @@ export const assertFoundBlog = (id: string): DeepReadonliable<BlogPost> => {
         throw new Error(`Blog with id "${id}" not found.`);
     }
     return blog;
-}
-
-export const getBlogMDX = (blog: DeepReadonliable<BlogPost>): string => {
-  const filePath = path.join(process.cwd(), 'src', 'components', 'blog', 'md', `${blog.id}.mdx`);
-  const source = readFileSync(filePath, 'utf8');
-  return source;
 }
 
 export default blogs;

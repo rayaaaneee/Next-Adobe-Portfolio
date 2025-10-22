@@ -23,7 +23,6 @@ const allowedOrigins: originType[] = [
 ]
 
 const nextConfig: NextConfig = withPWA({
-    transpilePackages: ["next-mdx-remote"],
     sassOptions: {
         includePaths: [path.join(__dirname, "src", "asset", "scss")],
     },
@@ -37,7 +36,7 @@ const nextConfig: NextConfig = withPWA({
                 ...allowedOrigins.filter(({ islocalhost }) => !islocalhost)
                     .map(({ url }) => url.replace("http://", "https://").replace('://', '://www.'))
             ],
-        }
+        },
     },
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     images: {

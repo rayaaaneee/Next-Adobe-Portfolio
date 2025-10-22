@@ -68,6 +68,7 @@ const Layout = ({
         lang={ManageLanguages.defaultLanguage} 
         className={cn(
             "scrollbar-thin",
+            ["[&.no-overflow]:overflow-hidden"],
             [
                 "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",
                 "[&.menu-active>body]:overflow-hidden md:[&.menu-active]>body:overflow-auto",

@@ -134,7 +134,7 @@ const Tooltip = ({
     }
 
     return (
-        <div id={id} className={cn('relative group w-fit text-white', className)}>
+        <div id={id} className={cn('tooltip-container relative group w-fit text-white', className)}>
             {children}
             <div 
                 role="tooltip"

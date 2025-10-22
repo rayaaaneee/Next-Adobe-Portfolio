@@ -38,7 +38,6 @@ const BlogHeader = ({ blog }: BlogTemplateProps) => {
     return (
         <>
             <HeadingOne containerClassName="w-full mx-auto !m-0">{blog.title}</HeadingOne>
-            <Separator lite className="!my-0" />
             <HeadingTwo containerClassName="!my-0 mx-auto">
                 Language{nbLanguages > 1 && "s"} : &nbsp;
                  {blog.languages.map((lang: Language) => language.languages[lang]).join(", ")}

@@ -1,0 +1,47 @@
+import img from "./assets/svg.png";
+import svgrImg from "./assets/svgr.png";
+
+Hello there ! Today, we're gonna explore how I was able to customize SVGs on my web project [WorldMaster](https://worldmaster.vercel.app/). We're gonna see in the first step the made customization applied to SVGs to make you better understand the process.
+
+---
+
+## Before you begin 📝
+
+### Prerequisites
+
+*What is [**SVGR**](https://react-svgr.com/) ?*
+
+SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
+In our case, this library was included in the next.js configuration to permit to keep control over all SVGs parts. Initially, importing an SVG in React would treat it as a static file as the source of `<img />`, limiting our ability to customize it because all SVG parts would be inaccessible (in html like javascript).
+
+<Image src={svgrImg} className="!h-32 !w-32" alt="SVGR Icon" width={400} height={400} />
+
+SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
+
+### **Reminder** :
+- SVG stands for Scalable Vector Graphics, which is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation.
+- SVG are composed of various XML elements such as `<path>`, `<circle>`, `<rect>`, `<line>`, and more, which define the shapes and lines that make up the image. The sub elements represent different parts of the SVG graphic.
+
+All SVGs used were taken from an open source repository on Github called [flag-icons](https://github.com/lipis/flag-icons). Initially without any interactivity.
+
+Right now, let's see how we passed from a static SVG to a customized one, clickable and listing its functionalities.
+
+---
+
+## Clickable SVGs & Path Background Images
+
+Here is an example of a clickable SVG flag. On the right, the original SVG without any customization. And on the left the final customized and interactive SVG.
+
+<Image src={img} alt="SVG Customization Example" width={1200} height={700} />
+
+⚠️ Important to know : 
+
+- All SVGs used in this project are imported as React Components, which allows us to manipulate them easily.
+- To make an SVG clickable, we can simply add an `onClick` event handler to the part we want to be interactive. For this, a simple querySelector from the parent component is enough to get all the desired parts.
+
+```javascript
+useEffect(() => {
+    
+}, []);
+```
+

@@ -1,4 +1,3 @@
-import { ChildrenType } from "../interface/children";
 import { Language } from "../manager/manage-language";
 
 export interface BlogPost {
@@ -10,4 +9,5 @@ export interface BlogPost {
     summary: string;
     icon: ChildrenType;
     languages: Language[];
+    content: ChildrenType;
 }
