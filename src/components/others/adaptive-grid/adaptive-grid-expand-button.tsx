@@ -30,7 +30,7 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
         "Expand"
             : 
         "";
-    const transitionDuration = 75;
+        
     const heightClassToggled = "!h-0";
 
     const toggleLastWrappers = () => {
@@ -49,9 +49,7 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
             const wrapper = wrappers[i] as HTMLElement;
             if (isExpanded) {
                 // on open
-                setTimeout(() => {
-                    wrapper.classList.remove(heightClassToggled);
-                }, transitionDuration);
+                wrapper.classList.remove(heightClassToggled);
             } else {
                 // on close
                 wrapper.classList.add(heightClassToggled);
@@ -65,35 +63,26 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
 
         const text: string = isExpanded ? "Dismiss" : initialText;
 
-        expandButtonRef.current!.classList.add(heightClassToggled);
+        expandButtonRef.current!.querySelector("h3")!.textContent = text;
 
-        setTimeout(() => {
-
-            expandButtonRef.current!.querySelector("h3")!.textContent = text;
-
-            setTimeout(() => {
-                toggleLastWrappers();
-                expandButtonRef.current?.classList.remove(heightClassToggled);
-            }, transitionDuration);
-            
-        }, transitionDuration);
+        toggleLastWrappers();
 
     }, [isExpanded]);
 
     return (
         <AdaptiveGridTopBottomPart 
             className='adaptive-grid-bottom-part' 
-            id={`see-more-button-${id}`} 
+            id={`expand-button-${id}`} 
             ref={expandButtonRef} 
             hover={isInteractive}>
             <HeadingThree 
                 onClick={isInteractive ? () => setIsExpanded(!isExpanded) : undefined}
-                id={`see-more-${id}`} 
+                id={`expand-${id}`} 
                 className='m-0'
                 icon={isInteractive && (isExpanded ? <FaMinus /> : <FaPlus />)}
                 iconPosition={IconPosition.right}
                 containerClassName={cn(
-                    "see-more-button",
+                    "expand-button",
                     "dark:text-gray-200",
                     { ["expanded"]: isExpanded },
                     "!m-0 w-full h-full flex items-center justify-center",

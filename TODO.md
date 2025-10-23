@@ -45,7 +45,7 @@
 * [X] FadeIn on portfolio page
 * [X] Home : Fix pointer-events before appearance
 * [X] Fix bug on grid expansion
-* [ ] Remove expand button animation (adaptive grid)
+* [X] Remove expand button animation (adaptive grid)
 
 <!--
 Optimized with next/image

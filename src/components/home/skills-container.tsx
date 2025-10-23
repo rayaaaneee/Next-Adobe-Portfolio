@@ -80,7 +80,7 @@ const SkillsContainer = () => {
                     onClick={(e) => {
                         buttonsRef.current.forEach(btn => btn.classList.remove('active'));
                         e.currentTarget.classList.add('active');
-                        const seeMoreButton = adaptiveGridRef.current?.querySelector(`.see-more-button`);
+                        const seeMoreButton = adaptiveGridRef.current?.querySelector(`.expand-button`);
                         if (seeMoreButton) {
                             if (seeMoreButton.classList.contains("expanded")) (seeMoreButton as HTMLButtonElement).click();
                         } else throw new Error("No see more button found for the grid button.");
