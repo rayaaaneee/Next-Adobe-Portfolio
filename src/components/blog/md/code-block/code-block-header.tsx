@@ -47,7 +47,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
                         ))}
                     </div>
                     <p className="text-sm">{"</>"} <b>{lang.charAt(0).toUpperCase() + lang.slice(1)}</b></p>
-                    <CodeBlockCopyButton className="absolute right-0" code={text} />
+                    <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
                 </>
             );
 

@@ -33,6 +33,7 @@ const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => {
             disabled={!copied} 
             text="Copied!" 
             className={cn("code-block-copy-button", className)}
+            tooltipClassName="text-white"
             position={TooltipPosition.left}
             size={TooltipSize.md}
             >
@@ -40,7 +41,7 @@ const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => {
                 background={false}
                 className="p-2 rounded-lg text-xl"
                 onClick={!copied ? handleClick : undefined}>
-                    {copied ? <FaCheck className="text-green-200" /> : <FaCopy />}
+                    {copied ? <FaCheck className="text-green-400 dark:text-green-200" /> : <FaCopy />}
             </Button>
         </Tooltip>
     );

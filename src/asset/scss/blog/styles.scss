@@ -25,14 +25,15 @@
                 counter-reset: line;
         
                 @apply
-                    flex flex-col
+                    flex flex-col px-0
                     rounded-none md:rounded-lg
                     border-x-0 md:border-x-4
-                    rounded-b-none
-                    overflow-x-scroll overflow-y-hidden;
+                    rounded-b-none;
 
                     & > code {
-                        @apply w-fit mb-2 mr-5;
+                        @apply w-full 
+                            overflow-x-scroll overflow-y-hidden
+                            pr-5 pb-2 box-border;
                     }
         
                     .line::before {
@@ -50,22 +51,22 @@
                     }
             }
     
-        }
-
-        &.no-lines {
-
-            .shiki {
-
-                & > code {
-                    @apply ml-2;
+            &.no-lines {
+    
+                .shiki {
+    
+                    & > code {
+                        @apply ml-2;
+                    }
+    
+                    .line::before {
+    
+                        @apply hidden;
+    
+                    }
+    
                 }
-
-                .line::before {
-
-                    @apply hidden;
-
-                }
-
+    
             }
 
         }
