@@ -1,5 +1,6 @@
 @use "./_vars.scss" as *;
 @use "./home/styles.scss" as *;
+@use "./blog/styles.scss" as *;
 
 @tailwind base;
 @tailwind components;

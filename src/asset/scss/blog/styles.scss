@@ -1,0 +1,56 @@
+/* style minimal pour Shiki */
+@layer utilities {
+
+    
+    div.code-container {
+
+        .shiki {
+    
+            @apply
+                block
+                rounded-lg 
+                px-1
+                focus:outline-none
+                border-4
+                border-gray-200 dark:border-gray-800;
+    
+        }
+
+        &:not(.inline-code) {
+
+            @apply mx-auto w-full md:w-4/6;
+    
+            .shiki {
+    
+                counter-reset: line;
+        
+                @apply
+                    flex flex-col
+                    rounded-none md:rounded-lg
+                    border-x-0 md:border-x-4
+                    rounded-b-none
+                    overflow-x-scroll overflow-y-hidden;
+
+                    & > code {
+                        @apply w-fit mb-2 ml-2 mr-10
+                    }
+        
+                    .line::before {
+        
+                        counter-increment: line;
+                        
+                        @apply
+                            content-[counter(line)]
+                            inline-block
+                            w-[2em]
+                            text-right
+                            mr-5
+                            opacity-50;
+        
+                    }
+            }
+    
+        }
+
+    }
+}

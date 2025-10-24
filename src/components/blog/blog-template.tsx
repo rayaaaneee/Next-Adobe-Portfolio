@@ -19,19 +19,15 @@ const BlogTemplate = ({ blog, className }: BlogTemplateProps) => {
             "!mx-auto",
             "flex flex-col gap-5",
             "py-10",
+            "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
+            "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
+            "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
+            "[&>.tooltip-container>img:hover]:scale-[1.01] [&>.tooltip-container>img]:transition-transform",
             className,
         )}>
             <BlogHeader blog={blog} />
-            <article className={cn(
-                "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
-                "[&>.tooltip-container>img]:my-6 [&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
-                "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
-                "[&>.tooltip-container>img:hover]:scale-[1.01] [&>.tooltip-container>img]:transition-transform",
-                "[&>ul]:list-disc [&_li]:ml-6 [&_li]:my-2",
-            )}>
-                <Separator highMargin className="mt-2 xl:mt-4" />
-                { blog.content }
-            </article>
+            <Separator highMargin className="mt-2 xl:mt-4" />
+            { blog.content }
         </MainPart>
     )
 }

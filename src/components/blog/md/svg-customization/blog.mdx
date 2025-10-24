@@ -12,7 +12,7 @@ Hello there ! Today, we're gonna explore how I was able to customize SVGs on my 
 *What is [**SVGR**](https://react-svgr.com/) ?*
 
 SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
-In our case, this library was included in the next.js configuration to permit to keep control over all SVGs parts. Initially, importing an SVG in React would treat it as a static file as the source of `<img />`, limiting our ability to customize it because all SVG parts would be inaccessible (in html like javascript).
+In our case, this library was included in the next.js configuration to permit to keep control over all SVGs parts. Initially, importing an SVG in React would treat it as a static file as the source of `<img/>`, limiting our ability to customize it because all SVG parts would be inaccessible (in html and javascript).
 
 <Image src={svgrImg} className="!h-32 !w-32" alt="SVGR Icon" width={400} height={400} />
 
@@ -37,16 +37,45 @@ Here is an example of a clickable SVG flag. On the right, the original SVG witho
 ⚠️ Important to know : 
 
 - All SVGs used in this project are imported as React Components, which allows us to manipulate them easily.
-- To make an SVG clickable, we can simply add an `onClick` event handler to the part we want to be interactive. For this, a simple querySelector from the parent component is enough to get all the desired parts.
+- To make an SVG clickable, we can simply add an `onClick()` event handler to the part we want to be interactive. For this, a simple querySelector from the parent component is enough to get all the desired parts.
 
-```jsx
-useEffect(() => {
-    const svg = document.querySelector('.tooltip-container');
-    if (svg) {
-        svg.addEventListener('click', () => {
-            console.log('SVG clicked');
-        });
-    }
-}, []);
-```
+// Speak about defs
 
+```typescript
+import styles from '...style.module.scss';
+
+const initShapes = () => {
+
+  const acceptedTags: string[] = ['path', 'circle', 'g', 'rect'];
+  const allShapes: NodeListOf<SVGElement> | undefined = svgContainer.current?
+    .querySelectorAll(acceptedTags.map((selector: string) => 
+        (`svg:not(.${logoStyles.appLogoSvg}) ${selector}[fill]:not(defs *)`)).join(', '));
+  const colorableShapesTmp: Shape[] = [];
+
+  if (allShapes != undefined) {
+
+    let flagColors: string[] = [];
+    allShapes.forEach((shape: SVGElement) => {
+
+      if ((shape.classList.contains("keep"))) {
+
+        const initialFill: string | null = shape.getAttribute('fill');
+        if (initialFill !== null && initialFill !== 'none' && !initialFill.startsWith("url")) {
+
+          const rgbInitialFill: string = hexToRgb(initialFill);
+          shape.setAttribute('fill', 'url(#pngPattern)');
+          shape.setAttribute('data-fill', rgbInitialFill);
+          shape.classList.add(styles.svgContent);
+          colorableShapesTmp.push(shape);
+          
+          if (!flagColors.some((color) => (rgbInitialFill === color))) {
+            flagColors.push(rgbInitialFill);
+          }
+
+        }
+
+      }
+    });
+
+  }
+};

@@ -31,6 +31,8 @@
 * [X] Reduce icon sizes
 * [X] Fix appearance animations
 * [X] Fix backdrop filter on blog page
+* [ ] Links to Companies (/home)
+* [ ] Sticky Header With page title on scroll (md -)
 * [ ] Default theme to light
 * [ ] Medias
 

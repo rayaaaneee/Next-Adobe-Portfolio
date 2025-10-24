@@ -1,14 +1,14 @@
 import { forwardRef, JSX, MouseEventHandler } from "react";
 
-import hash from "hash-sum";
-
 import cn from "@/utils/function/cn";
 
-import { ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
+import { Undefined } from "@/utils/types/nullable";
+
+import { type ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 import StylesInterface from "@/utils/interface/style";
 
-import { Undefined } from "@/utils/types/nullable";
+import hash from "hash-sum";
 
 export interface PageFlowBaseInterface extends OptionalChildrenInterface, ClassNameInterface, StylesInterface {};
 
@@ -62,7 +62,7 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
 
     const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
 
-    const textId: Undefined<string> = id ? id : (isAnchorLink ? hash({ children, type }) : undefined);
+    const textId: Undefined<string> = id ? id : (isAnchorLink ? `${type}-${hash({ children, type })}` : undefined);
 
     const getClassName = (): string[] => {
         switch (type) {

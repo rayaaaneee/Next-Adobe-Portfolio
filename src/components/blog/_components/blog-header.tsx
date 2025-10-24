@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import { HeadingOne, HeadingTwo } from '@/components/page-flow';
-import Separator from '@/components/others/separator';
 import { Language } from '@/utils/manager/manage-language';
 import languageContext from '@/utils/context/language-context';
 import useTryingContext from '@/utils/hook/use-trying-context';
@@ -36,13 +35,13 @@ const BlogHeader = ({ blog }: BlogTemplateProps) => {
     }
 
     return (
-        <>
-            <HeadingOne containerClassName="w-full mx-auto !m-0">{blog.title}</HeadingOne>
-            <HeadingTwo containerClassName="!my-0 mx-auto">
+        <article id='blog-header' className='w-full !mx-0 flex flex-col items-center justify-center'>
+            <HeadingOne containerClassName="w-full !m-0">{blog.title}</HeadingOne>
+            <HeadingTwo containerClassName="!mx-0">
                 Language{nbLanguages > 1 && "s"} : &nbsp;
                  {blog.languages.map((lang: Language) => language.languages[lang]).join(", ")}
             </HeadingTwo>
-        </>
+        </article>
     )
 }
 

@@ -11,6 +11,7 @@ import ManageLanguages from "@/utils/manager/manage-language";
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
+import '@/utils/function/string';
 
 const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
 

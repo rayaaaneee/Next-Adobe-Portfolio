@@ -9,7 +9,8 @@ const config: import('tailwindcss').Config = {
         "./src/components/**/*.{ts,tsx,mdx}",
         "./src/app/**/*.{ts,tsx,mdx}",
         "./src/asset/scss/**/*.scss",
-        "./src/asset/data/**/*.{ts,tsx}"
+        "./src/asset/data/**/*.{ts,tsx}",
+        "./src/mdx-components.tsx",
     ],
     safelist: [
         {
