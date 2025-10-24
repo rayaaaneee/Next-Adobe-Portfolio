@@ -1,4 +1,4 @@
-import App from "./_app";
+import App from "$/(portfolio)/_app";
 
 import Header from "@/components/others/header";
 import Background from "@/components/background";

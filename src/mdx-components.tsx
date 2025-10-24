@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { mdxAnchor, mdxCode, mdxHeadingOne, mdxHeadingThree, mdxHeadingTwo, mdxImage, mdxList, mdxParagraph, mdxPre, mdxQuote, mdxSeparator } from '@/components/others/mdx-page-flow';
+import { mdxAnchor, mdxCode, mdxHeadingOne, mdxHeadingThree, mdxHeadingTwo, mdxImage, mdxList, mdxParagraph, mdxPre, mdxQuote, mdxSeparator } from '@/components/mdx-page-flow';
 
 export const mdxComponents: MDXComponents = {
     Image: mdxImage,

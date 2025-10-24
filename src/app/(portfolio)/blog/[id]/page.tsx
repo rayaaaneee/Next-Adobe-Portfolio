@@ -24,6 +24,8 @@ const Page = async ({ params }: PageProps) => {
     
     const { id } = await params;
 
+    console.log("Blog ID:", id);
+
     const blog = assertFoundBlog(id);
 
     return (

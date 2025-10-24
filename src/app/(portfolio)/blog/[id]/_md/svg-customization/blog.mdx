@@ -44,12 +44,13 @@ Here is an example of a clickable SVG flag. On the right, the original SVG witho
 ```typescript(lines)
 import styles from '.../style.module.scss';
 
+// { ... React component code ... }
 const initShapes = () => {
 
   const acceptedTags: string[] = ['path', 'circle', 'g', 'rect'];
   const allShapes: NodeListOf<SVGElement> = svgContainer.current?
     .querySelectorAll(acceptedTags.map((selector: string) => 
-        (`svg:not(.${logoStyles.appLogoSvg}) ${selector}[fill]:not(defs *)`)).join(', '));
+      (`svg:not(.${logoStyles.appLogoSvg}) ${selector}[fill]:not(defs *)`)).join(', '));
   const colorableShapesTmp: Shape[] = [];
 
   let flagColors: string[] = [];

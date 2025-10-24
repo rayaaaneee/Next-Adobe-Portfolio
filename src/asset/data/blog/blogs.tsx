@@ -6,10 +6,10 @@ import { BlogPost } from "@/utils/types/blog";
 import { Language } from "@/utils/manager/manage-language";
 
 import networkIcon from "@/asset/img/blog/blog-1/icon.png";
-import NetworkPageContent from "@/components/blog/md/deep-learning-snake-ai/blog.mdx";
+import NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-ai/blog.mdx";
 
 import svgIcon from "@/asset/img/blog/blog-2/icon.png";
-import SvgPageContent from "@/components/blog/md/svg-customization/blog.mdx";
+import SvgPageContent from "$/(portfolio)/blog/[id]/_md/svg-customization/blog.mdx";
 
 const blogs: DeepReadonly<BlogPost[]> = [
     // {

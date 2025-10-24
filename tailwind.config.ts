@@ -155,6 +155,7 @@ const config: import('tailwindcss').Config = {
         plugin(({ addVariant }: PluginAPI) => {
             addVariant('hover-safe', "@media (hover: hover) and (pointer: fine)");
             addVariant('children', '& > *');
+            addVariant('max-md', '@media (max-width: 767px)');
         }),
     ],
 }

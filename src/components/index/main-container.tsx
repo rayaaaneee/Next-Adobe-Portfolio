@@ -34,7 +34,7 @@ const MainContainer = () => {
             </div>
             <GetStarted id={"two"} colored className={cn(
                 'mt-4',
-                'two block self-center md:hidden to-animate appear -translate-y-3 anim-delay-2300',
+                'two block self-center md:hidden to-animate appear -translate-y-3 anim-delay-1700',
             )} />
         </div>
     )

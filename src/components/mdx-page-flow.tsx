@@ -8,7 +8,7 @@ import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } f
 import Tooltip, { TooltipSize } from '@/components/tooltip';
 import Separator from '@/components/others/separator';
 
-import CodeBlock from '@/components/blog/code-block';
+import CodeBlock from '@/components/blog/_components/code-block';
 
 import ChildrenInterface from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
@@ -33,12 +33,12 @@ export const mdxCode = ({ children, className }: mdxCodeProps) => (
 export const mdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 
 export const mdxQuote = ({ children }: ChildrenInterface) => (
-    <article>
+    <article className='max-md:!mx-0'>
         <blockquote className={cn(
             'border-l-8 border-[blanchedalmond]/70 dark:border-pink-200/70',
             'pl-4 italic py-2',
             'flex items-center [&_*]:my-0',
-            'bg-white/70 dark:bg-black/70 rounded-r-lg',
+            'bg-white/70 dark:bg-black/70 md:rounded-r-lg',
         )}>
             {children}
         </blockquote>
