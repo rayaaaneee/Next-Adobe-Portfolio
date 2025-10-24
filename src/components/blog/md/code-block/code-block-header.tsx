@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 import { BundledLanguage } from "shiki";
 
+import { FaCircle } from "react-icons/fa6";
+
 import CodeBlockCopyButton from "./code-block-copy-button";
 import { createRoot, Root } from "react-dom/client";
 
@@ -39,14 +41,15 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
             el.prepend(elHeader);
 
             const root = createRoot(elHeader);
+            
             root.render(
                 <>
-                    <div className="points-container flex flex-row gap-2 absolute left-3">
+                    <div className="points-container flex flex-row gap-2 absolute left-5">
                         { new Array(3).fill(0).map((_,i) => (
-                            <span key={i} className={`block h-4 w-4 rounded-full mr-2 ${i === 0 ? 'bg-red-500' : i === 1 ? 'bg-yellow-500' : 'bg-green-500'}`}></span>
+                            <FaCircle key={i} />
                         ))}
                     </div>
-                    <p className="text-sm">{"</>"} <b>{lang.charAt(0).toUpperCase() + lang.slice(1)}</b></p>
+                    <p className="text-sm">{"</>"} <b className="first-letter:uppercase">{lang}</b></p>
                     <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
                 </>
             );

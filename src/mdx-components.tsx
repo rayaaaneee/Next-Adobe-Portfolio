@@ -20,10 +20,10 @@ export const mdxComponents: MDXComponents = {
         </Tooltip>
     ),
     code: ({ children, className }: { children: ChildrenType; className?: string }) => (
-            <CodeBlock
-                lang={className?.remove('language-').remove('(lines)') as BundledLanguage || undefined}
-                showLineNumbers={className?.includes('(lines)')}
-            >
+        <CodeBlock
+            lang={className?.remove('language-').remove('(lines)') as BundledLanguage || undefined}
+            showLineNumbers={className?.includes('(lines)')}
+        >
             {children}
         </CodeBlock>
     ),

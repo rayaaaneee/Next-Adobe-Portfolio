@@ -47,35 +47,35 @@ import styles from '.../style.module.scss';
 const initShapes = () => {
 
   const acceptedTags: string[] = ['path', 'circle', 'g', 'rect'];
-  const allShapes: NodeListOf<SVGElement> | undefined = svgContainer.current?
+  const allShapes: NodeListOf<SVGElement> = svgContainer.current?
     .querySelectorAll(acceptedTags.map((selector: string) => 
         (`svg:not(.${logoStyles.appLogoSvg}) ${selector}[fill]:not(defs *)`)).join(', '));
   const colorableShapesTmp: Shape[] = [];
 
-  if (allShapes != undefined) {
+  let flagColors: string[] = [];
+  allShapes.forEach((shape: SVGElement) => {
 
-    let flagColors: string[] = [];
-    allShapes.forEach((shape: SVGElement) => {
+    if ((shape.classList.contains("keep"))) {
 
-      if ((shape.classList.contains("keep"))) {
+      const initialFill: string | null = shape.getAttribute('fill');
+      if (initialFill !== null && initialFill !== 'none' && !initialFill.startsWith("url")) {
 
-        const initialFill: string | null = shape.getAttribute('fill');
-        if (initialFill !== null && initialFill !== 'none' && !initialFill.startsWith("url")) {
+        const rgbInitialFill: string = hexToRgb(initialFill);
+        shape.setAttribute('fill', 'url(#pngPattern)');
+        shape.setAttribute('data-fill', rgbInitialFill);
+        shape.classList.add(styles.svgContent);
+        colorableShapesTmp.push(shape);
 
-          const rgbInitialFill: string = hexToRgb(initialFill);
-          shape.setAttribute('fill', 'url(#pngPattern)');
-          shape.setAttribute('data-fill', rgbInitialFill);
-          shape.classList.add(styles.svgContent);
-          colorableShapesTmp.push(shape);
-
-          if (!flagColors.some((color) => (rgbInitialFill === color))) {
-            flagColors.push(rgbInitialFill);
-          }
-
+        if (!flagColors.some((color) => (rgbInitialFill === color))) {
+          flagColors.push(rgbInitialFill);
         }
 
       }
-    });
 
-  }
+    }
+    
+  });
 };
+```
+
+In this code snippet, we select all the SVG elements that can be colored (like `<path>`, `<circle>`, etc.) and check if they have a `fill` attribute. If they do, we store their initial fill color in a `data-fill` attribute and change their `fill` to a pattern defined in the SVG's `<defs>`. This allows us to later manipulate the fill color dynamically.

@@ -1,7 +1,6 @@
 /* style minimal pour Shiki */
 @layer utilities {
 
-    
     div.code-container {
 
         .shiki {
@@ -10,8 +9,9 @@
                 block
                 rounded-lg 
                 px-1
+                text-[0.8em]
                 focus:outline-none
-                border-4
+                border-2
                 border-gray-200 dark:border-gray-800;
     
         }
@@ -25,14 +25,14 @@
                 counter-reset: line;
         
                 @apply
-                    flex flex-col px-0
+                    flex flex-col px-0 text-[0.9em] border-4
                     rounded-none md:rounded-lg
                     border-x-0 md:border-x-4
                     rounded-b-none;
 
                     & > code {
                         @apply w-full 
-                            overflow-x-scroll overflow-y-hidden
+                            overflow-x-auto overflow-y-hidden
                             pr-5 pb-2 box-border;
                     }
         
