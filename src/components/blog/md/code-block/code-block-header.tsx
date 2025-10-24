@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { BundledLanguage } from "shiki";
 
@@ -34,14 +34,19 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
             el.style.position = 'relative';
 
             const elHeader = document.createElement('div');
-            elHeader.className = 'h-fit my-2 flex items-center justify-center';
+            elHeader.className = 'h-fit mt-3 mb-5 flex items-center justify-center';
 
             el.prepend(elHeader);
 
             const root = createRoot(elHeader);
             root.render(
                 <>
-                    {"</>"} <b>{lang.charAt(0).toUpperCase() + lang.slice(1)}</b>
+                    <div className="points-container flex flex-row gap-2 absolute left-3">
+                        { new Array(3).fill(0).map((_,i) => (
+                            <span key={i} className={`block h-4 w-4 rounded-full mr-2 ${i === 0 ? 'bg-red-500' : i === 1 ? 'bg-yellow-500' : 'bg-green-500'}`}></span>
+                        ))}
+                    </div>
+                    <p className="text-sm">{"</>"} <b>{lang.charAt(0).toUpperCase() + lang.slice(1)}</b></p>
                     <CodeBlockCopyButton className="absolute right-0" code={text} />
                 </>
             );

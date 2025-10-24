@@ -5,8 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/page-flow";
 import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
 
-import { FaC, FaCopy } from "react-icons/fa6";
-import { FaCheck } from "react-icons/fa";
+import { FaCopy, FaCheck } from "react-icons/fa6";
 
 import cn from "@/utils/function/cn";
 import ClassNameInterface from "@/utils/interface/classname";

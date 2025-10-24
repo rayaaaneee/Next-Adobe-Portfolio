@@ -41,8 +41,8 @@ Here is an example of a clickable SVG flag. On the right, the original SVG witho
 
 // Speak about defs
 
-```typescript
-import styles from '...style.module.scss';
+```typescript(lines)
+import styles from '.../style.module.scss';
 
 const initShapes = () => {
 
@@ -67,7 +67,7 @@ const initShapes = () => {
           shape.setAttribute('data-fill', rgbInitialFill);
           shape.classList.add(styles.svgContent);
           colorableShapesTmp.push(shape);
-          
+
           if (!flagColors.some((color) => (rgbInitialFill === color))) {
             flagColors.push(rgbInitialFill);
           }

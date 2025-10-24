@@ -32,7 +32,7 @@
                     overflow-x-scroll overflow-y-hidden;
 
                     & > code {
-                        @apply w-fit mb-2 ml-2 mr-10
+                        @apply w-fit mb-2 mr-5;
                     }
         
                     .line::before {
@@ -44,12 +44,30 @@
                             inline-block
                             w-[2em]
                             text-right
-                            mr-5
+                            mr-4
                             opacity-50;
         
                     }
             }
     
+        }
+
+        &.no-lines {
+
+            .shiki {
+
+                & > code {
+                    @apply ml-2;
+                }
+
+                .line::before {
+
+                    @apply hidden;
+
+                }
+
+            }
+
         }
 
     }

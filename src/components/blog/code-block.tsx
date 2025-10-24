@@ -5,15 +5,17 @@ import CodeBlockHeader from './md/code-block/code-block-header';
 import { ChildrenInterface, ChildrenType } from '@/utils/interface/children';
 
 import hash_sum from 'hash-sum';
+import cn from '@/utils/function/cn';
 
 export interface CodeBlockProps {
   children: ChildrenType;
+  showLineNumbers?: boolean;
   lang?: BundledLanguage,
 }
 
 const CodeBlock = async (props: CodeBlockProps) => {
 
-    const { children, lang } = props;
+    const { children, lang, showLineNumbers = false } = props;
 
     const code: string = String(children).trim();
 
@@ -48,10 +50,15 @@ const CodeBlock = async (props: CodeBlockProps) => {
         </section>
     );
 
+    const codeContainerBaseClassName = cn(
+        "code-container block", 
+        { "no-lines": !showLineNumbers },
+        baseClassName,
+    );
     const CodeBlockContent = () => (
         <>
-            <div className={`code-container block [&.inline-code]:inline-block dark:!hidden ${baseClassName}`} dangerouslySetInnerHTML={{ __html: codeThemes.light }} />
-            <div className={`code-container hidden dark:[&.inline-code]:inline-block dark:block ${baseClassName}`} dangerouslySetInnerHTML={{ __html: codeThemes.dark }} />
+            <div className={`${codeContainerBaseClassName} [&.inline-code]:inline-block dark:!hidden`} dangerouslySetInnerHTML={{ __html: codeThemes.light }} />
+            <div className={`${codeContainerBaseClassName} hidden dark:[&.inline-code]:inline-block dark:block`} dangerouslySetInnerHTML={{ __html: codeThemes.dark }} />
         </>
     );
 
