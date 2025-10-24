@@ -1,9 +1,10 @@
+import { CSSProperties } from "react";
+
 import cn from "@/utils/function/cn";
 
-import { ChildrenInterface } from "@/utils/interface/children";
+import ChildrenInterface from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 import StyleInterface from "@/utils/interface/style";
-import { CSSProperties } from "react";
 
 export interface MainPartProps extends ClassNameInterface, ChildrenInterface, StyleInterface {};
 

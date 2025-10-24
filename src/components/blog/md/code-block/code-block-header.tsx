@@ -36,7 +36,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
             el.style.position = 'relative';
 
             const elHeader = document.createElement('div');
-            elHeader.className = 'h-fit mt-3 mb-5 flex items-center justify-center';
+            elHeader.className = 'h-fit mt-3 mb-4 flex items-center justify-center';
 
             el.prepend(elHeader);
 
@@ -49,7 +49,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
                             <FaCircle key={i} />
                         ))}
                     </div>
-                    <p className="text-sm">{"</>"} <b className="first-letter:uppercase">{lang}</b></p>
+                    <p className="text-sm">{"</>"} <b className="inline-block first-letter:uppercase">{lang}</b></p>
                     <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
                 </>
             );

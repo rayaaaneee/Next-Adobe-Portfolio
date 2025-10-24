@@ -11,8 +11,8 @@
 * [X] Page Flow : Factorize headings
 * [ ] CC 4.0 (copyrights)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
-* [ ] Blog :
-
+* [ ] Blog 
+  * [ ] Citation on MDX (> blockquote)
   * [ ] Use adaptable grid as blog pager
   * [ ] For each blog :
     * [ ] Further readings (linked blogs)

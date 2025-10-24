@@ -8,7 +8,7 @@ import languageContext from "@/utils/context/language-context";
 
 import ManageLanguages from "@/utils/manager/manage-language";
 
-import { ChildrenInterface } from "@/utils/interface/children";
+import ChildrenInterface from "@/utils/interface/children";
 
 import Sentences from "@/utils/types/language";
 

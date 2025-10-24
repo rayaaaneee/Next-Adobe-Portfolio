@@ -8,7 +8,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaUserTie } from "react-icons/fa6";
 import { FaLayerGroup } from "react-icons/fa";
 
-import { ChildrenInterface } from "@/utils/interface/children";
+import ChildrenInterface from "@/utils/interface/children";
+
 import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "../../others/separator";

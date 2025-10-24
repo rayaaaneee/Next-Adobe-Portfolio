@@ -7,7 +7,7 @@ import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 
-import { ChildrenInterface, type ChildrenType } from "@/utils/interface/children";
+import ChildrenInterface, { type ChildrenType } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 import { Nullish } from "@/utils/types/nullable";
 

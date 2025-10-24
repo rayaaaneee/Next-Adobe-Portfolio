@@ -5,7 +5,7 @@ import cn from "@/utils/function/cn";
 
 import "~/scss/styles.scss";
 
-import { ChildrenInterface } from "@/utils/interface/children";
+import ChildrenInterface from "@/utils/interface/children";
 import ManageLanguages from "@/utils/manager/manage-language";
 
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';

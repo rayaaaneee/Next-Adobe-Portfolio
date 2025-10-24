@@ -2,7 +2,7 @@ import cn from "@/utils/function/cn";
 
 import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 
-import { ChildrenInterface } from "@/utils/interface/children";
+import ChildrenInterface from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
 
 import { TooltipSize } from "./tooltip";

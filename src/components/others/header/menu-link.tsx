@@ -2,7 +2,7 @@
 
 import cn from "@/utils/function/cn";
 
-import { ChildrenInterface } from '@/utils/interface/children';
+import ChildrenInterface from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
 
 import Link from "next/link";

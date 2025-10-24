@@ -1,5 +1,6 @@
-import { ChildrenInterface } from "@/utils/interface/children";
 import { Metadata } from "next";
+
+import ChildrenInterface from "@/utils/interface/children";
 
 
 export const metadata: Metadata = {

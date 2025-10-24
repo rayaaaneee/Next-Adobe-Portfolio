@@ -2,7 +2,7 @@ import { BundledLanguage, BundledTheme, codeToHtml } from 'shiki';
 
 import CodeBlockHeader from './md/code-block/code-block-header';
 
-import { ChildrenInterface, ChildrenType } from '@/utils/interface/children';
+import ChildrenInterface, { type ChildrenType } from '@/utils/interface/children';
 
 import hash_sum from 'hash-sum';
 import cn from '@/utils/function/cn';
