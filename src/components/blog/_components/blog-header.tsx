@@ -5,12 +5,15 @@ import { useEffect } from 'react';
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import { HeadingOne, HeadingTwo } from '@/components/page-flow';
-import { Language } from '@/utils/manager/manage-language';
+
 import languageContext from '@/utils/context/language-context';
 import useTryingContext from '@/utils/hook/use-trying-context';
-import { BlogTemplateProps } from '../blog-template';
+import { Language } from '@/utils/manager/manage-language';
 
-const BlogHeader = ({ blog }: BlogTemplateProps) => {
+import { BlogPost } from '@/utils/types/blog';
+import { DeepReadonliable } from '@/utils/types/deep-readonly';
+
+const BlogHeader = ({ blog }: { blog: DeepReadonliable<BlogPost> }) => {
 
     const { language } = useTryingContext(languageContext);
 
