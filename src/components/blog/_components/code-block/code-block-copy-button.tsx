@@ -33,7 +33,7 @@ const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => {
             disabled={!copied} 
             text="Copied!" 
             className={cn("code-block-copy-button", className)}
-            tooltipClassName="text-white"
+            tooltipClassName={cn("text-white bg-[#90A4AE]", "dark:text-black dark:bg-[#C6D0F5]")}
             position={TooltipPosition.left}
             size={TooltipSize.md}
             forceShow

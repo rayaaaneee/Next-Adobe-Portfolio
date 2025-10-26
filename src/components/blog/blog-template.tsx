@@ -15,19 +15,22 @@ export interface BlogTemplateProps extends ClassNameInterface {
 
 const BlogTemplate = ({ blog, className }: BlogTemplateProps) => {
     return (
-        <MainPart className={cn(
+        <MainPart 
+        fullWidth
+        className={cn(
             "!mx-auto",
             "flex flex-col gap-5",
             "py-10",
             "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
             "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
             "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
-            "[&>.tooltip-container>img:hover]:scale-[1.01] [&>.tooltip-container>img]:transition-transform",
             className,
         )}>
-            <BlogHeader blog={blog} />
-            <Separator highMargin className="mt-2 xl:mt-4" />
-            { blog.content }
+            <article>
+                <BlogHeader blog={blog} />
+                <Separator />
+                { blog.content }
+            </article>
         </MainPart>
     )
 }

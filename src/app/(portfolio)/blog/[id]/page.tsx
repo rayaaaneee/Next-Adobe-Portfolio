@@ -1,7 +1,8 @@
+import { Metadata } from "next";
+
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import BlogTemplate from "@/components/blog/blog-template";
-import { Metadata } from "next";
 
 export interface PageProps {
     params: Promise<{

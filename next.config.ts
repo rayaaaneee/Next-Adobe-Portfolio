@@ -2,6 +2,8 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx';
 import withPWAInit from "@ducanh2912/next-pwa";
+import remarkDirective from "remark-directive";
+//import remarkCustomBlocks from "./plugins/remark-custom-blocks.js";
 
 import path from "path";
 
@@ -27,6 +29,7 @@ const nextConfig: NextConfig = withPWA({
         includePaths: [path.join(__dirname, "src", "asset", "scss")],
     },
     experimental: {
+        mdxRs: true,
         serverActions: {
             allowedOrigins: [
                 ...allowedOrigins.map(({ url }) => url), 

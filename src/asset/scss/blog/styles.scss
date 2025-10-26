@@ -16,7 +16,7 @@
 
         &:not(.inline-code) {
 
-            @apply mx-auto w-full md:w-4/6;
+            @apply mx-auto w-full;
     
             .shiki {
     
