@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
+import cn from "@/utils/function/cn";
+
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
-import BlogTemplate from "@/components/blog/blog-template";
+import MainPart from "@/components/others/main-part";
+import BlogHeader from "@/components/blog/_components/blog-header";
+import Separator from "@/components/others/separator";
 
 export interface PageProps {
     params: Promise<{
@@ -30,11 +34,24 @@ const Page = async ({ params }: PageProps) => {
     const blog = assertFoundBlog(id);
 
     return (
-        <BlogTemplate 
-            className="backdrop-blur-md"
-            blog={blog}
-        />
-    )
+        <MainPart 
+        fullWidth
+        className={cn(
+            "!mx-auto",
+            "flex flex-col gap-5",
+            "py-10",
+            "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
+            "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
+            "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
+            'backdrop-blur-md',
+        )}>
+            <article className="flex flex-col gap-3">
+                <BlogHeader blog={blog} />
+                <Separator />
+                { blog.content }
+            </article>
+        </MainPart>
+    );
 }
 
 export default Page;

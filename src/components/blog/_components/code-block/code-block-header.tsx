@@ -15,6 +15,20 @@ interface CodeBlockHeaderProps {
     lang: BundledLanguage;
 }
 
+export const languageNamesWithInitials: BundledLanguage[] = [
+    'jsx',
+    'tsx',
+    'html',
+    'xml',
+    'css',
+    'scss',
+    'mdx',
+    'md',
+    'json',
+    'yaml',
+    'yml',
+];
+
 const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
 
     useEffect(() => {
@@ -49,7 +63,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
                             <FaCircle key={i} />
                         ))}
                     </div>
-                    <p className="text-sm">{"</>"} <b className="inline-block first-letter:uppercase">{lang}</b></p>
+                    <p className="text-sm">{"</>"} <b className="inline-block first-letter:uppercase">{languageNamesWithInitials.includes(lang) ? lang.toUpperCase() : lang }</b></p>
                     <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
                 </>
             );

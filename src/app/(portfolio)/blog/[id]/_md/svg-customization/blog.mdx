@@ -18,6 +18,45 @@ In our case, this library was included in the next.js configuration to permit to
 
 SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
 
+There's a lot of options to configure SVGR to fit your needs. In our case, we used the default with some mofications in the *next.config.mjs* file to allow importing SVGs as React components.
+
+```javascript(lines)
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  ...
+  webpack(config) {
+    // Grab the existing rule that handles SVG imports
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.('.svg'),
+    )
+    fileLoaderRule.exclude = /\.svg$/i;
+
+    config.module.rules.push(
+      {
+        test: /\.svg$/i,
+        use: [{
+          loader: '@svgr/webpack',
+          options: {
+            svgo: true,
+            svgoConfig: {
+              plugins: [
+                /* Initially, we had these options to clean up the SVGs but for our
+                customization needs, we disabled them. Each colorable part needed to keep
+                its id and className without any prefix. We will detail this later.*/
+                { name: 'prefixIds',
+                  params: { prefixIds: false, prefixClassNames: false, prefix: false } },
+                { name: 'cleanupIds', params: { remove: false, minify: false, prefix: '' } },
+              ]
+            },
+          },
+        }],
+      },
+    )
+    return config;
+  },
+};
+```
+
 ### **Reminder**
 - SVG stands for Scalable Vector Graphics, which is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation.
 - SVG are composed of various XML elements such as `<path>`, `<circle>`, `<rect>`, `<line>`, and more, which define the shapes and lines that make up the image. The sub elements represent different parts of the SVG graphic.
@@ -80,5 +119,66 @@ const initShapes = () => {
 ```
 
 In this code snippet, we select all the SVG elements that can be colored (like `<path>`, `<circle>`, etc.) and check if they have a `fill` attribute. If they do, we store their initial fill color in a `data-fill` attribute and change their `fill` to a pattern defined in the SVG's `<defs>`. This allows us to later manipulate the fill color dynamically.
+You can see that we used a new attribute for the fill `url(#pngPattern)`. This pattern is defined in the SVG's `<defs>` section and uses a background image (in our case a PNG image) to fill the shapes. This technique allows us to create complex fills using images.
 
-> Quote
+There's the component used to define the SVG pattern with the background image. We set the image source to a PNG file located in the public folder.
+
+```tsx
+export interface SvgPatternInterface 
+{ x: number, y: number, patternWidth: number, patternHeight: number }
+
+const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) => {
+  return (
+    <pattern xmlns="http://www.w3.org/2000/svg" id={ customPatternId !== undefined ? customPatternId : "emptyPathImg" } patternUnits="userSpaceOnUse" width={ patternWidth } height={ patternHeight }>
+      <image xmlnsXlink="http://www.w3.org/1999/xlink" 
+        {/* Set initial background with the png (public/) */}
+        xlinkHref={"/images/patterns/png-background.jpg" } 
+        x={ x } y={ y } width={ imageWidth } height={ imageHeight }
+      />
+    </pattern>
+  );
+}
+```
+
+This `<SvgPattern/>` component defines a pattern that can be used to fill SVG shapes. The pattern uses an image located at `/images/patterns/png-background.jpg` as its fill. The `patternWidth` and `patternHeight` props allow us to control the size of the pattern.
+
+Adding this pattern after rendered directly in the SVG component permit to have all shapes filled with the background image. And this is why we need to handle SVGs as React components, to be able to manipulate their structure and attributes.
+
+Here's how we insert the `<defs>` section with the pattern into the SVG after rendering it :
+
+```tsx
+const svgDefs: ReactNode = (<SvgDefs
+    patterns={patterns}
+/>);
+
+const svgDefsString: string = renderToString(svgDefs);
+colorableSvgElement.insertAdjacentHTML('afterbegin', svgDefsString);
+```
+
+The rendered SVG now has a pattern defined in its `<defs>` section, which is used to fill the shapes with the background image. Here's a simplified example of what the final SVG structure looks like after adding the pattern:
+
+```xml
+<svg ... >
+  <defs>
+    <pattern id="pngPattern" patternUnits="userSpaceOnUse" width="800" height="600">
+      <image xlink:href="/images/patterns/png-background.jpg" x="0" y="0" width="1600" height="1200"/>
+    </pattern>
+  </defs>
+  <path fill="url(#pngPattern)" data-fill="rgb(255, 0, 0)" ... />
+  <circle fill="url(#pngPattern)" data-fill="rgb(0, 0, 255)" ... />
+</svg>
+```
+
+Finally, we can add interactivity to the SVG by attaching `onClick` event handlers to the shapes. When a shape is clicked, we can retrieve its original fill color from the `data-fill` attribute and perform any desired actions, such as updating the UI or changing the shape's appearance.
+
+```typescript
+const handleShapeClick = (event: MouseEvent<SVGElement>) => {
+  const target = event.currentTarget;
+  const originalFill = target.getAttribute('data-fill');
+  if (!originalFill) throw new Error("No original fill found");
+  target.setAttribute('fill', originalFill || 'none');
+};
+```
+
+Detailler l'ajout des classes keep car toutes les parties ne doivent pas forcement etre colorables. (ex sur l'aigle au centre du mexique qui ne doit pas etre affectee et qui pourtant contient des shapes, il n'y a aucun intéret pour l'utilisateur de se rappeller de chacune des couleurs qui compose celui-ci)
+

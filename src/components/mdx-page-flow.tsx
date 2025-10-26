@@ -44,8 +44,8 @@ export const mdxQuote = ({ children }: ChildrenInterface) => (
     <blockquote className={cn(
         'border-l-8 border-[blanchedalmond]/70 dark:border-pink-200/70',
         'pl-4 italic py-2',
-        'flex items-center [&_*]:my-0',
-        'bg-white/70 dark:bg-black/70 md:rounded-r-lg',
+        'flex items-center [&_*]:my-0 box-border',
+        'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
     )}>
         {children}
     </blockquote>
