@@ -1,5 +1,7 @@
 import img from "./assets/svg.png";
 import svgrImg from "./assets/svgr.png";
+import devPageImg from "./assets/dev-page.png";
+import beforeAndAfterKeepClassImg from "./assets/before&after-keep-class.png";
 
 Hello there ! Today, we're gonna explore how I was able to customize SVGs on my web project [WorldMaster](https://worldmaster.vercel.app/). We're gonna see in the first step the made customization applied to SVGs to make you better understand the process.
 
@@ -51,7 +53,7 @@ const nextConfig = {
           },
         }],
       },
-    )
+    );
     return config;
   },
 };
@@ -67,7 +69,7 @@ Right now, let's see how we passed from a static SVG to a customized one, clicka
 
 ---
 
-## Clickable SVGs & Path Background Images
+## Clickable SVGs & Shapes Background Image
 
 Here is an example of a clickable SVG flag. On the right, the original SVG without any customization. And on the left the final customized and interactive SVG.
 
@@ -131,7 +133,7 @@ const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) 
   return (
     <pattern xmlns="http://www.w3.org/2000/svg" id={ customPatternId !== undefined ? customPatternId : "emptyPathImg" } patternUnits="userSpaceOnUse" width={ patternWidth } height={ patternHeight }>
       <image xmlnsXlink="http://www.w3.org/1999/xlink" 
-        {/* Set initial background with the png (public/) */}
+        {/* Set the initial background with the png (public/) */}
         xlinkHref={"/images/patterns/png-background.jpg" } 
         x={ x } y={ y } width={ imageWidth } height={ imageHeight }
       />
@@ -176,9 +178,38 @@ const handleShapeClick = (event: MouseEvent<SVGElement>) => {
   const target = event.currentTarget;
   const originalFill = target.getAttribute('data-fill');
   if (!originalFill) throw new Error("No original fill found");
-  target.setAttribute('fill', originalFill || 'none');
+  target.setAttribute('fill', originalFill);
 };
 ```
 
 Detailler l'ajout des classes keep car toutes les parties ne doivent pas forcement etre colorables. (ex sur l'aigle au centre du mexique qui ne doit pas etre affectee et qui pourtant contient des shapes, il n'y a aucun intéret pour l'utilisateur de se rappeller de chacune des couleurs qui compose celui-ci)
 
+## SVG files initialization
+
+To make all this work, we had to modify the original SVG files a bit. Since we wanted to allow users to click on different parts of the SVG and see their original colors, we needed a way to identify which parts should be interactive.
+Taking the flag of Mexico as an example, we added a specific class **"keep"** to all the SVG elements that we wanted to be clickable and have their colors changeable. *This is why we removed the svg class prefixes in the NextJS Config file.* This class acts as a marker for our JavaScript code to identify which parts of the SVG should be processed.
+The problem with this method is that it requires manual modification of each SVG file to add the **"keep"** class to the desired elements. This can be time-consuming, especially if you have a large number of SVGs to process. A simple solution for this was to do it manually with creating a new route in the project to display all SVGs and edit them directly, allowing to see the changes in real-time *(svg structure hot reloading)*.
+
+<Image src={devPageImg} alt="Dev Page to configure SVGs" width={1920} height={1080} />
+
+After selecting all colorable parts for each flag, we obtained SVGs with the necessary classes added. This allowed our JavaScript code to easily identify and manipulate the correct parts of the SVGs during runtime.
+
+There's an example of the Mexico flag SVG before and after adding the classes to the colorable shapes. The middle part containing the eagle was initially selectable (left), and  left unchanged as it doesn't need to be interactive (right).
+
+<Image src={beforeAndAfterKeepClassImg} alt="Utility of Shapes Selection" width={1920} height={1080} />
+
+After that, our JavaScript code can simply look for elements with the **"keep"** class and apply the necessary logic to make them interactive and customizable.
+
+## Final Thoughts & Recap
+
+In this blog post, we explored how to customize SVGs in a React/Next.js project using SVGR, from its configuration to its usage. We learned how to import SVGs as React components, manipulate their structure, and add interactivity by attaching event handlers to specific parts of the SVG.
+
+We also discussed the importance of modifying the original SVG files to add specific classes to the elements we wanted to be interactive. This allowed us to easily identify and manipulate those parts during runtime.
+
+By following the steps outlined in this post, you can create dynamic and interactive SVGs that enhance the user experience on your web projects. Whether you're building a flag selector, an icon library, or any other application that involves SVG graphics, the techniques discussed here will help you achieve your goals. There's an example in NextJS of the final result on [WorldMaster](https://worldmaster.vercel.app/), but feel free to experiment and adapt these techniques to your own projects!
+
+---
+
+<div className="center">
+  Thank you for reading! 🚀
+</div>

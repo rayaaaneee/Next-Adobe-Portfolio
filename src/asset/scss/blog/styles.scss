@@ -16,7 +16,7 @@
 
         &:not(.inline-code) {
 
-            @apply mx-auto w-full;
+            @apply mx-auto;
     
             .shiki {
     
@@ -26,13 +26,13 @@
                     rounded-none md:rounded-lg;
 
                     & > code {
-                        @apply w-full 
+                        @apply
                             overflow-x-auto overflow-y-hidden
-                            pr-5 pb-2 box-border;
+                            pr-5 pb-2 box-border scrollbar scrollbar-track-transparent scrollbar-thumb-current;
                     }
         
                     .line::before {
-        
+
                         counter-increment: line;
                         
                         @apply

@@ -27,6 +27,8 @@ export const languageNamesWithInitials: BundledLanguage[] = [
     'json',
     'yaml',
     'yml',
+    'sql',
+    'php',
 ];
 
 const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
@@ -38,7 +40,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
         // For dark and light mode, there are two shiki code blocks inside the parent section
         if (!parentCodeBlockSection) throw new Error(`Parent code block ${parentId} not found for code block header.`);
 
-        const shikiElements = Array.from(
+        const shikiElements: HTMLElement[] = Array.from(
             parentCodeBlockSection.querySelectorAll<HTMLElement>('.shiki')
         ).filter((el): el is HTMLElement => el !== null);
 
@@ -47,6 +49,7 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
         const roots: Root[] = [];
 
         shikiElements.forEach((el) => {
+
             el.style.position = 'relative';
 
             const elHeader = document.createElement('div');
