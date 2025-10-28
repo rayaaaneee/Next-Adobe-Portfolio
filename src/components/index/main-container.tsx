@@ -2,16 +2,14 @@
 
 import cn from "@/utils/function/cn";
 
-import useTryingContext from '@/utils/hook/use-trying-context';
-
-import languageContext from '@/utils/context/language-context';
 import GetStarted from './get-started';
 import TextTypeWriter from './text-type-writer';
 import BlinkingVerticalBar from './blinking-vertical-bar';
+import { useLanguage } from "@/utils/hook/use-language";
 
 const MainContainer = () => {
 
-    const { language } = useTryingContext(languageContext);
+    const { language } = useLanguage();
 
     return (
         <div className={cn("container w-full h-full flex flex-col items-center justify-center")}>

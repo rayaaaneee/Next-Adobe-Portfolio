@@ -1,11 +1,9 @@
 import cn from "@/utils/function/cn";
 
-import languageContext from '@/utils/context/language-context';
-import useTryingContext from '@/utils/hook/use-trying-context';
-
 import ClassNameInterface from '@/utils/interface/classname';
 import { useState } from 'react';
 import { TypewriterProps, useTypewriter } from 'react-simple-typewriter';
+import { useLanguage } from "@/utils/hook/use-language";
 
 export interface TextTypeWriterProps extends ClassNameInterface {
     reduced?: boolean;
@@ -13,7 +11,7 @@ export interface TextTypeWriterProps extends ClassNameInterface {
 
 const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps) => {
 
-    const { language } = useTryingContext(languageContext);
+    const { language } = useLanguage();
 
     const textTab: readonly string[] = language.index.description.long;
     const reducedTextTab: readonly string[] = language.index.description.short;

@@ -10,7 +10,7 @@ import ManageLanguages from "@/utils/manager/manage-language";
 
 import ChildrenInterface from "@/utils/interface/children";
 
-import Sentences from "@/utils/types/language";
+import Sentences from "@/utils/types/sentences";
 
 const App = ({ children }: ChildrenInterface) => {
 

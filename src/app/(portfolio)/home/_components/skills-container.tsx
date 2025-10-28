@@ -2,11 +2,11 @@
 
 import { useRef, useState } from 'react';
 
-import AdaptiveGrid, { AdaptiveGridProps } from '../others/adaptive-grid';
+import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/others/adaptive-grid';
 
 import cn from "@/utils/function/cn";
 
-import { Button, HeadingTwo } from '../page-flow';
+import { Button, HeadingTwo } from '../../../../components/page-flow';
 import { LuCodeXml } from 'react-icons/lu';
 import { BsStack } from 'react-icons/bs';
 import { VscLibrary } from 'react-icons/vsc';

@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 import cn from "@/utils/function/cn";
 
-import languageContext from '@/utils/context/language-context';
-import useTryingContext from '@/utils/hook/use-trying-context';
+import { useLanguage } from '@/utils/hook/use-language';
 
 import ClassNameInterface from '@/utils/interface/classname';
 
@@ -20,7 +19,7 @@ const GetStarted = ({
     colored = false
 }: GetStartedProps) => {
 
-    const text: string = useTryingContext(languageContext).language.index.discover;
+    const text: string = useLanguage().language.index.discover;
 
     return (
         <Link id={`getStarted-${id}`} href={'/home'} className={cn(

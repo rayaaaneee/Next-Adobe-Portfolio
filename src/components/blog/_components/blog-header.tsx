@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect } from 'react';
+import { useLanguage } from '@/utils/hook/use-language';
 
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import { HeadingOne, HeadingTwo } from '@/components/page-flow';
 
-import languageContext from '@/utils/context/language-context';
-import useTryingContext from '@/utils/hook/use-trying-context';
 import { Language } from '@/utils/manager/manage-language';
 
 import { BlogPost } from '@/utils/types/blog';
@@ -15,7 +14,7 @@ import { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 const BlogHeader = ({ blog }: { blog: DeepReadonliable<BlogPost> }) => {
 
-    const { language } = useTryingContext(languageContext);
+    const { language } = useLanguage();
 
     const pageTitle = APP_DEFAULT_TEMPLATE_TITLE.replace("%s", blog.title);
 

@@ -43,8 +43,8 @@ export class DateClass implements DateInterface {
 
 export class IntervalDateClass implements IntervalDateInterface {
 
-    start;
-    end?;
+    start: DateInterface;
+    end?: DateInterface;
 
     constructor({ start, end }: { start: DateInterface; end?: DateInterface }) {
         this.start = new DateClass(start);

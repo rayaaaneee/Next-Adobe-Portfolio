@@ -190,13 +190,13 @@ To make all this work, we had to modify the original SVG files a bit. Since we w
 Taking the flag of Mexico as an example, we added a specific class **"keep"** to all the SVG elements that we wanted to be clickable and have their colors changeable. *This is why we removed the svg class prefixes in the NextJS Config file.* This class acts as a marker for our JavaScript code to identify which parts of the SVG should be processed.
 The problem with this method is that it requires manual modification of each SVG file to add the **"keep"** class to the desired elements. This can be time-consuming, especially if you have a large number of SVGs to process. A simple solution for this was to do it manually with creating a new route in the project to display all SVGs and edit them directly, allowing to see the changes in real-time *(svg structure hot reloading)*.
 
-<Image src={devPageImg} alt="Dev Page to configure SVGs" width={1920} height={1080} />
+<Image src={devPageImg} alt="Dev Page to configure SVGs" width={1920} height={720} />
 
 After selecting all colorable parts for each flag, we obtained SVGs with the necessary classes added. This allowed our JavaScript code to easily identify and manipulate the correct parts of the SVGs during runtime.
 
 There's an example of the Mexico flag SVG before and after adding the classes to the colorable shapes. The middle part containing the eagle was initially selectable (left), and  left unchanged as it doesn't need to be interactive (right).
 
-<Image src={beforeAndAfterKeepClassImg} alt="Utility of Shapes Selection" width={1920} height={1080} />
+<Image src={beforeAndAfterKeepClassImg} alt="Utility of Shapes Selection" width={1920} height={600} />
 
 After that, our JavaScript code can simply look for elements with the **"keep"** class and apply the necessary logic to make them interactive and customizable.
 
@@ -209,7 +209,3 @@ We also discussed the importance of modifying the original SVG files to add spec
 By following the steps outlined in this post, you can create dynamic and interactive SVGs that enhance the user experience on your web projects. Whether you're building a flag selector, an icon library, or any other application that involves SVG graphics, the techniques discussed here will help you achieve your goals. There's an example in NextJS of the final result on [WorldMaster](https://worldmaster.vercel.app/), but feel free to experiment and adapt these techniques to your own projects!
 
 ---
-
-<div className="center">
-  Thank you for reading! 🚀
-</div>

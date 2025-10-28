@@ -7,9 +7,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import cn from "@/utils/function/cn";
 
 import useConditionalEffect from '@/utils/hook/use-conditional-effect';
-import useTryingContext from '@/utils/hook/use-trying-context';
-
-import languageContext, { LanguageContextType } from '@/utils/context/language-context';
+import { useLanguage } from '@/utils/hook/use-language';
 
 import Logo, { LogoColors } from '../logo';
 import HamburgerMenu from './header/hamburger-menu';
@@ -24,7 +22,7 @@ export interface HeaderProps {
 
 const Header = ({ hasFooter = true }: HeaderProps) => {
 
-    const { language } = useTryingContext<LanguageContextType>(languageContext);
+    const { language } = useLanguage();
 
     const location = usePathname();
 

@@ -1,7 +1,8 @@
-import Sentences from "@/utils/types/language";
+import Language from "@/utils/types/language";
+import Sentences from "@/utils/types/sentences";
 
 const spanishSentences: Sentences = {
-    current: "es",
+    current: Language.ES,
     denomination: "Español",
     languages: {
         en: "Inglés",
@@ -47,6 +48,37 @@ const spanishSentences: Sentences = {
         },
     },
     home: {
+        role: "Desarrollador Full-Stack & Entusiasta de la Ciberseguridad",
+        location: {
+            country: "Francia",
+            city: "Lyon",
+        },
+        links: {
+            title: "Enlaces",
+            mail: "Correo",
+            phone: "Tel.",
+            resume: "CV",
+        },
+        about: {
+            title: "Sobre mí",
+            texts: [
+                "¡Hola! Soy <b>Rayane</b>, un <b>desarrollador</b> apasionado con un profundo interés por la <b>tecnología</b> y todo lo relacionado con la informática. A lo largo de los años, me he dedicado a crear diversos <b>proyectos personales</b>, impulsado por mi pasión por el <b>aprendizaje</b> y la <b>exploración de nuevas tecnologías</b>.<br/>",
+                "Aunque mi <b>portafolio pone un fuerte énfasis en el diseño</b>, refleja principalmente mi aprecio por la <b>estética visual</b> y la <b>experiencia del usuario</b>, aspectos que considero un <i>pasatiempo</i> y una <i>vía creativa</i>. Aunque realmente disfruto creando <b>interfaces limpias y visualmente atractivas</b>, mi <b>enfoque profesional</b> está orientado hacia la <b>ciberseguridad</b> y el <b>desarrollo de software</b>, donde busco profundizar mis conocimientos y construir una <b>carrera técnica sólida</b>.<br/>",
+                "Domino el <b>desarrollo full-stack</b> y la <b>ciberseguridad</b>, con un enfoque particular en <b>React</b> y <b>Next.js</b> para el desarrollo web. En ciberseguridad, me he formado a través de desafíos <b>Capture The Flag (CTF)</b> y he aplicado esas habilidades en <b>contextos reales</b>, fortaleciendo mi comprensión de las <b>vulnerabilidades</b>, el <b>endurecimiento de sistemas</b> y las <b>prácticas de desarrollo seguro</b>.<br/>",
+                "Poseo un <b>BUT en Informática</b> por la <b>Universidad de Lyon 1</b> (<i>programa de Desarrollo e Implementación</i>) y actualmente curso un <b>grado de ingeniería de tres años en CPE Lyon</b>, especializado en <b>Ingeniería Informática y Ciberseguridad</b>.<br/>",
+                "Actualmente trabajo en <b>Energy Pool</b> como <b>miembro del Blue Team</b> (<i>protección contra vulnerabilidades</i>) durante mis estudios de ingeniería. Este rol refuerza mis habilidades en <b>detección de amenazas</b>, <b>análisis de incidentes</b>, <b>gestión de vulnerabilidades</b> y <b>mejora continua de las medidas defensivas</b> dentro de un <b>entorno de producción</b>.<br/>",
+                "... certificaciones",
+            ]
+        },
+        projects: {
+            title: "Proyectos",
+            description: "Una selección de mis últimos proyectos de desarrollo, explorando varias tecnologías desde IA y aplicaciones web hasta 3D y ciberseguridad. Haz clic para profundizar en cada uno, aprender más sobre él, probarlo y descubrir su código fuente.",
+        },
+        work: {
+            title: "Experiencia Laboral",
+            description: "Aquí hay una visión general de mis experiencias profesionales, destacando mis roles, responsabilidades y las tecnologías con las que he trabajado en diversas posiciones. Cada experiencia ha contribuido a mi crecimiento como desarrollador y entusiasta de la ciberseguridad.",
+            techs: "Tecnologías",
+        }
     },
     about: {
         title: "Acerca de",

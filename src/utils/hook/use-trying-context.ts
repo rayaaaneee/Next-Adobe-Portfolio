@@ -1,4 +1,3 @@
-
 import { Context, useContext } from "react";
 
 function useTryingContext<T>(context: Context<T | null>): T {

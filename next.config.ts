@@ -2,22 +2,22 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx';
 import withPWAInit from "@ducanh2912/next-pwa";
-import remarkDirective from "remark-directive";
 //import remarkCustomBlocks from "./plugins/remark-custom-blocks.js";
 
 import path from "path";
-
-type originType = {
-    url: string;
-    islocalhost?: boolean;
-}
 
 const withPWA = withPWAInit({
     dest: "public",
     disable: ["development", "test"].includes(process.env.NODE_ENV),
 });
 
-const allowedOrigins: originType[] = [
+
+type OriginType = {
+    url: string;
+    islocalhost?: boolean;
+}
+
+const allowedOrigins: OriginType[] = [
     { url:'http://127.0.0.1:3000', islocalhost: true },
     { url:'http://localhost:3000', islocalhost: true },
     { url:'http://rayanemerlin.com', islocalhost: false },

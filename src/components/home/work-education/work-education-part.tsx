@@ -14,14 +14,17 @@ import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "../../others/separator";
 import TechItem from "./tech-item";
+import Language from "@/utils/types/language";
+import ManageLanguages from "@/utils/manager/manage-language";
 
 export interface WorkEducationPartProps {
     item: Work | Education;
     index: number;
     separator?: boolean;
+    language: Language;
 }
 
-const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPartProps) => {
+const WorkEducationPart = ({ item, index, separator = false, language }: WorkEducationPartProps) => {
 
     const isWork = item.hasOwnProperty("technologies");
 
@@ -47,19 +50,19 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                             {item.name}
                     </HeadingTwo>
                     <div className="flex flex-col items-start sm:items-end justify-center gap-1">
-                        <HeadingThree containerClassName="!m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location}</HeadingThree>
+                        <HeadingThree containerClassName="!m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location[language]}</HeadingThree>
                         <Paragraph className="!m-0 italic">{item.date.toString()}</Paragraph>
                     </div>
                 </SubSection>
                 {isWork && (
                     <SubSection>
-                        <HeadingThree icon={<FaUserTie className="w-5 h-5"/>} containerClassName="!mt-0">{(item as Work).title}</HeadingThree>
-                        <Paragraph className="!m-0 italic">{(item as Work).type}</Paragraph>
+                        <HeadingThree icon={<FaUserTie className="w-5 h-5"/>} containerClassName="!mt-0">{(item as Work).title[language]}</HeadingThree>
+                        <Paragraph className="!m-0 italic">{(item as Work).type[language]}</Paragraph>
                     </SubSection>
                 )}
                 {isWork && (item as Work).technologies.length > 0 && (
                     <>
-                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="!mt-0">Technologies:</HeadingThree>
+                        <HeadingThree icon={<FaLayerGroup className="w-5 h-5"/>} containerClassName="!mt-0">{ ManageLanguages.getSentences(language).home.work.techs }:</HeadingThree>
                         <ul className={cn(
                             "list-none w-full md:w-fit grid grid-cols-2 grid-flow-col grid-rows-[repeat(4,auto)] gap-y-4 gap-x-6",
                             "mx-auto md:ml-12 lg:ml-14 xl:ml-16 ",
@@ -70,7 +73,7 @@ const WorkEducationPart = ({ item, index, separator = false }: WorkEducationPart
                         </ul>
                     </>
                 )}
-                <Paragraph indent className="m-0" alignment={ParagraphAlignment.justify}>{item.description}</Paragraph>
+                <Paragraph indent className="m-0" alignment={ParagraphAlignment.justify}>{item.description[language]}</Paragraph>
             </section>
             {separator && <Separator lite />}
         </>

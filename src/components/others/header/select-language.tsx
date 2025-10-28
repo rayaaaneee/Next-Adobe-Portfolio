@@ -4,18 +4,16 @@ import Image from 'next/image';
 
 import cn from "@/utils/function/cn";
 
-import languageContext from "@/utils/context/language-context";
-import useTryingContext from "@/utils/hook/use-trying-context";
-
 import ManageLanguages, { Language } from "@/utils/manager/manage-language";
 
 import ClassNameInterface from "@/utils/interface/classname";
+import { useLanguage } from "@/utils/hook/use-language";
 
 const SelectLanguage = ({ className, id }: ClassNameInterface) => {
 
     const selectLanguageOptions = useRef<HTMLDivElement | null>(null);
 
-    const { language, setLanguage } = useTryingContext(languageContext);
+    const { language, setLanguage } = useLanguage();
 
     useEffect(() => {
 

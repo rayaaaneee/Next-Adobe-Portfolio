@@ -1,4 +1,8 @@
+"use client";
+
 import cn from "@/utils/function/cn";
+
+import { useLanguage } from "@/utils/hook/use-language";
 
 import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 
@@ -22,6 +26,8 @@ export interface ContactLinksProps extends ClassNameInterface {
 }
 
 const ContactLinks = ({className, id, animate = false, tooltips = true, tooltipsSize = TooltipSize.lg, size = IconSize.md}: ContactLinksProps) => {
+
+    const { language } = useLanguage();
 
     if (!tooltips && (tooltipsSize)) {
         throw new Error("tooltipSize cannot be used if tooltip is deactivated");
@@ -54,7 +60,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
             id: "contact-link-github"
         },
         { 
-            title: "Mail", 
+            title: language.home.links.mail, 
             image: mailImg,
             href: `mailto:${process.env.EMAIL}`, 
             target: "_blank", 
@@ -62,13 +68,13 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
             id: "contact-link-mail"
         },
         { 
-            title: "Phone", 
+            title: language.home.links.phone, 
             image: phoneImg,
             href: `tel:${process.env.TEL}`,
             id: "contact-link-phone"
         },
         { 
-            title: "Resume", 
+            title: language.home.links.resume, 
             image: resumeImg,
             href: "/resume", 
             target: "_blank", 

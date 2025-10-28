@@ -49,6 +49,9 @@ const Page = async ({ params }: PageProps) => {
                 <BlogHeader blog={blog} />
                 <Separator />
                 { blog.content }
+                <div className="center">
+                    Thank you for reading! 🚀
+                </div>
             </article>
         </MainPart>
     );

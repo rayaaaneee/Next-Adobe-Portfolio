@@ -1,6 +1,6 @@
-import { HeadingOne, Paragraph } from '../page-flow';
+import { HeadingOne, Paragraph } from '@/components/page-flow';
 
-import WorkEducationPart from './work-education/work-education-part';
+import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
 import { DateClass, IntervalDateClass, Month } from '@/utils/types/date';
 import { type Education } from '@/utils/types/home/experience';
@@ -56,13 +56,13 @@ const EducationContainer = () => {
     ];
     
     return (
-        <article>
+        <>
             <HeadingOne id="education" isAnchorLink>Education</HeadingOne>
             <Paragraph>Describe here...</Paragraph>
             {education.map((edu, index) => (
                 <WorkEducationPart separator={index < education.length - 1} key={index} item={edu} index={index} />
             ))}
-        </article>
+        </>
     )
 }
 

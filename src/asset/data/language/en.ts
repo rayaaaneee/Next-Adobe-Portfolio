@@ -1,7 +1,8 @@
-import Sentences from "@/utils/types/language";
+import Language from "@/utils/types/language";
+import Sentences from "@/utils/types/sentences";
 
 const englishSentences: Sentences = {
-    current: "en",
+    current: Language.EN,
     denomination: "English",
     languages: {
         en: "English",
@@ -47,6 +48,37 @@ const englishSentences: Sentences = {
         },
     },
     home: {
+        role: "Full-Stack Developer & Cybersecurity Enthusiast",
+        location: {
+            country: "France",
+            city: "Lyon",
+        },
+        links: {
+            title: "Links",
+            mail: "Email",
+            phone: "Phone",
+            resume: "Resume",
+        },
+        about: {
+            title: "About Me",
+            texts: [
+                "Hello! I&apos;m <b>Rayane</b>, a passionate <b>developer</b> with a deep interest in <b>technology</b> and all things related to computing. Over the years, I&apos;ve dedicated myself to creating a variety of <b>personal projects</b>, driven by my passion for <b>learning</b> and <b>exploring new technologies</b>.<br/>",
+                "Although my <b>portfolio places a strong emphasis on design</b>, it mainly reflects my appreciation for <b>visual aesthetics</b> and <b>user experience</b>, aspects I value as a <i>hobby</i> and <i>creative outlet</i>. While I truly enjoy crafting <b>clean and visually engaging interfaces</b>, my <b>professional focus</b> is oriented toward <b>Cybersecurity</b> and <b>software development</b>, where I aim to deepen my expertise and build a <b>solid technical career</b>.<br/>",
+                "I&apos;m proficient in <b>full-stack development</b> and <b>cybersecurity</b>, with a particular focus on <b>React</b> and <b>Next.js</b> for web development. In cybersecurity, I&apos;ve trained through Capture The Flag <b>(CTF)</b> challenges and applied those skills in <b>real-world contexts</b>, strengthening my understanding of <b>vulnerabilities</b>, <b>system hardening</b>, and <b>secure development practices</b>.<br/>",
+                "I hold a <b>BUT in Computer Science</b> from the <b>University of Lyon 1</b> (<i>Development &amp; Implementation Program</i>) and am currently pursuing a <b>three-year engineering degree at CPE Lyon</b>, specializing in <b>Cybersecurity Computer Engineering</b>.<br/>",
+                "I&apos;m currently working at <b>Energy Pool</b> as a <b>Blue Team member</b> (<i>vulnerability protection</i>) throughout my engineering studies. This role is enhancing my skills in <b>threat detection</b>, <b>incident analysis</b>, <b>vulnerability management</b>, and <b>continuous improvement of defensive measures</b> within a <b>production environment</b>.<br/>",
+                "... certs",
+            ]
+        },
+        projects: {
+            title: "Projects",
+            description: "A selection of my latest development projects, exploring various technologies from AI and web apps to 3D and cybersecurity. Click to dive deeper into each one, learn more about it, try it and discover its source code!",
+        },
+        work: {
+            title: "Work Experience",
+            description: "Here is an overview of my professional experiences, highlighting my roles, responsibilities, and the technologies I've worked with in various positions. Each experience has contributed to my growth as a developer and cybersecurity enthusiast.",
+            techs: "Technologies",
+        }
     },
     about: {
         title: "About",

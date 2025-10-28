@@ -1,32 +1,27 @@
 import ManageCookies from './manage-cookies';
 
-import Sentences from '@/utils/types/language';
+import Sentences from '@/utils/types/sentences';
 
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
 import frenchSentences from '@/asset/data/language/fr';
 import { DeepReadonliable } from '../types/deep-readonly';
+import Language from '../types/language';
 
 // Considering structure of frenchSentences is the same for all languages
 
-export const enum Language {
-    EN = 'en',
-    FR = 'fr',
-    ES = 'es'
-}
-
-const English: Sentences = englishSentences;
-const French: Sentences = frenchSentences;
-const Spanish: Sentences = spanishSentences;
+const English: Sentences = englishSentences as Sentences;
+const French: Sentences = frenchSentences as Sentences;
+const Spanish: Sentences = spanishSentences as Sentences;
 
 export default class ManageLanguages {
 
     static readonly cookieName: string = 'language';
     static readonly defaultLanguage = Language.EN;
     static readonly supportedLanguages:  Array<[Language, Sentences]> = [
-        [Language.EN, English],
-        [Language.FR, French],
-        [Language.ES, Spanish]
+        [English.current, English],
+        [French.current, French],
+        [Spanish.current, Spanish]
     ];
 
     static language: Language = ManageLanguages.defaultLanguage;

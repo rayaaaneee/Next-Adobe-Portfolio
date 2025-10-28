@@ -1,6 +1,8 @@
-// Reference object for type inference, can&apos;t be typed directly
+// Reference object for type inference for Language, used in context and hooks
+import Language from "@/utils/types/language";
+
 const frenchSentences = {
-    current: "fr",
+    current: Language.FR,
     denomination: "Français",
     languages: {
         en: "Anglais",
@@ -46,6 +48,37 @@ const frenchSentences = {
         },
     },
     home: {
+        role: "Développeur Full-Stack & Passionné de Cybersécurité",
+        location: {
+            country: "France",
+            city: "Lyon"
+        },
+        links: {
+            title: "Liens",
+            mail: "Mail",
+            phone: "Tél.",
+            resume: "CV",
+        },
+        about: {
+            title: "About me",
+            texts: [
+                "Bonjour ! Je suis <b>Rayane</b>, un <b>développeur</b> passionné avec un grand intérêt pour la <b>technologie</b> et tout ce qui touche à l&apos;informatique. Au fil des années, j&apos;ai consacré mon temps à la création de divers <b>projets personnels</b>, animés par ma passion pour <b>l&apos;apprentissage</b> et <b>l&apos;exploration de nouvelles technologies</b>.<br/>",
+                "Bien que mon <b>portfolio mette fortement l&apos;accent sur le design</b>, il reflète surtout mon appréciation pour <b>l&apos;esthétique visuelle</b> et <b>l&apos;expérience utilisateur</b>, des aspects que je considère comme un <i>passe-temps</i> et un <i>exutoire créatif</i>. Même si j&apos;aime concevoir des <b>interfaces épurées et visuellement attrayantes</b>, mon <b>objectif professionnel</b> est orienté vers la <b>cybersécurité</b> et le <b>développement logiciel</b>, domaines dans lesquels je souhaite approfondir mon expertise et construire une <b>carrière technique solide</b>.<br/>",
+                "Je maîtrise le <b>développement full-stack</b> et la <b>cybersécurité</b>, avec un intérêt particulier pour <b>React</b> et <b>Next.js</b> dans le développement web. En cybersécurité, je me suis formé à travers des défis <b>Capture The Flag (CTF)</b> et j&apos;ai appliqué ces compétences dans des <b>contextes réels</b>, renforçant ainsi ma compréhension des <b>vulnérabilités</b>, du <b>renforcement des systèmes</b> et des <b>pratiques de développement sécurisé</b>.<br/>",
+                "Je suis titulaire d&apos;un <b>BUT en Informatique</b> de l&apos;<b>Université Lyon 1</b> (<i>parcours Développement et Implémentation</i>) et je poursuis actuellement un <b>cycle d&apos;ingénieur en trois ans à CPE Lyon</b>, avec une spécialisation en <b>Génie Informatique et Cybersécurité</b>.<br/>",
+                "Je travaille actuellement chez <b>Energy Pool</b> en tant que <b>membre de la Blue Team</b> (<i>protection contre les vulnérabilités</i>) tout au long de mes études d&apos;ingénieur. Ce rôle renforce mes compétences en <b>détection de menaces</b>, <b>analyse d&apos;incidents</b>, <b>gestion des vulnérabilités</b> et <b>amélioration continue des mesures défensives</b> au sein d&apos;un <b>environnement de production</b>.<br/>",
+                "... certifications"
+            ]
+        },
+        projects: {
+            title: "Projets",
+            description: "Une sélection de mes derniers projets de développement, explorant diverses technologies allant de l'IA et des applications web à la 3D et à la cybersécurité. Cliquez pour plonger plus profondément dans chacun d'eux, en apprendre davantage, les essayer et découvrir leur code source !"
+        },
+        work: {
+            title: "Expériences professionnelles",
+            description: "Voici un aperçu de mes expériences professionnelles, mettant en évidence mes rôles, responsabilités et les technologies avec lesquelles j'ai travaillé dans divers postes. Chaque expérience a contribué à ma croissance en tant que développeur et passionné de cybersécurité.",
+            techs: "Technologies",
+        }
     },
     about: {
         title: "À propos",
