@@ -1,6 +1,7 @@
 * [X] Fix Menu Animation (broken)
 * [X] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
 * [ ] Make metadatas
+* [ ] Dynamic Site-Map.xml (using pages)
 * [ ] Fill manifest.json
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
@@ -11,15 +12,15 @@
 * [X] Page Flow : Factorize headings
 * [ ] CC 4.0 (copyrights)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
-* [ ] Blog 
-  * [ ] Citation on MDX (> blockquote)
-  * [ ] Use adaptable grid as blog pager
+* [ ] Blog
+
+  * [X] Citation on MDX (> blockquote)
+  * [X] Use adaptable grid as blog pager
   * [ ] For each blog :
     * [ ] Further readings (linked blogs)
     * [ ] Nb minutes reads
     * [ ] Links to previous and next blog
     * [ ] Tags
-    * [ ] Add Priority on languages
     * [ ] share button
   * [X] Precize disponible languages on each page
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard

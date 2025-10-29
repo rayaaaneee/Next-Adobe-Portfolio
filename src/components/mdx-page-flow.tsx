@@ -14,11 +14,15 @@ import ChildrenInterface from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
 import NextImageProps from '@/utils/types/next-image-props';
 
-export const mdxImage = (props: NextImageProps) => (
-    <Tooltip size={TooltipSize.md}
-    className={cn(
-        "img-container rounded-md mx-auto",
-    )} disabled={props.alt === undefined} text={props.alt}>
+export const MdxImage = (props: NextImageProps) => (
+    <Tooltip 
+        size={TooltipSize.md}
+        className={cn(
+            "img-container rounded-md mx-auto",
+        )} 
+        disabled={props.alt === undefined} 
+        text={props.alt}
+    >
         <Image {...props} className={cn(
             'cursor-zoom-in rounded-md',
             "border-4 border-white/40",
@@ -29,7 +33,7 @@ export const mdxImage = (props: NextImageProps) => (
 );
 
 export interface mdxCodeProps extends ChildrenInterface, ClassNameInterface {} 
-export const mdxCode = ({ children, className }: mdxCodeProps) => (
+export const MdxCode = ({ children, className }: mdxCodeProps) => (
     <CodeBlock
         lang={className?.remove('language-').remove('(lines)') as BundledLanguage || undefined}
         showLineNumbers={className?.includes('(lines)')}
@@ -38,9 +42,9 @@ export const mdxCode = ({ children, className }: mdxCodeProps) => (
     </CodeBlock>
 );
 
-export const mdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
+export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 
-export const mdxQuote = ({ children }: ChildrenInterface) => (
+export const MdxQuote = ({ children }: ChildrenInterface) => (
     <blockquote className={cn(
         'border-l-8 border-[blanchedalmond]/70 dark:border-pink-200/70',
         'pl-4 italic py-2',
@@ -51,31 +55,31 @@ export const mdxQuote = ({ children }: ChildrenInterface) => (
     </blockquote>
 );
 
-export const mdxList = ({ children }: ChildrenInterface) => (
+export const MdxList = ({ children }: ChildrenInterface) => (
     <ul className='list-disc [&>li]:ml-6 [&>li]:my-2'>
         {children}
     </ul>
 );
 
-export const mdxSeparator = () => (<Separator />);
+export const MdxSeparator = () => (<Separator />);
 
-export const mdxHeadingOne = ({ children }: ChildrenInterface) => (
+export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
     <HeadingOne isAnchorLink containerClassName='ml-0'>{children}</HeadingOne>
 );
 
-export const mdxHeadingTwo = ({ children }: ChildrenInterface) => (
+export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
     <HeadingTwo isAnchorLink containerClassName='ml-0'>{children}</HeadingTwo>
 );
 
-export const mdxHeadingThree = ({ children }: ChildrenInterface) => (
+export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
     <HeadingThree isAnchorLink containerClassName='!ml-0'>{children}</HeadingThree>
 );
 
-export const mdxParagraph = ({ children }: ChildrenInterface) => (
+export const MdxParagraph = ({ children }: ChildrenInterface) => (
     <Paragraph alignment={ParagraphAlignment.justify}>{children}</Paragraph>
 );
 
-export const mdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
+export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
     <a href={href} className='underline' target='_blank'>
         {children}
     </a>

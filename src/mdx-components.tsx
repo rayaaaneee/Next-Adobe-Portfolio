@@ -1,19 +1,19 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { mdxAnchor, mdxCode, mdxHeadingOne, mdxHeadingThree, mdxHeadingTwo, mdxImage, mdxList, mdxParagraph, mdxPre, mdxQuote, mdxSeparator } from '@/components/mdx-page-flow';
+import { MdxAnchor, MdxCode, MdxHeadingOne, MdxHeadingThree, MdxHeadingTwo, MdxImage, MdxList, MdxParagraph, MdxPre, MdxQuote, MdxSeparator } from '@/components/mdx-page-flow';
 
 export const mdxComponents: MDXComponents = {
-    Image: mdxImage,
-    code: mdxCode,
-    pre: mdxPre,
-    blockquote: mdxQuote,
-    ul: mdxList,
-    hr: mdxSeparator,
-    h1: mdxHeadingOne,
-    h2: mdxHeadingTwo,
-    h3: mdxHeadingThree,
-    p: mdxParagraph,
-    a: mdxAnchor,
+    Image: MdxImage,
+    code: MdxCode,
+    pre: MdxPre,
+    blockquote: MdxQuote,
+    ul: MdxList,
+    hr: MdxSeparator,
+    h1: MdxHeadingOne,
+    h2: MdxHeadingTwo,
+    h3: MdxHeadingThree,
+    p: MdxParagraph,
+    a: MdxAnchor,
 };
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => ({

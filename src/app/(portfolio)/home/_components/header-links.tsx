@@ -19,13 +19,13 @@ const HeaderLinks = () => {
 
     return (
         <>
-            <HeadingThree icon={<FaLink/>} containerClassName="!ml-0">{ language.home.links.title }</HeadingThree>
+            <HeadingThree icon={<FaLink/>} containerClassName="!ml-0 max-sm:mt-0">{ language.home.links.title }</HeadingThree>
             <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
                 "w-fit mt-4 justify-between",
+                ["max-sm:mt-2 max-sm:mb-0"],
                 [
                     "gap-4 mx-auto",
-                    "xs:mx-0",
-                    "sm:gap-4",
+                    "sm:gap-4 sm:mx-0",
                     "md:gap-5",
                     "lg:gap-6",
                     "xl:gap-7"

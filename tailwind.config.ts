@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import tailwindScrollbar from 'tailwind-scrollbar';
 import plugin from 'tailwindcss/plugin';
+
 import { PluginAPI } from 'tailwindcss/types/config';
 
 const config: import('tailwindcss').Config = {
@@ -153,9 +154,17 @@ const config: import('tailwindcss').Config = {
     plugins: [
         tailwindScrollbar({ nocompatible: true }),
         plugin(({ addVariant }: PluginAPI) => {
+
             addVariant('hover-safe', "@media (hover: hover) and (pointer: fine)");
             addVariant('children', '& > *');
+
+            addVariant('max-2xl', '@media (max-width: 1536px)');
+            addVariant('max-xl', '@media (max-width: 1280px)');
+            addVariant('max-lg', '@media (max-width: 1024px)');
             addVariant('max-md', '@media (max-width: 767px)');
+            addVariant('max-sm', '@media (max-width: 639px)');
+            addVariant('max-xs', '@media (max-width: 479px)');
+            
         }),
     ],
 }
