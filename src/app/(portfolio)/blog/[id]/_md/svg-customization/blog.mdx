@@ -131,7 +131,7 @@ export interface SvgPatternInterface
 
 const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) => {
   return (
-    <pattern xmlns="http://www.w3.org/2000/svg" id={ customPatternId !== undefined ? customPatternId : "emptyPathImg" } patternUnits="userSpaceOnUse" width={ patternWidth } height={ patternHeight }>
+    <pattern xmlns="http://www.w3.org/2000/svg" id="pngPattern" patternUnits="userSpaceOnUse" width={ patternWidth } height={ patternHeight }>
       <image xmlnsXlink="http://www.w3.org/1999/xlink" 
         {/* Set the initial background with the png (public/) */}
         xlinkHref={"/images/patterns/png-background.jpg" } 

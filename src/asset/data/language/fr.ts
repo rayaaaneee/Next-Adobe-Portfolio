@@ -78,6 +78,10 @@ const frenchSentences = {
             title: "Expériences professionnelles",
             description: "Voici un aperçu de mes expériences professionnelles, mettant en évidence mes rôles, responsabilités et les technologies avec lesquelles j'ai travaillé dans divers postes. Chaque expérience a contribué à ma croissance en tant que développeur et passionné de cybersécurité.",
             techs: "Technologies",
+        },
+        education: {
+            title: "Éducation",
+            description: "Voici un aperçu de mon parcours éducatif, mettant en lumière les institutions que j'ai fréquentées, les diplômes que j'ai obtenus et les domaines d'étude que j'ai explorés."
         }
     },
     about: {

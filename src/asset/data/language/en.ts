@@ -78,6 +78,10 @@ const englishSentences: Sentences = {
             title: "Work Experience",
             description: "Here is an overview of my professional experiences, highlighting my roles, responsibilities, and the technologies I've worked with in various positions. Each experience has contributed to my growth as a developer and cybersecurity enthusiast.",
             techs: "Technologies",
+        },
+        education: {
+            title: "Education",
+            description: "Here is an overview of my educational background, highlighting the institutions I've attended, the degrees I've obtained, and the fields of study I've explored."
         }
     },
     about: {

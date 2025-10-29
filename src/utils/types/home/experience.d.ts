@@ -3,7 +3,7 @@ import { WithLanguage } from "@/utils/manager/manage-language";
 import { IntervalDateClass } from "@/utils/types/home/experience";
 
 export type Education = {
-    name: string,
+    name: WithLanguage<string>,
     location: WithLanguage<string>,
     title: WithLanguage<string>,
     description: WithLanguage<string>,
@@ -11,6 +11,7 @@ export type Education = {
 }
 
 export type Work = Education & {
+    name: string,
     type: WithLanguage<string>,
     technologies: GridContent[],
 }

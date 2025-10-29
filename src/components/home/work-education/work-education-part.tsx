@@ -47,7 +47,7 @@ const WorkEducationPart = ({ item, index, separator = false, language }: WorkEdu
                                 (<MdSchool className="w-8 h-8"/>)
                             }
                         >
-                            {item.name}
+                            {isWork ? (item as Work).name : (item as Education).name[language]}
                     </HeadingTwo>
                     <div className="flex flex-col items-start sm:items-end justify-center gap-1">
                         <HeadingThree containerClassName="!m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location[language]}</HeadingThree>

@@ -78,6 +78,10 @@ const spanishSentences: Sentences = {
             title: "Experiencia Laboral",
             description: "Aquí hay una visión general de mis experiencias profesionales, destacando mis roles, responsabilidades y las tecnologías con las que he trabajado en diversas posiciones. Cada experiencia ha contribuido a mi crecimiento como desarrollador y entusiasta de la ciberseguridad.",
             techs: "Tecnologías",
+        },
+        education: {
+            title: "Educación",
+            description: "Aquí hay un vistazo a mi trayectoria educativa, destacando las instituciones que he asistido, los títulos que he obtenido y los campos de estudio que he explorado."
         }
     },
     about: {

@@ -18,11 +18,8 @@ export default class ManageLanguages {
 
     static readonly cookieName: string = 'language';
     static readonly defaultLanguage = Language.EN;
-    static readonly supportedLanguages:  Array<[Language, Sentences]> = [
-        [English.current, English],
-        [French.current, French],
-        [Spanish.current, Spanish]
-    ];
+    static readonly supportedLanguages:  Array<[Language, Sentences]> = 
+        ([English, French, Spanish].map((sentences) => [sentences.current, sentences]));
 
     static language: Language = ManageLanguages.defaultLanguage;
 

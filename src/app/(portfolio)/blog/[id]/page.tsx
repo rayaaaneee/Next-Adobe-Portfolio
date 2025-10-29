@@ -7,6 +7,7 @@ import { assertFoundBlog } from "@/asset/data/blog/blogs";
 import MainPart from "@/components/others/main-part";
 import BlogHeader from "@/components/blog/_components/blog-header";
 import Separator from "@/components/others/separator";
+import { HeadingThree } from "@/components/page-flow";
 
 export interface PageProps {
     params: Promise<{
@@ -50,7 +51,7 @@ const Page = async ({ params }: PageProps) => {
                 <Separator />
                 { blog.content }
                 <div className="center">
-                    Thank you for reading! 🚀
+                    <HeadingThree containerClassName="!m-0">Thank you for reading! 🚀</HeadingThree>
                 </div>
             </article>
         </MainPart>

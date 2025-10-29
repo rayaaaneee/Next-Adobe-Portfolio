@@ -3,7 +3,7 @@ import Image from "next/image";
 import DeepReadonly, { DeepReadonliable } from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
 
-import { Language } from "@/utils/manager/manage-language";
+import Language from "@/utils/types/language";
 
 import networkIcon from "@/asset/img/blog/blog-1/icon.png";
 import NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-ai/blog.mdx";
