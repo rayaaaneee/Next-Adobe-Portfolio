@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import cn from "@/utils/function/cn";
 
-import ManageLanguages, { Language } from "@/utils/manager/manage-language";
+import ManageLanguages from "@/utils/manager/manage-language";
 
 import ClassNameInterface from "@/utils/interface/classname";
 import { useLanguage } from "@/utils/hook/use-language";
@@ -52,7 +52,7 @@ const SelectLanguage = ({ className, id }: ClassNameInterface) => {
                 <Image
                     className={cn('h-auto w-[90%] rounded-[5px]')}
                     alt='current-flag'
-                    src={ `/flags/${language.flag_img as Language}` }
+                    src={ `/flags/${language.flag_img}` }
                     width={24}
                     height={24}
                 />

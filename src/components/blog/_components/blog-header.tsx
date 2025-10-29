@@ -7,7 +7,7 @@ import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import { HeadingOne, HeadingTwo } from '@/components/page-flow';
 
-import { Language } from '@/utils/manager/manage-language';
+import Language from '@/utils/types/language';
 
 import { BlogPost } from '@/utils/types/blog';
 import { DeepReadonliable } from '@/utils/types/deep-readonly';

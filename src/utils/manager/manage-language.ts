@@ -1,12 +1,13 @@
 import ManageCookies from './manage-cookies';
 
 import Sentences from '@/utils/types/sentences';
+import Language from '@/utils/types/language';
+import { DeepReadonliable } from '@/utils/types/deep-readonly';
 
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
 import frenchSentences from '@/asset/data/language/fr';
-import { DeepReadonliable } from '../types/deep-readonly';
-import Language from '../types/language';
+
 
 // Considering structure of frenchSentences is the same for all languages
 
@@ -17,36 +18,40 @@ const Spanish: Sentences = spanishSentences as Sentences;
 export default class ManageLanguages {
 
     static readonly cookieName: string = 'language';
-    static readonly defaultLanguage = Language.EN;
+    static readonly defaultLanguage: Language = Language.EN;
     static readonly supportedLanguages:  Array<[Language, Sentences]> = 
         ([English, French, Spanish].map((sentences) => [sentences.current, sentences]));
 
     static language: Language = ManageLanguages.defaultLanguage;
 
 
-    private static _isSupported(language: string): boolean {
+    private static _isSupported(language: string): language is Language {
         return this.supportedLanguages.some(([name]) => name === language);
     }
 
     private static _getSystemLanguage = (): string => {
-        return navigator.language;
+        return navigator.language.slice(0, 2).toLowerCase();
     }
 
     static setLanguage = (language: Language) => {
         if (ManageLanguages._isSupported(language)) {
             ManageLanguages.language = language;
+            document.documentElement.lang = language;
             ManageCookies.setCookie(ManageLanguages.cookieName, language);
         }
     }
 
     static manageLanguages = () => {
-        if (ManageCookies.isCookie(ManageLanguages.cookieName) &&
-                ManageLanguages._isSupported(ManageCookies.getCookie(ManageLanguages.cookieName) as string)) {
+        if (
+            (ManageCookies.isCookie(ManageLanguages.cookieName)) &&
+            (ManageLanguages._isSupported(ManageCookies.getCookie(ManageLanguages.cookieName) as string))
+        ) {
             ManageLanguages.language =
                 ManageCookies.getCookie(ManageLanguages.cookieName) as Language;
         } else {
-            if (ManageLanguages._isSupported(ManageLanguages.language)) {
-                ManageLanguages.language = ManageLanguages._getSystemLanguage() as Language;
+            const systemLanguage = ManageLanguages._getSystemLanguage();
+            if (ManageLanguages._isSupported(systemLanguage)) {
+                ManageLanguages.language = systemLanguage as Language;
             } else {
                 ManageLanguages.language = ManageLanguages.defaultLanguage;
             }

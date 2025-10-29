@@ -126,11 +126,11 @@ You can see that we used a new attribute for the fill `url(#pngPattern)`. This p
 There's the component used to define the SVG pattern with the background image. We set the image source to a PNG file located in the public folder.
 
 ```tsx
-export interface SvgPatternInterface 
-{ x: number, y: number, patternWidth: number, patternHeight: number }
+interface SvgPatternInterface 
+  { x: number, y: number, patternWidth: number, patternHeight: number }
 
-const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) => {
-  return (
+const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) => (
+  <defs>
     <pattern xmlns="http://www.w3.org/2000/svg" id="pngPattern" patternUnits="userSpaceOnUse" width={ patternWidth } height={ patternHeight }>
       <image xmlnsXlink="http://www.w3.org/1999/xlink" 
         {/* Set the initial background with the png (public/) */}
@@ -138,8 +138,8 @@ const SvgPattern = ({ x, y, patternWidth, patternHeight }: SvgPatternInterface) 
         x={ x } y={ y } width={ imageWidth } height={ imageHeight }
       />
     </pattern>
-  );
-}
+  </defs>
+);
 ```
 
 This `<SvgPattern/>` component defines a pattern that can be used to fill SVG shapes. The pattern uses an image located at `/images/patterns/png-background.jpg` as its fill. The `patternWidth` and `patternHeight` props allow us to control the size of the pattern.
