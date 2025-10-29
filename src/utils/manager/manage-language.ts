@@ -33,10 +33,16 @@ export default class ManageLanguages {
         return navigator.language.slice(0, 2).toLowerCase();
     }
 
+    static setDocumentLanguage = () => {
+        if (typeof document !== 'undefined') {
+            document.documentElement.lang = ManageLanguages.language;
+        }
+    }
+
     static setLanguage = (language: Language) => {
         if (ManageLanguages._isSupported(language)) {
             ManageLanguages.language = language;
-            document.documentElement.lang = language;
+            ManageLanguages.setDocumentLanguage();
             ManageCookies.setCookie(ManageLanguages.cookieName, language);
         }
     }

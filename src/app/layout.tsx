@@ -6,7 +6,6 @@ import cn from "@/utils/function/cn";
 import "~/scss/styles.scss";
 
 import ChildrenInterface from "@/utils/interface/children";
-import ManageLanguages from "@/utils/manager/manage-language";
 
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
@@ -65,8 +64,7 @@ export const viewport: Viewport = {
 const Layout = ({ 
     children 
 } : Readonly<ChildrenInterface>) => (
-    <html 
-        lang={ManageLanguages.defaultLanguage} 
+    <html
         className={cn(
             "scrollbar-thin",
             ["[&.no-overflow]:overflow-hidden"],
