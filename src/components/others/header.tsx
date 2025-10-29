@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useRef, useState } from 'react';
+import useConditionalEffect from '@/utils/hook/use-conditional-effect';
+import useLanguage from '@/utils/hook/use-language';
 
 import cn from "@/utils/function/cn";
-
-import useConditionalEffect from '@/utils/hook/use-conditional-effect';
-import { useLanguage } from '@/utils/hook/use-language';
 
 import Logo, { LogoColors } from '../logo';
 import HamburgerMenu from './header/hamburger-menu';
 import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
+import { isWithLanguage, WithLanguageable } from '@/utils/types/language';
 
 export interface HeaderProps {
     hasFooter?: boolean,
@@ -31,10 +31,16 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
 
     const [isMenuReady, setIsMenuReady] = useState(false);
 
-    const links = [
-        {to: '/home', text: language.menu.home, isColored: false },
-        {to: '/blog', text: language.menu.blog, isColored: false },
-        {to: '/about', text: language.menu.about, isColored: true }
+    type linkType = {
+        to: string,
+        text: WithLanguageable<string>,
+        isColored: boolean,
+    }
+    const links: linkType[] = [
+        {to: '/home', text: "Portfolio", isColored: false },
+        {to: '/blog', text: "Blog", isColored: false },
+        {to: '/resume', text: { en: "Resume", fr: "CV", es: "Currículum"}, isColored: false },
+        {to: '/about', text: { en: "About", fr: "À propos", es: "Acerca de"}, isColored: true }
     ]
 
     // Close menu when changing page
@@ -90,13 +96,26 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
 
         if (mediaMenu.current) mediaMenu.current.addEventListener('click', onClickMenu);
 
+        const onEscapeKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                if (mediaMenu.current?.classList.contains("active")) {
+                    if ((checkbox as HTMLInputElement).checked) {
+                        (checkbox as HTMLInputElement).click();
+                    }
+                }
+            }
+        }
+
         window.addEventListener('click', clickOutsideMenu);
+        window.addEventListener('keydown', onEscapeKey);
 
         const mediaMenuTmp = mediaMenu.current;
 
         return () => {
             window.removeEventListener('click', clickOutsideMenu);
+            window.removeEventListener('keydown', onEscapeKey);
             if (mediaMenuTmp) mediaMenuTmp.removeEventListener('click', onClickMenu);
+            observer.disconnect();
         };
 
     }, [isMenuReady]);
@@ -137,7 +156,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                         "flex flex-col items-center justify-center gap-[3vh] w-fit",
                     )}>
                         { links.map((link) => (
-                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ link.text }</MenuLink>
+                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ isWithLanguage(link.text) ? link.text[language.current] : link.text }</MenuLink>
                         )) }
                     </div>
                     <SwitchTheme pinkMoon />

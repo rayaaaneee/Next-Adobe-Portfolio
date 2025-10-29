@@ -1,8 +1,8 @@
 "use client";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
-import { HeadingOne, Paragraph } from '@/components/page-flow';
+import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
@@ -139,7 +139,7 @@ const WorkContainer = () => {
     return (
         <>
             <HeadingOne id="work" isAnchorLink>{ language.home.work.title }</HeadingOne>
-            <Paragraph>{ language.home.work.description }</Paragraph>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.work.description }</Paragraph>
             {workExperience.map((work, index) => (
                 <WorkEducationPart language={language.current} separator={index < workExperience.length - 1} key={index} item={work} index={index} />
             ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from 'react';
+import useLanguage from '@/utils/hook/use-language';
 import useConditionalEffect from '@/utils/hook/use-conditional-effect';
 
 import cn from "@/utils/function/cn";
@@ -22,12 +23,14 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
 
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const { language } = useLanguage();
+
     const expandButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const isInteractive: boolean = nbWrappers > 1;
 
     const initialText = (isInteractive) ? 
-        "Expand"
+        (isExpanded ? (language.adaptive_grid.dismiss) : (language.adaptive_grid.expand))
             : 
         "";
         
@@ -61,7 +64,7 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
 
         verifyReference(expandButtonRef, "expandButtonRef");
 
-        const text: string = isExpanded ? "Dismiss" : initialText;
+        const text: string = isExpanded ? language.adaptive_grid.dismiss : initialText;
 
         expandButtonRef.current!.querySelector("h3")!.textContent = text;
 

@@ -1,4 +1,5 @@
 import { ChildrenType } from "@/utils/interface/children";
+import { WithLanguage, WithLanguageable } from "@/utils/types/language";
 
 export const baseImageProps = {
     width: 96,
@@ -6,7 +7,7 @@ export const baseImageProps = {
 } as const;
 
 type GridContent = {
-    name: string;
+    name: WithLanguageable<string>;
     icon: ChildrenType;
     color: string; 
     link?: string;

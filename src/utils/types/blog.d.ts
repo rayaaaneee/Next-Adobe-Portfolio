@@ -1,9 +1,11 @@
 import { Language } from "../manager/manage-language";
 
+import { WithLanguage } from "./language";
+
 export interface BlogPost {
     index: number;
     id: string;
-    title: string;
+    title: WithLanguage<string>;
     color: string;
     date: string;
     summary: string;

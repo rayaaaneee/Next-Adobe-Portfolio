@@ -25,12 +25,6 @@ const spanishSentences: Sentences = {
         illustration_creator: "Ilustración de Flore Marquin",
         illustration_inspiration: "Ilustración inspirada en El Señor de los Anillos: Los Anillos del Poder. Para más detalles e información legal, visite la pantalla."
     },
-    menu: {
-        index: "Inicio",
-        home: "Portfolio",
-        blog: "Blog",
-        about: "Acerca de"
-    },
     index: {
         title: "Adobe Portfolio - Rayane Merlin",
         discover: "Empezar",
@@ -82,7 +76,26 @@ const spanishSentences: Sentences = {
         education: {
             title: "Educación",
             description: "Aquí hay un vistazo a mi trayectoria educativa, destacando las instituciones que he asistido, los títulos que he obtenido y los campos de estudio que he explorado."
-        }
+        },
+        contact: {
+            title: "Ponte en contacto",
+            description: "Si deseas comunicarte conmigo, puedes usar los enlaces de arriba o enviarme un correo electrónico a ",
+        },
+        skills : {
+            title: "Habilidades y Tecnologías",
+            description: "Aquí hay una selección de mis habilidades técnicas y las tecnologías con las que tengo experiencia, que van desde lenguajes de programación y marcos hasta herramientas y plataformas.",
+            parts: {
+                languages: "Lenguajes de Programación",
+                frameworks: "Frameworks",
+                libraries: "Bibliotecas",
+                tools: "Herramientas",
+                databases: "Bases de Datos",
+            }
+        },
+        hobbies: {
+            title: "Pasatiempos e Intereses",
+        },
+        thanks: "¡ Gracias por visitar !"
     },
     blog: {
         lang: "Idioma",
@@ -103,7 +116,11 @@ const spanishSentences: Sentences = {
         personal_data: "Datos Personales",
         personal_data_text: "Es posible que se te solicite información personal que puede incluir uno o más de los siguientes elementos: <br/>• Nombre <br/>• Correo Electrónico",
         cookies: "Uso de Cookies",
-        cookies_text: "El uso de &apos;cookies&apos; para recopilar información sobre ti y tu actividad en nuestro sitio. Una cookie es un pequeño elemento de datos que nuestro sitio web almacena en tu computadora y al que accede cada vez que nos visitas, para que pueda entender cómo usas nuestro sitio."
+        cookies_text: "El uso de 'cookies' para recopilar información sobre ti y tu actividad en nuestro sitio. Una cookie es un pequeño elemento de datos que nuestro sitio web almacena en tu computadora y al que accede cada vez que nos visitas, para que pueda entender cómo usas nuestro sitio."
+    },
+    adaptive_grid: {
+        expand: "Expandir",
+        dismiss: "Descartar",
     },
     not_found: {
         title: "Página no encontrada"

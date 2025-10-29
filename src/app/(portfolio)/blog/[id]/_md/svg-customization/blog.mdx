@@ -3,7 +3,7 @@ import svgrImg from "./assets/svgr.png";
 import devPageImg from "./assets/dev-page.png";
 import beforeAndAfterKeepClassImg from "./assets/before&after-keep-class.png";
 
-Hello there ! Today, we're gonna explore how I was able to customize SVGs on my web project [WorldMaster](https://worldmaster.vercel.app/). We're gonna see in the first step the made customization applied to SVGs to make you better understand the process.
+Hello there ! Today, we're gonna explore how I was able to customize SVGs on my web project [**WorldMaster**](https://worldmaster.vercel.app/). We're gonna see in the first step the made customization applied to SVGs to make you better understand the process.
 
 ---
 
@@ -20,7 +20,7 @@ In our case, this library was included in the next.js configuration to permit to
 
 SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
 
-There's a lot of options to configure SVGR to fit your needs. In our case, we used the default with some mofications in the *next.config.mjs* file to allow importing SVGs as React components.
+There's a lot of options to configure SVGR to fit your needs. In our case, we used the default with some modifications in the *next.config.mjs* file to allow importing SVGs as React components.
 
 ```javascript(lines)
 /** @type {import('next').NextConfig} */
@@ -149,12 +149,12 @@ Adding this pattern after rendered directly in the SVG component permit to have 
 Here's how we insert the `<defs>` section with the pattern into the SVG after rendering it :
 
 ```tsx
-const svgDefs: ReactNode = (<SvgDefs
-    patterns={patterns}
+const SvgPattern: ReactNode = (<SvgPattern
+    pattern={pattern}
 />);
 
-const svgDefsString: string = renderToString(svgDefs);
-colorableSvgElement.insertAdjacentHTML('afterbegin', svgDefsString);
+const svgPatternString: string = renderToString(SvgPattern);
+colorableSvgElement.insertAdjacentHTML('afterbegin', svgPatternString);
 ```
 
 The rendered SVG now has a pattern defined in its `<defs>` section, which is used to fill the shapes with the background image. Here's a simplified example of what the final SVG structure looks like after adding the pattern:
@@ -182,8 +182,6 @@ const handleShapeClick = (event: MouseEvent<SVGElement>) => {
 };
 ```
 
-Detailler l'ajout des classes keep car toutes les parties ne doivent pas forcement etre colorables. (ex sur l'aigle au centre du mexique qui ne doit pas etre affectee et qui pourtant contient des shapes, il n'y a aucun intéret pour l'utilisateur de se rappeller de chacune des couleurs qui compose celui-ci)
-
 ## SVG files initialization
 
 To make all this work, we had to modify the original SVG files a bit. Since we wanted to allow users to click on different parts of the SVG and see their original colors, we needed a way to identify which parts should be interactive.
@@ -206,6 +204,6 @@ In this blog post, we explored how to customize SVGs in a React/Next.js project 
 
 We also discussed the importance of modifying the original SVG files to add specific classes to the elements we wanted to be interactive. This allowed us to easily identify and manipulate those parts during runtime.
 
-By following the steps outlined in this post, you can create dynamic and interactive SVGs that enhance the user experience on your web projects. Whether you're building a flag selector, an icon library, or any other application that involves SVG graphics, the techniques discussed here will help you achieve your goals. There's an example in NextJS of the final result on [WorldMaster](https://worldmaster.vercel.app/), but feel free to experiment and adapt these techniques to your own projects!
+By following the steps outlined in this post, you can create dynamic and interactive SVGs that enhance the user experience on your web projects. Whether you're building a flag selector, an icon library, or any other application that involves SVG graphics, the techniques discussed here will help you achieve your goals. There's an example in NextJS for the final result of [*Mexico Colorable Flag*](https://worldmaster.vercel.app/play/country/mx) on **WorldMaster**, but feel free to experiment and adapt these techniques to your own projects!
 
 ---

@@ -41,6 +41,7 @@ const WorkEducationPart = ({ item, index, separator = false, language }: WorkEdu
                     <HeadingTwo 
                         isAnchorLink id={`${isWork ? "work" : "education"}-${index}`} 
                         containerClassName="m-0" 
+                        className="text-nowrap"
                         icon={isWork ? 
                                 (<IoMdBusiness className="w-8 h-8"/>)
                                     :

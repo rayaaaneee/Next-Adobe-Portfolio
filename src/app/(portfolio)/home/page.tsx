@@ -3,17 +3,10 @@ import { type Metadata } from "next";
 
 import cn from "@/utils/function/cn";
 
-import { FaHeart, FaBriefcase } from "react-icons/fa6";
-import { FaLink } from "react-icons/fa";
+import { FaBriefcase } from "react-icons/fa6";
 
 import photo from "~/img/home/photo.jpg";
 
-import { 
-    HeadingOne, 
-    HeadingThree,
-    IconPosition, 
-    Paragraph,
-} from "@/components/page-flow";
 import EducationContainer from "@/app/(portfolio)/home/_components/education-container";
 import WorkContainer from "@/app/(portfolio)/home/_components/work-container";
 import SkillsContainer from "@/app/(portfolio)/home/_components/skills-container";
@@ -23,39 +16,21 @@ import Separator from "@/components/others/separator";
 import projects from "@/asset/data/home/projects";
 import hobbies from "@/asset/data/home/hobbies";
 
-import { IconSize } from "@/components/contact-icon";
-import { TooltipSize } from "@/components/tooltip";
-
-import { ChildrenType } from "@/utils/interface/children";
 import MainPart from "@/components/others/main-part";
+
+import VerticalBorderSection from "./_components/border-section";
 import HeaderText from "./_components/header-text";
 import HeaderLinks from "./_components/header-links";
 import AboutMe from "./_components/about-me";
 import Projects from "./_components/projects";
+import Contact from "./_components/contact";
+import SkillsHeaderPart from "./_components/skills-header-part";
+import Hobbies from "./_components/hobbies";
+import BottomBorderSection from "./_components/bottom-border-section";
 
 export const metadata: Metadata = {
     title: "Portfolio",
 };
-
-interface VerticalBorderSectionProps {
-    text: string;
-    icon: ChildrenType;
-}
-
-const VerticalBorderSection = ({ text, icon }: VerticalBorderSectionProps) => (
-    <HeadingThree 
-        icon={icon} 
-        iconPosition={IconPosition.right}
-        className={cn(
-            "text-center h- dark:text-white",
-        )} 
-        containerClassName={cn(
-            "flex justify-center items-center w-full !m-0",
-            "h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20"
-        )}>
-            {text}
-    </HeadingThree>
-);
 
 const Home = () => {
 
@@ -111,27 +86,22 @@ const Home = () => {
             </article>
             <Separator highMargin />
             <article>
-                <HeadingOne id="contact" isAnchorLink>Contact</HeadingOne>
-                <Paragraph>If you want to reach me, you can use the links above or send me an email at <a className="underline" href={`mailto:${process.env.EMAIL}`}>{process.env.EMAIL}</a>.</Paragraph>
+                <Contact/>
             </article>
             <Separator highMargin />
             <article>
-                <HeadingOne id="skills" isAnchorLink>Skills & Technologies</HeadingOne>
-                <Paragraph>Here&apos;s my skills ...</Paragraph>
+                <SkillsHeaderPart />
             </article>
             <SkillsContainer />
             <Separator highMargin />
             <article>
-                <HeadingOne id="hobbies" isAnchorLink>Hobbies</HeadingOne>
+                <Hobbies/>
             </article>
             <AdaptiveGrid id="hobbies-grid" elementsPerRow={5} elements={hobbies} />
             <Separator className="!mb-0" />
-            <VerticalBorderSection 
-                text="Thank you for visiting !" 
-                icon={<FaHeart className="text-red-400" />} 
-            />      
+            <BottomBorderSection />
         </MainPart>
     )
 }
 
-export default Home
+export default Home;

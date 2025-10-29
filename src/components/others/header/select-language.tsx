@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import useLanguage from "@/utils/hook/use-language";
 
 import Image from 'next/image';
 
@@ -7,7 +8,6 @@ import cn from "@/utils/function/cn";
 import ManageLanguages from "@/utils/manager/manage-language";
 
 import ClassNameInterface from "@/utils/interface/classname";
-import { useLanguage } from "@/utils/hook/use-language";
 
 const SelectLanguage = ({ className, id }: ClassNameInterface) => {
 

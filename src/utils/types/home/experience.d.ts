@@ -10,8 +10,11 @@ export type Education = {
     date: IntervalDateClass,
 }
 
+export interface TechItem extends GridContent {
+    name: string
+}
 export type Work = Education & {
     name: string,
     type: WithLanguage<string>,
-    technologies: GridContent[],
+    technologies: TechItem[],
 }

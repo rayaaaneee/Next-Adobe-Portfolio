@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
@@ -16,7 +16,7 @@ const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 
     const { language } = useLanguage();
 
-    const pageTitle = APP_DEFAULT_TEMPLATE_TITLE.replace("%s", blog.title);
+    const pageTitle = APP_DEFAULT_TEMPLATE_TITLE.replace("%s", blog.title[language.current]);
 
     useEffect(() => {
 
@@ -33,7 +33,7 @@ const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 
     return (
         <>
-            <HeadingOne containerClassName="w-full !m-0">{blog.title}</HeadingOne>
+            <HeadingOne containerClassName="w-full !m-0">{blog.title[language.current]}</HeadingOne>
             <HeadingTwo containerClassName="!mx-0">
                 { language.blog.lang } : { language.languages[blogLang] }
             </HeadingTwo>

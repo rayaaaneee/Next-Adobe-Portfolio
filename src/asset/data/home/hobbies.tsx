@@ -10,28 +10,44 @@ import { MdDesignServices } from "react-icons/md";
 const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
-            name: "Music",
+            name: {
+                en: "Music",
+                fr: "Musique",
+                es: "Música",
+            },
             color: "#00B8A9",
             icon: <BsMusicNote />,
         }
     },
     {
         content: {
-            name: "Gym",
+            name: {
+                en: "Self-Improvement",
+                fr: "Développement Personnel",
+                es: "Superación Personal",
+            },
             color: "#E63946",
             icon: <IoIosFitness />,
         }
     },
     {
         content: {
-            name: "Cybersecurity",
+            name: {
+                en: "Cybersecurity",
+                fr: "Cybersécurité",
+                es: "Ciberseguridad",
+            },
             color: "#0E7490",
             icon: <MdOutlineSecurity />,
         }
     },
     {
         content: {
-            name: "Design",
+            name: {
+                en: "Design",
+                fr: "Design",
+                es: "Diseño",
+            },
             color: "#F59E0B",
             icon: <MdDesignServices />,
         }

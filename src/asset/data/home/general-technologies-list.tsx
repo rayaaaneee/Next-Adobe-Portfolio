@@ -37,9 +37,10 @@ import { ImSvg } from "react-icons/im";
 import { GrMysql } from 'react-icons/gr';
 import { FiGithub } from 'react-icons/fi';
 import { assertFound } from '@/utils/function/assert-found';
+import { TechItem } from '@/utils/types/home/experience';
 
 export const assertFoundTech = (name: string, category: TechCategory) => {
-    return assertFound(generalTechnologies[category], (tech) => (tech.name === name), name);
+    return assertFound<TechItem>(generalTechnologies[category], (tech) => (tech.name === name), name);
 }
 
 export enum GeneralTechnologiesName {
@@ -115,7 +116,7 @@ export enum GeneralTechnologiesName {
 export type TechCategory = "language" | "framework" | "library" | "tool" | "database";
 
 export type GeneralTechnologiesType = DeepReadonly<{
-    [key in TechCategory]: GridContent[];
+    [key in TechCategory]: TechItem[];
 }>
 
 const generalTechnologies: GeneralTechnologiesType = {

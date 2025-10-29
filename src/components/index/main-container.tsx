@@ -2,10 +2,11 @@
 
 import cn from "@/utils/function/cn";
 
+import useLanguage from "@/utils/hook/use-language";
+
 import GetStarted from './get-started';
 import TextTypeWriter from './text-type-writer';
 import BlinkingVerticalBar from './blinking-vertical-bar';
-import { useLanguage } from "@/utils/hook/use-language";
 
 const MainContainer = () => {
 

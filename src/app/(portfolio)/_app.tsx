@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import ThemeProvider from "@/components/theme-provider";
 
@@ -12,14 +12,12 @@ import ChildrenInterface from "@/utils/interface/children";
 
 import Sentences from "@/utils/types/sentences";
 
+import { useLanguageManager } from "@/utils/hook/use-language";
+
 const App = ({ children }: ChildrenInterface) => {
 
 	// Initialize language by cookies or system settings
-	ManageLanguages.manageLanguages();
-	useLayoutEffect(() => {
-		// Ensure document language is set on initial load (After SSR Hydration)
-		ManageLanguages.setDocumentLanguage();
-	}, []);
+	useLanguageManager();
 
 	// Handle language state
 	const [language, setLanguage] = useState<Sentences>(ManageLanguages.getSentences());

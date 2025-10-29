@@ -5,9 +5,8 @@ import cn from "@/utils/function/cn";
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import MainPart from "@/components/others/main-part";
-import BlogHeader from "@/components/blog/_components/blog-header";
+import BlogHeader from "@/app/(portfolio)/blog/[id]/_md/_components/blog-header";
 import Separator from "@/components/others/separator";
-import { HeadingThree } from "@/components/page-flow";
 import BlogFooter from "./_md/_components/blog-footer";
 
 export interface PageProps {
@@ -23,15 +22,13 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
     const blog = assertFoundBlog(id);
 
     return {
-        title: blog.title,
+        title: blog.title.en,
     }
 }
 
 const Page = async ({ params }: PageProps) => {
     
     const { id } = await params;
-
-    console.log("Blog ID:", id);
 
     const blog = assertFoundBlog(id);
 

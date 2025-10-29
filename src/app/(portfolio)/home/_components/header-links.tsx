@@ -1,6 +1,6 @@
 "use client";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
 import cn from '@/utils/function/cn';
 

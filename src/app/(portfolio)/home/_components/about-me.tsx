@@ -1,6 +1,6 @@
 "use client";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
 import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 

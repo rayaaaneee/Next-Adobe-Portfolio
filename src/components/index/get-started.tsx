@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import cn from "@/utils/function/cn";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
 import ClassNameInterface from '@/utils/interface/classname';
 

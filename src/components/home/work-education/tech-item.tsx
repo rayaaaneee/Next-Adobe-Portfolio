@@ -3,10 +3,10 @@ import { CSSProperties } from 'react';
 import cn from "@/utils/function/cn";
 
 import { AnchorLinkButton, Paragraph } from '@/components/page-flow';
-import GridContent from '@/asset/data/home/adaptive-grid-base';
+import { type TechItem as TechItemType } from '@/utils/types/home/experience';
 
 export interface TechItemPropsInterface {
-    tech: GridContent;
+    tech: TechItemType;
 }
 
 const TechItem = ({ tech }: TechItemPropsInterface) => {

@@ -5,13 +5,10 @@ import { LuPencilLine } from "react-icons/lu";
 import { HeadingOne } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
 
-import AdaptiveGrid, { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
+import blogs, { BlogPosts } from '@/asset/data/blog/blogs';
 
-import blogs from '@/asset/data/blog/blogs';
-
-import { BlogPost } from '@/utils/types/blog';
 import MainPart from '@/components/others/main-part';
-import { DeepReadonlyable } from '@/utils/types/deep-readonly';
+import BlogGrid from './_components/blog-grid';
 
 export const metadata: Metadata = {
     title: {
@@ -32,23 +29,7 @@ const Blog = () => {
                 <Separator lite highMargin />
             </div>
             <section>
-                <AdaptiveGrid
-                    id={"blog"}
-                    elementsPerRow={4}
-                    asInternalLink
-                    elements={
-                        blogs.map((blog: DeepReadonlyable<BlogPost>) => (
-                            { 
-                                content: {
-                                    name: blog.title,
-                                    color: blog.color,
-                                    icon: blog.icon,
-                                    link: `/blog/${blog.id}`,
-                                }
-                            } satisfies AdaptiveGridElementData
-                        ))} 
-                    //hidden 
-                />
+                <BlogGrid blogs={blogs} />
             </section>
         </MainPart>
     )

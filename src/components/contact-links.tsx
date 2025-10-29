@@ -2,7 +2,7 @@
 
 import cn from "@/utils/function/cn";
 
-import { useLanguage } from "@/utils/hook/use-language";
+import useLanguage from "@/utils/hook/use-language";
 
 import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 
@@ -31,6 +31,10 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
 
     if (!tooltips && (tooltipsSize)) {
         throw new Error("tooltipSize cannot be used if tooltip is deactivated");
+    }
+
+    if (!process.env.NEXT_PUBLIC_EMAIL || !process.env.NEXT_PUBLIC_TEL) {
+        throw new Error("Environment variables NEXT_PUBLIC_EMAIL and NEXT_PUBLIC_TEL must be defined in .env file");
     }
     
     const usernameDivClassname = 'flex flex-row items-center gap-0';
@@ -62,7 +66,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
         { 
             title: language.home.links.mail, 
             image: mailImg,
-            href: `mailto:${process.env.EMAIL}`, 
+            href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, 
             target: "_blank", 
             rel: "noreferrer",
             id: "contact-link-mail"
@@ -70,7 +74,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
         { 
             title: language.home.links.phone, 
             image: phoneImg,
-            href: `tel:${process.env.TEL}`,
+            href: `tel:${process.env.NEXT_PUBLIC_TEL}`,
             id: "contact-link-phone"
         },
         { 

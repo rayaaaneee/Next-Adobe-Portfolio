@@ -1,8 +1,8 @@
 "use client";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
-import { HeadingOne, Paragraph } from "@/components/page-flow";
+import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flow";
 
 const Projects = () => {
 
@@ -11,7 +11,7 @@ const Projects = () => {
     return (
         <>
             <HeadingOne id="projects" isAnchorLink>{ language.home.projects.title }</HeadingOne>
-            <Paragraph>{ language.home.projects.description }</Paragraph>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.projects.description }</Paragraph>
         </>
     );
 }

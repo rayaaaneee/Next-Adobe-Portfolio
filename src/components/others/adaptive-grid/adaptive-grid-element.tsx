@@ -19,6 +19,8 @@ import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/compo
 import verifyReference from "@/utils/function/verify-reference";
 import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
 import Link from "next/link";
+import ManageLanguages from "@/utils/manager/manage-language";
+import { isWithLanguage } from "@/utils/types/language";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -131,7 +133,7 @@ const AdaptiveGridElement = ({ element, className, index, clickable, asInternalL
                     }
                     containerClassName="!m-0 to-animate fade short"
                     >
-                        {element.content.name}
+                        { isWithLanguage(element.content.name) ? element.content.name[ManageLanguages.language] : element.content.name }
                 </TopPartText>
             );
         }
@@ -176,7 +178,7 @@ const AdaptiveGridElement = ({ element, className, index, clickable, asInternalL
                     containerClassName="!m-0 opacity-0 to-animate fade"
                     className="text-nowrap">
                         {elementProjectData.content.link && "Consult "}
-                        <u>{elementProjectData.content.name}</u> 
+                        <u>{ isWithLanguage(elementProjectData.content.name) ? elementProjectData.content.name[ManageLanguages.language] : elementProjectData.content.name }</u> 
                         <i>({elementProjectData.year})</i>
                 </TopPartText>
             );

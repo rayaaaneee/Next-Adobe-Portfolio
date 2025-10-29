@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from 'react';
+import useLanguage from '@/utils/hook/use-language';
 
 import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/others/adaptive-grid';
 
@@ -26,6 +27,8 @@ const SkillsContainer = () => {
 
     type GridData = AdaptiveGridProps & { title: string, icon: ChildrenType };
 
+    const { language } = useLanguage();
+
     const buttonsRef = useRef<HTMLButtonElement[]>([]);
     const adaptiveGridRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,35 +38,35 @@ const SkillsContainer = () => {
             id: "programming-languages", 
             elementsPerRow: 5, 
             elements: programmingLanguages, 
-            title: "Programming Languages", 
+            title: language.home.skills.parts.languages,
             icon: <LuCodeXml /> 
         },
         { 
             id: "frameworks",
             elementsPerRow: 5, 
             elements: frameworks, 
-            title: "Frameworks", 
+            title: language.home.skills.parts.frameworks,
             icon: <BsStack /> 
         },
         { 
             id: "libraries",
             elementsPerRow: 4, 
             elements: libraries, 
-            title: "Libraries", 
+            title: language.home.skills.parts.libraries,
             icon: <VscLibrary /> 
         },
         { 
             id: "tools", 
             elementsPerRow: 5, 
             elements: tools, 
-            title: "Tools", 
+            title: language.home.skills.parts.tools,
             icon: <AiFillTool /> 
         },
-        { 
+        {
             id: "databases", 
             elementsPerRow: 4, 
             elements: databases, 
-            title: "Databases", 
+            title: language.home.skills.parts.databases,
             icon: <FaCloud /> 
         },
     ];

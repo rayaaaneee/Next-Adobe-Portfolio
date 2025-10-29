@@ -1,8 +1,8 @@
 "use client";
 
-import { useLanguage } from '@/utils/hook/use-language';
+import useLanguage from '@/utils/hook/use-language';
 
-import { HeadingOne, Paragraph } from '@/components/page-flow';
+import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
@@ -111,7 +111,7 @@ const EducationContainer = () => {
     return (
         <>
             <HeadingOne id="education" isAnchorLink>{ language.home.education.title }</HeadingOne>
-            <Paragraph>{ language.home.education.description }</Paragraph>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.education.description }</Paragraph>
             {education.map((edu, index) => (
                 <WorkEducationPart language={language.current}  separator={index < education.length - 1} key={index} item={edu} index={index} />
             ))}
