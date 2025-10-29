@@ -84,6 +84,10 @@ const frenchSentences = {
             description: "Voici un aperçu de mon parcours éducatif, mettant en lumière les institutions que j'ai fréquentées, les diplômes que j'ai obtenus et les domaines d'étude que j'ai explorés."
         }
     },
+    blog : {
+        lang: "Langue",
+        footer: "Merci de votre lecture !",
+    },
     about: {
         title: "À propos",
         main_title: "Politique de confidentialité",

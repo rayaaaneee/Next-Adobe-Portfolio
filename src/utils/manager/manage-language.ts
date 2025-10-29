@@ -25,11 +25,11 @@ export default class ManageLanguages {
     static language: Language = ManageLanguages.defaultLanguage;
 
 
-    private static _isSupported(language: string): language is Language {
+    private static _isSupported(language: string | Language): language is Language {
         return this.supportedLanguages.some(([name]) => name === language);
     }
 
-    private static _getSystemLanguage = (): string => {
+    private static _getSystemLanguage = (): string | Language => {
         return navigator.language.slice(0, 2).toLowerCase();
     }
 

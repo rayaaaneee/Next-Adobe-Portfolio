@@ -84,6 +84,10 @@ const englishSentences: Sentences = {
             description: "Here is an overview of my educational background, highlighting the institutions I've attended, the degrees I've obtained, and the fields of study I've explored."
         }
     },
+    blog: {
+        lang: "Language",
+        footer: "Thank you for reading !",
+    },
     about: {
         title: "About",
         main_title: "Privacy Policy",

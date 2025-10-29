@@ -7,7 +7,7 @@ import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import { HeadingOne, HeadingTwo } from '@/components/page-flow';
 
-import Language from '@/utils/types/language';
+import Language, { WithLanguage } from '@/utils/types/language';
 
 import { BlogPost } from '@/utils/types/blog';
 import { DeepReadonliable } from '@/utils/types/deep-readonly';
@@ -29,21 +29,15 @@ const BlogHeader = ({ blog }: { blog: DeepReadonliable<BlogPost> }) => {
         
     }, [pageTitle]);
 
-
-    const nbLanguages = blog.languages.length;
-
-    if (nbLanguages === 0) {
-        throw new Error(`Blog ${blog.title} has no languages defined.`);
-    }
+    const blogLang: Language = blog.language as keyof WithLanguage<string>;
 
     return (
-        <article id='blog-header' className='w-full !mx-0 flex flex-col items-center justify-center'>
+        <>
             <HeadingOne containerClassName="w-full !m-0">{blog.title}</HeadingOne>
             <HeadingTwo containerClassName="!mx-0">
-                Language{nbLanguages > 1 && "s"} : &nbsp;
-                 {blog.languages.map((lang: Language) => language.languages[lang]).join(", ")}
+                { language.blog.lang } : { language.languages[blogLang] }
             </HeadingTwo>
-        </article>
+        </>
     )
 }
 

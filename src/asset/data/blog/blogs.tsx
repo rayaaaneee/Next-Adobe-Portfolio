@@ -36,7 +36,7 @@ const blogs: DeepReadonly<BlogPost[]> = [
         color: "#ff9100",
         summary: "This is a summary of my first blog post.",
         icon: <Image src={svgIcon} alt="SVG Icon" />,
-        languages: [Language.EN],
+        language: Language.EN,
         content: <SvgPageContent />,
     },
 ]

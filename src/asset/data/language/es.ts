@@ -84,6 +84,10 @@ const spanishSentences: Sentences = {
             description: "Aquí hay un vistazo a mi trayectoria educativa, destacando las instituciones que he asistido, los títulos que he obtenido y los campos de estudio que he explorado."
         }
     },
+    blog: {
+        lang: "Idioma",
+        footer: "¡Gracias por leer!",
+    },
     about: {
         title: "Acerca de",
         main_title: "Política de Privacidad",

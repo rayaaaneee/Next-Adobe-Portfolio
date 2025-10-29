@@ -8,6 +8,7 @@ import MainPart from "@/components/others/main-part";
 import BlogHeader from "@/components/blog/_components/blog-header";
 import Separator from "@/components/others/separator";
 import { HeadingThree } from "@/components/page-flow";
+import BlogFooter from "./_md/_components/blog-footer";
 
 export interface PageProps {
     params: Promise<{
@@ -47,11 +48,13 @@ const Page = async ({ params }: PageProps) => {
             'backdrop-blur-md',
         )}>
             <article className="flex flex-col gap-3">
-                <BlogHeader blog={blog} />
+                <article id='blog-header' className='w-full !mx-0 flex flex-col items-center justify-center'>
+                    <BlogHeader blog={blog} />
+                </article>
                 <Separator />
                 { blog.content }
                 <div className="center">
-                    <HeadingThree containerClassName="!m-0">Thank you for reading! 🚀</HeadingThree>
+                    <BlogFooter lang={blog.language} />
                 </div>
             </article>
         </MainPart>

@@ -8,6 +8,6 @@ export interface BlogPost {
     date: string;
     summary: string;
     icon: ChildrenType;
-    languages: Language[];
+    language: Language;
     content: ChildrenType;
 }
