@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import cn from "@/utils/function/cn";
 
 import type ClassNameInterface from "@/utils/interface/classname";
-import { DeepReadonliable } from "@/utils/types/deep-readonly";
+import { DeepReadonlyable } from "@/utils/types/deep-readonly";
 
 import AdaptiveGridWrapper from "./adaptive-grid/adaptive-grid-wrapper";
 import AdaptiveGridExpandButton from "./adaptive-grid/adaptive-grid-expand-button";
@@ -38,12 +38,12 @@ interface AdaptiveGridBaseProps extends ClassNameInterface {
 }
 
 interface NonclickableAdaptiveGridProps extends AdaptiveGridBaseProps {
-    elements: DeepReadonliable<AdaptiveGridElementData[]>;
+    elements: DeepReadonlyable<AdaptiveGridElementData[]>;
     clickable?: false;
 }
 
 interface ClickableAdaptiveGridProps extends AdaptiveGridBaseProps {
-    elements: DeepReadonliable<AdaptiveGridElementProjectData[]>;
+    elements: DeepReadonlyable<AdaptiveGridElementProjectData[]>;
     clickable: true;
 }
 

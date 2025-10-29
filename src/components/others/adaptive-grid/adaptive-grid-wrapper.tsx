@@ -3,12 +3,12 @@ import cn from '@/utils/function/cn';
 import { AdaptiveGridElementData } from '../adaptive-grid';
 import AdaptiveGridElement from './adaptive-grid-element';
 
-import { DeepReadonliable } from '@/utils/types/deep-readonly';
+import { DeepReadonlyable } from '@/utils/types/deep-readonly';
 
 export type IndexesType = { i: number; j: number };
 
 export interface AdaptiveGridWrapperProps {
-    elements: DeepReadonliable<AdaptiveGridElementData[]>;
+    elements: DeepReadonlyable<AdaptiveGridElementData[]>;
     asInternalLink: boolean;
     nbElements: number;
     index: number;

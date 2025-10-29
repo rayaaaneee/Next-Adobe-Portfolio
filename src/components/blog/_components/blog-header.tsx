@@ -10,9 +10,9 @@ import { HeadingOne, HeadingTwo } from '@/components/page-flow';
 import Language, { WithLanguage } from '@/utils/types/language';
 
 import { BlogPost } from '@/utils/types/blog';
-import { DeepReadonliable } from '@/utils/types/deep-readonly';
+import { DeepReadonlyable } from '@/utils/types/deep-readonly';
 
-const BlogHeader = ({ blog }: { blog: DeepReadonliable<BlogPost> }) => {
+const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 
     const { language } = useLanguage();
 

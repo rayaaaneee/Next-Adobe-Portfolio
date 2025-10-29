@@ -20,7 +20,7 @@ import tools from '@/asset/data/home/tools';
 import databases from '@/asset/data/home/databases';
 
 import { ChildrenType } from '@/utils/interface/children';
-import DeepReadonly, { DeepReadonliable } from '@/utils/types/deep-readonly';
+import DeepReadonly, { DeepReadonlyable } from '@/utils/types/deep-readonly';
 
 const SkillsContainer = () => {
 
@@ -68,7 +68,7 @@ const SkillsContainer = () => {
         },
     ];
 
-    const [currentGridData, setCurrentGridData] = useState<DeepReadonliable<GridData>>(gridData[0]);
+    const [currentGridData, setCurrentGridData] = useState<DeepReadonlyable<GridData>>(gridData[0]);
 
     return (
         <section className='mt-5'>

@@ -11,7 +11,7 @@ import blogs from '@/asset/data/blog/blogs';
 
 import { BlogPost } from '@/utils/types/blog';
 import MainPart from '@/components/others/main-part';
-import { DeepReadonliable } from '@/utils/types/deep-readonly';
+import { DeepReadonlyable } from '@/utils/types/deep-readonly';
 
 export const metadata: Metadata = {
     title: {
@@ -37,7 +37,7 @@ const Blog = () => {
                     elementsPerRow={4}
                     asInternalLink
                     elements={
-                        blogs.map((blog: DeepReadonliable<BlogPost>) => (
+                        blogs.map((blog: DeepReadonlyable<BlogPost>) => (
                             { 
                                 content: {
                                     name: blog.title,

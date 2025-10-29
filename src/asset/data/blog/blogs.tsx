@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import DeepReadonly, { DeepReadonliable } from "@/utils/types/deep-readonly";
+import DeepReadonly, { DeepReadonlyable } from "@/utils/types/deep-readonly";
 import { BlogPost } from "@/utils/types/blog";
 
 import Language from "@/utils/types/language";
@@ -41,11 +41,11 @@ const blogs: DeepReadonly<BlogPost[]> = [
     },
 ]
 
-const findBlog = (id: string): DeepReadonliable<BlogPost> | undefined => {
+const findBlog = (id: string): DeepReadonlyable<BlogPost> | undefined => {
     return blogs.find((blog) => blog.id === id);
 }
 
-export const assertFoundBlog = (id: string): DeepReadonliable<BlogPost> => {
+export const assertFoundBlog = (id: string): DeepReadonlyable<BlogPost> => {
     const blog = findBlog(id);
     if (!blog) {
         throw new Error(`Blog with id "${id}" not found.`);

@@ -2,7 +2,7 @@ import ManageCookies from './manage-cookies';
 
 import Sentences from '@/utils/types/sentences';
 import Language from '@/utils/types/language';
-import { DeepReadonliable } from '@/utils/types/deep-readonly';
+import { DeepReadonlyable } from '@/utils/types/deep-readonly';
 
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';
@@ -59,7 +59,7 @@ export default class ManageLanguages {
         ManageLanguages.setLanguage(ManageLanguages.language);
     }
 
-    static getSentences = (language?: DeepReadonliable<Language>): Sentences => {
+    static getSentences = (language?: DeepReadonlyable<Language>): Sentences => {
         // If a language is provided (necessary supported), return its sentences
         if (language) return ManageLanguages.supportedLanguages.find(([name]) => name === language)![1]!;
 
