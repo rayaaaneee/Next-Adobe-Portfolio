@@ -2,18 +2,18 @@ import DeepReadonly from "./deep-readonly";
 import Language, { WithLanguage } from "./language";
 
 export const Month: DeepReadonly<Record<string, WithLanguage<string>>> = {
-    January: { en: "Jan", fr: "Jan", es: "Ene" },
-    February: { en: "Feb", fr: "Fév", es: "Feb" },
-    March: { en: "Mar", fr: "Mar", es: "Mar" },
-    April: { en: "Apr", fr: "Avr", es: "Abr" },
-    May: { en: "May", fr: "Mai", es: "May" },
-    June: { en: "Jun", fr: "Juin", es: "Jun" },
-    July: { en: "Jul", fr: "Juil", es: "Jul" },
-    August: { en: "Aug", fr: "Août", es: "Ago" },
-    September: { en: "Sep", fr: "Sep", es: "Sep" },
-    October: { en: "Oct", fr: "Oct", es: "Oct" },
-    November: { en: "Nov", fr: "Nov", es: "Nov" },
-    December: { en: "Dec", fr: "Déc", es: "Dic" }
+    January: { [Language.EN]: "Jan", [Language.FR]: "Jan", [Language.ES]: "Ene" },
+    February: { [Language.EN]: "Feb", [Language.FR]: "Fév", [Language.ES]: "Feb" },
+    March: { [Language.EN]: "Mar", [Language.FR]: "Mar", [Language.ES]: "Mar" },
+    April: { [Language.EN]: "Apr", [Language.FR]: "Avr", [Language.ES]: "Abr" },
+    May: { [Language.EN]: "May", [Language.FR]: "Mai", [Language.ES]: "May" },
+    June: { [Language.EN]: "Jun", [Language.FR]: "Juin", [Language.ES]: "Jun" },
+    July: { [Language.EN]: "Jul", [Language.FR]: "Juil", [Language.ES]: "Jul" },
+    August: { [Language.EN]: "Aug", [Language.FR]: "Août", [Language.ES]: "Ago" },
+    September: { [Language.EN]: "Sep", [Language.FR]: "Sep", [Language.ES]: "Sep" },
+    October: { [Language.EN]: "Oct", [Language.FR]: "Oct", [Language.ES]: "Oct" },
+    November: { [Language.EN]: "Nov", [Language.FR]: "Nov", [Language.ES]: "Nov" },
+    December: { [Language.EN]: "Dec", [Language.FR]: "Déc", [Language.ES]: "Dic" }
 } as const;
 
 export type MonthKey = typeof Month[keyof typeof Month];
@@ -58,7 +58,7 @@ export class IntervalDateClass implements IntervalDateInterface {
 
     toString(language: Language = Language.EN): string {
 
-        const present: WithLanguage<string> = { en: "Present", fr: "Aujourd'hui", es: "Presente" };
+        const present: WithLanguage<string> = { [Language.EN]: "Present", [Language.FR]: "Aujourd'hui", [Language.ES]: "Presente" };
         
         if (this.end) {
             return `${this.start.toString(language)} - ${this.end.toString(language)}`;

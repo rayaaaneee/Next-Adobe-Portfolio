@@ -13,7 +13,7 @@ import HamburgerMenu from './header/hamburger-menu';
 import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
-import { isWithLanguage, WithLanguageable } from '@/utils/types/language';
+import Language, { isWithLanguage, WithLanguageable } from '@/utils/types/language';
 
 export interface HeaderProps {
     hasFooter?: boolean,
@@ -39,8 +39,8 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
     const links: linkType[] = [
         {to: '/home', text: "Portfolio", isColored: false },
         {to: '/blog', text: "Blog", isColored: false },
-        {to: '/resume', text: { en: "Resume", fr: "CV", es: "Currículum"}, isColored: false },
-        {to: '/about', text: { en: "About", fr: "À propos", es: "Acerca de"}, isColored: true }
+        {to: '/resume', text: { [Language.EN]: "Resume", [Language.FR]: "CV", [Language.ES]: "Currículum"}, isColored: false },
+        {to: '/about', text: { [Language.EN]: "About", [Language.FR]: "À propos", [Language.ES]: "Acerca de"}, isColored: true }
     ]
 
     // Close menu when changing page

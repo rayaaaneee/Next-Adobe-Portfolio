@@ -1,14 +1,14 @@
 // Reference object for type inference for Language, used in context and hooks
-import Language from "@/utils/types/language";
+import Language, { WithLanguage } from "@/utils/types/language";
 
 const frenchSentences = {
     current: Language.FR,
     denomination: "Français",
     languages: {
-        en: "Anglais",
-        fr: "Français",
-        es: "Espagnol"
-    },
+        [Language.EN]: "Anglais",
+        [Language.FR]: "Français",
+        [Language.ES]: "Espagnol"
+    } as WithLanguage<string>,
     flag_img: "french.png",
     title: "Portfolio",
     loader: {

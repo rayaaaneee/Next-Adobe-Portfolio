@@ -1,9 +1,9 @@
 import GridContent from "@/asset/data/home/adaptive-grid-base";
-import { WithLanguage } from "@/utils/manager/manage-language";
+import { WithLanguage, WithLanguageable } from "@/utils/types/language";
 import { IntervalDateClass } from "@/utils/types/date";
 
 export type Education = {
-    name: WithLanguage<string>,
+    name: WithLanguageable<string>,
     location: WithLanguage<string>,
     title: WithLanguage<string>,
     description: WithLanguage<string>,

@@ -1,5 +1,7 @@
 import type DeepReadonly from '@/utils/types/deep-readonly';
 
+import Language from '@/utils/types/language';
+
 import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 
 import { BsMusicNote } from "react-icons/bs";
@@ -11,9 +13,9 @@ const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
             name: {
-                en: "Music",
-                fr: "Musique",
-                es: "Música",
+                [Language.EN]: "Music",
+                [Language.FR]: "Musique",
+                [Language.ES]: "Música",
             },
             color: "#00B8A9",
             icon: <BsMusicNote />,
@@ -22,9 +24,9 @@ const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
             name: {
-                en: "Self-Improvement",
-                fr: "Développement Personnel",
-                es: "Superación Personal",
+                [Language.EN]: "Self-Improvement",
+                [Language.FR]: "Développement Personnel",
+                [Language.ES]: "Superación Personal",
             },
             color: "#E63946",
             icon: <IoIosFitness />,
@@ -33,9 +35,9 @@ const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
             name: {
-                en: "Cybersecurity",
-                fr: "Cybersécurité",
-                es: "Ciberseguridad",
+                [Language.EN]: "Cybersecurity",
+                [Language.FR]: "Cybersécurité",
+                [Language.ES]: "Ciberseguridad",
             },
             color: "#0E7490",
             icon: <MdOutlineSecurity />,
@@ -44,9 +46,9 @@ const hobbies: DeepReadonly<AdaptiveGridElementData[]> = [
     {
         content: {
             name: {
-                en: "Design",
-                fr: "Design",
-                es: "Diseño",
+                [Language.EN]: "Design",
+                [Language.FR]: "Design",
+                [Language.ES]: "Diseño",
             },
             color: "#F59E0B",
             icon: <MdDesignServices />,

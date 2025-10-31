@@ -9,6 +9,8 @@ import BlogHeader from "@/app/(portfolio)/blog/[id]/_components/blog-header";
 import Separator from "@/components/others/separator";
 import BlogFooter from "./_components/blog-footer";
 
+import Language from "@/utils/types/language";
+
 export interface PageProps {
     params: Promise<{
         id: string;
@@ -22,8 +24,9 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
     const blog = assertFoundBlog(id);
 
     return {
-        title: blog.title.en,
+        title: blog.title[Language.EN],
     }
+    
 }
 
 const Page = async ({ params }: PageProps) => {

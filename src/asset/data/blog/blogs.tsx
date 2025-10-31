@@ -32,9 +32,9 @@ const blogs: DeepReadonly<BlogPost[]> = [
         index: 1,
         id: "svg-customization",
         title: {
-            en: "SVG customization using SVGR",
-            es: "Personalización de SVG con SVGR",
-            fr: "Personnalisation des SVG avec SVGR",
+            [Language.EN]: "SVG customization using SVGR",
+            [Language.ES]: "Personalización de SVG con SVGR",
+            [Language.FR]: "Personnalisation des SVG avec SVGR",
         },
         date: "2024-01-01",
         color: "#ff9100",

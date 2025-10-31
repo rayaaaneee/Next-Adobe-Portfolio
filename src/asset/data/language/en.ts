@@ -1,14 +1,14 @@
-import Language from "@/utils/types/language";
+import Language, { WithLanguage } from "@/utils/types/language";
 import Sentences from "@/utils/types/sentences";
 
 const englishSentences: Sentences = {
     current: Language.EN,
     denomination: "English",
     languages: {
-        en: "English",
-        fr: "French",
-        es: "Spanish"
-    },
+        [Language.EN]: "English",
+        [Language.FR]: "French",
+        [Language.ES]: "Spanish"
+    } as WithLanguage<string>,
     title: "Portfolio",
     flag_img: "english.png",
     loader: {

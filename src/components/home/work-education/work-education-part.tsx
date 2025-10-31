@@ -14,7 +14,7 @@ import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "../../others/separator";
 import TechItem from "./tech-item";
-import Language from "@/utils/types/language";
+import Language, { isWithLanguage, WithLanguage } from "@/utils/types/language";
 import ManageLanguages from "@/utils/manager/manage-language";
 
 export interface WorkEducationPartProps {
@@ -48,7 +48,15 @@ const WorkEducationPart = ({ item, index, language, separator = false }: WorkEdu
                                 (<MdSchool className="w-8 h-8"/>)
                             }
                         >
-                            {isWork ? (item as Work).name : (item as Education).name[language]}
+                            {(isWork ? 
+                                (item as Work).name 
+                                    : 
+                                (isWithLanguage(item.name) ? 
+                                    ((item as Education).name as WithLanguage<string>)[language] 
+                                        : 
+                                    (item as Education).name
+                                )
+                            ) as string}
                     </HeadingTwo>
                     <div className="flex flex-col items-start sm:items-end justify-center gap-1">
                         <HeadingThree containerClassName="!m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location[language]}</HeadingThree>
