@@ -18,7 +18,7 @@ import hobbies from "@/asset/data/home/hobbies";
 
 import MainPart from "@/components/others/main-part";
 
-import VerticalBorderSection from "./_components/border-section";
+import VerticalBorderSection from "./_components/vertical-border-section";
 import HeaderText from "./_components/header-text";
 import HeaderLinks from "./_components/header-links";
 import AboutMe from "./_components/about-me";

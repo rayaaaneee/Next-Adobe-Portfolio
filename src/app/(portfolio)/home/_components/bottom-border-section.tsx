@@ -4,7 +4,7 @@ import useLanguage from "@/utils/hook/use-language";
 
 import { FaHeart } from "react-icons/fa6";
 
-import VerticalBorderSection from "./border-section";
+import VerticalBorderSection from "./vertical-border-section";
 
 const BottomBorderSection = () => {
 

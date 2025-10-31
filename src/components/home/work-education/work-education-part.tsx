@@ -20,11 +20,11 @@ import ManageLanguages from "@/utils/manager/manage-language";
 export interface WorkEducationPartProps {
     item: Work | Education;
     index: number;
-    separator?: boolean;
     language: Language;
+    separator?: boolean;
 }
 
-const WorkEducationPart = ({ item, index, separator = false, language }: WorkEducationPartProps) => {
+const WorkEducationPart = ({ item, index, language, separator = false }: WorkEducationPartProps) => {
 
     const isWork = item.hasOwnProperty("technologies");
 
@@ -52,7 +52,7 @@ const WorkEducationPart = ({ item, index, separator = false, language }: WorkEdu
                     </HeadingTwo>
                     <div className="flex flex-col items-start sm:items-end justify-center gap-1">
                         <HeadingThree containerClassName="!m-0" icon={<FaLocationDot className="w-5 h-5"/>}>{item.location[language]}</HeadingThree>
-                        <Paragraph className="!m-0 italic">{item.date.toString()}</Paragraph>
+                        <Paragraph className="!m-0 italic">{item.date.toString(language)}</Paragraph>
                     </div>
                 </SubSection>
                 {isWork && (

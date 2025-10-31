@@ -5,7 +5,7 @@ import { LuPencilLine } from "react-icons/lu";
 import { HeadingOne } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
 
-import blogs, { BlogPosts } from '@/asset/data/blog/blogs';
+import blogs from '@/asset/data/blog/blogs';
 
 import MainPart from '@/components/others/main-part';
 import BlogGrid from './_components/blog-grid';

@@ -5,9 +5,9 @@ import cn from "@/utils/function/cn";
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import MainPart from "@/components/others/main-part";
-import BlogHeader from "@/app/(portfolio)/blog/[id]/_md/_components/blog-header";
+import BlogHeader from "@/app/(portfolio)/blog/[id]/_components/blog-header";
 import Separator from "@/components/others/separator";
-import BlogFooter from "./_md/_components/blog-footer";
+import BlogFooter from "./_components/blog-footer";
 
 export interface PageProps {
     params: Promise<{

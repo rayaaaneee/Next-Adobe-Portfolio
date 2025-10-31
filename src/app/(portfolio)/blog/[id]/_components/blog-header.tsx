@@ -29,11 +29,11 @@ const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
         
     }, [pageTitle]);
 
-    const blogLang: Language = blog.language as keyof WithLanguage<string>;
+    const blogLang: Language = blog.language as keyof WithLanguage<Language>;
 
     return (
         <>
-            <HeadingOne containerClassName="w-full !m-0">{blog.title[language.current]}</HeadingOne>
+            <HeadingOne containerClassName="w-full text-center !m-0">{blog.title[language.current]}</HeadingOne>
             <HeadingTwo containerClassName="!mx-0">
                 { language.blog.lang } : { language.languages[blogLang] }
             </HeadingTwo>
