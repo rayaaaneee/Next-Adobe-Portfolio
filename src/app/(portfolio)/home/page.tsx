@@ -38,7 +38,7 @@ const Home = () => {
         <MainPart>
             <VerticalBorderSection 
                 text="Portfolio" 
-                icon={<FaBriefcase className="text-amber-400"/>} 
+                icon={<FaBriefcase className="text-amber-400 dark:text-red-200"/>} 
             />
             <Separator className="!mt-0" />
             <article className="relative flex flex-col justify-center">

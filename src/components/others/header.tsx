@@ -19,7 +19,6 @@ export interface HeaderProps {
     hasFooter?: boolean,
 }
 
-
 const Header = ({ hasFooter = true }: HeaderProps) => {
 
     const { language } = useLanguage();
@@ -39,7 +38,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
     const links: linkType[] = [
         {to: '/home', text: "Portfolio", isColored: false },
         {to: '/blog', text: "Blog", isColored: false },
-        {to: '/resume', text: { [Language.EN]: "Resume", [Language.FR]: "CV", [Language.ES]: "Currículum"}, isColored: false },
+        //{to: '/resume', text: { [Language.EN]: "Resume", [Language.FR]: "CV", [Language.ES]: "Currículum"}, isColored: false },
         {to: '/about', text: { [Language.EN]: "About", [Language.FR]: "À propos", [Language.ES]: "Acerca de"}, isColored: true }
     ]
 

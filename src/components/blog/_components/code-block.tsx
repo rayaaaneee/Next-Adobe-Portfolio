@@ -21,7 +21,7 @@ const CodeBlock = async (props: CodeBlockProps) => {
 
     const inlineCode: boolean = !lang;
 
-    const id = !inlineCode && (`code-block-${hash_sum(props)}`);
+    const id: string = cn(!inlineCode && (`code-block-${hash_sum(props)}`));
 
     const themes: Record<'light'|'dark', BundledTheme> = {
         light: 'material-theme-lighter',
@@ -45,9 +45,9 @@ const CodeBlock = async (props: CodeBlockProps) => {
     const baseClassName = inlineCode && 'inline-code';
 
     const CodeBlockParent = ({ children }: ChildrenInterface) => (
-        <section id={id as string} className='relative code-block'>
+        <article id={id} className='relative code-block max-size'>
             {children}
-        </section>
+        </article>
     );
 
     const codeContainerBaseClassName = cn(

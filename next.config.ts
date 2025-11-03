@@ -31,6 +31,7 @@ const nextConfig: NextConfig = withPWA({
     experimental: {
         mdxRs: true,
         serverActions: {
+            
             allowedOrigins: [
                 ...allowedOrigins.map(({ url }) => url), 
                 ...allowedOrigins.map(({ url }) => url.replace('http://', 'https://')),

@@ -10,6 +10,7 @@ import Separator from "@/components/others/separator";
 import BlogFooter from "./_components/blog-footer";
 
 import Language from "@/utils/types/language";
+import BlogTitle from "./_components/blog-title";
 
 export interface PageProps {
     params: Promise<{
@@ -36,28 +37,29 @@ const Page = async ({ params }: PageProps) => {
     const blog = assertFoundBlog(id);
 
     return (
-        <MainPart 
-        fullWidth
-        className={cn(
-            "!mx-auto",
-            "flex flex-col gap-5",
-            "py-10",
-            "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
-            "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
-            "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
-            'backdrop-blur-md',
-        )}>
-            <article className="flex flex-col gap-3">
-                <article id='blog-header' className='w-full !mx-0 flex flex-col items-center justify-center'>
+        <>
+            <BlogTitle blog={blog} />
+            <MainPart 
+            fullWidth
+            className={cn(
+                "!mx-auto",
+                "flex flex-col gap-3",
+                "py-10",
+                "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
+                "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
+                "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
+                'backdrop-blur-md',
+            )}>
+                <article id='blog-header' className='flex flex-col gap-3 items-center justify-center'>
                     <BlogHeader blog={blog} />
+                    <Separator />
                 </article>
-                <Separator />
                 { blog.content }
                 <div className="center">
                     <BlogFooter lang={blog.language} />
                 </div>
-            </article>
-        </MainPart>
+            </MainPart>
+        </>
     );
 }
 

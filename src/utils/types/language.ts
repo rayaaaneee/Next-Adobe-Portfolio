@@ -12,7 +12,7 @@ export type WithLanguageable<T> = WithLanguage<T> | T;
 
 export type PartialWithLanguage<T> = {
     [K in Language]?: T;
-};
+} & { default: T };
 
 export const isWithLanguage = <T>(obj: unknown): obj is WithLanguage<T> => {
     if (!obj || typeof obj !== 'object') {
@@ -21,5 +21,13 @@ export const isWithLanguage = <T>(obj: unknown): obj is WithLanguage<T> => {
     const record = obj as Record<string, unknown>;
     return Object.values(Language).every(lang => lang in record);
 };
+
+export const isPartialWithLanguage = <T>(obj: unknown): obj is PartialWithLanguage<T> => {
+    if (!obj || typeof obj !== 'object') {
+        return false;
+    }
+    const record = obj as Record<string, unknown>;
+    return 'default' in record;
+}
 
 export default Language;

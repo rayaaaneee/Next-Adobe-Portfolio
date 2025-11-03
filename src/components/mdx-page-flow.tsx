@@ -18,6 +18,7 @@ export const MdxImage = (props: NextImageProps) => (
     <Tooltip 
         size={TooltipSize.md}
         className={cn(
+            "max-size",
             "img-container rounded-md mx-auto",
         )} 
         disabled={props.alt === undefined} 
@@ -45,38 +46,50 @@ export const MdxCode = ({ children, className }: mdxCodeProps) => (
 export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 
 export const MdxQuote = ({ children }: ChildrenInterface) => (
-    <blockquote className={cn(
-        'border-l-8 border-[blanchedalmond]/70 dark:border-pink-200/70',
-        'pl-4 italic py-2',
-        'flex items-center [&_*]:my-0 box-border',
-        'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
-    )}>
-        {children}
-    </blockquote>
+    <article className='max-size'>
+        <blockquote className={cn(
+            'border-l-8 border-[blanchedalmond]/70 dark:border-pink-200/70',
+            'pl-4 italic py-2',
+            'flex items-center [&_*]:my-0 box-border',
+            'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
+        )}>
+            {children}
+        </blockquote>
+    </article>
 );
 
 export const MdxList = ({ children }: ChildrenInterface) => (
-    <ul className='list-disc [&>li]:ml-6 [&>li]:my-2'>
-        {children}
-    </ul>
+    <article>
+        <ul className='list-disc [&>li]:ml-6 [&>li]:my-2'>
+            {children}
+        </ul>
+    </article>
 );
 
-export const MdxSeparator = () => (<Separator />);
+export const MdxSeparator = () => (<article><Separator/></article>);
 
 export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
-    <HeadingOne isAnchorLink containerClassName='ml-0'>{children}</HeadingOne>
+    <article>
+        <HeadingOne isAnchorLink containerClassName='ml-0'>{children}</HeadingOne>
+    </article>
 );
 
 export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
-    <HeadingTwo isAnchorLink containerClassName='ml-0'>{children}</HeadingTwo>
+    <article>
+        <HeadingTwo isAnchorLink containerClassName='ml-0'>{children}</HeadingTwo>
+    </article>
 );
 
 export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
-    <HeadingThree isAnchorLink containerClassName='!ml-0'>{children}</HeadingThree>
+    <article>
+        <HeadingThree isAnchorLink containerClassName='!ml-0'>{children}</HeadingThree>
+    </article>
 );
 
 export const MdxParagraph = ({ children }: ChildrenInterface) => (
-    <Paragraph alignment={ParagraphAlignment.justify}>{children}</Paragraph>
+    <article>
+        <Paragraph alignment={ParagraphAlignment.justify}>{children}</Paragraph>
+    </article>
 );
 
 export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
