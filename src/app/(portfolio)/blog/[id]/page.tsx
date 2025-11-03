@@ -46,7 +46,7 @@ const Page = async ({ params }: PageProps) => {
                 "flex flex-col gap-3",
                 "py-10",
                 "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
-                "[&>.tooltip-container>img]:h-80 [&>.tooltip-container>img]:w-auto",
+                "[&>.tooltip-container>img]:w-auto",
                 "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
                 'backdrop-blur-md',
             )}>

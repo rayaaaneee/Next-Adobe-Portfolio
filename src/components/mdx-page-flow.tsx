@@ -15,22 +15,23 @@ import ClassNameInterface from '@/utils/interface/classname';
 import NextImageProps from '@/utils/types/next-image-props';
 
 export const MdxImage = (props: NextImageProps) => (
-    <Tooltip 
-        size={TooltipSize.md}
-        className={cn(
-            "max-size",
-            "img-container rounded-md mx-auto",
-        )} 
-        disabled={props.alt === undefined} 
-        text={props.alt}
-    >
-        <Image {...props} className={cn(
-            'cursor-zoom-in rounded-md',
-            "border-4 border-white/40",
-            "hover:scale-[1.01] transition-transform",
-            props.className
-        )} alt={props.alt} />
-    </Tooltip>
+    <article className='max-size'>
+        <Tooltip 
+            size={TooltipSize.md}
+            className={cn(
+                "img-container rounded-md mx-auto",
+            )} 
+            disabled={props.alt === undefined} 
+            text={props.alt}
+        >
+            <Image {...props} className={cn(
+                'cursor-zoom-in rounded-md object-contain h-fit box-border',
+                "border-4 border-white/40",
+                "hover:scale-[1.01] transition-transform",
+                props.className
+            )} alt={props.alt} />
+        </Tooltip>
+    </article>
 );
 
 export interface mdxCodeProps extends ChildrenInterface, ClassNameInterface {} 
