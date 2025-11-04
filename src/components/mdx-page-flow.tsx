@@ -25,9 +25,9 @@ export const MdxImage = (props: NextImageProps) => (
             text={props.alt}
         >
             <Image {...props} className={cn(
-                'cursor-zoom-in rounded-md object-contain h-fit box-border',
-                "border-4 border-white/40",
-                "hover:scale-[1.01] transition-transform",
+                'cursor-zoom-in md:rounded-md object-contain h-fit box-border',
+                "border-y-4 md:border-4 border-white/40",
+                "md:hover:scale-[1.01] transition-transform",
                 props.className
             )} alt={props.alt} />
         </Tooltip>
