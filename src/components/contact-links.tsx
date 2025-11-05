@@ -17,6 +17,7 @@ import whiteGithubImg from "~/img/components/contact-links/icon-github-white.png
 import mailImg from "~/img/components/contact-links/icon-mail.png";
 import phoneImg from "~/img/components/contact-links/icon-phone.png";
 import resumeImg from "~/img/components/contact-links/icon-resume.png";
+import assertDefined from "@/utils/function/assert-defined";
 
 export interface ContactLinksProps extends ClassNameInterface {
     animate?: boolean;
@@ -31,10 +32,6 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
 
     if (!tooltips && (tooltipsSize)) {
         throw new Error("tooltipSize cannot be used if tooltip is deactivated");
-    }
-
-    if (!process.env.NEXT_PUBLIC_EMAIL || !process.env.NEXT_PUBLIC_TEL) {
-        throw new Error("Environment variables NEXT_PUBLIC_EMAIL and NEXT_PUBLIC_TEL must be defined in .env file");
     }
     
     const usernameDivClassname = 'flex flex-row items-center gap-0';
@@ -66,7 +63,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
         { 
             title: language.home.links.mail, 
             image: mailImg,
-            href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`, 
+            href: `mailto:${assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL')}`,
             target: "_blank", 
             rel: "noreferrer",
             id: "contact-link-mail"
@@ -74,7 +71,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
         { 
             title: language.home.links.phone, 
             image: phoneImg,
-            href: `tel:${process.env.NEXT_PUBLIC_TEL}`,
+            href: `tel:${assertDefined<string>(process.env.NEXT_PUBLIC_TEL, 'NEXT_PUBLIC_TEL')}`,
             id: "contact-link-phone"
         },
         { 

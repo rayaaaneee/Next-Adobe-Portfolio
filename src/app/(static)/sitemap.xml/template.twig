@@ -2,33 +2,41 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-        <loc>https://rayanemerlin.com/</loc>
+        <loc>{{ domain }}/</loc>
         <priority>1.0</priority>
         <changefreq>never</changefreq>
     </url>
     
     <url>
-        <loc>https://rayanemerlin.com/home</loc>
+        <loc>{{ domain }}/home</loc>
         <priority>1.0</priority>
         <changefreq>never</changefreq>
     </url>
     
     <url>
-        <loc>https://rayanemerlin.com/resume</loc>
+        <loc>{{ domain }}/resume</loc>
         <priority>0.9</priority>
         <changefreq>monthly</changefreq>
     </url>
     
     <url>
-        <loc>https://rayanemerlin.com/blog</loc>
+        <loc>{{ domain }}/blog</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
 
     <url>
-        <loc>https://rayanemerlin.com/about</loc>
+        <loc>{{ domain }}/about</loc>
         <priority>0.3</priority>
         <changefreq>never</changefreq>
     </url>
+
+    {% for blog in blogs %}
+        <url>
+            <loc>{{ domain }}/blog/{{ blog.id }}</loc>
+            <priority>0.7</priority>
+            <changefreq>never</changefreq>
+        </url>
+    {% endfor %}
 
 </urlset>

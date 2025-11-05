@@ -57,10 +57,10 @@ const frenchSentences = {
             title: "About me",
             texts: [
                 "Bonjour ! Je suis <b>Rayane</b>, un <b>développeur</b> passionné avec un grand intérêt pour la <b>technologie</b> et tout ce qui touche à l'informatique. Au fil des années, j'ai consacré mon temps à la création de divers <b>projets personnels</b>, animés par ma passion pour <b>l'apprentissage</b> et <b>l'exploration de nouvelles technologies</b>.<br/>",
-                "Bien que mon <b>portfolio mette fortement l'accent sur le design</b>, il reflète surtout mon appréciation pour <b>l'esthétique visuelle</b> et <b>l'expérience utilisateur</b>, des aspects que je considère comme un <i>passe-temps</i> et un <i>exutoire créatif</i>. Même si j'aime concevoir des <b>interfaces épurées et visuellement attrayantes</b>, mon <b>objectif professionnel</b> est orienté vers la <b>cybersécurité</b> et le <b>développement logiciel</b>, domaines dans lesquels je souhaite approfondir mon expertise et construire une <b>carrière technique solide</b>.<br/>",
                 "Je maîtrise le <b>développement full-stack</b> et la <b>cybersécurité</b>, avec un intérêt particulier pour <b>React</b> et <b>Next.js</b> dans le développement web. En cybersécurité, je me suis formé à travers des défis <b>Capture The Flag (CTF)</b> et j'ai appliqué ces compétences dans des <b>contextes réels</b>, renforçant ainsi ma compréhension des <b>vulnérabilités</b>, du <b>renforcement des systèmes</b> et des <b>pratiques de développement sécurisé</b>.<br/>",
                 "Je suis titulaire d'un <b>BUT en Informatique</b> de l'<b>Université Lyon 1</b> (<i>parcours Développement et Implémentation</i>) et je poursuis actuellement un <b>cycle d'ingénieur en trois ans à CPE Lyon</b>, avec une spécialisation en <b>Génie Informatique et Cybersécurité</b>.<br/>",
                 "Je travaille actuellement chez <b>Energy Pool</b> en tant que <b>membre de la Blue Team</b> (<i>protection contre les vulnérabilités</i>) tout au long de mes études d'ingénieur. Ce rôle renforce mes compétences en <b>détection de menaces</b>, <b>analyse d'incidents</b>, <b>gestion des vulnérabilités</b> et <b>amélioration continue des mesures défensives</b> au sein d'un <b>environnement de production</b>.<br/>",
+                "📝 <i>Note</i> : Bien que mon <b>portfolio mette fortement l'accent sur le design</b>, il reflète surtout mon appréciation pour <b>l'esthétique visuelle</b> et <b>l'expérience utilisateur</b>, des aspects que je considère comme un <i>passe-temps</i> et un <i>exutoire créatif</i>. Même si j'aime concevoir des <b>interfaces épurées et visuellement attrayantes</b>, mon <b>objectif professionnel</b> est orienté vers la <b>cybersécurité</b> et le <b>développement logiciel</b>, domaines dans lesquels je souhaite approfondir mon expertise et construire une <b>carrière technique solide</b>.<br/>",
                 "... certifications"
             ]
         },
@@ -123,7 +123,8 @@ const frenchSentences = {
         dismiss: "Réduire",
     },
     not_found: {
-        title: "Page introuvable"
+        title: "404 - Page introuvable",
+        text: "Désolé, nous n'avons pas pu trouver la page que vous recherchez.",
     }
 }
 

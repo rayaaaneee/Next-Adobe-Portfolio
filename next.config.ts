@@ -21,6 +21,7 @@ const allowedOrigins: OriginType[] = [
     { url:'http://127.0.0.1:3000', islocalhost: true },
     { url:'http://localhost:3000', islocalhost: true },
     { url:'http://rayanemerlin.com', islocalhost: false },
+    { url:'http://rayanemerl.in', islocalhost: false },
     { url:'http://next-adobe-portfolio.vercel.app', islocalhost: false }
 ]
 
@@ -31,7 +32,6 @@ const nextConfig: NextConfig = withPWA({
     experimental: {
         mdxRs: true,
         serverActions: {
-            
             allowedOrigins: [
                 ...allowedOrigins.map(({ url }) => url), 
                 ...allowedOrigins.map(({ url }) => url.replace('http://', 'https://')),

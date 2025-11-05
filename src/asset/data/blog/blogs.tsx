@@ -45,6 +45,13 @@ const blogs: DeepReadonly<BlogPost[]> = [
     },
 ];
 
+export const baseBlogs = blogs.map(({ id, title, date, summary }) => ({
+    id,
+    title: title[Language.EN],
+    date,
+    summary,
+}));
+
 const findBlog = (id: string): DeepReadonlyable<BlogPost> | undefined => {
     return blogs.find((blog) => blog.id === id);
 }

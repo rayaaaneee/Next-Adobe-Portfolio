@@ -123,7 +123,8 @@ const englishSentences: Sentences = {
         dismiss: "Dismiss",
     },
     not_found: {
-        title: "Page not found"
+        title: "404 - Page not found",
+        text: "Sorry, we couldn’t find the page you’re looking for.",
     }
 }
 

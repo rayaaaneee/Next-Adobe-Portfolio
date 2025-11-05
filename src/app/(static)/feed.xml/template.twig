@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Rayane Merlin Portfolio &amp; Blog</title>
+    <link>{{ domain }}</link>
+    <description>Latest posts from my portfolio and blog</description>
+    <language>{{ lang }}</language>
+    <lastBuildDate>{{ lastUpdate }}</lastBuildDate>
+    <generator>Next.js + Twig</generator>
+
+    {% for blog in blogs %}
+        <item>
+            <title>{{ blog.title }}</title>
+            <language>{{ blog.language }}</language>
+            <link>{{ domain }}/blog/{{ blog.id }}</link>
+            <guid>{{ domain }}/blog/{{ blog.id }}</guid>
+            <pubDate>{{ blog.date }}</pubDate>
+            <description>{{ blog.summary }}</description>
+            <author>{{ email }}</author>
+            <category>{{ blog.tags }}</category>
+        </item>
+    {% endfor %}
+
+  </channel>
+</rss>

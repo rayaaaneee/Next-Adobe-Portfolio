@@ -2,6 +2,8 @@ import { Metadata } from "next";
 
 import cn from "@/utils/function/cn";
 
+import NotFound from "../../[...not-found]/page";
+
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import MainPart from "@/components/others/main-part";
@@ -11,6 +13,8 @@ import BlogFooter from "./_components/blog-footer";
 
 import Language from "@/utils/types/language";
 import BlogTitle from "./_components/blog-title";
+
+import { BlogPost } from "@/utils/types/blog";
 
 export interface PageProps {
     params: Promise<{
@@ -22,19 +26,36 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
     const { id } = await params;
 
-    const blog = assertFoundBlog(id);
+    let blog: BlogPost;
+    try {
+        blog = assertFoundBlog(id);
+    } catch {
+        return {
+            title: 'Blog Not Found',
+        }
+    }
 
     return {
         title: blog.title[Language.EN],
-    }
-    
+    };
+
 }
 
 const Page = async ({ params }: PageProps) => {
     
     const { id } = await params;
 
-    const blog = assertFoundBlog(id);
+    let blog: BlogPost;
+    
+    try {
+        blog = assertFoundBlog(id);
+    } catch {
+        return (
+            <MainPart fullWidth className="!p-0">
+                <NotFound />
+            </MainPart>
+        );
+    }
 
     return (
         <>
