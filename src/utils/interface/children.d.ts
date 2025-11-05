@@ -1,6 +1,6 @@
 import { JSX, ReactNode, ReactElement } from "react";
 
-export type ChildrenType =  ReactNode | ReactElement | JSX.Element | ChildrenType[] ;
+export type ChildrenType =  ReactNode | ReactElement | JSX.Element | ChildrenType[];
 
 interface ChildrenInterface {
     children: ChildrenType;

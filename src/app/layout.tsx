@@ -11,6 +11,7 @@ import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
 import '@/utils/function/string';
+import assertDefined from "@/utils/function/assert-defined";
 
 const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
 
@@ -46,6 +47,13 @@ export const metadata: Metadata = {
     },
     formatDetection: {
       telephone: false,
+    },
+    alternates: {
+        canonical: assertDefined(process.env.DOMAIN, 'DOMAIN'),
+        types: {
+            'application/rss+xml': '/rss.xml',
+            'application/atom+xml': '/atom.xml',
+        },
     },
 };
 

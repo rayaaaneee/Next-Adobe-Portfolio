@@ -6,14 +6,17 @@ import { Template } from 'twig';
 
 import readTemplate from '../read-template';
 
-import blogs from '@/asset/data/blog/blogs';
-
 import assertDefined from '@/utils/function/assert-defined';
 
 import { BlogPost } from '@/utils/types/blog';
 import Language from '@/utils/types/language';
+import blogs from '@/asset/data/blog/blogs';
 
+import { compile } from '@mdx-js/mdx';
+import path from 'path';
+import { readFile } from 'fs/promises';
 export const dynamic = 'force-static';
+
 
 export interface SitemapBlogEntry {
     id: string;
@@ -32,23 +35,22 @@ const LANGUAGE_MAP: Record<Language, string> = {
 
 export const GET = async () => {
 
-    const template: Template = await readTemplate('feed.xml');
+    const template: Template = await readTemplate('atom.xml');
 
     const xml = template.render({
         domain: assertDefined<string>(process.env.DOMAIN, 'DOMAIN'),
         email: assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL'),
-        lang: "en-us",
         lastUpdate: new Date().toUTCString(),
-        blogs: blogs.map<SitemapBlogEntry>((blog: BlogPost) => ({ 
+        lang: "en-us",
+        blogs: blogs.map((blog: BlogPost) => ({ 
             id: blog.id, 
             title: blog.title[Language.EN],
             summary: blog.summary, 
-            date: new Date(blog.date as string).toUTCString(), 
+            date: new Date(blog.date as string).toUTCString(),
             tags: [],
             language: LANGUAGE_MAP[blog.language as keyof typeof LANGUAGE_MAP],
-        })),
+        })) as SitemapBlogEntry[],
     });
-
     return new NextResponse<string>(xml, {
         headers: {
             'Content-Type': 'application/xml',

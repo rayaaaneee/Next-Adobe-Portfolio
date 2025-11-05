@@ -36,7 +36,7 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Personalización de SVG con SVGR",
             [Language.FR]: "Personnalisation des SVG avec SVGR",
         },
-        date: "2024-01-01",
+        date: "2025-10-30",
         color: "#ff9100",
         summary: "This is a summary of my first blog post.",
         icon: <Image src={svgIcon} alt="SVG Icon" />,
@@ -44,13 +44,6 @@ const blogs: DeepReadonly<BlogPost[]> = [
         content: <SvgPageContent />,
     },
 ];
-
-export const baseBlogs = blogs.map(({ id, title, date, summary }) => ({
-    id,
-    title: title[Language.EN],
-    date,
-    summary,
-}));
 
 const findBlog = (id: string): DeepReadonlyable<BlogPost> | undefined => {
     return blogs.find((blog) => blog.id === id);
