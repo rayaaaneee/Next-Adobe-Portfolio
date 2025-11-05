@@ -1,4 +1,5 @@
 // Reference object for type inference for Language, used in context and hooks
+import assertDefined from "@/utils/function/assert-defined";
 import Language, { WithLanguage } from "@/utils/types/language";
 
 const frenchSentences = {
@@ -26,16 +27,16 @@ const frenchSentences = {
         illustration_inspiration: "Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. \"Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.\""
     },
     index: {
-        title: "Adobe Portfolio - Rayane Merlin",
+        title: `Adobe Portfolio - ${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}`,
         discover: "Découvrir",
         description: {
             long: [
-                "Rayane Merlin", 
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Développeur Full-Stack", 
                 "Cybersécurité",
             ],
             short: [
-                "Rayane Merlin",
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Dev FullStack",
                 "Cyber"
             ]

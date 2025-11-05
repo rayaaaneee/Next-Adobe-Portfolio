@@ -1,3 +1,5 @@
+import assertDefined from "@/utils/function/assert-defined";
+
 import Language, { WithLanguage } from "@/utils/types/language";
 import Sentences from "@/utils/types/sentences";
 
@@ -26,16 +28,16 @@ const englishSentences: Sentences = {
         illustration_inspiration: "Illustration inspired by The Lord of the Rings: The Rings of Power. \"For more details and legal information, please visit the screen.\""
     },
     index: {
-        title: "Adobe Portfolio - Rayane Merlin",
+        title: `Adobe Portfolio - ${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}`,
         discover: "Get started",
         description: {
             long: [
-                "Rayane Merlin", 
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Full-Stack Developper", 
                 "Cybersecurity"
             ],
             short: [
-                "Rayane Merlin",
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "FullStack Dev",
                 "Cyber"
             ]

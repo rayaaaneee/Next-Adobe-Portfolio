@@ -1,8 +1,10 @@
 import { forwardRef } from 'react';
 
 import cn from '@/utils/function/cn';
+import assertDefined from '@/utils/function/assert-defined';
 
 import ClassNameInterface from '@/utils/interface/classname';
+
 
 const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className, id }, ref) => {
 
@@ -38,7 +40,7 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
                 <h1 className='header-text absolute'>Adobe Portfolio</h1>
                 <h1 id='port' className='text-white'>P</h1>
                 <h2 id='folio' className='text-white'>f</h2>
-                <p className='author italic absolute'>By <span>Rayane Merlin</span></p>
+                <p className='author italic absolute'>By <span>{ assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</span></p>
             </div>
         </div>
     )

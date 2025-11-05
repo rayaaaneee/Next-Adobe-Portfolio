@@ -4,7 +4,9 @@ import { ChildrenType } from "../interface/children";
 
 import { WithLanguage } from "./language";
 
-export type StringDate = `${number}-${number}-${number}`; // YYYY-MM-DD (enforced)
+import { StringDate } from "./date";
+
+import { BlogTag } from "@/asset/data/blog/blogs";
 
 export interface BlogPost {
     index: number;
@@ -12,8 +14,9 @@ export interface BlogPost {
     title: WithLanguage<string>;
     color: string;
     date: StringDate;
-    summary: string;
+    summary: WithLanguage<string>;
     icon: ChildrenType;
     language: Language;
     content: ChildrenType;
+    tags: BlogTag[];
 }

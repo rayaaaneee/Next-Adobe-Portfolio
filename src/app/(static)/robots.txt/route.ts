@@ -15,7 +15,7 @@ export const GET = async () => {
     const template: Template = await readTemplate('robots.txt');
 
     const txt = template.render({
-        domain: assertDefined<string>(process.env.DOMAIN, 'DOMAIN'),
+        domain: assertDefined<string>(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
     });
 
     return new NextResponse<string>(txt, {

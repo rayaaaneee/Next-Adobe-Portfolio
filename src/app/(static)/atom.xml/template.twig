@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Rayane Merlin Portfolio &amp; Blog</title>
+    <title>{{ name }} Portfolio &amp; Blog</title>
     <link href="{{ domain }}" />
     <link href="{{ domain }}/atom.xml" rel="self" />
     <updated>{{ lastUpdate }}</updated>
     <id>{{ domain }}</id>
     <author>
-        <name>Rayane Merlin</name>
+        <name>{{ name }}</name>
         <email>{{ email }}</email>
     </author>
     <generator>Next.js + Twig</generator>
@@ -19,7 +19,7 @@
             <updated>{{ blog.date }}</updated>
             <summary>{{ blog.summary }}</summary>
             <author>
-                <name>Rayane Merlin</name>
+                <name>{{ name }}</name>
                 <email>{{ email }}</email>
             </author>
             {% if blog.tags %}

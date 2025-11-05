@@ -198,7 +198,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonPropsInterface>(
                 [ background && "bg-[rgba(255,255,255,0.75)] [&.active]:bg-[rgba(245,233,225,0.75)]" ],
                 [ background && "dark:bg-[rgba(32,32,32,0.50)] dark:[&.active]:bg-[rgba(50,50,50,0.70)]" ],
                 [ background && hover && 
-                    ["cursor-pointer hover:bg-[rgba(239,239,239,0.75)] dark:hover:bg-[rgba(70,70,70,0.75)]",
+                    ["cursor-pointer hover:bg-[rgba(234,234,234,0.75)] dark:hover:bg-[rgba(70,70,70,0.75)]",
                     "[&.active]:hover:bg-[rgba(219,219,219,0.75)] dark:[&.active]:hover:bg-[rgba(90,90,90,0.90)]"]
                 ],
                 [ hover ? "cursor-pointer" : "cursor-default" ],

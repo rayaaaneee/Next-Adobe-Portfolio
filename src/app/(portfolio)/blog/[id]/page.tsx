@@ -9,12 +9,15 @@ import { assertFoundBlog } from "@/asset/data/blog/blogs";
 import MainPart from "@/components/others/main-part";
 import BlogHeader from "@/app/(portfolio)/blog/[id]/_components/blog-header";
 import Separator from "@/components/others/separator";
-import BlogFooter from "./_components/blog-footer";
 
-import Language from "@/utils/types/language";
+import BlogFooter from "./_components/blog-footer";
 import BlogTitle from "./_components/blog-title";
 
+import Language from "@/utils/types/language";
+
 import { BlogPost } from "@/utils/types/blog";
+
+import { DeepReadonlyable } from "@/utils/types/deep-readonly";
 
 export interface PageProps {
     params: Promise<{
@@ -26,7 +29,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
     const { id } = await params;
 
-    let blog: BlogPost;
+    let blog: DeepReadonlyable<BlogPost>;
     try {
         blog = assertFoundBlog(id);
     } catch {
@@ -45,7 +48,7 @@ const Page = async ({ params }: PageProps) => {
     
     const { id } = await params;
 
-    let blog: BlogPost;
+    let blog: DeepReadonlyable<BlogPost>;
     
     try {
         blog = assertFoundBlog(id);
@@ -69,16 +72,10 @@ const Page = async ({ params }: PageProps) => {
                 "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
                 "[&>.tooltip-container>img]:w-auto",
                 "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
-                'backdrop-blur-md',
             )}>
-                <article id='blog-header' className='flex flex-col gap-3 items-center justify-center'>
-                    <BlogHeader blog={blog} />
-                    <Separator />
-                </article>
+                <BlogHeader blog={blog} />
                 { blog.content }
-                <div className="center">
-                    <BlogFooter lang={blog.language} />
-                </div>
+                <BlogFooter blog={blog} />
             </MainPart>
         </>
     );

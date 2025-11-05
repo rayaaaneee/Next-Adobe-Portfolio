@@ -16,13 +16,15 @@ const MainPart = ({ className, id, children, style, fullWidth = false }: MainPar
         id={id} 
         style={{
             ...style,
-            "--color": "rgb(255,255,255,0.5)",
-            "--dark-color": "rgb(0,0,0,0.8)",
+            "--alpha": "0.7",
+            "--color": "rgb(255,255,255,var(--alpha))",
+            "--dark-color": "rgb(0,0,0,calc(var(--alpha) * 1.15))",
         } as CSSProperties}
         className={cn(
-            "justify-self-center rounded-none md:rounded-md h-fit mx-auto",
+            "relative justify-self-center rounded-none md:rounded-md h-fit mx-auto",
             "to-animate fade anim-delay-200 anim-duration-300",
-            "bg-[var(--color)] dark:bg-[var(--dark-color)] backdrop-blur-md",
+            "bg-[var(--color)] dark:bg-[var(--dark-color)]",
+            // "backdrop-blur-md",
             "box-border overflow-hidden",
             (fullWidth ?
                 [

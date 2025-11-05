@@ -14,6 +14,7 @@ import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
 import Language, { isWithLanguage, WithLanguageable } from '@/utils/types/language';
+import assertDefined from '@/utils/function/assert-defined';
 
 export interface HeaderProps {
     hasFooter?: boolean,
@@ -34,13 +35,15 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
         to: string,
         text: WithLanguageable<string>,
         isColored: boolean,
+        isBottom: boolean,
     }
     const links: linkType[] = [
-        {to: '/home', text: "Portfolio", isColored: false },
-        {to: '/blog', text: "Blog", isColored: false },
+        {to: '/home', text: "Portfolio", isColored: false, isBottom: false },
+        {to: '/blog', text: "Blog", isColored: false, isBottom: false },
         //{to: '/resume', text: { [Language.EN]: "Resume", [Language.FR]: "CV", [Language.ES]: "Currículum"}, isColored: false },
-        {to: '/about', text: { [Language.EN]: "About", [Language.FR]: "À propos", [Language.ES]: "Acerca de"}, isColored: true }
     ]
+
+    const aboutLink: linkType = { to: '/about', text: { [Language.EN]: "About", [Language.FR]: "À propos", [Language.ES]: "Acerca de"}, isColored: true, isBottom: true };
 
     // Close menu when changing page
     useConditionalEffect(() => {
@@ -119,6 +122,9 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
 
     }, [isMenuReady]);
 
+    const getLanguageTitle = (text: WithLanguageable<string>) => (
+        isWithLanguage(text) ? text[language.current] : text
+    );
 
     return (
         <header>
@@ -133,21 +139,21 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
             </Link>
             <nav id="menu-container">
                 <ul id='header-media-menu' className={cn(
-                    "box-content bg-[rgb(255_255_255/50%)] [&.active]:bg-[rgb(255_255_255/30%)] transition-all ease-menu duration-600",
+                    "box-content bg-[#efdde3]/70 [&.active]:bg-[rgb(255_255_255/30%)] transition-all ease-menu duration-600",
                     "flex flex-col justify-center items-center gap-[3vh] cursor-pointer fixed list-none m-0 top-0 right-0 w-[60px] h-[60px]",
-                    "backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
+                    "[&.active]:backdrop-blur-md p-[25px] rounded-[50%] translate-x-[17%] translate-y-[-20%] z-[2]",
                     "[&>*]:opacity-0 [&>*]:transition-opacity [&>*]:ease-menu [&>*]:duration-450 [&>*]:pointer-events-none",
                     "[&.active>*]:opacity-100 [&.active>*]:pointer-events-auto",
                     "[&.active]:p-0 [&.active]:cursor-auto [&.active]:w-screen [&.active]:h-full [&.active]:rounded-none [&.active]:translate-x-0 [&.active]:translate-y-0",
                     "md:[&.active]:w-[450px]",
                     "dark:bg-menu-dark dark:[&.active]:bg-menu-dark dark:[&_*]:text-white",
                 )} ref={ mediaMenu }>
-                    <SelectLanguage className={"absolute top-[25px] left-[25px]"} />
+                    <SelectLanguage className={"absolute top-[20px] left-[25px]"} />
                     { hasFooter && ( 
                         <Link href={'/'} className='w-fit h-fit'>
                             <Logo
                                 color={LogoColors.theme}
-                                className="absolute left-[25px] bottom-[25px] w-[50px] h-[50px] bg-cover bg-center"
+                                className="absolute left-[25px] bottom-[20px] w-[50px] h-[50px] bg-cover bg-center"
                             />
                         </Link>
                     ) }
@@ -155,11 +161,11 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                         "flex flex-col items-center justify-center gap-[3vh] w-fit",
                     )}>
                         { links.map((link) => (
-                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ isWithLanguage(link.text) ? link.text[language.current] : link.text }</MenuLink>
+                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ getLanguageTitle(link.text) }</MenuLink>
                         )) }
                     </div>
                     <SwitchTheme pinkMoon />
-                    <div className='menu-footer'></div>
+                    <MenuLink className='absolute bottom-4 right-4' to={aboutLink.to} isColored={aboutLink.isColored}>{ getLanguageTitle(aboutLink.text) }</MenuLink>
                 </ul>
                 <HamburgerMenu ref={hamburgerMenu} />
             </nav>

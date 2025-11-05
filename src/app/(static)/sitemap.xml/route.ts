@@ -6,7 +6,7 @@ import { Template } from 'twig';
 
 import readTemplate from '../read-template';
 
-import baseBlogs from '@/asset/data/blog/blogs';
+import getBlogs from '@/asset/data/blog/blogs';
 
 import assertDefined from '@/utils/function/assert-defined';
 
@@ -21,8 +21,8 @@ export const GET = async () => {
     const template: Template = await readTemplate('sitemap.xml');
 
     const xml = template.render({
-        domain: assertDefined<string>(process.env.DOMAIN, 'DOMAIN'),
-        blogs: baseBlogs.map<SitemapBlogEntry>(blog => ({ 
+        domain: assertDefined<string>(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
+        blogs: getBlogs().map<SitemapBlogEntry>(blog => ({ 
             id: blog.id
         })),
     });

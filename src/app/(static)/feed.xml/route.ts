@@ -12,6 +12,7 @@ import assertDefined from '@/utils/function/assert-defined';
 
 import { BlogPost } from '@/utils/types/blog';
 import Language from '@/utils/types/language';
+import getBlogs from '@/asset/data/blog/blogs';
 
 export const dynamic = 'force-static';
 
@@ -35,14 +36,16 @@ export const GET = async () => {
     const template: Template = await readTemplate('feed.xml');
 
     const xml = template.render({
-        domain: assertDefined<string>(process.env.DOMAIN, 'DOMAIN'),
+        domain: assertDefined<string>(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
         email: assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL'),
+        name: assertDefined<string>(process.env.NEXT_PUBLIC_NAME, 'NEXT_PUBLIC_NAME'),
         lang: "en-us",
+        currentYear: new Date().getFullYear(),
         lastUpdate: new Date().toUTCString(),
-        blogs: blogs.map<SitemapBlogEntry>((blog: BlogPost) => ({ 
+        blogs: getBlogs().map<SitemapBlogEntry>((blog) => ({ 
             id: blog.id, 
             title: blog.title[Language.EN],
-            summary: blog.summary, 
+            summary: blog.summary[Language.EN], 
             date: new Date(blog.date as string).toUTCString(), 
             tags: [],
             language: LANGUAGE_MAP[blog.language as keyof typeof LANGUAGE_MAP],

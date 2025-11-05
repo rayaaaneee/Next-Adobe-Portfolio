@@ -1,3 +1,5 @@
+import assertDefined from "@/utils/function/assert-defined";
+
 import Language, { WithLanguage } from "@/utils/types/language";
 import Sentences from "@/utils/types/sentences";
 
@@ -26,16 +28,16 @@ const spanishSentences: Sentences = {
         illustration_inspiration: "Ilustración inspirada en El Señor de los Anillos: Los Anillos del Poder. Para más detalles e información legal, visite la pantalla."
     },
     index: {
-        title: "Adobe Portfolio - Rayane Merlin",
+        title: `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')} - Adobe Portfolio`,
         discover: "Empezar",
         description: {
             long: [
-                "Rayane Merlin",
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Desarrollador Full-Stack",
                 "Ciberseguridad"
             ],
             short: [
-                "Rayane Merlin",
+                assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Dev FullStack",
                 "Ciber"
             ]

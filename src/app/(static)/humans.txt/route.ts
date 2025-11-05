@@ -19,7 +19,8 @@ export const GET = async () => {
     const template: Template = await readTemplate('humans.txt');
 
     const txt = template.render({
-        domain: assertDefined<string>(process.env.DOMAIN, 'DOMAIN'),
+        name: assertDefined<string>(process.env.NEXT_PUBLIC_NAME, 'NEXT_PUBLIC_NAME'),
+        domain: assertDefined<string>(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
         email: assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL'),
         currentDate: new Date().toISOString().split('T')[0],
     });

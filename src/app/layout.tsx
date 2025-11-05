@@ -12,8 +12,9 @@ import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
 import '@/utils/function/string';
 import assertDefined from "@/utils/function/assert-defined";
+import PWAUpdateNotification from "./_pwa-update-notification";
 
-const APP_DESCRIPTION = "Rayane Merlin's Portfolio built with Next.js";
+const APP_DESCRIPTION = `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}'s Portfolio built with Next.js`;
 
 export const metadata: Metadata = {
     manifest: "/manifest.json",
@@ -49,11 +50,15 @@ export const metadata: Metadata = {
       telephone: false,
     },
     alternates: {
-        canonical: assertDefined(process.env.DOMAIN, 'DOMAIN'),
+        canonical: assertDefined(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
         types: {
-            'application/rss+xml': '/rss.xml',
-            'application/atom+xml': '/atom.xml',
-        },
+            'application/rss+xml': [
+                { url: '/rss.xml', title: `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')} RSS Feed` },
+            ],
+            'application/atom+xml': [
+                { url: '/atom.xml', title: `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')} Atom Feed` },
+            ],
+        },  
     },
 };
 
@@ -84,6 +89,7 @@ const Layout = ({
         suppressHydrationWarning
     >
         <body className={"antialiased"}>
+            <PWAUpdateNotification />
             {children}
         </body>
     </html>

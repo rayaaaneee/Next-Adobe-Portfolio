@@ -1,6 +1,8 @@
 import DeepReadonly from "./deep-readonly";
 import Language, { WithLanguage } from "./language";
 
+export type StringDate = `${number}-${number}-${number}`; // YYYY-MM-DD (enforced)
+
 export const Month: DeepReadonly<Record<string, WithLanguage<string>>> = {
     January: { [Language.EN]: "Jan", [Language.FR]: "Jan", [Language.ES]: "Ene" },
     February: { [Language.EN]: "Feb", [Language.FR]: "Fév", [Language.ES]: "Feb" },
