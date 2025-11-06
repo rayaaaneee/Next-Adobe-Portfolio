@@ -34,15 +34,28 @@ export const MdxImage = (props: NextImageProps) => (
     </article>
 );
 
+/* Use : ```[file:/[]...]]language(lines) */
 export interface mdxCodeProps extends ChildrenInterface, ClassNameInterface {} 
-export const MdxCode = ({ children, className }: mdxCodeProps) => (
-    <CodeBlock
-        lang={className?.remove('language-').remove('(lines)') as BundledLanguage || undefined}
-        showLineNumbers={className?.includes('(lines)')}
-    >
-        {children}
-    </CodeBlock>
-);
+export const MdxCode = ({ children, className }: mdxCodeProps) => {
+
+    const fileRegex = /\[file:\/?([^\]]+)\]/;
+    
+    const lang: BundledLanguage | undefined = className?.remove('language-')
+        .remove('(lines)')
+        .remove(fileRegex) as BundledLanguage;
+    const showLineNumbers: boolean = className?.includes('(lines)') || false;
+    const filename: string | undefined = className?.match(fileRegex)?.[1] || undefined;
+
+    return (
+        <CodeBlock
+            lang={lang}
+            showLineNumbers={showLineNumbers}
+            filename={filename}
+        >
+            { children }
+        </CodeBlock>
+    );
+}
 
 export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 
@@ -54,7 +67,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => (
             'flex items-center [&_*]:my-0 box-border',
             'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
         )}>
-            {children}
+            { children }
         </blockquote>
     </article>
 );
@@ -71,30 +84,30 @@ export const MdxSeparator = () => (<article><Separator/></article>);
 
 export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
     <article>
-        <HeadingOne isAnchorLink containerClassName='ml-0'>{children}</HeadingOne>
+        <HeadingOne isAnchorLink containerClassName='ml-0'>{ children }</HeadingOne>
     </article>
 );
 
 export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
     <article>
-        <HeadingTwo isAnchorLink containerClassName='ml-0'>{children}</HeadingTwo>
+        <HeadingTwo isAnchorLink containerClassName='ml-0'>{ children }</HeadingTwo>
     </article>
 );
 
 export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
     <article>
-        <HeadingThree isAnchorLink containerClassName='!ml-0'>{children}</HeadingThree>
+        <HeadingThree isAnchorLink containerClassName='!ml-0'>{ children }</HeadingThree>
     </article>
 );
 
 export const MdxParagraph = ({ children }: ChildrenInterface) => (
     <article>
-        <Paragraph alignment={ParagraphAlignment.justify}>{children}</Paragraph>
+        <Paragraph alignment={ParagraphAlignment.justify}>{ children }</Paragraph>
     </article>
 );
 
 export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
-    <a href={href} className='underline' target='_blank'>
-        {children}
+    <a href={href} className='underline underline-offset-2' target='_blank'>
+        { children }
     </a>
 );

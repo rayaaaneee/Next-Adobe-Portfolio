@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX, MouseEventHandler } from "react";
 
 import cn from "@/utils/function/cn";
 
@@ -36,6 +36,8 @@ interface BaseTooltipPropsInterface extends ChildrenInterface, ClassNameInterfac
     tooltipBackgroundColor?: string;
     type?: TooltipType;
     hasIcon?: boolean;
+    onClick?: MouseEventHandler<HTMLDivElement>;
+    onMouseLeave?: MouseEventHandler<HTMLDivElement>;
 }
 
 interface DisabledTooltipProps {
@@ -59,11 +61,13 @@ const Tooltip = ({
     position = TooltipPosition.top, 
     forceShow = false, 
     disabled = false, 
+    onClick,
+    onMouseLeave,
     className, 
     tooltipClassName, 
     tooltipBackgroundColor,
     type = "default", 
-    hasIcon = false 
+    hasIcon = false,
 }: TooltipProps) => {
 
     const getSizeClassName = (): string => {
@@ -134,7 +138,7 @@ const Tooltip = ({
     }
 
     return (
-        <div id={id} className={cn('tooltip-container relative group w-fit text-white', className)}>
+        <div id={id} className={cn('tooltip-container relative group w-fit text-white', className)} onClick={onClick} onMouseLeave={onMouseLeave}>
             {children}
             <div 
                 role="tooltip"

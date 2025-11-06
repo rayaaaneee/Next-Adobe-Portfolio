@@ -1,18 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
+import { createRoot, Root } from "react-dom/client";
 
 import { BundledLanguage } from "shiki";
 
 import { FaCircle } from "react-icons/fa6";
 
 import CodeBlockCopyButton from "./code-block-copy-button";
-import { createRoot, Root } from "react-dom/client";
+
+import cn from "@/utils/function/cn";
+
+import { FaCode } from "react-icons/fa6";
+import { FaRegFileCode } from "react-icons/fa";
+import { HeadingThree } from "@/components/page-flow";
 
 interface CodeBlockHeaderProps {
     text: string;
-    parentId?: string;
     lang: BundledLanguage;
+    parentId?: string;
+    filename?: string;
 }
 
 export const languageNamesWithInitials: BundledLanguage[] = [
@@ -31,7 +38,7 @@ export const languageNamesWithInitials: BundledLanguage[] = [
     'php',
 ];
 
-const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
+const CodeBlockHeader = ({ lang, text, parentId, filename }: CodeBlockHeaderProps) => {
 
     useEffect(() => {
 
@@ -66,7 +73,24 @@ const CodeBlockHeader = ({ lang, text, parentId }: CodeBlockHeaderProps) => {
                             <FaCircle key={i} />
                         ))}
                     </div>
-                    <p className="text-sm">{"</>"} <b className="inline-block first-letter:uppercase">{languageNamesWithInitials.includes(lang) ? lang.toUpperCase() : lang }</b></p>
+                    <HeadingThree 
+                        icon={filename ? <FaRegFileCode className="mb-[2px] text-[0.8em]" /> : <FaCode className="mb-[2px] text-[0.8em]" />}
+                        containerClassName="!m-0 gap-1"
+                        className={cn(
+                            "text-sm font-semibold font-[inherit]",  
+                            { "first-letter:uppercase": filename === undefined }
+                        )}
+                        >
+                        {filename ? 
+                            filename 
+                            : 
+                            (languageNamesWithInitials.includes(lang) ? 
+                                lang.toUpperCase() 
+                                : 
+                                lang
+                            )
+                        }
+                    </HeadingThree>
                     <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
                 </>
             );

@@ -1,11 +1,11 @@
 declare global {
     interface String {
-        remove(sub: string): string;
+        remove(sub: string | RegExp): string;
         uppercaseFirstLetter(): string;
     }
 }
 
-String.prototype.remove = function (this: string, sub: string) {
+String.prototype.remove = function (this: string, sub: string | RegExp) {
     return this.replace(sub, '');
 };
 

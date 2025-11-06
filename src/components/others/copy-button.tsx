@@ -2,20 +2,46 @@
 
 import { useState } from "react";
 
+import { FaCheck, FaCopy } from "react-icons/fa6";
+
 import { Button } from "@/components/page-flow";
 import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
 
 import cn from "@/utils/function/cn";
+
 import ClassNameInterface from "@/utils/interface/classname";
 import { ChildrenType } from "@/utils/interface/children";
 
 export interface CopyButtonProps extends ClassNameInterface {
     text: string;
-    icon: ChildrenType;
-    copiedIcon?: ChildrenType;
+    tooltipText?: string;
+    tooltipCopiedText?: string;
+    resetTooltipOnLeaving?: boolean;
+    tooltipClassName?: string;
+    tooltipPosition?: TooltipPosition;
+    tooltipSize?: TooltipSize;
+    customIcon?: ChildrenType;
+    changeIconOnCopy?: boolean;
+    copiedIconClassName?: string;
+    keepTooltipTextOnCopy?: boolean;
+    alwaysShowTooltip?: boolean;
 }
 
-const CopyButton = ({ text, className, icon, copiedIcon = icon }: CopyButtonProps) => {
+const CopyButton = ({ 
+    text, 
+    tooltipText = "Copy", 
+    tooltipCopiedText = "Copied!", 
+    resetTooltipOnLeaving = false,
+    className, 
+    tooltipClassName, 
+    tooltipPosition, 
+    tooltipSize = TooltipSize.md, 
+    customIcon, 
+    changeIconOnCopy = true, 
+    copiedIconClassName,
+    keepTooltipTextOnCopy = true, 
+    alwaysShowTooltip = false 
+}: CopyButtonProps) => {
 
     const [copied, setCopied] = useState(false);
 
@@ -23,7 +49,7 @@ const CopyButton = ({ text, className, icon, copiedIcon = icon }: CopyButtonProp
         try {
             await navigator.clipboard.writeText(text);
             setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            !resetTooltipOnLeaving && (setTimeout(() => setCopied(false), 2000));
         } catch (error) {
             console.error(`Failed to copy text: ${text}`, error);
         }
@@ -31,19 +57,19 @@ const CopyButton = ({ text, className, icon, copiedIcon = icon }: CopyButtonProp
 
     return (
         <Tooltip
-            disabled={!copied} 
-            text="Copied!" 
-            className={cn("code-block-copy-button", className)}
-            tooltipClassName={cn("text-white bg-[#90A4AE]", "dark:text-black dark:bg-[#C6D0F5]")}
-            position={TooltipPosition.left}
-            size={TooltipSize.md}
-            forceShow
+            disabled={!alwaysShowTooltip && !copied}
+            text={copied ? tooltipCopiedText : tooltipText}
+            className={cn("copy-button cursor-pointer", className)}
+            tooltipClassName={tooltipClassName}
+            position={tooltipPosition}
+            onClick={!copied ? handleClick : undefined}
+            onMouseLeave={resetTooltipOnLeaving ? () => setCopied(false) : undefined}
+            size={tooltipSize}
+            forceShow={keepTooltipTextOnCopy}
             >
             <Button 
-                background={false}
-                className="p-2 rounded-lg text-xl"
-                onClick={!copied ? handleClick : undefined}>
-                    {copied ? copiedIcon : icon}
+                background={false}>
+                    {(copied && changeIconOnCopy ? <FaCheck className={copiedIconClassName} /> : (customIcon ? customIcon : <FaCopy />))}
             </Button>
         </Tooltip>
     );

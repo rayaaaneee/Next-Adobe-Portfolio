@@ -9,6 +9,7 @@ import { FaCopy, FaCheck } from "react-icons/fa6";
 
 import cn from "@/utils/function/cn";
 import ClassNameInterface from "@/utils/interface/classname";
+import CopyButton from "@/components/others/copy-button";
 
 export interface CodeBlockCopyButtonProps extends ClassNameInterface {
     code: string;
@@ -29,22 +30,13 @@ const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => {
     };
 
     return (
-        <Tooltip
-            disabled={!copied} 
-            text="Copied!" 
-            className={cn("code-block-copy-button", className)}
+        <CopyButton 
+            text={code}
+            className={cn("code-block-copy-button text-xl mr-2", className)}
+            copiedIconClassName="text-green-400 dark:text-green-200"
+            tooltipPosition={TooltipPosition.left}
             tooltipClassName={cn("text-white bg-[#90A4AE]", "dark:text-black dark:bg-[#C6D0F5]")}
-            position={TooltipPosition.left}
-            size={TooltipSize.md}
-            forceShow
-            >
-            <Button 
-                background={false}
-                className="p-2 rounded-lg text-xl"
-                onClick={!copied ? handleClick : undefined}>
-                    {copied ? <FaCheck className="text-green-400 dark:text-green-200" /> : <FaCopy />}
-            </Button>
-        </Tooltip>
+        />
     );
 }
 

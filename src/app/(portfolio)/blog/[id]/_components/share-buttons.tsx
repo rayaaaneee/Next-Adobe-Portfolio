@@ -11,9 +11,10 @@ import assertDefined from "@/utils/function/assert-defined";
 
 import ClassNameInterface from "@/utils/interface/classname";
 import { ChildrenType } from "@/utils/interface/children";
-import { FaFacebook, FaFacebookF, FaLinkedin, FaLinkedinIn, FaReddit, FaRedditAlien, FaTwitter } from "react-icons/fa6";
+import { FaFacebook, FaFacebookF, FaLink, FaLinkedin, FaLinkedinIn, FaReddit, FaRedditAlien, FaTwitter } from "react-icons/fa6";
 import Tooltip, { TooltipSize } from "@/components/tooltip";
 import CodeBlockCopyButton from "@/components/blog/_components/code-block/code-block-copy-button";
+import CopyButton from "@/components/others/copy-button";
 
 const formatTemplateLink = (template: string, url: string, text?: string) => {
     let formattedLink = template.replace("{url}", encodeURIComponent(url));
@@ -110,18 +111,22 @@ const RedditShareButton = ({ url, text }: ShareButtonProps) => {
     );
 }
 
-const CopyLinkButton = ({ url }: ShareButtonProps) => {
-    return (
-        <Tooltip size={TooltipSize.md} text="Copy Link">
-            <div className={cn(
-                'p-3 rounded-full',
-                'bg-gray-500/60 hover:bg-gray-500/80',
-            )}>
-                <CodeBlockCopyButton code={url} className="text-white text-[1.4em]" />
-            </div>
-        </Tooltip>
-    );
-}
+const CopyLinkButton = ({ url }: ShareButtonProps) => (
+    <CopyButton 
+        alwaysShowTooltip 
+        text={url} 
+        tooltipText="Copy link" 
+        tooltipCopiedText="Link copied!" 
+        customIcon={<FaLink />}
+        changeIconOnCopy={false}
+        resetTooltipOnLeaving 
+        keepTooltipTextOnCopy={false} 
+        className={cn(
+            'p-3 rounded-full',
+            'bg-gray-500/60 hover:bg-gray-500/80 text-[1.4em]',
+        )} 
+    />
+);
 
 const ShareButtons = ({ blog }: BlogFooterProps) => {
 

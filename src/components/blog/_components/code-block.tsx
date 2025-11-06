@@ -10,12 +10,13 @@ import cn from '@/utils/function/cn';
 export interface CodeBlockProps {
   children: ChildrenType;
   showLineNumbers?: boolean;
+  filename?: string;
   lang?: BundledLanguage,
 }
 
 const CodeBlock = async (props: CodeBlockProps) => {
 
-    const { children, lang, showLineNumbers = false } = props;
+    const { children, lang, filename, showLineNumbers = false } = props;
 
     const code: string = String(children).trim();
 
@@ -65,7 +66,7 @@ const CodeBlock = async (props: CodeBlockProps) => {
     if (inlineCode) return <CodeBlockContent />;
     else return (
         <CodeBlockParent>
-            {!inlineCode && (<CodeBlockHeader lang={lang!} text={code} parentId={id as string} />) }
+            {!inlineCode && (<CodeBlockHeader lang={lang!} text={code} parentId={id as string} filename={filename} />) }
             <CodeBlockContent />
         </CodeBlockParent>
     );
