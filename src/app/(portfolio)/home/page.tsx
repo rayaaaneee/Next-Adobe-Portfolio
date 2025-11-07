@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import Image from "next/image";
 
 import cn from "@/utils/function/cn";
 
@@ -6,7 +7,7 @@ import { FaBriefcase } from "react-icons/fa6";
 
 import photo from "~/img/home/photo.jpg";
 
-import FlowImage from "@/components/flow-image";
+import ClassNameInterface from "@/utils/interface/classname";
 
 import EducationContainer from "@/app/(portfolio)/home/_components/education-container";
 import WorkContainer from "@/app/(portfolio)/home/_components/work-container";
@@ -33,6 +34,19 @@ export const metadata: Metadata = {
     title: "Portfolio",
 };
 
+const Photo = ({ className }: ClassNameInterface) => (
+    <Image 
+        className={cn(
+            "rounded-full backdrop-blur-md opacity-90 pointer-events-none",
+            className
+        )} 
+        src={photo} 
+        alt="photo" 
+        width={150} 
+        height={150} 
+    />
+);
+
 const Home = () => {
 
     return (
@@ -43,26 +57,26 @@ const Home = () => {
             />
             <Separator className="!mt-0" />
             <article className="relative flex flex-col justify-center">
-                <FlowImage className={cn(
-                    "hidden absolute right-0 opacity-90 backdrop-blur-md rounded-full",
+                <Photo className={cn(
+                    "hidden absolute right-0",
                     [
                         "sm:block sm:w-40 sm:h-40",
                         "lg:w-44 lg:h-44",
                         "xl:w-48 xl:h-48",
                     ]
-                )} src={photo} alt="photo" width={150} height={150} />
+                )} />
                 <section className="grid grid-cols-[1fr_auto]">
                     <div>
                         <HeaderText/>
                     </div>
-                    <FlowImage isInFlow={false} className={cn(
-                        "block m-auto opacity-90 backdrop-blur-md rounded-full",
+                    <Photo className={cn(
+                        "block m-auto",
                         [
                             "w-24 h-24",
                             "xs:w-32 xs:h-32",
                             "sm:hidden",
                         ]
-                    )} src={photo} alt="photo" width={150} height={150} />
+                    )} />
                 </section>
                 <section>
                     <HeaderLinks/>

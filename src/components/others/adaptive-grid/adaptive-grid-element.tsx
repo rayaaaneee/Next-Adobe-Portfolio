@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useEffect, useRef, useState, MouseEvent, Ref, CSSProperties} from "react";
 import useConditionalEffect from "@/utils/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
@@ -16,11 +18,13 @@ import Tooltip, { TooltipSize } from "@/components/tooltip";
 
 import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
 
+import { getStringWithLanguage } from "@/utils/types/language";
+
 import verifyReference from "@/utils/function/verify-reference";
+
 import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
-import Link from "next/link";
+
 import ManageLanguages from "@/utils/manager/manage-language";
-import { isWithLanguage } from "@/utils/types/language";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 
@@ -133,7 +137,7 @@ const AdaptiveGridElement = ({ element, className, index, clickable, asInternalL
                     }
                     containerClassName="!m-0 to-animate fade short"
                     >
-                        { isWithLanguage(element.content.name) ? element.content.name[ManageLanguages.language] : element.content.name }
+                        { getStringWithLanguage<string>(element.content.name, ManageLanguages.language) }
                 </TopPartText>
             );
         }
@@ -178,7 +182,7 @@ const AdaptiveGridElement = ({ element, className, index, clickable, asInternalL
                     containerClassName="!m-0 opacity-0 to-animate fade"
                     className="text-nowrap">
                         {elementProjectData.content.link && "Consult "}
-                        <u>{ isWithLanguage(elementProjectData.content.name) ? elementProjectData.content.name[ManageLanguages.language] : elementProjectData.content.name }</u> 
+                        <u>{ getStringWithLanguage(elementProjectData.content.name, ManageLanguages.language) }</u> 
                         <i>({elementProjectData.year})</i>
                 </TopPartText>
             );

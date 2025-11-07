@@ -14,7 +14,7 @@ import { type Work, type Education } from "@/utils/types/home/experience";
 
 import Separator from "../../others/separator";
 import TechItem from "./tech-item";
-import Language, { isWithLanguage, WithLanguage } from "@/utils/types/language";
+import Language, { getStringWithLanguage } from "@/utils/types/language";
 import ManageLanguages from "@/utils/manager/manage-language";
 
 export interface WorkEducationPartProps {
@@ -51,11 +51,7 @@ const WorkEducationPart = ({ item, index, language, separator = false }: WorkEdu
                             {(isWork ? 
                                 (item as Work).name 
                                     : 
-                                (isWithLanguage(item.name) ? 
-                                    ((item as Education).name as WithLanguage<string>)[language] 
-                                        : 
-                                    (item as Education).name
-                                )
+                                getStringWithLanguage<string>(item.name, language)
                             ) as string}
                     </HeadingTwo>
                     <div className="flex flex-col items-start sm:items-end justify-center gap-1">
