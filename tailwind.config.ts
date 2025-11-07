@@ -62,15 +62,75 @@ const config: import('tailwindcss').Config = {
                 "appearance": {
                     "100%": {
                         "pointer-events": "auto",
-                        "opacity": "1",
-                        "transform": "none"
+                        opacity: "1",
+                        transform: "none"
                     }
                 },
                 "fadeIn": {
                     "100%": {
                         "pointer-events": "auto",
-                        "opacity": "1"
+                        opacity: "1"
                     }
+                },
+                "scale-up": {
+                    "0%": {
+                        opacity: "0",
+                        transform: "scale(0.3)"
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "scale(1)"
+                    }
+                },
+                "scale-down": {
+                    "0%": {
+                        opacity: "1",
+                        transform: "scale(1)"
+                    },
+                    "100%": {
+                        opacity: "0",
+                        transform: "scale(0.3)"
+                    }
+                },
+                "appear-left": {
+                    "0%": {
+                        opacity: "0",
+                        transform: "translateX(-40vw) scale(0.6)"
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "translateX(0)"
+                    }
+                },
+                "appear-right": {
+                    "0%": {
+                        opacity: "0",
+                        transform: "translateX(40vw) scale(0.6)"
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "translateX(0)"
+                    }
+                },
+                "disappear-left": {
+                    "0%": {
+                        opacity: "1",
+                        transform: "translateX(0) scale(1)"
+                    },
+                    "100%": {
+                        opacity: "0",
+                        transform: "translateX(-40vw) scale(0.6)"
+                    },
+                },
+                "disappear-right": {
+                    "100%": {
+                        opacity: "1",
+                        transform: "translateX(0)"
+                    },
+                    "0%": {
+                        opacity: "0",
+                        transform: "translateX(40vw) scale(0.6)"
+                    },
                 },
             },
             fontFamily: {
@@ -121,6 +181,12 @@ const config: import('tailwindcss').Config = {
                 'triangle-yellow': 'triangle-yellow-move 50s linear infinite',
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
                 'vertical-bar': 'blink 1.5s ease-in-out infinite',
+                'scale-up': 'scale-up 0.3s ease forwards',
+                'scale-down': 'scale-down 0.3s ease forwards',
+                'appear-left': 'appear-left 0.3s ease forwards',
+                'appear-right': 'appear-right 0.3s ease forwards',
+                'disappear-left': 'disappear-left 0.3s ease forwards',
+                'disappear-right': 'disappear-right 0.3s ease forwards',
                 'appearance': 'appearance',
                 'fade': 'fadeIn',
                 'bar': 'bar-move 6s linear infinite, fadeIn 0.6s 0.2s ease forwards',

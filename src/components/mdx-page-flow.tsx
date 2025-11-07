@@ -14,6 +14,8 @@ import ChildrenInterface from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
 import NextImageProps from '@/utils/types/next-image-props';
 
+import FlowImage from './flow-image';
+
 export const MdxImage = (props: NextImageProps) => (
     <article className='max-size'>
         <Tooltip 
@@ -24,8 +26,8 @@ export const MdxImage = (props: NextImageProps) => (
             disabled={props.alt === undefined} 
             text={props.alt}
         >
-            <Image {...props} className={cn(
-                'cursor-zoom-in md:rounded-md object-contain h-fit box-border',
+            <FlowImage {...props} className={cn(
+                'md:rounded-md object-contain h-fit box-border',
                 "border-y-4 md:border-4 border-white/40",
                 "md:hover:scale-[1.01] transition-transform",
                 props.className

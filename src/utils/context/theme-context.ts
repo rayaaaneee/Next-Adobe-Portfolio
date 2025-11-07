@@ -1,8 +1,8 @@
-import { Context, createContext } from "react";
+import { Context, createContext, Dispatch, SetStateAction } from "react";
 
 export interface ThemeContextType {
     isDarkTheme: boolean;
-    setIsDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsDarkTheme: Dispatch<SetStateAction<boolean>>;
 }
 
 const themeContext: Context<ThemeContextType | null> =

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { type Metadata } from "next";
 
 import cn from "@/utils/function/cn";
@@ -6,6 +5,8 @@ import cn from "@/utils/function/cn";
 import { FaBriefcase } from "react-icons/fa6";
 
 import photo from "~/img/home/photo.jpg";
+
+import FlowImage from "@/components/flow-image";
 
 import EducationContainer from "@/app/(portfolio)/home/_components/education-container";
 import WorkContainer from "@/app/(portfolio)/home/_components/work-container";
@@ -42,8 +43,8 @@ const Home = () => {
             />
             <Separator className="!mt-0" />
             <article className="relative flex flex-col justify-center">
-                <Image className={cn(
-                    "hidden absolute right-0 opacity-90 backdrop-blur-md rounded-full pointer-events-none",
+                <FlowImage className={cn(
+                    "hidden absolute right-0 opacity-90 backdrop-blur-md rounded-full",
                     [
                         "sm:block sm:w-40 sm:h-40",
                         "lg:w-44 lg:h-44",
@@ -54,8 +55,8 @@ const Home = () => {
                     <div>
                         <HeaderText/>
                     </div>
-                    <Image className={cn(
-                        "block m-auto opacity-90 backdrop-blur-md rounded-full pointer-events-none",
+                    <FlowImage isInFlow={false} className={cn(
+                        "block m-auto opacity-90 backdrop-blur-md rounded-full",
                         [
                             "w-24 h-24",
                             "xs:w-32 xs:h-32",

@@ -91,6 +91,7 @@ const frenchSentences = {
         title: "Blog",
         lang: "Langue",
         footer: "Merci de votre lecture !",
+        rights: "Cet article est sous licence {cc}.",
     },
     about: {
         title: "À propos",

@@ -89,6 +89,7 @@ const englishSentences: Sentences = {
         title: "Blog",
         lang: "Language",
         footer: "Thank you for reading !",
+        rights: "This post is licensed under the {cc} license.",
     },
     about: {
         title: "About",

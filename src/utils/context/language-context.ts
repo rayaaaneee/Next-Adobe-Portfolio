@@ -1,9 +1,9 @@
-import { Context, createContext } from "react";
-import Sentences from "../types/sentences";
+import { Context, createContext, Dispatch, SetStateAction } from "react";
+import Sentences from "@/utils/types/sentences";
 
 export interface LanguageContextType {
     language: Sentences;
-    setLanguage: React.Dispatch<React.SetStateAction<Sentences>>;
+    setLanguage: Dispatch<SetStateAction<Sentences>>;
 }
 
 const languageContext: Context<LanguageContextType | null> =
