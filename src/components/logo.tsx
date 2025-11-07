@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { forwardRef, RefAttributes } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import styles from "~/scss/header/logo.module.scss";
 
-import ClassNameInterface from "@/utils/interface/classname";
+import ClassNameInterface from "@/util/interface/classname";
 
 import whiteLogo from "~/img/favicon/favicon-dark-theme.png";
 import blackLogo from "~/img/favicon/favicon-black.png";

@@ -1,4 +1,4 @@
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 const Background = () => {
 

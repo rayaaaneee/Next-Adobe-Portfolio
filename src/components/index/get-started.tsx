@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
-import ClassNameInterface from '@/utils/interface/classname';
+import ClassNameInterface from '@/util/interface/classname';
 
 interface GetStartedProps extends ClassNameInterface {
     colored?: boolean

@@ -4,7 +4,7 @@ import Header from "@/components/others/header";
 import Background from "@/components/background";
 import CarouselImage from "@/components/carousel-image";
 
-import ChildrenInterface from "@/utils/interface/children";
+import ChildrenInterface from "@/util/interface/children";
 
 const RootLayout = ({
     children,

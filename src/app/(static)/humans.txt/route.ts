@@ -6,7 +6,7 @@ import { Template } from 'twig';
 
 import readTemplate from '../read-template';
 
-import assertDefined from '@/utils/function/assert-defined';
+import assertDefined from '@/util/function/assert-defined';
 
 export const dynamic = 'force-static';
 

@@ -1,16 +1,16 @@
 "use client";
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 import { HeadingOne, HeadingTwo, Paragraph } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
 
-import Language, { WithLanguage } from '@/utils/type/language';
+import Language, { WithLanguage } from '@/util/type/language';
 
-import { BlogPost } from '@/utils/type/blog';
-import { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import { BlogPost } from '@/util/type/blog';
+import { DeepReadonlyable } from '@/util/type/deep-readonly';
 import { getTagDisplayName } from '@/asset/data/blog/blogs';
-import cn from '@/utils/function/cn';
+import cn from '@/util/function/cn';
 
 const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 

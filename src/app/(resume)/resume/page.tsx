@@ -1,4 +1,4 @@
-import assertDefined from "@/utils/function/assert-defined";
+import assertDefined from "@/util/function/assert-defined";
 
 const Page = () => {
     return (

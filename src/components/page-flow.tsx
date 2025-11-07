@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { forwardRef, JSX, MouseEventHandler } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import { Undefined } from "@/utils/type/nullable";
+import { Undefined } from "@/util/type/nullable";
 
-import { type ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
-import ClassNameInterface from "@/utils/interface/classname";
-import StylesInterface from "@/utils/interface/style";
+import { type ChildrenType, OptionalChildrenInterface } from "@/util/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
+import StylesInterface from "@/util/interface/style";
 
 import hash from "hash-sum";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 import { FaLocationDot } from 'react-icons/fa6';
 

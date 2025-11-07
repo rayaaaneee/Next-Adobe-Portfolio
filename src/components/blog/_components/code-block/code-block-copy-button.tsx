@@ -7,8 +7,8 @@ import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
 
 import { FaCopy, FaCheck } from "react-icons/fa6";
 
-import cn from "@/utils/function/cn";
-import ClassNameInterface from "@/utils/interface/classname";
+import cn from "@/util/function/cn";
+import ClassNameInterface from "@/util/interface/classname";
 import CopyButton from "@/components/others/copy-button";
 
 export interface CodeBlockCopyButtonProps extends ClassNameInterface {

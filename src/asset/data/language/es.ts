@@ -1,7 +1,7 @@
-import assertDefined from "@/utils/function/assert-defined";
+import assertDefined from "@/util/function/assert-defined";
 
-import Language, { WithLanguage } from "@/utils/type/language";
-import Sentences from "@/utils/type/sentences";
+import Language, { WithLanguage } from "@/util/type/language";
+import Sentences from "@/util/type/sentences";
 
 const spanishSentences: Sentences = {
     current: Language.ES,

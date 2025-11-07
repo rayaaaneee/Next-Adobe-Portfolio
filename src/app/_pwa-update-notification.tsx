@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Paragraph } from '@/components/page-flow';
-import cn from '@/utils/function/cn';
+import cn from '@/util/function/cn';
 import { useEffect, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 

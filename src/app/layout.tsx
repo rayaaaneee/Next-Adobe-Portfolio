@@ -1,17 +1,17 @@
 import { Metadata, Viewport } from "next";
 import { APP_DEFAULT_TEMPLATE_TITLE, APP_DEFAULT_TITLE } from "@/asset/data/title";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import "~/scss/styles.scss";
 
-import ChildrenInterface from "@/utils/interface/children";
+import ChildrenInterface from "@/util/interface/children";
 
 import lightFavicon from '~/img/favicon/favicon-light-theme.png';
 import darkFavicon from '~/img/favicon/favicon-dark-theme.png';
 
-import '@/utils/function/string';
-import assertDefined from "@/utils/function/assert-defined";
+import '@/util/function/string';
+import assertDefined from "@/util/function/assert-defined";
 import PWAUpdateNotification from "./_pwa-update-notification";
 
 const APP_DESCRIPTION = `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}'s Portfolio built with Next.js`;

@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 
-import cn from '@/utils/function/cn';
-import assertDefined from '@/utils/function/assert-defined';
+import cn from '@/util/function/cn';
+import assertDefined from '@/util/function/assert-defined';
 
-import ClassNameInterface from '@/utils/interface/classname';
+import ClassNameInterface from '@/util/interface/classname';
 
 
 const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className, id }, ref) => {

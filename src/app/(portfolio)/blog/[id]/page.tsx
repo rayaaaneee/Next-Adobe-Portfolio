@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import NotFound from "../../[...not-found]/page";
 
@@ -13,11 +13,11 @@ import Separator from "@/components/others/separator";
 import BlogFooter from "./_components/blog-footer";
 import BlogTitle from "./_components/blog-title";
 
-import Language from "@/utils/type/language";
+import Language from "@/util/type/language";
 
-import { BlogPost } from "@/utils/type/blog";
+import { BlogPost } from "@/util/type/blog";
 
-import { DeepReadonlyable } from "@/utils/type/deep-readonly";
+import { DeepReadonlyable } from "@/util/type/deep-readonly";
 
 export interface PageProps {
     params: Promise<{

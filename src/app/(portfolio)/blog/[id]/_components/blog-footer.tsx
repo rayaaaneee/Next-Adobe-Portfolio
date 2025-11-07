@@ -4,10 +4,10 @@ import Separator from '@/components/others/separator';
 import ShareButtons from './share-buttons';
 import BlogRights from './blog-rights';
 
-import ManageLanguages from '@/utils/manager/manage-language';
+import ManageLanguages from '@/util/manager/manage-language';
 
-import { BlogPost } from '@/utils/type/blog';
-import { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import { BlogPost } from '@/util/type/blog';
+import { DeepReadonlyable } from '@/util/type/deep-readonly';
 
 export interface BlogFooterProps {
     blog: DeepReadonlyable<BlogPost>;

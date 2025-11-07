@@ -1,10 +1,10 @@
 import { CSSProperties } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ChildrenInterface from "@/utils/interface/children";
-import ClassNameInterface from "@/utils/interface/classname";
-import StyleInterface from "@/utils/interface/style";
+import ChildrenInterface from "@/util/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
+import StyleInterface from "@/util/interface/style";
 
 export interface MainPartProps extends ClassNameInterface, ChildrenInterface, StyleInterface {
     fullWidth?: boolean;

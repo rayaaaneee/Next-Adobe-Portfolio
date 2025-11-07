@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import useLanguage from "@/utils/hook/use-language";
+import useLanguage from "@/util/hook/use-language";
 import { TypewriterProps, useTypewriter } from 'react-simple-typewriter';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ClassNameInterface from '@/utils/interface/classname';
+import ClassNameInterface from '@/util/interface/classname';
 
 export interface TextTypeWriterProps extends ClassNameInterface {
     reduced?: boolean;

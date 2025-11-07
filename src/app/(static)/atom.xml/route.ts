@@ -6,9 +6,9 @@ import { Template } from 'twig';
 
 import readTemplate from '../read-template';
 
-import assertDefined from '@/utils/function/assert-defined';
+import assertDefined from '@/util/function/assert-defined';
 
-import Language from '@/utils/type/language';
+import Language from '@/util/type/language';
 
 import getBlogs from '@/asset/data/blog/blogs';
 

@@ -1,10 +1,10 @@
 "use client";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { useTheme } from "next-themes";
 
-import ClassNameInterface from "@/utils/interface/classname";
+import ClassNameInterface from "@/util/interface/classname";
 
 import styles from "~/scss/header/switch-theme.module.scss";
 

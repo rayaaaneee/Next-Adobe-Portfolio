@@ -1,13 +1,13 @@
 "use client";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import useLanguage from "@/utils/hook/use-language";
+import useLanguage from "@/util/hook/use-language";
 
 import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 
-import ChildrenInterface from "@/utils/interface/children";
-import ClassNameInterface from "@/utils/interface/classname";
+import ChildrenInterface from "@/util/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
 
 import { TooltipSize } from "./tooltip";
 
@@ -17,7 +17,7 @@ import whiteGithubImg from "~/img/components/contact-links/icon-github-white.png
 import mailImg from "~/img/components/contact-links/icon-mail.png";
 import phoneImg from "~/img/components/contact-links/icon-phone.png";
 import resumeImg from "~/img/components/contact-links/icon-resume.png";
-import assertDefined from "@/utils/function/assert-defined";
+import assertDefined from "@/util/function/assert-defined";
 
 export interface ContactLinksProps extends ClassNameInterface {
     animate?: boolean;

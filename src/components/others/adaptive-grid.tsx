@@ -1,16 +1,16 @@
 import { forwardRef } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import type ClassNameInterface from "@/utils/interface/classname";
-import { DeepReadonlyable } from "@/utils/type/deep-readonly";
+import type ClassNameInterface from "@/util/interface/classname";
+import { DeepReadonlyable } from "@/util/type/deep-readonly";
 
 import AdaptiveGridWrapper from "./adaptive-grid/adaptive-grid-wrapper";
 import AdaptiveGridExpandButton from "./adaptive-grid/adaptive-grid-expand-button";
 import AdaptiveGridTopBottomPart from "./adaptive-grid/adaptive-grid-top-bottom-part";
 
 import type GridContent from "@/asset/data/home/adaptive-grid-base";
-import { ChildrenType } from "@/utils/interface/children";
+import { ChildrenType } from "@/util/interface/children";
 import { TechCategory } from "@/asset/data/home/general-technologies-list";
 
 export interface AdaptiveGridElementData {

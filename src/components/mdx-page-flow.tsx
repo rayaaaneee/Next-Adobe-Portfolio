@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { BundledLanguage } from 'shiki';
 
-import cn from '@/utils/function/cn';
+import cn from '@/util/function/cn';
 
 import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip';
@@ -10,9 +10,9 @@ import Separator from '@/components/others/separator';
 
 import CodeBlock from '@/components/blog/_components/code-block';
 
-import ChildrenInterface from '@/utils/interface/children';
-import ClassNameInterface from '@/utils/interface/classname';
-import NextImageProps from '@/utils/type/next-image-props';
+import ChildrenInterface from '@/util/interface/children';
+import ClassNameInterface from '@/util/interface/classname';
+import NextImageProps from '@/util/type/next-image-props';
 
 import FlowImage from './flow-image';
 

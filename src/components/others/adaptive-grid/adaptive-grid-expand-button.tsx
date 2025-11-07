@@ -1,17 +1,17 @@
 "use client";
 
 import { useRef, useState } from 'react';
-import useLanguage from '@/utils/hook/use-language';
-import useConditionalEffect from '@/utils/hook/use-conditional-effect';
+import useLanguage from '@/util/hook/use-language';
+import useConditionalEffect from '@/util/hook/use-conditional-effect';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { HeadingThree, IconPosition } from '@/components/page-flow';
 
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
-import ClassNameInterface from '@/utils/interface/classname';
-import verifyReference from '@/utils/function/verify-reference';
+import ClassNameInterface from '@/util/interface/classname';
+import verifyReference from '@/util/function/verify-reference';
 import AdaptiveGridTopBottomPart from './adaptive-grid-top-bottom-part';
 
 interface AdaptiveGridExpandButtonProps extends ClassNameInterface {

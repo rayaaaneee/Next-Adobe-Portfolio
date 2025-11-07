@@ -1,7 +1,7 @@
 "use client";
 
 import ComingSoon from '@/components/coming-soon';
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 const NotFound = () => {
 

@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 
 import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
-import { BlogPost } from '@/utils/type/blog';
-import { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import { BlogPost } from '@/util/type/blog';
+import { DeepReadonlyable } from '@/util/type/deep-readonly';
 
 const BlogTitle = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 

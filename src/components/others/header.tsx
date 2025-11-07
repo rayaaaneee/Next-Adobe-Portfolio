@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useRef, useState } from 'react';
-import useConditionalEffect from '@/utils/hook/use-conditional-effect';
-import useLanguage from '@/utils/hook/use-language';
+import useConditionalEffect from '@/util/hook/use-conditional-effect';
+import useLanguage from '@/util/hook/use-language';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import Logo, { LogoColors } from '../logo';
 import HamburgerMenu from './header/hamburger-menu';
 import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
-import Language, { getStringWithLanguage, WithLanguageable } from '@/utils/type/language';
+import Language, { getStringWithLanguage, WithLanguageable } from '@/util/type/language';
 
 export interface HeaderProps {
     hasFooter?: boolean,

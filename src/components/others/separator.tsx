@@ -1,6 +1,6 @@
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ClassNameInterface from '@/utils/interface/classname';
+import ClassNameInterface from '@/util/interface/classname';
 
 export interface SeparatorProps extends ClassNameInterface {
     lite?: boolean;

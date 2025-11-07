@@ -1,8 +1,8 @@
 "use client";
 
 import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flow";
-import assertDefined from "@/utils/function/assert-defined";
-import useLanguage from "@/utils/hook/use-language";
+import assertDefined from "@/util/function/assert-defined";
+import useLanguage from "@/util/hook/use-language";
 
 const Contact = () => {
 

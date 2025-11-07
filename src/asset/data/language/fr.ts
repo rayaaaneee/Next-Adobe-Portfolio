@@ -1,8 +1,8 @@
 // Reference object for type inference for Language, used in context and hooks
-import assertDefined from "@/utils/function/assert-defined";
+import assertDefined from "@/util/function/assert-defined";
 
-import Language, { WithLanguage } from "@/utils/type/language";
-import ArrayType from "@/utils/type/array-string";
+import Language, { WithLanguage } from "@/util/type/language";
+import ArrayType from "@/util/type/array-string";
 import { title } from "process";
 
 const frenchSentences = {

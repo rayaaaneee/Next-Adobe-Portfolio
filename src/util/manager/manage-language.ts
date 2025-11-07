@@ -1,8 +1,8 @@
 import ManageCookies from './manage-cookies';
 
-import Sentences from '@/utils/type/sentences';
-import Language from '@/utils/type/language';
-import { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import Sentences from '@/util/type/sentences';
+import Language from '@/util/type/language';
+import { DeepReadonlyable } from '@/util/type/deep-readonly';
 
 import englishSentences from '@/asset/data/language/en';
 import spanishSentences from '@/asset/data/language/es';

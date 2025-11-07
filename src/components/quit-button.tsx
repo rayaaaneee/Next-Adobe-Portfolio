@@ -1,8 +1,8 @@
 import { MouseEventHandler } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ClassNameInterface from "@/utils/interface/classname";
+import ClassNameInterface from "@/util/interface/classname";
 
 export interface QuitButtonProps extends ClassNameInterface {
     onClick?: MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLAnchorElement>;

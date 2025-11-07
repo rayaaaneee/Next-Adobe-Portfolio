@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import { ChildrenType } from '@/utils/interface/children';
-import ClassNameInterface from '@/utils/interface/classname';
+import { ChildrenType } from '@/util/interface/children';
+import ClassNameInterface from '@/util/interface/classname';
 
 import Tooltip, { TooltipPosition, TooltipSize } from './tooltip';
 

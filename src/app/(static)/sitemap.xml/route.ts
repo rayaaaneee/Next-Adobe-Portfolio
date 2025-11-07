@@ -8,7 +8,7 @@ import readTemplate from '../read-template';
 
 import getBlogs from '@/asset/data/blog/blogs';
 
-import assertDefined from '@/utils/function/assert-defined';
+import assertDefined from '@/util/function/assert-defined';
 
 export const dynamic = 'force-static';
 

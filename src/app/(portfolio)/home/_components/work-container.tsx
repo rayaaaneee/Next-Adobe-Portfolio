@@ -1,15 +1,15 @@
 "use client";
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
-import { DateClass, IntervalDateClass, Month  } from '@/utils/type/date';
-import { type Work } from '@/utils/type/home/experience';
+import { DateClass, IntervalDateClass, Month  } from '@/util/type/date';
+import { type Work } from '@/util/type/home/experience';
 import { assertFoundTech, GeneralTechnologiesName } from '@/asset/data/home/general-technologies-list';
-import Language from '@/utils/type/language';
+import Language from '@/util/type/language';
 
 const WorkContainer = () => {
 

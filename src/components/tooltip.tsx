@@ -1,15 +1,15 @@
 import { JSX, MouseEventHandler } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { FaCircleCheck } from "react-icons/fa6";
 import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 
-import ChildrenInterface, { type ChildrenType } from "@/utils/interface/children";
-import ClassNameInterface from "@/utils/interface/classname";
-import { Nullish } from "@/utils/type/nullable";
+import ChildrenInterface, { type ChildrenType } from "@/util/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
+import { Nullish } from "@/util/type/nullable";
 
 
 export enum TooltipPosition {

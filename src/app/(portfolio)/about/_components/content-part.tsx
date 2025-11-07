@@ -2,9 +2,9 @@
 
 import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment, AnchorLinkText } from "@/components/page-flow";
 
-import assertDefined from "@/utils/function/assert-defined";
-import getCurrentYear from "@/utils/function/get-current-year";
-import useLanguage from "@/utils/hook/use-language";
+import assertDefined from "@/util/function/assert-defined";
+import getCurrentYear from "@/util/function/get-current-year";
+import useLanguage from "@/util/hook/use-language";
 import { Fragment } from "react";
 
 const ContentPart = () => {

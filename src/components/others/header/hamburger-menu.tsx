@@ -1,8 +1,8 @@
 import { CSSProperties, forwardRef, useEffect, useRef, useState } from "react";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ClassNameInterface from "@/utils/interface/classname";
+import ClassNameInterface from "@/util/interface/classname";
 
 export interface HamburgerMenuProps extends ClassNameInterface {
     onClick?: (checked: boolean) => void;

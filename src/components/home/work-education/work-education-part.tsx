@@ -1,6 +1,6 @@
 import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { IoMdBusiness } from "react-icons/io";
 import { MdSchool } from "react-icons/md";
@@ -8,14 +8,14 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaUserTie } from "react-icons/fa6";
 import { FaLayerGroup } from "react-icons/fa";
 
-import ChildrenInterface from "@/utils/interface/children";
+import ChildrenInterface from "@/util/interface/children";
 
-import { type Work, type Education } from "@/utils/type/home/experience";
+import { type Work, type Education } from "@/util/type/home/experience";
 
 import Separator from "../../others/separator";
 import TechItem from "./tech-item";
-import Language, { getStringWithLanguage } from "@/utils/type/language";
-import ManageLanguages from "@/utils/manager/manage-language";
+import Language, { getStringWithLanguage } from "@/util/type/language";
+import ManageLanguages from "@/util/manager/manage-language";
 
 export interface WorkEducationPartProps {
     item: Work | Education;

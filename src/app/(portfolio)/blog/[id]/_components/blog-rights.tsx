@@ -1,7 +1,7 @@
 "use client";
 
 import { AnchorLinkText, Paragraph } from '@/components/page-flow';
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 const BlogRights = () => {
 

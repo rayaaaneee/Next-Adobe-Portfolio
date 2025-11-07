@@ -1,9 +1,9 @@
 "use client";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ChildrenInterface from '@/utils/interface/children';
-import ClassNameInterface from '@/utils/interface/classname';
+import ChildrenInterface from '@/util/interface/children';
+import ClassNameInterface from '@/util/interface/classname';
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';

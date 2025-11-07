@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef, useState } from 'react';
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
 import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/others/adaptive-grid';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { Button, HeadingTwo } from '../../../../components/page-flow';
 import { LuCodeXml } from 'react-icons/lu';
@@ -20,8 +20,8 @@ import libraries from '@/asset/data/home/libraries';
 import tools from '@/asset/data/home/tools';
 import databases from '@/asset/data/home/databases';
 
-import { ChildrenType } from '@/utils/interface/children';
-import DeepReadonly, { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import { ChildrenType } from '@/util/interface/children';
+import DeepReadonly, { DeepReadonlyable } from '@/util/type/deep-readonly';
 
 const SkillsContainer = () => {
 

@@ -1,16 +1,16 @@
 "use client";
 
-import useLanguage from "@/utils/hook/use-language";
+import useLanguage from "@/util/hook/use-language";
 
 import { HeadingThree } from "@/components/page-flow";
 
 import { BlogFooterProps } from "./blog-footer";
 
-import cn from "@/utils/function/cn";
-import assertDefined from "@/utils/function/assert-defined";
+import cn from "@/util/function/cn";
+import assertDefined from "@/util/function/assert-defined";
 
-import ClassNameInterface from "@/utils/interface/classname";
-import { ChildrenType } from "@/utils/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
+import { ChildrenType } from "@/util/interface/children";
 import { FaFacebook, FaFacebookF, FaLink, FaLinkedin, FaLinkedinIn, FaReddit, FaRedditAlien, FaTwitter } from "react-icons/fa6";
 import Tooltip, { TooltipSize } from "@/components/tooltip";
 import CodeBlockCopyButton from "@/components/blog/_components/code-block/code-block-copy-button";

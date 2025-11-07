@@ -4,19 +4,19 @@ import { StaticImageData } from "next/image";
 
 import { useMemo, useState } from "react";
 
-import { useLanguageManager } from "@/utils/hook/use-language";
+import { useLanguageManager } from "@/util/hook/use-language";
 
 import ThemeProvider from "@/components/theme-provider";
 
-import languageContext from "@/utils/context/language-context";
+import languageContext from "@/util/context/language-context";
 
-import ManageLanguages from "@/utils/manager/manage-language";
+import ManageLanguages from "@/util/manager/manage-language";
 
-import ChildrenInterface from "@/utils/interface/children";
+import ChildrenInterface from "@/util/interface/children";
 
-import Sentences from "@/utils/type/sentences";
+import Sentences from "@/util/type/sentences";
 
-import imageContext from "@/utils/context/image-context";
+import imageContext from "@/util/context/image-context";
 
 const App = ({ children }: ChildrenInterface) => {
 

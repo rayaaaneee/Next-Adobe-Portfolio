@@ -1,7 +1,7 @@
 "use client";
 
-import imageContext from "@/utils/context/image-context";
-import cn from "@/utils/function/cn";
+import imageContext from "@/util/context/image-context";
+import cn from "@/util/function/cn";
 import Image, { ImageProps, StaticImageData } from "next/image";
 import { MouseEventHandler, useContext, useEffect } from "react";
 

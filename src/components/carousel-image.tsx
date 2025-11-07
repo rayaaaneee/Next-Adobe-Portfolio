@@ -5,10 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 
 import Image, { StaticImageData } from "next/image";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import useConditionalEffect from "@/utils/hook/use-conditional-effect";
-import useFlowImageContext from "@/utils/hook/use-flow-image-context";
+import useConditionalEffect from "@/util/hook/use-conditional-effect";
+import useFlowImageContext from "@/util/hook/use-flow-image-context";
 
 
 const CarouselImage = () => {

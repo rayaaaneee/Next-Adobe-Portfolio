@@ -1,13 +1,13 @@
 import { type Metadata } from "next";
 import Image from "next/image";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { FaBriefcase } from "react-icons/fa6";
 
 import photo from "~/img/home/photo.jpg";
 
-import ClassNameInterface from "@/utils/interface/classname";
+import ClassNameInterface from "@/util/interface/classname";
 
 import EducationContainer from "@/app/(portfolio)/home/_components/education-container";
 import WorkContainer from "@/app/(portfolio)/home/_components/work-container";

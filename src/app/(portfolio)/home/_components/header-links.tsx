@@ -1,8 +1,8 @@
 "use client";
 
-import useLanguage from '@/utils/hook/use-language';
+import useLanguage from '@/util/hook/use-language';
 
-import cn from '@/utils/function/cn';
+import cn from '@/util/function/cn';
 
 import { FaLink } from 'react-icons/fa';
 

@@ -7,10 +7,10 @@ import { FaCheck, FaCopy } from "react-icons/fa6";
 import { Button } from "@/components/page-flow";
 import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import ClassNameInterface from "@/utils/interface/classname";
-import { ChildrenType } from "@/utils/interface/children";
+import ClassNameInterface from "@/util/interface/classname";
+import { ChildrenType } from "@/util/interface/children";
 
 export interface CopyButtonProps extends ClassNameInterface {
     text: string;

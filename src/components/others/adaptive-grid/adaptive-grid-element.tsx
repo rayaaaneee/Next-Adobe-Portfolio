@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 import { useEffect, useRef, useState, MouseEvent, Ref, CSSProperties} from "react";
-import useConditionalEffect from "@/utils/hook/use-conditional-effect";
+import useConditionalEffect from "@/util/hook/use-conditional-effect";
 import { createRoot, Root } from "react-dom/client";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { FaLink } from "react-icons/fa6";
 import { TbExternalLink } from "react-icons/tb";
@@ -18,13 +18,13 @@ import Tooltip, { TooltipSize } from "@/components/tooltip";
 
 import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
 
-import { getStringWithLanguage } from "@/utils/type/language";
+import { getStringWithLanguage } from "@/util/type/language";
 
-import verifyReference from "@/utils/function/verify-reference";
+import verifyReference from "@/util/function/verify-reference";
 
 import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
 
-import ManageLanguages from "@/utils/manager/manage-language";
+import ManageLanguages from "@/util/manager/manage-language";
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 

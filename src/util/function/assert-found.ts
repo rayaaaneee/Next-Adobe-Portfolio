@@ -1,4 +1,4 @@
-import { DeepReadonlyable } from "@/utils/type/deep-readonly";
+import { DeepReadonlyable } from "@/util/type/deep-readonly";
 
 export const assertFound = <T>(array: DeepReadonlyable<T[]>, predicate: (item: DeepReadonlyable<T>) => boolean, name: string): DeepReadonlyable<T> => {
     const value = array.find(predicate);

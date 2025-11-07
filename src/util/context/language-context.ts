@@ -1,5 +1,5 @@
 import { Context, createContext, Dispatch, SetStateAction } from "react";
-import Sentences from "@/utils/type/sentences";
+import Sentences from "@/util/type/sentences";
 
 export interface LanguageContextType {
     language: Sentences;

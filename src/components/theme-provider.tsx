@@ -1,4 +1,4 @@
-import ChildrenInterface from '@/utils/interface/children'
+import ChildrenInterface from '@/util/interface/children'
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 const ThemeProvider = ({ children }: ChildrenInterface) => {

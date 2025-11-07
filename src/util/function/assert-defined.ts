@@ -1,4 +1,4 @@
-import { Undefined } from "@/utils/type/nullable";
+import { Undefined } from "@/util/type/nullable";
 
 const assertDefined = <T>(value: Undefined<T>, name?: string): T => {
     if (value === undefined) {

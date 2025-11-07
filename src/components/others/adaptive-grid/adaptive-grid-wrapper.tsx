@@ -1,9 +1,9 @@
-import cn from '@/utils/function/cn';
+import cn from '@/util/function/cn';
 
 import { AdaptiveGridElementData } from '../adaptive-grid';
 import AdaptiveGridElement from './adaptive-grid-element';
 
-import { DeepReadonlyable } from '@/utils/type/deep-readonly';
+import { DeepReadonlyable } from '@/util/type/deep-readonly';
 
 export type IndexesType = { i: number; j: number };
 

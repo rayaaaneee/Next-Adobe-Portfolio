@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react';
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { AnchorLinkButton, Paragraph } from '@/components/page-flow';
-import { type TechItem as TechItemType } from '@/utils/type/home/experience';
+import { type TechItem as TechItemType } from '@/util/type/home/experience';
 
 export interface TechItemPropsInterface {
     tech: TechItemType;

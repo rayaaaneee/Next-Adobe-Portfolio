@@ -1,8 +1,8 @@
 "use client";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
-import useLanguage from "@/utils/hook/use-language";
+import useLanguage from "@/util/hook/use-language";
 
 import GetStarted from './get-started';
 import TextTypeWriter from './text-type-writer';

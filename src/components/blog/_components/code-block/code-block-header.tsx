@@ -9,7 +9,7 @@ import { FaCircle } from "react-icons/fa6";
 
 import CodeBlockCopyButton from "./code-block-copy-button";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 import { FaCode } from "react-icons/fa6";
 import { FaRegFileCode } from "react-icons/fa";

@@ -2,7 +2,7 @@ import { ComponentProps, forwardRef } from "react";
 
 import { Button } from "@/components/page-flow";
 
-import cn from "@/utils/function/cn";
+import cn from "@/util/function/cn";
 
 const AdaptiveGridTopBottomPart = forwardRef<HTMLButtonElement, ComponentProps<typeof Button>>(
     ({ className, hover = false, id, onClick, children }, ref) => (
