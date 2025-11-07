@@ -160,7 +160,7 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                         )) }
                     </div>
                     <SwitchTheme pinkMoon />
-                    <MenuLink className='absolute bottom-4 right-4' to={aboutLink.to} isColored={aboutLink.isColored}>{ getStringWithLanguage<string>(aboutLink.text, language.current) }</MenuLink>
+                    <MenuLink className='absolute bottom-3 right-3' to={aboutLink.to} isColored={aboutLink.isColored}>{ getStringWithLanguage<string>(aboutLink.text, language.current) }</MenuLink>
                 </ul>
                 <HamburgerMenu ref={hamburgerMenu} />
             </nav>

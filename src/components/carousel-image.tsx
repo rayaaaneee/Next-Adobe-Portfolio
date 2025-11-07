@@ -115,13 +115,14 @@ const CarouselImage = () => {
                             (switching === "right") && "animate-appear-right",
                         ]
                     )}
-                >
+                >   
+                { imageClicked && (                   
                     <Image
                         alt={className}
                         fill
                         layout="fill"
                         objectFit="contain"
-                        src={(i === 0) /* is current */ ? (imageClicked || "") : (i === 1) /* is next */ ? nextImage : previousImage}
+                        src={(i === 0) /* is current */ ? (imageClicked) : (i === 1) /* is next */ ? nextImage : previousImage}
                         onClick={zoomImg}
                         className={cn(
                             "cursor-zoom-in transition-transform",
@@ -131,6 +132,7 @@ const CarouselImage = () => {
                             },
                         )}
                     />
+                )}
                 </div>
             ))}
         </article>

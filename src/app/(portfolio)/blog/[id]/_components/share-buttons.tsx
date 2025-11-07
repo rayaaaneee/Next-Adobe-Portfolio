@@ -2,7 +2,11 @@
 
 import useLanguage from "@/util/hook/use-language";
 
+import { FaFacebookF, FaLink, FaLinkedinIn, FaRedditAlien, FaTwitter } from "react-icons/fa6";
+
 import { HeadingThree } from "@/components/page-flow";
+import Tooltip, { TooltipSize } from "@/components/tooltip";
+import CopyButton from "@/components/other/copy-button";
 
 import { BlogFooterProps } from "./blog-footer";
 
@@ -11,10 +15,6 @@ import assertDefined from "@/util/function/assert-defined";
 
 import ClassNameInterface from "@/util/interface/classname";
 import { ChildrenType } from "@/util/interface/children";
-import { FaFacebook, FaFacebookF, FaLink, FaLinkedin, FaLinkedinIn, FaReddit, FaRedditAlien, FaTwitter } from "react-icons/fa6";
-import Tooltip, { TooltipSize } from "@/components/tooltip";
-import CodeBlockCopyButton from "@/components/blog/_components/code-block/code-block-copy-button";
-import CopyButton from "@/components/other/copy-button";
 
 const formatTemplateLink = (template: string, url: string, text?: string) => {
     let formattedLink = template.replace("{url}", encodeURIComponent(url));

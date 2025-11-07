@@ -90,6 +90,9 @@ const spanishSentences: Sentences = {
         lang: "Idioma",
         footer: "¡Gracias por leer!",
         rights: "Esta publicación está bajo la licencia {cc}.",
+        words: "palabras",
+        by: "por",
+        readingTime: "<b>{min} min</b> de lectura",
     },
     about: {
         title: "Acerca de",

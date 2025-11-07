@@ -6,11 +6,8 @@ import { Template } from 'twig';
 
 import readTemplate from '../read-template';
 
-import blogs from '@/asset/data/blog/blogs';
-
 import assertDefined from '@/util/function/assert-defined';
 
-import { BlogPost } from '@/util/type/blog';
 import Language from '@/util/type/language';
 import getBlogs from '@/asset/data/blog/blogs';
 

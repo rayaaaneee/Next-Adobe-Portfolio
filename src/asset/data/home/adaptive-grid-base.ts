@@ -1,5 +1,5 @@
 import { ChildrenType } from "@/util/interface/children";
-import { WithLanguage, WithLanguageable } from "@/util/type/language";
+import { WithLanguageable } from "@/util/type/language";
 
 export const baseImageProps = {
     width: 96,

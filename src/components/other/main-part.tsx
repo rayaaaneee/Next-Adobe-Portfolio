@@ -29,7 +29,7 @@ const MainPart = ({ className, id, children, style, fullWidth = false }: MainPar
             (fullWidth ?
                 [
                     "w-full min-h-screen h-fit",
-                    "py-0 md:py-[5vw] lg:py-10",
+                    ["pb-0 md:pb-[5vw] lg:pb-10", "pt-10 md:pt-[7vw] lg:pt-[4.5rem]"],
                     "max-md:[&>.max-size]:mx-0",
                     "[&>article]:mx-5 sm:[&>article]:mx-[10%] md:[&>article]:mx-[17%] lg:[&>article]:mx-[22%] xl:[&>article]:mx-[28%]"
                 ]

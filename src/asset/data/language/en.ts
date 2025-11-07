@@ -90,6 +90,9 @@ const englishSentences: Sentences = {
         lang: "Language",
         footer: "Thank you for reading !",
         rights: "This post is licensed under the {cc} license.",
+        words: "words",
+        by: "by",
+        readingTime: "<b>{min} min</b> read",
     },
     about: {
         title: "About",

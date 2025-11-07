@@ -3,7 +3,6 @@ import assertDefined from "@/util/function/assert-defined";
 
 import Language, { WithLanguage } from "@/util/type/language";
 import ArrayType from "@/util/type/array-string";
-import { title } from "process";
 
 const frenchSentences = {
     current: Language.FR satisfies Language,
@@ -92,6 +91,9 @@ const frenchSentences = {
         lang: "Langue",
         footer: "Merci de votre lecture !",
         rights: "Cet article est sous licence {cc}.",
+        words: "mots",
+        by: "par",
+        readingTime: "<b>{min} min</b> de lecture",
     },
     about: {
         title: "À propos",

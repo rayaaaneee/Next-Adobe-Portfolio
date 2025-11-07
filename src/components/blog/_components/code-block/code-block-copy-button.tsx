@@ -1,34 +1,16 @@
-"use client";
-
-import { useState } from "react";
-
-import { Button } from "@/components/page-flow";
-import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
-
-import { FaCopy, FaCheck } from "react-icons/fa6";
-
 import cn from "@/util/function/cn";
-import ClassNameInterface from "@/util/interface/classname";
+
+import { TooltipPosition } from "@/components/tooltip";
+
 import CopyButton from "@/components/other/copy-button";
+
+import ClassNameInterface from "@/util/interface/classname";
 
 export interface CodeBlockCopyButtonProps extends ClassNameInterface {
     code: string;
 }
 
 const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => {
-
-    const [copied, setCopied] = useState(false);
-
-    const handleClick = async () => {
-        try {
-            await navigator.clipboard.writeText(code);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        } catch (error) {
-            console.error(`Failed to copy text: ${code}`, error);
-        }
-    };
-
     return (
         <CopyButton 
             text={code}

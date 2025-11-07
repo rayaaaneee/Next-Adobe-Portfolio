@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import { BundledLanguage } from 'shiki';
 
 import cn from '@/util/function/cn';

@@ -21,7 +21,7 @@ const headingContainerBaseClassName = (active: boolean, hasIcon: boolean) => [
         ["group"]: (active || hasIcon)
     },
     { [
-        `after:content-['#'] after:text-[1em] hover:after:underline after:no-underline after:opacity-0 after:transition-opacity after:duration-200
+        `after:content-['#'] after:self-start after:text-[1em] hover:after:underline after:no-underline after:opacity-0 after:transition-opacity after:duration-200
         hover:cursor-pointer hover:after:opacity-100`
     ]: active }
 ];
@@ -54,7 +54,8 @@ export type HeadingPropsInterface = PageFlowBaseInterface & (HeadingWithHref | H
 enum HeadingType {
     h1 = "h1",
     h2 = "h2",
-    h3 = "h3"
+    h3 = "h3",
+    h4 = "h4",
 };
 
 const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: HeadingType }>(
@@ -79,9 +80,15 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
                 ];
             case HeadingType.h3:
                 return [
-                    "xs:text-base sm:text-lg lg:text-xl xl:text-2xl ",
+                    "text- sm:text-lg lg:text-xl xl:text-2xl ",
                     "xs:ml-4 sm:ml-5 md:ml-6 xl:ml-7",
                     "text-gray-500 dark:text-gray-400", 
+                ];
+            case HeadingType.h4:
+                return [
+                    "text-sm sm:text-base lg:text-lg xl:text-xl",
+                    "ml-6",
+                    "text-gray-400 dark:text-gray-500", 
                 ];
             default:
                 throw new Error(`Unknown heading type: ${type}`);
@@ -130,6 +137,12 @@ export const HeadingThree = forwardRef<HTMLAnchorElement, HeadingPropsInterface>
 });
 HeadingThree.displayName = "HeadingThree";
 
+export const HeadingFour = forwardRef<HTMLAnchorElement, HeadingPropsInterface>(
+    (props, ref) => {
+        return <Heading ref={ref} type={HeadingType.h4} {...props} />;
+});
+HeadingFour.displayName = "HeadingFour";
+
 export enum ParagraphAlignment {
     left = "text-left",
     center = "text-center",
@@ -141,12 +154,17 @@ export interface ParagraphPropsInterface extends PageFlowBaseInterface {
     alignment?: ParagraphAlignment,
     indent?: boolean
     innerHtml?: string
+    stylized?: boolean
 }
 
-export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false, innerHtml }: ParagraphPropsInterface) => (
+export const Paragraph = ({ className, children, id, alignment = ParagraphAlignment.left, indent = false, innerHtml, stylized = false }: ParagraphPropsInterface) => (
     <p id={id} className={cn(
         "text-sm sm:text-base lg:text-lg xl:text-xl",
-        "text-gray-800 dark:text-gray-300 font-normal mt-2",
+        [ stylized ? 
+            "text-sm text-gray-500 dark:text-gray-400" 
+            : 
+            "text-gray-800 dark:text-gray-300 font-normal mt-2" 
+        ],
         { "first-letter:ml-7 lg:first-letter:ml-10": indent },
         alignment,
         className
