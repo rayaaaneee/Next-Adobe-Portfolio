@@ -10,8 +10,8 @@ import blogs from '@/asset/data/blog/blogs';
 
 import assertDefined from '@/utils/function/assert-defined';
 
-import { BlogPost } from '@/utils/types/blog';
-import Language from '@/utils/types/language';
+import { BlogPost } from '@/utils/type/blog';
+import Language from '@/utils/type/language';
 import getBlogs from '@/asset/data/blog/blogs';
 
 export const dynamic = 'force-static';

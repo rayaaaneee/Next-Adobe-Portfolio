@@ -12,7 +12,7 @@ import CodeBlock from '@/components/blog/_components/code-block';
 
 import ChildrenInterface from '@/utils/interface/children';
 import ClassNameInterface from '@/utils/interface/classname';
-import NextImageProps from '@/utils/types/next-image-props';
+import NextImageProps from '@/utils/type/next-image-props';
 
 import FlowImage from './flow-image';
 

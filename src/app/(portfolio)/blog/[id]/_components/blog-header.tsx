@@ -5,10 +5,10 @@ import useLanguage from '@/utils/hook/use-language';
 import { HeadingOne, HeadingTwo, Paragraph } from '@/components/page-flow';
 import Separator from '@/components/others/separator';
 
-import Language, { WithLanguage } from '@/utils/types/language';
+import Language, { WithLanguage } from '@/utils/type/language';
 
-import { BlogPost } from '@/utils/types/blog';
-import { DeepReadonlyable } from '@/utils/types/deep-readonly';
+import { BlogPost } from '@/utils/type/blog';
+import { DeepReadonlyable } from '@/utils/type/deep-readonly';
 import { getTagDisplayName } from '@/asset/data/blog/blogs';
 import cn from '@/utils/function/cn';
 

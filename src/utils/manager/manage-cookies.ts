@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie';
 
-import Stringable from '../types/stringable';
+import Stringable from '../type/stringable';
 
 export default class ManageCookies {
 

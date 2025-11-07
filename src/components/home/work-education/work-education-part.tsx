@@ -10,11 +10,11 @@ import { FaLayerGroup } from "react-icons/fa";
 
 import ChildrenInterface from "@/utils/interface/children";
 
-import { type Work, type Education } from "@/utils/types/home/experience";
+import { type Work, type Education } from "@/utils/type/home/experience";
 
 import Separator from "../../others/separator";
 import TechItem from "./tech-item";
-import Language, { getStringWithLanguage } from "@/utils/types/language";
+import Language, { getStringWithLanguage } from "@/utils/type/language";
 import ManageLanguages from "@/utils/manager/manage-language";
 
 export interface WorkEducationPartProps {

@@ -6,8 +6,8 @@ import BlogRights from './blog-rights';
 
 import ManageLanguages from '@/utils/manager/manage-language';
 
-import { BlogPost } from '@/utils/types/blog';
-import { DeepReadonlyable } from '@/utils/types/deep-readonly';
+import { BlogPost } from '@/utils/type/blog';
+import { DeepReadonlyable } from '@/utils/type/deep-readonly';
 
 export interface BlogFooterProps {
     blog: DeepReadonlyable<BlogPost>;

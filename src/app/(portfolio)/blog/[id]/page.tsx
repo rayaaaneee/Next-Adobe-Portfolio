@@ -13,11 +13,11 @@ import Separator from "@/components/others/separator";
 import BlogFooter from "./_components/blog-footer";
 import BlogTitle from "./_components/blog-title";
 
-import Language from "@/utils/types/language";
+import Language from "@/utils/type/language";
 
-import { BlogPost } from "@/utils/types/blog";
+import { BlogPost } from "@/utils/type/blog";
 
-import { DeepReadonlyable } from "@/utils/types/deep-readonly";
+import { DeepReadonlyable } from "@/utils/type/deep-readonly";
 
 export interface PageProps {
     params: Promise<{

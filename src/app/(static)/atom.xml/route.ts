@@ -8,7 +8,7 @@ import readTemplate from '../read-template';
 
 import assertDefined from '@/utils/function/assert-defined';
 
-import Language from '@/utils/types/language';
+import Language from '@/utils/type/language';
 
 import getBlogs from '@/asset/data/blog/blogs';
 

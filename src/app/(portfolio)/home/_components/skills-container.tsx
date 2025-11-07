@@ -21,7 +21,7 @@ import tools from '@/asset/data/home/tools';
 import databases from '@/asset/data/home/databases';
 
 import { ChildrenType } from '@/utils/interface/children';
-import DeepReadonly, { DeepReadonlyable } from '@/utils/types/deep-readonly';
+import DeepReadonly, { DeepReadonlyable } from '@/utils/type/deep-readonly';
 
 const SkillsContainer = () => {
 

@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import cn from "@/utils/function/cn";
 
 import { AnchorLinkButton, Paragraph } from '@/components/page-flow';
-import { type TechItem as TechItemType } from '@/utils/types/home/experience';
+import { type TechItem as TechItemType } from '@/utils/type/home/experience';
 
 export interface TechItemPropsInterface {
     tech: TechItemType;

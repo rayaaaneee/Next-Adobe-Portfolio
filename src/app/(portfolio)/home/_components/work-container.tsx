@@ -6,10 +6,10 @@ import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flo
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
-import { DateClass, IntervalDateClass, Month  } from '@/utils/types/date';
-import { type Work } from '@/utils/types/home/experience';
+import { DateClass, IntervalDateClass, Month  } from '@/utils/type/date';
+import { type Work } from '@/utils/type/home/experience';
 import { assertFoundTech, GeneralTechnologiesName } from '@/asset/data/home/general-technologies-list';
-import Language from '@/utils/types/language';
+import Language from '@/utils/type/language';
 
 const WorkContainer = () => {
 

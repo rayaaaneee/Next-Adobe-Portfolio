@@ -1,4 +1,4 @@
-import DeepReadonly from '@/utils/types/deep-readonly';
+import DeepReadonly from '@/utils/type/deep-readonly';
 import GridContent from './adaptive-grid-base';
 
 /* Project techs icons */
@@ -37,7 +37,7 @@ import { ImSvg } from "react-icons/im";
 import { GrMysql } from 'react-icons/gr';
 import { FiGithub } from 'react-icons/fi';
 import { assertFound } from '@/utils/function/assert-found';
-import { TechItem } from '@/utils/types/home/experience';
+import { TechItem } from '@/utils/type/home/experience';
 
 export const assertFoundTech = (name: string, category: TechCategory) => {
     return assertFound<TechItem>(generalTechnologies[category], (tech) => (tech.name === name), name);

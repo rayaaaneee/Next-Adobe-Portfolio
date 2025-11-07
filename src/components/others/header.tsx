@@ -13,7 +13,7 @@ import HamburgerMenu from './header/hamburger-menu';
 import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
-import Language, { getStringWithLanguage, WithLanguageable } from '@/utils/types/language';
+import Language, { getStringWithLanguage, WithLanguageable } from '@/utils/type/language';
 
 export interface HeaderProps {
     hasFooter?: boolean,

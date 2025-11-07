@@ -1,5 +1,5 @@
 import { RefObject } from "react";
-import Nullable, { Nullish } from "../types/nullable";
+import Nullable, { Nullish } from "../type/nullable";
 
 const verifyReference = <T>(ref: RefObject<T> | RefObject<Nullable<T>> | Nullish<T>, refName: string)
 : ref is RefObject<T> => {

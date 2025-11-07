@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import cn from "@/utils/function/cn";
 
 import type ClassNameInterface from "@/utils/interface/classname";
-import { DeepReadonlyable } from "@/utils/types/deep-readonly";
+import { DeepReadonlyable } from "@/utils/type/deep-readonly";
 
 import AdaptiveGridWrapper from "./adaptive-grid/adaptive-grid-wrapper";
 import AdaptiveGridExpandButton from "./adaptive-grid/adaptive-grid-expand-button";

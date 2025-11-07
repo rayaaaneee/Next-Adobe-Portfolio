@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import DeepReadonly, { DeepReadonlyable } from "@/utils/types/deep-readonly";
-import { BlogPost } from "@/utils/types/blog";
+import DeepReadonly, { DeepReadonlyable } from "@/utils/type/deep-readonly";
+import { BlogPost } from "@/utils/type/blog";
 
-import Language, { WithLanguage, WithLanguageable } from "@/utils/types/language";
+import Language, { WithLanguage, WithLanguageable } from "@/utils/type/language";
 
 import networkIcon from "@/asset/img/blog/blog-1/icon.png";
 import NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-ai/blog.mdx";

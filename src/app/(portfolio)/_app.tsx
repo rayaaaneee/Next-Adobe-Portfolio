@@ -14,7 +14,7 @@ import ManageLanguages from "@/utils/manager/manage-language";
 
 import ChildrenInterface from "@/utils/interface/children";
 
-import Sentences from "@/utils/types/sentences";
+import Sentences from "@/utils/type/sentences";
 
 import imageContext from "@/utils/context/image-context";
 

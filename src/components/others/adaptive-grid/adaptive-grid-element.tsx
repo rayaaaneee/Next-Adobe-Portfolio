@@ -18,7 +18,7 @@ import Tooltip, { TooltipSize } from "@/components/tooltip";
 
 import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
 
-import { getStringWithLanguage } from "@/utils/types/language";
+import { getStringWithLanguage } from "@/utils/type/language";
 
 import verifyReference from "@/utils/function/verify-reference";
 

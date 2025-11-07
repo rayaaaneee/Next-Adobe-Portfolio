@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { assertFoundTech, GeneralTechnologiesName } from './general-technologies-list';
 
-import type DeepReadonly from '@/utils/types/deep-readonly';
+import type DeepReadonly from '@/utils/type/deep-readonly';
 
 import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 

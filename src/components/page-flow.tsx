@@ -3,7 +3,7 @@ import { forwardRef, JSX, MouseEventHandler } from "react";
 
 import cn from "@/utils/function/cn";
 
-import { Undefined } from "@/utils/types/nullable";
+import { Undefined } from "@/utils/type/nullable";
 
 import { type ChildrenType, OptionalChildrenInterface } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";

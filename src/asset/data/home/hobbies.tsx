@@ -1,6 +1,6 @@
-import type DeepReadonly from '@/utils/types/deep-readonly';
+import type DeepReadonly from '@/utils/type/deep-readonly';
 
-import Language from '@/utils/types/language';
+import Language from '@/utils/type/language';
 
 import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
 

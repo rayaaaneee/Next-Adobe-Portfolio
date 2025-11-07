@@ -6,8 +6,8 @@ import { APP_DEFAULT_TEMPLATE_TITLE } from '@/asset/data/title';
 
 import useLanguage from '@/utils/hook/use-language';
 
-import { BlogPost } from '@/utils/types/blog';
-import { DeepReadonlyable } from '@/utils/types/deep-readonly';
+import { BlogPost } from '@/utils/type/blog';
+import { DeepReadonlyable } from '@/utils/type/deep-readonly';
 
 const BlogTitle = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 

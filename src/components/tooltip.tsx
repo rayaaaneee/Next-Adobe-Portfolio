@@ -9,7 +9,7 @@ import { TiWarning } from "react-icons/ti";
 
 import ChildrenInterface, { type ChildrenType } from "@/utils/interface/children";
 import ClassNameInterface from "@/utils/interface/classname";
-import { Nullish } from "@/utils/types/nullable";
+import { Nullish } from "@/utils/type/nullable";
 
 
 export enum TooltipPosition {

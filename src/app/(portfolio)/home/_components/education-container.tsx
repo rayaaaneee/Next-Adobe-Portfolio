@@ -6,9 +6,9 @@ import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flo
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
-import { DateClass, IntervalDateClass, Month } from '@/utils/types/date';
-import { type Education } from '@/utils/types/home/experience';
-import Language from '@/utils/types/language';
+import { DateClass, IntervalDateClass, Month } from '@/utils/type/date';
+import { type Education } from '@/utils/type/home/experience';
+import Language from '@/utils/type/language';
 
 const EducationContainer = () => {
 
