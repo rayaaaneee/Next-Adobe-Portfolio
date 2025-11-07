@@ -80,6 +80,8 @@ const Layout = ({
     <html
         className={cn(
             "scrollbar-thin",
+            "selection:bg-[blanchedalmond]/70 selection:text-black",
+            "dark:selection:bg-[#6495ed]/70 dark:selection:text-white",
             ["[&.no-overflow]:overflow-hidden"],
             [
                 "[&.menu-active]:overflow-hidden md:[&.menu-active]:overflow-auto",

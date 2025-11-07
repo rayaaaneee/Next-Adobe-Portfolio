@@ -13,20 +13,6 @@ const englishSentences: Sentences = {
     } as WithLanguage<string>,
     title: "Portfolio",
     flag_img: "english.png",
-    loader: {
-        texts: [
-            "Reading preferences...",
-            "Initializing tools...",
-            "Loading the palette...",
-            "Creating color conversion tables...",
-            "Reading brushes...",
-            "Loading .",
-            "Loading . .",
-            "Loading . . ."
-        ],
-        illustration_creator: "Illustration by Flore Marquin",
-        illustration_inspiration: "Illustration inspired by The Lord of the Rings: The Rings of Power. \"For more details and legal information, please visit the screen.\""
-    },
     index: {
         title: `Adobe Portfolio - ${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}`,
         discover: "Get started",
@@ -100,25 +86,69 @@ const englishSentences: Sentences = {
         thanks: "Thank you for visiting !"
     },
     blog: {
+        title: "Blog",
         lang: "Language",
         footer: "Thank you for reading !",
     },
     about: {
         title: "About",
-        main_title: "Privacy Policy",
-        main_text: "Your privacy is important to me. Adobe Portfolio's policy is to respect your privacy and to comply with all applicable laws and regulations regarding the personal information I may collect about you, including on my website, via the address",
-        main_text_explaination: "This policy has been in effect since February 7, 2023, and was last updated on February 7, 2023.",
-        contact_me: "Contact Me",
-        contact_me_text: "For any questions or concerns regarding your privacy, you can contact me using the following contact information:",
-        informations: "Collected Information",
-        informations_text: "The information I collect includes both information that you knowingly and actively provide when using or participating in any of our services and promotions, and any information automatically sent by your devices when accessing our products and services.",
-        log_data: "Log Data",
-        log_data_text: "When you visit this website, servers may automatically record standard data provided by your web browser. This may include your device's IP address (Internet Protocol), browser type and version, the pages you visit, the time and date of your visit, the time spent on each page, other details about your visit, and technical details that occur in conjunction with errors you may encounter. <br/> Please note that while this information may not be personally identifiable on its own, it may be possible to combine it with other data to personally identify individual persons.",
-        inspirations_text: "This site was entirely coded by myself with the purpose of presenting my background, projects, and skills. <br/> Similarly, all projects presented may have been partially or entirely coded by myself. <br/> The logo was inspired by the official logo of Adobe Photoshop (more generally, by all logos of the Adobe Suite). The loader was inspired by the official loading of Adobe Photoshop 2022.",
-        personal_data: "Personal Data",
-        personal_data_text: "You may be asked for personal information that may include one or more of the following items: <br/>• Name <br/>• Email",
-        cookies: "Use of Cookies",
-        cookies_text: "The use of 'cookies' to collect information about you and your activity on our site. A cookie is a small data element that our website stores on your computer and accesses each time you visit, so that I can understand how you use our site."
+        some_rights_reserved: "Some Rights Reserved",
+        description: [
+            "This site was entirely designed and developed by myself to showcase my background, projects, and skills.",
+            "The projects presented have all been carried out in whole or in part by myself.",
+            "Each article on the {blog} page details the design steps, challenges encountered, and solutions implemented for a specific project, issue, or achievement."
+        ],
+        parts: {
+            cookies: {
+                title: "Cookies",
+                description: [
+                    "This site uses cookies to enhance your browsing experience.",
+                    "By continuing to use this site, you agree to the use of cookies in accordance with the privacy policy."
+                ]
+            },
+            stack: {
+                title: "Stack",
+                description: [
+                    "This site was developed using the <strong>Next.js</strong> framework with <strong>TypeScript</strong> for better type management.",
+                    "Styling is handled with <strong>Tailwind CSS</strong> for a responsive and modern design.",
+                    "Hosting is provided by <strong>Vercel</strong>, offering optimal performance and automatic scaling."
+                ]
+            },
+            inspirations: {
+                title: "Inspirations",
+                description: "The logo was inspired by the official Adobe Photoshop logo (more generally from the entire {adobe} suite logos)."
+            },
+            license: {
+                title: "License & Usage Rights",
+                description: [
+                    "The design, layout, and visual elements of this site have been carefully crafted and are protected by copyright.",
+                    "Their reuse, even partially, is not allowed without prior agreement.",
+                    "Except where otherwise noted, all the content is licensed under the {cc} by the author.",    
+                    "This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, under the following terms:"
+                ],
+                parts: [
+                    {
+                        title: "Attribution",
+                        description : [
+                            "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use."
+                        ]
+                    },
+                    {
+                        title: "No additional restrictions",
+                        description : [
+                            "You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."
+                        ]
+                    },
+                    {
+                        title: "Notices",
+                        description : [
+                            "You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.",
+                            "No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material."
+                        ]
+                    }
+                ]
+            }
+        }
     },
     adaptive_grid: {
         expand: "Expand",

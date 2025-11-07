@@ -13,20 +13,6 @@ const spanishSentences: Sentences = {
     } as WithLanguage<string>,
     title: "Portfolio",
     flag_img: "spanish.png",
-    loader: {
-        texts: [
-            "Preferencias de lectura...",
-            "Inicializando herramientas...",
-            "Cargando la paleta...",
-            "Creando tablas de conversión de color...",
-            "Leyendo pinceles...",
-            "Cargando .",
-            "Cargando . .",
-            "Cargando . . ."
-        ],
-        illustration_creator: "Ilustración de Flore Marquin",
-        illustration_inspiration: "Ilustración inspirada en El Señor de los Anillos: Los Anillos del Poder. Para más detalles e información legal, visite la pantalla."
-    },
     index: {
         title: `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')} - Adobe Portfolio`,
         discover: "Empezar",
@@ -100,25 +86,69 @@ const spanishSentences: Sentences = {
         thanks: "¡ Gracias por visitar !"
     },
     blog: {
+        title: "Blog",
         lang: "Idioma",
         footer: "¡Gracias por leer!",
     },
     about: {
         title: "Acerca de",
-        main_title: "Política de Privacidad",
-        main_text: "Tu privacidad es importante para mí. La política de Adobe Portfolio es respetar tu privacidad y cumplir con todas las leyes y regulaciones aplicables con respecto a la información personal que pueda recopilar sobre ti, incluso en mi sitio web, a través de la dirección",
-        main_text_explaination: "Esta política ha estado en vigor desde el 7 de febrero de 2023 y fue actualizada por última vez el 7 de febrero de 2023.",
-        contact_me: "Contáctame",
-        contact_me_text: "Para cualquier pregunta o preocupación relacionada con tu privacidad, puedes contactarme utilizando la siguiente información de contacto:",
-        informations: "Información Recopilada",
-        informations_text: "La información que recolecto incluye tanto la información que proporcionas de manera consciente y activa al usar o participar en cualquiera de nuestros servicios y promociones, como cualquier información enviada automáticamente por tus dispositivos al acceder a nuestros productos y servicios.",
-        log_data: "Datos de Registro",
-        log_data_text: "Cuando visitas este sitio web, los servidores pueden registrar automáticamente datos estándar proporcionados por tu navegador web. Esto puede incluir la dirección IP (Protocolo de Internet) de tu dispositivo, el tipo y versión del navegador, las páginas que visitas, la hora y fecha de tu visita, el tiempo que pasas en cada página, otros detalles sobre tu visita y detalles técnicos que ocurran junto con los errores que puedas encontrar. <br/> Ten en cuenta que, aunque esta información por sí sola puede no ser personalmente identificable, puede ser posible combinarla con otros datos para identificar personalmente a personas individuales.",
-        inspirations_text: "Este sitio fue completamente codificado por mí mismo con el propósito de presentar mi trayectoria, proyectos y habilidades. <br/> Del mismo modo, todos los proyectos presentados pueden haber sido parcial o completamente codificados por mí mismo. <br/> El logo fue inspirado por el logo oficial de Adobe Photoshop (más generalmente, por todos los logos de la Suite Adobe). El cargador fue inspirado por la carga oficial de Adobe Photoshop 2022.",
-        personal_data: "Datos Personales",
-        personal_data_text: "Es posible que se te solicite información personal que puede incluir uno o más de los siguientes elementos: <br/>• Nombre <br/>• Correo Electrónico",
-        cookies: "Uso de Cookies",
-        cookies_text: "El uso de 'cookies' para recopilar información sobre ti y tu actividad en nuestro sitio. Una cookie es un pequeño elemento de datos que nuestro sitio web almacena en tu computadora y al que accede cada vez que nos visitas, para que pueda entender cómo usas nuestro sitio."
+        some_rights_reserved: "Algunos Derechos Reservados",
+        description: [
+            "Este sitio fue diseñado y desarrollado íntegramente por mí para mostrar mi trayectoria, proyectos y habilidades.",
+            "Los proyectos presentados fueron realizados total o parcialmente por mí.",
+            "Cada artículo en la página {blog} detalla las etapas de diseño, los desafíos encontrados y las soluciones implementadas para un proyecto, problema o realización específica."
+        ],
+        parts: {
+            cookies: {
+                title: "Cookies",
+                description: [
+                    "Este sitio utiliza cookies para mejorar su experiencia de navegación.",
+                    "Al continuar utilizando este sitio, usted acepta el uso de cookies de acuerdo con la política de privacidad."
+                ]
+            },
+            stack: {
+                title: "Entorno Técnico",
+                description: [
+                    "Este sitio fue desarrollado utilizando el framework <strong>Next.js</strong> con <strong>TypeScript</strong> para una mejor gestión de tipos.",
+                    "El estilo se maneja con <strong>Tailwind CSS</strong> para un diseño receptivo y moderno.",
+                    "El alojamiento es proporcionado por <strong>Vercel</strong>, que ofrece un rendimiento óptimo y escalado automático."
+                ]
+            },
+            inspirations: {
+                title: "Inspiraciones",
+                description: "El logotipo fue inspirado por el logotipo oficial de Adobe Photoshop (más generalmente por el conjunto de logotipos de la suite {adobe})."
+            },
+            license: {
+                title: "Licencia y derechos de uso",
+                description: [
+                    "El diseño, la maquetación y los elementos visuales de este sitio han sido cuidadosamente diseñados y están protegidos por derechos de autor.",
+                    "Su reutilización, incluso parcial, no está permitida sin el consentimiento previo.",
+                    "Excepto donde se indique lo contrario, todo el contenido está bajo licencia {cc} por el autor.",
+                    "Esto significa que eres libre de compartir (copiar y redistribuir el material en cualquier medio o formato) y adaptar (remixar, transformar y construir sobre el material) para cualquier propósito, incluso comercialmente, bajo los siguientes términos:"
+                ],
+                parts: [
+                   {
+                        title: "Atribución",
+                        description: [
+                            "Debes dar el crédito apropiado, proporcionar un enlace a la licencia e indicar si se realizaron cambios. Puedes hacerlo de cualquier manera razonable, pero no de una manera que sugiera que el licenciante te respalda a ti o a tu uso."
+                        ]
+                    },
+                    {
+                        title: "Sin restricciones adicionales",
+                        description: [
+                            "No puedes aplicar términos legales o medidas tecnológicas que restrinjan legalmente a otros de hacer cualquier cosa que la licencia permita."
+                        ]
+                    },
+                    {
+                        title: "Menciones legales",
+                        description: [
+                            "No tienes que cumplir con la licencia para elementos del material en el dominio público o donde tu uso esté permitido por una excepción o limitación aplicable.",
+                            "No se otorgan garantías. La licencia puede no darte todos los permisos necesarios para tu uso previsto. Por ejemplo, otros derechos como publicidad, privacidad o derechos morales pueden limitar cómo usas el material."
+                        ]
+                    }
+                ]
+            }
+        }
     },
     adaptive_grid: {
         expand: "Expandir",

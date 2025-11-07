@@ -1,9 +1,12 @@
 // Reference object for type inference for Language, used in context and hooks
 import assertDefined from "@/utils/function/assert-defined";
+
 import Language, { WithLanguage } from "@/utils/types/language";
+import ArrayType from "@/utils/types/array-string";
+import { title } from "process";
 
 const frenchSentences = {
-    current: Language.FR,
+    current: Language.FR satisfies Language,
     denomination: "Français",
     languages: {
         [Language.EN]: "Anglais",
@@ -12,20 +15,6 @@ const frenchSentences = {
     } as WithLanguage<string>,
     flag_img: "french.png",
     title: "Portfolio",
-    loader: {
-        texts: [
-            "Lecture des préférences...",
-            "Initialisation des outils...",
-            "Chargement de la palette...",
-            "Création des tables de conversion des couleurs...",
-            "Lecture des pinceaux...",
-            "Chargement .",
-            "Chargement . .",
-            "Chargement . . ."
-        ],
-        illustration_creator: "Illustration de Flore Marquin",
-        illustration_inspiration: "Illustration inspirée par le seigneur des anneaux : Les anneaux de pouvoirs. \"Pour obtenir plus de détails et des informations juridiques, rendez vous sur l'écran.\""
-    },
     index: {
         title: `Adobe Portfolio - ${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}`,
         discover: "Découvrir",
@@ -34,12 +23,12 @@ const frenchSentences = {
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Développeur Full-Stack", 
                 "Cybersécurité",
-            ],
+            ] satisfies ArrayType<string, 3>,
             short: [
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Dev FullStack",
                 "Cyber"
-            ]
+            ] satisfies ArrayType<string, 3>,
         },
     },
     home: {
@@ -55,7 +44,7 @@ const frenchSentences = {
             resume: "CV",
         },
         about: {
-            title: "About me",
+            title: "À propos",
             texts: [
                 "Bonjour ! Je suis <b>Rayane</b>, un <b>développeur</b> passionné avec un grand intérêt pour la <b>technologie</b> et tout ce qui touche à l'informatique. Au fil des années, j'ai consacré mon temps à la création de divers <b>projets personnels</b>, animés par ma passion pour <b>l'apprentissage</b> et <b>l'exploration de nouvelles technologies</b>.<br/>",
                 "Je maîtrise le <b>développement full-stack</b> et la <b>cybersécurité</b>, avec un intérêt particulier pour <b>React</b> et <b>Next.js</b> dans le développement web. En cybersécurité, je me suis formé à travers des défis <b>Capture The Flag (CTF)</b> et j'ai appliqué ces compétences dans des <b>contextes réels</b>, renforçant ainsi ma compréhension des <b>vulnérabilités</b>, du <b>renforcement des systèmes</b> et des <b>pratiques de développement sécurisé</b>.<br/>",
@@ -63,7 +52,7 @@ const frenchSentences = {
                 "Je travaille actuellement chez <b>Energy Pool</b> en tant que <b>membre de la Blue Team</b> (<i>protection contre les vulnérabilités</i>) tout au long de mes études d'ingénieur. Ce rôle renforce mes compétences en <b>détection de menaces</b>, <b>analyse d'incidents</b>, <b>gestion des vulnérabilités</b> et <b>amélioration continue des mesures défensives</b> au sein d'un <b>environnement de production</b>.<br/>",
                 "📝 <i>Note</i> : Bien que mon <b>portfolio mette fortement l'accent sur le design</b>, il reflète surtout mon appréciation pour <b>l'esthétique visuelle</b> et <b>l'expérience utilisateur</b>, des aspects que je considère comme un <i>passe-temps</i> et un <i>exutoire créatif</i>. Même si j'aime concevoir des <b>interfaces épurées et visuellement attrayantes</b>, mon <b>objectif professionnel</b> est orienté vers la <b>cybersécurité</b> et le <b>développement logiciel</b>, domaines dans lesquels je souhaite approfondir mon expertise et construire une <b>carrière technique solide</b>.<br/>",
                 "... certifications"
-            ]
+            ] satisfies ArrayType<string, 6>,
         },
         projects: {
             title: "Projets",
@@ -99,25 +88,72 @@ const frenchSentences = {
         thanks: "Merci pour votre visite !"
     },
     blog : {
+        title: "Blog",
         lang: "Langue",
         footer: "Merci de votre lecture !",
     },
     about: {
         title: "À propos",
-        main_title: "Politique de confidentialité",
-        main_text: "Votre vie privée est importante pour moi. La politique d'Adobe PortFolio est de respecter votre vie privée et de se conformer à toutes les lois et réglementations applicables concernant les informations personnelles que je pourrais collecter à votre sujet, y compris sur mon site Web, par l'adresse",
-        main_text_explaination: "Cette politique est en vigueur depuis le 7 février 2023 et a été mise à jour pour la dernière fois le 7 février 2023.",
-        contact_me: "Me contacter",
-        contact_me_text: "Pour toute question ou préoccupation concernant votre vie privée, vous pouvez me contacter en utilisant les coordonnées suivantes :",
-        informations: "Informations collectées",
-        informations_text: "Les informations que je collecte incluent à la fois les informations que vous fournissez sciemment et activement lorsque vous utilisez ou participez à l'un de nos services et promotions, et toute information envoyée automatiquement par vos appareils lors de l'accès à nos produits et services.",
-        log_data: "Log Data",
-        log_data_text: "Lorsque vous visitez ce site Web, les serveurs peuvent enregistrer automatiquement les données standard fournies par votre navigateur Web. Il peut inclure l'adresse IP (Internet Protocol) de votre appareil, le type et la version de votre navigateur, les pages que vous visitez, l'heure et la date de votre visite, le temps passé sur chaque page, d'autres détails sur votre visite et des détails techniques qui se produisent dans conjonction avec les erreurs que vous pourriez rencontrer. <br/> Veuillez noter que même si ces informations peuvent ne pas être personnellement identifiables en elles-mêmes, il peut être possible de les combiner avec d'autres données pour identifier personnellement des personnes individuelles.",
-        inspirations_text: "Ce site a été entièrement codé par mes soins dans le but de présenter mon parcours, mes projets et mes compétences. <br/> De même, tous les projets présentés ont pu être codés en partie ou entièrement par mes soins. <br/> Le logo a été inspiré du logo officiel d'Adobe Photoshop (plus généralement de l\"ensemble des logos de la suite Adobe). Le loader a lui été inspiré du chargement officiel d'Adobe Photoshop 2022.",
-        personal_data: "Données personnelles",
-        personal_data_text: "Il pourrait vous être demandées des informations personnelles qui peuvent inclure un ou plusieurs des éléments suivants :<br/>• Nom<br/>• Email",
-        cookies: "Utilisation des cookies",
-        cookies_text: "L'utilisation des « cookies » pour collecter des informations sur vous et votre activité sur notre site. Un cookie est un petit élément de données que notre site Web stocke sur votre ordinateur et auquel il accède à chaque fois que vous visitez, afin que je puissions comprendre comment vous utilisez notre site."
+        some_rights_reserved: "Certains droits réservés",
+        description: [
+            "Ce site a été entièrement conçu et développé par mes soins afin de présenter mon parcours, mes projets et mes compétences.",
+            "Les projets présentés ont tous été réalisés en tout ou en partie, par moi-même.",
+            "Chaque article de la page {blog} détaille les étapes de conception, les défis rencontrés et les solutions mises en œuvre pour un projet, une problématique ou une réalisation spécifique."
+        ] satisfies ArrayType<string, 3>,
+        parts: {
+            cookies: {
+                title: "Cookies",
+                description: [
+                    "Ce site utilise des cookies pour améliorer votre expérience de navigation.",
+                    "En continuant à utiliser ce site, vous acceptez l'utilisation des cookies conformément à la politique de confidentialité."
+                ] satisfies ArrayType<string, 2>,
+            },
+            stack: {
+                title: "Environnement Technique",
+                description: [
+                    "Ce site a été développé en utilisant le framework <strong>Next.js</strong> avec <strong>TypeScript</strong> pour une meilleure gestion des types.",
+                    "Le style est géré avec <strong>Tailwind CSS</strong> pour une conception réactive et moderne.",
+                    "L'hébergement est assuré par <strong>Vercel</strong>, offrant des performances optimales et une mise à l'échelle automatique."
+                ]
+            },
+            inspirations: {
+                title: "Inspirations",
+                description: "Le logo a été inspiré du logo officiel d'Adobe Photoshop (plus généralement de l'ensemble des logos de la suite {adobe})."
+            },
+            license: {
+                title: "Licence et droits d’utilisation",
+                description: [
+                    "Le design, la mise en page et les éléments visuels de ce site ont été conçus avec soin et sont protégés par le droit d’auteur.",
+                    "Leur réutilisation, même partielle, n’est pas autorisée sans accord préalable.",
+                    "Sauf indication contraire, tout le contenu est sous licence {cc} par l’auteur.",
+                    "Cela signifie que vous êtes libre de partager (copier et redistribuer le matériel sur tout support ou format) et d’adapter (remixer, transformer et créer à partir du matériel) pour toute utilisation, même commerciale, sous les conditions suivantes :"
+                ] satisfies ArrayType<string, 4>,
+                parts: [
+                    {
+                        title: "Attribution",
+                        description: [
+                            "Vous devez donner un crédit approprié, fournir un lien vers la licence et indiquer si des modifications ont été apportées. Vous pouvez le faire de manière raisonnable, mais pas d'une manière qui suggère que le donneur de licence vous approuve ou approuve votre utilisation."
+                        ] satisfies ArrayType<string, 1>,
+                    },
+                    {
+                        title: "Pas de restrictions supplémentaires",
+                        description: [
+                            "Vous ne pouvez pas appliquer des termes juridiques ou des mesures technologiques qui restreignent légalement les autres de faire quoi que ce soit que la licence permet."
+                        ] satisfies ArrayType<string, 1>,
+                    },
+                    {
+                        title: "Mentions légales",
+                        description: [
+                            "Vous n'avez pas à respecter la licence pour les éléments du matériel dans le domaine public ou lorsque votre utilisation est autorisée par une exception ou une limitation applicable.",
+                            "Aucune garantie n'est donnée. La licence peut ne pas vous donner tous les droits nécessaires à votre utilisation prévue. Par exemple, d'autres droits tels que la publicité, la vie privée ou les droits moraux peuvent limiter la façon dont vous utilisez le matériel."
+                        ] satisfies ArrayType<string, 2>,
+                    }
+                ] satisfies ArrayType<{
+                    title: string;
+                    description: string[];
+                }, 3>,
+            }
+        },
     },
     adaptive_grid: {
         expand: "Étendre",

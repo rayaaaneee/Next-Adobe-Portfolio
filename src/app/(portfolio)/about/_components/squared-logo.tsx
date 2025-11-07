@@ -24,7 +24,7 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
             'square-container', 
             'h-[var(--square-width)] w-[var(--square-width)]',
             'relative z-0 flex items-center justify-center transition-colors duration-300',
-            'bg-contain bg-no-repeat pointer-events-none overflow-visible',
+            'bg-contain bg-no-repeat overflow-visible',
             className
         )}> 
             { backgrounds.map((squareClassName, i) => (
@@ -39,7 +39,7 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
             <div className="main-square relative flex items-center justify-center rounded-[18%] bg-blanchedalmond w-full h-full font-adobebold">
                 <h1 className='header-text absolute bottom-full text-[5vw] font-semibold text-nowrap text-white'>Portfolio</h1>
                 <h1 id='pf' className='text-white text-[20vw]'>Pf</h1>
-                <p className='author absolute bottom-[-15%] text-4xl font-thin italic font-poppins'>&copy; By { assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</p>
+                <p className='author absolute bottom-[-12%] text-4xl font-thin italic font-poppins'>&copy; By { assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</p>
             </div>
         </div>
     )
