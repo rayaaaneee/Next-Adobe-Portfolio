@@ -2,7 +2,7 @@ import type DeepReadonly from '@/util/type/deep-readonly';
 
 import Language from '@/util/type/language';
 
-import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
+import type { AdaptiveGridElementData } from '@/components/other/adaptive-grid';
 
 import { BsMusicNote } from "react-icons/bs";
 import { IoIosFitness } from "react-icons/io";

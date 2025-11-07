@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import useLanguage from '@/util/hook/use-language';
 
-import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/others/adaptive-grid';
+import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/other/adaptive-grid';
 
 import cn from "@/util/function/cn";
 

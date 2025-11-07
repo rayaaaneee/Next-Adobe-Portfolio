@@ -9,7 +9,7 @@ import { FaCopy, FaCheck } from "react-icons/fa6";
 
 import cn from "@/util/function/cn";
 import ClassNameInterface from "@/util/interface/classname";
-import CopyButton from "@/components/others/copy-button";
+import CopyButton from "@/components/other/copy-button";
 
 export interface CodeBlockCopyButtonProps extends ClassNameInterface {
     code: string;

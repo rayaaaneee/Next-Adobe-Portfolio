@@ -1,5 +1,5 @@
 import { HeadingThree } from '@/components/page-flow';
-import Separator from '@/components/others/separator';
+import Separator from '@/components/other/separator';
 
 import ShareButtons from './share-buttons';
 import BlogRights from './blog-rights';

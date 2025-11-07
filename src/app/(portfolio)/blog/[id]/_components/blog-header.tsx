@@ -3,7 +3,7 @@
 import useLanguage from '@/util/hook/use-language';
 
 import { HeadingOne, HeadingTwo, Paragraph } from '@/components/page-flow';
-import Separator from '@/components/others/separator';
+import Separator from '@/components/other/separator';
 
 import Language, { WithLanguage } from '@/util/type/language';
 

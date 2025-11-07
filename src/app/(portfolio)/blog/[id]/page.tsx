@@ -6,9 +6,9 @@ import NotFound from "../../[...not-found]/page";
 
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
-import MainPart from "@/components/others/main-part";
+import MainPart from "@/components/other/main-part";
 import BlogHeader from "@/app/(portfolio)/blog/[id]/_components/blog-header";
-import Separator from "@/components/others/separator";
+import Separator from "@/components/other/separator";
 
 import BlogFooter from "./_components/blog-footer";
 import BlogTitle from "./_components/blog-title";

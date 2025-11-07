@@ -1,5 +1,5 @@
 import getBlogs from "@/asset/data/blog/blogs";
-import AdaptiveGrid, { AdaptiveGridElementData } from "@/components/others/adaptive-grid";
+import AdaptiveGrid, { AdaptiveGridElementData } from "@/components/other/adaptive-grid";
 
 const BlogGrid = () => (
     <AdaptiveGrid

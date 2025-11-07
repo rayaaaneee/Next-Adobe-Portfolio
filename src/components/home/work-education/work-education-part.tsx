@@ -12,7 +12,7 @@ import ChildrenInterface from "@/util/interface/children";
 
 import { type Work, type Education } from "@/util/type/home/experience";
 
-import Separator from "../../others/separator";
+import Separator from "../../other/separator";
 import TechItem from "./tech-item";
 import Language, { getStringWithLanguage } from "@/util/type/language";
 import ManageLanguages from "@/util/manager/manage-language";

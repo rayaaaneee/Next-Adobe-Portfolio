@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { CSSProperties } from "react";
 
-import MainPart from "@/components/others/main-part";
+import MainPart from "@/components/other/main-part";
 
 import SquaredLogo from "./_components/squared-logo";
 import ContentPart from "./_components/content-part";

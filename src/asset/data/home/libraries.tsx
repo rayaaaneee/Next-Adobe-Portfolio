@@ -4,7 +4,7 @@ import { assertFoundTech, GeneralTechnologiesName } from './general-technologies
 
 import type DeepReadonly from '@/util/type/deep-readonly';
 
-import type { AdaptiveGridElementData } from '@/components/others/adaptive-grid';
+import type { AdaptiveGridElementData } from '@/components/other/adaptive-grid';
 
 import { baseImageProps } from './adaptive-grid-base';
 

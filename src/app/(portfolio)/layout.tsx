@@ -1,6 +1,6 @@
 import App from "$/(portfolio)/_app";
 
-import Header from "@/components/others/header";
+import Header from "@/components/other/header";
 import Background from "@/components/background";
 import CarouselImage from "@/components/carousel-image";
 

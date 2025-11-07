@@ -12,13 +12,13 @@ import ClassNameInterface from "@/util/interface/classname";
 import EducationContainer from "@/app/(portfolio)/home/_components/education-container";
 import WorkContainer from "@/app/(portfolio)/home/_components/work-container";
 import SkillsContainer from "@/app/(portfolio)/home/_components/skills-container";
-import AdaptiveGrid from "@/components/others/adaptive-grid";
-import Separator from "@/components/others/separator";
+import AdaptiveGrid from "@/components/other/adaptive-grid";
+import Separator from "@/components/other/separator";
 
 import projects from "@/asset/data/home/projects";
 import hobbies from "@/asset/data/home/hobbies";
 
-import MainPart from "@/components/others/main-part";
+import MainPart from "@/components/other/main-part";
 
 import VerticalBorderSection from "./_components/vertical-border-section";
 import HeaderText from "./_components/header-text";

@@ -4,8 +4,8 @@ import { LuPencilLine } from "react-icons/lu";
 import { FaRss } from "react-icons/fa";
 
 import { AnchorLinkButton, HeadingOne } from '@/components/page-flow';
-import Separator from '@/components/others/separator';
-import MainPart from '@/components/others/main-part';
+import Separator from '@/components/other/separator';
+import MainPart from '@/components/other/main-part';
 import BlogGrid from './_components/blog-grid';
 
 import getBlogs from '@/asset/data/blog/blogs';

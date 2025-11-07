@@ -6,7 +6,7 @@ import cn from '@/util/function/cn';
 
 import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip';
-import Separator from '@/components/others/separator';
+import Separator from '@/components/other/separator';
 
 import CodeBlock from '@/components/blog/_components/code-block';
 
