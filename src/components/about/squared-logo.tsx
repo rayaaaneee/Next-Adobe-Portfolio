@@ -10,16 +10,16 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
 
     //calc(-#{$coefficient} * #{$spacement})
     const backgrounds: string[] = [
-        "bg-triangle-yellow top-[var(--spacement)] left-[calc(-var(--coef)*var(--spacement))]",
-        "bg-triangle-orange bottom-[var(--spacement)]",
-        "bg-triangle-red bottom-[calc(-(var(--coef))*var(--spacement))] right-[calc(-(var(--coef))*var(--spacement))]",
+        "bg-triangle-yellow top-[calc(0.5*var(--spacement))] left-[calc(-1*var(--coef)*var(--spacement))]",
+        "bg-triangle-orange bottom-[calc(1.4*var(--spacement))]",
+        "bg-triangle-red bottom-[calc(-1.1*(var(--coef))*var(--spacement))] right-[calc(-0.9*(var(--coef))*var(--spacement))]",
     ];
 
     return (
         <div 
         id={id} 
         ref={ref}
-        style={{"--square-width": "30vw"} as React.CSSProperties}
+        style={{"--square-width": "33vw"} as React.CSSProperties}
         className={cn(
             'square-container', 
             'h-[var(--square-width)] w-[var(--square-width)]',
@@ -30,17 +30,16 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
             { backgrounds.map((squareClassName, i) => (
                 <div 
                 style={{
-                    "--coef": "1.3",
-                    "--spacement": "9vw",
+                    "--coef": "2.3",
+                    "--spacement": "4vw",
                 } as React.CSSProperties}
                 key={i} 
                 className={`square absolute rounded-[10%] w-[37vw] h-[37vw] ${squareClassName}`} />
             )) }
             <div className="main-square relative flex items-center justify-center rounded-[18%] bg-blanchedalmond w-full h-full font-adobebold">
-                <h1 className='header-text absolute'>Adobe Portfolio</h1>
-                <h1 id='port' className='text-white'>P</h1>
-                <h2 id='folio' className='text-white'>f</h2>
-                <p className='author italic absolute'>By <span>{ assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</span></p>
+                <h1 className='header-text absolute bottom-full text-[5vw] font-semibold text-nowrap text-white'>Portfolio</h1>
+                <h1 id='pf' className='text-white text-[20vw]'>Pf</h1>
+                <p className='author absolute bottom-[-15%] text-4xl font-thin italic font-poppins'>&copy; By { assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</p>
             </div>
         </div>
     )

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { forwardRef, JSX, MouseEventHandler } from "react";
 
 import cn from "@/utils/function/cn";
@@ -238,3 +239,22 @@ export const AnchorLinkButton = forwardRef<HTMLAnchorElement, AnchorLinkButtonPr
     )
 );
 AnchorLinkButton.displayName = "AnchorLinkButton";
+
+export const AnchorLinkText = forwardRef<HTMLAnchorElement, PageFlowBaseInterface & { href: string }>(
+    ({ className, children, id, href}, ref) => {
+
+        const ParentLink = href.startsWith("/") ? Link : "a";
+
+        return (
+            <ParentLink
+                ref={ref}
+                id={id ? id : undefined}
+                href={href}
+                className={cn("underline underline-offset-2 font-semibold",className)}
+            >
+                {children}
+            </ParentLink>
+        )
+    }
+);
+AnchorLinkText.displayName = "AnchorLinkText";
