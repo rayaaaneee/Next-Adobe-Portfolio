@@ -1,60 +1,62 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-import Image, { StaticImageData } from "next/image";
+import { IoCloseOutline } from "react-icons/io5";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+import Image from "next/image";
 
 import cn from "@/util/function/cn";
 
 import useConditionalEffect from "@/util/hook/use-conditional-effect";
-import useFlowImageContext from "@/util/hook/use-flow-image-context";
-
+import useImageFlowContext from "@/util/hook/use-image-flow-context";
+import { IconType } from "react-icons/lib";
 
 const CarouselImage = () => {
 
-    const { images, clearImages, clicked, setImageClicked, imageClicked, loadNextImage, loadPreviousImage } = useFlowImageContext();
+    const { clearImages, clicked, setImage, image, nextImage, previousImage } = useImageFlowContext();
 
     const location = usePathname();
 
     const [closing, setClosing] = useState(false);
 
-    const [switchingCounter, setSwitchingCounter] = useState(0);
-
-    const [switching, setSwitching] = useState<"left" | "right" | null>(null);
-
-    const currentIndexImage = useMemo(
-        () => images.findIndex((el) => imageClicked === el),
-        [images, imageClicked]
-    );
+    type SwitchingType = "left" | "right";
+    const [switching, setSwitching] = useState<SwitchingType | null>(null);
 
     useConditionalEffect(() => clearImages(), [location]);
 
     // Duration in milliseconds linked to the scale-up animation in tailwind.config.ts
     const globalAnimationDuration = 300;
 
-    const delaySetImageClicked = (value: typeof imageClicked) => {
+    const delaySetImage = (value: typeof image) => {
         setTimeout(() => {
-            setImageClicked(value);
+            setImage(value);
             setClosing(false);
         }, globalAnimationDuration);
+    }
+
+    const goNextImage = (switching: SwitchingType) => {
+        if ((switching === "right" && !nextImage) || (switching === "left" && !previousImage)) return;
+        setImage(switching === "right" ? nextImage : previousImage);
+        setSwitching(switching);
+        setTimeout(() => setSwitching(null), globalAnimationDuration);
+    }
+
+    const close = () => {
+        setClosing(true);
+        delaySetImage(null);
     }
 
     useEffect(() => {
 
         const keydownHandler = (event: KeyboardEvent) => {  
             if (event.key === "Escape") {
-                setClosing(true);
-                delaySetImageClicked(null);
+                close();
             } else if (event.key.includes("Arrow")) {
-                if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-                    loadNextImage();
-                    setSwitching("right")
-                } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-                    loadPreviousImage();
-                    setSwitching("left")
-                }
-                setTimeout(() => (setSwitchingCounter(i => i+1), setSwitching(null)), globalAnimationDuration);
+                if (event.key === "ArrowRight" || event.key === "ArrowDown") goNextImage("right");
+                else if (event.key === "ArrowLeft" || event.key === "ArrowUp") goNextImage("left");
             }
         };
 
@@ -62,32 +64,34 @@ const CarouselImage = () => {
 
         return () => {
             window.removeEventListener("keydown", keydownHandler);
-            setSwitchingCounter(0);
         };
 
     });
 
     useConditionalEffect(() => {
-        clicked && document.documentElement.classList.add("no-overflow");
-    }, [clicked]);
-
-    useConditionalEffect(() => {
-        closing && document.documentElement.classList.remove("no-overflow");
-    }, [closing]);
+        clicked && (document.documentElement.classList.add("no-overflow"));
+        closing && (document.documentElement.classList.remove("no-overflow"));
+    }, [clicked, closing]);
 
     const zoomImg = () => {
         // Start zoom-in the image (not closing)
     }
 
-    const previousImage: StaticImageData = useMemo(() => {
-        const previousIndex = currentIndexImage - 1;
-        return images[previousIndex < 0 ? images.length - 1 : previousIndex];
-    }, [switchingCounter, clicked]);
-
-    const nextImage: StaticImageData = useMemo(() => {
-        const nextIndex = currentIndexImage + 1;
-        return images[nextIndex >= images.length ? 0 : nextIndex];
-    }, [switchingCounter, clicked]);
+    const SwitchButton = (direction: SwitchingType) => {
+        const Icon: IconType = direction === "left" ? IoIosArrowBack : IoIosArrowForward;
+        return (
+            <button className={cn(
+                "absolute focus:outline-none top-1/2 -translate-y-1/2 text-white text-5xl",
+                (direction === "left" ? "left-4" : "right-4"),
+                "disabled:opacity-30",
+                ((direction === "left" ? previousImage : nextImage && !closing ) ? "animate-scale-up" : "animate-scale-down pointer-events-none"),
+            )}>
+                <Icon
+                    onClick={() => goNextImage(direction)}
+                />
+            </button>
+        );
+    }
 
     return (
         <article className={cn(
@@ -98,34 +102,37 @@ const CarouselImage = () => {
                 "bg-transparent": !clicked || closing,   
             }
         )}>
-            { ["current", "next"].map((className, i) => (
-                <div
-                    key={className}
-                    id={`${className}-frame`}
-                    className={cn(
-                        "absolute top-[5%] bottom-[5%] left-[5%] right-[5%] overflow-hidden",
-                        "transition-transform duration-300",
-                        (i === 0) /* is current */ && [
-                            "opacity-1",
-                            (switching === "left") && "animate-disappear-right",
-                            (switching === "right") && "animate-disappear-left",
-                        ],
-                        (i === 1) /* is next */ && [
-                            "opacity-0",
-                            (switching === "right") && "animate-appear-right",
-                        ]
-                    )}
-                >   
-                { imageClicked && (                   
+            <button className={cn(
+                "absolute top-5 right-5 text-gray-300 text-5xl",
+                ((clicked && !closing) ? "animate-scale-up" : "animate-scale-down pointer-events-none")
+            )}>
+                <IoCloseOutline
+                    onClick={() => close()}
+                />
+            </button>
+            { SwitchButton("left") }
+            <div
+                id={`image-frame`}
+                className={cn(
+                    "absolute top-[5%] bottom-[5%] left-[5%] right-[5%] overflow-hidden",
+                    "transition-transform duration-300",
+                    [
+                        "opacity-1",
+                        (switching === "left") && "animate-appear-left",
+                        (switching === "right") && "animate-appear-right",
+                    ],
+                )}
+            >   
+                { image && (                   
                     <Image
-                        alt={className}
+                        alt={"current-image-carousel"}
                         fill
                         layout="fill"
                         objectFit="contain"
-                        src={(i === 0) /* is current */ ? (imageClicked) : (i === 1) /* is next */ ? nextImage : previousImage}
+                        src={image}
                         onClick={zoomImg}
                         className={cn(
-                            "cursor-zoom-in transition-transform",
+                            "transition-transform",
                             {
                                 "animate-scale-up": clicked && !closing,
                                 "animate-scale-down": closing,
@@ -133,8 +140,8 @@ const CarouselImage = () => {
                         )}
                     />
                 )}
-                </div>
-            ))}
+            </div>
+            { SwitchButton("right") }
         </article>
     );
 }

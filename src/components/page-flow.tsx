@@ -70,22 +70,26 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
         switch (type) {
             case HeadingType.h1:
                 return [
+                    "heading-one",
                     "text-xl sm:text-2xl lg:text-3xl xl:text-4xl",
                     "text-black dark:text-white font-normal w-fit"
                 ];
             case HeadingType.h2:
                 return [
+                    "heading-two",
                     "text-lg sm:text-xl lg:text-2xl xl:text-3xl",
                     "text-gray-600 dark:text-gray-300 ml-4", 
                 ];
             case HeadingType.h3:
                 return [
+                    "heading-three",
                     "text- sm:text-lg lg:text-xl xl:text-2xl ",
                     "xs:ml-4 sm:ml-5 md:ml-6 xl:ml-7",
                     "text-gray-500 dark:text-gray-400", 
                 ];
             case HeadingType.h4:
                 return [
+                    "heading-four",
                     "text-sm sm:text-base lg:text-lg xl:text-xl",
                     "ml-6",
                     "text-gray-400 dark:text-gray-500", 

@@ -16,7 +16,7 @@ const FlowImage = (props: FlowImageProps) => {
 
     if (typeof props.src === 'string') throw new Error("FlowImage only accepts StaticImageData as src.");
 
-    const { pushImage, setImageClicked } = useContext(imageContext);
+    const { pushImage, setImage: setImageClicked } = useContext(imageContext);
 
     const onClick: MouseEventHandler<HTMLImageElement> = (event) => {
         void setImageClicked(props.src);

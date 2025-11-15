@@ -31,29 +31,33 @@ const App = ({ children }: ChildrenInterface) => {
 	);
 
 	const [images, setImages] = useState<StaticImageData[]>([]);
-	const [imageClicked, setImageClicked] = useState<StaticImageData | null>(null);
+	const [image, setImage] = useState<StaticImageData | null>(null);
 	const imagesValue = useMemo(
 		() => ({
-				clicked: imageClicked !== null,
-				imageClicked: imageClicked,
-				loadNextImage: () => {
-					if (imageClicked === null) return;
-					const currentIndex: number = images.findIndex(img => img === imageClicked);
-					const nextIndex: number = (currentIndex + 1) % images.length;
-					setImageClicked(images[nextIndex]);
-				},
-				loadPreviousImage: () => {
-					if (imageClicked === null) return;
-					const currentIndex: number = images.findIndex(img => img === imageClicked);
-					const previousIndex: number = (currentIndex - 1 + images.length) % images.length;
-					setImageClicked(images[previousIndex]);
-				},
-				setImageClicked: setImageClicked,
 				images: images,
+				clicked: image !== null,
+				image: image,
+				nextImage: ((): null | StaticImageData => {
+					if (image === null) return null;
+					const currentIndex: number = images.findIndex(img => img === image);
+					if (currentIndex === -1) return null;
+					const nextIndex: number = currentIndex + 1;
+					if (nextIndex < 0 || nextIndex >= images.length) return null;
+					return images[nextIndex];
+				})(),
+				previousImage: ((): null | StaticImageData => {
+					if (image === null) return null;
+					const currentIndex: number = images.findIndex(img => img === image);
+					if (currentIndex === -1) return null;
+					const previousIndex: number = currentIndex - 1;
+					if (previousIndex < 0 || previousIndex >= images.length) return null;
+					return images[previousIndex];
+				})(),
+				setImage: setImage,
 				pushImage: (image: StaticImageData) => setImages((prevImages) => [...prevImages, image]),
 				clearImages: () => setImages([]),
 		}),
-		[images, imageClicked]
+		[images, image]
 	);
 	
 	return (

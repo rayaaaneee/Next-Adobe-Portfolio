@@ -95,7 +95,7 @@ const config: import('tailwindcss').Config = {
                 "appear-left": {
                     "0%": {
                         opacity: "0",
-                        transform: "translateX(-40vw) scale(0.6)"
+                        transform: "translateX(-30vw) scale(0.6)"
                     },
                     "100%": {
                         opacity: "1",
@@ -105,33 +105,13 @@ const config: import('tailwindcss').Config = {
                 "appear-right": {
                     "0%": {
                         opacity: "0",
-                        transform: "translateX(40vw) scale(0.6)"
+                        transform: "translateX(30vw) scale(0.6)"
                     },
                     "100%": {
                         opacity: "1",
                         transform: "translateX(0)"
                     }
-                },
-                "disappear-left": {
-                    "0%": {
-                        opacity: "1",
-                        transform: "translateX(0) scale(1)"
-                    },
-                    "100%": {
-                        opacity: "0",
-                        transform: "translateX(-40vw) scale(0.6)"
-                    },
-                },
-                "disappear-right": {
-                    "100%": {
-                        opacity: "1",
-                        transform: "translateX(0)"
-                    },
-                    "0%": {
-                        opacity: "0",
-                        transform: "translateX(40vw) scale(0.6)"
-                    },
-                },
+                }
             },
             fontFamily: {
                 apple: ['var(--apple)'],
@@ -185,8 +165,6 @@ const config: import('tailwindcss').Config = {
                 'scale-down': 'scale-down 0.3s ease forwards',
                 'appear-left': 'appear-left 0.3s ease forwards',
                 'appear-right': 'appear-right 0.3s ease forwards',
-                'disappear-left': 'disappear-left 0.3s ease forwards',
-                'disappear-right': 'disappear-right 0.3s ease forwards',
                 'appearance': 'appearance',
                 'fade': 'fadeIn',
                 'bar': 'bar-move 6s linear infinite, fadeIn 0.6s 0.2s ease forwards',
