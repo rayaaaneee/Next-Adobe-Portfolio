@@ -34,8 +34,6 @@ export const GET = async () => {
 
     const template: Template = await readTemplate('feed.xml');
 
-    console.log(`/_next/image?url=${encodeURIComponent(`${logo.src.split('/').pop()!}&w=128&q=75`)}`);
-
     const xml = template.render({
         domain: assertDefined<string>(process.env.NEXT_PUBLIC_DOMAIN, 'DOMAIN'),
         email: assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL'),

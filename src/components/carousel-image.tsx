@@ -1,18 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { type IconType } from "react-icons/lib";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import Image from "next/image";
 
 import cn from "@/util/function/cn";
 
 import useConditionalEffect from "@/util/hook/use-conditional-effect";
 import useImageFlowContext from "@/util/hook/use-image-flow-context";
-import { IconType } from "react-icons/lib";
 
 const CarouselImage = () => {
 

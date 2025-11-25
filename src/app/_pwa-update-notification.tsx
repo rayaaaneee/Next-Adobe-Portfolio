@@ -5,11 +5,12 @@ import cn from '@/util/function/cn';
 import { useEffect, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 
-    const PWAUpdateNotification = () => {
+const PWAUpdateNotification = () => {
+
     const [updateReady, setUpdateReady] = useState(false);
-    const [showNotification, setShowNotification] = useState(false);
 
     useEffect(() => {
+
         if (!('serviceWorker' in navigator)) return;
 
         let registration: ServiceWorkerRegistration | null = null;
@@ -25,11 +26,7 @@ import { IoClose } from 'react-icons/io5';
                 if (!worker) return;
                 onStateChange = () => {
                     if (worker && worker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // new update ready
-                        setUpdateReady(true);
-                        setTimeout(() => {
-                            setShowNotification(true);
-                        }, 1000);
+                        setTimeout(() => setUpdateReady(true), 1000);
                     }
                 };
                 worker.addEventListener('statechange', onStateChange);
@@ -45,6 +42,7 @@ import { IoClose } from 'react-icons/io5';
                 registration.removeEventListener('updatefound', onUpdateFound);
             }
         };
+
     }, []);
 
     if (!updateReady) return null;
@@ -66,13 +64,13 @@ import { IoClose } from 'react-icons/io5';
             <div id='update-modal' className={cn(
                 "fixed max-xs:m-auto max-xs:inset-0 w-fit h-fit xs:bottom-4 xs:right-4",
                 "bg-[blanchedalmond]/90 text-black p-4 pr-14 rounded z-50",
-                !showNotification && "translate-x-[120%]",
-                showNotification && "translate-x-0",
+                !updateReady && "translate-x-[120%]",
+                updateReady && "translate-x-0",
                 "transform transition-transform duration-300 ease-in-out"
             )}>
                 <Paragraph className='!m-0'>
                     A new version of this content is available.
-                    <IoClose className="absolute top-3 right-3 text-[1.7em] cursor-pointer hover:text-gray-500 transition-colors" onClick={() => setShowNotification(false)} />
+                    <IoClose className="absolute top-3 right-3 text-[1.7em] cursor-pointer hover:text-gray-500 transition-colors" onClick={() => setUpdateReady(false)} />
                 </Paragraph>
                 <Button
                     onClick={handleReload}

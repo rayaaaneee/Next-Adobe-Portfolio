@@ -1,7 +1,7 @@
 import { HeadingThree } from '@/components/page-flow';
 import Separator from '@/components/other/separator';
 
-import ShareButtons from './share-buttons';
+import BlogShareButtons from './blog-share-buttons';
 import BlogRights from './blog-rights';
 
 import ManageLanguages from '@/util/manager/manage-language';
@@ -19,7 +19,7 @@ const BlogFooter = ({ blog }: BlogFooterProps) => {
         <article id='blog-footer' className='flex flex-col center gap-4'>
             <Separator className='!mb-0'/>
             <HeadingThree containerClassName='!m-0'>{ ManageLanguages.getSentences(blog.language).blog.footer } 🚀</HeadingThree>
-            <ShareButtons blog={blog} />
+            <BlogShareButtons blog={blog} />
             <Separator className='!mt-0'/>
             <BlogRights />
         </article>

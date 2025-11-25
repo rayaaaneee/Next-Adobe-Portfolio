@@ -11,17 +11,26 @@ import NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-
 import svgIcon from "@/asset/img/blog/blog-2/icon.png";
 import SvgPageContent from "$/(portfolio)/blog/[id]/_md/svg-customization/blog.mdx";
 
-export type BlogTagType = WithLanguageable<string>;
+import keyCloakIcon from "@/asset/img/blog/blog-3/icon.png";
+import OAuth2PageContent from "$/(portfolio)/blog/[id]/_md/keycloak-oauth2-integration/blog.mdx";
+
+;
 
 export enum BlogTag {
     NEXTJS = "nextjs",
     REACT = "react",
     SVG = "svg",
     WEB_FRONT = "web-front",
+    KEYCLOAK = "keycloak",
+    OAUTH2 = "oauth2",
+    SECURITY = "security",
+    ACCESS_TOKENS = "access-tokens",
+    IAM = "identity-and-access-management",
+    AUTH = "authentication",
 }
 
 export interface BlogTagData {
-    displayName: BlogTagType;
+    displayName: WithLanguageable<string>;
     color: string;
 }
 
@@ -45,6 +54,46 @@ export const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze(
     [BlogTag.WEB_FRONT]: {
         displayName: "Front-end",
         color: "#FF6D00",
+    },
+    [BlogTag.KEYCLOAK]: {
+        displayName: "Keycloak",
+        color: "#AA0000",
+    },
+    [BlogTag.OAUTH2]: {
+        displayName: {
+            [Language.EN]: "OAuth2",
+            [Language.FR]: "OAuth2",
+            [Language.ES]: "OAuth2",
+        },
+        color: "#4285F4",
+    },
+    [BlogTag.SECURITY]: {
+        displayName: {
+            [Language.EN]: "Security",
+            [Language.FR]: "Sécurité",
+            [Language.ES]: "Seguridad",
+        },
+        color: "#FF0000",
+    },
+    [BlogTag.ACCESS_TOKENS]: {
+        displayName: {
+            [Language.EN]: "Access Tokens",
+            [Language.FR]: "Jetons d'accès",
+            [Language.ES]: "Tokens de acceso",
+        },
+        color: "#008000",
+    },
+    [BlogTag.IAM]: {
+        displayName: "IAM",
+        color: "#800080",
+    },
+    [BlogTag.AUTH]: {
+        displayName: {
+            [Language.EN]: "Authentication",
+            [Language.FR]: "Authentification",
+            [Language.ES]: "Autenticación",
+        },
+        color: "#FFA500",
     },
 });
 
@@ -90,6 +139,33 @@ const blogs: DeepReadonly<BlogPost[]> = [
             BlogTag.WEB_FRONT,
         ],
     },
+    {
+        index: 2,
+        id: "keycloak-oauth2-integration",
+        language: Language.EN,
+        tags: [
+            BlogTag.KEYCLOAK,
+            BlogTag.OAUTH2,
+            BlogTag.SECURITY,
+            BlogTag.ACCESS_TOKENS,
+            BlogTag.IAM,
+            BlogTag.AUTH,
+        ],
+        content: <OAuth2PageContent />,
+        title: {
+            [Language.EN]: " Keycloak with OAuth2 for Secure Authentication",
+            [Language.FR]: "Keycloak avec OAuth2 pour une authentification sécurisée",
+            [Language.ES]: "Keycloak con OAuth2 para una autenticación segura",
+        },
+        date: "2025-12-15",
+        color: "#008aaa",
+        summary: {
+            [Language.EN]: "This blog post delves into the integration of Keycloak with OAuth2 to enhance authentication security in web applications. It covers the setup process, configuration steps, and best practices for implementing robust authentication mechanisms using these technologies.",
+            [Language.FR]: "Cet article de blog explore l'intégration de Keycloak avec OAuth2 pour améliorer la sécurité de l'authentification dans les applications web. Il couvre le processus de configuration, les étapes de mise en place et les meilleures pratiques pour implémenter des mécanismes d'authentification robustes en utilisant ces technologies.",
+            [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
+        },
+        icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
+    }
 ];
 
 const getBlogs = (): DeepReadonlyable<BlogPost[]> => blogs;
@@ -112,10 +188,8 @@ export const getTagDisplayName = (tag: BlogTag, language: Language) => {
 
 export const assertFoundBlog = (id: string): DeepReadonlyable<BlogPost> => {
     const blog = findBlog(id);
-    if (!blog) {
-        throw new Error(`Blog with id "${id}" not found.`);
-    }
-    return blog;
+    if (!blog) throw new Error(`Blog with id "${id}" not found.`);
+    else return blog;
 }
 
 export type BlogPosts = DeepReadonlyable<BlogPost[]>;

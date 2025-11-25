@@ -128,7 +128,7 @@ const CopyLinkButton = ({ url }: ShareButtonProps) => (
     />
 );
 
-const ShareButtons = ({ blog }: BlogFooterProps) => {
+const BlogShareButtons = ({ blog }: BlogFooterProps) => {
 
     const { language } = useLanguage();
 
@@ -148,4 +148,4 @@ const ShareButtons = ({ blog }: BlogFooterProps) => {
     )
 }
 
-export default ShareButtons;
+export default BlogShareButtons;
