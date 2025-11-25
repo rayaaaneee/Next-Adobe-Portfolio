@@ -14,6 +14,7 @@ interface TableHeadingInterface {
     id: string;
     level: number;
     element: Element;
+    childrenHeadings: TableHeadingInterface[];
     parentHeading?: TableHeadingInterface;
 }
 
@@ -37,6 +38,7 @@ const getHeadings = (element: HTMLElement): TableHeadingInterface[] => {
             id: heading.id || (() => { throw new Error("Heading element missing id attribute.")})(),
             level: parseInt(heading.tagName.substring(1)),
             element: findDOMElement(heading.id),
+            childrenHeadings: [],
         } as TableHeadingInterface;
     }).map((heading, index, arr) => {
         // Assign parent heading
@@ -44,6 +46,7 @@ const getHeadings = (element: HTMLElement): TableHeadingInterface[] => {
             for (let i = index -1; i >= 0; i--) {
                 if (arr[i].level === heading.level -1) {
                     heading.parentHeading = arr[i];
+                    arr[i].childrenHeadings.push(heading);
                     break;
                 }
             }
@@ -56,7 +59,7 @@ const BlogTableOfContents = ({ }) => {
 
 
     const tableHeadings = useRef<TableHeadingInterface[]>([]);
-    const [activeId, setActiveId] = useState<string>("");
+    const [activeHeading, setActiveHeading] = useState<TableHeadingInterface | null>(null);
 
     const assertFoundHeadingById = (expectedId: string) => (assertFound(tableHeadings.current, heading => heading.id === expectedId, "Table heading"));
 
@@ -64,7 +67,12 @@ const BlogTableOfContents = ({ }) => {
 
     const isActiveSubHeading = (heading: TableHeadingInterface): boolean => {
         if (lastParentHeading.current) {
-            if (heading.parentHeading === lastParentHeading.current) return true;      
+            if (heading.level <= 2) return true;
+            else if (
+                (heading.parentHeading === lastParentHeading.current) ||
+                (heading.parentHeading === activeHeading) ||
+                (activeHeading?.parentHeading?.childrenHeadings.includes(heading))                   
+            ) return true;      
         }
         return false;
     }
@@ -82,7 +90,7 @@ const BlogTableOfContents = ({ }) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const correspondingTableHeading = assertFoundHeadingById(entry.target.id);
-                        setActiveId(entry.target.id);
+                        setActiveHeading(correspondingTableHeading as TableHeadingInterface);
                         if (!lastParentHeading.current || correspondingTableHeading.level <= lastParentHeading.current.level) {
                             lastParentHeading.current = correspondingTableHeading as TableHeadingInterface;   
                         }
@@ -117,11 +125,11 @@ const BlogTableOfContents = ({ }) => {
                                     heading.level >= 4 && "[&>p]:pl-12",
                                 ],
                                 "[&>p]:hover:text-violet-500",
-                                heading.id === activeId && [
+                                heading === activeHeading && [
                                     "[&>p]:text-violet-500 [&>p]:font-bold",
-                                    "[&>.left-bar]:bg-violet-300"
+                                    "[&>.left-bar]:after:bg-violet-300 [&>.left-bar]:after:content-[''] [&>.left-bar]:after:block [&>.left-bar]:after:w-full [&>.left-bar]:after:h-full [&>.left-bar]:after:rounded-full",
                                 ],
-                                (heading.level > 2 && !isActiveSubHeading(heading)) && "hidden", 
+                                (!isActiveSubHeading(heading)) && "hidden", 
                             )}
                         >
                             <div className={cn(
