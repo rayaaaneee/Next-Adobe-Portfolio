@@ -2,7 +2,7 @@ import { BundledLanguage } from 'shiki';
 
 import cn from '@/util/function/cn';
 
-import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
+import { HeadingFour, HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip';
 import Separator from '@/components/other/separator';
 
@@ -90,13 +90,19 @@ export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
 
 export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
     <article>
-        <HeadingTwo isAnchorLink containerClassName='ml-0'>{ children }</HeadingTwo>
+        <HeadingTwo isAnchorLink containerClassName='ml-0' className="mdx-heading">{ children }</HeadingTwo>
     </article>
 );
 
 export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
     <article>
-        <HeadingThree isAnchorLink containerClassName='!ml-0'>{ children }</HeadingThree>
+        <HeadingThree isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingThree>
+    </article>
+);
+
+export const MdxHeadingFour = ({ children }: ChildrenInterface) => (
+    <article>
+        <HeadingFour isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingFour>
     </article>
 );
 

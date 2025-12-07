@@ -29,7 +29,12 @@ const findDOMElement = (id: string, root = document.body) => {
 }
 
 const getHeadings = (element: HTMLElement): TableHeadingInterface[] => {
-    const headingElements = element.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    const headingElements: Iterable<Element> = element.querySelectorAll('h2, h3, h4, h5, h6')
+        .values().filter(
+            heading => heading.classList.contains('mdx-heading')
+        );
+
     return Array.from(headingElements).map((heading: Element) => {
         // Create TableHeadingInterface object
         const cleanTitle = clearEmoji(heading.textContent || '');
@@ -83,6 +88,7 @@ const BlogTableOfContents = ({ }) => {
         const clearedBlogElement = getBlogElement(blogElement);
 
         const headings = getHeadings(clearedBlogElement);
+
         tableHeadings.current = headings;
 
         const observer = new IntersectionObserver(
@@ -109,7 +115,10 @@ const BlogTableOfContents = ({ }) => {
     }, []);
     
     return (
-        <aside id="blog-table-of-contents" className='fixed flex-col justify-start items-center w-fit max-w-1/4 overflow-ellipsis h-full top-7 right-7'>
+        <aside id="blog-table-of-contents" className={cn(
+            'fixed flex-col justify-start items-center w-fit max-w-1/4 overflow-ellipsis h-full top-7 right-7',
+            tableHeadings.current.length === 0 && "hidden",
+        )}>
             <section className='flex flex-col'>
                 <HeadingThree containerClassName="!m-0">Contents</HeadingThree>
                 <section className="mt-4 [&>*]:transition-colors [&>*]:duration-200">

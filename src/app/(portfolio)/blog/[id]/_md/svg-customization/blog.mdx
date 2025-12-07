@@ -7,9 +7,9 @@ Hello there ! Today, we're gonna explore how I was able to customize SVGs on my 
 
 ---
 
-## Before you begin 📝
+# Before you begin 📝
 
-### Prerequisites
+## Prerequisites
 
 *What is [**SVGR**](https://react-svgr.com/) ?*
 
@@ -59,7 +59,7 @@ const nextConfig = {
 };
 ```
 
-### **Reminder**
+## **Reminder**
 - SVG stands for Scalable Vector Graphics, which is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation.
 - SVG are composed of various XML elements such as `<path>`, `<circle>`, `<rect>`, `<line>`, and more, which define the shapes and lines that make up the image. The sub elements represent different parts of the SVG graphic.
 
@@ -69,7 +69,7 @@ Right now, let's see how we passed from a static SVG to a customized one, clicka
 
 ---
 
-## Clickable SVGs & Shapes Background Image
+# Clickable SVGs & Shapes Background Image
 
 Here is an example of a clickable SVG flag. On the right, the original SVG without any customization. And on the left the final customized and interactive SVG.
 
@@ -180,7 +180,7 @@ const handleShapeClick = (event: MouseEvent<SVGElement>) => {
 };
 ```
 
-## SVG files initialization
+# SVG files initialization
 
 To make all this work, we had to modify the original SVG files a bit. Since we wanted to allow users to click on different parts of the SVG and see their original colors, we needed a way to identify which parts should be interactive.
 Taking the flag of Mexico as an example, we added a specific class **"keep"** to all the SVG elements that we wanted to be clickable and have their colors changeable. *This is why we removed the svg class prefixes in the NextJS Config file.* This class acts as a marker for our JavaScript code to identify which parts of the SVG should be processed.
@@ -196,7 +196,7 @@ There's an example of the Mexico flag SVG before and after adding the classes to
 
 After that, our JavaScript code can simply look for elements with the **"keep"** class and apply the necessary logic to make them interactive and customizable.
 
-## Final Thoughts & Recap
+# Final Thoughts & Recap
 
 In this blog post, we explored how to customize SVGs in a React/Next.js project using SVGR, from its configuration to its usage. We learned how to import SVGs as React components, manipulate their structure, and add interactivity by attaching event handlers to specific parts of the SVG.
 

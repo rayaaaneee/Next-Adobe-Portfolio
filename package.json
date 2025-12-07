@@ -8,6 +8,7 @@
         "restart": "npm run clear && npm run dev",
         "start": "next start",
         "build": "next build",
+        "serve": "npm run build && npm start",
         "lint": "eslint"
     },
     "dependencies": {
@@ -23,7 +24,7 @@
         "clsx": "^2.1.1",
         "hash-sum": "^2.0.0",
         "js-cookie": "^3.0.5",
-        "next": "15.5.4",
+        "next": "^15.5.7",
         "next-themes": "^0.4.6",
         "react": "19.1.0",
         "react-dom": "19.1.0",
@@ -48,6 +49,7 @@
         "@types/react-dom": "^19",
         "@types/twig": "^1.12.17",
         "autoprefixer": "^10.4.21",
+        "baseline-browser-mapping": "^2.9.4",
         "eslint": "^9",
         "eslint-config-next": "15.5.4",
         "postcss": "^8.5.6",
