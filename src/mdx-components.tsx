@@ -9,7 +9,7 @@ const unsupported = ({type}: {type: string}) =>
 
 export const mdxComponents: MDXComponents = {
     Image: MdxImage,
-    ComingSoon: () => <ComingSoon title="Blog" />,
+    ComingSoon: () => <ComingSoon button={false} title="Blog" />,
     code: MdxCode,
     pre: MdxPre,
     blockquote: MdxQuote,
