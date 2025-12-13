@@ -116,7 +116,7 @@ const BlogTableOfContents = ({ }) => {
     
     return (
         <aside id="blog-table-of-contents" className={cn(
-            'fixed flex-col justify-start items-center w-fit max-w-1/4 overflow-ellipsis h-full top-7 right-7',
+            'fixed to-animate appear translate-y-3 anim-delay-100 flex-col justify-start items-center w-fit h-fit max-w-1/4 overflow-ellipsis',
             tableHeadings.current.length === 0 && "hidden",
         )}>
             <section className='flex flex-col'>

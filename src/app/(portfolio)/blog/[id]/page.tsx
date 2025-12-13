@@ -17,6 +17,7 @@ import Language from "@/util/type/language";
 import { BlogPost } from "@/util/type/blog";
 
 import { DeepReadonlyable } from "@/util/type/deep-readonly";
+import BlogTableOfContents from "./_components/blog-table-of-contents";
 
 export interface PageProps {
     params: Promise<{
@@ -65,10 +66,9 @@ const Page = async ({ params }: PageProps) => {
             <MainPart 
             id="blog-content"
             fullWidth
-            className={cn(
-                "!mx-auto",
-                "flex flex-col gap-3",
-                "py-10",
+            rightSidebar={<BlogTableOfContents />}
+            containerClassName={cn(
+                "pb-10 flex flex-col gap-3",
                 "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
                 "[&>.tooltip-container>img]:w-auto",
                 "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",

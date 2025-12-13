@@ -2,15 +2,31 @@ import { CSSProperties } from "react";
 
 import cn from "@/util/function/cn";
 
-import ChildrenInterface from "@/util/interface/children";
+import ChildrenInterface, { ChildrenType } from "@/util/interface/children";
 import ClassNameInterface from "@/util/interface/classname";
 import StyleInterface from "@/util/interface/style";
 
-export interface MainPartProps extends ClassNameInterface, ChildrenInterface, StyleInterface {
-    fullWidth?: boolean;
+export interface MainPartPropsFullWidth extends ClassNameInterface, ChildrenInterface, StyleInterface {
+    fullWidth?: true;
+    leftSidebar?: ChildrenType;
+    leftSidebarClassName?: string;
+    rightSidebar?: ChildrenType;
+    rightSidebarClassName?: string;
+    containerClassName?: string;
 };
 
-const MainPart = ({ className, id, children, style, fullWidth = false }: MainPartProps) => {
+export interface MainPartPropsNotFullWidth extends ClassNameInterface, ChildrenInterface, StyleInterface {
+    fullWidth?: false;
+    leftSidebar?: never;
+    leftSidebarClassName?: never;
+    rightSidebar?: never;
+    rightSidebarClassName?: never;
+    containerClassName?: never;
+}
+
+export type MainPartCombinedProps = MainPartPropsFullWidth | MainPartPropsNotFullWidth;
+
+const MainPart = ({ className, id, children, style, fullWidth = false, leftSidebarClassName, containerClassName, rightSidebarClassName, leftSidebar = <></>, rightSidebar = <></> }: MainPartCombinedProps) => {
     return (
         <main 
         id={id} 
@@ -28,10 +44,17 @@ const MainPart = ({ className, id, children, style, fullWidth = false }: MainPar
             "box-border overflow-hidden",
             (fullWidth ?
                 [
-                    "w-full min-h-screen h-fit",
-                    ["pb-0 md:pb-[5vw] lg:pb-10", "pt-10 md:pt-[7vw] lg:pt-[4.5rem]"],
-                    "max-md:[&>.max-size]:mx-0",
-                    "[&>article]:mx-5 sm:[&>article]:mx-[10%] md:[&>article]:mx-[17%] lg:[&>article]:mx-[22%] xl:[&>article]:mx-[28%]"
+                    "w-full min-h-screen h-fit grid gap-5",
+
+                    // Colonnes = anciens mx transformés en grid
+                    "grid-cols-[1fr]",
+                    "md:grid-cols-[17%_1fr_17%]",
+                    "lg:grid-cols-[22%_1fr_22%]",
+                    "xl:grid-cols-[28%_1fr_28%]",
+
+                    // paddings verticaux conservés
+                    "pb-0 md:pb-[5vw] lg:pb-10",
+                    "pt-10 md:pt-[7vw] lg:pt-[4.5rem]"
                 ]
             :
                 [
@@ -42,7 +65,19 @@ const MainPart = ({ className, id, children, style, fullWidth = false }: MainPar
             ),
             className
         )}>
-            { children }
+            {fullWidth ? (
+                <>
+                    <div id="left-sidebar" className={cn("relative items-start justify-center hidden xl:flex", leftSidebarClassName)}>
+                        { leftSidebar }
+                    </div>
+                    <div id="main-content" className={cn("col-start-2 w-full min-w-0", containerClassName)}>
+                        { children }
+                    </div>
+                    <div id="right-sidebar" className={cn("relative items-start justify-center hidden xl:flex", rightSidebarClassName)}>
+                        { rightSidebar }
+                    </div>
+                </>
+            ) : <>{children}</>}
         </main>
     )
 }
