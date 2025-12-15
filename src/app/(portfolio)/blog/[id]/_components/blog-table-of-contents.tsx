@@ -116,7 +116,7 @@ const BlogTableOfContents = ({ }) => {
     
     return (
         <aside id="blog-table-of-contents" className={cn(
-            'fixed to-animate appear translate-y-3 anim-delay-100 flex-col justify-start items-center w-fit h-fit max-w-1/4 overflow-ellipsis',
+            'fixed to-animate appear translate-y-3 anim-delay-100 flex-col xl:w-72 2xl:w-96 justify-start items-center h-fit max-w-1/4 overflow-ellipsis',
             tableHeadings.current.length === 0 && "hidden",
         )}>
             <section className='flex flex-col'>
@@ -148,7 +148,7 @@ const BlogTableOfContents = ({ }) => {
                                 index === 0 && "rounded-t-full",
                                 index === tableHeadings.current.length -1 && "rounded-b-full",
                             )}></div>
-                            <Paragraph className="!m-0">{heading.title}</Paragraph>
+                            <Paragraph className="!m-0 text-nowrap overflow-hidden text-ellipsis">{heading.title}</Paragraph>
                         </AnchorLinkText>
                     ))}
                 </section>
