@@ -14,6 +14,9 @@ import SvgPageContent from "$/(portfolio)/blog/[id]/_md/svg-customization/blog.m
 import keyCloakIcon from "@/asset/img/blog/blog-3/icon.png";
 import OAuth2PageContent from "$/(portfolio)/blog/[id]/_md/keycloak-oauth2-integration/blog.mdx";
 
+import TwoFaIcon from "@/asset/img/blog/blog-4/icon.png";
+import TwoFaSpringPageContent from "$/(portfolio)/blog/[id]/_md/2fa-spring/blog.mdx";
+
 ;
 
 export enum BlogTag {
@@ -27,6 +30,12 @@ export enum BlogTag {
     ACCESS_TOKENS = "access-tokens",
     IAM = "identity-and-access-management",
     AUTH = "authentication",
+    SPRING = "spring",
+    JAVA = "java",
+    DEVOPS = "devops",
+    CLOUD = "cloud",
+    DOCKER = "docker",
+    KUBERNETES = "kubernetes",
 }
 
 export interface BlogTagData {
@@ -95,6 +104,35 @@ export const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze(
         },
         color: "#FFA500",
     },
+    [BlogTag.SPRING]: {
+        displayName: "Spring",
+        color: "#6DB33F",
+    },
+    [BlogTag.JAVA]: {
+        displayName: "Java",
+        color: "#007396",
+    },
+    [BlogTag.DEVOPS]: {
+        displayName: "DevOps",
+        color: "#F05032",
+    },
+    [BlogTag.CLOUD]: {
+        displayName: {
+            [Language.EN]: "Cloud",
+            [Language.FR]: "Cloud",
+            [Language.ES]: "Nube",
+        },
+        color: "#00ADEF",
+    },
+    [BlogTag.DOCKER]: {
+        displayName: "Docker",
+        color: "#2496ED",
+    },
+    [BlogTag.KUBERNETES]: {
+        displayName: "Kubernetes",
+        color: "#326CE5",
+    },
+    
 });
 
 const blogs: DeepReadonly<BlogPost[]> = [
@@ -165,6 +203,35 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
         },
         icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
+    },
+    {
+        index: 3,
+        id: "2fa-spring",
+        language: Language.EN,
+        content: <TwoFaSpringPageContent />,
+        tags: [
+            BlogTag.SPRING,
+            BlogTag.JAVA,
+            BlogTag.DEVOPS,
+            BlogTag.CLOUD,
+            BlogTag.DOCKER,
+            BlogTag.KUBERNETES,
+            BlogTag.SECURITY,
+            BlogTag.AUTH,
+        ],
+        title: {
+            [Language.EN]: "Two-Factor Authentication in a Spring-React Application",
+            [Language.FR]: "Authentification à deux facteurs dans une application Spring-React",
+            [Language.ES]: "Autenticación de dos factores en una aplicación Spring-React",
+        },
+        date: "2026-01-20",
+        color: "#6DB33F",
+        summary: {
+            [Language.EN]: "This blog post explores the implementation of Two-Factor Authentication (2FA) in a Spring application. It covers the benefits of 2FA, the setup process, and provides a step-by-step guide to integrating this security feature into your Spring-based projects.",
+            [Language.FR]: "Cet article de blog explore la mise en œuvre de l'authentification à deux facteurs (2FA) dans une application Spring. Il couvre les avantages de la 2FA, le processus de configuration et fournit un guide étape par étape pour intégrer cette fonctionnalité de sécurité dans vos projets basés sur Spring.",
+            [Language.ES]: "Esta publicación de blog explora la implementación de la autenticación de dos factores (2FA) en una aplicación Spring. Cubre los beneficios de la 2FA, el proceso de configuración y proporciona una guía paso a paso para integrar esta función de seguridad en sus proyectos basados en Spring.",
+        },
+        icon: <Image src={TwoFaIcon} alt="2FA Icon" />,
     }
 ];
 
