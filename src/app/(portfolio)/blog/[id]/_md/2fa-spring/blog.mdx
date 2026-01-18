@@ -1,1 +1,150 @@
-<ComingSoon />
+import globalSchemaImage from './assets/global-schema.svg';
+import userTotpRelationImage from './assets/user-totp-relation.svg';
+
+Hello there ! Today, I would like to share with you a blog post about implementing **Two-Factor Authentication (2FA)** in a Spring Boot application. 2FA adds an extra layer of security to user authentication by requiring two forms of identification before granting access. In this post, we will explore how to set up 2FA using **Spring Security** and a basic **Authenticator** (in our case, Microsoft Authenticator).
+
+# Before you begin
+
+This blog is based on a *school project* I worked on with other students, where I globally worked on the *app security*. This project is called SDMIS (Management System for Firefighters Departments) and is intended to expose some **critical data** about firefighters interventions. Given the sensitivity of the data, security was a top priority.
+
+Following this reasoning, I had to implement 2FA as part of the authentication process. The project involved creating a simple web application with user registration and login functionalities, and we integrated 2FA to enhance security.
+
+> [type=warning]
+> In this blog, only the implementation of 2FA using an Authenticator app is covered. Other methods, such as SMS or email-based 2FA, are not discussed here.
+
+---
+
+## Prerequisites
+
+Before we begin, ensure you have the following prerequisites in place:
+
+- A *Spring Boot* application with **Kotlin**.
+- Basic knowledge of Spring Boot and Spring Security.
+- An *Authenticator app* (e.g., Google Authenticator, Microsoft Authenticator) installed on your mobile device.
+- *Gradle* for dependency management : useful dependencies will be added later.
+
+Here's a global schema of the current architecture :
+
+<Image src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
+
+# Setting up the API
+
+## Dependencies
+To implement 2FA in your Spring Boot application, you need to add the following dependencies to your `build.gradle` file:
+
+```groovy(lines)[file:/build.gradle.kts]
+//...
+
+dependencies {
+
+    //... Rest of the code
+
+    // Spring Security for authentication and authorization
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+    // JPA for database interactions
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // PostgreSQL Driver
+    runtimeOnly("org.postgresql:postgresql")
+        
+    // TOTP (Time-based One-Time Password) for 2FA
+    implementation("dev.samstevens.totp:totp:1.7.1")
+
+}
+```
+
+These dependencies include Spring Security for handling authentication and authorization, JPA for database interactions, and a **TOTP** library for generating and validating one-time passwords.
+
+## TOTP Model
+
+First, we need to update our User entity to include fields for 2FA. There's the model class representing a user in the system.
+Instead of adding 2FA fields directly to the User entity, we will create a separate entity to store TOTP secrets and recovery codes, binded to the User entity via a foreign key `id_user`.
+
+```kotlin(lines)[file:/model/TOTPSecret.kt]
+package sdmis.com.web_api.models
+
+import sdmis.com.web_api.models.User
+
+import jakarta.persistence.*
+import java.time.Instant
+
+// TotpSecret entity stored in PostgreSQL TotpSecrets table
+
+@Entity
+@Table(
+    name = "totp_secrets",
+    uniqueConstraints = [UniqueConstraint(columnNames = ["username"])]
+);
+data class TotpSecret(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+        name = "id_user",
+        referencedColumnName = "id",
+        nullable = false,
+        unique = true
+    )
+    val user: User,
+
+    /** Base32 encoded TOTP secret */
+    @Column(nullable = false)
+    val secret: String,
+
+    /** Whether 2FA is currently enabled for this user */
+    @Column(nullable = false)
+    val enabled: Boolean = true,
+
+    /** Hashed recovery codes (SHA-256) stored as JSONB array */
+    @ElementCollection
+    @CollectionTable(name = "totp_recovery_codes", joinColumns = [JoinColumn(name = "totp_secret_id")])
+    @Column(name = "code")
+    val recoveryCodes: List<String> = emptyList(),
+
+    @Column(name = "created_date", updatable = false)
+    val createdDate: Instant? = Instant.now(),
+
+    @Column(name = "last_modified_date")
+    var lastModifiedDate: Instant? = Instant.now()
+)
+```
+
+This `TotpSecret` entity includes fields for storing the TOTP secret, whether 2FA is enabled, and a list of hashed recovery codes. The `user` field establishes a one-to-one relationship with the `User` entity.
+Here's a brief explanation of each field, and a schema diagram follows to illustrate the relationship between the `User` and `TotpSecret` entities:
+- `id`: The primary key for the TOTP secret entry.
+- `user`: A reference to the associated user.
+- `secret`: The Base32 encoded TOTP secret used for generating one-time passwords.
+- `enabled`: A boolean indicating whether 2FA is enabled for the user.
+- `recoveryCodes`: A list of hashed recovery codes that can be used if the user loses access to their authenticator app.
+- `createdDate` and `lastModifiedDate`: Timestamps for tracking when the TOTP secret was created and last modified.
+
+<Image src={userTotpRelationImage} alt="User and TOTPSecret Relationship Schema" className="my-4 rounded-lg shadow-md" />
+
+## Implementing 2FA Logic
+
+## User controller endpoints
+
+## TOTP Service
+
+The TOTP service is responsible for generating TOTP secrets, validating tokens, and managing recovery codes.
+
+Here's an example implementation:
+
+# Setting up the client
+
+
+... 
+
+## Handle enabling 2FA
+
+...
+
+## Handle login
+
+...
+
+## Protect routes
+
+...

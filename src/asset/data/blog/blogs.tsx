@@ -17,8 +17,6 @@ import OAuth2PageContent from "$/(portfolio)/blog/[id]/_md/keycloak-oauth2-integ
 import TwoFaIcon from "@/asset/img/blog/blog-4/icon.png";
 import TwoFaSpringPageContent from "$/(portfolio)/blog/[id]/_md/2fa-spring/blog.mdx";
 
-;
-
 export enum BlogTag {
     NEXTJS = "nextjs",
     REACT = "react",
@@ -32,10 +30,13 @@ export enum BlogTag {
     AUTH = "authentication",
     SPRING = "spring",
     JAVA = "java",
+    JAVASCRIPT = "javascript",
+    TYPESCRIPT = "typescript",
     DEVOPS = "devops",
     CLOUD = "cloud",
     DOCKER = "docker",
     KUBERNETES = "kubernetes",
+    TOTP = "totp",
 }
 
 export interface BlogTagData {
@@ -112,6 +113,14 @@ export const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze(
         displayName: "Java",
         color: "#007396",
     },
+    [BlogTag.JAVASCRIPT]: {
+        displayName: "JavaScript",
+        color: "#F7DF1E",
+    },
+    [BlogTag.TYPESCRIPT]: {
+        displayName: "TypeScript",
+        color: "#3178C6",
+    },
     [BlogTag.DEVOPS]: {
         displayName: "DevOps",
         color: "#F05032",
@@ -131,6 +140,10 @@ export const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze(
     [BlogTag.KUBERNETES]: {
         displayName: "Kubernetes",
         color: "#326CE5",
+    },
+    [BlogTag.TOTP]: {
+        displayName: "TOTP",
+        color: "#FF5722",
     },
     
 });
@@ -177,33 +190,33 @@ const blogs: DeepReadonly<BlogPost[]> = [
             BlogTag.WEB_FRONT,
         ],
     },
-    {
-        index: 2,
-        id: "keycloak-oauth2-integration",
-        language: Language.EN,
-        tags: [
-            BlogTag.KEYCLOAK,
-            BlogTag.OAUTH2,
-            BlogTag.SECURITY,
-            BlogTag.ACCESS_TOKENS,
-            BlogTag.IAM,
-            BlogTag.AUTH,
-        ],
-        content: <OAuth2PageContent />,
-        title: {
-            [Language.EN]: " Keycloak with OAuth2 for Secure Authentication",
-            [Language.FR]: "Keycloak avec OAuth2 pour une authentification sécurisée",
-            [Language.ES]: "Keycloak con OAuth2 para una autenticación segura",
-        },
-        date: "2025-12-15",
-        color: "#008aaa",
-        summary: {
-            [Language.EN]: "This blog post delves into the integration of Keycloak with OAuth2 to enhance authentication security in web applications. It covers the setup process, configuration steps, and best practices for implementing robust authentication mechanisms using these technologies.",
-            [Language.FR]: "Cet article de blog explore l'intégration de Keycloak avec OAuth2 pour améliorer la sécurité de l'authentification dans les applications web. Il couvre le processus de configuration, les étapes de mise en place et les meilleures pratiques pour implémenter des mécanismes d'authentification robustes en utilisant ces technologies.",
-            [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
-        },
-        icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
-    },
+    // {
+    //     index: 2,
+    //     id: "keycloak-oauth2-integration",
+    //     language: Language.EN,
+    //     tags: [
+    //         BlogTag.KEYCLOAK,
+    //         BlogTag.OAUTH2,
+    //         BlogTag.SECURITY,
+    //         BlogTag.ACCESS_TOKENS,
+    //         BlogTag.IAM,
+    //         BlogTag.AUTH,
+    //     ],
+    //     content: <OAuth2PageContent />,
+    //     title: {
+    //         [Language.EN]: " Keycloak with OAuth2 for Secure Authentication",
+    //         [Language.FR]: "Keycloak avec OAuth2 pour une authentification sécurisée",
+    //         [Language.ES]: "Keycloak con OAuth2 para una autenticación segura",
+    //     },
+    //     date: "2025-12-15",
+    //     color: "#008aaa",
+    //     summary: {
+    //         [Language.EN]: "This blog post delves into the integration of Keycloak with OAuth2 to enhance authentication security in web applications. It covers the setup process, configuration steps, and best practices for implementing robust authentication mechanisms using these technologies.",
+    //         [Language.FR]: "Cet article de blog explore l'intégration de Keycloak avec OAuth2 pour améliorer la sécurité de l'authentification dans les applications web. Il couvre le processus de configuration, les étapes de mise en place et les meilleures pratiques pour implémenter des mécanismes d'authentification robustes en utilisant ces technologies.",
+    //         [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
+    //     },
+    //     icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
+    // },
     {
         index: 3,
         id: "2fa-spring",
@@ -211,20 +224,17 @@ const blogs: DeepReadonly<BlogPost[]> = [
         content: <TwoFaSpringPageContent />,
         tags: [
             BlogTag.SPRING,
-            BlogTag.JAVA,
-            BlogTag.DEVOPS,
-            BlogTag.CLOUD,
-            BlogTag.DOCKER,
-            BlogTag.KUBERNETES,
+            BlogTag.JAVASCRIPT,
+            BlogTag.REACT,
             BlogTag.SECURITY,
             BlogTag.AUTH,
         ],
         title: {
-            [Language.EN]: "Two-Factor Authentication in a Spring-React Application",
-            [Language.FR]: "Authentification à deux facteurs dans une application Spring-React",
-            [Language.ES]: "Autenticación de dos factores en una aplicación Spring-React",
+            [Language.EN]: "2FA in a Spring-React Application",
+            [Language.FR]: "2FA dans une application Spring-React",
+            [Language.ES]: "2FA en una aplicación Spring-React",
         },
-        date: "2026-01-20",
+        date: "2026-01-15",
         color: "#6DB33F",
         summary: {
             [Language.EN]: "This blog post explores the implementation of Two-Factor Authentication (2FA) in a Spring application. It covers the benefits of 2FA, the setup process, and provides a step-by-step guide to integrating this security feature into your Spring-based projects.",

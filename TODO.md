@@ -1,8 +1,8 @@
 * [X] Fix Menu Animation (broken)
 * [X] PWA : https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started
-* [ ] Make metadatas
-* [ ] Dynamic Site-Map.xml (using pages)
-* [ ] Fill manifest.json
+* [X] Make metadatas
+* [X] Dynamic Site-Map.xml (using pages)
+* [X] Fill manifest.json
 * [X] Fix box-sizing problem on menu animation
 * [X] Fix language select on menu (cannot click on options)
 * [X] Fix .env access to store Resume filename
@@ -10,18 +10,18 @@
 * [X] Make adaptableGrid not a client component (possible but requires handling icon function)
 * [X] Print element name on grid top (adaptable grid)
 * [X] Page Flow : Factorize headings
-* [ ] CC 4.0 (copyrights)
+* [X] CC 4.0 (copyrights)
 * [X] Fix Animation for grid wrappers appeareance on showing more row
-* [ ] Blog
+* [X] Blog
 
   * [X] Citation on MDX (> blockquote)
   * [X] Use adaptable grid as blog pager
   * [ ] For each blog :
     * [ ] Further readings (linked blogs)
-    * [ ] Nb minutes reads
+    * [X] Nb minutes reads
     * [ ] Links to previous and next blog
-    * [ ] Tags
-    * [ ] share button
+    * [X] Tags
+    * [X] share button
   * [X] Precize disponible languages on each page
 * [ ] Create grid element appearance animation on switching techs (part skills) : hard
 * [X] Bug on hobbiEs adaptable grid (on click on xs-)
@@ -32,14 +32,14 @@
 * [X] Reduce icon sizes
 * [X] Fix appearance animations
 * [X] Fix backdrop filter on blog page
-* [ ] Links to Companies (/home)
+* [X] Links to Companies (/home)
 * [ ] Sticky Header With page title on scroll (md -)
-* [ ] Default theme to light
-* [ ] Medias
+* [X] Default theme to light
+* [X] Medias
 
   * [X] Tooltip media queries
   * [X] Menu medias
-  * [ ] Home media queries
+  * [X] Home media queries
     * [ ] Element Expansion
     * [X] All other
   * [X] Index page medias
@@ -49,6 +49,7 @@
 * [X] Home : Fix pointer-events before appearance
 * [X] Fix bug on grid expansion
 * [X] Remove expand button animation (adaptive grid)
+* [ ] Some fixes needed while browsing between /blog and /blog/[id] (title broken, fix needed)
 
 <!--
 Optimized with next/image

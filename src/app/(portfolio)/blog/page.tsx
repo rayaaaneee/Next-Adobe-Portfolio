@@ -1,5 +1,3 @@
-import { Metadata } from 'next';
-
 import { LuPencilLine } from "react-icons/lu";
 import { FaRss } from "react-icons/fa";
 
@@ -9,13 +7,9 @@ import MainPart from '@/components/other/main-part';
 import BlogGrid from './_components/blog-grid';
 
 import getBlogs from '@/asset/data/blog/blogs';
+import { metadata } from './metadata';
 
-export const metadata: Metadata = {
-    title: {
-        default: "Blog",
-        template: "%s",
-    }
-}
+export { metadata };
 
 const Blog = () => {
 

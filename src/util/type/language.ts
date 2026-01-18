@@ -4,11 +4,11 @@ enum Language {
     ES = 'es'
 }
 
-export type WithLanguage<T> = {
+export type WithLanguage<T = string> = {
     [K in Language]: T;
 };
 
-export type WithLanguageable<T> = WithLanguage<T> | T;
+export type WithLanguageable<T = string> = WithLanguage<T> | T;
 
 export type PartialWithLanguage<T> = {
     [K in Language]?: T;

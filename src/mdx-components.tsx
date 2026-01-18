@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 
-import { MdxAnchor, MdxCode, MdxHeadingFour, MdxHeadingThree, MdxHeadingTwo, MdxImage, MdxList, MdxParagraph, MdxPre, MdxQuote, MdxSeparator } from '@/components/mdx-page-flow';
+import { MdxAnchor, MdxCode, MdxHeadingFour, MdxHeadingThree, MdxHeadingTwo, MdxImage, MdxList, MdxListItem, MdxParagraph, MdxPre, MdxQuote, MdxSeparator } from '@/components/mdx-page-flow';
 
 import ComingSoon from './components/coming-soon';
 
@@ -14,6 +14,7 @@ export const mdxComponents: MDXComponents = {
     pre: MdxPre,
     blockquote: MdxQuote,
     ul: MdxList,
+    li: MdxListItem,
     hr: MdxSeparator,
     h1: MdxHeadingTwo,
     h2: MdxHeadingThree,
