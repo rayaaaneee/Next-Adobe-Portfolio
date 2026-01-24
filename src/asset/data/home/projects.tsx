@@ -16,25 +16,28 @@ import { GeneralTechnologiesName } from './general-technologies-list';
 const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
     {
         content: {
-            name: 'Bundlr',
-            color: "rgb(144 221 239)",
+            name: 'SDMIS',
+            color: "rgb(144,221,239)",
             icon: <Logo color={LogoColors.black} asImage {...baseImageProps} />,
-            link: undefined,
+            link: "https://github.com/rayaaaneee/SDMIS",
         },
         githubLink: undefined,
         technologies: [
-            { name: GeneralTechnologiesName.ELECTRON, type: "framework" }, 
-            { name: GeneralTechnologiesName.NUXTJS, type: "framework" }, 
-            { name: GeneralTechnologiesName.VUEJS, type: "library" }, 
-            { name: GeneralTechnologiesName.TAILWINDCSS, type: "framework" }, 
+            { name: GeneralTechnologiesName.JAVA, type: "language" },
+            { name: GeneralTechnologiesName.SPRINGBOOT, type: "framework" },
+            { name: GeneralTechnologiesName.KOTLIN, type: "language" },
+            { name: GeneralTechnologiesName.DOCKER, type: "tool" },
+            { name: GeneralTechnologiesName.CPP, type: "language" },
+            // { name: GeneralTechnologiesName.GRAFANA, type: "tool" }
+            // { name: GeneralTechnologiesName.KEYCLOAK, type: "tool" }
             { name: GeneralTechnologiesName.TYPESCRIPT, type: "language" }, 
-            { name: GeneralTechnologiesName.ZOD, type: "library" }, 
-            { name: GeneralTechnologiesName.PRISMA, type: "library" }, 
-            { name: GeneralTechnologiesName.OAUTH, type: "tool" }, 
-            { name: GeneralTechnologiesName.FIREBASE, type: "database" }
+            { name: GeneralTechnologiesName.REACT, type: "library" }, 
+            { name: GeneralTechnologiesName.DOCKER, type: "tool" }, 
+            { name: GeneralTechnologiesName.POSTGRESQL, type: "database" },
+            { name: GeneralTechnologiesName.MONGODB, type: "database" }
         ],
-        year: 2025,
-        description: "New project coming soon!"
+        year: 2026,
+        description: "Empty for the moment",
     },
     {
         content: {

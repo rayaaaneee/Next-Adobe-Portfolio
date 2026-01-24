@@ -1,17 +1,19 @@
+"use client";
+
 import { useLayoutEffect } from "react";
 import useTryingContext from "./use-trying-context";
 
-import languageContext, { LanguageContextType } from "../context/language-context";
+import languageContext, { I18nContextType } from "../context/i18n-context";
 
-import ManageLanguages from "../manager/manage-language";
+import I18nManager from "../manager/i18n-manager";
 
-const useLanguage = (): LanguageContextType => (useTryingContext(languageContext));
+const useLanguage = (): I18nContextType => (useTryingContext(languageContext));
 
 export const useLanguageManager = () => {
-    ManageLanguages.manageLanguages();
+    I18nManager.instance.manageLanguages();
 	useLayoutEffect(() => {
 		// Ensure document language is set on initial load (After SSR Hydration)
-		ManageLanguages.setDocumentLanguage();
+		I18nManager.instance.setDocumentLanguage();
 	}, []);
 };
 

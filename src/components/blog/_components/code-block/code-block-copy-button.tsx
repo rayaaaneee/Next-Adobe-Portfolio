@@ -1,6 +1,6 @@
 import cn from "@/util/function/cn";
 
-import { TooltipPosition } from "@/components/tooltip";
+import { TooltipPosition } from "@/components/tooltip/tooltip";
 
 import CopyButton from "@/components/other/copy-button";
 

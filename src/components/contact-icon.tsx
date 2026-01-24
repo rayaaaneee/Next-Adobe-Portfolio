@@ -6,7 +6,7 @@ import cn from "@/util/function/cn";
 import { ChildrenType } from '@/util/interface/children';
 import ClassNameInterface from '@/util/interface/classname';
 
-import Tooltip, { TooltipPosition, TooltipSize } from './tooltip';
+import Tooltip, { TooltipPosition, TooltipSize } from './tooltip/tooltip';
 
 export enum IconSize {
     sm = 'w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16',
@@ -59,7 +59,7 @@ const ContactIcon = ({ className, id, size = IconSize.md, link, tooltip = true, 
             className={cn('rounded-full', tooltipClassName)}
             size={tooltipSize} 
             position={TooltipPosition.top} 
-            text={link.username || link.title}
+            literalText={link.username || link.title}
             id={id}>
             <li className='rounded-full overflow-hidden group'>
                 <Link 

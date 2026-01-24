@@ -23,14 +23,14 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
 
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const expandButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const isInteractive: boolean = nbWrappers > 1;
 
     const initialText = (isInteractive) ? 
-        (isExpanded ? (language.adaptive_grid.dismiss) : (language.adaptive_grid.expand))
+        (isExpanded ? t('adaptive_grid.dismiss') : t('adaptive_grid.expand'))
             : 
         "";
         
@@ -64,7 +64,7 @@ const AdaptiveGridExpandButton = ({ className, id, nbWrappers }: AdaptiveGridExp
 
         verifyReference(expandButtonRef, "expandButtonRef");
 
-        const text: string = isExpanded ? language.adaptive_grid.dismiss : initialText;
+        const text: string = isExpanded ? t('adaptive_grid.dismiss') : initialText;
 
         expandButtonRef.current!.querySelector("h3")!.textContent = text;
 

@@ -7,9 +7,10 @@ import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 
-import ChildrenInterface, { type ChildrenType } from "@/util/interface/children";
+import ChildrenInterface, { ChildrenType } from "@/util/interface/children";
 import ClassNameInterface from "@/util/interface/classname";
-import { Nullish } from "@/util/type/nullable";
+import { languageKey } from "@/util/type/language-key";
+import TooltipText from "./tooltip-text";
 
 
 export enum TooltipPosition {
@@ -40,22 +41,17 @@ interface BaseTooltipPropsInterface extends ChildrenInterface, ClassNameInterfac
     onMouseLeave?: MouseEventHandler<HTMLDivElement>;
 }
 
-interface DisabledTooltipProps {
-    disabled: true;
-    text?: Nullish<ChildrenType>;
+type TooltipProps = BaseTooltipPropsInterface & {
+    disabled?: boolean;
+    text?: languageKey;
+    literalText?: ChildrenType;
 }
-
-interface EnabledTooltipProps {
-    disabled?: false;
-    text: ChildrenType;
-}
-
-type TooltipProps = (DisabledTooltipProps | EnabledTooltipProps) & BaseTooltipPropsInterface;
 
 
 const Tooltip = ({ 
     children, 
     text,
+    literalText,
     id,
     size = TooltipSize.sm,
     position = TooltipPosition.top, 
@@ -149,11 +145,13 @@ const Tooltip = ({
                     { [getTooltipTypeClassName()]: !tooltipBackgroundColor },
                     getSizeClassName(),
                     (forceShow && !disabled) ? "flex" : "hidden", 
-                    { "group-hover:flex": !disabled && text },
+                    { "group-hover:flex": !disabled && (literalText || text) },
                     tooltipClassName
             )}>
                 {hasIcon && getTooltipIcon()}
-                {text}
+                { !disabled && (
+                    <TooltipText text={text} literalText={literalText} />
+                ) }
             </div>
         </div>
     )

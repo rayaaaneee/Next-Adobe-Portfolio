@@ -2,7 +2,7 @@
 import assertDefined from "@/util/function/assert-defined";
 
 import Language, { WithLanguage } from "@/util/type/language";
-import ArrayType from "@/util/type/array-string";
+import ArrayType from "@/util/type/array-type";
 
 const frenchSentences = {
     current: Language.FR satisfies Language,
@@ -11,9 +11,13 @@ const frenchSentences = {
         [Language.EN]: "Anglais",
         [Language.FR]: "Français",
         [Language.ES]: "Espagnol"
-    } as WithLanguage<string>,
+    } satisfies WithLanguage<string> as WithLanguage<string>,
     flag_img: "french.png",
     title: "Portfolio",
+    copy_button: {
+        tooltipText: "Copier",
+        tooltipCopiedText: "Copié !",
+    },
     index: {
         title: `Adobe Portfolio - ${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')}`,
         discover: "Découvrir",
@@ -21,7 +25,7 @@ const frenchSentences = {
             long: [
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Développeur Full-Stack", 
-                "Cybersécurité",
+                "Cybersécurité"
             ] satisfies ArrayType<string, 3>,
             short: [
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
@@ -29,6 +33,11 @@ const frenchSentences = {
                 "Cyber"
             ] satisfies ArrayType<string, 3>,
         },
+    },
+    coming_soon: {
+        title: "Bientôt disponible",
+        text: "Cette fonctionnalité arrive bientôt.",
+        goback: "Démarrer",
     },
     home: {
         role: "Développeur Full-Stack & Passionné de Cybersécurité",
@@ -44,7 +53,7 @@ const frenchSentences = {
         },
         about: {
             title: "À propos",
-            texts: [
+                texts: [
                 "Bonjour ! Je suis <b>Rayane</b>, un <b>développeur</b> passionné avec un grand intérêt pour la <b>technologie</b> et tout ce qui touche à l'informatique. Au fil des années, j'ai consacré mon temps à la création de divers <b>projets personnels</b>, animés par ma passion pour <b>l'apprentissage</b> et <b>l'exploration de nouvelles technologies</b>.<br/>",
                 "Je maîtrise le <b>développement full-stack</b> et la <b>cybersécurité</b>, avec un intérêt particulier pour <b>React</b> et <b>Next.js</b> dans le développement web. En cybersécurité, je me suis formé à travers des défis <b>Capture The Flag (CTF)</b> et j'ai appliqué ces compétences dans des <b>contextes réels</b>, renforçant ainsi ma compréhension des <b>vulnérabilités</b>, du <b>renforcement des systèmes</b> et des <b>pratiques de développement sécurisé</b>.<br/>",
                 "Je suis titulaire d'un <b>BUT en Informatique</b> de l'<b>Université Lyon 1</b> (<i>parcours Développement et Implémentation</i>) et je poursuis actuellement un <b>cycle d'ingénieur en trois ans à CPE Lyon</b>, avec une spécialisation en <b>Génie Informatique et Cybersécurité</b>.<br/>",
@@ -94,6 +103,15 @@ const frenchSentences = {
         words: "mots",
         by: "par",
         readingTime: "<b>{min} min</b> de lecture",
+        share: "Partager",
+        copy_button: {
+            text: "Copier le lien",
+            copiedText: "Lien copié !",
+        },
+        coming_soon: {
+            text: "Ce blog arrive bientôt.",
+            goback: "Retour",
+        }
     },
     about: {
         title: "À propos",
@@ -117,7 +135,7 @@ const frenchSentences = {
                     "Ce site a été développé en utilisant le framework <strong>Next.js</strong> avec <strong>TypeScript</strong> pour une meilleure gestion des types.",
                     "Le style est géré avec <strong>Tailwind CSS</strong> pour une conception réactive et moderne.",
                     "L'hébergement est assuré par <strong>Vercel</strong>, offrant des performances optimales et une mise à l'échelle automatique."
-                ]
+                ] satisfies ArrayType<string, 3>,
             },
             inspirations: {
                 title: "Inspirations",

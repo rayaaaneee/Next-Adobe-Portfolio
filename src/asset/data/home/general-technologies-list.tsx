@@ -25,7 +25,7 @@ import { RiPhpFill } from "react-icons/ri";
 import { VscMarkdown, VscVscode } from "react-icons/vsc";
 import { DiIntellij, DiMsqlServer, DiVisualstudio } from "react-icons/di";
 import { FaDatabase, FaGamepad, FaGitAlt } from "react-icons/fa6";
-import { SiPytorch } from "react-icons/si";
+import { SiPytorch, SiPostgresql } from "react-icons/si";
 import { PiLinuxLogo, PiWindowsLogoFill } from "react-icons/pi";
 import { SiZod } from "react-icons/si";
 import { SiSqlite } from "react-icons/si";
@@ -421,6 +421,12 @@ const generalTechnologies: GeneralTechnologiesType = {
             icon: <SiSqlite />,
             color: "#003B57",
             link: 'https://www.sqlite.org/index.html',
+        },
+        {
+            name: GeneralTechnologiesName.POSTGRESQL,
+            icon: <SiPostgresql />,
+            color: "#336791",
+            link: 'https://www.postgresql.org/',
         },
         {
             name: GeneralTechnologiesName.MYSQL,

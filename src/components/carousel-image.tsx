@@ -69,8 +69,8 @@ const CarouselImage = () => {
     });
 
     useConditionalEffect(() => {
-        clicked && (document.documentElement.classList.add("no-overflow"));
-        closing && (document.documentElement.classList.remove("no-overflow"));
+        if (clicked)document.documentElement.classList.add("no-overflow");
+        if (closing) document.documentElement.classList.remove("no-overflow");
     }, [clicked, closing]);
 
     const zoomImg = () => {

@@ -9,7 +9,7 @@ import ContactIcon, { IconSize, type ContactIconType } from "./contact-icon";
 import ChildrenInterface from "@/util/interface/children";
 import ClassNameInterface from "@/util/interface/classname";
 
-import { TooltipSize } from "./tooltip";
+import { TooltipSize } from "./tooltip/tooltip";
 
 import linkedInImg from "~/img/components/contact-links/icon-linkedin.png";
 import githubImg from "~/img/components/contact-links/icon-github.png";
@@ -28,7 +28,7 @@ export interface ContactLinksProps extends ClassNameInterface {
 
 const ContactLinks = ({className, id, animate = false, tooltips = true, tooltipsSize = TooltipSize.lg, size = IconSize.md}: ContactLinksProps) => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     if (!tooltips && (tooltipsSize)) {
         throw new Error("tooltipSize cannot be used if tooltip is deactivated");
@@ -61,7 +61,7 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
             id: "contact-link-github"
         },
         { 
-            title: language.home.links.mail, 
+            title: t('home.links.mail'), 
             image: mailImg,
             href: `mailto:${assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL')}`,
             target: "_blank", 
@@ -69,13 +69,13 @@ const ContactLinks = ({className, id, animate = false, tooltips = true, tooltips
             id: "contact-link-mail"
         },
         { 
-            title: language.home.links.phone, 
+            title: t('home.links.phone'), 
             image: phoneImg,
             href: `tel:${assertDefined<string>(process.env.NEXT_PUBLIC_TEL, 'NEXT_PUBLIC_TEL')}`,
             id: "contact-link-phone"
         },
         { 
-            title: language.home.links.resume, 
+            title: t('home.links.resume'), 
             image: resumeImg,
             href: "/resume", 
             target: "_blank", 

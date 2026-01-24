@@ -64,7 +64,7 @@ const Heading = forwardRef<HTMLAnchorElement, HeadingPropsInterface & { type: He
 
     const iconElement = <div className={cn(iconScale && iconContainerBaseClassName)}>{icon}</div>;
 
-    const textId: Undefined<string> = id ? id : (isAnchorLink ? `${type}-${hash({ children, type })}` : undefined);
+    const textId: Undefined<string> = id ? id : (isAnchorLink ? `${type}${hash({ children, type })}` : undefined);
 
     const getClassName = (): string[] => {
         switch (type) {

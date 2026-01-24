@@ -3,7 +3,7 @@ import { BundledLanguage } from 'shiki';
 import cn from '@/util/function/cn';
 
 import { HeadingFour, HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
-import Tooltip, { TooltipSize } from '@/components/tooltip';
+import Tooltip, { TooltipSize } from '@/components/tooltip/tooltip';
 import Separator from '@/components/other/separator';
 
 import CodeBlock from '@/components/blog/_components/code-block';
@@ -12,7 +12,7 @@ import ChildrenInterface from '@/util/interface/children';
 import ClassNameInterface from '@/util/interface/classname';
 import NextImageProps from '@/util/type/next-image-props';
 
-import FlowImage from './flow-image';
+import ImageFlow from './image-flow';
 import { ReactElement } from 'react';
 
 export const MdxImage = (props: NextImageProps) => (
@@ -23,9 +23,9 @@ export const MdxImage = (props: NextImageProps) => (
                 "img-container rounded-md mx-auto",
             )} 
             disabled={props.alt === undefined} 
-            text={props.alt}
+            literalText={props.alt}
         >
-            <FlowImage {...props} className={cn(
+            <ImageFlow {...props} className={cn(
                 'md:rounded-md object-contain h-fit box-border',
                 "border-y-4 md:border-4 border-white/40",
                 "md:hover:scale-[1.01] transition-transform",
@@ -99,9 +99,6 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
         } else if (typeof children === 'string' && children.trim().startsWith('[')) {
             header = children.trim().split('\n')[0];
         }
-        
-        console.log('Content after header:', content);
-        console.log('Quote header:', header);
 
         // Default values
         let type: keyof typeof QuoteType = 'info';

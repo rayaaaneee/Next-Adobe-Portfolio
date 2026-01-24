@@ -8,11 +8,11 @@ import ClassNameInterface from '@/util/interface/classname';
 
 const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className, id }, ref) => {
 
-    //calc(-#{$coefficient} * #{$spacement})
+    // Use CSS variables for colors and provide dark variants
     const backgrounds: string[] = [
-        "bg-triangle-yellow top-[calc(0.5*var(--spacement))] left-[calc(-1*var(--coef)*var(--spacement))]",
-        "bg-triangle-orange bottom-[calc(1.4*var(--spacement))]",
-        "bg-triangle-red bottom-[calc(-1.1*(var(--coef))*var(--spacement))] right-[calc(-0.9*(var(--coef))*var(--spacement))]",
+        "bg-[var(--triangle-yellow-color)] dark:bg-[var(--triangle-yellow-color-dark)] top-[calc(0.5*var(--spacement))] left-[calc(-1*var(--coef)*var(--spacement))]",
+        "bg-[var(--triangle-orange-color)] dark:bg-[var(--triangle-orange-color-dark)] bottom-[calc(1.4*var(--spacement))]",
+        "bg-[var(--triangle-red-color)] dark:bg-[var(--triangle-red-color-dark)] bottom-[calc(-1.1*(var(--coef))*var(--spacement))] right-[calc(-0.9*(var(--coef))*var(--spacement))]",
     ];
 
     return (
@@ -36,10 +36,10 @@ const SquaredLogo = forwardRef<HTMLDivElement, ClassNameInterface>(({ className,
                 key={i} 
                 className={`square absolute rounded-[10%] w-[37vw] h-[37vw] ${squareClassName}`} />
             )) }
-            <div className="main-square relative flex items-center justify-center rounded-[18%] bg-blanchedalmond w-full h-full font-adobebold">
-                <h1 className='header-text absolute bottom-full text-[5vw] font-semibold text-nowrap text-white'>Portfolio</h1>
-                <h1 id='pf' className='text-white text-[20vw]'>Pf</h1>
-                <p className='author absolute bottom-[-12%] text-4xl font-thin italic font-poppins'>&copy; By { assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</p>
+            <div className="main-square relative flex items-center justify-center rounded-[18%] bg-[var(--blanchedalmond)] dark:bg-[var(--background-color-dark)] w-full h-full font-adobebold">
+                <h1 className='header-text absolute bottom-full text-[5vw] font-semibold text-nowrap text-white dark:text-black'>Portfolio</h1>
+                <h1 id='pf' className='text-black dark:text-white text-[20vw]'>Pf</h1>
+                <p className='author absolute bottom-[-12%] text-4xl font-thin italic font-poppins text-white dark:text-black'>&copy; By { assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME') }</p>
             </div>
         </div>
     )

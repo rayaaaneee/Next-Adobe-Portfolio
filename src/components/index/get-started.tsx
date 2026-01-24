@@ -7,22 +7,29 @@ import cn from "@/util/function/cn";
 import useLanguage from '@/util/hook/use-language';
 
 import ClassNameInterface from '@/util/interface/classname';
+import { languageKey } from '@/util/type/language-key';
 
 interface GetStartedProps extends ClassNameInterface {
     colored?: boolean
+    link?: string;
+    buttonText?: languageKey;
 }
-
 
 const GetStarted = ({
     className,
     id,
-    colored = false
+    colored = false,
+    link = "/home",
+    buttonText,
 }: GetStartedProps) => {
 
-    const text: string = useLanguage().language.index.discover;
+    const { t } = useLanguage();
 
+    let text: string = t("index.discover");
+
+    if (buttonText) text = t(buttonText);
     return (
-        <Link id={`getStarted-${id}`} href={'/home'} className={cn(
+        <Link id={`getStarted-${id}`} href={link} className={cn(
             "hover:bg-[rgba(237,186,147,0.35)] font-poppins w-fit h-fit",
             { "bg-[rgba(237,186,147,0.7)] hover:bg-[rgba(237,186,147,0.85)]": colored },
             { "dark:bg-[#4b3e4dad] dark:hover:bg-[#30052b4d]" : colored },
@@ -31,7 +38,7 @@ const GetStarted = ({
             "dark:bg-[#4b3e4dad] dark:hover:bg-[#30052b4d]",
             className
         )}>{ text }</Link>
-    )
+    );
 }
 
 export default GetStarted

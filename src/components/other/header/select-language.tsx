@@ -5,15 +5,14 @@ import Image from 'next/image';
 
 import cn from "@/util/function/cn";
 
-import ManageLanguages from "@/util/manager/manage-language";
-
 import ClassNameInterface from "@/util/interface/classname";
+import Language from "@/util/type/language";
 
 const SelectLanguage = ({ className, id }: ClassNameInterface) => {
 
     const selectLanguageOptions = useRef<HTMLDivElement | null>(null);
 
-    const { language, setLanguage } = useLanguage();
+    const { t, tArray, setLang, supportedLanguages, lang } = useLanguage();
 
     useEffect(() => {
 
@@ -52,11 +51,11 @@ const SelectLanguage = ({ className, id }: ClassNameInterface) => {
                 <Image
                     className={cn('h-auto w-[90%] rounded-[5px]')}
                     alt='current-flag'
-                    src={ `/flags/${language.flag_img}` }
+                    src={ `/flags/${t("flag_img")}` }
                     width={24}
                     height={24}
                 />
-                <p>{ language.denomination }</p>
+                <p>{ t("denomination") }</p>
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -76,11 +75,11 @@ const SelectLanguage = ({ className, id }: ClassNameInterface) => {
                         "ease-in bg-select-language-options",
                         "[&.active]:opacity-100 [&.active]:cursor-pointer [&.active]:!pointer-events-auto [&.active]:translate-y-0"
                     )} ref={ selectLanguageOptions }>
-                    { ManageLanguages.supportedLanguages
-                        .filter(([name]) => name !== language.current)
+                    { supportedLanguages
+                        .filter((supportedLang: Language) => lang !== supportedLang)
                         .map(
-                            ([name, json], i) => {
-                                return name !== language.current && 
+                            (supportedLang: Language, i) => {
+                                return tArray("languages")[supportedLang] !== t('current') && 
                                 (<div key={i} className={cn(
                                     'option',
                                     "hover:bg-select-language-options-hover",
@@ -88,17 +87,16 @@ const SelectLanguage = ({ className, id }: ClassNameInterface) => {
                                     "transition-all duration-300 cursor-pointer gap-[10px]",
                                     "dark:hover:bg-select-language-options-hover-dark",
                                 )} onClick={ () => {
-                                    ManageLanguages.setLanguage(name);
-                                    setLanguage(json);
+                                    setLang(supportedLang);
                                 } }>
                                     <Image
                                         className="h-[35px] w-[85%] rounded-[5px] self-center justify-self-center"
-                                        alt={`${name}-flag`}
-                                        src={ `/flags/${ManageLanguages.getSentences(name).flag_img}` }
+                                        alt={`${supportedLang}-flag`}
+                                        src={ `/flags/${t("flag_img", supportedLang)}` }
                                         width={200}
                                         height={500}
                                     />
-                                    <p>{ ManageLanguages.getSentences(name).denomination }</p>
+                                    <p>{ t("denomination", supportedLang) }</p>
                                 </div>)
                             }) 
                     }

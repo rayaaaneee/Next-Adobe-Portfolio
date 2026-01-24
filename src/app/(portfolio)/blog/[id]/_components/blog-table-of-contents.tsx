@@ -137,6 +137,8 @@ const BlogTableOfContents = ({ }) => {
                                 heading === activeHeading && [
                                     "[&>p]:text-violet-500 [&>p]:font-bold",
                                     "[&>.left-bar]:after:bg-violet-300 [&>.left-bar]:after:content-[''] [&>.left-bar]:after:block [&>.left-bar]:after:w-full [&>.left-bar]:after:h-full [&>.left-bar]:after:rounded-full",
+                                    "dark:[&>p]:text-violet-300",
+                                    "dark:[&>.left-bar]:after:bg-violet-400",
                                 ],
                                 (!isActiveSubHeading(heading)) && "hidden", 
                             )}
@@ -144,11 +146,11 @@ const BlogTableOfContents = ({ }) => {
                             <div className={cn(
                                 'left-bar',
                                 'w-[3px] h-full',
-                                'bg-gray-500 dark:bg-gray-200',
+                                'bg-gray-500 dark:bg-gray-300',
                                 index === 0 && "rounded-t-full",
                                 index === tableHeadings.current.length -1 && "rounded-b-full",
                             )}></div>
-                            <Paragraph className="!m-0 text-nowrap overflow-hidden text-ellipsis">{heading.title}</Paragraph>
+                            <Paragraph className="!m-0 text-nowrap overflow-hidden text-ellipsis text-gray-800 dark:text-gray-200">{heading.title}</Paragraph>
                         </AnchorLinkText>
                     ))}
                 </section>

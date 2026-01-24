@@ -6,9 +6,10 @@ import { HeadingOne } from '@/components/page-flow';
 
 const Hobbies = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
+
     return (
-        <HeadingOne id="hobbies" isAnchorLink>{language.home.hobbies.title}</HeadingOne>
+        <HeadingOne id="hobbies" isAnchorLink>{t('home.hobbies.title')}</HeadingOne>
     )
 }
 

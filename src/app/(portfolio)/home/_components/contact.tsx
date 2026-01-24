@@ -6,14 +6,14 @@ import useLanguage from "@/util/hook/use-language";
 
 const Contact = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const email = assertDefined<string>(process.env.NEXT_PUBLIC_EMAIL, 'NEXT_PUBLIC_EMAIL');
 
     return (
         <>
-            <HeadingOne id="contact" isAnchorLink>{ language.home.contact.title }</HeadingOne>
-            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.contact.description }<a className="underline" href={`mailto:${email}`}>{email}</a>.</Paragraph>
+            <HeadingOne id="contact" isAnchorLink>{ t('home.contact.title') }</HeadingOne>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ t('home.contact.description') }<a className="underline" href={`mailto:${email}`}>{email}</a>.</Paragraph>
         </>
     );
 }

@@ -6,12 +6,12 @@ import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flo
 
 const SkillsHeaderPart = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
     
     return (
         <>
-            <HeadingOne id="skills" isAnchorLink>{ language.home.skills.title }</HeadingOne>
-            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.skills.description }</Paragraph>
+            <HeadingOne id="skills" isAnchorLink>{ t('home.skills.title') }</HeadingOne>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ t('home.skills.description') }</Paragraph>
         </>
     );
 }

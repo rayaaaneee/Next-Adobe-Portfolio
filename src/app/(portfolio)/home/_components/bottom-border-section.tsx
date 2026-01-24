@@ -8,11 +8,11 @@ import VerticalBorderSection from "./vertical-border-section";
 
 const BottomBorderSection = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <VerticalBorderSection 
-            text={language.home.thanks}
+            text={t('home.thanks')}
             icon={<FaHeart className="text-red-400" />} 
         />
     )

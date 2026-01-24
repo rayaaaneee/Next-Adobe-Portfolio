@@ -5,7 +5,7 @@ import useLanguage from "@/util/hook/use-language";
 import { FaFacebookF, FaLink, FaLinkedinIn, FaRedditAlien, FaTwitter } from "react-icons/fa6";
 
 import { HeadingThree } from "@/components/page-flow";
-import Tooltip, { TooltipSize } from "@/components/tooltip";
+import Tooltip, { TooltipSize } from "@/components/tooltip/tooltip";
 import CopyButton from "@/components/other/copy-button";
 
 import { BlogFooterProps } from "./blog-footer";
@@ -37,7 +37,7 @@ interface BaseShareButtonProps extends ShareButtonProps, ClassNameInterface {
 
 const BaseShareButton = ({ icon, url, className, platform }: BaseShareButtonProps) => {
     return (
-        <Tooltip size={TooltipSize.md} text={platform}>
+        <Tooltip size={TooltipSize.md} literalText={platform}>
             <a href={url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -115,8 +115,8 @@ const CopyLinkButton = ({ url }: ShareButtonProps) => (
     <CopyButton 
         alwaysShowTooltip 
         text={url} 
-        tooltipText="Copy link" 
-        tooltipCopiedText="Link copied!" 
+        tooltipText="blog.copy_button.text" 
+        tooltipCopiedText="blog.copy_button.copiedText" 
         customIcon={<FaLink />}
         changeIconOnCopy={false}
         resetTooltipOnLeaving 
@@ -130,15 +130,15 @@ const CopyLinkButton = ({ url }: ShareButtonProps) => (
 
 const BlogShareButtons = ({ blog }: BlogFooterProps) => {
 
-    const { language } = useLanguage();
+    const { t, lang } = useLanguage();
 
     const url = `${assertDefined(process.env.NEXT_PUBLIC_DOMAIN)}/blog/${blog.id}`;
 
-    const text = `${assertDefined(process.env.NEXT_PUBLIC_NAME)} - ${blog.title[language.current]}`;
+    const text = `${assertDefined(process.env.NEXT_PUBLIC_NAME)} - ${blog.title[lang]}`;
 
     return (
         <div className='flex flex-row center gap-3'>
-            <HeadingThree containerClassName="!m-0">Share :</HeadingThree>
+            <HeadingThree containerClassName="!m-0">{t("blog.share")} :</HeadingThree>
             <TwitterShareButton url={url} text={text} />
             <FacebookShareButton url={url} />
             <LinkedInShareButton url={url} text={text} />

@@ -8,18 +8,18 @@ import { FaLink } from 'react-icons/fa';
 
 import { HeadingThree } from '@/components/page-flow';
 
-import { TooltipSize } from '@/components/tooltip';
+import { TooltipSize } from '@/components/tooltip/tooltip';
 
 import { IconSize } from '@/components/contact-icon';
 import ContactLinks from '@/components/contact-links';
 
 const HeaderLinks = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <>
-            <HeadingThree icon={<FaLink/>} containerClassName="!ml-0 max-sm:mt-0">{ language.home.links.title }</HeadingThree>
+            <HeadingThree icon={<FaLink/>} containerClassName="!ml-0 max-sm:mt-0">{ t('home.links.title') }</HeadingThree>
             <ContactLinks size={IconSize.sm} tooltipsSize={TooltipSize.md} tooltips className={cn(
                 "w-fit mt-4 justify-between",
                 ["max-sm:mt-2 max-sm:mb-0"],

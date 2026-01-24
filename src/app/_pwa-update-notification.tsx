@@ -64,6 +64,7 @@ const PWAUpdateNotification = () => {
             <div id='update-modal' className={cn(
                 "fixed max-xs:m-auto max-xs:inset-0 w-fit h-fit xs:bottom-4 xs:right-4",
                 "bg-[blanchedalmond]/90 text-black p-4 pr-14 rounded z-50",
+                "dark:bg-gray-800/90 dark:text-white",
                 !updateReady && "translate-x-[120%]",
                 updateReady && "translate-x-0",
                 "transform transition-transform duration-300 ease-in-out"
@@ -74,7 +75,11 @@ const PWAUpdateNotification = () => {
                 </Paragraph>
                 <Button
                     onClick={handleReload}
-                    className="mt-2 px-4 py-2 bg-white text-black font-bold rounded hover:bg-gray-100"
+                    className={cn(
+                        "mt-2 px-4 py-2 font-bold rounded hover:bg-gray-100",
+                        "bg-white text-black",
+                        "dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+                    )}
                 >
                     Reload
                 </Button>

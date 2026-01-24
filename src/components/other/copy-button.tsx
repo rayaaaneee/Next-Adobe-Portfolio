@@ -5,17 +5,18 @@ import { useState } from "react";
 import { FaCheck, FaCopy } from "react-icons/fa6";
 
 import { Button } from "@/components/page-flow";
-import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip";
+import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip/tooltip";
 
 import cn from "@/util/function/cn";
 
 import ClassNameInterface from "@/util/interface/classname";
 import { ChildrenType } from "@/util/interface/children";
+import { languageKey } from "@/util/type/language-key";
 
 export interface CopyButtonProps extends ClassNameInterface {
     text: string;
-    tooltipText?: string;
-    tooltipCopiedText?: string;
+    tooltipText?: languageKey;
+    tooltipCopiedText?: languageKey;
     resetTooltipOnLeaving?: boolean;
     tooltipClassName?: string;
     tooltipPosition?: TooltipPosition;
@@ -29,8 +30,8 @@ export interface CopyButtonProps extends ClassNameInterface {
 
 const CopyButton = ({ 
     text, 
-    tooltipText = "Copy", 
-    tooltipCopiedText = "Copied!", 
+    tooltipText, 
+    tooltipCopiedText, 
     resetTooltipOnLeaving = false,
     className, 
     tooltipClassName, 
@@ -49,7 +50,7 @@ const CopyButton = ({
         try {
             await navigator.clipboard.writeText(text);
             setCopied(true);
-            !resetTooltipOnLeaving && (setTimeout(() => setCopied(false), 2000));
+            if (!resetTooltipOnLeaving) setTimeout(() => setCopied(false), 2000);
         } catch (error) {
             console.error(`Failed to copy text: ${text}`, error);
         }

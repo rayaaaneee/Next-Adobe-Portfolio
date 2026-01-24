@@ -6,13 +6,13 @@ import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flo
 
 const AboutMe = () => {
 
-    const { language } = useLanguage();
+    const { t, tArray } = useLanguage();
 
     return (
         <>
-            <HeadingOne id="about" isAnchorLink>{ language.home.about.title }</HeadingOne>
+            <HeadingOne id="about" isAnchorLink>{ t('home.about.title') }</HeadingOne>
             <Paragraph indent alignment={ParagraphAlignment.justify}>
-                { language.home.about.texts.map((text, index) => (
+                { tArray('home.about.texts').map((text: string, index: number) => (
                     <span key={index} dangerouslySetInnerHTML={{ __html: text }}></span>
                 )) }
             </Paragraph>

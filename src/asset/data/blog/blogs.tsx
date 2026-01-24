@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+import { MdOutlineNotes as DefaultIcon } from "react-icons/md";
+
 import DeepReadonly, { DeepReadonlyable } from "@/util/type/deep-readonly";
-import { BlogPost } from "@/util/type/blog";
+import BlogPost from "@/util/type/blog";
 
 import Language, { WithLanguageable } from "@/util/type/language";
 
@@ -39,7 +41,7 @@ export enum BlogTag {
     TOTP = "totp",
 }
 
-export interface BlogTagData {
+interface BlogTagData {
     displayName: WithLanguageable<string>;
     color: string;
 }
@@ -48,7 +50,7 @@ type BlogTagsDisplayType = {
     [K in BlogTag]: BlogTagData;
 }
 
-export const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze({
+const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze({
     [BlogTag.NEXTJS]: {
         displayName: "Next.js",
         color: "#000000",
@@ -166,7 +168,6 @@ const blogs: DeepReadonly<BlogPost[]> = [
     //     content: <NetworkPageContent />,
     // },
     {
-        index: 1,
         id: "svg-customization",
         title: {
             [Language.EN]: "SVG customization (SVGR)",
@@ -181,7 +182,7 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Aquí exploraremos cómo personalizar y hacer interactivos archivos SVG en un proyecto Next.js. Presento los pasos para transformar SVG en componentes React, modificar su apariencia y agregar interacciones, con ejemplos concretos y visuales basados en mi proyecto WorldMaster.",
         },
         icon: <Image src={svgIcon} alt="SVG Icon" />,
-        language: Language.EN,
+        lang: Language.EN,
         content: <SvgPageContent />,
         tags: [
             BlogTag.NEXTJS,
@@ -190,37 +191,37 @@ const blogs: DeepReadonly<BlogPost[]> = [
             BlogTag.WEB_FRONT,
         ],
     },
-    // {
-    //     index: 2,
-    //     id: "keycloak-oauth2-integration",
-    //     language: Language.EN,
-    //     tags: [
-    //         BlogTag.KEYCLOAK,
-    //         BlogTag.OAUTH2,
-    //         BlogTag.SECURITY,
-    //         BlogTag.ACCESS_TOKENS,
-    //         BlogTag.IAM,
-    //         BlogTag.AUTH,
-    //     ],
-    //     content: <OAuth2PageContent />,
-    //     title: {
-    //         [Language.EN]: " Keycloak with OAuth2 for Secure Authentication",
-    //         [Language.FR]: "Keycloak avec OAuth2 pour une authentification sécurisée",
-    //         [Language.ES]: "Keycloak con OAuth2 para una autenticación segura",
-    //     },
-    //     date: "2025-12-15",
-    //     color: "#008aaa",
-    //     summary: {
-    //         [Language.EN]: "This blog post delves into the integration of Keycloak with OAuth2 to enhance authentication security in web applications. It covers the setup process, configuration steps, and best practices for implementing robust authentication mechanisms using these technologies.",
-    //         [Language.FR]: "Cet article de blog explore l'intégration de Keycloak avec OAuth2 pour améliorer la sécurité de l'authentification dans les applications web. Il couvre le processus de configuration, les étapes de mise en place et les meilleures pratiques pour implémenter des mécanismes d'authentification robustes en utilisant ces technologies.",
-    //         [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
-    //     },
-    //     icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
-    // },
+    {
+        id: "keycloak-oauth2-integration",
+        lang: Language.EN,
+        tags: [
+            BlogTag.KEYCLOAK,
+            BlogTag.OAUTH2,
+            BlogTag.SECURITY,
+            BlogTag.ACCESS_TOKENS,
+            BlogTag.IAM,
+            BlogTag.AUTH,
+        ],
+        content: <OAuth2PageContent />,
+        title: {
+            [Language.EN]: " Keycloak with OAuth2 for Secure Authentication",
+            [Language.FR]: "Keycloak avec OAuth2 pour une authentification sécurisée",
+            [Language.ES]: "Keycloak con OAuth2 para una autenticación segura",
+        },
+        date: "2025-12-15",
+        color: "#008aaa",
+        summary: {
+            [Language.EN]: "This blog post delves into the integration of Keycloak with OAuth2 to enhance authentication security in web applications. It covers the setup process, configuration steps, and best practices for implementing robust authentication mechanisms using these technologies.",
+            [Language.FR]: "Cet article de blog explore l'intégration de Keycloak avec OAuth2 pour améliorer la sécurité de l'authentification dans les applications web. Il couvre le processus de configuration, les étapes de mise en place et les meilleures pratiques pour implémenter des mécanismes d'authentification robustes en utilisant ces technologies.",
+            [Language.ES]: "Esta publicación de blog profundiza en la integración de Keycloak con OAuth2 para mejorar la seguridad de la autenticación en aplicaciones web. Cubre el proceso de configuración, los pasos de implementación y las mejores prácticas para implementar mecanismos de autenticación robustos utilizando estas tecnologías.",
+        },
+        icon: <Image src={keyCloakIcon} alt="OAuth2 Icon" />,
+        isComplete: false,
+    },
     {
         index: 3,
         id: "2fa-spring",
-        language: Language.EN,
+        lang: Language.EN,
         content: <TwoFaSpringPageContent />,
         tags: [
             BlogTag.SPRING,
@@ -228,6 +229,7 @@ const blogs: DeepReadonly<BlogPost[]> = [
             BlogTag.REACT,
             BlogTag.SECURITY,
             BlogTag.AUTH,
+            BlogTag.TOTP,
         ],
         title: {
             [Language.EN]: "2FA in a Spring-React Application",
@@ -242,13 +244,49 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Esta publicación de blog explora la implementación de la autenticación de dos factores (2FA) en una aplicación Spring. Cubre los beneficios de la 2FA, el proceso de configuración y proporciona una guía paso a paso para integrar esta función de seguridad en sus proyectos basados en Spring.",
         },
         icon: <Image src={TwoFaIcon} alt="2FA Icon" />,
+        isComplete: false,
     }
 ];
 
-const getBlogs = (): DeepReadonlyable<BlogPost[]> => blogs;
+const formatBlogs = (blogs: DeepReadonlyable<BlogPost[]>): DeepReadonlyable<BlogPost[]> => {
+
+    if (blogs.length === 0) {
+        return [];
+    }
+
+    // Sort blogs by date in descending order
+    const sortedBlogs: BlogPost[] = blogs.slice().sort((a, b) => {
+
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+
+        return dateB.getTime() - dateA.getTime();
+
+    }) as BlogPost[];
+
+    // Auto assignment of properties
+    sortedBlogs.map((blog, index) => {
+
+        blog.index = index + 1;
+        if (blog.isComplete === undefined) blog.isComplete = true;
+        if (blog.icon === undefined) blog.icon = <DefaultIcon/>;
+
+        return blog;
+    });
+
+    const ids = sortedBlogs.map(blog => blog.id);
+    const uniqueIds = new Set(ids);
+    if (ids.length !== uniqueIds.size) {
+        throw new Error("Blog IDs are not unique!");
+    }
+
+    return sortedBlogs;
+}
+
+const getBlogs = (): DeepReadonlyable<BlogPost[]> => formatBlogs(blogs) as DeepReadonlyable<BlogPost[]>;
 
 const findBlog = (id: string): DeepReadonlyable<BlogPost> | undefined => {
-    return blogs.find((blog) => blog.id === id);
+    return getBlogs().find((blog) => blog.id === id)
 }
 
 export const getTagDisplayName = (tag: BlogTag, language: Language) => {

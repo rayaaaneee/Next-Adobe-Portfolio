@@ -6,12 +6,12 @@ import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flo
 
 const Projects = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <>
-            <HeadingOne id="projects" isAnchorLink>{ language.home.projects.title }</HeadingOne>
-            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.projects.description }</Paragraph>
+            <HeadingOne id="projects" isAnchorLink>{ t('home.projects.title') }</HeadingOne>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ t('home.projects.description') }</Paragraph>
         </>
     );
 }

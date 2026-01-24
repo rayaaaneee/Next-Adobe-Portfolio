@@ -1,6 +1,6 @@
 import assertDefined from "@/util/function/assert-defined";
 
-import Language, { WithLanguage } from "@/util/type/language";
+import Language from "@/util/type/language";
 import Sentences from "@/util/type/sentences";
 
 const spanishSentences: Sentences = {
@@ -10,9 +10,18 @@ const spanishSentences: Sentences = {
         [Language.EN]: "Inglés",
         [Language.FR]: "Francés",
         [Language.ES]: "Español"
-    } as WithLanguage<string>,
+    },
     title: "Portfolio",
     flag_img: "spanish.png",
+    coming_soon: {
+        title: "Próximamente",
+        text: "Esta página llegará pronto.",
+        goback: "Comenzar",
+    },
+    copy_button: {
+        tooltipText: "Copiar",
+        tooltipCopiedText: "¡Copiado!",
+    },
     index: {
         title: `${assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME')} - Adobe Portfolio`,
         discover: "Empezar",
@@ -93,6 +102,15 @@ const spanishSentences: Sentences = {
         words: "palabras",
         by: "por",
         readingTime: "<b>{min} min</b> de lectura",
+        share: "Compartir",
+        copy_button: {
+            text: "Copiar el enlace",
+            copiedText: "¡Enlace copiado!",
+        },
+        coming_soon: {
+            text: "Este blog llegará pronto.",
+            goback: "Regresar",
+        }
     },
     about: {
         title: "Acerca de",

@@ -5,7 +5,7 @@ Hello there ! Today, I would like to share with you a blog post about implementi
 
 # Before you begin
 
-This blog is based on a *school project* I worked on with other students, where I globally worked on the *app security*. This project is called SDMIS (Management System for Firefighters Departments) and is intended to expose some **critical data** about firefighters interventions. Given the sensitivity of the data, security was a top priority.
+This blog is based on a *school project* I worked on with other students, where I globally worked on the *app security*. This project is called **SDMIS** (Management System for Firefighters Departments) and is intended to expose some **critical data** about firefighters interventions. Given the sensitivity of the data, security was a top priority.
 
 Following this reasoning, I had to implement 2FA as part of the authentication process. The project involved creating a simple web application with user registration and login functionalities, and we integrated 2FA to enhance security.
 
@@ -26,6 +26,8 @@ Before we begin, ensure you have the following prerequisites in place:
 Here's a global schema of the current architecture :
 
 <Image src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
+
+---
 
 # Setting up the API
 
@@ -124,13 +126,15 @@ Here's a brief explanation of each field, and a schema diagram follows to illust
 
 ## Implementing 2FA Logic
 
-## User controller endpoints
+### User controller endpoints
 
-## TOTP Service
+### TOTP Service
 
 The TOTP service is responsible for generating TOTP secrets, validating tokens, and managing recovery codes.
 
 Here's an example implementation:
+
+---
 
 # Setting up the client
 
@@ -148,3 +152,15 @@ Here's an example implementation:
 ## Protect routes
 
 ...
+
+---
+
+# Conclusion
+
+Irure labore ea esse est aliquip ullamco eu nostrud eu incididunt laboris mollit adipisicing incididunt. Exercitation fugiat duis est tempor sunt. Occaecat ipsum qui elit in ad voluptate qui nisi. Reprehenderit nostrud ex reprehenderit anim aliqua Lorem commodo labore Lorem irure aliqua officia ipsum nulla. Consequat esse qui est veniam. Reprehenderit consequat fugiat eu aute voluptate elit officia velit Lorem anim fugiat excepteur pariatur laborum. Excepteur laborum tempor dolor qui laborum voluptate labore sunt ea eu aliquip fugiat magna elit.
+
+Duis in dolor ullamco aliquip sit aliqua irure enim aute ut. Ex incididunt irure ea duis consequat magna irure eu pariatur mollit sit. Lorem excepteur sit ad culpa nulla eu labore.
+
+Culpa ullamco commodo sint cillum nisi occaecat veniam quis aute. Aliqua exercitation esse irure consectetur. Lorem sint dolor eiusmod exercitation id nostrud consequat fugiat nulla consectetur proident. Consectetur laborum cillum reprehenderit pariatur voluptate cillum duis aute. Lorem reprehenderit id sunt fugiat aliqua. Non laboris quis irure minim sunt adipisicing. Nostrud irure ex culpa duis ullamco aliquip non incididunt magna duis reprehenderit elit anim.
+
+Minim mollit tempor non do ea. Nulla consectetur fugiat dolore occaecat ea nostrud culpa laboris ullamco quis dolor do sunt. Aliquip voluptate voluptate labore adipisicing aliquip aliquip elit qui enim nostrud cillum. Cillum do veniam ut id esse labore aute nulla. Exercitation quis fugiat esse culpa ullamco ullamco quis laborum reprehenderit et consectetur.

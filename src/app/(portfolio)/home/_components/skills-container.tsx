@@ -27,7 +27,7 @@ const SkillsContainer = () => {
 
     type GridData = AdaptiveGridProps & { title: string, icon: ChildrenType };
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const buttonsRef = useRef<HTMLButtonElement[]>([]);
     const adaptiveGridRef = useRef<HTMLDivElement | null>(null);
@@ -38,35 +38,35 @@ const SkillsContainer = () => {
             id: "programming-languages", 
             elementsPerRow: 5, 
             elements: programmingLanguages, 
-            title: language.home.skills.parts.languages,
+            title: t('home.skills.parts.languages'),
             icon: <LuCodeXml /> 
         },
         { 
             id: "frameworks",
             elementsPerRow: 5, 
             elements: frameworks, 
-            title: language.home.skills.parts.frameworks,
+            title: t('home.skills.parts.frameworks'),
             icon: <BsStack /> 
         },
         { 
             id: "libraries",
             elementsPerRow: 4, 
             elements: libraries, 
-            title: language.home.skills.parts.libraries,
+            title: t('home.skills.parts.libraries'),
             icon: <VscLibrary /> 
         },
         { 
             id: "tools", 
             elementsPerRow: 5, 
             elements: tools, 
-            title: language.home.skills.parts.tools,
+            title: t('home.skills.parts.tools'),
             icon: <AiFillTool /> 
         },
         {
             id: "databases", 
             elementsPerRow: 4, 
             elements: databases, 
-            title: language.home.skills.parts.databases,
+            title: t('home.skills.parts.databases'),
             icon: <FaCloud /> 
         },
     ];

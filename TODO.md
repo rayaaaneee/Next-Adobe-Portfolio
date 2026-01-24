@@ -49,7 +49,10 @@
 * [X] Home : Fix pointer-events before appearance
 * [X] Fix bug on grid expansion
 * [X] Remove expand button animation (adaptive grid)
-* [ ] Some fixes needed while browsing between /blog and /blog/[id] (title broken, fix needed)
+* [X] Some fixes needed while browsing between /blog and /blog/[id] (title broken, fix needed)
+* [ ] Blog TOC fixes (if h1 doesn't have a children, it will be not integrated to the TOC)
+* [ ] Carousel Image Left Chevron doesn't have a great animation whille disappearing
+* [ ] Pageable Grid -> blogs
 
 <!--
 Optimized with next/image

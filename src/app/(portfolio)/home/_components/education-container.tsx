@@ -12,7 +12,7 @@ import Language from '@/util/type/language';
 
 const EducationContainer = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const education: Education[] = [
         {
@@ -107,10 +107,10 @@ const EducationContainer = () => {
     
     return (
         <>
-            <HeadingOne id="education" isAnchorLink>{ language.home.education.title }</HeadingOne>
-            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.education.description }</Paragraph>
+            <HeadingOne id="education" isAnchorLink>{ t('home.education.title') }</HeadingOne>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ t('home.education.description') }</Paragraph>
             {education.map((edu, index) => (
-                <WorkEducationPart language={language.current}  separator={index < education.length - 1} key={index} item={edu} index={index} />
+                <WorkEducationPart separator={index < education.length - 1} key={index} item={edu} index={index} />
             ))}
         </>
     )

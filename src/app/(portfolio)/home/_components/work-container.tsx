@@ -13,7 +13,7 @@ import Language from '@/util/type/language';
 
 const WorkContainer = () => {
 
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     const workExperience: Work[] = [
         {
@@ -139,10 +139,10 @@ const WorkContainer = () => {
     
     return (
         <>
-            <HeadingOne id="work" isAnchorLink>{ language.home.work.title }</HeadingOne>
-            <Paragraph alignment={ParagraphAlignment.justify}>{ language.home.work.description }</Paragraph>
+            <HeadingOne id="work" isAnchorLink>{ t('home.work.title') }</HeadingOne>
+            <Paragraph alignment={ParagraphAlignment.justify}>{ t('home.work.description') }</Paragraph>
             {workExperience.map((work, index) => (
-                <WorkEducationPart language={language.current} separator={index < workExperience.length - 1} key={index} item={work} index={index} />
+                <WorkEducationPart separator={index < workExperience.length - 1} key={index} item={work} index={index} />
             ))}
         </>
     )

@@ -46,7 +46,7 @@ export const GET = async () => {
             summary: blog.summary[Language.EN], 
             date: new Date(blog.date as string).toUTCString(),
             tags: blog.tags,
-            language: LANGUAGE_MAP[blog.language as keyof typeof LANGUAGE_MAP],
+            language: LANGUAGE_MAP[blog.lang as keyof typeof LANGUAGE_MAP],
         })) as SitemapBlogEntry[],
     });
     return new NextResponse<string>(xml, {

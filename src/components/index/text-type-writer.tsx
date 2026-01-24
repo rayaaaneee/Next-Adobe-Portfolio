@@ -12,10 +12,10 @@ export interface TextTypeWriterProps extends ClassNameInterface {
 
 const TextTypeWriter = ({ id, className, reduced = false }: TextTypeWriterProps) => {
 
-    const { language } = useLanguage();
+    const { tArray } = useLanguage();
 
-    const textTab: readonly string[] = language.index.description.long;
-    const reducedTextTab: readonly string[] = language.index.description.short;
+    const textTab: readonly string[] = tArray('index.description.long');
+    const reducedTextTab: readonly string[] = tArray('index.description.short');
 
     // Intitially longer delay for the first word (Rayane Merlin)
     const [delaySpeed, setDelaySpeed] = useState(4000);

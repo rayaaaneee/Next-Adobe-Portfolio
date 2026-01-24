@@ -5,12 +5,12 @@ import cn from "@/util/function/cn";
 import Image, { ImageProps, StaticImageData } from "next/image";
 import { MouseEventHandler, useContext, useEffect } from "react";
 
-export interface FlowImageProps extends ImageProps {
+export interface ImageFlowProps extends ImageProps {
     src: StaticImageData;
     isInFlow?: boolean;
 }
 
-const FlowImage = (props: FlowImageProps) => {
+const ImageFlow = (props: ImageFlowProps) => {
 
     const { isInFlow = true } = props;
 
@@ -25,7 +25,7 @@ const FlowImage = (props: FlowImageProps) => {
 
     useEffect(() => {
         (() => (isInFlow && (pushImage(props.src))))();
-    }, []);
+    }, [isInFlow, pushImage, props.src]);
 
     return (
         <Image {...props} 
@@ -36,4 +36,4 @@ const FlowImage = (props: FlowImageProps) => {
     );
 }
 
-export default FlowImage;
+export default ImageFlow;

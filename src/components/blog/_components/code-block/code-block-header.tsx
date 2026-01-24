@@ -102,7 +102,7 @@ const CodeBlockHeader = ({ lang, text, parentId, filename }: CodeBlockHeaderProp
             roots.forEach((root) => root.unmount());
         };
 
-    }, []);
+    }, [lang, text, parentId, filename]);
 
     return null;
 }

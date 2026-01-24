@@ -13,7 +13,7 @@ import HamburgerMenu from './header/hamburger-menu';
 import MenuLink from './header/menu-link';
 import SelectLanguage from './header/select-language';
 import SwitchTheme from './header/switch-theme-button';
-import Language, { getStringWithLanguage, WithLanguageable } from '@/util/type/language';
+import Language, { WithLanguageable } from '@/util/type/language';
 
 export interface HeaderProps {
     hasFooter?: boolean,
@@ -21,7 +21,7 @@ export interface HeaderProps {
 
 const Header = ({ hasFooter = true }: HeaderProps) => {
 
-    const { language } = useLanguage();
+    const { tLanguageable } = useLanguage();
 
     const location = usePathname();
 
@@ -156,11 +156,11 @@ const Header = ({ hasFooter = true }: HeaderProps) => {
                         "flex flex-col items-center justify-center gap-[3vh] w-fit",
                     )}>
                         { links.map((link) => (
-                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ getStringWithLanguage<string>(link.text, language.current) }</MenuLink>
+                            <MenuLink key={link.to} to={link.to} isColored={link.isColored}>{ tLanguageable<string>(link.text) }</MenuLink>
                         )) }
                     </div>
                     <SwitchTheme pinkMoon />
-                    <MenuLink className='absolute bottom-3 right-3' to={aboutLink.to} isColored={aboutLink.isColored}>{ getStringWithLanguage<string>(aboutLink.text, language.current) }</MenuLink>
+                    <MenuLink className='absolute bottom-3 right-3' to={aboutLink.to} isColored={aboutLink.isColored}>{ tLanguageable<string>(aboutLink.text) }</MenuLink>
                 </ul>
                 <HamburgerMenu ref={hamburgerMenu} />
             </nav>

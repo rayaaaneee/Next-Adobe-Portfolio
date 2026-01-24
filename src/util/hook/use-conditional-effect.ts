@@ -9,7 +9,7 @@ const useConditionalEffect = (effect: () => void, deps: DependencyList) => {
 		} else {
 			isMounted.current = true;
 		}
-	}, deps);
+	}, [...deps]); // eslint-disable-line react-hooks/exhaustive-deps
 }
 
 export default useConditionalEffect;

@@ -1,4 +1,4 @@
-import { Language } from "../manager/manage-language";
+import { Language } from "../manager/i18n-manager";
 
 import { ChildrenType } from "../interface/children";
 
@@ -8,15 +8,16 @@ import { StringDate } from "./date";
 
 import { BlogTag } from "@/asset/data/blog/blogs";
 
-export interface BlogPost {
-    index: number;
+export default interface BlogPost {
+    index?: number;
+    isComplete?: boolean;
+    icon?: ChildrenType;
+    content: ChildrenType;
     id: string;
     title: WithLanguage<string>;
     color: string;
     date: StringDate;
     summary: WithLanguage<string>;
-    icon: ChildrenType;
-    language: Language;
-    content: ChildrenType;
+    lang: Language;
     tags: BlogTag[];
 }
