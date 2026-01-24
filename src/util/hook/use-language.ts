@@ -5,15 +5,15 @@ import useTryingContext from "./use-trying-context";
 
 import languageContext, { I18nContextType } from "../context/i18n-context";
 
-import I18nManager from "../manager/i18n-manager";
+import I18nClientManager from "../manager/i18n-client-manager";
 
 const useLanguage = (): I18nContextType => (useTryingContext(languageContext));
 
 export const useLanguageManager = () => {
-    I18nManager.instance.manageLanguages();
+    I18nClientManager.instance.manageLanguages();
 	useLayoutEffect(() => {
 		// Ensure document language is set on initial load (After SSR Hydration)
-		I18nManager.instance.setDocumentLanguage();
+		I18nClientManager.instance.setDocumentLanguage();
 	}, []);
 };
 

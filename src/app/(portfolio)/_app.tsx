@@ -12,7 +12,7 @@ import languageContext, { I18nContextType } from "@/util/context/i18n-context";
 
 import Language from "@/util/type/language";
 
-import I18nManager from "@/util/manager/i18n-manager";
+import I18nClientManager from "@/util/manager/i18n-client-manager";
 
 import ChildrenInterface from "@/util/interface/children";
 
@@ -24,20 +24,20 @@ const App = ({ children }: ChildrenInterface) => {
 	useLanguageManager();
 
 	// Handle language state
-	const [lang, setLang] = useState<Language>(I18nManager.instance.language);
+	const [lang, setLang] = useState<Language>(I18nClientManager.instance.language);
 	const languageValue: I18nContextType = useMemo(
 		() => ({
-			t: I18nManager.instance.getValue.bind(I18nManager.instance),
-			tArray: I18nManager.instance.getArrayValues.bind(I18nManager.instance),
-			tLang: I18nManager.instance.getLanguageValues.bind(I18nManager.instance),
-			tLanguageable: I18nManager.instance.getWithLanguageable.bind(I18nManager.instance),
+			t: I18nClientManager.instance.getValue.bind(I18nClientManager.instance),
+			tArray: I18nClientManager.instance.getArrayValues.bind(I18nClientManager.instance),
+			tLang: I18nClientManager.instance.getLanguageValues.bind(I18nClientManager.instance),
+			tLanguageable: I18nClientManager.instance.getWithLanguageable.bind(I18nClientManager.instance),
 			lang: lang,
-			defaultLang: I18nManager.instance.defaultLanguage,
+			defaultLang: I18nClientManager.instance.defaultLanguage,
 			setLang: (language: Language) => {
-    		  	I18nManager.instance.setLanguage(language);
+    		  	I18nClientManager.instance.setLanguage(language);
     		  	setLang(language);
     		},
-			supportedLanguages: I18nManager.instance.supportedLanguages.map(([lang]) => lang),
+			supportedLanguages: I18nClientManager.instance.supportedLanguages.map(([lang]) => lang),
 		}),
 		[lang]
 	);

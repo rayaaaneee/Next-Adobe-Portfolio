@@ -3,29 +3,29 @@
 import { Context, createContext } from "react";
 
 import Language from "../type/language";
-import I18nManager from "../manager/i18n-manager";
+import I18nClientManager from "../manager/i18n-client-manager";
 
 export interface I18nContextType {
   // t() returns string
-  t: I18nManager['getValue'];
+  t: I18nClientManager['getValue'];
 
   // tArray() returns the exact type based on the key provided
-  tArray: I18nManager['getArrayValues'];
+  tArray: I18nClientManager['getArrayValues'];
 
   // tLang() returns language values
-  tLang: I18nManager['getLanguageValues'];
+  tLang: I18nClientManager['getLanguageValues'];
 
   // tLanguageable() returns value based on WithLanguageable<T>
-  tLanguageable: I18nManager['getWithLanguageable'];
+  tLanguageable: I18nClientManager['getWithLanguageable'];
 
   // Current language
-  lang: I18nManager['language'];
+  lang: I18nClientManager['language'];
 
   // Default language
-  defaultLang: I18nManager['defaultLanguage'];
+  defaultLang: I18nClientManager['defaultLanguage'];
 
   // Lang setter
-  setLang: I18nManager['setLanguage'];
+  setLang: I18nClientManager['setLanguage'];
 
   // Supported languages list
   supportedLanguages: Language[];

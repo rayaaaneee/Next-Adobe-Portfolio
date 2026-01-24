@@ -10,9 +10,9 @@ import { languageKey } from '../type/language-key';
 import ArrayKeyPath, { ArrayKeyPathValue } from '../type/array-key-path';
 
 // Client I18n Manager provides internationalization support via hook.useLanguage()
-export default class I18nManager {
+export default class I18nClientManager {
 
-    public static instance: I18nManager = new I18nManager();
+    public static instance: I18nClientManager = new I18nClientManager();
 
     public static readonly cookieName: string = 'i18n_language';
 
@@ -71,18 +71,18 @@ export default class I18nManager {
         if (this.isSupported(language)) {
             this.language = language;
             this.setDocumentLanguage();
-            this.cookieManager.setCookie(I18nManager.cookieName, language);
+            this.cookieManager.setCookie(I18nClientManager.cookieName, language);
         }
     }
 
     // Manage language based on cookie or system language
     public manageLanguages = () => {
         if (
-            (this.cookieManager.isCookie(I18nManager.cookieName)) &&
-            (this.isSupported(this.cookieManager.getCookie(I18nManager.cookieName) as string))
+            (this.cookieManager.isCookie(I18nClientManager.cookieName)) &&
+            (this.isSupported(this.cookieManager.getCookie(I18nClientManager.cookieName) as string))
         ) {
             this.language =
-                this.cookieManager.getCookie(I18nManager.cookieName) as Language;
+                this.cookieManager.getCookie(I18nClientManager.cookieName) as Language;
         } else {
             const systemLanguage = this._getSystemLanguage();
             if (this.isSupported(systemLanguage)) {

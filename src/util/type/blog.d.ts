@@ -1,4 +1,4 @@
-import { Language } from "../manager/i18n-manager";
+import { Language } from "../manager/i18n-client-manager";
 
 import { ChildrenType } from "../interface/children";
 
