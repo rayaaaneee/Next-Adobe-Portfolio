@@ -1,4 +1,4 @@
-import mainLang from "@/asset/data/language/fr";
+import mainLang from "@/asset/data/i18n/fr";
 
 import ArrayObjectKeys from "./array-key-path";
 

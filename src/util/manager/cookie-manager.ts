@@ -1,3 +1,4 @@
+// cookie-manager.ts
 import Cookie from 'js-cookie';
 
 import Stringable from '../type/stringable';

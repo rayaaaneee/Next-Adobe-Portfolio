@@ -24,8 +24,7 @@ export interface PageProps {
     }>;
 }
 
-import { cookies } from 'next/headers';
-import I18nManager from "@/util/manager/i18n-manager";
+import { I18nServerManager } from "@/util/manager/i18n-server-manager";
 
 export async function generateMetadata({ params }: PageProps) {
 
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: PageProps) {
     try {
         
         const blog = assertFoundBlog(id);
-        const title: string = I18nManager.resolveCookie(blog.title, await cookies());
+        const title: string = await I18nServerManager.instance.resolveCookie(blog.title);
 
         return {
             title: {

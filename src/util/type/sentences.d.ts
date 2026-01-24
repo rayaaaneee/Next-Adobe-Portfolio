@@ -1,4 +1,4 @@
-import frenchSentences from '@/asset/data/language/fr';
+import frenchSentences from '@/asset/data/i18n/fr';
 
 import type DeepReadonly from '@/util/type/deep-readonly';
 

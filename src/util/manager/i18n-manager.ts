@@ -1,25 +1,15 @@
+// i18n-manager.ts
 import CookieManager from './cookie-manager';
 
 import Sentences from '@/util/type/sentences';
 import Language, { isWithLanguage, isPartialWithLanguage, WithLanguage, PartialWithLanguage, WithLanguageable } from '@/util/type/language';
 import DeepReadonly, { DeepReadonlyable } from '@/util/type/deep-readonly';
 
-import englishSentences from '@/asset/data/language/en';
-import spanishSentences from '@/asset/data/language/es';
-import frenchSentences from '@/asset/data/language/fr';
+import availableLanguages from '@/asset/data/i18n/available';
 import { languageKey } from '../type/language-key';
 import ArrayKeyPath, { ArrayKeyPathValue } from '../type/array-key-path';
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
-
-// Considering structure of frenchSentences is the same for all languages
-
-const English: Sentences = englishSentences as Sentences;
-const French: Sentences = frenchSentences as Sentences;
-const Spanish: Sentences = spanishSentences as Sentences;
-
-// Default rule : if static method, made for server components
-// if public method, made for client components (hook/use-language.tsx)
+// Client I18n Manager provides internationalization support via hook.useLanguage()
 export default class I18nManager {
 
     public static instance: I18nManager = new I18nManager();
@@ -31,7 +21,7 @@ export default class I18nManager {
     private cookieManager: CookieManager = CookieManager.getInstance();
     
     readonly supportedLanguages:  DeepReadonly<Array<[Language, Sentences]>> = 
-        ([English, French, Spanish].map((sentences) => [sentences.current, sentences]));
+        Object.entries(availableLanguages) as DeepReadonly<Array<[Language, Sentences]>>;
 
     public language: Language = this.defaultLanguage;
 
@@ -155,18 +145,5 @@ export default class I18nManager {
         } else {
             return obj as T;
         }
-    }
-
-    // Static method to resolve language from cookies (for server components)
-    public static resolveCookie = (data: Parameters<I18nManager["getValue"]>[0], cookies: ReadonlyRequestCookies): string => {
-
-        let lang: Language = I18nManager.instance.defaultLanguage;
-
-        const cookieVal = cookies.get(I18nManager.cookieName)?.value;
-        if (cookieVal && I18nManager.instance.isSupported(cookieVal)) {
-            lang = cookieVal satisfies Language;
-        }
-
-        return I18nManager.instance.getValue(data, lang);
     }
 }
