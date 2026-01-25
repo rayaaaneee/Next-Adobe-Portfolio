@@ -1,13 +1,13 @@
 // i18n-manager.ts
 import CookieManager from './cookie-manager';
 
-import Sentences from '@/util/type/sentences';
-import Language, { isWithLanguage, isPartialWithLanguage, WithLanguage, PartialWithLanguage, WithLanguageable } from '@/util/type/language';
-import DeepReadonly, { DeepReadonlyable } from '@/util/type/deep-readonly';
+import type Sentences from '@/util/type/sentences';
+import Language, { isWithLanguage, isPartialWithLanguage, type WithLanguage, type PartialWithLanguage, type WithLanguageable } from '@/util/type/language';
+import DeepReadonly, { type DeepReadonlyable } from '@/util/type/deep-readonly';
 
 import availableLanguages from '@/asset/data/i18n/available';
-import { languageKey } from '../type/language-key';
-import ArrayKeyPath, { ArrayKeyPathValue } from '../type/array-key-path';
+import { type languageKey } from '@/util/type/language-key';
+import ArrayKeyPath, { type ArrayKeyPathValue } from '@/util/type/array-key-path';
 
 // Client I18n Manager provides internationalization support via hook.useLanguage()
 export default class I18nClientManager {

@@ -2,16 +2,16 @@
 
 import useLanguage from "@/util/hook/use-language";
 
-import { ChildrenType } from "@/util/interface/children";
+import { type ChildrenType } from "@/util/interface/children";
 
-import { languageKey } from "@/util/type/language-key";
+import { type languageKey } from "@/util/type/language-key";
 
 type TooltipTextProps = {
     text?: languageKey;
     literalText?: ChildrenType;
 }
 
-const TooltipText = ({ text, literalText }: TooltipTextProps): ChildrenType => {
+const TooltipText = ({ text, literalText }: TooltipTextProps) => {
 
     const { t } = useLanguage();
 

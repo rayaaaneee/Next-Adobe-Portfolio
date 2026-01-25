@@ -1,4 +1,4 @@
-import { DependencyList, RefObject, useEffect, useRef } from "react";
+import { type DependencyList, type RefObject, useEffect, useRef } from "react";
 
 // Executes an effect only on update, not on mount
 const useConditionalEffect = (effect: () => void, deps: DependencyList): void => {

@@ -5,14 +5,13 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-});
+const compat = new FlatCompat({ baseDirectory: __dirname });
 
 const eslintConfig = [
-	// Base Next.js + TS (obligatoire)
+	// Presets Next.js + TS
 	...compat.extends("next/core-web-vitals", "next/typescript"),
-	// Fichiers ignorés
+
+	// Ignored files / folders
 	{
 		ignores: [
 		"node_modules/**",
@@ -22,48 +21,26 @@ const eslintConfig = [
 		"next-env.d.ts",
 		],
 	},
-	// Règles TypeScript / JS sérieuses
+
+	// Global rules for TS files
 	{
 		rules: {
-			/* ==============================
-			* Unused / conventions
-			* ============================== */
-			"@typescript-eslint/no-unused-vars": [
-				"warn",
-				{
-				args: "after-used",
-				argsIgnorePattern: "^_",
-				varsIgnorePattern: "^_",
-				caughtErrorsIgnorePattern: "^_",
-				},
-			],
-
-			"@typescript-eslint/no-shadow": "off",
-
-			/* ==============================
-			* Robustesse / bugs réels
-			* ============================== */
-			"@typescript-eslint/consistent-type-imports": "off",
-
-			/* ==============================
-			* Best practices
-			* ============================== */
-			"no-console": [
-				"warn",
-				{
-					allow: ["warn", "error"],
-				},
-			],
-
-			"eqeqeq": ["error", "always"],
-
-			"prefer-const": "warn",
-
-			/* ==============================
-			* That we should discuss
-			* ============================== */
-			"@typescript-eslint/explicit-module-boundary-types": "off",
-			"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+			args: "after-used",
+			argsIgnorePattern: "^_",
+			varsIgnorePattern: "^_",
+			caughtErrorsIgnorePattern: "^_",
+			},
+		],
+		"@typescript-eslint/no-shadow": "off",
+		"@typescript-eslint/consistent-type-imports": "off",
+		"no-console": ["warn", { allow: ["warn", "error"] }],
+		"eqeqeq": ["error", "always"],
+		"prefer-const": "warn",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-explicit-any": "error",
 		},
 	},
 ];

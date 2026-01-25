@@ -2,13 +2,13 @@ import Image from "next/image";
 
 import { MdOutlineNotes as DefaultIcon } from "react-icons/md";
 
-import DeepReadonly, { DeepReadonlyable } from "@/util/type/deep-readonly";
-import BlogPost from "@/util/type/blog";
+import DeepReadonly, { type DeepReadonlyable } from "@/util/type/deep-readonly";
+import type BlogPost from "@/util/type/blog";
 
-import Language, { WithLanguageable } from "@/util/type/language";
+import Language, { type WithLanguageable } from "@/util/type/language";
 
-import _networkIcon from "@/asset/img/blog/blog-1/icon.png";
-import _NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-ai/blog.mdx";
+import networkIcon from "@/asset/img/blog/blog-1/icon.png";
+import NetworkPageContent from "$/(portfolio)/blog/[id]/_md/deep-learning-snake-ai/blog.mdx";
 
 import svgIcon from "@/asset/img/blog/blog-2/icon.png";
 import SvgPageContent from "$/(portfolio)/blog/[id]/_md/svg-customization/blog.mdx";
@@ -289,7 +289,7 @@ const findBlog = (id: string): DeepReadonlyable<BlogPost> | undefined => {
     return getBlogs().find((blog) => blog.id === id)
 }
 
-export const getTagDisplayName = (tag: BlogTag, language: Language) => {
+export const getTagDisplayName = (tag: BlogTag, language: Language): string => {
     const tagData = BlogTagsDisplay[tag];
     if (!tagData) {
         throw new Error(`Tag "${tag}" not found.`);

@@ -1,7 +1,7 @@
 // cookie-manager.ts
 import Cookie from 'js-cookie';
 
-import Stringable from '../type/stringable';
+import type Stringable from '../type/stringable';
 
 export default class CookieManager {
 

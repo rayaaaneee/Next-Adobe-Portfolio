@@ -1,7 +1,7 @@
 import assertDefined from "@/util/function/assert-defined";
 import ArrayType from "@/util/type/array-type";
 
-import Language, { WithLanguage } from "@/util/type/language";
+import Language, { type WithLanguage } from "@/util/type/language";
 
 const en = {
     current: Language.EN satisfies Language,

@@ -1,5 +1,5 @@
-import DeepReadonly from "./deep-readonly";
-import Language, { WithLanguage } from "./language";
+import type DeepReadonly from "./deep-readonly";
+import Language, { type WithLanguage } from "./language";
 
 export type StringDate = `${number}-${number}-${number}`; // YYYY-MM-DD (enforced)
 

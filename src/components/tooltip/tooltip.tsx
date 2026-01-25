@@ -1,4 +1,4 @@
-import { JSX, MouseEventHandler } from "react";
+import { type JSX, type MouseEventHandler } from "react";
 
 import cn from "@/util/function/cn";
 
@@ -7,9 +7,11 @@ import { MdInfo } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 
-import ChildrenInterface, { ChildrenType } from "@/util/interface/children";
-import ClassNameInterface from "@/util/interface/classname";
-import { languageKey } from "@/util/type/language-key";
+import { type languageKey } from "@/util/type/language-key";
+
+import type ClassNameInterface from "@/util/interface/classname";
+import ChildrenInterface, { type ChildrenType } from "@/util/interface/children";
+
 import TooltipText from "./tooltip-text";
 
 
