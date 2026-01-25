@@ -1,4 +1,4 @@
-import Image from "next/image";
+import type Image from "next/image";
 
 type NextImageProps = ComponentProps<typeof Image>;
 

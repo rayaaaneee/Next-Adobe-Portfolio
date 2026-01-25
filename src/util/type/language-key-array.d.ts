@@ -1,5 +1,5 @@
 import mainLang from "@/asset/data/i18n/fr";
 
-import ArrayObjectKeys from "./array-key-path";
+import type ArrayObjectKeys from "./array-key-path";
 
 export type languageKeyArray = ArrayObjectKeys<typeof mainLang>;

@@ -3,8 +3,9 @@ import assertDefined from "@/util/function/assert-defined";
 import Language from "@/util/type/language";
 import Sentences from "@/util/type/sentences";
 
-const spanishSentences: Sentences = {
+const es: Sentences = {
     current: Language.ES,
+    default: false,
     denomination: "Español",
     languages: {
         [Language.EN]: "Inglés",
@@ -182,4 +183,4 @@ const spanishSentences: Sentences = {
     }
 }
 
-export default spanishSentences as Sentences;
+export default es as Sentences;

@@ -36,7 +36,6 @@
 * [ ] Sticky Header With page title on scroll (md -)
 * [X] Default theme to light
 * [X] Medias
-
   * [X] Tooltip media queries
   * [X] Menu medias
   * [X] Home media queries
@@ -53,21 +52,6 @@
 * [ ] Blog TOC fixes (if h1 doesn't have a children, it will be not integrated to the TOC)
 * [ ] Carousel Image Left Chevron doesn't have a great animation whille disappearing
 * [ ] Pageable Grid -> blogs
-
-<!--
-Optimized with next/image
-<div
-  className="linkedin w-8 h-8"
-  style={{ '--icon': `url(${linkedin.src})`, '--icon-hover': `url(${linkedinHover.src})` } as any}
-/>
-scss
-Copier le code
-.linkedin {
-  background-image: var(--icon);
-  @include hover-safe {
-    &:hover {
-      background-image: var(--icon-hover);
-    }
-  }
-}
---->
+* [ ] Ajout d'une langue non automatisé
+  * [ ] Objectif : Il y a des valeurs dures dans le code (ex: Language enum dans les fichiers de langue, availableLanguages) qui empechent le simple ajout d'un fichier de langue pour ajouter une langue dans asset/data/i18n/[lang].ts
+* [X] Fix default language management (should be only one)

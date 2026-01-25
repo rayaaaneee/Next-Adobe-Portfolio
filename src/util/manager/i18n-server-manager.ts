@@ -6,24 +6,24 @@ import I18nClientManager from '@/util/manager/i18n-client-manager';
 import Language from '@/util/type/language';
 
 // Server-side I18n Manager for handling internationalization in server components
-export class I18nServerManager {
-
-    private managerInstance: I18nClientManager = I18nClientManager.instance;
+export class I18nServerManager extends I18nClientManager {
 
     public static instance: I18nServerManager = new I18nServerManager();
 
-    private constructor() {}
+    private constructor() {
+        super();
+    }
 
     public resolveCookie = async (data: Parameters<I18nClientManager["getValue"]>[0]): Promise<string> => {
         const clientCookies = await cookies(); 
 
-        let lang: Language = this.managerInstance.defaultLanguage;
+        let lang: Language = this.defaultLanguage;
 
-        const cookieVal = clientCookies.get(I18nClientManager.cookieName)?.value;
-        if (cookieVal && I18nClientManager.instance.isSupported(cookieVal)) {
+        const cookieVal = clientCookies.get(this.cookieName)?.value;
+        if (cookieVal && this.isSupported(cookieVal)) {
             lang = cookieVal satisfies Language;
         }
 
-        return I18nClientManager.instance.getValue(data, lang);
+        return this.getValue(data, lang);
     }
 }

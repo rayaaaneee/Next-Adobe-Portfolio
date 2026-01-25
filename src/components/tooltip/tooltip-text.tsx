@@ -11,7 +11,7 @@ type TooltipTextProps = {
     literalText?: ChildrenType;
 }
 
-const TooltipText = ({ text, literalText }: TooltipTextProps) => {
+const TooltipText = ({ text, literalText }: TooltipTextProps): ChildrenType => {
 
     const { t } = useLanguage();
 

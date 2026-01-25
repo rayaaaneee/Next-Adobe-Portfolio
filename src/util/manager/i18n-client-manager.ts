@@ -13,19 +13,37 @@ import ArrayKeyPath, { ArrayKeyPathValue } from '../type/array-key-path';
 export default class I18nClientManager {
 
     public static instance: I18nClientManager = new I18nClientManager();
-
-    public static readonly cookieName: string = 'i18n_language';
-
+    
     public readonly defaultLanguage: Language = Language.EN;
 
-    private cookieManager: CookieManager = CookieManager.getInstance();
-    
-    readonly supportedLanguages:  DeepReadonly<Array<[Language, Sentences]>> = 
+    public readonly supportedLanguages:  DeepReadonly<Array<[Language, Sentences]>> = 
         Object.entries(availableLanguages) as DeepReadonly<Array<[Language, Sentences]>>;
 
     public language: Language = this.defaultLanguage;
 
-    private constructor() {}
+    protected readonly cookieName: string = 'i18n_language';
+
+    protected cookieManager: CookieManager = CookieManager.getInstance();
+
+    protected constructor() {
+
+        const defaults = this.supportedLanguages.filter(([_, sentences]) => (sentences as Sentences).default === true);
+       
+        if (defaults.length > 1) {
+            
+            throw new Error("Multiple default languages found in available languages.");
+        
+        } else {
+
+            if (defaults.length === 1) {
+                const defaultLang = defaults[0][1];
+                this.defaultLanguage = defaultLang.current;
+            } else {
+                throw new Error("No default language found in available languages.");
+            }
+            
+        }
+    }
 
     // Check if a language is supported
     public isSupported(language: string | Language): language is Language {
@@ -33,12 +51,12 @@ export default class I18nClientManager {
     }
 
     // Get system language (browser)
-    private _getSystemLanguage = (): string | Language => {
+    protected _getSystemLanguage = (): string | Language => {
         return navigator.language.slice(0, 2).toLowerCase();
     }
 
     // Recursive function to get value by key path
-    private _getValueRecursive = (obj: unknown, remainingKeys: string[], key: string): string | unknown[] | WithLanguage<unknown> => {
+    protected _getValueRecursive = (obj: unknown, remainingKeys: string[], key: string): string | unknown[] | WithLanguage<unknown> => {
         
         if (typeof obj !== 'object' || obj === null) {
             throw new Error(`Key "${key}" not found in language sentences.`);
@@ -60,29 +78,29 @@ export default class I18nClientManager {
     };
 
     // Set document language attribute
-    public setDocumentLanguage = () => {
+    public setDocumentLanguage = (): void => {
         if (typeof document !== 'undefined') {
             document.documentElement.lang = this.language;
         }
     }
 
     // Set current language
-    public setLanguage = (language: Language) => {
+    public setLanguage = (language: Language): void => {
         if (this.isSupported(language)) {
             this.language = language;
             this.setDocumentLanguage();
-            this.cookieManager.setCookie(I18nClientManager.cookieName, language);
+            this.cookieManager.setCookie(this.cookieName, language);
         }
     }
 
     // Manage language based on cookie or system language
-    public manageLanguages = () => {
+    public manageLanguages = (): void => {
         if (
-            (this.cookieManager.isCookie(I18nClientManager.cookieName)) &&
-            (this.isSupported(this.cookieManager.getCookie(I18nClientManager.cookieName) as string))
+            (this.cookieManager.isCookie(this.cookieName)) &&
+            (this.isSupported(this.cookieManager.getCookie(this.cookieName) as string))
         ) {
             this.language =
-                this.cookieManager.getCookie(I18nClientManager.cookieName) as Language;
+                this.cookieManager.getCookie(this.cookieName) as Language;
         } else {
             const systemLanguage = this._getSystemLanguage();
             if (this.isSupported(systemLanguage)) {
@@ -107,7 +125,7 @@ export default class I18nClientManager {
     }
 
     // Get value by key (refactored to handle WithLanguage, PartialWithLanguage, and string keys)
-    private _get = (key: string, language?: DeepReadonlyable<Language>): string | unknown[] | WithLanguage<unknown> => {
+    protected _get = (key: string, language?: DeepReadonlyable<Language>): string | unknown[] | WithLanguage<unknown> => {
         const keys = key.split('.');
         const sentences = this.getSentences(language);
         return this._getValueRecursive(sentences, keys, key);

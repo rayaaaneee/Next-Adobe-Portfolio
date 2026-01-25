@@ -13,9 +13,9 @@ import cn from '@/util/function/cn';
 import countWords from '@/util/function/count-words';
 import assertDefined from '@/util/function/assert-defined';
 
-import Language, { WithLanguage } from '@/util/type/language';
-import BlogPost from '@/util/type/blog';
-import { DeepReadonlyable } from '@/util/type/deep-readonly';
+import Language, { type WithLanguage } from '@/util/type/language';
+import type BlogPost from '@/util/type/blog';
+import { type DeepReadonlyable } from '@/util/type/deep-readonly';
 
 import { getTagDisplayName } from '@/asset/data/blog/blogs';
 

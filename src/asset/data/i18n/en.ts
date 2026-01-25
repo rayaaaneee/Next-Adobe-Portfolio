@@ -1,16 +1,17 @@
 import assertDefined from "@/util/function/assert-defined";
+import ArrayType from "@/util/type/array-type";
 
-import Language from "@/util/type/language";
-import Sentences from "@/util/type/sentences";
+import Language, { WithLanguage } from "@/util/type/language";
 
-const englishSentences: Sentences = {
-    current: Language.EN,
+const en = {
+    current: Language.EN satisfies Language,
+    default: true,
     denomination: "English",
     languages: {
         [Language.EN]: "English",
         [Language.FR]: "French",
         [Language.ES]: "Spanish"
-    },
+    } satisfies WithLanguage<string> as WithLanguage<string>,
     title: "Portfolio",
     flag_img: "english.png",
     coming_soon: {
@@ -30,12 +31,12 @@ const englishSentences: Sentences = {
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "Full-Stack Developper", 
                 "Cybersecurity"
-            ],
+            ] satisfies ArrayType<string, 3>,
             short: [
                 assertDefined(process.env.NEXT_PUBLIC_NAME, 'NAME'),
                 "FullStack Dev",
                 "Cyber"
-            ]
+            ] satisfies ArrayType<string, 3>
         },
     },
     home: {
@@ -59,7 +60,7 @@ const englishSentences: Sentences = {
                 "I'm currently working at <b>Energy Pool</b> as a <b>Blue Team member</b> (<i>vulnerability protection</i>) throughout my engineering studies. This role is enhancing my skills in <b>threat detection</b>, <b>incident analysis</b>, <b>vulnerability management</b>, and <b>continuous improvement of defensive measures</b> within a <b>production environment</b>.<br/>",
                 "📝 <i>Note</i> : Although my <b>portfolio places a strong emphasis on design</b>, it mainly reflects my appreciation for <b>visual aesthetics</b> and <b>user experience</b>, aspects I value as a <i>hobby</i> and <i>creative outlet</i>. While I truly enjoy crafting <b>clean and visually engaging interfaces</b>, my <b>professional focus</b> is oriented toward <b>Cybersecurity</b> and <b>software development</b>, where I aim to deepen my expertise and build a <b>solid technical career</b>.<br/>",
                 "... certs",
-            ]
+            ] satisfies ArrayType<string, 6>,
         },
         projects: {
             title: "Projects",
@@ -119,14 +120,14 @@ const englishSentences: Sentences = {
             "This site was entirely designed and developed by myself to showcase my background, projects, and skills.",
             "The projects presented have all been carried out in whole or in part by myself.",
             "Each article on the {blog} page details the design steps, challenges encountered, and solutions implemented for a specific project, issue, or achievement."
-        ],
+        ] satisfies ArrayType<string, 3>,
         parts: {
             cookies: {
                 title: "Cookies",
                 description: [
                     "This site uses cookies to enhance your browsing experience.",
                     "By continuing to use this site, you agree to the use of cookies in accordance with the privacy policy."
-                ]
+                ] satisfies ArrayType<string, 2>,
             },
             stack: {
                 title: "Stack",
@@ -134,7 +135,7 @@ const englishSentences: Sentences = {
                     "This site was developed using the <strong>Next.js</strong> framework with <strong>TypeScript</strong> for better type management.",
                     "Styling is handled with <strong>Tailwind CSS</strong> for a responsive and modern design.",
                     "Hosting is provided by <strong>Vercel</strong>, offering optimal performance and automatic scaling."
-                ]
+                ] satisfies ArrayType<string, 3>
             },
             inspirations: {
                 title: "Inspirations",
@@ -147,28 +148,31 @@ const englishSentences: Sentences = {
                     "Their reuse, even partially, is not allowed without prior agreement.",
                     "Except where otherwise noted, all the content is licensed under the {cc} by the author.",    
                     "This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, under the following terms:"
-                ],
+                ] satisfies ArrayType<string, 4>,
                 parts: [
                     {
                         title: "Attribution",
                         description : [
                             "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use."
-                        ]
+                        ] satisfies ArrayType<string, 1>
                     },
                     {
                         title: "No additional restrictions",
                         description : [
                             "You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."
-                        ]
+                        ] satisfies ArrayType<string, 1>
                     },
                     {
                         title: "Notices",
                         description : [
                             "You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.",
                             "No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material."
-                        ]
+                        ] satisfies ArrayType<string, 2>
                     }
-                ]
+                ] satisfies ArrayType<{
+                    title: string;
+                    description: string[];
+                }, 3>
             }
         }
     },
@@ -182,4 +186,4 @@ const englishSentences: Sentences = {
     }
 }
 
-export default englishSentences as Sentences;
+export default en;

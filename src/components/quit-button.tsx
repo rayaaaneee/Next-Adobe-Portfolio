@@ -3,13 +3,14 @@ import { MouseEventHandler } from "react";
 import cn from "@/util/function/cn";
 
 import ClassNameInterface from "@/util/interface/classname";
+import { ChildrenType } from "@/util/interface/children";
 
 export interface QuitButtonProps extends ClassNameInterface {
     onClick?: MouseEventHandler<HTMLSpanElement> | MouseEventHandler<HTMLAnchorElement>;
     title?: string;
 }
 
-const QuitButton = ({ id, className, onClick, title }: QuitButtonProps) => {
+const QuitButton = ({ id, className, onClick, title }: QuitButtonProps): ChildrenType => {
 
     const baseProps = {
         id,
