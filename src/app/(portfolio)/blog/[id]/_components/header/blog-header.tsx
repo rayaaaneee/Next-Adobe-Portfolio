@@ -44,7 +44,7 @@ const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 
     useEffect(() => {
 
-        if (blog.isComplete === false) return;
+        if (!blog.isComplete && process.env.NODE_ENV !== 'development') return;
 
         const blogElement = document.getElementById('blog-content');
         const clearedBlogElement = getBlogElement(blogElement!);
@@ -78,9 +78,9 @@ const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
             </HeadingTwo>
             <Separator lite className='!mb-0'/>
                 <Paragraph className='first-letter:uppercase' stylized>{ t('blog.by') } <b>{ assertDefined(process.env.NEXT_PUBLIC_NAME, "NAME") }</b></Paragraph>
-            <Separator lite={!blog.isComplete} className='!my-0'/>
+            <Separator lite={!blog.isComplete && process.env.NODE_ENV !== 'development'} className='!my-0'/>
             
-            { blog.isComplete && (
+            { (blog.isComplete || process.env.NODE_ENV === 'development') && (
                 <>
                     <div className='w-full flex flex-row justify-evenly'>
                         <Paragraph stylized>

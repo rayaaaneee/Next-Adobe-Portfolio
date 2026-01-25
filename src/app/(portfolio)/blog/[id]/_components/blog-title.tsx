@@ -10,10 +10,6 @@ import { DeepReadonlyable } from '@/util/type/deep-readonly';
 import Language, { WithLanguage } from '@/util/type/language';
 import BlogPost from '@/util/type/blog';
 
-import { metadata } from '../../metadata';
-
-export { metadata };
-
 const BlogTitle = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
 
     const { t } = useLanguage();

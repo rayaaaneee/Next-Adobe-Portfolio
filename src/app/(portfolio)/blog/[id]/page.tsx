@@ -70,7 +70,7 @@ const Page = async ({ params }: PageProps) => {
             <MainPart 
             id="blog-content"
             fullWidth
-            rightSidebar={blog.isComplete ? <BlogTableOfContents /> : null}
+            rightSidebar={(blog.isComplete || process.env.NODE_ENV === 'development') ? <BlogTableOfContents /> : null}
             containerClassName={cn(
                 "pb-10 flex flex-col gap-3",
                 "[&>.tooltip-container]:mx-auto [&>.tooltip-container]:w-fit",
@@ -78,7 +78,7 @@ const Page = async ({ params }: PageProps) => {
                 "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
             )}>
                 <BlogHeader blog={blog} />
-                { blog.isComplete ? (
+                { blog.isComplete || process.env.NODE_ENV === 'development' ? (
                     <>
                         {blog.content} 
                         <BlogFooter blog={blog} />

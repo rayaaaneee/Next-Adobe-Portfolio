@@ -1,5 +1,6 @@
 import { LuPencilLine } from "react-icons/lu";
 import { FaRss } from "react-icons/fa";
+import { Metadata } from "next";
 
 import { AnchorLinkButton, HeadingOne } from '@/components/page-flow';
 import Separator from '@/components/other/separator';
@@ -7,9 +8,13 @@ import MainPart from '@/components/other/main-part';
 import BlogGrid from './_components/blog-grid';
 
 import getBlogs from '@/asset/data/blog/blogs';
-import { metadata } from './metadata';
 
-export { metadata };
+export async function generateMetadata(): Promise<Metadata> {
+    const blogCount = getBlogs().length;
+    return {
+        title: `Blogs (${blogCount})`,
+    };
+}
 
 const Blog = () => {
 
