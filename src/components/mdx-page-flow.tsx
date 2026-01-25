@@ -1,3 +1,5 @@
+import { Children, Fragment, isValidElement, ReactElement } from 'react';
+
 import { BundledLanguage } from 'shiki';
 
 import cn from '@/util/function/cn';
@@ -10,10 +12,11 @@ import CodeBlock from '@/components/blog/_components/code-block';
 
 import ChildrenInterface from '@/util/interface/children';
 import ClassNameInterface from '@/util/interface/classname';
+
 import NextImageProps from '@/util/type/next-image-props';
+import { ChildrenType } from '@/util/interface/children';
 
 import ImageFlow from './image-flow';
-import { ReactElement } from 'react';
 
 export const MdxImage = (props: NextImageProps) => (
     <article className='max-size'>
@@ -79,21 +82,52 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
     type ParsedType = {
         type: keyof typeof QuoteType,
         icon: boolean,
-        content: string,
+        content: ChildrenType[],
+    }
+
+    const defaultValues: Omit<ParsedType, 'content'> = {
+        type: 'info',
+        icon: true,
     }
 
     const parseQuoteHeader = (): ParsedType => {
         // Find the first string child (usually the header line)
-        let header = '';
-        let content = '';
+        let header: string | null = null;
+        let content: ChildrenType[] = [];
 
         const childrenTyped = children as (string | ReactElement & { props : { children: string | (ReactElement & { props : { children: string } }) } })[];
         if (Array.isArray(childrenTyped)) {
             for (const c of childrenTyped) {
-                if (typeof c !== 'string' && (c.props.children as string).trim().startsWith('[')) {
-                    header = (c.props.children as string).trim().split('\n')[0];
-                    content = (c.props.children as string).trim().split('\n')[1];
-                    break;
+                if (typeof c !== 'string') {
+                    if (!Array.isArray(c.props.children)) {
+                        if ((c.props.children as string).trim().startsWith('[')) {
+                            header = (c.props.children as string).trim().split('\n')[0];
+                            content.push((c.props.children as string).trim().split('\n')[1]);
+                            break;
+                        }
+                    } else {
+                        if (typeof c.props.children[0] === 'string') {
+                            header = (c.props.children)[0].trim().startsWith('[') ? (c.props.children)[0] : null;
+                        } else {
+                            // No defined header
+                        }
+                        content = Children.toArray(c.props.children).slice(header ? 1 : 0).map((child, i) => {
+                            if (typeof child === "string") {
+                                if (child.includes("\n")) return (child.split("\n").map((line, j) => { 
+                                    return (
+                                        <Fragment key={`${i}-${j}`}>
+                                            {line}
+                                            <br />
+                                        </Fragment>
+                                    )
+                                }));
+                                else return (child);
+                            } else if (isValidElement(child)) {
+                                return (child);
+                            } else return String(child);
+                        });
+                        break;
+                    }
                 }
             }
         } else if (typeof children === 'string' && children.trim().startsWith('[')) {
@@ -105,33 +139,44 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
         let icon: boolean = true;
 
         // If header is present, parse it
-        if (header) {
+        if (header && (header = header.removeAll(' ').trim())) {
             // Accept [type=...], [icon=...], [type=...,icon=...], [icon=...,type=...], []
             // Regex: [type=TYPE,icon=ICON] or [icon=ICON,type=TYPE] or [type=TYPE] or [icon=ICON] or []
             const regex = /^\[(.*?)\]$/;
             const match = header.match(regex);
             if (match) {
                 const params = match[1].split(',').map(s => s.trim()).filter(Boolean);
+
                 for (const param of params) {
+
                     if (param.startsWith('type=')) {
+
                         const val = param.slice(5);
                         if (!val) throw new Error('Invalid type: empty value');
                         if (!(val in QuoteType)) throw new Error(`Invalid type value: "${val}". Allowed values are: ${Object.keys(QuoteType).join(', ')}`);
                         type = val as keyof typeof QuoteType;
+                    
                     } else if (param.startsWith('icon=')) {
+                    
                         const val = param.slice(5);
                         if (!val) throw new Error('Invalid icon: empty value');
                         if (val === 'false') icon = false;
                         else if (val === 'true') icon = true;
                         else throw new Error(`Invalid icon value: "${val}". Allowed values are: true, false`);
+                    
                     } else if (param.length > 0) {
+                    
                         throw new Error(`Invalid parameter: "${param}". Allowed: type=..., icon=...`);
+                    
                     }
+
                 }
             }
         } else {
-            throw new Error("Header for quote block cannot be parsed.");
+            type = defaultValues.type;
+            icon = defaultValues.icon;
         }
+
         return { type, icon, content };
     }
 
@@ -157,7 +202,9 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                         {QuoteIcon[parsed.type]}
                     </div>
                 ) }
-                { parsed.content }
+                <div className='quote-content'>
+                    { parsed.content }
+                </div>
             </blockquote>
         </article>
     );
