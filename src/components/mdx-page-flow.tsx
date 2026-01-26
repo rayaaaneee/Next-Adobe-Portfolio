@@ -1,4 +1,4 @@
-import { Children, Fragment, isValidElement, type ReactElement } from 'react';
+import { Children, Fragment, isValidElement, ReactNode, type ReactElement } from 'react';
 
 import { type BundledLanguage } from 'shiki';
 
@@ -404,7 +404,7 @@ export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & Chil
 import { ImCheckmark } from "react-icons/im";
 export const MdxTd = (props: ChildrenInterface) => {
 
-    const renderChild = (child: ChildrenInterface) => {
+    const renderChild = (child: ReactNode) => {
         if (typeof child === 'string') {
             const s = child.trim().toLowerCase();
             if (s === 'true') return <ImCheckmark className='text-green-500 text-xl' />;
@@ -415,7 +415,7 @@ export const MdxTd = (props: ChildrenInterface) => {
 
     const childrenArray = Children.toArray((props).children);
 
-    const extractBoolean = (child: ChildrenInterface[]): boolean | null => {
+    const extractBoolean = (child: ReactNode): boolean | null => {
         if (typeof child === 'string') {
             const s = child.trim().toLowerCase();
             if (s === 'true') return true;
@@ -423,7 +423,7 @@ export const MdxTd = (props: ChildrenInterface) => {
             return null;
         }
         if (child && typeof child === 'object' && 'props' in child) {
-            const nested = child.props?.children;
+            const nested = (child as { props?: { children?: React.ReactNode } }).props?.children;
             if (nested === undefined || nested === null) return null;
             const arr = Children.toArray(nested);
             if (arr.length === 1) return extractBoolean(arr[0]);
