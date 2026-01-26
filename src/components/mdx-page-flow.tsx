@@ -6,7 +6,8 @@ import { CgDanger } from "react-icons/cg";
 import { MdInfo } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa6";
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
+import { ImCross } from "react-icons/im";
 import { IconType } from 'react-icons/lib';
 
 import cn from '@/util/function/cn';
@@ -359,9 +360,9 @@ export const MdxTable = (props: ChildrenInterface) => {
     return (
         <article>
             <div className='w-full mt-6 overflow-x-auto scrollbar-thin scrollbar-thumb-rounded'>
-                    <table id={id} className='box-border w-full rounded-2xl max-size table-auto border-collapse'>
-                        { props.children }
-                    </table>
+                <table id={id} className='box-border w-full rounded-2xl max-size table-auto border-collapse'>
+                    { props.children }
+                </table>
             </div>
             { ClientComponents.map((ClientComponent, index) => (
                 <ClientComponent key={index} tableId={id} />
@@ -402,16 +403,14 @@ export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & Chil
         </th>
     );
 };
-
+import { ImCheckmark } from "react-icons/im";
 export const MdxTd = (props: ChildrenInterface) => {
 
     const renderChild = (child: ChildrenInterface) => {
-        if (child === true) return <FaCheckCircle className='text-green-500' />;
-        if (child === false) return <FaTimesCircle className='text-red-500' />;
         if (typeof child === 'string') {
             const s = child.trim().toLowerCase();
-            if (s === 'true') return <FaCheckCircle className='text-green-500' />;
-            if (s === 'false') return <FaTimesCircle className='text-red-500' />;
+            if (s === 'true') return <ImCheckmark className='text-green-500 text-xl' />;
+            if (s === 'false') return <ImCross className='text-red-500 text-lg' />;
         }
         return child;
     };
@@ -419,8 +418,6 @@ export const MdxTd = (props: ChildrenInterface) => {
     const childrenArray = Children.toArray((props).children);
 
     const extractBoolean = (child: ChildrenInterface[]): boolean | null => {
-        if (child === true) return true;
-        if (child === false) return false;
         if (typeof child === 'string') {
             const s = child.trim().toLowerCase();
             if (s === 'true') return true;

@@ -58,3 +58,5 @@
   * [ ] Objectif : Il y a des valeurs dures dans le code (ex: Language enum dans les fichiers de langue, availableLanguages) qui empechent le simple ajout d'un fichier de langue pour ajouter une langue dans asset/data/i18n/[lang].ts
 * [X] Fix default language management (should be only one)
 * [ ] Allow sort on plural columns on mdxTable
+* [ ] Allow table inside quote component
+* [ ] Fix blog TOC (broken)
