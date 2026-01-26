@@ -406,7 +406,7 @@ export const MdxTd = (props: ChildrenInterface) => {
 
     const renderChild = (child: ReactNode) => {
         if (typeof child === 'string') {
-            const s = child.trim().toLowerCase();
+            const s = child.clean();
             if (s === 'true') return <ImCheckmark className='text-green-500 text-xl' />;
             if (s === 'false') return <ImCross className='text-red-500 text-lg' />;
         }
@@ -417,7 +417,7 @@ export const MdxTd = (props: ChildrenInterface) => {
 
     const extractBoolean = (child: ReactNode): boolean | null => {
         if (typeof child === 'string') {
-            const s = child.trim().toLowerCase();
+            const s = child.clean();
             if (s === 'true') return true;
             if (s === 'false') return false;
             return null;

@@ -6,6 +6,7 @@ declare global {
         removeAll(sub: string | RegExp): string;
         isEmpty(): boolean;
         uppercaseFirstLetter(): string;
+        clean(): string;
     }
 }
 
@@ -23,4 +24,8 @@ String.prototype.uppercaseFirstLetter = function (this: string) {
 
 String.prototype.isEmpty = function (this: string) {
     return this.trim().length === 0;
+}
+
+String.prototype.clean = function (this: string) {
+    return this.trim().toLocaleLowerCase();
 }
