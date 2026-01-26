@@ -171,7 +171,9 @@ There are several opportunities to improve the 2FA implementation. At the moment
 - PUSH 2FA: Implement push-based 2FA, where users receive a notification on their mobile device to approve or deny login attempts.
 - Biometric Authentication: Integrate biometric authentication methods, such as fingerprint or facial recognition, for added security.
 
-> [type=info]
-> **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.
-> However, they may require additional infrastructure and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.
+{/* Image of a push notification example */}
 
+> [icon=false]
+> **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.
+> However, they may require **additional infrastructure** and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.
+> The decision-making process between the two methods (PUSH vs TOTP) can be handled based on **user preferences**, **device capabilities**, or **security policies** (e.g. a **new device** login could enforce PUSH 2FA).

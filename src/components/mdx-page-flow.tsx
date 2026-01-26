@@ -18,6 +18,7 @@ import { ChildrenType } from '@/util/interface/children';
 
 import ImageFlow from './image-flow';
 
+// Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
 export const MdxImage = (props: NextImageProps) => (
     <article className='max-size'>
         <Tooltip 
@@ -38,7 +39,12 @@ export const MdxImage = (props: NextImageProps) => (
     </article>
 );
 
-/* Use : ```[file:/[]...]]language(lines) */
+/* Usage :
+language is mandatory, (lines) is optional to show line numbers, and file name is optional
+```language(lines)[file:/...]]
+    //[code content] 
+```
+*/
 export interface mdxCodeProps extends ChildrenInterface, ClassNameInterface {} 
 export const MdxCode = ({ children, className }: mdxCodeProps) => {
 
@@ -61,8 +67,14 @@ export const MdxCode = ({ children, className }: mdxCodeProps) => {
     );
 }
 
+/* For code block */
 export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 
+/* Quote component with customizable type and icon 
+> [type=info,icon=true] // Optional
+> MdxQuote content...
+> MdxQuote content...
+*/
 export const MdxQuote = ({ children }: ChildrenInterface) => {
 
     enum QuoteType {
@@ -113,15 +125,17 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                         }
                         content = Children.toArray(c.props.children).slice(header ? 1 : 0).map((child, i) => {
                             if (typeof child === "string") {
-                                if (child.includes("\n")) return (child.split("\n").map((line, j) => { 
-                                    return (
-                                        <Fragment key={`${i}-${j}`}>
-                                            {line}
-                                            <br />
-                                        </Fragment>
-                                    )
-                                }));
-                                else return (child);
+                                if (child.includes("\n")) return (
+                                    child.split("\n").map((line, j) => { 
+                                        return (
+                                            <Fragment key={`${i}-${j}`}>
+                                                {line}
+                                                <br />
+                                            </Fragment>
+                                        );
+                                    })
+                                );
+                                else return child;
                             } else if (isValidElement(child)) {
                                 return (child);
                             } else return String(child);
@@ -193,7 +207,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
             <blockquote className={cn(
                 QuoteType[parsed.type],
                 'border-l-8 text-lg',
-                'pl-4 italic py-2 my-6',
+                'pl-4 py-2 my-6',
                 'flex items-center gap-4 [&_*]:my-0 box-border',
                 'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
             )}>
@@ -210,6 +224,13 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
     );
 };
 
+/* Usage :
+
+Title :
+- List item 1
+- List item 2
+
+*/
 export const MdxList = ({ children }: ChildrenInterface) => (
     <article>
         <ul className='list-disc [&>li]:ml-8 [&>li]:my-2'>
@@ -226,38 +247,47 @@ export const MdxListItem = ({ children }: ChildrenInterface) => (
     </li>
 );
 
+
+// Usage : ---
 export const MdxSeparator = () => (<article><Separator/></article>);
 
+// Usage : # Heading 1
 export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
     <article>
         <HeadingOne isAnchorLink containerClassName='ml-0'>{ children }</HeadingOne>
     </article>
 );
 
+// Usage : ## Heading 2
 export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
     <article>
         <HeadingTwo isAnchorLink containerClassName='ml-0' className="mdx-heading">{ children }</HeadingTwo>
     </article>
 );
 
+// Usage : ### Heading 3
 export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
     <article>
         <HeadingThree isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingThree>
     </article>
 );
 
+// Usage : #### Heading 4
 export const MdxHeadingFour = ({ children }: ChildrenInterface) => (
     <article>
         <HeadingFour isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingFour>
     </article>
 );
 
+// Usage: My paragraph...
 export const MdxParagraph = ({ children }: ChildrenInterface) => (
     <article>
         <Paragraph alignment={ParagraphAlignment.justify}>{ children }</Paragraph>
     </article>
 );
 
+// Usage
+// [link_text](https://example.com) 
 export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
     <a href={href} className='underline underline-offset-2' target='_blank'>
         { children }
