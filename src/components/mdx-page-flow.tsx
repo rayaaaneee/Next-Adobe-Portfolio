@@ -1,10 +1,17 @@
-import { Children, Fragment, isValidElement, ReactElement } from 'react';
+import { Children, createElement, Fragment, isValidElement, ReactElement } from 'react';
 
 import { BundledLanguage } from 'shiki';
 
 import cn from '@/util/function/cn';
 
-import { HeadingFour, HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from '@/components/page-flow';
+import { 
+    Paragraph, 
+    HeadingOne, 
+    HeadingTwo, 
+    HeadingThree, 
+    HeadingFour, 
+    ParagraphAlignment 
+} from '@/components/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip/tooltip';
 import Separator from '@/components/other/separator';
 
@@ -75,6 +82,12 @@ export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 > MdxQuote content...
 > MdxQuote content...
 */
+import { CgDanger } from "react-icons/cg";
+import { MdInfo } from "react-icons/md";
+import { IoWarning } from "react-icons/io5";
+import { FaLightbulb } from "react-icons/fa6";
+import { IconType } from 'react-icons/lib';
+
 export const MdxQuote = ({ children }: ChildrenInterface) => {
 
     enum QuoteType {
@@ -84,11 +97,13 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
         tip = 'border-green-400/70 dark:border-green-600/70',
     }
 
-    enum QuoteIcon {
-        info = 'ℹ️',
-        warning = '⚠️',
-        danger = '❌',
-        tip = '💡',
+    const QuoteIcon: {
+        [key in keyof typeof QuoteType]: ReactElement<IconType>;
+    } = {
+        info: <MdInfo className='text-3xl text-slate-600 dark:text-pink-200/70' />,
+        warning: <IoWarning className='text-3xl text-yellow-400/70 dark:text-yellow-600/70' />,
+        danger: <CgDanger className='text-3xl text-red-400/70 dark:text-red-600/70' />,
+        tip: <FaLightbulb className='text-3xl text-green-400/70 dark:text-green-600/70' />,
     }
 
     type ParsedType = {
@@ -121,16 +136,16 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                         if (typeof c.props.children[0] === 'string') {
                             header = (c.props.children)[0].trim().startsWith('[') ? (c.props.children)[0] : null;
                         } else {
-                            // No defined header
+                            // No defined header, it's ok :)
                         }
                         content = Children.toArray(c.props.children).slice(header ? 1 : 0).map((child, i) => {
                             if (typeof child === "string") {
                                 if (child.includes("\n")) return (
-                                    child.split("\n").map((line, j) => { 
+                                    child.split("\n").map((line, j, arr) => {
                                         return (
                                             <Fragment key={`${i}-${j}`}>
                                                 {line}
-                                                <br />
+                                                {arr.length - 1 !== j ? <br /> : null}
                                             </Fragment>
                                         );
                                     })
@@ -212,11 +227,11 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                 'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
             )}>
                 { parsed.icon && (
-                    <div className='quote-icon not-italic'>
+                    <div className='quote-icon text-2xl flex-shrink-0'>
                         {QuoteIcon[parsed.type]}
                     </div>
                 ) }
-                <div className='quote-content'>
+                <div className='quote-content text-justify mr-4'>
                     { parsed.content }
                 </div>
             </blockquote>
