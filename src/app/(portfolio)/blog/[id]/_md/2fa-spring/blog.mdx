@@ -27,6 +27,18 @@ Here's a global schema of the current architecture :
 
 <Image src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
 
+> [type=tip]
+> The following table breaks down the main components of the application architecture and their responsibilities.
+
+| Component      | Technology           | Responsibility                      |
+| -------------- | -------------------- | ----------------------------------- |
+| Backend API    | Spring Boot (Kotlin) | Authentication, 2FA validation      |
+| Security Layer | Spring Security      | Login flow, access control          |
+| Database       | PostgreSQL           | Users, TOTP secrets, recovery codes |
+| 2FA Engine     | TOTP (RFC 6238)      | OTP generation & validation         |
+| Client         | React                | Login UI, 2FA challenge             |
+
+
 ---
 
 # Setting up the API
@@ -168,17 +180,20 @@ Minim mollit tempor non do ea. Nulla consectetur fugiat dolore occaecat ea nostr
 ## Improvement opportunities
 
 There are several opportunities to improve the 2FA implementation. At the moment, we only rely on a basic TOTP mechanism using an Authenticator app. Here are some ideas for future enhancements:
-- PUSH 2FA: Implement push-based 2FA, where users receive a notification on their mobile device to approve or deny login attempts.
-- Biometric Authentication: Integrate biometric authentication methods, such as fingerprint or facial recognition, for added security.
+
+- **PUSH 2FA**: Implement push-based 2FA, where users receive a notification on their mobile device to approve or deny login attempts.
+- **Biometric Authentication**: Integrate biometric authentication methods, such as fingerprint or facial recognition, for added security.
+
+To better understand how these approaches compare with the current TOTP-based solution, the following table summarizes their main characteristics in terms of security, user experience, and implementation effort.
+
+| Method | Security Level | UX | Offline | Implementation Complexity |
+|--------|----------------|----|---------|---------------------------|
+| TOTP (Authenticator) | High | Medium | true | Low |
+| Push Notification | Very High | High | false | High |
+| Biometrics | Very High | Very High | false | Very High |
 
 {/* Image of a push notification example */}
 > [icon=false]
-> **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.
-> However, they may require **additional infrastructure** and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.
+> **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.  
+> However, they may require **additional infrastructure** and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.  
 > The decision-making process between the two methods (PUSH vs TOTP) can be handled based on **user preferences**, **device capabilities**, or **security policies** (e.g. a **new device** login could enforce PUSH 2FA).
-
-| Nom       | Âge | Ville        |
-|-----------|-----|--------------|
-| Alice     | 25  | Paris        |
-| Bob       | 30  | Marseille    |
-| Charlie   | 22  | Lyon         |

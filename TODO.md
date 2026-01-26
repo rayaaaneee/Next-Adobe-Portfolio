@@ -36,6 +36,7 @@
 * [ ] Sticky Header With page title on scroll (md -)
 * [X] Default theme to light
 * [X] Medias
+
   * [X] Tooltip media queries
   * [X] Menu medias
   * [X] Home media queries
@@ -53,5 +54,7 @@
 * [ ] Carousel Image Left Chevron doesn't have a great animation whille disappearing
 * [ ] Pageable Grid -> blogs
 * [ ] Ajout d'une langue non automatisé
+
   * [ ] Objectif : Il y a des valeurs dures dans le code (ex: Language enum dans les fichiers de langue, availableLanguages) qui empechent le simple ajout d'un fichier de langue pour ajouter une langue dans asset/data/i18n/[lang].ts
 * [X] Fix default language management (should be only one)
+* [ ] Allow sort on plural columns on mdxTable

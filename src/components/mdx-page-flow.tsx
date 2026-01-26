@@ -6,6 +6,7 @@ import { CgDanger } from "react-icons/cg";
 import { MdInfo } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa6";
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 
 import cn from '@/util/function/cn';
@@ -31,12 +32,14 @@ import MdxTableResizer from './mdx/table/table-resizer';
 
 import ChildrenInterface from '@/util/interface/children';
 import ClassNameInterface from '@/util/interface/classname';
+import TableInterface from '@/components/mdx/table/table-interface';
 
 import NextImageProps from '@/util/type/next-image-props';
 import { ChildrenType } from '@/util/interface/children';
 
 
 import hash from 'hash-sum';
+import MdxTableRounded from './mdx/table/table-rounded';
 
 // Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
 export const MdxImage = (props: NextImageProps) => (
@@ -149,7 +152,8 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                             if (typeof child === "string") {
                                 if (child.includes("\n")) return (
                                     child.split("\n").map((line, j, arr) => {
-                                        return (
+                                        if (line.trim() === '') return null;
+                                        else return (
                                             <Fragment key={`${i}-${j}`}>
                                                 {line}
                                                 {arr.length - 1 !== j ? <br /> : null}
@@ -229,9 +233,9 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
             <blockquote className={cn(
                 QuoteType[parsed.type],
                 'border-l-8 text-lg',
-                'pl-4 py-2 my-6',
+                'pl-4 py-2 mt-6',
                 'flex items-center gap-4 [&_*]:my-0 box-border',
-                'bg-white/70 dark:bg-black/70 w-[113%] xs:w-[108%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
+                'bg-white/70 dark:bg-black/70 w-[113%] sm:w-full justify-self-center sm:justify-self-start sm:rounded-r-lg',
             )}>
                 { parsed.icon && (
                     <div className='quote-icon text-2xl flex-shrink-0'>
@@ -332,29 +336,43 @@ export const MdxSpoiler = (props: ChildrenInterface & { title?: string, node?: u
     );
 };
 
-/*Table components
-    Usage :
+/*
+Table components :
+
+Usage :
+
     Col1 | Col2 | Col3
     -----|------|-----
     Data1 | Data2 | Data3
     Data4 | Data5 | Data6
+
 */
 export const MdxTable = (props: ChildrenInterface) => {
-    const id = `mdx-table-${hash({props, date: Date.now()}).slice(0,8)}`;
+    const id = `mdx-table-${hash(props).slice(0,8)}`;
+
+    const ClientComponents: React.FC<TableInterface>[] = [
+        MdxTableRounded,
+        MdxTableSorter,
+        MdxTableResizer
+    ]
+
     return (
         <article>
-            <table id={id} className='w-full max-size border-collapse'>
-                { props.children }
-            </table>
-                <MdxTableSorter tableId={id} />
-                <MdxTableResizer tableId={id} />
+            <div className='w-full mt-6 overflow-x-auto scrollbar-thin scrollbar-thumb-rounded'>
+                    <table id={id} className='box-border w-full rounded-2xl max-size table-auto border-collapse'>
+                        { props.children }
+                    </table>
+            </div>
+            { ClientComponents.map((ClientComponent, index) => (
+                <ClientComponent key={index} tableId={id} />
+            )) }
         </article>
     );
 }
 
 export const MdxThead = (props: ChildrenInterface) => {
     return (
-        <thead className='font-apple bg-[#f0efed] border border-[#686766] dark:bg-[#2F3437] dark:border-[#4b5563] rounded-md overflow-hidden'>
+        <thead className='font-apple bg-[#f0efed] border border-[#686766] dark:bg-[#383836]/60 dark:border-[#383836]/60 rounded-md overflow-hidden'>
             { props.children }
         </thead>
     );
@@ -362,7 +380,7 @@ export const MdxThead = (props: ChildrenInterface) => {
 
 export const MdxTbody = (props: ChildrenInterface) => {
     return (
-        <tbody className='font-apple bg-[#FFFFFF] border border-[#e6e5e3] dark:bg-[#2F3437] dark:border-[#4b5563] rounded-md overflow-hidden'>
+        <tbody className='font-apple bg-[#FFFFFF] border border-[#e6e5e3] dark:bg-[#191919]/60 dark:border-[#383836]/60 rounded-md overflow-hidden'>
             { props.children }
         </tbody>
     );
@@ -370,7 +388,7 @@ export const MdxTbody = (props: ChildrenInterface) => {
 
 export const MdxTr = (props: ChildrenInterface) => {
     return (
-        <tr className='group transition-colors border border-[#e6e5e3] hover:bg-[#F7F7F6] dark:group-hover:bg-[#3A3F40]/20'>
+        <tr className='group transition-colors border border-[#e6e5e3] dark:border-[#383836]/60 hover:bg-[#F7F7F6] dark:hover:bg-white/10'>
             { props.children }
         </tr>
     );
@@ -379,16 +397,65 @@ export const MdxTr = (props: ChildrenInterface) => {
 export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & ChildrenInterface) => {
     const { children, className, ...rest } = props;
     return (
-        <th {...rest} className={cn('px-4 py-3 text-left align-middle text-md font-medium text-[#37352F] dark:text-[rgba(255,255,255,0.9)] border-b border-[#e6e5e3] dark:border-[rgba(255,255,255,0.04)] first:rounded-tl-md last:rounded-tr-md', className)}>
-            <div className='select-none'>{ children }</div>
+        <th {...rest} className={cn('px-4 py-3 text-left align-middle text-md font-medium text-[#37352F] dark:text-[rgba(255,255,255,0.9)] border border-[#e6e5e3] dark:border-[#383836] first:rounded-tl-md last:rounded-tr-md', className)}>
+            <div className='select-none break-words inline-flex items-center gap-2'>{ children }</div>
         </th>
     );
 };
 
 export const MdxTd = (props: ChildrenInterface) => {
+
+    const renderChild = (child: ChildrenInterface) => {
+        if (child === true) return <FaCheckCircle className='text-green-500' />;
+        if (child === false) return <FaTimesCircle className='text-red-500' />;
+        if (typeof child === 'string') {
+            const s = child.trim().toLowerCase();
+            if (s === 'true') return <FaCheckCircle className='text-green-500' />;
+            if (s === 'false') return <FaTimesCircle className='text-red-500' />;
+        }
+        return child;
+    };
+
+    const childrenArray = Children.toArray((props).children);
+
+    const extractBoolean = (child: ChildrenInterface[]): boolean | null => {
+        if (child === true) return true;
+        if (child === false) return false;
+        if (typeof child === 'string') {
+            const s = child.trim().toLowerCase();
+            if (s === 'true') return true;
+            if (s === 'false') return false;
+            return null;
+        }
+        if (child && typeof child === 'object' && 'props' in child) {
+            const nested = child.props?.children;
+            if (nested === undefined || nested === null) return null;
+            const arr = Children.toArray(nested);
+            if (arr.length === 1) return extractBoolean(arr[0]);
+            return null;
+        }
+        return null;
+    };
+
+    const singleBool = childrenArray.length === 1 ? extractBoolean(childrenArray[0]) : null;
+
+    const tdProps = singleBool !== null ? { 'data-bool': String(singleBool) } : {};
+
     return (
-        <td className='px-4 py-2 text-md text-[#37352F] dark:text-[rgba(255,255,255,0.9)] align-middle border border-[#e6e5e3] dark:border-[rgba(255,255,255,0.03)]'>
-            <div className='py-0.5'>{ props.children }</div>
+        <td {...tdProps} className='px-4 py-2 text-md text-[#37352F] dark:text-[rgba(255,255,255,0.9)] align-middle border border-[#e6e5e3] dark:border-[rgba(255,255,255,0.03)]'>
+            {singleBool !== null ? (
+                <div className='py-0.5 flex justify-center items-center'>
+                    {renderChild(childrenArray[0])}
+                </div>
+            ) : (
+                <div className='py-0.5 break-words'>
+                    {childrenArray.map((c, i) => (
+                        <span key={i} className='inline-flex items-center gap-2'>
+                            {renderChild(c)}
+                        </span>
+                    ))}
+                </div>
+            )}
         </td>
     );
 };

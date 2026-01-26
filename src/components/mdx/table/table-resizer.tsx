@@ -1,7 +1,9 @@
 "use client";
 import { useEffect } from 'react';
-type Props = { tableId: string };
-export default function MdxTableResizer({ tableId }: Props) {
+
+import type TableInterface from './table-interface';
+
+const MdxTableResizer = ({ tableId }: TableInterface) => {
 	useEffect(() => {
 	const table = document.getElementById(tableId) as HTMLTableElement | null;
 	if (!table) throw new Error(`Table with id "${tableId}" not found.`);
@@ -10,7 +12,7 @@ export default function MdxTableResizer({ tableId }: Props) {
 	const EDGE_THRESHOLD = 6; // px
 
 	// Ensure there's a colgroup that matches header cell count
-	function ensureColGroup(): HTMLTableColElement[] {
+	const ensureColGroup = (): HTMLTableColElement[] => {
 		let colgroup = tbl.querySelector('colgroup');
 		const headerRow = tbl.querySelector('thead tr') || tbl.querySelector('tr');
 		const colsCount = headerRow ? headerRow.children.length : 0;
@@ -66,7 +68,7 @@ export default function MdxTableResizer({ tableId }: Props) {
 	overlay.style.display = 'none';
 	document.body.appendChild(overlay);
 
-	function setOverlayFromCellRect(rect: DOMRect | null) {
+	const setOverlayFromCellRect = (rect: DOMRect | null) => {
 		if (!rect) return;
 		const tableRect = tbl.getBoundingClientRect();
 		// overlay spans the full table height, but positioned at the column edge
@@ -76,11 +78,11 @@ export default function MdxTableResizer({ tableId }: Props) {
 		overlay.style.display = 'block';
 	}
 
-	function clearOverlay() {
+	const clearOverlay = () => {
 		overlay.style.display = 'none';
 	}
 
-	function updateHover(clientX: number, clientY: number) {
+	const updateHover = (clientX: number, clientY: number) => {
 		const el = document.elementFromPoint(clientX, clientY) as HTMLElement | null;
 		if (!el) {
 			hoverIndex = null;
@@ -97,18 +99,20 @@ export default function MdxTableResizer({ tableId }: Props) {
 		}
 		const rect = cell.getBoundingClientRect();
 		const distanceToRight = Math.abs(rect.right - clientX);
-		if (distanceToRight <= EDGE_THRESHOLD) {
-			const row = cell.parentElement as HTMLTableRowElement | null;
-			if (!row) return;
+		const row = cell.parentElement as HTMLTableRowElement | null;
+		if (distanceToRight <= EDGE_THRESHOLD && row) {
 			const idx = Array.prototype.indexOf.call(row.children, cell);
+			// Only allow resizing when there is a column to the right
+			if (idx < row.children.length - 1) {
 				hoverIndex = idx;
 				tbl.style.cursor = 'col-resize';
 				setOverlayFromCellRect(rect);
-		} else {
-			hoverIndex = null;
-			tbl.style.cursor = '';
-			clearOverlay();
+				return;
+			}
 		}
+		hoverIndex = null;
+		tbl.style.cursor = '';
+		clearOverlay();
 	}
 
 	const onMouseMove = (ev: MouseEvent) => {
@@ -124,8 +128,13 @@ export default function MdxTableResizer({ tableId }: Props) {
 		leftIndex = hoverIndex;
 		const leftCol = cols[leftIndex] || null;
 		const rightCol = cols[leftIndex + 1] || null;
-		startLeftWidth = leftCol ? Math.round(leftCol.getBoundingClientRect().width) : 0;
-		startRightWidth = rightCol ? Math.round(rightCol.getBoundingClientRect().width) : 0;
+		// Only allow resizing between two columns
+		if (!leftCol || !rightCol) {
+			isResizing = false;
+			return;
+		}
+		startLeftWidth = Math.round(leftCol.getBoundingClientRect().width);
+		startRightWidth = Math.round(rightCol.getBoundingClientRect().width);
 
 		const onMove = (e: MouseEvent) => {
 			if (!isResizing) return;
@@ -178,8 +187,13 @@ export default function MdxTableResizer({ tableId }: Props) {
 		leftIndex = hoverIndex;
 		const leftCol = cols[leftIndex] || null;
 		const rightCol = cols[leftIndex + 1] || null;
-		startLeftWidth = leftCol ? Math.round(leftCol.getBoundingClientRect().width) : 0;
-		startRightWidth = rightCol ? Math.round(rightCol.getBoundingClientRect().width) : 0;
+		// Only allow resizing between two columns
+		if (!leftCol || !rightCol) {
+			isResizing = false;
+			return;
+		}
+		startLeftWidth = Math.round(leftCol.getBoundingClientRect().width);
+		startRightWidth = Math.round(rightCol.getBoundingClientRect().width);
 
 		const onMove = (e: TouchEvent) => {
 			const tt = e.touches[0];
@@ -230,3 +244,5 @@ export default function MdxTableResizer({ tableId }: Props) {
 
 	return null;
 }
+
+export default MdxTableResizer;
