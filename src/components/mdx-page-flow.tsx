@@ -1,12 +1,11 @@
-import { Children, Fragment, isValidElement, ReactElement } from 'react';
+import { Children, Fragment, isValidElement, type ReactElement } from 'react';
 
-import { BundledLanguage } from 'shiki';
+import { type BundledLanguage } from 'shiki';
 
 import { CgDanger } from "react-icons/cg";
 import { MdInfo } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa6";
-import { FaCheck } from 'react-icons/fa';
 import { ImCross } from "react-icons/im";
 import { IconType } from 'react-icons/lib';
 
@@ -30,17 +29,16 @@ import CodeBlock from '@/components/mdx/code-block/code-block';
 
 import MdxTableSorter from './mdx/table/table-sorter';
 import MdxTableResizer from './mdx/table/table-resizer';
+import MdxTableRounded from './mdx/table/table-rounded';
 
-import ChildrenInterface from '@/util/interface/children';
-import ClassNameInterface from '@/util/interface/classname';
-import TableInterface from '@/components/mdx/table/table-interface';
+import ChildrenInterface, { type ChildrenType } from '@/util/interface/children';
+import type ClassNameInterface from '@/util/interface/classname';
+import type TableInterface from '@/components/mdx/table/table-interface';
 
-import NextImageProps from '@/util/type/next-image-props';
-import { ChildrenType } from '@/util/interface/children';
+import type NextImageProps from '@/util/type/next-image-props';
 
 
 import hash from 'hash-sum';
-import MdxTableRounded from './mdx/table/table-rounded';
 
 // Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
 export const MdxImage = (props: NextImageProps) => (
@@ -48,8 +46,8 @@ export const MdxImage = (props: NextImageProps) => (
         <Tooltip 
             size={TooltipSize.md}
             className={cn(
-                "img-container rounded-md mx-auto",
-            )} 
+                "img-container rounded-md mx-auto mt-6 mb-3",
+            )}
             disabled={props.alt === undefined} 
             literalText={props.alt}
         >
@@ -153,7 +151,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                             if (typeof child === "string") {
                                 if (child.includes("\n")) return (
                                     child.split("\n").map((line, j, arr) => {
-                                        if (line.trim() === '') return null;
+                                        if (line.isEmpty()) return null;
                                         else return (
                                             <Fragment key={`${i}-${j}`}>
                                                 {line}
