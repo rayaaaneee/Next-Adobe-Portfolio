@@ -27,8 +27,8 @@ export interface AdaptiveGridElementProjectData extends AdaptiveGridElementData 
 
 export type oneToTen = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
-export const isOneToTen = (n: number): n is oneToTen => {
-    return n >= 1 && n <= 10;
+export const isOneToTen = (n: unknown): n is oneToTen => {
+    return typeof n === "number" && n >= 1 && n <= 10;
 }
 
 interface AdaptiveGridBaseProps extends ClassNameInterface {
@@ -70,6 +70,7 @@ const AdaptiveGrid = forwardRef<HTMLDivElement, AdaptiveGridProps>(
         if (elementsPerRow > elementCount) elementsPerRow = elementCount as oneToTen;
 
         return (
+
             <div
                 ref={ref}
                 className={cn(

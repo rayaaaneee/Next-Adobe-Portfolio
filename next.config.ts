@@ -30,7 +30,9 @@ const nextConfig: NextConfig = withPWA({
         includePaths: [path.join(__dirname, "src", "asset", "scss")],
     },
     experimental: {
-        mdxRs: true,
+        // mdxRs (rust-based MDX) disables running JS remark/rehype plugins.
+        // Set to false so our JS remark plugins (spoiler, expose-node) are executed.
+        mdxRs: false,
         serverActions: {
             allowedOrigins: [
                 ...allowedOrigins.map(({ url }) => url), 
@@ -51,6 +53,12 @@ const nextConfig: NextConfig = withPWA({
 
 const withMDX = createMDX({
     extension: /\.(md|mdx)$/,
+    options: {
+        remarkPlugins: [
+            require.resolve('remark-gfm'),
+        ],
+        rehypePlugins: [],
+    },
 });
 
 export default withMDX(nextConfig);

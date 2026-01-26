@@ -9,6 +9,7 @@ import { baseImageProps } from './adaptive-grid-base';
 // import bundlrImg from '~/img/home/projects/bundlr.png';
 import Logo, { LogoColors } from '@/components/logo';
 import worldMasterImg from '~/img/home/projects/worldmaster.png';
+import { HiFire } from "react-icons/hi";
 import snakeAiImg from '~/img/home/projects/snake-ai.png';
 import sunsysImg from '~/img/home/projects/sunsys.png';
 import { GeneralTechnologiesName } from './general-technologies-list';
@@ -18,7 +19,7 @@ const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
         content: {
             name: 'SDMIS',
             color: "rgb(144,221,239)",
-            icon: <Logo color={LogoColors.black} asImage {...baseImageProps} />,
+            icon: <HiFire {...baseImageProps} />,
             link: "https://github.com/rayaaaneee/SDMIS",
         },
         githubLink: undefined,

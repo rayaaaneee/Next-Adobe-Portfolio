@@ -1,6 +1,12 @@
-import { Children, createElement, Fragment, isValidElement, ReactElement } from 'react';
+import { Children, Fragment, isValidElement, ReactElement } from 'react';
 
 import { BundledLanguage } from 'shiki';
+
+import { CgDanger } from "react-icons/cg";
+import { MdInfo } from "react-icons/md";
+import { IoWarning } from "react-icons/io5";
+import { FaLightbulb } from "react-icons/fa6";
+import { IconType } from 'react-icons/lib';
 
 import cn from '@/util/function/cn';
 
@@ -13,9 +19,15 @@ import {
     ParagraphAlignment 
 } from '@/components/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip/tooltip';
+
 import Separator from '@/components/other/separator';
 
-import CodeBlock from '@/components/blog/_components/code-block';
+import ImageFlow from '@/components/mdx/image-flow';
+
+import CodeBlock from '@/components/mdx/code-block/code-block';
+
+import MdxTableSorter from './mdx/table/table-sorter';
+import MdxTableResizer from './mdx/table/table-resizer';
 
 import ChildrenInterface from '@/util/interface/children';
 import ClassNameInterface from '@/util/interface/classname';
@@ -23,7 +35,8 @@ import ClassNameInterface from '@/util/interface/classname';
 import NextImageProps from '@/util/type/next-image-props';
 import { ChildrenType } from '@/util/interface/children';
 
-import ImageFlow from './image-flow';
+
+import hash from 'hash-sum';
 
 // Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
 export const MdxImage = (props: NextImageProps) => (
@@ -82,12 +95,6 @@ export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
 > MdxQuote content...
 > MdxQuote content...
 */
-import { CgDanger } from "react-icons/cg";
-import { MdInfo } from "react-icons/md";
-import { IoWarning } from "react-icons/io5";
-import { FaLightbulb } from "react-icons/fa6";
-import { IconType } from 'react-icons/lib';
-
 export const MdxQuote = ({ children }: ChildrenInterface) => {
 
     enum QuoteType {
@@ -308,3 +315,80 @@ export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: strin
         { children }
     </a>
 );
+
+// Placeholder for Spoiler component — left empty for later implementation
+export const MdxSpoiler = (props: ChildrenInterface & { title?: string, node?: unknown }) => {
+    // Prefer explicit title prop (set by the remark plugin via hProperties.title)
+    const title = props.title || undefined;
+    return (
+        <details className='mdx-spoiler'>
+            <summary className='cursor-pointer underline underline-offset-2'>
+                { title || 'Spoiler' }
+            </summary>
+            <div className='mt-2'>
+                { props.children }
+            </div>
+        </details>
+    );
+};
+
+/*Table components
+    Usage :
+    Col1 | Col2 | Col3
+    -----|------|-----
+    Data1 | Data2 | Data3
+    Data4 | Data5 | Data6
+*/
+export const MdxTable = (props: ChildrenInterface) => {
+    const id = `mdx-table-${hash({props, date: Date.now()}).slice(0,8)}`;
+    return (
+        <article>
+            <table id={id} className='w-full max-size border-collapse'>
+                { props.children }
+            </table>
+                <MdxTableSorter tableId={id} />
+                <MdxTableResizer tableId={id} />
+        </article>
+    );
+}
+
+export const MdxThead = (props: ChildrenInterface) => {
+    return (
+        <thead className='font-apple bg-[#f0efed] border border-[#686766] dark:bg-[#2F3437] dark:border-[#4b5563] rounded-md overflow-hidden'>
+            { props.children }
+        </thead>
+    );
+};
+
+export const MdxTbody = (props: ChildrenInterface) => {
+    return (
+        <tbody className='font-apple bg-[#FFFFFF] border border-[#e6e5e3] dark:bg-[#2F3437] dark:border-[#4b5563] rounded-md overflow-hidden'>
+            { props.children }
+        </tbody>
+    );
+};
+
+export const MdxTr = (props: ChildrenInterface) => {
+    return (
+        <tr className='group transition-colors border border-[#e6e5e3] hover:bg-[#F7F7F6] dark:group-hover:bg-[#3A3F40]/20'>
+            { props.children }
+        </tr>
+    );
+};
+
+export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & ChildrenInterface) => {
+    const { children, className, ...rest } = props;
+    return (
+        <th {...rest} className={cn('px-4 py-3 text-left align-middle text-md font-medium text-[#37352F] dark:text-[rgba(255,255,255,0.9)] border-b border-[#e6e5e3] dark:border-[rgba(255,255,255,0.04)] first:rounded-tl-md last:rounded-tr-md', className)}>
+            <div className='select-none'>{ children }</div>
+        </th>
+    );
+};
+
+export const MdxTd = (props: ChildrenInterface) => {
+    return (
+        <td className='px-4 py-2 text-md text-[#37352F] dark:text-[rgba(255,255,255,0.9)] align-middle border border-[#e6e5e3] dark:border-[rgba(255,255,255,0.03)]'>
+            <div className='py-0.5'>{ props.children }</div>
+        </td>
+    );
+};

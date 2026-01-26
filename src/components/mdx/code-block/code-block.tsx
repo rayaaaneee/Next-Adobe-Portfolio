@@ -1,6 +1,6 @@
 import { BundledLanguage, BundledTheme, codeToHtml } from 'shiki';
 
-import CodeBlockHeader from './code-block/code-block-header';
+import CodeBlockHeader from './code-block-header';
 
 import ChildrenInterface, { type ChildrenType } from '@/util/interface/children';
 
