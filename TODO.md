@@ -59,4 +59,5 @@
 * [X] Fix default language management (should be only one)
 * [ ] Allow sort on plural columns on mdxTable
 * [ ] Allow table inside quote component
+* [ ] Upgrade read-time approximation algorithm (take into account images, tabs, code blocks...)
 * [ ] Fix blog TOC (broken)

@@ -1,4 +1,4 @@
-import { Children, Fragment, isValidElement, ReactNode, type ReactElement } from 'react';
+import React, { Children, Fragment, isValidElement, ReactNode, type ReactElement } from 'react';
 
 import { type BundledLanguage } from 'shiki';
 
@@ -7,7 +7,8 @@ import { MdInfo } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
-import { IconType } from 'react-icons/lib';
+import { ImCheckmark } from "react-icons/im";
+import { type IconType } from 'react-icons/lib';
 
 import cn from '@/util/function/cn';
 
@@ -353,12 +354,19 @@ export const MdxTable = (props: ChildrenInterface) => {
         MdxTableRounded,
         MdxTableSorter,
         MdxTableResizer
-    ]
+    ];
 
     return (
         <article>
-            <div className='w-full mt-6 overflow-x-auto scrollbar-thin scrollbar-thumb-rounded'>
-                <table id={id} className='box-border w-full rounded-2xl max-size table-auto border-collapse'>
+            <div className={cn(
+                'w-full mt-6 overflow-x-auto',
+                'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400',
+                'scrollbar-track-transparent'
+            )}>
+                <table id={id} className={cn(
+                    'box-border w-full max-size',
+                    'rounded-2xl table-auto border-collapse'
+                )}>
                     { props.children }
                 </table>
             </div>
@@ -371,7 +379,13 @@ export const MdxTable = (props: ChildrenInterface) => {
 
 export const MdxThead = (props: ChildrenInterface) => {
     return (
-        <thead className='font-apple bg-[#f0efed] border border-[#686766] dark:bg-[#383836]/60 dark:border-[#383836]/60 rounded-md overflow-hidden'>
+        <thead 
+            className={cn(
+                'font-apple',
+                'bg-[#f0efed] border dark:bg-[#383836]/60',
+                'border-[#686766] dark:border-[#383836]/60',
+                'rounded-md overflow-hidden'
+            )}>
             { props.children }
         </thead>
     );
@@ -379,7 +393,12 @@ export const MdxThead = (props: ChildrenInterface) => {
 
 export const MdxTbody = (props: ChildrenInterface) => {
     return (
-        <tbody className='font-apple bg-[#FFFFFF] border border-[#e6e5e3] dark:bg-[#191919]/60 dark:border-[#383836]/60 rounded-md overflow-hidden'>
+        <tbody className={cn(
+            'font-apple',
+            'bg-[#FFFFFF] border dark:bg-[#191919]/60',
+            'border-[#e6e5e3] dark:border-[#383836]/60',
+            'rounded-md overflow-hidden'
+        )}>
             { props.children }
         </tbody>
     );
@@ -387,7 +406,11 @@ export const MdxTbody = (props: ChildrenInterface) => {
 
 export const MdxTr = (props: ChildrenInterface) => {
     return (
-        <tr className='group transition-colors border border-[#e6e5e3] dark:border-[#383836]/60 hover:bg-[#F7F7F6] dark:hover:bg-white/10'>
+        <tr className={cn(
+            'group transition-colors',
+            'border border-[#e6e5e3] dark:border-[#383836]/60',
+            'hover:bg-[#F7F7F6] dark:hover:bg-white/10'
+        )}>
             { props.children }
         </tr>
     );
@@ -396,61 +419,77 @@ export const MdxTr = (props: ChildrenInterface) => {
 export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & ChildrenInterface) => {
     const { children, className, ...rest } = props;
     return (
-        <th {...rest} className={cn('px-4 py-3 text-left align-middle text-md font-medium text-[#37352F] dark:text-[rgba(255,255,255,0.9)] border border-[#e6e5e3] dark:border-[#383836] first:rounded-tl-md last:rounded-tr-md', className)}>
-            <div className='select-none break-words inline-flex items-center gap-2'>{ children }</div>
+        <th {...rest} className={cn(
+            'px-4 py-3',
+            'text-left align-middle text-md font-medium',
+            'text-[#37352F] dark:text-[rgba(255,255,255,0.9)]',
+            'border border-[#e6e5e3] dark:border-[#383836]',
+            'first:rounded-tl-md last:rounded-tr-md', 
+            className
+        )}>
+            <div className={cn('select-none break-words inline-flex items-center gap-2')}>{ children }</div>
         </th>
     );
 };
-import { ImCheckmark } from "react-icons/im";
-export const MdxTd = (props: ChildrenInterface) => {
 
-    const renderChild = (child: ReactNode) => {
+type BooleanString = 'true' | 'false';
+
+export const MdxTd = ({ children }: ChildrenInterface) => {
+
+    const getBooleanString = (child: ReactNode): BooleanString | null => {
         if (typeof child === 'string') {
             const s = child.clean();
-            if (s === 'true') return <ImCheckmark className='text-green-500 text-xl' />;
-            if (s === 'false') return <ImCross className='text-red-500 text-lg' />;
-        }
-        return child;
-    };
-
-    const childrenArray = Children.toArray((props).children);
-
-    const extractBoolean = (child: ReactNode): boolean | null => {
-        if (typeof child === 'string') {
-            const s = child.clean();
-            if (s === 'true') return true;
-            if (s === 'false') return false;
-            return null;
-        }
-        if (child && typeof child === 'object' && 'props' in child) {
-            const nested = (child as { props?: { children?: React.ReactNode } }).props?.children;
-            if (nested === undefined || nested === null) return null;
-            const arr = Children.toArray(nested);
-            if (arr.length === 1) return extractBoolean(arr[0]);
-            return null;
+            if (s === 'true' || s === 'false') return s as BooleanString;
+            else return null;
         }
         return null;
+    }
+
+    const isBooleanString = (child: ReactNode): child is BooleanString => 
+        (getBooleanString(child) !== null);
+
+    const isNumberString = (child: ReactNode): child is string => {
+        if (typeof child === 'string') {
+            const s = child.clean();
+            return !Number.isNaN(Number(s));
+        }
+        return false;
+    }
+
+    const renderChild = (child: ReactNode) => {
+        const boolStr = getBooleanString(child);
+        switch (boolStr) {
+            case 'true':
+                return <ImCheckmark className='text-green-500 text-2xl' />;
+            case 'false':
+                return <ImCross className='text-red-500 text-xl' />;
+            default:
+                return child;
+        }
     };
 
-    const singleBool = childrenArray.length === 1 ? extractBoolean(childrenArray[0]) : null;
+    const getType = (children: ReactNode): 'boolean' | 'number' | 'text' => {
+        if (isBooleanString(children)) return 'boolean';
+        else if (isNumberString(children)) return 'number';
+        else return 'text';
+    };
 
-    const tdProps = singleBool !== null ? { 'data-bool': String(singleBool) } : {};
+    const containerClassName = `py-0.5 ${isBooleanString(children) ? 'flex justify-center' : 'break-words'}`;
 
     return (
-        <td {...tdProps} className='px-4 py-2 text-md text-[#37352F] dark:text-[rgba(255,255,255,0.9)] align-middle border border-[#e6e5e3] dark:border-[rgba(255,255,255,0.03)]'>
-            {singleBool !== null ? (
-                <div className='py-0.5 flex justify-center items-center'>
-                    {renderChild(childrenArray[0])}
-                </div>
-            ) : (
-                <div className='py-0.5 break-words'>
-                    {childrenArray.map((c, i) => (
-                        <span key={i} className='inline-flex items-center gap-2'>
-                            {renderChild(c)}
-                        </span>
-                    ))}
-                </div>
+        <td 
+            className={cn(
+                "px-4 py-2",
+                "text-md text-[#37352F] dark:text-[rgba(255,255,255,0.9)]",
+                "align-middle",
+                "border border-[#e6e5e3] dark:border-[rgba(255,255,255,0.03)]"
             )}
+            data-type={ getType(children) }
+            data-value={ isBooleanString(children) ? children : undefined }
+        >
+            <div className={containerClassName}>
+                { renderChild(children) }
+            </div>
         </td>
     );
 };

@@ -92,16 +92,6 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 				return Number.isFinite(n) ? n : NaN;
 			};
 
-			const isBooleanLike = (v: string, cell?: HTMLTableCellElement | null) => {
-				// prefer explicit data attribute when available
-				if (cell) {
-					const db = cell.getAttribute('data-bool');
-					if (db === 'true' || db === 'false') return true;
-				}
-				const s = v.trim().toLowerCase();
-				return s === 'true' || s === 'false';
-			};
-
 			const rowsSortAndRender = (seq: number[]) => {
 				const comparator = (a: HTMLTableRowElement, b: HTMLTableRowElement) => {
 					for (const col of seq) {
@@ -109,26 +99,8 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 						if (!dir) continue;
 						const aCell = a.cells[col] as HTMLTableCellElement | undefined;
 						const bCell = b.cells[col] as HTMLTableCellElement | undefined;
-						const aDb = aCell?.getAttribute('data-bool');
-						const bDb = bCell?.getAttribute('data-bool');
 						const vaRaw = aCell?.textContent?.trim() ?? '';
 						const vbRaw = bCell?.textContent?.trim() ?? '';
-
-						// If either cell has explicit data-bool, use boolean comparison
-						if ((aDb === 'true' || aDb === 'false') || (bDb === 'true' || bDb === 'false')) {
-							const va = (aDb ?? vaRaw).toLowerCase() === 'true' ? 1 : 0;
-							const vb = (bDb ?? vbRaw).toLowerCase() === 'true' ? 1 : 0;
-							if (va !== vb) return dir === 'asc' ? va - vb : vb - va;
-							continue;
-						}
-
-						// Fallback: detect boolean-like by text
-						if (isBooleanLike(vaRaw) && isBooleanLike(vbRaw)) {
-							const va = vaRaw.toLowerCase() === 'true' ? 1 : 0;
-							const vb = vbRaw.toLowerCase() === 'true' ? 1 : 0;
-							if (va !== vb) return dir === 'asc' ? va - vb : vb - va;
-							continue;
-						}
 
 						const na = parseNumber(vaRaw);
 						const nb = parseNumber(vbRaw);
@@ -213,10 +185,29 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 					return Number.isFinite(n) ? n : NaN;
 				};
 
-				const isBooleanLike = (v: string) => {
-					const s = v.trim().toLowerCase();
-					return s === 'true' || s === 'false';
-				};
+				const getTableValues = (col: HTMLTableCellElement): {
+					raw: string | number | boolean;
+					type: 'text' | 'number' | 'boolean';
+				} => {
+					if (!col) return { raw: '', type: 'text' };
+					const vaType = col.getAttribute('data-type') ?? 'text';
+					const valueAttr = col.getAttribute('data-value');
+					const content = col.textContent?.trim() ?? '';
+					switch (vaType) {
+						case 'number':
+							const n = parseInt(content);
+							if (!Number.isNaN(n)) return { raw: n, type: 'number' };
+							else return { raw: content, type: 'text' };
+						case 'boolean':
+							if (valueAttr === null) throw new Error('Boolean column must have data-value attribute set to "true" or "false".');
+							const vLower = JSON.parse(valueAttr) as boolean;
+							return { raw: vLower, type: 'boolean' };
+						case 'text':
+							return { raw: content, type: 'text' };
+						default:
+							return { raw: content, type: 'text' };
+					}
+				}
 
 				const comparator = (a: HTMLTableRowElement, b: HTMLTableRowElement) => {
 					for (const col of seq) {
@@ -225,35 +216,33 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 
 						const aCell = a.cells[col] as HTMLTableCellElement | undefined;
 						const bCell = b.cells[col] as HTMLTableCellElement | undefined;
-						const aDb = aCell?.getAttribute('data-bool');
-						const bDb = bCell?.getAttribute('data-bool');
-						const vaRaw = aCell?.textContent?.trim() ?? '';
-						const vbRaw = bCell?.textContent?.trim() ?? '';
+						if (!aCell || !bCell) continue;
+						
+						const aCellValues = getTableValues(aCell!);
+						const bCellValues = getTableValues(bCell!);
 
-						// Prefer explicit data-bool when present
-						if ((aDb === 'true' || aDb === 'false') || (bDb === 'true' || bDb === 'false')) {
-							const va = (aDb ?? vaRaw).toLowerCase() === 'true' ? 1 : 0;
-							const vb = (bDb ?? vbRaw).toLowerCase() === 'true' ? 1 : 0;
-							if (va !== vb) return dir === 'asc' ? va - vb : vb - va;
+						const vaRaw = aCellValues.raw;
+						const vbRaw = bCellValues.raw;
+
+						// handle boolean
+						if (aCellValues.type === 'boolean' && bCellValues.type === 'boolean') {
+							const vaBool = vaRaw as boolean;
+							const vbBool = vbRaw as boolean;
+							if (vaBool !== vbBool) {
+								return dir === 'asc' ? (vaBool ? -1 : 1) : (vaBool ? 1 : -1);
+							}
 							continue;
 						}
 
-						// Fallback: detect boolean-like by text
-						if (isBooleanLike(vaRaw) && isBooleanLike(vbRaw)) {
-							const va = vaRaw.toLowerCase() === 'true' ? 1 : 0;
-							const vb = vbRaw.toLowerCase() === 'true' ? 1 : 0;
-							if (va !== vb) return dir === 'asc' ? va - vb : vb - va;
-							continue;
-						}
-
-						const na = parseNumber(vaRaw);
-						const nb = parseNumber(vbRaw);
+						// handle number
+						const na = parseNumber(String(vaRaw));
+						const nb = parseNumber(String(vbRaw));
 						if (!Number.isNaN(na) && !Number.isNaN(nb)) {
 							if (na !== nb) return dir === 'asc' ? na - nb : nb - na;
 							continue;
 						}
 
-						const cmp = dir === 'asc' ? vaRaw.localeCompare(vbRaw, undefined, { numeric: true }) : vbRaw.localeCompare(vaRaw, undefined, { numeric: true });
+						const cmp = dir === 'asc' ? String(vaRaw).localeCompare(String(vbRaw), undefined, { numeric: true }) : String(vbRaw).localeCompare(String(vaRaw), undefined, { numeric: true });
 						if (cmp !== 0) return cmp;
 					}
 					return 0;
@@ -289,8 +278,8 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 		});
 
 		return () => {
-			clickHandlers.forEach(un => un());
-			iconRemovers.forEach(un => un());
+			clickHandlers.forEach(remove => remove());
+			iconRemovers.forEach(remove => remove());
 			// unmount roots
 			iconRoots.forEach(r => { try { r.unmount(); } catch (_) { /* ignore */ } });
 		};
