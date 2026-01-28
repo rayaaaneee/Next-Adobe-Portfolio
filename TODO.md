@@ -61,3 +61,5 @@
 * [ ] Allow table inside quote component
 * [ ] Upgrade read-time approximation algorithm (take into account images, tabs, code blocks...)
 * [ ] Fix blog TOC (broken)
+* [ ] Implement Severity keys on table (case bg change according to severity : High, medium, ...)
+* [ ] NotFound on blog broken

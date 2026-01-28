@@ -1,4 +1,4 @@
-import React, { Children, Fragment, isValidElement, ReactNode, type ReactElement } from 'react';
+import React, { isValidElement, type ReactNode, type ReactElement, Children, cloneElement } from 'react';
 
 import { type BundledLanguage } from 'shiki';
 
@@ -8,7 +8,6 @@ import { IoWarning } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import { ImCheckmark } from "react-icons/im";
-import { type IconType } from 'react-icons/lib';
 
 import cn from '@/util/function/cn';
 
@@ -40,10 +39,22 @@ import type NextImageProps from '@/util/type/next-image-props';
 
 
 import hash from 'hash-sum';
+import isArrayTyped from '@/util/function/is-array-typed';
+import getFirstChild, { removeFromFirstChild } from '@/util/function/get-first-child';
+
+const ArticleWrapper = ({ children, className, use = true }: ChildrenInterface & ClassNameInterface & { use?: boolean }) => 
+    (
+        use ? (
+            <article className={cn(className)}>
+                {children}
+            </article>) 
+            : 
+            children
+    )
 
 // Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
 export const MdxImage = (props: NextImageProps) => (
-    <article className='max-size'>
+    <ArticleWrapper className='max-size'>
         <Tooltip 
             size={TooltipSize.md}
             className={cn(
@@ -59,7 +70,7 @@ export const MdxImage = (props: NextImageProps) => (
                 props.className
             )} alt={props.alt} />
         </Tooltip>
-    </article>
+    </ArticleWrapper>
 );
 
 /* Usage :
@@ -91,14 +102,26 @@ export const MdxCode = ({ children, className }: mdxCodeProps) => {
 }
 
 /* For code block */
-export const MdxPre = ({ children }: ChildrenInterface) => (<>{children}</>);
+export const MdxPre = ({ children }: { children: ChildrenType[] }) => (<>{children}</>);
 
-/* Quote component with customizable type and icon 
-> [type=info,icon=true] // Optional
-> MdxQuote content...
-> MdxQuote content...
-*/
-export const MdxQuote = ({ children }: ChildrenInterface) => {
+/* Quote component with customizable type and icon */
+// > [type=info,icon=true] // Optional
+// > MdxQuote content...
+// > MdxQuote content...
+// TODO : ne prend pas en charge les elements complexes (Heading, Table, Separator, Anchor etc.) 
+// dans le contenu.
+// Actuellement seul les elements simples (Paragraph, Bold, Italic) sont supportés
+// Necessitera de bidouiller le parsing (déjà sincèrement chaotique) pour supporter les elements complexes 
+// tout en gardant la possibilité de définir le header de la quote
+export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
+
+    const debug = children.length === 11;
+
+    // Clear array for unused vars
+    const content = children.filter(children => {
+        if (typeof children === "string" && children === "\n") return false
+        else return true;
+    });
 
     enum QuoteType {
         info = 'border-[blanchedalmond]/70 dark:border-pink-200/70',
@@ -107,9 +130,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
         tip = 'border-green-400/70 dark:border-green-600/70',
     }
 
-    const QuoteIcon: {
-        [key in keyof typeof QuoteType]: ReactElement<IconType>;
-    } = {
+    const QuoteIcon: Record<keyof typeof QuoteType, ReactElement> = {
         info: <MdInfo className='text-3xl text-slate-600 dark:text-pink-200/70' />,
         warning: <IoWarning className='text-3xl text-yellow-400/70 dark:text-yellow-600/70' />,
         danger: <CgDanger className='text-3xl text-red-400/70 dark:text-red-600/70' />,
@@ -119,7 +140,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
     type ParsedType = {
         type: keyof typeof QuoteType,
         icon: boolean,
-        content: ChildrenType[],
+        content: ReactNode,
     }
 
     const defaultValues: Omit<ParsedType, 'content'> = {
@@ -127,109 +148,75 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
         icon: true,
     }
 
-    const parseQuoteHeader = (): ParsedType => {
-        // Find the first string child (usually the header line)
-        let header: string | null = null;
-        let content: ChildrenType[] = [];
+    const parseQuote = (children: ReactNode): ParsedType => {
 
-        const childrenTyped = children as (string | ReactElement & { props : { children: string | (ReactElement & { props : { children: string } }) } })[];
-        if (Array.isArray(childrenTyped)) {
-            for (const c of childrenTyped) {
-                if (typeof c !== 'string') {
-                    if (!Array.isArray(c.props.children)) {
-                        if ((c.props.children as string).trim().startsWith('[')) {
-                            header = (c.props.children as string).trim().split('\n')[0];
-                            content.push((c.props.children as string).trim().split('\n')[1]);
-                            break;
-                        }
-                    } else {
-                        if (typeof c.props.children[0] === 'string') {
-                            header = (c.props.children)[0].trim().startsWith('[') ? (c.props.children)[0] : null;
-                        } else {
-                            // No defined header, it's ok :)
-                        }
-                        content = Children.toArray(c.props.children).slice(header ? 1 : 0).map((child, i) => {
-                            if (typeof child === "string") {
-                                if (child.includes("\n")) return (
-                                    child.split("\n").map((line, j, arr) => {
-                                        if (line.isEmpty()) return null;
-                                        else return (
-                                            <Fragment key={`${i}-${j}`}>
-                                                {line}
-                                                {arr.length - 1 !== j ? <br /> : null}
-                                            </Fragment>
-                                        );
-                                    })
-                                );
-                                else return child;
-                            } else if (isValidElement(child)) {
-                                return (child);
-                            } else return String(child);
-                        });
-                        break;
-                    }
-                }
-            }
-        } else if (typeof children === 'string' && children.trim().startsWith('[')) {
-            header = children.trim().split('\n')[0];
+        // if (debug) debugger; 
+        children = Children.toArray(children);
+
+        let type: ParsedType["type"] = defaultValues.type;
+        let icon: ParsedType["icon"] = defaultValues.icon;
+
+        const getDefaultValues = () => {
+            const tmp = children;
+            return ({ type, icon, content: tmp });
         }
 
-        // Default values
-        let type: keyof typeof QuoteType = 'info';
-        let icon: boolean = true;
-
-        // If header is present, parse it
-        if (header && (header = header.removeAll(' ').trim())) {
-            // Accept [type=...], [icon=...], [type=...,icon=...], [icon=...,type=...], []
-            // Regex: [type=TYPE,icon=ICON] or [icon=ICON,type=TYPE] or [type=TYPE] or [icon=ICON] or []
-            const regex = /^\[(.*?)\]$/;
-            const match = header.match(regex);
-            if (match) {
-                const params = match[1].split(',').map(s => s.trim()).filter(Boolean);
-
-                for (const param of params) {
-
-                    if (param.startsWith('type=')) {
-
-                        const val = param.slice(5);
-                        if (!val) throw new Error('Invalid type: empty value');
-                        if (!(val in QuoteType)) throw new Error(`Invalid type value: "${val}". Allowed values are: ${Object.keys(QuoteType).join(', ')}`);
-                        type = val as keyof typeof QuoteType;
-                    
-                    } else if (param.startsWith('icon=')) {
-                    
-                        const val = param.slice(5);
-                        if (!val) throw new Error('Invalid icon: empty value');
-                        if (val === 'false') icon = false;
-                        else if (val === 'true') icon = true;
-                        else throw new Error(`Invalid icon value: "${val}". Allowed values are: true, false`);
-                    
-                    } else if (param.length > 0) {
-                    
-                        throw new Error(`Invalid parameter: "${param}". Allowed: type=..., icon=...`);
-                    
-                    }
-
-                }
-            }
+        let firstLine = getFirstChild(children);
+        
+        if (firstLine.includes("\n")) {
+            
+            firstLine = firstLine.split("\n")[0];
+            
+        }
+        
+        let header: string;
+        if (firstLine.trim().startsWith("[")) {
+            // There's a header
+            header = firstLine;
         } else {
-            type = defaultValues.type;
-            icon = defaultValues.icon;
+            // There's no header defined
+            return getDefaultValues();
         }
 
-        return { type, icon, content };
-    }
+        const match = header.clean().removeAll(" ").match(/^\[(.*?)\]$/);
 
-    let parsed: ParsedType;
-    try {
-        parsed = parseQuoteHeader();
-    } catch (e) {
-        // Optionally, you can render an error block or rethrow
-        throw e;
-    }
+        if (!match) return getDefaultValues();
+
+        children = removeFromFirstChild(header, children);
+
+        // Parse params
+        const params = match[1].split(",").map(p => p.trim()).filter(Boolean);
+
+        for (const param of params) {
+
+            if (param.startsWith("type=")) {
+                const val = param.slice(5);
+                if (!(val in QuoteType)) {
+                    throw new Error(`Invalid type "${val}"`);
+                }
+                type = val as keyof typeof QuoteType;
+
+            } else if (param.startsWith("icon=")) {
+                const val = param.slice(5);
+                if (val === "true") icon = true;
+                else if (val === "false") icon = false;
+                else throw new Error(`Invalid icon "${val}"`);
+
+            } else {
+                throw new Error(`Invalid parameter "${param}"`);
+            }
+        }
+        
+        return { type, icon, content: children };
+    };
+
+
+    const parsed: ParsedType = parseQuote(content);
+
+    //if (debug) debugger;
 
     return (
-        <article className='max-size'>
+        <ArticleWrapper className='max-size'>
             <blockquote className={cn(
                 QuoteType[parsed.type],
                 'border-l-8 text-lg',
@@ -246,7 +233,7 @@ export const MdxQuote = ({ children }: ChildrenInterface) => {
                     { parsed.content }
                 </div>
             </blockquote>
-        </article>
+        </ArticleWrapper>
     );
 };
 
@@ -258,11 +245,11 @@ Title :
 
 */
 export const MdxList = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <ul className='list-disc [&>li]:ml-8 [&>li]:my-2'>
             {children}
         </ul>
-    </article>
+    </ArticleWrapper>
 );
 
 export const MdxListItem = ({ children }: ChildrenInterface) => (
@@ -275,45 +262,44 @@ export const MdxListItem = ({ children }: ChildrenInterface) => (
 
 
 // Usage : ---
-export const MdxSeparator = () => (<article><Separator/></article>);
+export const MdxSeparator = () => (<ArticleWrapper><Separator/></ArticleWrapper>);
 
 // Usage : # Heading 1
 export const MdxHeadingOne = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <HeadingOne isAnchorLink containerClassName='ml-0'>{ children }</HeadingOne>
-    </article>
+    </ArticleWrapper>
 );
 
 // Usage : ## Heading 2
 export const MdxHeadingTwo = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <HeadingTwo isAnchorLink containerClassName='ml-0' className="mdx-heading">{ children }</HeadingTwo>
-    </article>
+    </ArticleWrapper>
 );
 
 // Usage : ### Heading 3
 export const MdxHeadingThree = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <HeadingThree isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingThree>
-    </article>
+    </ArticleWrapper>
 );
 
 // Usage : #### Heading 4
 export const MdxHeadingFour = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <HeadingFour isAnchorLink containerClassName='!ml-0' className="mdx-heading">{ children }</HeadingFour>
-    </article>
+    </ArticleWrapper>
 );
 
 // Usage: My paragraph...
 export const MdxParagraph = ({ children }: ChildrenInterface) => (
-    <article>
+    <ArticleWrapper>
         <Paragraph alignment={ParagraphAlignment.justify}>{ children }</Paragraph>
-    </article>
+    </ArticleWrapper>
 );
 
-// Usage
-// [link_text](https://example.com) 
+// Usage : [My link](https://example.com) 
 export const MdxAnchor = ({ children, href }: ChildrenInterface & { href?: string }) => (
     <a href={href} className='underline underline-offset-2' target='_blank'>
         { children }
@@ -357,7 +343,7 @@ export const MdxTable = (props: ChildrenInterface) => {
     ];
 
     return (
-        <article>
+        <ArticleWrapper>
             <div className={cn(
                 'w-full mt-6 overflow-x-auto',
                 'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400',
@@ -373,7 +359,7 @@ export const MdxTable = (props: ChildrenInterface) => {
             { ClientComponents.map((ClientComponent, index) => (
                 <ClientComponent key={index} tableId={id} />
             )) }
-        </article>
+        </ArticleWrapper>
     );
 }
 
@@ -382,7 +368,7 @@ export const MdxThead = (props: ChildrenInterface) => {
         <thead 
             className={cn(
                 'font-apple',
-                'bg-[#f0efed] border dark:bg-[#383836]/60',
+                'bg-[#f0efed]/60 border dark:bg-[#383836]/60',
                 'border-[#686766] dark:border-[#383836]/60',
                 'rounded-md overflow-hidden'
             )}>
@@ -395,7 +381,7 @@ export const MdxTbody = (props: ChildrenInterface) => {
     return (
         <tbody className={cn(
             'font-apple',
-            'bg-[#FFFFFF] border dark:bg-[#191919]/60',
+            'bg-[#FFFFFF]/60 border dark:bg-[#191919]/60',
             'border-[#e6e5e3] dark:border-[#383836]/60',
             'rounded-md overflow-hidden'
         )}>
@@ -416,25 +402,31 @@ export const MdxTr = (props: ChildrenInterface) => {
     );
 };
 
-export const MdxTh = (props: React.ThHTMLAttributes<HTMLTableCellElement> & ChildrenInterface) => {
-    const { children, className, ...rest } = props;
+export const MdxTh = ({ children }: ChildrenInterface) => {
     return (
-        <th {...rest} className={cn(
+        <th className={cn(
             'px-4 py-3',
             'text-left align-middle text-md font-medium',
             'text-[#37352F] dark:text-[rgba(255,255,255,0.9)]',
             'border border-[#e6e5e3] dark:border-[#383836]',
-            'first:rounded-tl-md last:rounded-tr-md', 
-            className
+            'first:rounded-tl-md last:rounded-tr-md'
         )}>
             <div className={cn('select-none break-words inline-flex items-center gap-2')}>{ children }</div>
         </th>
     );
 };
 
-type BooleanString = 'true' | 'false';
 
 export const MdxTd = ({ children }: ChildrenInterface) => {
+
+    type BooleanString = 'true' | 'false';
+
+    enum _Severity {
+        VERY_HIGH = 'Very High',
+        HIGH = 'High',
+        MEDIUM = 'Medium',
+        LOW = 'Low',
+    }
 
     const getBooleanString = (child: ReactNode): BooleanString | null => {
         if (typeof child === 'string') {
@@ -456,7 +448,7 @@ export const MdxTd = ({ children }: ChildrenInterface) => {
         return false;
     }
 
-    const renderChild = (child: ReactNode) => {
+    const renderChild = (child: ReactNode): ReactNode => {
         const boolStr = getBooleanString(child);
         switch (boolStr) {
             case 'true':

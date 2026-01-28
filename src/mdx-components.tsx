@@ -41,8 +41,10 @@ export const mdxComponents: MDXComponents = {
     h6: () => unsupported({type: 'h6'}),
     p: MdxParagraph,
     a: MdxAnchor,
-    // Custom components (remark plugins)
+    // Custom component (remark plugin) -> Currently broken
+    // ----
     Spoiler: MdxSpoiler,
+    // ----
     table: MdxTable,
     thead: MdxThead,
     tbody: MdxTbody,

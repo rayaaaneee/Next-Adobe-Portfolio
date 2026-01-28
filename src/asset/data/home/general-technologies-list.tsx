@@ -3,7 +3,7 @@ import DeepReadonly from '@/util/type/deep-readonly';
 /* Project techs icons */
 import { SiAngular, SiDotnet, SiElectron, SiExpress, SiGnubash, SiJquery, SiNextdotjs, SiNumpy, SiPostman, SiSpring, SiSymfony } from "react-icons/si";
 import { RiReactjsFill } from "react-icons/ri";
-import { TbBrandGithubCopilot, TbBrandNuxt } from "react-icons/tb";
+import { TbBrandNuxt } from "react-icons/tb";
 import { IoLogoDocker, IoLogoVue } from "react-icons/io5";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiCss3 } from "react-icons/si";
@@ -22,7 +22,7 @@ import { FaJava } from 'react-icons/fa';
 import { TbBrandKotlin } from "react-icons/tb";
 import { TbSql } from "react-icons/tb";
 import { RiPhpFill } from "react-icons/ri";
-import { VscMarkdown, VscVscode } from "react-icons/vsc";
+import { VscCopilot, VscMarkdown, VscVscode } from "react-icons/vsc";
 import { DiIntellij, DiMsqlServer, DiVisualstudio } from "react-icons/di";
 import { FaDatabase, FaGamepad, FaGitAlt } from "react-icons/fa6";
 import { SiPytorch, SiPostgresql } from "react-icons/si";
@@ -344,7 +344,7 @@ const generalTechnologies: GeneralTechnologiesType = {
         },
         {
             name: GeneralTechnologiesName.GITHUB_COPILOT,
-            icon: <TbBrandGithubCopilot />,
+            icon: <VscCopilot />,
             color: "#6CC644",
             link: 'https://github.com/features/copilot',
         },

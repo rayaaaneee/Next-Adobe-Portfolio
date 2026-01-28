@@ -9,8 +9,10 @@ This blog is based on a *school project* I worked on with other students, where 
 
 Following this reasoning, I had to implement 2FA as part of the authentication process. The project involved creating a simple web application with user registration and login functionalities, and we integrated 2FA to enhance security.
 
+{/* Broken, fix needed */}
 > [type=warning]
-> In this blog, only the implementation of 2FA using an Authenticator app is covered. Other methods, such as SMS or email-based 2FA, are not discussed here.
+> In this blog, only the implementation of 2FA using an Authenticator app is covered. 
+> **Other methods**, such as *SMS* or *email-based 2FA*, are **not discussed here**.
 
 ---
 
@@ -27,8 +29,9 @@ Here's a global schema of the current architecture :
 
 <Image src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
 
+{/* Display broken, fix needed */}
 > [type=tip]
-> The following table breaks down the main components of the application architecture and their responsibilities.
+> The following table breaks down the main components of the **application architecture** and their **responsibilities**.
 
 | Component      | Technology           | Responsibility                      |
 | -------------- | -------------------- | ----------------------------------- |
@@ -194,3 +197,19 @@ To better understand how these approaches compare with the current TOTP-based so
 > **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.  
 > However, they may require **additional infrastructure** and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.  
 > The decision-making process between the two methods (PUSH vs TOTP) can be handled based on **user preferences**, **device capabilities**, or **security policies** (e.g. a **new device** login could enforce PUSH 2FA).
+
+
+> [type=danger, icon= false]
+> Ceci est un [exemple de lien](https://example.link) avec *différents* composants tels que : 
+> # Voici un heading
+> ## Voici une deuxieme
+> Et pour **terminer** on peut potentionnelement rajouter 
+> 
+> ```cpp
+> int main() {
+>     printf("Hello World\n");
+>     return 0;
+> }
+> ```
+
+<Image src={userTotpRelationImage}/>

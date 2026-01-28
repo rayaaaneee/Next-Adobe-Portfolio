@@ -281,7 +281,6 @@ const AdaptiveGridElement = ({ element, className, index, clickable, asInternalL
                 "relative z-10",
                 "[&>:is(img,svg)]:w-16 [&>:is(img,svg)]:h-16 sm:[&>:is(img,svg)]:w-24 sm:[&>:is(img,svg)]:h-24",
                 "[&>:is(img,svg)]:flex [&>:is(img,svg)]:flex-shrink-0",
-                "[&>svg]:fill-white",
                 isExpanded && "[&>:is(img,svg)]:mx-10",
             )}>
                 {element.customIcon || element.content.icon}
