@@ -63,3 +63,4 @@
 * [ ] Fix blog TOC (broken)
 * [ ] Implement Severity keys on table (case bg change according to severity : High, medium, ...)
 * [ ] NotFound on blog broken
+* [ ] CopyButton broken on MdxCode (mdx don't wrap on context) ?

@@ -13,7 +13,6 @@ import {
     MdxPre, 
     MdxQuote, 
     MdxSeparator, 
-    MdxSpoiler, 
     MdxTable, 
     MdxTbody, 
     MdxTd, 
@@ -43,7 +42,7 @@ export const mdxComponents: MDXComponents = {
     a: MdxAnchor,
     // Custom component (remark plugin) -> Currently broken
     // ----
-    Spoiler: MdxSpoiler,
+    //Spoiler: MdxSpoiler,
     // ----
     table: MdxTable,
     thead: MdxThead,

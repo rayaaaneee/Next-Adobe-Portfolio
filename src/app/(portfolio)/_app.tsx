@@ -46,7 +46,10 @@ const App = ({ children }: ChildrenInterface) => {
 	const [image, setImage] = useState<StaticImageData | null>(null);
 
 	const pushImage = useCallback((img: StaticImageData) => {
-		setImages((prevImages) => [...prevImages, img]);
+		setImages((prevImages) =>  {
+			if (prevImages.includes(img)) throw new Error(`"Image with src ${img.src} is already in the flow."`);
+			return [...prevImages, img]
+		});
 	}, [setImages]);
 
 	const clearImages = useCallback(() => {

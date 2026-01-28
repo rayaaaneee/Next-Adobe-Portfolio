@@ -1,4 +1,4 @@
-import React, { isValidElement, type ReactNode, type ReactElement, Children, cloneElement } from 'react';
+import React, { type ReactNode, type ReactElement, Children } from 'react';
 
 import { type BundledLanguage } from 'shiki';
 
@@ -19,6 +19,7 @@ import {
     HeadingFour, 
     ParagraphAlignment 
 } from '@/components/page-flow';
+
 import Tooltip, { TooltipSize } from '@/components/tooltip/tooltip';
 
 import Separator from '@/components/other/separator';
@@ -27,20 +28,20 @@ import ImageFlow from '@/components/mdx/image-flow';
 
 import CodeBlock from '@/components/mdx/code-block/code-block';
 
+import type TableInterface from '@/components/mdx/table/table-interface';
+
 import MdxTableSorter from './mdx/table/table-sorter';
 import MdxTableResizer from './mdx/table/table-resizer';
 import MdxTableRounded from './mdx/table/table-rounded';
 
-import ChildrenInterface, { type ChildrenType } from '@/util/interface/children';
-import type ClassNameInterface from '@/util/interface/classname';
-import type TableInterface from '@/components/mdx/table/table-interface';
-
 import type NextImageProps from '@/util/type/next-image-props';
 
+import ChildrenInterface, { type ChildrenType } from '@/util/interface/children';
+import type ClassNameInterface from '@/util/interface/classname';
+
+import getFirstChild, { removeFromFirstChild } from '@/util/function/get-first-child';
 
 import hash from 'hash-sum';
-import isArrayTyped from '@/util/function/is-array-typed';
-import getFirstChild, { removeFromFirstChild } from '@/util/function/get-first-child';
 
 const ArticleWrapper = ({ children, className, use = true }: ChildrenInterface & ClassNameInterface & { use?: boolean }) => 
     (
@@ -115,8 +116,6 @@ export const MdxPre = ({ children }: { children: ChildrenType[] }) => (<>{childr
 // tout en gardant la possibilité de définir le header de la quote
 export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
 
-    const debug = children.length === 11;
-
     // Clear array for unused vars
     const content = children.filter(children => {
         if (typeof children === "string" && children === "\n") return false
@@ -190,14 +189,19 @@ export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
         for (const param of params) {
 
             if (param.startsWith("type=")) {
+
                 const val = param.slice(5);
+
                 if (!(val in QuoteType)) {
                     throw new Error(`Invalid type "${val}"`);
                 }
+
                 type = val as keyof typeof QuoteType;
 
             } else if (param.startsWith("icon=")) {
+
                 const val = param.slice(5);
+
                 if (val === "true") icon = true;
                 else if (val === "false") icon = false;
                 else throw new Error(`Invalid icon "${val}"`);
@@ -212,8 +216,6 @@ export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
 
 
     const parsed: ParsedType = parseQuote(content);
-
-    //if (debug) debugger;
 
     return (
         <ArticleWrapper className='max-size'>
