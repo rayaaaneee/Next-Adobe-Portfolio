@@ -49,7 +49,7 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 			span.setAttribute('aria-hidden', 'true');
 			span.style.transition = 'transform .14s ease, opacity .14s ease';
 			span.style.transformOrigin = 'center';
-			span.style.cursor = 'pointer';
+
 			span.style.flexShrink = '0';
 			return span;
 		};
@@ -262,7 +262,6 @@ const MdxTableSorter = ({ tableId }: TableInterface) => {
 				});
 			};
 
-			th.style.cursor = 'pointer';
 			th.setAttribute('role', 'button');
 			th.addEventListener('click', handler);
 			clickHandlers.push(() => th.removeEventListener('click', handler));

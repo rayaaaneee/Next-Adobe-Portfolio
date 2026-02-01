@@ -1,70 +1,72 @@
-/* style minimal pour Shiki */
+/* style minimal du code-block */
 @layer utilities {
-
+    
     div.code-container {
 
-        .shiki {
-    
-            @apply
-                block
-                rounded-lg 
-                px-2 py-[1px]
-                text-[0.8em]
-                focus:outline-none;
-    
+        pre, 
+        code, 
+        .line, 
+        .line span {
+            background-color: inherit; /* ou transparent si tu veux que le parent soit visible */
         }
+
+        @apply
+            block
+            rounded-lg
+            px-2 py-[1px]
+            text-[0.8em]
+            focus:outline-none;
 
         &:not(.inline-code) {
-
             @apply mx-auto;
-    
-            .shiki {
-    
+
+            pre {
                 counter-reset: line;
-        
-                @apply flex flex-col px-0 text-[0.9em]
-                    rounded-none md:rounded-lg;
 
-                    & > code {
-                        @apply
-                            overflow-x-auto overflow-y-hidden
-                            pr-5 pb-2 box-border scrollbar scrollbar-track-transparent scrollbar-thumb-current;
-                    }
-        
-                    .line::before {
-
-                        counter-increment: line;
-                        
-                        @apply
-                            content-[counter(line)]
-                            inline-block
-                            w-[2em]
-                            text-right
-                            mr-4
-                            opacity-50;
-        
-                    }
-            }
-    
-            &.no-lines {
-    
-                .shiki {
-    
-                    & > code {
-                        @apply ml-2;
-                    }
-    
-                    .line::before {
-    
-                        @apply hidden;
-    
-                    }
-    
-                }
-    
+                @apply
+                    flex flex-col
+                    px-0
+                    text-[1.1em]
+                    rounded-none
+                    md:rounded-lg;
             }
 
+            pre > code {
+                @apply
+                overflow-x-auto
+                overflow-y-hidden
+                pr-5
+                pb-2
+                box-border
+                scrollbar
+                scrollbar-track-transparent
+                scrollbar-thumb-current;
+            }
+
+            .line::before {
+                counter-increment: line;
+
+                @apply
+                content-[counter(line)]
+                inline-block
+                w-[2em]
+                text-right
+                pl-[1em]
+                pr-[2.5em]
+                sticky
+                left-0
+                bg-inherit;
+            }
         }
 
+        &.no-lines {
+            pre > code {
+                @apply ml-2;
+            }
+
+            .line::before {
+                @apply hidden;
+            }
+        }
     }
 }

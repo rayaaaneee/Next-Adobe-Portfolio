@@ -86,7 +86,6 @@ import jakarta.persistence.*
 import java.time.Instant
 
 // TotpSecret entity stored in PostgreSQL TotpSecrets table
-
 @Entity
 @Table(
     name = "totp_secrets",
@@ -197,9 +196,3 @@ To better understand how these approaches compare with the current TOTP-based so
 > **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.  
 > However, they may require **additional infrastructure** and considerations for implementation in the API to handle both PUSH and TOTP mechanisms.  
 > The decision-making process between the two methods (PUSH vs TOTP) can be handled based on **user preferences**, **device capabilities**, or **security policies** (e.g. a **new device** login could enforce PUSH 2FA).
-
-
-> [type=danger, icon= false]
-> Ceci est un [exemple de lien](https://example.link) avec *différents* composants tels que : 
-> # Voici un heading
-> ## Voici un deuxieme

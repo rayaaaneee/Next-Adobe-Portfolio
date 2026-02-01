@@ -59,7 +59,6 @@ const es: Sentences = {
                 "Poseo un <b>BUT en Informática</b> por la <b>Universidad de Lyon 1</b> (<i>programa de Desarrollo e Implementación</i>) y actualmente curso un <b>grado de ingeniería de tres años en CPE Lyon</b>, especializado en <b>Ingeniería Informática y Ciberseguridad</b>.<br/>",
                 "Actualmente trabajo en <b>Energy Pool</b> como <b>miembro del Blue Team</b> (<i>protección contra vulnerabilidades</i>) durante mis estudios de ingeniería. Este rol refuerza mis habilidades en <b>detección de amenazas</b>, <b>análisis de incidentes</b>, <b>gestión de vulnerabilidades</b> y <b>mejora continua de las medidas defensivas</b> dentro de un <b>entorno de producción</b>.<br/>",
                 "📝 <i>Nota</i> : Aunque mi <b>portafolio pone un fuerte énfasis en el diseño</b>, refleja principalmente mi aprecio por la <b>estética visual</b> y la <b>experiencia del usuario</b>, aspectos que considero un <i>pasatiempo</i> y una <i>vía creativa</i>. Aunque realmente disfruto creando <b>interfaces limpias y visualmente atractivas</b>, mi <b>enfoque profesional</b> está orientado hacia la <b>ciberseguridad</b> y el <b>desarrollo de software</b>, donde busco profundizar mis conocimientos y construir una <b>carrera técnica sólida</b>.<br/>",
-                "... certificaciones",
             ]
         },
         projects: {

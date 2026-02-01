@@ -86,14 +86,14 @@ const MdxTableResizer = ({ tableId }: TableInterface) => {
 		const el = document.elementFromPoint(clientX, clientY) as HTMLElement | null;
 		if (!el) {
 			hoverIndex = null;
-			tbl.style.cursor = '';
+			tbl.classList.remove('table-resize-cursor');
 			clearOverlay();
 			return;
 		}
 		const cell = el.closest('td,th') as HTMLElement | null;
 		if (!cell) {
 			hoverIndex = null;
-			tbl.style.cursor = '';
+			tbl.classList.remove('table-resize-cursor');
 			clearOverlay();
 			return;
 		}
@@ -105,13 +105,13 @@ const MdxTableResizer = ({ tableId }: TableInterface) => {
 			// Only allow resizing when there is a column to the right
 			if (idx < row.children.length - 1) {
 				hoverIndex = idx;
-				tbl.style.cursor = 'col-resize';
+				tbl.classList.add('table-resize-cursor');
 				setOverlayFromCellRect(rect);
 				return;
 			}
 		}
 		hoverIndex = null;
-		tbl.style.cursor = '';
+		tbl.classList.remove('table-resize-cursor');
 		clearOverlay();
 	}
 
@@ -161,7 +161,7 @@ const MdxTableResizer = ({ tableId }: TableInterface) => {
 			leftIndex = -1;
 				window.removeEventListener('mousemove', onMove);
 				window.removeEventListener('mouseup', onUp);
-				tbl.style.cursor = '';
+				tbl.classList.remove('table-resize-cursor');
 			clearOverlay();
 		};
 
@@ -220,7 +220,7 @@ const MdxTableResizer = ({ tableId }: TableInterface) => {
 			leftIndex = -1;
 			window.removeEventListener('touchmove', onMove);
 			window.removeEventListener('touchend', onEnd);
-			table.style.cursor = '';
+			tbl.classList.remove('table-resize-cursor');
 			clearOverlay();
 		};
 
@@ -228,10 +228,10 @@ const MdxTableResizer = ({ tableId }: TableInterface) => {
 		window.addEventListener('touchend', onEnd);
 	};
 
-		tbl.addEventListener('mousemove', onMouseMove);
-		tbl.addEventListener('mousedown', onMouseDown);
-		tbl.addEventListener('touchmove', onTouchMove, { passive: true });
-		tbl.addEventListener('touchstart', onTouchStart, { passive: false });
+	tbl.addEventListener('mousemove', onMouseMove);
+	tbl.addEventListener('mousedown', onMouseDown);
+	tbl.addEventListener('touchmove', onTouchMove, { passive: true });
+	tbl.addEventListener('touchstart', onTouchStart, { passive: false });
 
 	return () => {
 		tbl.removeEventListener('mousemove', onMouseMove);

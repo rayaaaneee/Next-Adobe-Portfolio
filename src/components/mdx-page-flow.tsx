@@ -39,14 +39,14 @@ import type NextImageProps from '@/util/type/next-image-props';
 import ChildrenInterface, { type ChildrenType } from '@/util/interface/children';
 import type ClassNameInterface from '@/util/interface/classname';
 
-import getFirstChild, { removeFromFirstChild } from '@/util/function/get-first-child';
+import getFirstText, { removeFromFirstText } from '@/util/function/get-first-text';
 
 import hash from 'hash-sum';
 
-const ArticleWrapper = ({ children, className, use = true }: ChildrenInterface & ClassNameInterface & { use?: boolean }) => 
+export const ArticleWrapper = ({ children, className, use = true, id }: ChildrenInterface & ClassNameInterface & { use?: boolean }) => 
     (
         use ? (
-            <article className={cn(className)}>
+            <article className={cn(className)} id={id}>
                 {children}
             </article>) 
             : 
@@ -103,17 +103,12 @@ export const MdxCode = ({ children, className }: mdxCodeProps) => {
 }
 
 /* For code block */
-export const MdxPre = ({ children }: { children: ChildrenType[] }) => (<>{children}</>);
+export const MdxPre = ({ children, ...props }: { children: ChildrenType[] }) => (<pre {...props}>{children}</pre>);
 
 /* Quote component with customizable type and icon */
 // > [type=info,icon=true] // Optional
-// > MdxQuote content...
-// > MdxQuote content...
-// TODO : ne prend pas en charge les elements complexes (Heading, Table, Separator, Anchor etc.) 
-// dans le contenu.
-// Actuellement seul les elements simples (Paragraph, Bold, Italic) sont supportés
-// Necessitera de bidouiller le parsing (déjà sincèrement chaotique) pour supporter les elements complexes 
-// tout en gardant la possibilité de définir le header de la quote
+// > # MdxQuote title...
+// > **MdxQuote** content...
 export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
 
     // Clear array for unused vars
@@ -160,7 +155,7 @@ export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
             return ({ type, icon, content: tmp });
         }
 
-        let firstLine = getFirstChild(children);
+        let firstLine = getFirstText(children);
         
         if (firstLine.includes("\n")) {
             
@@ -181,33 +176,43 @@ export const MdxQuote = ({ children }: { children: ReactNode[] }) => {
 
         if (!match) return getDefaultValues();
 
-        children = removeFromFirstChild(header, children);
+        children = removeFromFirstText(header, children);
 
         // Parse params
         const params = match[1].split(",").map(p => p.trim()).filter(Boolean);
+
+        const invalidParam = (param: string, val: string, allowed: readonly { toString(): string }[]) => 
+            (new Error(
+                `Invalid ${param} "${val}". Here's accepted values: ${allowed.map(v => `"${v.toString()}"`).join(", ")}.`
+            ));
+
 
         for (const param of params) {
 
             if (param.startsWith("type=")) {
 
                 const val = param.slice(5);
+                const allowed = Object.keys(QuoteType);
 
-                if (!(val in QuoteType)) {
-                    throw new Error(`Invalid type "${val}"`);
-                }
+                if (!allowed.includes(val)) throw invalidParam("type", val, allowed);
 
                 type = val as keyof typeof QuoteType;
 
             } else if (param.startsWith("icon=")) {
 
                 const val = param.slice(5);
+                const allowed = ["true", "false"];
 
-                if (val === "true") icon = true;
-                else if (val === "false") icon = false;
-                else throw new Error(`Invalid icon "${val}"`);
+                if (!allowed.includes(val)) throw invalidParam("icon", val, allowed);
+
+                icon = val === "true";
 
             } else {
-                throw new Error(`Invalid parameter "${param}"`);
+
+                const allowed = Object.keys(defaultValues);
+                
+                throw invalidParam("parameter", param, allowed);
+
             }
         }
         
@@ -349,11 +354,12 @@ export const MdxTable = (props: ChildrenInterface) => {
             <div className={cn(
                 'w-full mt-6 overflow-x-auto',
                 'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-400',
-                'scrollbar-track-transparent'
+                'scrollbar-track-transparent',
             )}>
                 <table id={id} className={cn(
                     'box-border w-full max-size',
-                    'rounded-2xl table-auto border-collapse'
+                    'rounded-2xl table-auto border-collapse',
+                    '[&.table-resize-cursor]:!cursor-col-resize'
                 )}>
                     { props.children }
                 </table>
@@ -411,7 +417,8 @@ export const MdxTh = ({ children }: ChildrenInterface) => {
             'text-left align-middle text-md font-medium',
             'text-[#37352F] dark:text-[rgba(255,255,255,0.9)]',
             'border border-[#e6e5e3] dark:border-[#383836]',
-            'first:rounded-tl-md last:rounded-tr-md'
+            'first:rounded-tl-md last:rounded-tr-md',
+            "cursor-pointer [.table-resize-cursor_&]:cursor-col-resize"
         )}>
             <div className={cn('select-none break-words inline-flex items-center gap-2')}>{ children }</div>
         </th>

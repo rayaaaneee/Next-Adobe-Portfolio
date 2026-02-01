@@ -9,7 +9,7 @@ type TextHandler = (text: string) => string;
 const walkFirstText = (
   node: ReactNode,
   handler: TextHandler,
-  state: { done: boolean }
+  state: { done: boolean } = { done: false }
 ): ReactNode => {
     
     if (state.done) return node;
@@ -36,26 +36,24 @@ const walkFirstText = (
         if (newChildren === node.props.children) return node;
 
         return cloneElement(node, {
-        ...node.props,
-        children: newChildren,
+            ...node.props,
+            children: newChildren,
         });
     }
 
     return node;
 };
 
-export const getFirstChild = (el: ReactNode): string => {
+const getFirstText = (el: ReactNode): string => {
 
     let result = "";
-    const state = { done: false };
 
     walkFirstText(
         el,
         text => {
-        result = text;
-        return text;
+            result = text;
+            return text;
         },
-        state
     );
 
     return result;
@@ -63,21 +61,17 @@ export const getFirstChild = (el: ReactNode): string => {
 };
 
 
-export const removeFromFirstChild = (
+export const removeFromFirstText = (
 
   str: string,
   node: ReactNode
 
-): ReactNode => {
-  const state = { done: false };
-
-    return walkFirstText(
+): ReactNode => (
+    walkFirstText(
         node,
         text => text.replace(str, ""),
-        state
-    );
-
-};
+    )
+);
 
 
-export default getFirstChild;
+export default getFirstText;
