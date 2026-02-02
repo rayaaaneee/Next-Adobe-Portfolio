@@ -22,10 +22,10 @@ import {
 } from '@/components/mdx-page-flow';
 
 const unsupported = ({type}: {type: string}) =>
-    { throw new Error(`MDX component of type "${type}" is not supported in blog posts.`) };
+    { throw new Error(`MDX component of type "${type}" isn't currently supported by MDX.`) };
 
 export const mdxComponents: MDXComponents = {
-    Image: MdxImage,
+    Img: MdxImage,
     code: MdxCode,
     pre: MdxPre,
     blockquote: MdxQuote,

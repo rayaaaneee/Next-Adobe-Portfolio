@@ -27,7 +27,7 @@ Before we begin, ensure you have the following prerequisites in place:
 
 Here's a global schema of the current architecture :
 
-<Image src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
+<Img src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
 
 {/* Display broken, fix needed */}
 > [type=tip]
@@ -136,9 +136,12 @@ Here's a brief explanation of each field, and a schema diagram follows to illust
 - `recoveryCodes`: A list of hashed recovery codes that can be used if the user loses access to their authenticator app.
 - `createdDate` and `lastModifiedDate`: Timestamps for tracking when the TOTP secret was created and last modified.
 
-<Image src={userTotpRelationImage} alt="User and TOTPSecret Relationship Schema" className="my-4 rounded-lg shadow-md" />
+<Img src={userTotpRelationImage} alt="User and TOTPSecret Relationship Schema" className="my-4 rounded-lg shadow-md" />
 
 ## Implementing 2FA Logic
+
+We're gonna create a **service** to handle TOTP generation, validation, and recovery code management. This service will interact with the `TotpSecret` entity and provide methods for enabling/disabling 2FA, generating TOTP codes, and validating user input.
+After that, we will create **controller endpoints** to handle user requests related to 2FA, such as enabling/disabling 2FA, verifying TOTP codes during login, and managing recovery codes. The client will interact with these endpoints to complete the 2FA process.
 
 ### User controller endpoints
 

@@ -7,14 +7,14 @@
         code, 
         .line, 
         .line span {
-            background-color: inherit; /* ou transparent si tu veux que le parent soit visible */
+            @apply bg-inherit;
         }
 
         @apply
             block
             rounded-lg
             px-2 py-[1px]
-            text-[0.8em]
+            text-[0.9em]
             focus:outline-none;
 
         &:not(.inline-code) {

@@ -16,7 +16,7 @@ Hello there ! Today, we're gonna explore how I was able to customize SVGs on my 
 SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
 In our case, this library was included in the next.js configuration to permit to keep control over all SVGs parts. Initially, importing an SVG in React would treat it as a static file as the source of `<img/>`, limiting our ability to customize it because all SVG parts would be inaccessible (in html and javascript).
 
-<Image src={svgrImg} className="!h-32 !w-32" alt="SVGR Icon" width={400} height={400} />
+<Img src={svgrImg} className="!h-32 !w-32" alt="SVGR Icon" width={400} height={400} />
 
 SVGR is a tool that transforms SVGs into React components. This allows us to easily manipulate and customize SVGs using React's props and state.
 
@@ -73,7 +73,7 @@ Right now, let's see how we passed from a static SVG to a customized one, clicka
 
 Here is an example of a clickable SVG flag. On the right, the original SVG without any customization. And on the left the final customized and interactive SVG.
 
-<Image src={img} alt="SVG Customization Example" width={1200} height={700} />
+<Img src={img} alt="SVG Customization Example" width={1200} height={700} />
 
 ⚠️ Important to know : 
 
@@ -186,13 +186,13 @@ To make all this work, we had to modify the original SVG files a bit. Since we w
 Taking the flag of Mexico as an example, we added a specific class **"keep"** to all the SVG elements that we wanted to be clickable and have their colors changeable. *This is why we removed the svg class prefixes in the NextJS Config file.* This class acts as a marker for our JavaScript code to identify which parts of the SVG should be processed.
 The problem with this method is that it requires manual modification of each SVG file to add the **"keep"** class to the desired elements. This can be time-consuming, especially if you have a large number of SVGs to process. A simple solution for this was to do it manually with creating a new route in the project to display all SVGs and edit them directly, allowing to see the changes in real-time *(svg structure hot reloading)*.
 
-<Image src={devPageImg} alt="Dev Page to configure SVGs" width={1920} height={720} />
+<Img src={devPageImg} alt="Dev Page to configure SVGs" width={1920} height={720} />
 
 After selecting all colorable parts for each flag, we obtained SVGs with the necessary classes added. This allowed our JavaScript code to easily identify and manipulate the correct parts of the SVGs during runtime.
 
 There's an example of the Mexico flag SVG before and after adding the classes to the colorable shapes. The middle part containing the eagle was initially selectable (left), and  left unchanged as it doesn't need to be interactive (right).
 
-<Image src={beforeAndAfterKeepClassImg} alt="Utility of Shapes Selection" width={1920} height={600} />
+<Img src={beforeAndAfterKeepClassImg} alt="Utility of Shapes Selection" width={1920} height={600} />
 
 After that, our JavaScript code can simply look for elements with the **"keep"** class and apply the necessary logic to make them interactive and customizable.
 
