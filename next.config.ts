@@ -2,7 +2,7 @@
 import type { NextConfig } from "next";
 import createMDX from '@next/mdx';
 import withPWAInit from "@ducanh2912/next-pwa";
-//import remarkCustomBlocks from "./plugins/remark-custom-blocks.js";
+import remarkGfm from 'remark-gfm';
 
 import path from "path";
 
@@ -30,8 +30,7 @@ const nextConfig: NextConfig = withPWA({
         includePaths: [path.join(__dirname, "src", "asset", "scss")],
     },
     experimental: {
-        // mdxRs (rust-based MDX) disables running JS remark/rehype plugins.
-        // Set to false so our JS remark plugins (spoiler, expose-node) are executed.
+        // mdxRs: false to allow JS remark/rehype plugins (like remarkGfm for tables)
         mdxRs: false,
         serverActions: {
             allowedOrigins: [
@@ -54,9 +53,7 @@ const nextConfig: NextConfig = withPWA({
 const withMDX = createMDX({
     extension: /\.(md|mdx)$/,
     options: {
-        remarkPlugins: [
-            require.resolve('remark-gfm'),
-        ],
+        remarkPlugins: [remarkGfm],
         rehypePlugins: [],
     },
 });

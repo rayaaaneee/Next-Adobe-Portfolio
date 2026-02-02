@@ -63,7 +63,7 @@ const CodeBlockHeader = ({ lang, text, filename }: CodeBlockHeaderProps) => {
                     )
                 }
             </HeadingThree>
-            <CodeBlockCopyButton className="absolute right-0 text-inherit" code={text} />
+            <CodeBlockCopyButton className="absolute right-4 text-inherit" code={text} />
         </div>
     );
 }

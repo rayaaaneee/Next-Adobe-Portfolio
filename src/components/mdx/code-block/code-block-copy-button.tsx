@@ -14,7 +14,7 @@ const CodeBlockCopyButton = ({ code, className }: CodeBlockCopyButtonProps) => (
     <CopyButton 
         text={code}
         tooltipCopiedText="copy_button.tooltipCopiedText"
-        className={cn("code-block-copy-button text-xl mr-2", className)}
+        className={cn("code-block-copy-button text-xl", className)}
         copiedIconClassName="text-green-400 dark:text-green-200"
         tooltipPosition={TooltipPosition.left}
         tooltipClassName={cn("text-white bg-[#90A4AE]", "dark:text-black dark:bg-[#C6D0F5]")}

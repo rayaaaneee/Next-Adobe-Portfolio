@@ -3,7 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbo",
+        "dev": "next dev --webpack",
+        "dev:turbo": "next dev --turbo",
         "clear": "rm -rf .next",
         "restart": "npm run clear && npm run dev",
         "start": "next start",
