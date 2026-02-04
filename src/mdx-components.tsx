@@ -7,8 +7,10 @@ import {
     MdxHeadingThree, 
     MdxHeadingTwo, 
     MdxImage, 
+    MdxImageLine, 
     MdxList, 
     MdxListItem, 
+    MdxNumberedList, 
     MdxParagraph, 
     MdxPre, 
     MdxQuote, 
@@ -25,11 +27,13 @@ const unsupported = ({type}: {type: string}) =>
     { throw new Error(`MDX component of type "${type}" isn't currently supported by MDX.`) };
 
 export const mdxComponents: MDXComponents = {
+    ImgLine: MdxImageLine,
     Img: MdxImage,
     code: MdxCode,
     pre: MdxPre,
     blockquote: MdxQuote,
     ul: MdxList,
+    ol: MdxNumberedList,
     li: MdxListItem,
     hr: MdxSeparator,
     h1: MdxHeadingTwo,

@@ -38,7 +38,9 @@ const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
             { name: GeneralTechnologiesName.MONGODB, type: "database" }
         ],
         year: 2026,
-        description: "Empty for the moment",
+        description: `SDMIS is a comprehensive system for managing emergency response resources for departmental fire and rescue services<br/>.
+        \tThe application enables real-time management of vehicles, firefighters, fire stations, and emergency interventions<br/>.
+        \tBuilt with a Java Spring Boot backend and a React TypeScript frontend, it provides a user-friendly interface for efficient resource allocation and incident management.<br/>`
     },
     {
         content: {

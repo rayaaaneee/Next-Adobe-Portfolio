@@ -50,9 +50,10 @@
 * [X] Fix bug on grid expansion
 * [X] Remove expand button animation (adaptive grid)
 * [X] Some fixes needed while browsing between /blog and /blog/[id] (title broken, fix needed)
-* [ ] Blog TOC fixes (if h1 doesn't have a children, it will be not integrated to the TOC)
+* [X] Blog TOC fixes (if h1 doesn't have a children, it will be not integrated to the TOC)
 * [ ] Carousel Image Left Chevron doesn't have a great animation whille disappearing
 * [ ] Pageable Grid -> blogs
+* [ ]
 * [ ] Ajout d'une langue non automatisé
 
   * [ ] Objectif : Il y a des valeurs dures dans le code (ex: Language enum dans les fichiers de langue, availableLanguages) qui empechent le simple ajout d'un fichier de langue pour ajouter une langue dans asset/data/i18n/[lang].ts
@@ -60,13 +61,14 @@
 * [X] Allow sort on plural columns on mdxTable
 * [X] Allow table inside quote component
 * [ ] Upgrade read-time approximation algorithm (take into account images, tabs, code blocks...)
-* [ ] Fix blog TOC (broken)
+* [X] Fix blog TOC (broken)
 * [ ] Preload images on a blog and on ImageFlow (important)
 * [ ] Implement Severity keys on table (case bg change according to severity : High, medium, ...)
 * [ ] NotFound on blog broken
 * [ ] Global not found broken
-* [ ] CopyButton broken on MdxCode refactor needed because root.render breaks the context)
-* [ ] Table
+* [ ] ! Quote broken (retour à la ligne non pris en compte). (>\n>)
+* [X] CopyButton broken on MdxCode refactor needed because root.render breaks the context)
+* [X] Table
 
-  * [ ] on the table component mdx (resizer), cursor is takes the sizeew only on table table body insterstices (not on table headers)
-  * [ ] resizer -> if I play too much with the resizer the min width column becomes too much long (detail)
+  * [X] on the table component mdx (resizer), cursor is takes the sizeew only on table table body insterstices (not on table headers)
+  * [X] resizer -> if I play too much with the resizer the min width column becomes too much long (detail)

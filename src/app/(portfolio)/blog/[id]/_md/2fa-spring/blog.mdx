@@ -1,5 +1,8 @@
 import globalSchemaImage from './assets/global-schema.svg';
 import userTotpRelationImage from './assets/user-totp-relation.svg';
+import activate2faImage from './assets/activate-2fa.png';
+import sdmisTotpImage from './assets/sdmis_totp.png';
+import recoveryCodesImage from './assets/recovery-codes.png';
 
 Hello there ! Today, I would like to share with you a blog post about implementing **Two-Factor Authentication (2FA)** in a Spring Boot application. 2FA adds an extra layer of security to user authentication by requiring two forms of identification before granting access. In this post, we will explore how to set up 2FA using **Spring Security** and a basic **Authenticator** (in our case, Microsoft Authenticator).
 
@@ -9,7 +12,6 @@ This blog is based on a *school project* I worked on with other students, where 
 
 Following this reasoning, I had to implement 2FA as part of the authentication process. The project involved creating a simple web application with user registration and login functionalities, and we integrated 2FA to enhance security.
 
-{/* Broken, fix needed */}
 > [type=warning]
 > In this blog, only the implementation of 2FA using an Authenticator app is covered. 
 > **Other methods**, such as *SMS* or *email-based 2FA*, are **not discussed here**.
@@ -27,9 +29,8 @@ Before we begin, ensure you have the following prerequisites in place:
 
 Here's a global schema of the current architecture :
 
-<Img src={globalSchemaImage} alt="Global Schema of the Application Architecture" className="my-4 rounded-lg shadow-md" />
+<Img src={globalSchemaImage} alt="Global Schema of the Application Architecture" />
 
-{/* Display broken, fix needed */}
 > [type=tip]
 > The following table breaks down the main components of the **application architecture** and their **responsibilities**.
 
@@ -46,8 +47,10 @@ Here's a global schema of the current architecture :
 
 # Setting up the API
 
+Let's start by setting up the backend API to support 2FA. We will implement the necessary endpoints for enabling/disabling 2FA, verifying TOTP codes, and managing recovery codes.
+
 ## Dependencies
-To implement 2FA in your Spring Boot application, you need to add the following dependencies to your `build.gradle` file:
+To implement 2FA in a Spring Boot application, you need to add the following dependencies to your `build.gradle` file:
 
 ```groovy[file:/build.gradle.kts]
 //...
@@ -61,6 +64,7 @@ dependencies {
 
     // JPA for database interactions
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    
     // PostgreSQL Driver
     runtimeOnly("org.postgresql:postgresql")
         
@@ -136,45 +140,325 @@ Here's a brief explanation of each field, and a schema diagram follows to illust
 - `recoveryCodes`: A list of hashed recovery codes that can be used if the user loses access to their authenticator app.
 - `createdDate` and `lastModifiedDate`: Timestamps for tracking when the TOTP secret was created and last modified.
 
-<Img src={userTotpRelationImage} alt="User and TOTPSecret Relationship Schema" className="my-4 rounded-lg shadow-md" />
+<Img src={userTotpRelationImage} alt="User and TOTPSecret Relationship Schema" />
 
 ## Implementing 2FA Logic
 
 We're gonna create a **service** to handle TOTP generation, validation, and recovery code management. This service will interact with the `TotpSecret` entity and provide methods for enabling/disabling 2FA, generating TOTP codes, and validating user input.
 After that, we will create **controller endpoints** to handle user requests related to 2FA, such as enabling/disabling 2FA, verifying TOTP codes during login, and managing recovery codes. The client will interact with these endpoints to complete the 2FA process.
 
+After that, we will see how to set up the client-side integration of 2FA, which involves updating the login flow to include a 2FA challenge when required, and secure the routes that need 2FA protection to avoid unauthorized access.
+
 ### User controller endpoints
+
+There's a Kotlin interface defining the controller endpoints for handling 2FA-related requests. These endpoints include enabling/disabling 2FA, verifying TOTP codes, and checking the 2FA status.
+
+```kotlin(lines)[file:/controller/UserController.kt]
+package sdmis.com.web_api.controllers
+
+import org.springframework.http.ResponseEntity
+import org.springframework.security.core.Authentication
+import jakarta.validation.Valid
+
+@RestController
+@RequestMapping("/api/user/2fa")
+@Validated
+interface User2FAController {
+
+    @PostMapping("/enable")
+    fun enable2FA(
+        authentication: Authentication
+    ): ResponseEntity<Any>
+
+    @PostMapping("/verify")
+    fun verify2FA(
+        @Valid request: Verify2FARequest,
+        authentication: Authentication
+    ): ResponseEntity<Map<String, Any>>
+
+    @PostMapping("/disable")
+    fun disable2FA(
+        authentication: Authentication
+    ): ResponseEntity<Map<String, String>>
+
+    @GetMapping("/status")
+    fun get2FAStatus(
+        authentication: Authentication
+    ): Map<String, Boolean>
+
+    @PostMapping("/login/verify")
+    fun verify2FALogin(
+        @Valid request: Verify2FARequest,
+        authentication: Authentication
+    ): ResponseEntity<Map<String, String>>
+
+}
+```
+
+These 3 methods interact with the `TOTPService` (TOTP library wrapper) to perform the necessary operations for 2FA management. They returns appropriate HTTP responses based on the success or failure of the operations. We abstracted the implementation details for clarity and due to the length of the code, knowing that this code mainly interacts with the `TOTPService` methods we will see next, and themselves interact with the database via a `TotpSecretRepository` (Spring Data JPA repository for `TotpSecret` entity) and the Samstevens TOTP library.
 
 ### TOTP Service
 
 The TOTP service is responsible for generating TOTP secrets, validating tokens, and managing recovery codes.
 
-Here's an example implementation:
+The following code snippet shows the implementation of the `TotpService` class. This class uses the `dev.samstevens.totp` library to handle TOTP generation and validation. 
 
----
+```kotlin(lines)[file:/service/TotpService.kt]
+package sdmis.com.web_api.services
+
+import dev.samstevens.totp.code.DefaultCodeGenerator
+import dev.samstevens.totp.code.DefaultCodeVerifier
+import dev.samstevens.totp.qr.ZxingPngQrGenerator
+import dev.samstevens.totp.secret.DefaultSecretGenerator
+import dev.samstevens.totp.time.SystemTimeProvider
+
+@Service
+class TotpService {
+
+    private val secretGenerator = DefaultSecretGenerator()
+    private val qrGenerator = ZxingPngQrGenerator()
+    private val timeProvider = SystemTimeProvider()
+    private val codeGenerator = DefaultCodeGenerator()
+    private val codeVerifier = DefaultCodeVerifier(codeGenerator, timeProvider)
+
+    companion object {
+        const val ISSUER = "SDMIS"
+        const val DIGITS = 6
+        const val PERIOD = 30
+    }
+
+    fun generateSecret(): String {
+        return secretGenerator.generate()
+    }
+
+    // Rest of the TotpService implementation...
+
+}
+```
+
+The library provides a straightforward way to generate TOTP secrets and validate tokens based on the TOTP algorithm **(RFC 6238)**. The `TotpService` class encapsulates this functionality and provides methods for generating secrets, creating QR codes, validating tokens, and managing recovery codes. 
+
+There's below the implementation of two useful and interesting methods from the `TotpService` class. 
+
+First, the `generateQrCodeDataUrl` method generates a QR code data URL that can be used to display the QR code to the user for scanning with their Authenticator app. The "image" is returned as a Base64-encoded PNG image data URL, and the navigator can render it directly in an `<img>` tag.
+
+```kotlin(lines)[file:/service/TotpService.kt]
+fun generateQrCodeDataUrl(username: String, secret: String): String {
+
+    val qrData = QrData.Builder()
+        .label(username)
+        .secret(secret)
+        .issuer(ISSUER)
+        .algorithm(HashingAlgorithm.SHA1)
+        .digits(DIGITS)
+        .period(PERIOD)
+        .build()
+
+    return try {
+        val imageData = qrGenerator.generate(qrData)
+        "data:image/png;base64," + Base64.getEncoder().encodeToString(imageData)
+    } catch (e: QrGenerationException) {
+        throw RuntimeException("Failed to generate QR code", e)
+    }
+}
+```
+
+The second method, `validateToken`, validates a TOTP token provided by the user. It checks if the token is valid for the given secret and within the allowed time window. Validation is very simplified using the `codeVerifier` from the TOTP library, which handles the time-based validation internally.
+
+```kotlin(lines)[file:/service/TotpService.kt]
+fun validateToken(secret: String, token: String): Boolean {
+    return try {
+        codeVerifier.isValidCode(secret, token)
+    } catch (e: CodeGenerationException) {
+        false
+    }
+}
+```
+
+Using only these two methods, we can implement the core functionality of 2FA in our application. The `generateQrCodeDataUrl` method allows us to provide users with a QR code to set up 2FA, while the `validateToken` method enables us to verify the TOTP tokens during the login process.
+
+Skipping the front-end implementation details, let's move on to how we handle the client-side integration of 2FA.
+
 
 # Setting up the client
 
-
-... 
+To integrate 2FA on the client side, we need to update the login flow to include a 2FA challenge when required. This involves modifying the login UI to prompt users for their TOTP code after they enter their username and password. A main challenge is to handle the state management of the login process, ensuring that the user is properly authenticated before accessing protected routes. We have to ensure that if 2FA is enabled for a user, they must complete the 2FA challenge before gaining access to the application, without **bypassing** the 2FA step.
 
 ## Handle enabling 2FA
 
-...
+Here's below a screenshot of the 2FA activation flow on the client side. The QRCode is generated by the backend (`generateQrCodeDataUrl` method) and displayed to the user, who can then scan it with their Authenticator app to set up 2FA on the Authenticator app.
+
+<ImgLine images={[
+    { src: activate2faImage, alt: "Client-Side 2FA Integration Flow" },
+    { src: sdmisTotpImage, alt: "SDMIS TOTP example in Microsoft Authenticator" }
+]} />
+
+The QR code can be scanned using an Authenticator or simply the Camera. If we scan it using the Camera, it will print us all data needed to manually add the TOTP in the Authenticator app. There's different fields extracted from the QR code data, as shown below:
+
+```json
+{
+    // Real QR Code value
+    "value": "otpauth://totp/SDMIS:root?secret={secret}&issuer=SDMIS&algorithm=SHA1&digits=6&period=30",
+
+    // Extracted fields
+    "type": "TOTP",
+    "label": "SDMIS:root",
+    "issuer": "SDMIS",
+    "algorithm": "SHA1",
+    "digits": 6,
+    "period": 30
+}
+```
+
+## Using recovery codes
+
+When enabling 2FA, the backend generates a set of recovery codes that the user can use in case they lose access to their Authenticator app. These recovery codes are displayed to the user after enabling 2FA, and they should be stored securely by the user.
+
+Scanning the QR code will automatically add a new entry in the Authenticator app with the provided details, allowing the user to generate TOTP codes for 2FA (see the *second image above*).
+
+<Img src={recoveryCodesImage} alt="Given recovery codes after enabling 2FA (example)" />
+
+Recovery codes are a critical backup mechanism for 2FA. They allow users to regain access to their accounts if they lose their Authenticator app or device. Each recovery code can typically be used only once, so users should store them securely, such as in a password manager or a physical safe (phone notes, printed copy, etc.).
+
+These codes should be treated with the same level of security as passwords, so they should not be stored in plain text in the database. Instead, they should be hashed (SHA-256 in our case) before being stored. If a user attempts to use a recovery code, the backend will hash the provided code and compare it against the stored hashed codes to verify its validity. Here's the hashing function used for recovery codes in the `TotpService` class:
+
+```kotlin(lines)[file:/service/TotpService.kt]
+fun hashCode(code: String): String {
+    // Hasher instance for SHA-256
+    val digest = MessageDigest.getInstance("SHA-256")
+
+    // Hash the code and convert to hexadecimal string
+    val hash = digest.digest(code.toByteArray())
+
+    // Convert the hash bytes to a hexadecimal string
+    return hash.joinToString("") { "%02x".format(it) }
+}
+```
+
+When a user attempts to log in and cannot provide a valid TOTP code, they can use one of their recovery codes to bypass the 2FA challenge. The backend verifies the recovery code, invalidates it after use, and grants access if the code is valid.
 
 ## Handle login
 
-...
+When a user attempts to log in, the client first sends the username and password to the backend for authentication. If the credentials are valid and 2FA is enabled for the user, the backend responds indicating that a 2FA challenge is required.
+
+Important : when user has enabled 2FA, the backend has the information that the user must complete the 2FA challenge before being fully authenticated. Therefore, the backend will not issue a full authentication token (e.g., JWT) until the 2FA step is successfully completed, while the client just did the 2FA challenge by sending the TOTP code to the backend for verification. In this special case, the backend have to issue a valid full authenticated token directly after activating 2FA.
+
+These are the steps involved in the login process with 2FA:
+1. **Initial Login** : The client logins with username and password.
+2. **2FA Challenge Required** : If 2FA is enabled for the user, the backend responds indicating that a 2FA challenge is required and redirects the user to the 2FA input page.
+3. **Prompt for TOTP** : The client prompts the user to enter their TOTP code from the Authenticator app.
+4. **Verify TOTP** : The client sends the TOTP code to the backend for verification.
+
+We started the implementation of the verification page for 2FA. Here's below the main code snippet for handling the TOTP verification process on the client side (abstracted for clarity, we keeped only the `onSubmit` event that handles the verification logic).
+
+```typescript(lines)[file:/pages/auth/verify-2fa.tsx]
+const handleVerify = async (codeToVerify: string) => {
+
+    const cleanCode = codeToVerify.replace(/\s/g, "").toUpperCase();
+    
+    // Accept 6-character code (TOTP numeric or recovery alphanumeric code)
+    if (cleanCode.length !== 6 || !/^[A-Z0-9]+$/.test(cleanCode)) return;
+
+    try {
+        const response = await fetchWithAuth(getApiUrl("/api/user/2fa/login-verify"), {
+            method: "POST",
+            body: JSON.stringify({ code: cleanCode }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success === "true") {
+            complete2FA();
+            navigate(returnUrl, { replace: true });
+        } else {
+            console.error("2FA verification failed:", data);
+        }
+    } catch (err) {
+        console.error("2FA verification failed:", err);
+    }
+
+};
+```
 
 ## Protect routes
 
-...
+To ensure that only users who have successfully completed the 2FA verification can access certain routes in the application, we can create a higher-order component (HOC) or a wrapper component that checks the user's authentication and 2FA status before rendering the protected route.
+
+```typescript(lines)[file:/auth/Require2FA.tsx]
+import { type FC } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/use-auth";
+import { type ChildrenInterface } from "@/types/props/children-interface";
+
+export const Require2FA: FC<ChildrenInterface> = ({ children }) => {
+
+    const location = useLocation();
+
+    const { requires2FA, is2FAVerified, isAuthenticated } = useAuth();
+
+    // Allow access to these routes without 2FA verification
+    const exemptRoutes = [
+        "/auth/verify-2fa",
+        "/forbidden",
+        // Add other exempt routes as needed
+    ];
+    const isExemptRoute = exemptRoutes.some(route => location.pathname.startsWith(route));
+
+    if (isExemptRoute) return children;
+
+    if (!isAuthenticated) return children;
+
+    if (requires2FA && !is2FAVerified) {
+        const returnUrl = encodeURIComponent(location.pathname + location.search);
+        return <Navigate to={`/auth/verify-2fa?returnUrl=${returnUrl}`} replace />;
+    }
+
+    // Allowing access
+    return children;
+};
+```
+
+This component checks if the user is authenticated and whether 2FA verification is required. If 2FA is required but not yet verified, it redirects the user to the 2FA verification page. Otherwise, it allows access to the requested route. 
+This wrapper has to be used around the main application router to protect all routes that require authentication and 2FA verification.
+
+We can simply wrap our main `App` component with the `Require2FA` component to enforce 2FA verification across the application.
+
+```typescript(lines)[file:/app.tsx]
+import { useAuth } from '@/hooks/use-auth';
+import LoadingComponent from './components/loading';
+import Router from './router';
+import { Require2FA } from './auth/Require2FA';
+
+export const App = () => {
+
+    const { isAuthenticated, requires2FA, is2FAVerified } = useAuth();
+
+    return (
+        <Require2FA>
+            {/* Others contexts */}
+            <Router />
+        </Require2FA>
+    );
+};
+```
+
+Right now, some precisions about the useAuth hook used above :
+- `isAuthenticated`: Indicates whether the user is authenticated.
+- `requires2FA`: Indicates whether the authenticated user has 2FA enabled and thus requires 2FA verification.
+- `is2FAVerified`: Indicates whether the user has successfully completed the 2FA verification step.
+
+These states are managed within the `useAuth` hook, which handles the authentication logic and state management for the application. To fetch these states, the hook may interact with the backend API to determine the user's authentication and 2FA status using **endpoints** we previously defined in the backend.
 
 ---
 
 # Conclusion
 
-...
+In this blog post, we explored how to set up 2FA using Spring Security and a basic Authenticator app. We covered the necessary backend implementation, including the TOTP model, service, and controller endpoints, as well as the client-side integration to handle the 2FA challenge during login (by a HOC wrapper to protect routes while ensuring 2FA verification).
+
+This layer of security significantly enhances the protection of user accounts and sensitive data in our application, useful in our case were the data was critical (firefighters interventions). It can be useful for any application that requires a higher level of security for user authentication, proof that current main authentication methods (username/password) are not enough nowadays and 2FA is becoming a standard (especially with the rise of cyber threats). 
+
+> Most tech giants already support MFA (roughly **80/90%**), but once you include smaller companies, MFA adoption drops hard and barely reaches **50%**.
+> Source : [JumpCloud's 2024 IT Trends Report](https://jumpcloud.com/blog/multi-factor-authentication-statistics)
 
 You will be able to find the complete code for this implementation on my [GitHub repository](https://github.com/rayaaaneee/SDMIS).
 
@@ -187,13 +471,15 @@ There are several opportunities to improve the 2FA implementation. At the moment
 
 To better understand how these approaches compare with the current TOTP-based solution, the following table summarizes their main characteristics in terms of security, user experience, and implementation effort.
 
+---
+
 | Method | Security Level | UX | Offline | Implementation Complexity |
 |--------|----------------|----|---------|---------------------------|
 | TOTP (**Authenticator**) | High | Medium | true | Low |
 | Push Notification (**Authenticator**) | Very High | High | false | High |
 | Biometrics | Very High | Very High | false | Very High |
 
-{/* Image of a push notification example */}
+---
 
 > [icon=false]
 > **PUSH 2FA** and **Biometric Authentication** can provide a more seamless user experience while maintaining high security standards.  

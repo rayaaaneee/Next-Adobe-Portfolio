@@ -188,7 +188,8 @@ const BlogTableOfContents = ({ }) => {
                                     heading.level === 3 && "[&>p]:pl-8",
                                     heading.level >= 4 && "[&>p]:pl-12",
                                 ],
-                                "[&>p]:hover:text-violet-500",
+                                "[&>p]:hover:text-violet-600 ",
+                                "dark:[&>p]:hover:text-violet-300",
                                 heading === activeHeading && [
                                     "[&>p]:text-violet-500 [&>p]:font-bold",
                                     "[&>.left-bar]:after:bg-violet-300 [&>.left-bar]:after:content-[''] [&>.left-bar]:after:block [&>.left-bar]:after:w-full [&>.left-bar]:after:h-full [&>.left-bar]:after:rounded-full",

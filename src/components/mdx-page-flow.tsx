@@ -42,10 +42,15 @@ import type ClassNameInterface from '@/util/interface/classname';
 import getFirstText, { removeFromFirstText } from '@/util/function/get-first-text';
 
 import hash from 'hash-sum';
+import ArrayType from '@/util/type/array-type';
 
-export const ArticleWrapper = ({ children, className, use = true, id }: ChildrenInterface & ClassNameInterface & { use?: boolean }) => 
+interface UseWrapperInterface {
+    useWrapper?: boolean;
+}
+
+export const ArticleWrapper = ({ children, className, useWrapper = true, id }: ChildrenInterface & UseWrapperInterface & ClassNameInterface) => 
     (
-        use ? (
+        useWrapper ? (
             <article className={cn(className)} id={id}>
                 {children}
             </article>) 
@@ -54,12 +59,15 @@ export const ArticleWrapper = ({ children, className, use = true, id }: Children
     )
 
 // Usage : <Image src="..." alt="..." width={...} height={...} className="..." />
-export const MdxImage = (props: NextImageProps) => (
-    <ArticleWrapper className='max-size'>
+export const MdxImage = ({useWrapper, containerClassName, ...props}: NextImageProps & UseWrapperInterface & {
+    containerClassName?: string;
+}) => (
+    <ArticleWrapper useWrapper={useWrapper} className='max-size'>
         <Tooltip 
             size={TooltipSize.md}
             className={cn(
                 "img-container rounded-md mx-auto mt-6 mb-3",
+                containerClassName
             )}
             disabled={props.alt === undefined} 
             literalText={props.alt}
@@ -74,6 +82,23 @@ export const MdxImage = (props: NextImageProps) => (
     </ArticleWrapper>
 );
 
+export const MdxImageLine = ({ images }: { images: ArrayType<NextImageProps, 2> }) => (
+    <ArticleWrapper className="max-size flex flex-row gap-4 h-fit justify-center items-center">
+        {images.map((imageProps, index) => (
+            <MdxImage
+                key={index}
+                {...imageProps}
+                useWrapper={false}
+                className={cn(
+                    "max-h-full w-auto max-w-full object-contain",
+                    "md:rounded-md box-border border-y-4 md:border-4 border-white/40 md:hover:scale-[1.01] transition-transform",
+                    imageProps.className
+                )}
+            />
+        ))}
+    </ArticleWrapper>
+);
+
 /* Usage :
 language is mandatory, (lines) is optional to show line numbers, and file name is optional
 ```language(lines)[file:/...]]
@@ -85,7 +110,7 @@ export const MdxCode = ({ children, className }: mdxCodeProps) => {
 
     const fileRegex = /\[file:\/?([^\]]+)\]/;
     
-    const lang: BundledLanguage | undefined = className?.remove('language-')
+    const lang: BundledLanguage | undefined = className?.removeAll(" ").remove('language-')
         .remove('(lines)')
         .remove(fileRegex) as BundledLanguage;
     const showLineNumbers: boolean = className?.includes('(lines)') || false;
@@ -256,6 +281,25 @@ export const MdxList = ({ children }: ChildrenInterface) => (
         <ul className='list-disc [&>li]:ml-8 [&>li]:my-2'>
             {children}
         </ul>
+    </ArticleWrapper>
+);
+
+/* Usage :
+
+Title :
+1. First item
+2. Second item
+
+*/
+export const MdxNumberedList = ({ children }: ChildrenInterface) => (
+    <ArticleWrapper>
+        <ol className={cn(
+            'list-decimal [&>li]:ml-8 [&>li]:my-2',
+            "marker:font-semibold marker:font-apple text-[1.2em]",
+            "marker:text-[#887c59] dark:marker:text-[rgba(255,226,226,0.9)]",
+        )}>
+            {children}
+        </ol>
     </ArticleWrapper>
 );
 
