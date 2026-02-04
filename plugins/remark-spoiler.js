@@ -1,7 +1,9 @@
-const visitRaw = require('unist-util-visit');
-const visit = (visitRaw && visitRaw.visit) ? visitRaw.visit : (visitRaw && visitRaw.default ? visitRaw.default : visitRaw);
+import { visit } from 'unist-util-visit';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkMdx from 'remark-mdx';
 
-module.exports = function remarkSpoiler() {
+export default function remarkSpoiler() {
   return (tree, file) => {
     // Accept only these opening tag forms:
     // [spoiler]...[/spoiler]
@@ -11,10 +13,6 @@ module.exports = function remarkSpoiler() {
     // Title capture groups: 1 = double-quoted, 2 = single-quoted, 3 = bare (no brackets)
     // allow optional blockquote prefixes ("> ") before opening/closing tags
     const regex = /(?:^|\n)\s*(?:> ?)*\[spoiler(?:=(?:"([^"]*)"|'([^']*)'|([^\]]+)))?\]([\s\S]*?)\s*(?:> ?)*\[\/spoiler\]/gi;
-
-    const unified = require('unified');
-    const remarkParse = require('remark-parse');
-    const remarkMdx = require('remark-mdx');
 
     // Helper: reconstruct markdown for inline nodes so we can run regex across mixed children
     const nodeToMarkdown = (n) => {

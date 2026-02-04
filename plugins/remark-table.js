@@ -1,7 +1,6 @@
-const visitRaw = require('unist-util-visit');
-const visit = (visitRaw && visitRaw.visit) ? visitRaw.visit : (visitRaw && visitRaw.default ? visitRaw.default : visitRaw);
+import { visit } from 'unist-util-visit';
 
-module.exports = function remarkTable() {
+export default function remarkTable() {
   return (tree) => {
     // helper to extract simple text from inline mdast nodes
     const textFromNode = (n) => {

@@ -1,5 +1,4 @@
-const visitRaw = require('unist-util-visit')
-const visit = (visitRaw && visitRaw.visit) ? visitRaw.visit : (visitRaw && visitRaw.default ? visitRaw.default : visitRaw)
+import { visit } from 'unist-util-visit';
 
 function serializeNode(n) {
   if (!n || typeof n !== 'object') return null;
@@ -17,7 +16,7 @@ function serializeNode(n) {
   return out;
 }
 
-module.exports = function remarkExposeMdNode() {
+export default function remarkExposeMdNode() {
   return (tree) => {
     visit(tree, (node) => {
       node.data = node.data || {}

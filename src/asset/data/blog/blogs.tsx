@@ -200,7 +200,6 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Esta publicación de blog explora la implementación de la autenticación de dos factores (2FA) en una aplicación Spring. Cubre los beneficios de la 2FA, el proceso de configuración y proporciona una guía paso a paso para integrar esta función de seguridad en sus proyectos basados en Spring.",
         },
         icon: <Image src={TwoFaIcon} alt="2FA Icon" />,
-        isComplete: false,
     }
 ];
 
