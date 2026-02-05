@@ -18,13 +18,18 @@ import ChildrenInterface from "@/util/interface/children";
 
 import imageContext from "@/util/context/image-context";
 
+import PortfolioSkeleton from "@/components/skeleton/portfolio-skeleton";
+
 const App = ({ children }: ChildrenInterface) => {
 
-	// Initialize language by cookies or system settings
-	useLanguageManager();
+	// Handle language state — initialise with defaultLanguage so SSR & first
+	// client render produce identical output (no hydration mismatch).
+	const [lang, setLang] = useState<Language>(I18nClientManager.instance.defaultLanguage);
 
-	// Handle language state
-	const [lang, setLang] = useState<Language>(I18nClientManager.instance.language);
+	// Resolve the real language (cookie / navigator) inside useLayoutEffect,
+	// then update the React state. While this runs, `isLanguageReady` is false
+	// and a skeleton is shown instead of the actual page.
+	const isLanguageReady = useLanguageManager((resolved) => setLang(resolved));
 	const languageValue: I18nContextType = useMemo(
 		() => ({
 			t: I18nClientManager.instance.getValue.bind(I18nClientManager.instance),
@@ -94,7 +99,7 @@ const App = ({ children }: ChildrenInterface) => {
 		<ThemeProvider>
 			<imageContext.Provider value={imagesValue}>
 				<languageContext.Provider value={languageValue}>
-					{ children }
+					{ isLanguageReady ? children : <PortfolioSkeleton /> }
 				</languageContext.Provider>
 			</imageContext.Provider>
 		</ThemeProvider>

@@ -31,6 +31,11 @@ const config: import('tailwindcss').Config = {
     theme: {
         extend: {
             keyframes: {
+                // Skeleton shimmer animation
+                "shimmer": {
+                    '0%': { backgroundPosition: '200% 0' },
+                    '100%': { backgroundPosition: '-200% 0' },
+                },
                 // For background shapes animation
                 "triangle-red-move": {
                     "0%": { transform: "rotate(0deg)" },
@@ -157,6 +162,7 @@ const config: import('tailwindcss').Config = {
                 'select-language': "var(--select-language-columns)",
             },
             animation: {
+                'shimmer': 'shimmer 1.5s ease-in-out infinite',
                 'triangle-red': 'triangle-red-move 40s linear infinite',
                 'triangle-yellow': 'triangle-yellow-move 50s linear infinite',
                 'triangle-orange': 'triangle-orange-move 70s linear infinite',
