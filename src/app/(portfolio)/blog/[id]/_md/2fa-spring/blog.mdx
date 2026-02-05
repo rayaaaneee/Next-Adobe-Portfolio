@@ -242,7 +242,7 @@ There's below the implementation of two useful and interesting methods from the 
 
 First, the `generateQrCodeDataUrl` method generates a QR code data URL that can be used to display the QR code to the user for scanning with their Authenticator app. The "image" is returned as a Base64-encoded PNG image data URL, and the navigator can render it directly in an `<img>` tag.
 
-```kotlin(lines)[file:/service/TotpService.kt]
+```kotlin[file:/service/TotpService.kt]
 fun generateQrCodeDataUrl(username: String, secret: String): String {
 
     val qrData = QrData.Builder()
@@ -265,7 +265,7 @@ fun generateQrCodeDataUrl(username: String, secret: String): String {
 
 The second method, `validateToken`, validates a TOTP token provided by the user. It checks if the token is valid for the given secret and within the allowed time window. Validation is very simplified using the `codeVerifier` from the TOTP library, which handles the time-based validation internally.
 
-```kotlin(lines)[file:/service/TotpService.kt]
+```kotlin[file:/service/TotpService.kt]
 fun validateToken(secret: String, token: String): Boolean {
     return try {
         codeVerifier.isValidCode(secret, token)
@@ -322,7 +322,7 @@ Recovery codes are a critical backup mechanism for 2FA. They allow users to rega
 
 These codes should be treated with the same level of security as passwords, so they should not be stored in plain text in the database. Instead, they should be hashed (SHA-256 in our case) before being stored. If a user attempts to use a recovery code, the backend will hash the provided code and compare it against the stored hashed codes to verify its validity. Here's the hashing function used for recovery codes in the `TotpService` class:
 
-```kotlin(lines)[file:/service/TotpService.kt]
+```kotlin[file:/service/TotpService.kt]
 fun hashCode(code: String): String {
     // Hasher instance for SHA-256
     val digest = MessageDigest.getInstance("SHA-256")
@@ -423,7 +423,7 @@ This wrapper has to be used around the main application router to protect all ro
 
 We can simply wrap our main `App` component with the `Require2FA` component to enforce 2FA verification across the application.
 
-```typescript(lines)[file:/app.tsx]
+```typescript[file:/app.tsx]
 import { useAuth } from '@/hooks/use-auth';
 import LoadingComponent from './components/loading';
 import Router from './router';
@@ -458,6 +458,7 @@ In this blog post, we explored how to set up 2FA using Spring Security and a bas
 This layer of security significantly enhances the protection of user accounts and sensitive data in our application, useful in our case were the data was critical (firefighters interventions). It can be useful for any application that requires a higher level of security for user authentication, proof that current main authentication methods (username/password) are not enough nowadays and 2FA is becoming a standard (especially with the rise of cyber threats). 
 
 > Most tech giants already support MFA (roughly **80/90%**), but once you include smaller companies, MFA adoption drops hard and barely reaches **50%**.
+> We can globally note that MFA adoption is becoming a **standard in the industry** and most modern applications should consider implementing it.
 > Source : [JumpCloud's 2024 IT Trends Report](https://jumpcloud.com/blog/multi-factor-authentication-statistics)
 
 You will be able to find the complete code for this implementation on my [GitHub repository](https://github.com/rayaaaneee/SDMIS).
