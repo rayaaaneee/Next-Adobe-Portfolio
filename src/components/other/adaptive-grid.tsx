@@ -11,6 +11,7 @@ import AdaptiveGridTopBottomPart from "./adaptive-grid/adaptive-grid-top-bottom-
 
 import type GridContent from "@/asset/data/home/adaptive-grid-base";
 import { ChildrenType } from "@/util/interface/children";
+import { type WithLanguageable } from "@/util/type/language";
 import { TechCategory } from "@/asset/data/home/general-technologies-list";
 
 export interface AdaptiveGridElementData {
@@ -19,9 +20,9 @@ export interface AdaptiveGridElementData {
 }
 
 export interface AdaptiveGridElementProjectData extends AdaptiveGridElementData {
-    description: string;
+    description: WithLanguageable<string>;
     year: number;
-    technologies: {name: string, type: TechCategory}[];
+    technologies: { name: string, type: TechCategory }[];
     githubLink?: string;
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { MouseEventHandler } from "react";
 
 import cn from "@/util/function/cn";
@@ -8,6 +10,7 @@ import { FiGithub } from "react-icons/fi";
 
 import { AdaptiveGridElementProjectData } from "../adaptive-grid";
 import QuitButton from "@/components/quit-button";
+import useLanguage from "@/util/hook/use-language";
 
 export interface AdaptiveGridElementExpansionProps {
     element: AdaptiveGridElementProjectData;
@@ -17,6 +20,9 @@ export interface AdaptiveGridElementExpansionProps {
 
 // Expansion shown when clicking on a project grid element (only for clickable grids)
 const AdaptiveGridElementExpansion = ({ element, isClicked, onClose }: AdaptiveGridElementExpansionProps) => {
+    
+    const { tLanguageable } = useLanguage();
+    
     return (
         <>
             <QuitButton 
@@ -49,7 +55,7 @@ const AdaptiveGridElementExpansion = ({ element, isClicked, onClose }: AdaptiveG
 
                     <Paragraph className={cn(
                         "text-nowrap m-0 dark:text-white",
-                    )} alignment={ParagraphAlignment.justify} innerHtml={element.description}>{undefined}</Paragraph>   
+                    )} alignment={ParagraphAlignment.justify} innerHtml={tLanguageable(element.description)} />   
 
                 </section>
 

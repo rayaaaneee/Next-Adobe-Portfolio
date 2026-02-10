@@ -92,7 +92,7 @@ const Layout = ({
     >
         <body className={"antialiased"}>
             <PWAUpdateNotification />
-            {children}
+            { children }
         </body>
     </html>
 );
