@@ -99,6 +99,7 @@ const es: Sentences = {
         lang: "Idioma",
         footer: "¡Gracias por leer!",
         rights: "Esta publicación está bajo la licencia {cc}.",
+        contents: "Índice",
         words: "palabras",
         by: "por",
         readingTime: "<b>{min} min</b> de lectura",
@@ -108,7 +109,7 @@ const es: Sentences = {
             copiedText: "¡Enlace copiado!",
         },
         not_found: {
-            text: "Este artículo de blog es introuvable.",
+            text: "Este artículo de blog no se encuentra.",
             goback: "Regresar",
         },
         coming_soon: {

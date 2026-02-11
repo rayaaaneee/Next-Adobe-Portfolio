@@ -24,7 +24,7 @@ const App = ({ children }: ChildrenInterface) => {
 	const [lang, setLang] = useState<Language>(I18nClientManager.instance.defaultLanguage);
 
 	// Resolve the real language (cookie / navigator)
-	const isLanguageReady = useLanguageManager((resolved) => setTimeout(() => setLang(resolved), 2000));
+	const isLanguageReady = useLanguageManager((resolved) => setLang(resolved));
 	const languageValue: I18nContextType = useMemo(
 		() => ({
 			t: I18nClientManager.instance.getValue.bind(I18nClientManager.instance),

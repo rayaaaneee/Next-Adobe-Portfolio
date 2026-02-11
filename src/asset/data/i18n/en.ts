@@ -99,6 +99,7 @@ const en = {
         lang: "Language",
         footer: "Thank you for reading !",
         rights: "This post is licensed under the {cc} license.",
+        contents: "Contents",
         words: "words",
         by: "by",
         readingTime: "<b>{min} min</b> read",

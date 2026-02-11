@@ -11,7 +11,7 @@
         "build": "next build --webpack",
         "serve": "npm run build && npm start",
         "lint": "eslint src/",
-        "fix": "npx tsc --noEmit",
+        "fix": "npx tsc",
         "debug": "NODE_OPTIONS=\"--inspect\" npm run dev",
         "add:blog": "ts-node scripts/add-blog.ts"
     },

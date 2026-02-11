@@ -100,6 +100,7 @@ const fr: Sentences = {
         lang: "Langue",
         footer: "Merci de votre lecture !",
         rights: "Cet article est sous licence {cc}.",
+        contents: "Table des matières",
         words: "mots",
         by: "par",
         readingTime: "<b>{min} min</b> de lecture",

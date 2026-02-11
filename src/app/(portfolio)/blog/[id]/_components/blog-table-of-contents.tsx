@@ -7,6 +7,7 @@ import cn from "@/util/function/cn";
 import { AnchorLinkText, HeadingThree, Paragraph } from "@/components/page-flow/page-flow";
 
 import getBlogElement from "../function/get-blog-element";
+import useLanguage from "@/util/hook/use-language";
 
 interface TableHeadingInterface {
     title: string;
@@ -75,6 +76,8 @@ const BlogTableOfContents = ({ }) => {
     const tableHeadings = useRef<TableHeadingInterface[]>([]);
     const [activeHeading, setActiveHeading] = useState<TableHeadingInterface | null>(null);
     const [headingsReady, setHeadingsReady] = useState(false);
+
+    const { t } = useLanguage();
 
     // Check if a heading should be visible based on the active heading
     const isHeadingVisible = (heading: TableHeadingInterface): boolean => {
@@ -175,7 +178,7 @@ const BlogTableOfContents = ({ }) => {
             (!headingsReady || tableHeadings.current.length === 0) && "hidden",
         )}>
             <section className='flex flex-col'>
-                <HeadingThree containerClassName="!m-0">Contents</HeadingThree>
+                <HeadingThree containerClassName="!m-0">{t("blog.contents")}</HeadingThree>
                 <section className="mt-4 [&>*]:transition-colors [&>*]:duration-200">
                     {tableHeadings.current.map((heading: TableHeadingInterface, index) => (
                         <AnchorLinkText 
