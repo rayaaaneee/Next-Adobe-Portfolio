@@ -1,6 +1,6 @@
 "use client";
 
-import { AnchorLinkText, Paragraph } from '@/components/page-flow';
+import { AnchorLinkText, Paragraph } from '@/components/page-flow/page-flow';
 import useLanguage from '@/util/hook/use-language';
 
 const BlogRights = () => {

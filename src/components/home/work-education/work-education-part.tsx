@@ -1,4 +1,4 @@
-import { HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment } from "../../page-flow";
+import { HeadingThree, HeadingTwo, Paragraph } from "../../page-flow/page-flow";
 
 import cn from "@/util/function/cn";
 
@@ -11,6 +11,8 @@ import { FaLayerGroup } from "react-icons/fa";
 import ChildrenInterface from "@/util/interface/children";
 
 import { type Work, type Education } from "@/util/type/home/experience";
+
+import { ParagraphAlignment } from "@/components/page-flow/types/paragraph-alignment";
 
 import Separator from "../../other/separator";
 import TechItem from "./tech-item";

@@ -6,13 +6,14 @@ import useConditionalEffect from '@/util/hook/use-conditional-effect';
 
 import cn from "@/util/function/cn";
 
-import { HeadingThree, IconPosition } from '@/components/page-flow';
+import { HeadingThree } from '@/components/page-flow/page-flow';
 
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 import ClassNameInterface from '@/util/interface/classname';
 import verifyReference from '@/util/function/verify-reference';
 import AdaptiveGridTopBottomPart from './adaptive-grid-top-bottom-part';
+import { IconPosition } from '@/components/page-flow/types/icon-position';
 
 interface AdaptiveGridExpandButtonProps extends ClassNameInterface {
     id: string;

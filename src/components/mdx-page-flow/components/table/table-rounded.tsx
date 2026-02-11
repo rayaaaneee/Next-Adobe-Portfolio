@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 
-import type TableInterface from './table-interface';
+import { TableInterface } from '../../types/mdx-page-flow-interface';
+
 
 const MdxTableRounded = ({ tableId }: TableInterface) => {
 

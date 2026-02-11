@@ -8,7 +8,7 @@ import cn from "@/util/function/cn";
 
 import { FaCode } from "react-icons/fa6";
 import { FaRegFileCode } from "react-icons/fa";
-import { HeadingThree } from "@/components/page-flow";
+import { HeadingThree } from "@/components/page-flow/page-flow";
 
 interface CodeBlockHeaderProps {
     text: string;

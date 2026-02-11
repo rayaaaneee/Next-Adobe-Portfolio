@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { FaCheck, FaCopy } from "react-icons/fa6";
 
-import { Button } from "@/components/page-flow";
+import { Button } from "@/components/page-flow/page-flow";
 import Tooltip, { TooltipPosition, TooltipSize } from "@/components/tooltip/tooltip";
 
 import cn from "@/util/function/cn";

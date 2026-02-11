@@ -1,8 +1,10 @@
 import cn from '@/util/function/cn';
 
-import { HeadingThree, IconPosition } from '@/components/page-flow';
+import { HeadingThree } from '@/components/page-flow/page-flow';
 
 import { ChildrenType } from '@/util/interface/children';
+
+import { IconPosition } from '@/components/page-flow/types/icon-position';
 
 interface VerticalBorderSectionProps {
     text: string;

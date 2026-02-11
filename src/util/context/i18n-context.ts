@@ -29,6 +29,7 @@ export interface I18nContextType {
 
   // Supported languages list
   supportedLanguages: Language[];
+
 }
 
 

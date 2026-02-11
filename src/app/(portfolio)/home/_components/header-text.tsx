@@ -4,7 +4,7 @@ import useLanguage from '@/util/hook/use-language';
 
 import { FaLocationDot } from 'react-icons/fa6';
 
-import { HeadingOne, HeadingThree, Paragraph } from '@/components/page-flow';
+import { HeadingOne, HeadingThree, Paragraph } from '@/components/page-flow/page-flow';
 
 const HeaderText = () => {
 

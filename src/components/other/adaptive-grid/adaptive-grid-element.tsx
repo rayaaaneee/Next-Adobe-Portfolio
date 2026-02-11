@@ -18,11 +18,15 @@ import AdaptiveGridElementExpansion from "./adaptive-grid-element-expansion";
 
 import Tooltip, { TooltipSize } from "@/components/tooltip/tooltip";
 
-import { HeadingTwo, Button, HeadingPropsInterface, IconPosition } from "@/components/page-flow";
+import { HeadingTwo, Button } from "@/components/page-flow/page-flow";
+
+import { IconPosition } from "@/components/page-flow/types/icon-position";
 
 import verifyReference from "@/util/function/verify-reference";
 
 import { assertFoundTech } from "@/asset/data/home/general-technologies-list";
+import { HeadingPropsInterface } from "@/components/page-flow/types/page-flow-interface";
+
 
 const TopPartText = ({
     className, children, icon, containerClassName, onClick, 

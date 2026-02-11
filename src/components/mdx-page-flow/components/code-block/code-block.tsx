@@ -16,7 +16,7 @@ export interface CodeBlockProps {
   lang?: BundledLanguage,
 }
 
-const CodeBlock = (props: CodeBlockProps) => {
+export const CodeBlock = (props: CodeBlockProps) => {
 
     const { children, lang, filename, showLineNumbers = false } = props;
 
@@ -41,5 +41,3 @@ const CodeBlock = (props: CodeBlockProps) => {
         </CodeBlockParent>
     );
 }
-
-export default CodeBlock;

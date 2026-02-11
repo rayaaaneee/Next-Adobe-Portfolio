@@ -6,7 +6,7 @@ import cn from '@/util/function/cn';
 
 import { FaLink } from 'react-icons/fa';
 
-import { HeadingThree } from '@/components/page-flow';
+import { HeadingThree } from '@/components/page-flow/page-flow';
 
 import { TooltipSize } from '@/components/tooltip/tooltip';
 

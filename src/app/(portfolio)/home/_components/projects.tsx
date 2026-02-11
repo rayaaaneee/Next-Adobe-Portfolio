@@ -2,7 +2,9 @@
 
 import useLanguage from '@/util/hook/use-language';
 
-import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flow";
+import { HeadingOne, Paragraph } from "@/components/page-flow/page-flow";
+
+import { ParagraphAlignment } from '@/components/page-flow/types/paragraph-alignment';
 
 const Projects = () => {
 

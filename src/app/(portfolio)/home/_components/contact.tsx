@@ -1,6 +1,7 @@
 "use client";
 
-import { HeadingOne, Paragraph, ParagraphAlignment } from "@/components/page-flow";
+import { HeadingOne, Paragraph } from "@/components/page-flow/page-flow";
+import { ParagraphAlignment } from "@/components/page-flow/types/paragraph-alignment";
 import assertDefined from "@/util/function/assert-defined";
 import useLanguage from "@/util/hook/use-language";
 

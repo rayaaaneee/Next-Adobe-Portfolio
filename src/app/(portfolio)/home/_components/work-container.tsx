@@ -2,14 +2,19 @@
 
 import useLanguage from '@/util/hook/use-language';
 
-import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
+import { HeadingOne, Paragraph } from '@/components/page-flow/page-flow';
 
+import { ParagraphAlignment } from '@/components/page-flow/types/paragraph-alignment';
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
 import { DateClass, IntervalDateClass, Month  } from '@/util/type/date';
+
 import { type Work } from '@/util/type/home/experience';
-import { assertFoundTech, GeneralTechnologiesName } from '@/asset/data/home/general-technologies-list';
+
 import Language from '@/util/type/language';
+
+import { assertFoundTech, GeneralTechnologiesName } from '@/asset/data/home/general-technologies-list';
+
 
 const WorkContainer = () => {
 

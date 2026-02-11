@@ -6,7 +6,7 @@ import { createRoot, Root } from 'react-dom/client';
 
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
 
-import type TableInterface from './table-interface';
+import { TableInterface } from '../../types/mdx-page-flow-interface';
 
 const MdxTableSorter = ({ tableId }: TableInterface) => {
 

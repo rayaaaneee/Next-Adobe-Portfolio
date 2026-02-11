@@ -4,13 +4,14 @@ import { MouseEventHandler } from "react";
 
 import cn from "@/util/function/cn";
 
-import { Paragraph, ParagraphAlignment, AnchorLinkButton } from "@/components/page-flow";
+import { Paragraph, AnchorLinkButton } from "@/components/page-flow/page-flow";
 
 import { FiGithub } from "react-icons/fi";
 
 import { AdaptiveGridElementProjectData } from "../adaptive-grid";
 import QuitButton from "@/components/quit-button";
 import useLanguage from "@/util/hook/use-language";
+import { ParagraphAlignment } from "@/components/page-flow/types/paragraph-alignment";
 
 export interface AdaptiveGridElementExpansionProps {
     element: AdaptiveGridElementProjectData;

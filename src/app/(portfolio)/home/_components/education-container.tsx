@@ -2,13 +2,14 @@
 
 import useLanguage from '@/util/hook/use-language';
 
-import { HeadingOne, Paragraph, ParagraphAlignment } from '@/components/page-flow';
+import { HeadingOne, Paragraph } from '@/components/page-flow/page-flow';
 
 import WorkEducationPart from '@/components/home/work-education/work-education-part';
 
 import { DateClass, IntervalDateClass, Month } from '@/util/type/date';
 import { type Education } from '@/util/type/home/experience';
 import Language from '@/util/type/language';
+import { ParagraphAlignment } from '@/components/page-flow/types/paragraph-alignment';
 
 const EducationContainer = () => {
 

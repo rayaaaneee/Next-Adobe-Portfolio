@@ -2,7 +2,7 @@
 
 import useLanguage from '@/util/hook/use-language';
 
-import { HeadingOne } from '@/components/page-flow';
+import { HeadingOne } from '@/components/page-flow/page-flow';
 
 const Hobbies = () => {
 

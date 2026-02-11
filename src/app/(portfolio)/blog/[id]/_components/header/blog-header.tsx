@@ -5,7 +5,7 @@ import useLanguage from '@/util/hook/use-language';
 
 import { MdDateRange } from "react-icons/md";
 
-import { HeadingOne, HeadingTwo, Paragraph } from '@/components/page-flow';
+import { HeadingOne, HeadingTwo, Paragraph } from '@/components/page-flow/page-flow';
 import Tooltip, { TooltipSize } from '@/components/tooltip/tooltip';
 import Separator from '@/components/other/separator';
 
@@ -34,7 +34,7 @@ const estimatedReadingTime = (wordCount: number, language: Language): number => 
     return Math.ceil(wordCount / wordsPerMinute);
 }
 
-const BlogHeader = ({ blog }: { blog: DeepReadonlyable<BlogPost> }) => {
+const BlogHeader = ({ blog }: { blog: DeepReadonlyable<Omit<BlogPost, "content">> }) => {
 
     const { t, tArray, lang } = useLanguage();
 

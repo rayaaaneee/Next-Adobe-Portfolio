@@ -1,6 +1,6 @@
 "use client";
 
-import { HeadingThree } from "@/components/page-flow";
+import { HeadingThree } from "@/components/page-flow/page-flow";
 
 import useLanguage from "@/util/hook/use-language";
 

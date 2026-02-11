@@ -4,7 +4,7 @@ import useLanguage from "@/util/hook/use-language";
 
 import { IoIosArrowForward } from "react-icons/io";
 
-import { AnchorLinkText, HeadingFour } from "@/components/page-flow";
+import { AnchorLinkText, HeadingFour } from "@/components/page-flow/page-flow";
 
 
 export interface BlogBreadcrumbProps {

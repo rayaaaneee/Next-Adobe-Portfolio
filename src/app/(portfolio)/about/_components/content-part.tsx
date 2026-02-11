@@ -1,6 +1,8 @@
 "use client";
 
-import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, ParagraphAlignment, AnchorLinkText } from "@/components/page-flow";
+import { HeadingOne, HeadingThree, HeadingTwo, Paragraph, AnchorLinkText } from "@/components/page-flow/page-flow";
+
+import { ParagraphAlignment } from "@/components/page-flow/types/paragraph-alignment";
 
 import assertDefined from "@/util/function/assert-defined";
 import getCurrentYear from "@/util/function/get-current-year";

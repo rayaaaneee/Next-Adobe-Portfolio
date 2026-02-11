@@ -2,7 +2,7 @@ import { LuPencilLine } from "react-icons/lu";
 import { FaRss } from "react-icons/fa";
 import { Metadata } from "next";
 
-import { AnchorLinkButton, HeadingOne } from '@/components/page-flow';
+import { AnchorLinkButton, HeadingOne } from '@/components/page-flow/page-flow';
 import Separator from '@/components/other/separator';
 import MainPart from '@/components/other/main-part';
 import BlogGrid from './_components/blog-grid';

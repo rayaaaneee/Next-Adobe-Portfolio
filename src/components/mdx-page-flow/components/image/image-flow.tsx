@@ -1,16 +1,17 @@
 "use client";
 
-import imageContext from "@/util/context/image-context";
+import Image from "next/image";
+
 import cn from "@/util/function/cn";
-import Image, { ImageProps, StaticImageData } from "next/image";
-import { MouseEventHandler, useContext, useEffect } from "react";
 
-export interface ImageFlowProps extends ImageProps {
-    src: StaticImageData;
-    isInFlow?: boolean;
-}
+import { type MouseEventHandler, useContext, useEffect } from "react";
 
-const ImageFlow = (props: ImageFlowProps) => {
+import { type ImageFlowProps } from "../../types/mdx-page-flow-interface";
+
+import imageContext from "@/util/context/image-context";
+
+
+export const ImageFlow = (props: ImageFlowProps) => {
 
     const { isInFlow = true } = props;
 
@@ -35,5 +36,3 @@ const ImageFlow = (props: ImageFlowProps) => {
         />
     );
 }
-
-export default ImageFlow;

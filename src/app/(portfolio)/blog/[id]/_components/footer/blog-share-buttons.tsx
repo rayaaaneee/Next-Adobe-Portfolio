@@ -4,7 +4,7 @@ import useLanguage from "@/util/hook/use-language";
 
 import { FaFacebookF, FaLink, FaLinkedinIn, FaRedditAlien, FaTwitter } from "react-icons/fa6";
 
-import { HeadingThree } from "@/components/page-flow";
+import { HeadingThree } from "@/components/page-flow/page-flow";
 import Tooltip, { TooltipSize } from "@/components/tooltip/tooltip";
 import CopyButton from "@/components/other/copy-button";
 

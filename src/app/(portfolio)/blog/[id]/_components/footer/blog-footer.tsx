@@ -8,7 +8,7 @@ import type BlogPost from '@/util/type/blog';
 import { type DeepReadonlyable } from '@/util/type/deep-readonly';
 
 export interface BlogFooterProps {
-    blog: DeepReadonlyable<BlogPost>;
+    blog: DeepReadonlyable<Omit<BlogPost, 'content'>>;
 }
 
 const BlogFooter = ({ blog }: BlogFooterProps) => (

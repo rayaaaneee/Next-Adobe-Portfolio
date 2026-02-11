@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import cn from "@/util/function/cn";
 
-import { AnchorLinkText, HeadingThree, Paragraph } from "@/components/page-flow";
+import { AnchorLinkText, HeadingThree, Paragraph } from "@/components/page-flow/page-flow";
 
 import getBlogElement from "../function/get-blog-element";
 

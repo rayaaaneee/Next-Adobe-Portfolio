@@ -29,8 +29,6 @@ const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
             { name: GeneralTechnologiesName.KOTLIN, type: "language" },
             { name: GeneralTechnologiesName.DOCKER, type: "tool" },
             { name: GeneralTechnologiesName.CPP, type: "language" },
-            // { name: GeneralTechnologiesName.GRAFANA, type: "tool" }
-            // { name: GeneralTechnologiesName.KEYCLOAK, type: "tool" }
             { name: GeneralTechnologiesName.TYPESCRIPT, type: "language" }, 
             { name: GeneralTechnologiesName.REACT, type: "library" }, 
             { name: GeneralTechnologiesName.DOCKER, type: "tool" }, 

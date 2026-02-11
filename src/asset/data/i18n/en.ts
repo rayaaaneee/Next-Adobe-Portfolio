@@ -107,6 +107,10 @@ const en = {
             text: "Copy link",
             copiedText: "Link copied!",
         },
+        not_found: {
+            text: "This blog post could not be found.",
+            goback: "Go back",
+        },
         coming_soon: {
             text: "This blog is coming soon.",
             goback: "Go back",
@@ -182,6 +186,7 @@ const en = {
     not_found: {
         title: "404 - Page not found",
         text: "Sorry, we couldn’t find the page you’re looking for.",
+        goback: "Go back",
     }
 }
 

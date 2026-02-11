@@ -58,10 +58,17 @@ const Page = async ({ params }: PageProps) => {
     } catch {
         return (
             <MainPart fullWidth className="!p-0">
-                <NotFound />
+                <NotFound 
+                    title="blog.title" 
+                    text="blog.not_found.text" 
+                    buttonText="blog.not_found.goback"
+                    link="/blog"
+                />
             </MainPart>
         );
     }
+
+    const { content, ...blogData } = blog;
 
     return (
         <>
@@ -77,14 +84,17 @@ const Page = async ({ params }: PageProps) => {
                 "[&>.tooltip-container>img]:w-auto",
                 "[&>.tooltip-container>img]:rounded-xl [&>.tooltip-container>img]:border-white/20 [&>.tooltip-container>img]:border-4 [&>.tooltip-container>img]:shadow-lg",
             )}>
-                <BlogHeader blog={blog} />
+
+                <BlogHeader blog={blogData} />
+
                 { blog.isComplete || process.env.NODE_ENV === 'development' ? (
                     <>
-                        {blog.content} 
-                        <BlogFooter blog={blog} />
+                        {content} 
+                        <BlogFooter blog={blogData} />
                     </>
                 )
-                : (
+                    : 
+                (
                     <ComingSoon 
                         className="h-fit mt-10" 
                         link="/blog" 

@@ -107,6 +107,10 @@ const es: Sentences = {
             text: "Copiar el enlace",
             copiedText: "¡Enlace copiado!",
         },
+        not_found: {
+            text: "Este artículo de blog es introuvable.",
+            goback: "Regresar",
+        },
         coming_soon: {
             text: "Este blog llegará pronto.",
             goback: "Regresar",
@@ -179,6 +183,7 @@ const es: Sentences = {
     not_found: {
         title: "404 - Página no encontrada",
         text: "Lo sentimos, no pudimos encontrar la página que estás buscando.",
+        goback: "Regresar",
     }
 }
 

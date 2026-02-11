@@ -7,7 +7,7 @@ import AdaptiveGrid, { AdaptiveGridProps } from '../../../../components/other/ad
 
 import cn from "@/util/function/cn";
 
-import { Button, HeadingTwo } from '../../../../components/page-flow';
+import { Button, HeadingTwo } from '../../../../components/page-flow/page-flow';
 import { LuCodeXml } from 'react-icons/lu';
 import { BsStack } from 'react-icons/bs';
 import { VscLibrary } from 'react-icons/vsc';

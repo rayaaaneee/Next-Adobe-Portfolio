@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from "react";
 
-import { Button } from "@/components/page-flow";
+import { Button } from "@/components/page-flow/page-flow";
 
 import cn from "@/util/function/cn";
 

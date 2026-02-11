@@ -4,7 +4,7 @@ import cn from "@/util/function/cn";
 
 import ClassNameInterface from "@/util/interface/classname";
 
-import { HeadingOne, Paragraph } from "./page-flow";
+import { HeadingOne, Paragraph } from "./page-flow/page-flow";
 
 import GetStarted from "./index/get-started";
 
@@ -12,7 +12,7 @@ import { languageKey } from "@/util/type/language-key";
 
 import useLanguage from "@/util/hook/use-language";
 
-interface ComingSoonProps extends ClassNameInterface {
+export interface ComingSoonProps extends ClassNameInterface {
     title?: languageKey;
     text?: languageKey;
     button?: boolean;

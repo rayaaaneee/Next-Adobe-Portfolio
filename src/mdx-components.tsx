@@ -21,7 +21,7 @@ import {
     MdxTh, 
     MdxThead,
     MdxTr
-} from '@/components/mdx-page-flow';
+} from '@/components/mdx-page-flow/mdx-page-flow';
 
 const unsupported = ({type}: {type: string}) =>
     { throw new Error(`MDX component of type "${type}" isn't currently supported by MDX.`) };
