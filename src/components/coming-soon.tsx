@@ -2,23 +2,13 @@
 
 import cn from "@/util/function/cn";
 
-import ClassNameInterface from "@/util/interface/classname";
-
 import { HeadingOne, Paragraph } from "./page-flow/page-flow";
 
 import GetStarted from "./index/get-started";
 
-import { languageKey } from "@/util/type/language-key";
-
 import useLanguage from "@/util/hook/use-language";
 
-export interface ComingSoonProps extends ClassNameInterface {
-    title?: languageKey;
-    text?: languageKey;
-    button?: boolean;
-    link?: string;
-    buttonText?: languageKey;
-}
+import type { ComingSoonProps } from "./page-flow/types/coming-soon-props";
 
 const ComingSoon = ({ title, text, className, button = true, link = "/home", buttonText }: ComingSoonProps) => {
 

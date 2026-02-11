@@ -1,7 +1,5 @@
 import cn from "@/util/function/cn";
 
-import NotFound from "../../[...not-found]/page";
-
 import { assertFoundBlog } from "@/asset/data/blog/blogs";
 
 import MainPart from "@/components/other/main-part";
@@ -25,6 +23,7 @@ export interface PageProps {
 }
 
 import { I18nServerManager } from "@/util/manager/i18n-server-manager";
+import NotFound from "@/components/not-found/not-found";
 
 export async function generateMetadata({ params }: PageProps) {
 

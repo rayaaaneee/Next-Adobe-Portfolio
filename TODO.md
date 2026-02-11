@@ -64,8 +64,8 @@
 * [X] Fix blog TOC (broken)
 * [ ] Preload images on a blog and on ImageFlow (important)
 * [ ] Implement Severity keys on table (case bg change according to severity : High, medium, ...)
-* [ ] NotFound on blog broken
-* [ ] Global not found broken
+* [X] NotFound on blog broken
+* [X] Global not found broken
 * [ ] ! Quote broken (retour à la ligne non pris en compte). (>\n>)
 * [X] CopyButton broken on MdxCode refactor needed because root.render breaks the context)
 * [X] Table
