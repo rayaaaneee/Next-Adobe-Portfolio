@@ -20,9 +20,8 @@ const projects: DeepReadonly<AdaptiveGridElementProjectData[]> = [
             name: 'SDMIS',
             color: "rgb(144,221,239)",
             icon: <SDMISIcon {...baseImageProps} />,
-            link: "https://github.com/rayaaaneee/SDMIS",
         },
-        githubLink: undefined,
+        githubLink: "https://github.com/rayaaaneee/SDMIS",
         technologies: [
             { name: GeneralTechnologiesName.JAVA, type: "language" },
             { name: GeneralTechnologiesName.SPRINGBOOT, type: "framework" },
