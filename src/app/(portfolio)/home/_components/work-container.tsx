@@ -29,14 +29,14 @@ const WorkContainer = () => {
                 [Language.ES]: "Lyon, Francia",
             },
             title: {
-                [Language.EN]: "Blue Team Member",
-                [Language.FR]: "Membre de l'équipe Blue Team",
-                [Language.ES]: "Miembro del equipo Blue Team"
+                [Language.EN]: "Security Engineer Apprentice / DevSecOps Apprentice",
+                [Language.FR]: "Apprenti Ingénieur Sécurité / Apprenti DevSecOps",
+                [Language.ES]: "Aprendiz de Ingeniero de Seguridad / Aprendiz de DevSecOps"
             },
             description: {
-                [Language.EN]: "As a Blue Team member at Energy Pool, I am responsible for protecting the company's digital assets from cyber threats. My role involves monitoring network traffic, analyzing security incidents, and implementing defensive measures to safeguard sensitive information. I work closely with other IT professionals to ensure the overall security posture of the organization is robust and resilient against potential attacks.",
-                [Language.FR]: "En tant que membre de l'équipe Blue Team chez Energy Pool, je suis responsable de la protection des actifs numériques de l'entreprise contre les menaces cybernétiques. Mon rôle consiste à surveiller le trafic réseau, à analyser les incidents de sécurité et à mettre en œuvre des mesures de défense pour protéger les informations sensibles. Je travaille en étroite collaboration avec d'autres professionnels de l'informatique pour garantir que la posture de sécurité globale de l'organisation est robuste et résiliente face aux attaques potentielles.",
-                [Language.ES]: "Como miembro del equipo Blue Team en Energy Pool, soy responsable de proteger los activos digitales de la empresa contra amenazas cibernéticas. Mi función implica monitorear el tráfico de la red, analizar incidentes de seguridad e implementar medidas defensivas para salvaguardar información sensible. Trabajo en estrecha colaboración con otros profesionales de TI para garantizar que la postura de seguridad general de la organización sea sólida y resistente a posibles ataques."
+                [Language.EN]: "In my role at Energy Pool, I have contributed to securing systems by addressing vulnerabilities identified during an external audit. I relied on OWASP recommendations to remediate the flaws and enhance the security of applications. This experience has allowed me to strengthen my skills in applied cybersecurity and in implementing concrete protection measures.",
+                [Language.FR]: "Dans le cadre de mon travail chez Energy Pool, j’ai contribué à la sécurisation des systèmes en corrigeant des vulnérabilités identifiées lors d’un audit externe. Je me suis appuyé sur les recommandations OWASP pour remédier aux failles et améliorer la sécurité des applications. Cette expérience m’a permis de renforcer mes compétences en cybersécurité appliquée et en mise en œuvre de mesures de protection concrètes.",
+                [Language.ES]: "En mi trabajo en Energy Pool, he contribuido a asegurar los sistemas corrigiendo vulnerabilidades identificadas durante una auditoría externa. Me he basado en las recomendaciones de OWASP para remediar las fallas y mejorar la seguridad de las aplicaciones. Esta experiencia me ha permitido fortalecer mis habilidades en ciberseguridad aplicada y en la implementación de medidas de protección concretas."
             },
             type: {
                 [Language.EN]: "Apprenticeship",
