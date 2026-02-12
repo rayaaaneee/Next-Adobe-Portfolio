@@ -29,9 +29,9 @@ const WorkContainer = () => {
                 [Language.ES]: "Lyon, Francia",
             },
             title: {
-                [Language.EN]: "Security Engineer Apprentice / DevSecOps Apprentice",
-                [Language.FR]: "Apprenti Ingénieur Sécurité / Apprenti DevSecOps",
-                [Language.ES]: "Aprendiz de Ingeniero de Seguridad / Aprendiz de DevSecOps"
+                [Language.EN]: "Security / SecDevOps Engineer Apprentice",
+                [Language.FR]: "Apprenti Ingénieur Sécurité / SecDevOps",
+                [Language.ES]: "Aprendiz de Ingeniero de Seguridad / SecDevOps",
             },
             description: {
                 [Language.EN]: "In my role at Energy Pool, I have contributed to securing systems by addressing vulnerabilities identified during an external audit. I relied on OWASP recommendations to remediate the flaws and enhance the security of applications. This experience has allowed me to strengthen my skills in applied cybersecurity and in implementing concrete protection measures.",
