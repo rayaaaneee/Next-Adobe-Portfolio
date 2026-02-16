@@ -11,7 +11,10 @@ import svgIcon from "@/asset/img/blog/blog-2/icon.png";
 import SvgPageContent from "$/(portfolio)/blog/[id]/_md/svg-customization/blog.mdx";
 
 import TwoFaIcon from "@/asset/img/blog/blog-4/icon.png";
-import TwoFaSpringPageContent from "$/(portfolio)/blog/[id]/_md/2fa-spring/blog.mdx";
+import TwoFaSpringContent from "$/(portfolio)/blog/[id]/_md/2fa-spring/blog.mdx";
+
+import { FaFlag as PrototypePollutionIcon } from "react-icons/fa6";
+import ProtypePollutionCtfContent from "$/(portfolio)/blog/[id]/_md/prototype-pollution/blog.mdx";
 
 export enum BlogTag {
     NEXTJS = "nextjs",
@@ -20,6 +23,7 @@ export enum BlogTag {
     WEB_FRONT = "web-front",
     KEYCLOAK = "keycloak",
     OAUTH2 = "oauth2",
+    CTF = "ctf",
     SECURITY = "security",
     ACCESS_TOKENS = "access-tokens",
     IAM = "identity-and-access-management",
@@ -72,6 +76,10 @@ const BlogTagsDisplay: DeepReadonly<BlogTagsDisplayType> = Object.freeze({
             [Language.ES]: "OAuth2",
         },
         color: "#4285F4",
+    },
+    [BlogTag.CTF]: {
+        displayName: "CTF",
+        color: "#800000",
     },
     [BlogTag.SECURITY]: {
         displayName: {
@@ -172,7 +180,7 @@ const blogs: DeepReadonly<BlogPost[]> = [
     {
         id: "2fa-spring",
         lang: Language.EN,
-        content: <TwoFaSpringPageContent />,
+        content: <TwoFaSpringContent />,
         tags: [
             BlogTag.SPRING,
             BlogTag.JAVASCRIPT,
@@ -194,6 +202,29 @@ const blogs: DeepReadonly<BlogPost[]> = [
             [Language.ES]: "Esta publicación de blog explora la implementación de la autenticación de dos factores (2FA) en una aplicación Spring. Cubre los beneficios de la 2FA, el proceso de configuración y proporciona una guía paso a paso para integrar esta función de seguridad en sus proyectos basados en Spring.",
         },
         icon: <Image src={TwoFaIcon} alt="2FA Icon" />,
+    }, 
+    {
+        id: "prototype-pollution",
+        content: <ProtypePollutionCtfContent />,
+        lang: Language.EN,
+        title: {
+            [Language.EN]: "Prototype Pollution Vulnerability",
+            [Language.FR]: "Vulnérabilité de Pollution de Prototype",
+            [Language.ES]: "Vulnerabilidad de Contaminación de Prototipos",
+        },
+        date: "2026-02-20",
+        color: "#FF0000",
+        summary: {
+            [Language.EN]: "This blog post explores the concept of prototype pollution, a critical security vulnerability in JavaScript applications. It delves into how attackers can exploit this vulnerability to manipulate object prototypes, leading to potential security breaches and data corruption.",
+            [Language.FR]: "Cet article de blog explore le concept de pollution de prototype, une vulnérabilité de sécurité critique dans les applications JavaScript. Il examine comment les attaquants peuvent exploiter cette vulnérabilité pour manipuler les prototypes d'objets, ce qui peut entraîner des violations de sécurité potentielles et la corruption de données.",
+            [Language.ES]: "Esta publicación de blog explora el concepto de contaminación de prototipos, una vulnerabilidad de seguridad crítica en las aplicaciones JavaScript. Se adentra en cómo los atacantes pueden explotar esta vulnerabilidad para manipular los prototipos de objetos, lo que puede llevar a posibles brechas de seguridad y corrupción de datos.",
+        },
+        tags: [
+            BlogTag.JAVASCRIPT,
+            BlogTag.CTF,
+            BlogTag.SECURITY,
+        ],
+        icon: <PrototypePollutionIcon />,
     }
 ];
 
@@ -221,6 +252,7 @@ const formatBlogs = (blogs: DeepReadonlyable<BlogPost[]>): DeepReadonlyable<Blog
         if (blog.icon === undefined) blog.icon = <DefaultIcon/>;
 
         return blog;
+
     });
 
     const ids = sortedBlogs.map(blog => blog.id);
